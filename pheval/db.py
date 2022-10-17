@@ -5,7 +5,7 @@ from __future__ import generators
 import jaydebeapi
 import pandas as pd
 import random
-import time
+from decorators import *
 import logging as log
 from tqdm import tqdm
 
@@ -15,18 +15,7 @@ log.basicConfig(
     datefmt="%Y-%m-%d",
 )
 
-
 random.seed(10)
-
-
-def measure_time(func):
-    def wrapper(*arg):
-        t = time.time()
-        res = func(*arg)
-        print("Function took " + str(time.time() - t) + " seconds to run")
-        return res
-
-    return wrapper
 
 
 class DBConnector:
@@ -106,7 +95,7 @@ class DBConnection:
 connector = DBConnector(
     jar="./lib/h2.jar",
     driver="org.h2.Driver",
-    server="jdbc:h2:/data/exomiser-data/2202_phenotype/",
+    server="jdbc:h2:/home/data/exomiser-data/2202_phenotype/",
     user="sa",
     password="",
     database="2202_phenotype",
@@ -114,7 +103,7 @@ connector = DBConnector(
 
 
 def ResultIterator(query: str, conn: DBConnection, arraysize: int = 1000) -> tuple:
-    """_summary_
+    """
     Records rows generator
     Args:
         query (str): SQL query
@@ -153,7 +142,11 @@ def rand(
     Returns:
         float: randomized number
     """
-    return self + (random.uniform(min_num, max_num) * scrambe_factor)
+    try:
+        return self + (random.uniform(min_num, max_num) * scrambe_factor)
+    except Exception as err:
+        log.error(self, exc_info=err)
+        return self
 
 
 def ssp_randomisation(df, scramble_factor=0.5) -> pd.DataFrame:
@@ -266,17 +259,17 @@ def select(
     return data_to_update
 
 
-with connector as cnn:
-    conn = DBConnection(cnn)
-    table_name = "HP_ZP_MAPPINGS"
-    scramble_factor = 0.5
-    log.info(f"counting records from {table_name}")
-    count_original = count_total(conn, table_name)
-    log.info(f"Original records length: {count_original}")
-    log.info(
-        f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
-    )
-    insert(conn, table_name, scramble_factor, count_original, 300000)
-    count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
-    log.info(f"Scrambled records length: {count_scramble}")
-    log.info("Done")
+@memory(percentage=0.5)
+def scramble_table(table_name: str, scramble_factor: float) -> None:
+    with connector as cnn:
+        conn = DBConnection(cnn)
+        log.info(f"counting records from {table_name}")
+        count_original = count_total(conn, table_name)
+        log.info(f"Original records length: {count_original}")
+        log.info(
+            f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
+        )
+        insert(conn, table_name, scramble_factor, count_original, 300000)
+        count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
+        log.info(f"Scrambled records length: {count_scramble}")
+        log.info("Done")
