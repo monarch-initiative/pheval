@@ -5,7 +5,7 @@ from __future__ import generators
 import jaydebeapi
 import pandas as pd
 import random
-from decorators import *
+from .decorators import *
 import logging as log
 from tqdm import tqdm
 
