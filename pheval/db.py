@@ -8,12 +8,9 @@ from .decorators import *
 import logging as log
 from tqdm import tqdm
 from .randomisation import *
+import os
 
-log.basicConfig(
-    level=log.INFO,
-    format="%(asctime)-8s %(levelname)-8s %(message)s",
-    datefmt="%Y-%m-%d",
-)
+info_log = log.getLogger("info")
 
 
 class DBConnector:
@@ -91,12 +88,12 @@ class DBConnection:
 
 
 connector = DBConnector(
-    jar="./lib/h2.jar",
+    jar=f"{os.path.dirname(__file__)}/../lib/h2.jar",
     driver="org.h2.Driver",
-    server="jdbc:h2:/home/data/exomiser-data/2202_phenotype/",
+    server=f"jdbc:h2:{os.path.dirname(__file__)}/../data/2209_phenotype/2209_phenotype/",
     user="sa",
     password="",
-    database="2202_phenotype",
+    database="2209_phenotype",
 )
 
 
@@ -194,7 +191,7 @@ def insert(
         try:
             conn.execute_many(sql, mod.values.tolist())
         except Exception as err:
-            print(err)
+            info_log.log(err)
         finally:
             i += 1
 
@@ -218,17 +215,21 @@ def select(
     return data_to_update
 
 
-@memory(percentage=0.95)
+def rename_table(conn: DBConnection, old_table_name: str, new_table_name: str):
+    create_query = f"""ALTER TABLE {old_table_name} RENAME {new_table_name};"""
+    conn.execute_query(create_query)
+
+
 def scramble_table(table_name: str, scramble_factor: float) -> None:
     with connector as cnn:
         conn = DBConnection(cnn)
-        log.info(f"counting records from {table_name}")
+        info_log.info(f"counting records from {table_name}")
         count_original = count_total(conn, table_name)
-        log.info(f"Original records length: {count_original}")
-        log.info(
+        info_log.info(f"Original records length: {count_original}")
+        info_log.info(
             f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
         )
-        insert(conn, table_name, scramble_factor, count_original, 3000)
+        insert(conn, table_name, scramble_factor, count_original, 100000)
         count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
-        log.info(f"Scrambled records length: {count_scramble}")
-        log.info("Done")
+        info_log.info(f"Scrambled records length: {count_scramble}")
+        info_log.info("Done")

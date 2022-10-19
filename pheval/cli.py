@@ -1,8 +1,10 @@
 import click
-import logging
 from .db import *
 import subprocess
 import os
+import logging
+
+info_log = logging.getLogger("info")
 
 
 @click.group()
@@ -15,31 +17,35 @@ def main(verbose: int, quiet: bool) -> None:
         verbose (int): _description_
         quiet (bool): _description_
     """
-    logger = logging.getLogger()
     if verbose >= 2:
-        logger.setLevel(level=logging.DEBUG)
+        info_log.setLevel(level=logging.DEBUG)
     elif verbose == 1:
-        logger.setLevel(level=logging.INFO)
+        info_log.setLevel(level=logging.INFO)
     else:
-        logger.setLevel(level=logging.WARNING)
+        info_log.setLevel(level=logging.WARNING)
     if quiet:
-        logger.setLevel(level=logging.ERROR)
+        info_log.setLevel(level=logging.ERROR)
 
 
-# def doscramble(table: str, scramble_factor: float):
-#     scramble_table(table, scramble_factor)
-
-
-@main.command()
-@click.option("-T", "--table", help="Number of greetings.")
-@click.option("-S", "--scramble_factor", default=0.5, help="Number of greetings.")
-def run(table: str, scramble_factor: float):
-    res = subprocess.check_call(
+def run_bash():
+    return subprocess.check_call(
         f"{os.path.dirname(__file__)}/run.sh",
         stdout=sys.stdout,
         stderr=subprocess.STDOUT,
     )
+
+
+@main.command()
+@click.option("-T", "--table", help="Table Name", required=True)
+@click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
+def run(table: str, scramble_factor: float):
+    run_bash()
     scramble_table(table, scramble_factor)
+    rename_table(f"{table}_scramble", table)
+    run_bash()
+    new_table_name = f"{table}_scramble"
+    rename_table(table, new_table_name)
+    info_log.log("Done")
 
 
 if __name__ == "__main__":
