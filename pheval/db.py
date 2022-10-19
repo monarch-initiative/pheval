@@ -7,7 +7,7 @@ import pandas as pd
 from .decorators import *
 import logging as log
 from tqdm import tqdm
-from randomisation import *
+from .randomisation import *
 
 log.basicConfig(
     level=log.INFO,
