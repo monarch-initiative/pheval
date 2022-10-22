@@ -2,6 +2,7 @@ import pandas as pd
 import random
 import logging as log
 
+debug_log = log.getLogger("debug")
 random.seed(10)
 
 
@@ -36,9 +37,12 @@ def ssp_randomisation(df, scramble_factor=0.5) -> pd.DataFrame:
     Returns:
         pd.Dataframe: scrambled dataframe
     """
-    columns = ["SIMJ", "IC", "SCORE"]
-    for c in columns:
-        min_num = df[c].min()
-        max_num = df[c].max()
-        df[c] = df[c].apply(rand, args=(min_num, max_num, scramble_factor))
-        return df
+    try:
+        columns = ["SIMJ", "IC", "SCORE"]
+        for c in columns:
+            min_num = df[c].min()
+            max_num = df[c].max()
+            df[c] = df[c].apply(rand, args=(min_num, max_num, scramble_factor))
+    except Exception as err:
+        debug_log.error(err)
+    return df

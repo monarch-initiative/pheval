@@ -4,11 +4,15 @@
 from __future__ import generators
 import jaydebeapi
 import pandas as pd
-from .decorators import *
+import pheval.randomisation as randomisation
+from pheval.decorators import *
 import logging as log
 from tqdm import tqdm
-from .randomisation import *
 import os
+import gc
+import pheval.memory as mem
+import numpy as np
+import subprocess
 
 info_log = log.getLogger("info")
 
@@ -51,13 +55,16 @@ class DBConnection:
         """Creates return new Singleton database connection"""
         return DBConnection.connection
 
+    def close(cls):
+        return cls.connection.close()
+
     @classmethod
     def get_cursor(cls):
         connection = cls.get_connection()
         return connection.cursor()
 
     @classmethod
-    def execute_query(cls, query, is_fetch=False):
+    def execute_query(cls, query, array_size=1000, is_fetch=False):
         connection = cls.get_connection()
         result = None
         try:
@@ -68,22 +75,19 @@ class DBConnection:
         cursor.execute(query)
         if is_fetch:
             result = cursor.fetchall()
+            if array_size:
+                result = cursor.fetchmany(array_size)
         cursor.close()
         return result
 
     @classmethod
     def execute_many(cls, query, data):
-        connection = cls.get_connection()
-        try:
-            cursor = connection.cursor()
-        except Exception:
-            connection = cls.get_connection(new=True)  # Create new connection
-            cursor = connection.cursor()
+        cursor = cls.get_cursor()
         for d in data:
             try:
                 cursor.execute(query, d)
-            except Exception:
-                pass
+            except Exception as err:
+                info_log.error(err)
         cursor.close()
 
 
@@ -97,7 +101,7 @@ connector = DBConnector(
 )
 
 
-def ResultIterator(query: str, conn: DBConnection, arraysize: int = 1000) -> tuple:
+def ResultIterator(conn: DBConnection, query: str, arraysize: int = 1000) -> tuple:
     """
     Records rows generator
     Args:
@@ -163,37 +167,63 @@ def count_total(conn: DBConnection, table_name: str) -> int:
 
 
 @measure_time
-def insert(
-    conn: DBConnection,
-    table_name: str,
-    scramble_factor: float,
-    count: int,
-    chunk: int = 10000,
-):
+def insert(conn: DBConnection, table_name: str, df: pd.DataFrame):
     """insert modified lines in scrambled table
 
     Args:
         conn (DBConnection): Database connection
         table_name (str): table name
         scramble_factor (float): scramble factor
-        count (int): total of rows from original table
-        chunk (int, optional): chunk size. Defaults to 10000.
+        df (pd.DataFrame): Updated data to be inserted
     """
+    """"""
+    sql = f"""INSERT INTO EXOMISER.{table_name}_SCRAMBLE (MAPPING_ID,HP_ID,HP_TERM,ZP_ID,ZP_TERM,SIMJ,IC,SCORE,LCS_ID,LCS_TERM) VALUES(?,?,?,?,?,?,?,?,?,?);"""
+    # df.set_index("MAPPING_ID", inplace=True)
+    try:
+        conn.execute_many(sql, df.values.tolist())
+    except Exception as err:
+        print(err)
+        info_log.error(err)
+    finally:
+        pass
+        # conn.close()
+
+
+def process_from_db(conn, table_name, scramble_factor, chunksize, count):
     i = 1
     end = 0
-    for j in tqdm(range(end, count // chunk)):
-        start = (i - 1) * chunk
-        end = (chunk * i) - 1
-        data_to_update = select(conn, table_name, chunk, start)
-        mod = ssp_randomisation(data_to_update, scramble_factor)
-        sql = f"""INSERT INTO EXOMISER.{table_name}_SCRAMBLE (MAPPING_ID,HP_ID,HP_TERM,ZP_ID,ZP_TERM,SIMJ,IC,SCORE,LCS_ID,LCS_TERM) VALUES(?,?,?,?,?,?,?,?,?,?);"""
-        mod.set_index("MAPPING_ID", inplace=True)
+    # mem.start()
+    for j in tqdm(range(end, count // chunksize)):
+        start = (i - 1) * chunksize
+        end = (chunksize * i) - 1
         try:
-            conn.execute_many(sql, mod.values.tolist())
+            data_to_update = select(conn, table_name, chunksize, start)
+            mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
+            insert(conn, table_name, mod)
+            # snapshot = mem.snapshot()
+            # mem.display_top(snapshot, limit=3)
         except Exception as err:
-            info_log.log(err)
+            print(err)
+            info_log.error(err)
         finally:
             i += 1
+
+
+def process_from_file(conn, table_name, scramble_factor, chunksize):
+    data = read_file(table_name, chunksize)
+    # mem.start()
+    try:
+        file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
+        # UNFAIR, I KNOW!
+        count = int(subprocess.check_output(["wc", "-l", file_name]).split()[0])
+        for data_to_update in tqdm(data, total=count // chunksize):
+            mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
+            insert(conn, table_name, mod)
+            # snapshot = mem.snapshot()
+            # mem.display_top(snapshot, limit=3)
+    except Exception as err:
+        print(err)
+        info_log.error(err)
 
 
 def select(
@@ -211,7 +241,7 @@ def select(
         pd.DataFrame: Original rows
     """
     select_query = f"SELECT * FROM EXOMISER.{table_name} LIMIT {chunk} OFFSET {start};"
-    data_to_update = pd.DataFrame(ResultIterator(select_query, conn))
+    data_to_update = pd.DataFrame(ResultIterator(conn, select_query))
     return data_to_update
 
 
@@ -220,16 +250,25 @@ def rename_table(conn: DBConnection, old_table_name: str, new_table_name: str):
     conn.execute_query(create_query)
 
 
+def read_file(table_name, chunksize=10**6):
+    file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
+    for chunk in pd.read_csv(file_name, chunksize=chunksize, sep=";"):
+        yield chunk
+
+
 def scramble_table(table_name: str, scramble_factor: float) -> None:
     with connector as cnn:
         conn = DBConnection(cnn)
         info_log.info(f"counting records from {table_name}")
-        count_original = count_total(conn, table_name)
-        info_log.info(f"Original records length: {count_original}")
+        create_table(conn, table_name)
         info_log.info(
             f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
         )
-        insert(conn, table_name, scramble_factor, count_original, 100000)
+        process_from_file(conn, table_name, scramble_factor, 1000)
         count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
         info_log.info(f"Scrambled records length: {count_scramble}")
         info_log.info("Done")
+
+
+if __name__ == "__main__":
+    scramble_table("HP_ZP_MAPPINGS", 0.5)

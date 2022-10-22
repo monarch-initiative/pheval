@@ -4,6 +4,8 @@ import sys
 import time
 import logging as log
 
+debug_log = log.getLogger("debug")
+
 
 def memory_limit(percentage: float):
     """
@@ -50,7 +52,7 @@ def measure_time(func):
     def wrapper(*arg):
         t = time.time()
         res = func(*arg)
-        log.DEBUG("Function took " + str(time.time() - t) + " seconds to run")
+        debug_log.debug("Function took " + str(time.time() - t) + " seconds to run")
         return res
 
     return wrapper

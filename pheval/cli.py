@@ -1,5 +1,6 @@
 import click
-from .db import *
+import pheval.db as db
+import sys
 import subprocess
 import os
 import logging
@@ -39,13 +40,13 @@ def run_bash():
 @click.option("-T", "--table", help="Table Name", required=True)
 @click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
 def run(table: str, scramble_factor: float):
-    run_bash()
-    scramble_table(table, scramble_factor)
-    rename_table(f"{table}_scramble", table)
-    run_bash()
+    # run_bash()
+    db.scramble_table(table, scramble_factor)
+    # db.rename_table(f"{table}_scramble", table)
+    # run_bash()
     new_table_name = f"{table}_scramble"
-    rename_table(table, new_table_name)
-    info_log.log("Done")
+    # db.rename_table(table, new_table_name)
+    logging.info("Done")
 
 
 if __name__ == "__main__":
