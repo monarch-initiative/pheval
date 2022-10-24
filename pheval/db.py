@@ -75,9 +75,10 @@ class DBConnection:
             cursor = connection.cursor()
         cursor.execute(query)
         if is_fetch:
-            result = cursor.fetchall()
-            if array_size:
+            if array_size > 0:
                 result = cursor.fetchmany(array_size)
+            else:
+                result = cursor.fetchall()
         cursor.close()
         return result
 
@@ -197,8 +198,7 @@ def process_from_db(conn, table_name, scramble_factor, chunksize, count):
             mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
             insert(conn, table_name, mod)
         except Exception as err:
-            print(err)
-            info_log.error(err)
+            info_debug.error(err)
         finally:
             i += 1
 
@@ -251,12 +251,15 @@ def read_file(table_name, chunksize=10**6):
 
 def scramble_table(table_name: str, scramble_factor: float) -> None:
     with connector as cnn:
-        conn = DBConnection(cnn)
-        create_table(conn, table_name)
-        info_log.info(
-            f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
-        )
-        process_from_file(conn, table_name, scramble_factor, 100000)
-        count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
-        info_log.info(f"Scrambled records length: {count_scramble}")
-        info_log.info("Done")
+        try:
+            conn = DBConnection(cnn)
+            create_table(conn, table_name)
+            info_log.info(
+                f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
+            )
+            process_from_file(conn, table_name, scramble_factor, 100000)
+            count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
+            info_log.info(f"Scrambled records length: {count_scramble}")
+            info_log.info("Done")
+        except Exception as err:
+            debug_log.error(err)
