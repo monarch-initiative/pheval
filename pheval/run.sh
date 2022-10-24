@@ -1,10 +1,48 @@
 #!/usr/bin/env bash
 set -e
 
+Help()
+{
+   # Display Help
+   echo "PhEval Runner"
+   echo
+   echo "Syntax: scriptTemplate [-t|h|g|p]"
+   echo "options:"
+   echo "t     Table name that will be scrambled  (valid options are: HP_HP_MAPPINGS; HP_MP_MAPPINGS; HP_ZP_MAPPINGS; ALL; - All option will scramble every mentioned table )"
+   echo "g     Human Genome Version (valid options are: hg19; hg38 - Default version: hg19 )"
+   echo "p     Human Genome Version (Default version: 2209 )"
+   echo "h     Print this Help."
+   echo
+}
+
+############################################################
+############################################################
+############################################################
+# Process the input options. Add options as needed.        #
+############################################################
+# Get the options
+while getopts ":htg:" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+      t) # Table Name
+         TABLE=$OPTARG;;
+      g) # HG version
+         HG=$OPTARG;;
+      p) # Phenotypic Version
+         DATAV=$OPTARG;;
+     \?) # Invalid option
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done
+
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 EXOMISER_VERSION=13.1.0
-HG_VERSION=hg19
-DATA_VERSION=2209
+HG_VERSION=${HG:-hg19}
+DATA_VERSION=${DATAV:-2209}
 DATA_FOLDER="$SCRIPT_DIR/../data/${DATA_VERSION}_phenotype"
 EXOMISER_FOLDER="$SCRIPT_DIR/../lib/exomiser"
 
@@ -84,7 +122,7 @@ setting_python_env () {
   pip install -e .
 }
 
-exomiser_run() {
+exomiser_run () {
   log "Running exomiser"
   docker run -v "$SCRIPT_DIR/../data/:/exomiser-data" \
   -v "$SCRIPT_DIR/../lib/exomiser/exomiser-config/:/exomiser"  \
@@ -98,10 +136,56 @@ exomiser_run() {
   --exomiser.phenotype.data-version=$DATA_VERSION
 }
 
+dump () {
+  log "Dumping $1"
+  echo "CALL CSVWRITE('../output/$1.csv',  'SELECT * FROM EXOMISER.$1',  'charset=UTF-8 fieldSeparator=;');" > dump.sql
+  java -Dh2.bindAddress=127.0.0.1 -cp "$(pwd)/../lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:$(pwd)/../data/2209_phenotype/2209_phenotype/2209_phenotype -script dump.sql -user sa
+}
+
+valid_table () {
+    LIST=$1
+    DELIMITER=$2
+    VALUE=$3
+    echo $LIST | tr "$DELIMITER" '\n' | grep -F -q -x -i "$VALUE"
+}
+
+table_dumping () {
+  TABLES_ALL="all HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
+  TABLES_ARRAY=( HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS )
+  TABLES="HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
+
+  if valid_table "$TABLES_ALL" " " $TABLE; then
+      if [[ $(fgrep -ix $TABLE <<< "all")  ]]; then
+        for i in "${TABLES_ARRAY[@]}"
+        do
+          dump $i  
+        done
+        return
+      fi
+      dump $TABLE
+  else
+      log "Invalid table - $TABLE"
+      exit 1
+  fi
+}
+
+
 init_logs
-setting_python_env
-prepare_exomiser
-prepare_data
-pull_image
-exomiser_run
-log "Done"
+log "Running"
+log "HG Version $HG_VERSION"
+log "Phenotypic Data Version $DATA_VERSION"
+if [ -z "$TABLE" ]
+then
+  log "First Run"
+  setting_python_env
+  prepare_exomiser
+  prepare_data
+  pull_image
+  exomiser_run
+else
+  log "Second Run"
+  log "Table" $TABLE
+  table_dumping
+  exomiser_run
+  log "Done"
+fi

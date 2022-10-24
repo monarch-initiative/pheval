@@ -10,11 +10,12 @@ import logging as log
 from tqdm import tqdm
 import os
 import gc
-import pheval.memory as mem
+from pheval.memory import *
 import numpy as np
 import subprocess
 
 info_log = log.getLogger("info")
+info_debug = log.getLogger("debug")
 
 
 class DBConnector:
@@ -87,7 +88,7 @@ class DBConnection:
             try:
                 cursor.execute(query, d)
             except Exception as err:
-                info_log.error(err)
+                info_debug.error(err)
         cursor.close()
 
 
@@ -178,21 +179,16 @@ def insert(conn: DBConnection, table_name: str, df: pd.DataFrame):
     """
     """"""
     sql = f"""INSERT INTO EXOMISER.{table_name}_SCRAMBLE (MAPPING_ID,HP_ID,HP_TERM,ZP_ID,ZP_TERM,SIMJ,IC,SCORE,LCS_ID,LCS_TERM) VALUES(?,?,?,?,?,?,?,?,?,?);"""
-    # df.set_index("MAPPING_ID", inplace=True)
     try:
         conn.execute_many(sql, df.values.tolist())
     except Exception as err:
-        print(err)
         info_log.error(err)
-    finally:
-        pass
-        # conn.close()
 
 
+@measure_time
 def process_from_db(conn, table_name, scramble_factor, chunksize, count):
     i = 1
     end = 0
-    # mem.start()
     for j in tqdm(range(end, count // chunksize)):
         start = (i - 1) * chunksize
         end = (chunksize * i) - 1
@@ -200,8 +196,6 @@ def process_from_db(conn, table_name, scramble_factor, chunksize, count):
             data_to_update = select(conn, table_name, chunksize, start)
             mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
             insert(conn, table_name, mod)
-            # snapshot = mem.snapshot()
-            # mem.display_top(snapshot, limit=3)
         except Exception as err:
             print(err)
             info_log.error(err)
@@ -209,9 +203,9 @@ def process_from_db(conn, table_name, scramble_factor, chunksize, count):
             i += 1
 
 
+@measure_time
 def process_from_file(conn, table_name, scramble_factor, chunksize):
     data = read_file(table_name, chunksize)
-    # mem.start()
     try:
         file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
         # UNFAIR, I KNOW!
@@ -219,11 +213,8 @@ def process_from_file(conn, table_name, scramble_factor, chunksize):
         for data_to_update in tqdm(data, total=count // chunksize):
             mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
             insert(conn, table_name, mod)
-            # snapshot = mem.snapshot()
-            # mem.display_top(snapshot, limit=3)
     except Exception as err:
-        print(err)
-        info_log.error(err)
+        debug_log.error(err)
 
 
 def select(
@@ -245,9 +236,11 @@ def select(
     return data_to_update
 
 
-def rename_table(conn: DBConnection, old_table_name: str, new_table_name: str):
-    create_query = f"""ALTER TABLE {old_table_name} RENAME {new_table_name};"""
-    conn.execute_query(create_query)
+def rename_table(old_table_name: str, new_table_name: str):
+    with connector as cnn:
+        conn = DBConnection(cnn)
+        create_query = f"""ALTER TABLE {old_table_name} RENAME {new_table_name};"""
+        conn.execute_query(create_query)
 
 
 def read_file(table_name, chunksize=10**6):
@@ -259,16 +252,11 @@ def read_file(table_name, chunksize=10**6):
 def scramble_table(table_name: str, scramble_factor: float) -> None:
     with connector as cnn:
         conn = DBConnection(cnn)
-        info_log.info(f"counting records from {table_name}")
         create_table(conn, table_name)
         info_log.info(
             f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
         )
-        process_from_file(conn, table_name, scramble_factor, 1000)
+        process_from_file(conn, table_name, scramble_factor, 100000)
         count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
         info_log.info(f"Scrambled records length: {count_scramble}")
         info_log.info("Done")
-
-
-if __name__ == "__main__":
-    scramble_table("HP_ZP_MAPPINGS", 0.5)

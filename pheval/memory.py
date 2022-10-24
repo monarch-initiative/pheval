@@ -4,7 +4,7 @@ import os
 import tracemalloc
 
 
-def display_top(snapshot, key_type="lineno", limit=3):
+def memory_display_top(snapshot, key_type="lineno", limit=3):
     snapshot = snapshot.filter_traces(
         (
             tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
@@ -16,7 +16,6 @@ def display_top(snapshot, key_type="lineno", limit=3):
     print("Top %s lines" % limit)
     for index, stat in enumerate(top_stats[:limit], 1):
         frame = stat.traceback[0]
-        # replace "/path/to/module/file.py" with "module/file.py"
         filename = os.sep.join(frame.filename.split(os.sep)[-2:])
         print(
             "#%s: %s:%s: %.1f KiB" % (index, filename, frame.lineno, stat.size / 1024)
@@ -33,9 +32,9 @@ def display_top(snapshot, key_type="lineno", limit=3):
     print("Total allocated size: %.1f KiB" % (total / 1024))
 
 
-def start():
+def memory_start():
     return tracemalloc.start()
 
 
-def snapshot():
+def memory_snapshot():
     return tracemalloc.take_snapshot()

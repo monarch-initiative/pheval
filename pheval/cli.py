@@ -28,9 +28,15 @@ def main(verbose: int, quiet: bool) -> None:
         info_log.setLevel(level=logging.ERROR)
 
 
-def run_bash():
+def run_bash(table=None):
+    if table is None:
+        return subprocess.check_call(
+            [f"{os.path.dirname(__file__)}/run.sh"],
+            stdout=sys.stdout,
+            stderr=subprocess.STDOUT,
+        )
     return subprocess.check_call(
-        f"{os.path.dirname(__file__)}/run.sh",
+        [f"{os.path.dirname(__file__)}/run.sh", "-t", table],
         stdout=sys.stdout,
         stderr=subprocess.STDOUT,
     )
@@ -40,12 +46,12 @@ def run_bash():
 @click.option("-T", "--table", help="Table Name", required=True)
 @click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
 def run(table: str, scramble_factor: float):
-    # run_bash()
+    run_bash()
     db.scramble_table(table, scramble_factor)
-    # db.rename_table(f"{table}_scramble", table)
-    # run_bash()
+    db.rename_table(f"{table}_scramble", table)
+    run_bash(table)
     new_table_name = f"{table}_scramble"
-    # db.rename_table(table, new_table_name)
+    db.rename_table(table, new_table_name)
     logging.info("Done")
 
 
