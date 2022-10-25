@@ -21,13 +21,15 @@ Help()
 # Process the input options. Add options as needed.        #
 ############################################################
 # Get the options
-while getopts ":htg:" option; do
+while getopts ":h:g:t:d:" option; do
    case $option in
       h) # display Help
          Help
          exit;;
       t) # Table Name
          TABLE=$OPTARG;;
+      d) # Dump Table
+         DUMP_TABLE=$OPTARG;;
       g) # HG version
          HG=$OPTARG;;
       p) # Phenotypic Version
@@ -139,9 +141,12 @@ exomiser_run () {
 dump () {
   log "Dumping $1"
   echo "CALL CSVWRITE('../output/$1.csv',  'SELECT * FROM EXOMISER.$1',  'charset=UTF-8 fieldSeparator=;');" > dump.sql
-  java -Dh2.bindAddress=127.0.0.1 -cp "$(pwd)/../lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:$(pwd)/../data/2209_phenotype/2209_phenotype/2209_phenotype -script dump.sql -user sa
+  java -Xms256m -Xmx2048m -Dh2.bindAddress=127.0.0.1 -cp "$SCRIPT_DIR/../lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:$SCRIPT_DIR/../data/2209_phenotype/2209_phenotype/2209_phenotype -script dump.sql -user sa
+  rm -rfv dump.sql
+  exit 0
 }
 
+## THIS PROCESS HAS BEEN DOING IN PYTHON
 valid_table () {
     LIST=$1
     DELIMITER=$2
@@ -149,33 +154,42 @@ valid_table () {
     echo $LIST | tr "$DELIMITER" '\n' | grep -F -q -x -i "$VALUE"
 }
 
-table_dumping () {
-  TABLES_ALL="all HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
-  TABLES_ARRAY=( HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS )
-  TABLES="HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
+TABLES_ALL="all HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
+TABLES_ARRAY=( HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS )
+TABLES="HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
 
-  if valid_table "$TABLES_ALL" " " $TABLE; then
-      if [[ $(fgrep -ix $TABLE <<< "all")  ]]; then
-        for i in "${TABLES_ARRAY[@]}"
-        do
-          dump $i  
-        done
-        return
-      fi
-      dump $TABLE
-  else
-      log "Invalid table - $TABLE"
-      exit 1
+# table_dumping () {
+
+#   if valid_table "$TABLES_ALL" " " $TABLE; then
+#       if [[ $(fgrep -ix $TABLE <<< "all")  ]]; then
+#         for i in "${TABLES_ARRAY[@]}"
+#         do
+#           dump $i  
+#         done
+#         return
+#       fi
+#       dump $TABLE
+#   else
+#       log "Invalid table - $TABLE"
+#       exit 1
+#   fi
+# }
+
+if [ ! -z "$DUMP_TABLE" ]; then
+  if ! valid_table "$TABLES" " " $DUMP_TABLE; then
+    log "Invalid $DUMP_TABLE"
+    exit 1
   fi
-}
+  dump $DUMP_TABLE
+  exit 0
+fi
 
-
-init_logs
-log "Running"
-log "HG Version $HG_VERSION"
-log "Phenotypic Data Version $DATA_VERSION"
 if [ -z "$TABLE" ]
 then
+  init_logs
+  log "Running"
+  log "HG Version $HG_VERSION"
+  log "Phenotypic Data Version $DATA_VERSION"
   log "First Run"
   setting_python_env
   prepare_exomiser
@@ -185,7 +199,6 @@ then
 else
   log "Second Run"
   log "Table" $TABLE
-  table_dumping
   exomiser_run
   log "Done"
 fi

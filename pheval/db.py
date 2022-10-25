@@ -9,10 +9,9 @@ from pheval.decorators import *
 import logging as log
 from tqdm import tqdm
 import os
-import gc
 from pheval.memory import *
-import numpy as np
 import subprocess
+from pheval.mappings import *
 
 info_log = log.getLogger("info")
 info_debug = log.getLogger("debug")
@@ -136,20 +135,9 @@ def create_table(conn: DBConnection, table_name: str):
         conn (DBConnection): Database connection
         table_name (str): table name
     """
-    drop_query = f"DROP TABLE IF EXISTS EXOMISER.{table_name}_SCRAMBLE;"
-    conn.execute_query(drop_query)
-    create_query = f"""CREATE TABLE EXOMISER.{table_name}_SCRAMBLE (
-      MAPPING_ID INTEGER,
-      HP_ID VARCHAR(10),
-      HP_TERM VARCHAR(200) NULL,
-      ZP_ID VARCHAR(10),
-      ZP_TERM VARCHAR(200),
-      SIMJ DOUBLE NULL,
-      IC DOUBLE NULL,
-      SCORE DOUBLE NULL,
-      LCS_ID VARCHAR(40),
-      LCS_TERM VARCHAR(150)
-    );"""
+    drop_query1 = f"DROP TABLE IF EXISTS EXOMISER.{table_name}_SCRAMBLE;"
+    conn.execute_query(drop_query1)
+    create_query = mappings[table_name]
     conn.execute_query(create_query)
 
 
@@ -183,7 +171,8 @@ def insert(conn: DBConnection, table_name: str, df: pd.DataFrame):
     try:
         conn.execute_many(sql, df.values.tolist())
     except Exception as err:
-        info_log.error(err)
+        pass
+        # debug_log.debug(err)
 
 
 @measure_time
@@ -239,7 +228,7 @@ def select(
 def rename_table(old_table_name: str, new_table_name: str):
     with connector as cnn:
         conn = DBConnection(cnn)
-        create_query = f"""ALTER TABLE {old_table_name} RENAME {new_table_name};"""
+        create_query = f"""ALTER TABLE EXOMISER.{old_table_name} RENAME TO EXOMISER.{new_table_name};"""
         conn.execute_query(create_query)
 
 
@@ -247,6 +236,13 @@ def read_file(table_name, chunksize=10**6):
     file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
     for chunk in pd.read_csv(file_name, chunksize=chunksize, sep=";"):
         yield chunk
+
+
+def clean_aux_table(table_name: str):
+    with connector as cnn:
+        conn = DBConnection(cnn)
+        drop_query1 = f"DROP TABLE IF EXISTS EXOMISER.{table_name}_ORIGINAL;"
+        conn.execute_query(drop_query1)
 
 
 def scramble_table(table_name: str, scramble_factor: float) -> None:
