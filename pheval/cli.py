@@ -28,8 +28,7 @@ def main(verbose: int, quiet: bool) -> None:
         info_log.setLevel(level=logging.ERROR)
 
 
-def run_bash(table=None):
-    print(f"{os.path.dirname(__file__)}/run.sh")
+def run_exomiser(table=None):
     if table is None:
         return subprocess.check_call(
             [f"{os.path.dirname(__file__)}/run.sh"],
@@ -79,19 +78,14 @@ def run(table: str, scramble_factor: float):
 
 def pipeline(table, scramble_factor, first=True):
     if first:
-        run_bash()
-    info_log.info("P1")
+        run_exomiser()
     db.clean_aux_table(table)
     dump(table)
     db.rename_table(f"{table}", f"{table}_ORIGINAL")
-    info_log.info("P2")
     db.scramble_table(table, scramble_factor)
-    info_log.info("P3")
     db.rename_table(f"{table}_SCRAMBLE", table)
-    run_bash(table)
-    info_log.info("P4")
+    run_exomiser(table)
     db.rename_table(table, f"{table}_SCRAMBLE")
-    info_log.info("P5")
     db.rename_table(f"{table}_ORIGINAL", f"{table}")
 
 
