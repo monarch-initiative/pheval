@@ -50,14 +50,12 @@ $(HG_DOWNLOAD):
 
 $(HG_UNZIP):
 	unzip -o $(HG_DOWNLOAD) -d $(HG_UNZIP)
-	rm -rfv $(HG_DOWNLOAD)
 
 $(PHENOTYPE_DOWNLOAD):
 	wget https://data.monarchinitiative.org/exomiser/latest/$(PHENOTYPE)_phenotype.zip -P $(DATA_DIR)
 
 $(PHENOTYPE_UNZIP):
 	unzip -o $(PHENOTYPE_DOWNLOAD) -d $(PHENOTYPE_UNZIP)
-	rm -rfv $(PHENOTYPE_DOWNLOAD)
 
 dump_db:
 	mkdir -p $(DATA_DIR)/mapping_db
