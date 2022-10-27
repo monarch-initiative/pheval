@@ -51,6 +51,10 @@ help :
 	@echo "		 EXOMISER: sets exomiser version (default: 13.1.0)"
 	@echo "		 HG: sets human genome version (default: hg19)"
 	@echo "		 PHENOTYPE: sets phenotype version (default: 2209)"
+	@echo "		 PHENOTYPE: sets phenotype version (default: 2209)"
+	@echo "																											"
+	@echo "		 Example: make build EXOMISER="13.0.1" HG="hg19" PHENOTYPE="2209""
+	@echo "		 Simplified example version using default values: make build"
 
 .DEFAULT_GOAL = help
 
