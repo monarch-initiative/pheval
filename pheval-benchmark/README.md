@@ -21,10 +21,15 @@ poetry shell
 Details on commands:
 
 ```
-python cli.py
+python src/pheval_benchmark/cli.py
 ```
 or
 
 ```
 poetry run pheval
+```
+or
+
+```
+pheval
 ```
