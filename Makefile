@@ -37,6 +37,23 @@ download: $(EXOMISER_DOWNLOAD) $(HG_DOWNLOAD) $(PHENOTYPE_DOWNLOAD)
 
 unzip: $(EXOMISER_UNZIP) $(HG_UNZIP) $(PHENOTYPE_UNZIP)
 
+dump: dump_db
+
+.PHONY: help
+
+help :
+	@echo "build		:Run download unzip and build targets"
+	@echo "download	:Download exomiser, human genome and phenotypic data"
+	@echo "unzip		:Unzip all download files from download target."
+	@echo "dump		:Dump tables from phenotypic H2 database."
+	@echo "clean		:Remove all downloaded unzipped and dumped data."
+	@echo "flags		"
+	@echo "		 EXOMISER: sets exomiser version (default: 13.1.0)"
+	@echo "		 HG: sets human genome version (default: hg19)"
+	@echo "		 PHENOTYPE: sets phenotype version (default: 2209)"
+
+.DEFAULT_GOAL = help
+
 $(EXOMISER_DOWNLOAD):
 	wget "https://data.monarchinitiative.org/exomiser/latest/$(EXOMISER_FILE)-distribution.zip" -P $(LIB_DIR)
 
