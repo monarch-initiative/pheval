@@ -196,7 +196,3 @@ def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jo
     else:
         filename = batch_prefix + "-exomiser-batch.txt"
         create_all_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file, filename)
-
-
-if __name__ == '__main__':
-    prepare_exomiser_batch()
