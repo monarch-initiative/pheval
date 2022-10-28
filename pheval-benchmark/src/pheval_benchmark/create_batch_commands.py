@@ -5,6 +5,52 @@ import yaml
 import click
 import tempfile
 
+class IncompatibleGenomeAssemblyError(Exception):
+    """ Exception raised for incompatible genome assembly."""
+    def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
+        self.assembly: str = assembly
+        self.phenopacket: str = phenopacket
+        self.message: str = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message} -> {self.assembly} in {self.phenopacket}'
+
+
+class IncorrectFileFormatError(Exception):
+    def __init__(self, file, expectation, message="Incorrect File Type"):
+        self.file: str = file
+        self.expectation: str = expectation
+        self.message: str = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message} -> {self.file} (expected {self.expectation})'
+
+
+class CommandsWriter:
+    def __init__(self, file: str):
+        self.file = open(file, 'a')
+
+    def write_command(self, analysis, sample, vcf, assembly):
+        try:
+            self.file.write("--analysis " + analysis + " --sample " + sample +
+                            " --vcf " + vcf + " --assembly " + assembly + "\n")
+        except IOError:
+            print("Error writing ", self.file)
+
+    def write_command_output_options(self, analysis, sample, vcf, assembly, output_options):
+        try:
+            self.file.write("--analysis " + analysis + " --sample " + sample +
+                            " --vcf " + vcf + " --assembly " + assembly + " --output " + output_options + "\n")
+        except IOError:
+            print("Error writing ", self.file)
+
+    def close(self):
+        try:
+            self.file.close()
+        except IOError:
+            print("Error closing ", self.file)
 
 def phenopacket_list(ppacket_dir) -> list:
     """ Returns a list of the full path to phenopackets found in the directory specified. """
@@ -17,7 +63,7 @@ def phenopacket_list(ppacket_dir) -> list:
     return ppackets
 
 
-def vcf_list(ppackets, vcf_dir):
+def vcf_list(ppackets, vcf_dir) -> tuple[list, list]:
     """ Returns a list of the full path to vcf files and corresponding genome assembly
     retrieved from the phenopacket. """
     vcf = []
@@ -34,14 +80,18 @@ def vcf_list(ppackets, vcf_dir):
                         vcf_name = vcf_path.rsplit('/')[-1]
                     if "/" not in vcf_path:
                         vcf_name = vcf_path
+                    if not vcf_name.endswith(".vcf") and not vcf_name.endswith(".vcf.gz"):
+                        raise IncorrectFileFormatError(vcf_name, ".vcf or .vcf.gz file")                    
                     vcf.append(vcf_dir + vcf_name)
                     assembly = file["fileAttributes"]["genomeAssembly"]
+                    if assembly not in compatible_genome_assembly:
+                        raise IncompatibleGenomeAssemblyError(assembly, ppacket)                    
                     genome_assembly.append(assembly)
         ppacket_file.close()
     return vcf, genome_assembly
 
 
-def output_options_list(output_options_dir):
+def output_options_list(output_options_dir) -> list:
     """ Returns a list of the full path to output options files. """
     output_opt = []
     output_options_directory_ = os.fsencode(output_options_dir)
@@ -52,36 +102,44 @@ def output_options_list(output_options_dir):
     return output_opt
 
 
-def create_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file):
+def create_temp_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file):
     """ Writes a temporary file of all commands. """
     temp = tempfile.NamedTemporaryFile(delete=False)
-    if output_opt is None and output_options_file is None:
+    commands_writer = CommandsWriter(temp.name)
+    if output_opt is None:
         arg_dict = dict((z[0], list(z[1:])) for z in zip(ppackets, vcf, genome_assembly))
-        if output_opt is None:
+        if output_options_file is None:
             for key, value in arg_dict.items():
-                with open(temp.name, "a") as outfile:
-                    outfile.write("--analysis " + analysis + " --sample " + key +
-                                  " --vcf " + value[0] + " --assembly " + value[1] + "\n")
-                outfile.close()
-    if output_options_file is not None:
-        arg_dict = dict((z[0], list(z[1:])) for z in zip(ppackets, vcf, genome_assembly))
-        for key, value in arg_dict.items():
-            with open(temp.name, "a") as outfile:
-                outfile.write("--analysis " + analysis + " --sample " + key +
-                              " --vcf " + value[0] + " --assembly " + value[
-                                  1] + " --output " + output_options_file + "\n")
-            outfile.close()
+                commands_writer.write_command(analysis, key, value[0], value[1])            
+        if output_options_file is not None:
+            for key, value in arg_dict.items():
+                commands_writer.write_command_output_options(analysis, key, value[0], value[1], output_options_file)
     if output_opt is not None:
         arg_dict = dict((z[0], list(z[1:])) for z in zip(ppackets, vcf, genome_assembly, output_opt))
         for key, value in arg_dict.items():
-            with open(temp.name, "a") as outfile:
-                outfile.write("--analysis" + " /data/home/preset-exome-analysis.yml" + " --sample " + key +
-                              " --vcf " + value[0] + " --assembly " + value[1] + " --output "
-                              + value[2] + "\n")
-            outfile.close()
+            commands_writer.write_command_output_options(analysis, key, value[0], value[1], value[2])
+    commands_writer.close()
     return temp.name
 
 
+def create_all_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file, filename):
+    """ Writes a temporary file of all commands. """
+    commands_writer = CommandsWriter(filename)
+    if output_opt is None:
+        arg_dict = dict((z[0], list(z[1:])) for z in zip(ppackets, vcf, genome_assembly))
+        if output_options_file is None:
+            for key, value in arg_dict.items():
+                commands_writer.write_command(analysis, key, value[0], value[1])
+        if output_options_file is not None:
+            for key, value in arg_dict.items():
+                commands_writer.write_command_output_options(analysis, key, value[0], value[1], output_options_file)
+        if output_opt is not None:
+            arg_dict = dict((z[0], list(z[1:])) for z in zip(ppackets, vcf, genome_assembly, output_opt))
+            for key, value in arg_dict.items():
+                commands_writer.write_command_output_options(analysis, key, value[0], value[1], value[2])
+    commands_writer.close()
+    
+    
 def create_split_batch(max_jobs, prefix, temp_name):
     """ Splits temporary commands file into smaller batch jobs and deletes temp file. """
     lines_per_file, f_name = max_jobs, 0
@@ -132,8 +190,12 @@ def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jo
         output_opt = output_options_list(output_options_dir)
     else:
         output_opt = None
-    temp_name = create_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file)
-    create_split_batch(max_jobs, batch_prefix, temp_name)
+    if max_jobs:
+        temp_name = create_temp_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file)
+        create_split_batch(max_jobs, batch_prefix, temp_name)
+    else:
+        filename = batch_prefix + "-exomiser-batch.txt"
+        create_all_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file, filename)
 
 
 if __name__ == '__main__':
