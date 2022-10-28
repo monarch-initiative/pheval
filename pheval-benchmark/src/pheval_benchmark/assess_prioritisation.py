@@ -216,7 +216,3 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
 
     gene_stats_writer.close()
     variants_stats_writer.close()
-
-
-if __name__ == '__main__':
-    assess_prioritisation()
