@@ -121,7 +121,7 @@ def diagnosed_variants(ppacket: str) -> list:
 def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
     """ Takes in a json file and return`s a dictionary with the default ranking output by
     Exomiser's .genes.tsv file. """
-    jsondict = defaultdict(dict)
+    exomiser_json_result_dict = defaultdict(dict)
     with open(exomiser_full_path) as jsfile:
         js = json.load(jsfile)
         for result in js:
@@ -130,23 +130,23 @@ def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
                 if ranking_method in g:
                     if "contributingVariants" in g:
                         identifier = g["geneIdentifier"]["geneSymbol"] + "_" + g["modeOfInheritance"]
-                        jsondict[identifier]["geneSymbol"] = g["geneIdentifier"]["geneSymbol"]
-                        jsondict[identifier][ranking_method] = round(g[ranking_method], 4)
-                        jsondict[identifier]["modeOfInheritance"] = g["modeOfInheritance"]
-                        jsondict[identifier]["contributingVariants"] = g["contributingVariants"]
+                        exomiser_json_result_dict[identifier]["geneSymbol"] = g["geneIdentifier"]["geneSymbol"]
+                        exomiser_json_result_dict[identifier][ranking_method] = round(g[ranking_method], 4)
+                        exomiser_json_result_dict[identifier]["modeOfInheritance"] = g["modeOfInheritance"]
+                        exomiser_json_result_dict[identifier]["contributingVariants"] = g["contributingVariants"]
     if ranking_method == "pValue":
-        res = sorted(jsondict.items(), key=lambda x: x[1][ranking_method], reverse=False)
+        exomiser_results = sorted(exomiser_json_result_dict.items(), key=lambda x: x[1][ranking_method], reverse=False)
     else:
-        res = sorted(jsondict.items(), key=lambda x: x[1][ranking_method], reverse=True)
+        exomiser_results = sorted(exomiser_json_result_dict.items(), key=lambda x: x[1][ranking_method], reverse=True)
     rank, count, previous, result = 0, 0, None, {}
-    for key, info in res:
+    for key, info in exomiser_results:
         count += 1
         if info[ranking_method] != previous:
             rank += count
             previous = info[ranking_method]
             count = 0
         result[key] = rank
-    ranks = dict(res)
+    ranks = dict(exomiser_results)
     for key, value in result.items():
         ranks[key]["rank"] = value
     return ranks
