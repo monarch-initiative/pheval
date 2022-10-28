@@ -173,7 +173,7 @@ def create_split_batch(max_jobs, prefix, temp_name):
               required=True, metavar='TEXT',
               help="Prefix of generated batch files.")
 @click.option("--max-jobs", "-j",
-              required=False, metavar='<int>', default=50, show_default=True,
+              required=False, metavar='<int>', default=False, show_default=True,
               help="Number of jobs in each file.")
 @click.option("--output-options-dir", "-O",
               required=False, metavar='PATH',
