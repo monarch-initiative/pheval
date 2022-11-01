@@ -5,6 +5,7 @@ import yaml
 import click
 import tempfile
 
+
 class IncompatibleGenomeAssemblyError(Exception):
     """ Exception raised for incompatible genome assembly."""
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
@@ -52,13 +53,16 @@ class CommandsWriter:
         except IOError:
             print("Error closing ", self.file)
 
+            
 def phenopacket_list(ppacket_dir) -> list:
     """ Returns a list of the full path to phenopackets found in the directory specified. """
     ppackets = []
-    ppacket_directory = os.fsencode(ppacket_dir)
+    ppacket_directory = os.fsdecode(os.path.join(ppacket_dir, ''))
     for file in os.listdir(ppacket_directory):
         filename = os.fsdecode(file)
-        ppackets.append(ppacket_dir + filename)
+        if not filename.endswith(".json"):
+            raise IncorrectFileFormatError(filename, ".json file")
+        ppackets.append(os.path.join(ppacket_dir, filename))
     ppackets.sort()
     return ppackets
 
@@ -82,7 +86,7 @@ def vcf_list(ppackets, vcf_dir) -> tuple[list, list]:
                         vcf_name = vcf_path
                     if not vcf_name.endswith(".vcf") and not vcf_name.endswith(".vcf.gz"):
                         raise IncorrectFileFormatError(vcf_name, ".vcf or .vcf.gz file")                    
-                    vcf.append(vcf_dir + vcf_name)
+                    vcf.append(os.path.join(vcf_dir, vcf_name))
                     assembly = file["fileAttributes"]["genomeAssembly"]
                     if assembly not in compatible_genome_assembly:
                         raise IncompatibleGenomeAssemblyError(assembly, ppacket)                    
@@ -97,7 +101,7 @@ def output_options_list(output_options_dir) -> list:
     output_options_directory_ = os.fsencode(output_options_dir)
     for file in os.listdir(output_options_directory_):
         filename = os.fsdecode(file)
-        output_opt.append(output_options_dir + filename)
+        output_opt.append(os.path.join(output_options_dir, filename))
     output_opt.sort()
     return output_opt
 
