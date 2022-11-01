@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import click
-import vcfpy
 import shutil
 import json
 import os
@@ -8,6 +7,29 @@ import csv
 from pheval_benchmark.assess_prioritisation import directory_files
 
 
+class InputError(Exception):
+    """ Exception raised for missing required input."""
+    def __init__(self, file, message="Missing required input"):
+        self.file: str = file
+        self.message: str = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message} -> {self.file} '
+
+    
+class MutuallyExclusiveError(Exception):
+    """ Exception raised for missing required input."""
+    def __init__(self, arg1, arg2, message="These arguments are mutually exclusive"):
+        self.arg1: str = arg1
+        self.arg2: str = arg2
+        self.message: str = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message} -> {self.arg1} and {self.arg2} '
+    
+    
 class VariantWriter:
     def __init__(self, file: str):
         self.file = open(file, 'a')
@@ -29,11 +51,22 @@ class VariantWriter:
 
 def create_basic_vcf(phenopacket_dir, template_vcf, output_dir) -> list:
     """ Copies a template VCF file to a new output directory with the same file prefix as the phenopacket file."""
-    os.mkdir(output_dir)
+    try:
+        os.mkdir(output_dir)
+    except FileExistsError:
+        pass
     phenopackets = directory_files(phenopacket_dir)
     for phenopacket in phenopackets:
         vcf_file_name = phenopacket.replace(".json", ".vcf")
-        shutil.copyfile(template_vcf, output_dir + vcf_file_name)
+        if template_vcf is not None:
+            shutil.copyfile(template_vcf, os.path.join(output_dir, vcf_file_name))
+        if vcf_dir is not None:
+            file = random.choice(os.listdir(vcf_dir))
+            shutil.copyfile(file, os.path.join(output_dir, vcf_file_name))
+        if template_vcf is None and vcf_dir is None:
+            raise InputError("VCF")
+        if template_vcf is not None and vcf_dir is not None:
+            raise MutuallyExclusiveError("--vcf-dir", "--template-vcf")
     return phenopackets
 
 
@@ -42,8 +75,11 @@ def update_subject_id(phenopacket_full_path, template_vcf, vcf_full_path):
         data = json.load(f)
         subject_id = data["subject"]["id"]
     f.close()
-    vcf_reader = vcfpy.Reader(open(template_vcf, 'r'))
-    template_vcf_sample_id = vcf_reader.header.samples.names[0]
+    with open(template_vcf, "r") as v:
+        for line in v:
+            if line.startswith("#CHROM"):
+                template_vcf_sample_id = line.split("\t")[9].rstrip()
+    v.close()
     with open(vcf_full_path, "r") as vcf_file:
         data = vcf_file.readlines()
     vcf_file.close()
@@ -80,7 +116,7 @@ def spike_vcf(phenopacket_dir, template_vcf, output_dir):
     """ Spikes variants into a template VCF file. """
     phenopackets = create_basic_vcf(phenopacket_dir, template_vcf, output_dir)
     for phenopacket in phenopackets:
-        phenopacket_full_path = phenopacket_dir + phenopacket
-        vcf_full_path = output_dir + phenopacket.replace(".json", ".vcf")
+        phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
+        vcf_full_path = os.path.join(output_dir, phenopacket.replace(".json", ".vcf"))
         update_subject_id(phenopacket_full_path, template_vcf, vcf_full_path)
         add_variants(phenopacket_full_path, vcf_full_path)
