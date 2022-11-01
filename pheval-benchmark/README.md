@@ -10,9 +10,9 @@ git clone --branch PhEval-Benchmarking https://github.com/monarch-initiative/phe
 
 cd pheval/pheval-benchmark
 
-poetry install
-
 poetry shell
+
+poetry install
 
 ```
 
