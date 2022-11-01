@@ -2,3 +2,4 @@ from pheval_benchmark.cli import pheval_benchmark
 from pheval_benchmark.create_batch_commands import prepare_exomiser_batch
 from pheval_benchmark.assess_prioritisation import assess_prioritisation
 from pheval_benchmark.create_spiked_vcf import spike_vcf
+from pheval_benchmark.create_noisy_phenopackets import create_noisy_phenopackets
