@@ -88,14 +88,15 @@ class DBConnection:
             try:
                 cursor.execute(query, d)
             except Exception as err:
-                info_debug.error(err)
+                pass
+                # info_debug.error(err)
         cursor.close()
 
 
 connector = DBConnector(
-    jar=f"{os.path.dirname(__file__)}/../lib/h2.jar",
+    jar=f"{os.path.dirname(__file__)}/../raw/lib/h2.jar",
     driver="org.h2.Driver",
-    server=f"jdbc:h2:{os.path.dirname(__file__)}/../data/2209_phenotype/2209_phenotype/",
+    server=f"jdbc:h2:{os.path.dirname(__file__)}/../raw/data/2209_phenotype/2209_phenotype/",
     user="sa",
     password="",
     database="2209_phenotype",
@@ -137,7 +138,7 @@ def create_table(conn: DBConnection, table_name: str):
     """
     drop_query1 = f"DROP TABLE IF EXISTS EXOMISER.{table_name}_SCRAMBLE;"
     conn.execute_query(drop_query1)
-    create_query = mappings[table_name]
+    create_query = create_mapping(table_name)
     conn.execute_query(create_query)
 
 
@@ -167,12 +168,11 @@ def insert(conn: DBConnection, table_name: str, df: pd.DataFrame):
         df (pd.DataFrame): Updated data to be inserted
     """
     """"""
-    sql = f"""INSERT INTO EXOMISER.{table_name}_SCRAMBLE (MAPPING_ID,HP_ID,HP_TERM,ZP_ID,ZP_TERM,SIMJ,IC,SCORE,LCS_ID,LCS_TERM) VALUES(?,?,?,?,?,?,?,?,?,?);"""
+    sql = insert_mapping(table_name)
     try:
         conn.execute_many(sql, df.values.tolist())
     except Exception as err:
-        pass
-        # debug_log.debug(err)
+        debug_log.debug(err)
 
 
 @measure_time
@@ -193,10 +193,10 @@ def process_from_db(conn, table_name, scramble_factor, chunksize, count):
 
 
 @measure_time
-def process_from_file(conn, table_name, scramble_factor, chunksize):
-    data = read_file(table_name, chunksize)
+def process_from_file(conn, table_name, scramble_factor, data_dir, chunksize):
     try:
-        file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
+        file_name = f"{data_dir}/{table_name}.tsv"
+        data = read_file(file_name, chunksize)
         # UNFAIR, I KNOW!
         count = int(subprocess.check_output(["wc", "-l", file_name]).split()[0])
         for data_to_update in tqdm(data, total=count // chunksize):
@@ -232,9 +232,8 @@ def rename_table(old_table_name: str, new_table_name: str):
         conn.execute_query(create_query)
 
 
-def read_file(table_name, chunksize=10**6):
-    file_name = f"{os.path.dirname(__file__)}/../output/{table_name}.csv"
-    for chunk in pd.read_csv(file_name, chunksize=chunksize, sep=";"):
+def read_file(file_name, chunksize=10**6):
+    for chunk in pd.read_csv(file_name, chunksize=chunksize, sep="\t"):
         yield chunk
 
 
@@ -245,7 +244,7 @@ def clean_aux_table(table_name: str):
         conn.execute_query(drop_query1)
 
 
-def scramble_table(table_name: str, scramble_factor: float) -> None:
+def scramble_table(table_name: str, scramble_factor: float, data_dir: str) -> None:
     with connector as cnn:
         try:
             conn = DBConnection(cnn)
@@ -253,7 +252,7 @@ def scramble_table(table_name: str, scramble_factor: float) -> None:
             info_log.info(
                 f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
             )
-            process_from_file(conn, table_name, scramble_factor, 100000)
+            process_from_file(conn, table_name, scramble_factor, data_dir, 100000)
             count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
             info_log.info(f"Scrambled records length: {count_scramble}")
             info_log.info("Done")

@@ -4,6 +4,8 @@ import sys
 import subprocess
 import os
 import logging
+import deprecation
+
 
 info_log = logging.getLogger("info")
 
@@ -59,30 +61,47 @@ def validate_table(table):
         raise Exception(f"{table} is invalid")
 
 
-def iterate_table(table, scramble_factor):
+@deprecation.deprecated(
+    details="The pipeline was broken up into smaller pieces. Use scramble function"
+)
+def iterate_table(table, scramble_factor, data_dir):
     if table.upper() != "ALL":
-        return pipeline(table, scramble_factor, first=True)
+        return pipeline(table, scramble_factor, data_dir, first=True)
     for idx, t in enumerate(valid_tables):
         print(t)
-        pipeline(t, scramble_factor, first=idx == 0)
+        pipeline(t, scramble_factor, data_dir, first=idx == 0)
 
 
 @main.command()
 @click.option("-T", "--table", help="Table Name", required=True)
 @click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
-def run(table: str, scramble_factor: float):
+@click.option("-D", "--data_dir", help="Directory that contains original files")
+def scramble(table: str, scramble_factor: float, data_dir: str):
     validate_table(table)
-    iterate_table(table, scramble_factor)
+    db.scramble_table(table, scramble_factor, data_dir)
     logging.info("Done")
 
 
-def pipeline(table, scramble_factor, first=True):
+@main.command()
+@click.option("-T", "--table", help="Table Name", required=True)
+@click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
+@click.option("-D", "--data_dir", help="Directory that contains original files")
+def run(table: str, scramble_factor: float, data_dir: str):
+    validate_table(table)
+    iterate_table(table, scramble_factor, data_dir)
+    logging.info("Done")
+
+
+@deprecation.deprecated(
+    details="This pipeline was broken up into smaller pieces. Use scramble function"
+)
+def pipeline(table, scramble_factor, data_dir: str, first=True):
     if first:
         run_exomiser()
     db.clean_aux_table(table)
     dump(table)
     db.rename_table(f"{table}", f"{table}_ORIGINAL")
-    db.scramble_table(table, scramble_factor)
+    db.scramble_table(table, scramble_factor, data_dir)
     db.rename_table(f"{table}_SCRAMBLE", table)
     run_exomiser(table)
     db.rename_table(table, f"{table}_SCRAMBLE")

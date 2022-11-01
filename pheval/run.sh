@@ -21,19 +21,17 @@ Help()
 # Process the input options. Add options as needed.        #
 ############################################################
 # Get the options
-while getopts ":h:g:t:d:" option; do
+while getopts ":h:g:t:" option; do
    case $option in
       h) # display Help
          Help
          exit;;
       t) # Table Name
          TABLE=$OPTARG;;
-      d) # Dump Table
-         DUMP_TABLE=$OPTARG;;
       g) # HG version
          HG=$OPTARG;;
       p) # Phenotypic Version
-         DATAV=$OPTARG;;
+         PHENOTYPEV=$OPTARG;;
      \?) # Invalid option
          echo "Error: Invalid option"
          exit;;
@@ -44,8 +42,7 @@ done
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 EXOMISER_VERSION=13.1.0
 HG_VERSION=${HG:-hg19}
-DATA_VERSION=${DATAV:-2209}
-DATA_FOLDER="$SCRIPT_DIR/../data/${DATA_VERSION}_phenotype"
+PHENOTYPE_VERSION=${PHENOTYPEV:-2209}
 EXOMISER_FOLDER="$SCRIPT_DIR/../lib/exomiser"
 
 init_logs () {
@@ -73,45 +70,6 @@ pull_image () {
   docker pull exomiser/exomiser-cli
 }
 
-download () {
-  FILENAME=$(basename "$1")
-  log "Downloading file $FILENAME"
-  if test -f "$FILENAME"; then
-    log "$FILENAME exists."
-    return
-  fi
-  wget $1
-  log "Unzipping $FILENAME"
-  unzip $FILENAME
-}
-
-prepare_exomiser () {
-  if test -d "$EXOMISER_FOLDER"; then
-    log "$EXOMISER_FOLDER exists."
-    log "Copying example files"
-    cp -v $EXOMISER_FOLDER/examples/test-analysis-exome.yml $EXOMISER_FOLDER/exomiser-config/
-    cp -v $EXOMISER_FOLDER/examples/Pfeiffer.vcf $EXOMISER_FOLDER/exomiser-config/
-    return
-  fi
-  EXOMISER_FILE="exomiser-cli-$EXOMISER_VERSION-distribution.zip"
-  download "https://data.monarchinitiative.org/exomiser/latest/$EXOMISER_FILE"
-  unzip -u $EXOMISER_FILE -d ./
-  mv ./exomiser-cli-$EXOMISER_VERSION/ $EXOMISER_FOLDER
-  mkdir -p $EXOMISER_FOLDER/exomiser-config
-  log "Copying example files"
-  cp -v $EXOMISER_FOLDER/examples/test-analysis-exome.yml $EXOMISER_FOLDER/exomiser-config/
-  cp -v $EXOMISER_FOLDER/examples/Pfeiffer.vcf $EXOMISER_FOLDER/exomiser-config/
-}
-
-prepare_data () {
-  log "Preparing exomiser data"
-  mkdir -p $DATA_FOLDER
-  cd $DATA_FOLDER
-  download "https://data.monarchinitiative.org/exomiser/latest/"$DATA_VERSION"_"$HG_VERSION".zip"
-  download "https://data.monarchinitiative.org/exomiser/latest/"$DATA_VERSION"_phenotype.zip"
-  cd -
-}
-
 setting_python_env () {
   log "Setting python environment"
   if test -d "$SCRIPT_DIR/../.venv"; then
@@ -133,17 +91,9 @@ exomiser_run () {
   --assembly $HG_VERSION \
   --analysis /exomiser/test-analysis-exome.yml  \
   --vcf /exomiser/Pfeiffer.vcf  \
-  --exomiser.data-directory=/exomiser-data/"$DATA_VERSION"_phenotype/ \
-  --exomiser.hg19.data-version=$DATA_VERSION \
-  --exomiser.phenotype.data-version=$DATA_VERSION
-}
-
-dump () {
-  log "Dumping $1"
-  echo "CALL CSVWRITE('../output/$1.csv',  'SELECT * FROM EXOMISER.$1',  'charset=UTF-8 fieldSeparator=;');" > dump.sql
-  java -Xms256m -Xmx2048m -Dh2.bindAddress=127.0.0.1 -cp "$SCRIPT_DIR/../lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:$SCRIPT_DIR/../data/2209_phenotype/2209_phenotype/2209_phenotype -script dump.sql -user sa
-  rm -rfv dump.sql
-  exit 0
+  --exomiser.data-directory=/exomiser-data/"$PHENOTYPE_VERSION"_phenotype/ \
+  --exomiser.hg19.data-version=$PHENOTYPE_VERSION \
+  --exomiser.phenotype.data-version=$PHENOTYPE_VERSION
 }
 
 ## THIS PROCESS HAS BEEN DOING IN PYTHON
@@ -154,49 +104,21 @@ valid_table () {
     echo $LIST | tr "$DELIMITER" '\n' | grep -F -q -x -i "$VALUE"
 }
 
-TABLES_ALL="all HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
-TABLES_ARRAY=( HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS )
 TABLES="HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS"
 
-# table_dumping () {
-
-#   if valid_table "$TABLES_ALL" " " $TABLE; then
-#       if [[ $(fgrep -ix $TABLE <<< "all")  ]]; then
-#         for i in "${TABLES_ARRAY[@]}"
-#         do
-#           dump $i  
-#         done
-#         return
-#       fi
-#       dump $TABLE
-#   else
-#       log "Invalid table - $TABLE"
-#       exit 1
-#   fi
-# }
-
-if [ ! -z "$DUMP_TABLE" ]; then
-  if ! valid_table "$TABLES" " " $DUMP_TABLE; then
-    log "Invalid $DUMP_TABLE"
-    exit 1
-  fi
-  dump $DUMP_TABLE
-  exit 0
-fi
 
 if [ -z "$TABLE" ]
 then
   init_logs
   log "Running"
-  log "HG Version $HG_VERSION"
-  log "Phenotypic Data Version $DATA_VERSION"
-  log "First Run"
   setting_python_env
-  prepare_exomiser
-  prepare_data
   pull_image
   exomiser_run
 else
+  if ! valid_table "$TABLES" " " $TABLE; then
+    log "Invalid $TABLE"
+    exit 1
+  fi
   log "Second Run"
   log "Table" $TABLE
   exomiser_run
