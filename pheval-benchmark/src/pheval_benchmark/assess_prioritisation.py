@@ -67,13 +67,13 @@ class RankStatsWriter:
 def directory_files(directory: str) -> list:
     """ Iterates over all files in a directory and creates a list of all .json results files,
     assumes that the results file end with -exomiser-results.json """
-    json_result_list = []
+    exomiser_json_result_list = []
     directory_ = os.fsencode(os.path.join(directory, ''))
     for file in os.listdir(directory_):
         filename = os.fsdecode(file)
         if filename.endswith(".json"):
-            json_result_list.append(filename)
-    return json_result_list
+            exomiser_json_result_list.append(filename)
+    return exomiser_json_result_list
 
 
 def diagnosed_genes(ppacket: str) -> list:
@@ -156,7 +156,7 @@ def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold
         rank_stats.total += 1
         key, info = variant.items()
         gene = key[1]
-        var = info[1]
+        variant = info[1]
         for key1, info1 in ranks.items():
             if gene == info1["geneSymbol"]:
                 cont = info1["contributingVariants"]
@@ -178,6 +178,7 @@ def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold
                         break
                 break
 
+
 def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, ranking_method):
     """ Assigns a simple ranking to the gene when found within the json results file.
      Iterates through the json array in order of output from Exomiser."""
@@ -197,6 +198,7 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, rank
                 rank = info["rank"]
                 rank_stats.add_rank(rank)
                 break
+
 
 @click.command()
 @click.option("--directory-list", "-d",
@@ -222,9 +224,11 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
         exomiser_json_results = directory_files(directory)
         for exomiser_result in exomiser_json_results:
             phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser-results.json", ".json"))
+            # phenopacket = phenopacket_dir + exomiser_result.replace("-exomiser-results.json", ".json")
             genes = diagnosed_genes(phenopacket)
             variants = diagnosed_variants(phenopacket)
             exomiser_full_path = os.path.join(directory, exomiser_result)
+            # exomiser_full_path = directory + exomiser_result
             ranking_dict = ranking(exomiser_full_path, ranking_method)
             assess_gene(ranking_dict, genes, gene_rank_stats, threshold, ranking_method)
             assess_variant(ranking_dict, variants, variant_rank_stats, threshold, ranking_method)
