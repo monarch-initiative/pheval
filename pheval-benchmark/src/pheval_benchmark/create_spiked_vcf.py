@@ -49,7 +49,7 @@ class VariantWriter:
             print("Error closing ", self.file)
 
 
-def create_basic_vcf(phenopacket_dir, template_vcf, output_dir) -> list:
+def create_basic_vcf(phenopacket_dir, template_vcf, vcf_dir, output_dir) -> list:
     """ Copies a template VCF file to a new output directory with the same file prefix as the phenopacket file."""
     try:
         os.mkdir(output_dir)
@@ -110,11 +110,12 @@ def add_variants(phenopacket_full_path, vcf_full_path):
 @click.command()
 @click.option("--phenopacket-dir", "-p", metavar='PATH', required=True, help="Path to phenopackets directory")
 @click.option("--template-vcf", "-t", metavar="FILE", required=True, help="Template VCF file")
+@click.option("--vcf-dir", "-v", metavar="PATH", help="Directory containing template VCF files")
 @click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
               default="vcf/")
-def spike_vcf(phenopacket_dir, template_vcf, output_dir):
+def spike_vcf(phenopacket_dir, output_dir, template_vcf=None, vcf_dir=None):
     """ Spikes variants into a template VCF file. """
-    phenopackets = create_basic_vcf(phenopacket_dir, template_vcf, output_dir)
+    phenopackets = create_basic_vcf(phenopacket_dir, template_vcf, vcf_dir, output_dir)
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
         vcf_full_path = os.path.join(output_dir, phenopacket.replace(".json", ".vcf"))
