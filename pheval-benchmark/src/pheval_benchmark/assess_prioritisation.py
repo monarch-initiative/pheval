@@ -68,7 +68,7 @@ def directory_files(directory: str) -> list:
     """ Iterates over all files in a directory and creates a list of all .json results files,
     assumes that the results file end with -exomiser-results.json """
     json_result_list = []
-    directory_ = os.fsencode(directory)
+    directory_ = os.fsencode(os.path.join(directory, ''))
     for file in os.listdir(directory_):
         filename = os.fsdecode(file)
         if filename.endswith(".json"):
@@ -119,8 +119,7 @@ def diagnosed_variants(ppacket: str) -> list:
 
 
 def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
-    """ Takes in a json file and return`s a dictionary with the default ranking output by
-    Exomiser's .genes.tsv file. """
+    """ Takes in a json file and return`s a dictionary with a specified ranking."""
     exomiser_json_result_dict = defaultdict(dict)
     with open(exomiser_full_path) as jsfile:
         js = json.load(jsfile)
@@ -162,13 +161,22 @@ def assess_variant(ranks: dict, variants: list, rank_stats: RankStats):
             if gene == info1["geneSymbol"]:
                 cont = info1["contributingVariants"]
                 for cv in cont:
-                    if var["chrom"] == cv["contigName"] and int(cv["start"]) == int(var["pos"]) \
-                            and cv["ref"] == var["ref"] and cv["alt"] == var["alt"]:
+                    if variant["chrom"] == cv["contigName"] and int(cv["start"]) == int(variant["pos"]) \
+                            and cv["ref"] == variant["ref"] and cv["alt"] == variant["alt"] and float(threshold) != 0.0:
+                        if ranking_method != "pValue" and float(threshold) < float(info1[ranking_method]):
+                            rank = info1["rank"]
+                            rank_stats.add_rank(rank)
+                            break
+                        if ranking_method == "pValue" and float(threshold) > float(info1[ranking_method]):
+                            rank = info1["rank"]
+                            rank_stats.add_rank(rank)
+                            break
+                    if variant["chrom"] == cv["contigName"] and int(cv["start"]) == int(variant["pos"]) \
+                            and cv["ref"] == variant["ref"] and cv["alt"] == variant["alt"] and float(threshold) == 0.0:
                         rank = info1["rank"]
                         rank_stats.add_rank(rank)
                         break
                 break
-
 
 def assess_gene(ranks: dict, genes: list, rank_stats: RankStats):
     """ Assigns a simple ranking to the gene when found within the json results file.
@@ -176,11 +184,19 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats):
     for g in genes:
         rank_stats.total += 1
         for key, info in ranks.items():
-            if g == info["geneSymbol"]:
+            if g == info["geneSymbol"] and float(threshold) != 0.0:
+                if ranking_method != "pValue" and float(threshold) < float(info[ranking_method]):
+                    rank = info["rank"]
+                    rank_stats.add_rank(rank)
+                    break
+                if ranking_method == "pValue" and float(threshold) > float(info[ranking_method]):
+                    rank = info["rank"]
+                    rank_stats.add_rank(rank)
+                    break
+            if g == info["geneSymbol"] and float(threshold) == 0.0:
                 rank = info["rank"]
                 rank_stats.add_rank(rank)
                 break
-
 
 @click.command()
 @click.option("--directory-list", "-d",
@@ -193,24 +209,25 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats):
 @click.option("--ranking-method", "-r", metavar='<str>', default="combinedScore", show_default=True,
               help="Ranking method for gene prioritisation. Options include: "
                    "combinedScore, phenotypeScore, variantScore and pValue")
+@click.option("--threshold", "-t", metavar='<float>', default=float(0.0), required=False, help="Score threshold.")
 def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix):
-    """ A CLI that given a text file containing a list of result directories output from Exomiser
-    returns the percentage of top, top3 and top5 genes found in confirmed cases from phenopackets."""
-    gene_stats_writer = RankStatsWriter(output_prefix+"-gene-prioritisation.txt")
-    variants_stats_writer = RankStatsWriter(output_prefix+"-variant-prioritisation.txt")
+    """ Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
+    from confirmed cases in phenopackets. """
+    gene_stats_writer = RankStatsWriter(output_prefix + "-gene-prioritisation.txt")
+    variants_stats_writer = RankStatsWriter(output_prefix + "-variant-prioritisation.txt")
     directories = open(directory_list).read().splitlines()
     for directory in directories:
         gene_rank_stats = RankStats()
         variant_rank_stats = RankStats()
         exomiser_json_results = directory_files(directory)
         for exomiser_result in exomiser_json_results:
-            phenopacket = phenopacket_dir + exomiser_result.replace("-exomiser-results.json", ".json")
+            phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser-results.json", ".json"))
             genes = diagnosed_genes(phenopacket)
             variants = diagnosed_variants(phenopacket)
-            exomiser_full_path = directory + exomiser_result
+            exomiser_full_path = os.path.join(directory, exomiser_result)
             ranking_dict = ranking(exomiser_full_path, ranking_method)
-            assess_gene(ranking_dict, genes, gene_rank_stats)
-            assess_variant(ranking_dict, variants, variant_rank_stats)
+            assess_gene(ranking_dict, genes, gene_rank_stats, threshold, ranking_method)
+            assess_variant(ranking_dict, variants, variant_rank_stats, threshold, ranking_method)
         gene_stats_writer.write_row(directory, gene_rank_stats)
         variants_stats_writer.write_row(directory, variant_rank_stats)
 
