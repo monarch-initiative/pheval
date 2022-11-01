@@ -151,7 +151,7 @@ def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
     return ranks
 
 
-def assess_variant(ranks: dict, variants: list, rank_stats: RankStats):
+def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold, ranking_method):
     for variant in variants:
         rank_stats.total += 1
         key, info = variant.items()
@@ -178,7 +178,7 @@ def assess_variant(ranks: dict, variants: list, rank_stats: RankStats):
                         break
                 break
 
-def assess_gene(ranks: dict, genes: list, rank_stats: RankStats):
+def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, ranking_method):
     """ Assigns a simple ranking to the gene when found within the json results file.
      Iterates through the json array in order of output from Exomiser."""
     for g in genes:
@@ -210,7 +210,7 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats):
               help="Ranking method for gene prioritisation. Options include: "
                    "combinedScore, phenotypeScore, variantScore and pValue")
 @click.option("--threshold", "-t", metavar='<float>', default=float(0.0), required=False, help="Score threshold.")
-def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix):
+def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix, threshold):
     """ Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
     from confirmed cases in phenopackets. """
     gene_stats_writer = RankStatsWriter(output_prefix + "-gene-prioritisation.txt")
