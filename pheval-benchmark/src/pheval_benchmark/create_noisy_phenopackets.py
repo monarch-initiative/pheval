@@ -115,9 +115,15 @@ def rebuild_phenopacket(phenopacket, hpo_list: list, output_file: str):
               help="Number of random HPO ids to introduce")
 @click.option("--output-file-suffix", "-o", metavar='<str>', required=True,
               help="Suffix to append to output file")
-def create_noisy_phenopackets(phenopacket_dir, max_real_id: int, number_of_parent_terms: int,
-                              number_of_random_terms: int, output_file_suffix):
+@click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
+              default="noisy_phenopackets")
+def create_noisy_phenopackets(phenopacket_dir: str, max_real_id: int, number_of_parent_terms: int,
+                              number_of_random_terms: int, output_file_suffix: str, output_dir: str):
     """ Generate noisy phenopackets from existing ones. """
+    try:
+        os.mkdir(os.path.join(output_dir, ''))
+    except FileExistsError:
+        pass
     phenopackets = directory_files(phenopacket_dir)
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
@@ -127,6 +133,6 @@ def create_noisy_phenopackets(phenopacket_dir, max_real_id: int, number_of_paren
         parent = change_to_parent_term(phenotypic_features, retained_id, number_of_parent_terms)
         random_hpo = random_hpo_terms(number_of_random_terms)
         new_hpo_terms = combine_hpo_terms(retained_id, parent, random_hpo)
-        output_file = os.path.join(
-            pathlib.Path(phenopacket).stem + "-" + output_file_suffix + pathlib.Path(phenopacket).suffix)
+        output_file = os.path.join(output_dir, pathlib.Path(phenopacket).stem + "-" + output_file_suffix + pathlib.Path(
+            phenopacket).suffix)
         rebuild_phenopacket(phenopacket_full_path, new_hpo_terms, output_file)
