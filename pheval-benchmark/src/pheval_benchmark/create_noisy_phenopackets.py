@@ -8,6 +8,11 @@ import json
 import random
 import pathlib
 import os
+import warnings
+
+warnings.filterwarnings("ignore")
+resource = OntologyResource(slug='src/pheval_benchmark/resources/obo/hp.obo', local=True)
+oi = ProntoImplementation(resource)
 
 
 def separate_phenotypic_features(phenopacket):
@@ -40,7 +45,6 @@ def max_real_patient_id(phenotypic_features: dict, number_of_real_id: int) -> di
 
 
 def change_to_parent_term(phenotypic_features: dict, retained_hpo: dict, number_of_changed_terms: int) -> dict:
-    oi = ProntoImplementation(OntologyResource(local=False, slug='hp.obo'))
     remaining_hpo = list(phenotypic_features.items() ^ retained_hpo.items())
     if int(number_of_changed_terms) > len(remaining_hpo):
         number_of_changed_terms = len(remaining_hpo)
@@ -60,7 +64,6 @@ def change_to_parent_term(phenotypic_features: dict, retained_hpo: dict, number_
 
 def random_hpo_terms(number_of_random_terms: int) -> dict:
     all_id = []
-    oi = ProntoImplementation(OntologyResource(local=False, slug='hp.obo'))
     with open("src/pheval_benchmark/resources/obo/hp.obo") as f:
         for line in f:
             if line.startswith("id"):
