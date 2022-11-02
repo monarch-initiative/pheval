@@ -35,20 +35,20 @@ def separate_excluded_phenotypes(all_phenotypic_features) -> dict:
 
 def max_real_patient_id(phenotypic_features: dict, number_of_real_id: int) -> dict:
     phenotypic_features = list(phenotypic_features.items())
-    if int(number_of_real_id) > len(phenotypic_features):
-        if int(len(phenotypic_features)) - 2 > 0:
-            number_of_real_id = int(len(phenotypic_features)) - 2
+    if number_of_real_id > len(phenotypic_features):
+        if len(phenotypic_features) - 2 > 0:
+            number_of_real_id = len(phenotypic_features) - 2
         else:
             number_of_real_id = 1
-    retained_hpo = dict(random.sample(phenotypic_features, int(number_of_real_id)))
+    retained_hpo = dict(random.sample(phenotypic_features, number_of_real_id))
     return retained_hpo
 
 
 def change_to_parent_term(phenotypic_features: dict, retained_hpo: dict, number_of_changed_terms: int) -> dict:
     remaining_hpo = list(phenotypic_features.items() ^ retained_hpo.items())
-    if int(number_of_changed_terms) > len(remaining_hpo):
+    if number_of_changed_terms > len(remaining_hpo):
         number_of_changed_terms = len(remaining_hpo)
-    parent_hpo = list(random.sample(remaining_hpo, int(number_of_changed_terms)))
+    parent_hpo = list(random.sample(remaining_hpo, number_of_changed_terms))
     parent = {}
     for p in parent_hpo:
         try:
@@ -70,7 +70,7 @@ def random_hpo_terms(number_of_random_terms: int) -> dict:
                 line = line.split(": ", 1)[1].rstrip()
                 all_id.append(line)
     f.close()
-    random_id = list(random.sample(all_id, int(number_of_random_terms)))
+    random_id = list(random.sample(all_id, number_of_random_terms))
     random_id_dict = {}
     for r in random_id:
         rels = oi.alias_map_by_curie(r)
@@ -108,11 +108,11 @@ def rebuild_phenopacket(phenopacket, hpo_list: list, output_file: str):
 @click.command()
 @click.option("--phenopacket-dir", "-P", metavar='PATH', required=True, help="Path to phenopackets directory")
 @click.option("--max-real-id", "-m", metavar='<int>', required=True,
-              help="Maximum number of real patient HPO ids to retain")
+              help="Maximum number of real patient HPO ids to retain", type=int, default=3, show_default=True)
 @click.option("--number-of-parent-terms", "-p", metavar='<int>', required=True,
-              help="Number of real patient HPO ids to change to parent terms")
+              help="Number of real patient HPO ids to change to parent terms", type=int, default=2, show_default=True)
 @click.option("--number-of-random-terms", "-r", metavar='<int>', required=True,
-              help="Number of random HPO ids to introduce")
+              help="Number of random HPO ids to introduce", type=int, default=3, show_default=True)
 @click.option("--output-file-suffix", "-o", metavar='<str>', required=True,
               help="Suffix to append to output file")
 @click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
