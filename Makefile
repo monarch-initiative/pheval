@@ -4,7 +4,7 @@ DATA_DIR=$(RAW_DIR)/data
 EXOMISER=13.1.0
 HG=hg19
 PHENOTYPE=2209
-SCRAMBLE-FACTOR=0.5
+SCRAMBLE_FACTOR=0.5
 
 EXOMISER_FILE=exomiser-cli-$(EXOMISER)
 
@@ -21,22 +21,24 @@ PHENOTYPE_UNZIP=$(DATA_DIR)/$(PHENOTYPE)_phenotype
 
 #MAPPING VARIABLES
 MAPPING_TABLES=HP_HP_MAPPINGS HP_MP_MAPPINGS HP_ZP_MAPPINGS
+MAPPING_TABLE_FILES=$(foreach f,$(MAPPING_TABLES), $(EXOMISER_RUN_DIR)/$(f).tsv)
 #SCRAMBLE VARIABLES 
-SCRAMBLE_DIR=inputs/data/run_exomiser$(EXOMISER)_scrambled_$(SCRAMBLE-FACTOR)
-EXOMISER_DIR=inputs/data/run_exomiser$(EXOMISER)
+SCRAMBLE_RUN_DIR=inputs/data/run_exomiser$(EXOMISER)_scrambled_$(SCRAMBLE_FACTOR)
+EXOMISER_RUN_DIR=inputs/data/run_exomiser$(EXOMISER)
+SCRAMBLE_FILES=$(foreach f,$(MAPPING_TABLES), $(SCRAMBLE_RUN_DIR)/$(f).tsv)
 
 .PHONY: help
 help :
 	@echo "build		:Run download unzip and build targets"
 	@echo "download	:Download exomiser, human genome and phenotypic data"
 	@echo "unzip		:Unzip all download files from download target."
-	@echo "dump		:Dump tables from phenotypic H2 database."
+	@echo "prepare_dataset :Dump tables from phenotypic H2 database, scramble and save them in tsv files"
 	@echo "clean		:Remove all downloaded unzipped and dumped data."
 	@echo "flags		"
 	@echo "		 EXOMISER: sets exomiser version (default: 13.1.0)"
 	@echo "		 HG: sets human genome version (default: hg19)"
 	@echo "		 PHENOTYPE: sets phenotype version (default: 2209)"
-	@echo "		 SCRAMBLE-FACTOR: sets scramble factor (default: 0.5)"
+	@echo "		 SCRAMBLE_FACTOR: sets scramble factor (default: 0.5)"
 	@echo "																											"
 	@echo "		 Example: make build EXOMISER="13.0.1" HG="hg19" PHENOTYPE="2209""
 	@echo "		 Simplified example version using default values: make build"
@@ -70,28 +72,26 @@ $(PHENOTYPE_DOWNLOAD):
 $(PHENOTYPE_UNZIP): $(PHENOTYPE_DOWNLOAD)
 	unzip -o $< -d $@
 
+$(EXOMISER_RUN_DIR)/%:
+	@echo "CALL CSVWRITE('$@',  'SELECT * FROM EXOMISER.$(patsubst %.tsv,%,$*)',  'charset=UTF-8 fieldSeparator=\t')"  > dump.sql
+	@java -Xms128m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp "./$(RAW_DIR)/lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:./$(DATA_DIR)/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype -script dump.sql -user sa;
+	@rm dump.sql
+
+
+$(SCRAMBLE_RUN_DIR)/%:
+	@pheval scramble -i $(EXOMISER_RUN_DIR)/$* -S $(SCRAMBLE_FACTOR)
+	@echo "CALL CSVWRITE('$(SCRAMBLE_RUN_DIR)/$*',  'SELECT * FROM EXOMISER.$(patsubst %.tsv,%,$*)_SCRAMBLE',  'charset=UTF-8 fieldSeparator=\t')" > dump.sql
+	@java -Xms128m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp "./$(RAW_DIR)/lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:./$(DATA_DIR)/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype -script dump.sql -user sa;
+	@rm dump.sql
+
 .PHONY: dump
-dump:$(EXOMISER_DIR)/*.tsv
-
-$(EXOMISER_DIR)/%.tsv:
-	for prefix in $(MAPPING_TABLES); do \
-		echo "CALL CSVWRITE('$(EXOMISER_DIR)/$${prefix}.tsv',  'SELECT * FROM EXOMISER.$${prefix}',  'charset=UTF-8 fieldSeparator=\t')" > dump.sql; \
-		java -Xms1024m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp "./$(RAW_DIR)/lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:./$(DATA_DIR)/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype -script dump.sql -user sa; \
-		rm dump.sql ; \
-	done
-
-
-$(SCRAMBLE_DIR)/%.tsv:
-	for prefix in $(MAPPING_TABLES); do \
-		pheval scramble -T $${prefix} -S $(SCRAMBLE-FACTOR) -D $(EXOMISER_DIR)/ ; \
-		echo "CALL CSVWRITE('$(SCRAMBLE_DIR)/$$prefix.tsv',  'SELECT * FROM EXOMISER.$${prefix}_SCRAMBLE',  'charset=UTF-8 fieldSeparator=\t')" > dump.sql; \
-		java -Xms1024m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp "./$(RAW_DIR)/lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:./$(DATA_DIR)/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype -script dump.sql -user sa; \
-		rm dump.sql ; \
-	done
-
+dump:$(PHENOTYPE_UNZIP) $(MAPPING_TABLE_FILES)
 
 .PHONY: scramble
-scramble:dump $(SCRAMBLE_DIR)/*.tsv
+scramble:dump $(SCRAMBLE_FILES)
+
+.PHONY: prepare_dataset
+prepare_dataset: dump scramble
 
 .PHONY: cleandownload
 cleandownload:
@@ -99,7 +99,7 @@ cleandownload:
 
 .PHONY: clean
 clean:
-	rm -rf $(EXOMISER_DOWNLOAD) $(EXOMISER_UNZIP)
+	rm -rf inputs
 
 .PHONY: build
 build: download unzip dump scramble

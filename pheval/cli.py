@@ -73,12 +73,12 @@ def iterate_table(table, scramble_factor, data_dir):
 
 
 @main.command()
-@click.option("-T", "--table", help="Table Name", required=True)
+@click.option("-i", "--input", help="Input mapping file", required=True)
 @click.option("-S", "--scramble_factor", default=0.5, help="Scramble Factor")
-@click.option("-D", "--data_dir", help="Directory that contains original files")
-def scramble(table: str, scramble_factor: float, data_dir: str):
-    validate_table(table)
-    db.scramble_table(table, scramble_factor, data_dir)
+def scramble(input: str, scramble_factor: float):
+    table_name = os.path.basename(input).split(".")[0]
+    validate_table(table_name)
+    db.scramble_table(table_name, scramble_factor, input)
     logging.info("Done")
 
 

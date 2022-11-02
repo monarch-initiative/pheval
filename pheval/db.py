@@ -193,12 +193,11 @@ def process_from_db(conn, table_name, scramble_factor, chunksize, count):
 
 
 @measure_time
-def process_from_file(conn, table_name, scramble_factor, data_dir, chunksize):
+def process_from_file(conn, table_name, input, scramble_factor, chunksize):
     try:
-        file_name = f"{data_dir}/{table_name}.tsv"
-        data = read_file(file_name, chunksize)
+        data = read_file(input, chunksize)
         # UNFAIR, I KNOW!
-        count = int(subprocess.check_output(["wc", "-l", file_name]).split()[0])
+        count = int(subprocess.check_output(["wc", "-l", input]).split()[0])
         for data_to_update in tqdm(data, total=count // chunksize):
             mod = randomisation.ssp_randomisation(data_to_update, scramble_factor)
             insert(conn, table_name, mod)
@@ -244,7 +243,7 @@ def clean_aux_table(table_name: str):
         conn.execute_query(drop_query1)
 
 
-def scramble_table(table_name: str, scramble_factor: float, data_dir: str) -> None:
+def scramble_table(table_name: str, scramble_factor: float, input: str) -> None:
     with connector as cnn:
         try:
             conn = DBConnection(cnn)
@@ -252,7 +251,7 @@ def scramble_table(table_name: str, scramble_factor: float, data_dir: str) -> No
             info_log.info(
                 f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
             )
-            process_from_file(conn, table_name, scramble_factor, data_dir, 100000)
+            process_from_file(conn, table_name, input, scramble_factor, 10000)
             count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
             info_log.info(f"Scrambled records length: {count_scramble}")
             info_log.info("Done")
