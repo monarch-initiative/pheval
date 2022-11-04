@@ -43,13 +43,6 @@ help :
 	@echo "		 Example: make build EXOMISER="13.0.1" HG="hg19" PHENOTYPE="2209""
 	@echo "		 Simplified example version using default values: make build"
 
-
-.PHONY: download
-download: $(EXOMISER_DOWNLOAD) $(HG_DOWNLOAD) $(PHENOTYPE_DOWNLOAD)
-
-.PHONY: unzip
-unzip: $(EXOMISER_UNZIP) $(HG_UNZIP) $(PHENOTYPE_UNZIP)
-
 .DEFAULT_GOAL=help
 
 $(EXOMISER_DOWNLOAD):
@@ -83,6 +76,12 @@ $(SCRAMBLE_RUN_DIR)/%:
 	@echo "CALL CSVWRITE('$(SCRAMBLE_RUN_DIR)/$*',  'SELECT * FROM EXOMISER.$(patsubst %.tsv,%,$*)_SCRAMBLE',  'charset=UTF-8 fieldSeparator=\t')" > dump.sql
 	@java -Xms128m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp "./$(RAW_DIR)/lib/h2.jar" org.h2.tools.RunScript -url jdbc:h2:file:./$(DATA_DIR)/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype/$(PHENOTYPE)_phenotype -script dump.sql -user sa;
 	@rm dump.sql
+
+.PHONY: download
+download: $(EXOMISER_DOWNLOAD) $(HG_DOWNLOAD) $(PHENOTYPE_DOWNLOAD)
+
+.PHONY: unzip
+unzip: $(EXOMISER_UNZIP) $(HG_UNZIP) $(PHENOTYPE_UNZIP)
 
 .PHONY: dump
 dump:$(PHENOTYPE_UNZIP) $(MAPPING_TABLE_FILES)

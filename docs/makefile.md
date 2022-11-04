@@ -1,0 +1,69 @@
+```
+build           :Run download unzip and build targets
+download        :Download exomiser, human genome and phenotypic data
+unzip           :Unzip all download files from download target.
+prepare_dataset :Dump tables from phenotypic H2 database, scramble and save them in tsv files
+clean           :Remove all downloaded unzipped and dumped data.
+flags
+                 EXOMISER: sets exomiser version (default: 13.1.0)
+                 HG: sets human genome version (default: hg19)
+                 PHENOTYPE: sets phenotype version (default: 2209)
+                 SCRAMBLE_FACTOR: sets scramble factor (default: 0.5)
+
+                 Example: make build EXOMISER=13.0.1 HG=hg19 PHENOTYPE=2209
+                 Simplified example version using default values: make build
+
+```
+
+### **Use Case:** PhEval - Scrambling process
+
+### **Description:** The data workflow implemented using Makefile
+
+```mermaid
+ flowchart TD
+  b(Build Process) -->
+  d(Download)-->
+  de(Download Exomiser Data)
+  d-->
+  dh(Download Human Genome)
+  d-->
+  dp(Download Phenotype Data)
+  dh-->
+  u(Uncompress Data)
+  de-->
+  u
+  dp-->
+  u -->
+  dump(Prepare Database) -->
+  m(Phenotypic Mapping Tables Dump ) -->
+  m1(HP_HP) 
+  m -->
+  m2(HP_MP)
+  m -->
+  m3(HP_ZP)
+  m1 -->
+  s(Scramble Process)
+  m2 -->
+  s(Scramble Process)
+  m3 -->
+  s(Scramble Process) -->
+  save(Save Scrambled Data)
+```
+---
+
+### **Use Case:** PhEval - Clean Data
+
+### **Description:** The clean target
+
+
+```mermaid
+ flowchart TD
+  c(Clean) -->
+  r(Remove - rm -r) -->
+  e(Exomiser Data)
+  r -->
+  h(Human Genome Data)
+  r -->
+  p(Phenotypic Data)
+  r -->
+  s(Scrambled Data)

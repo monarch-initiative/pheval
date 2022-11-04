@@ -251,7 +251,7 @@ def scramble_table(table_name: str, scramble_factor: float, input: str) -> None:
             info_log.info(
                 f"Scrambling records from table: {table_name} using {scramble_factor} magnitude"
             )
-            process_from_file(conn, table_name, input, scramble_factor, 10000)
+            process_from_file(conn, table_name, input, scramble_factor, 100000)
             count_scramble = count_total(conn, f"{table_name}_SCRAMBLE")
             info_log.info(f"Scrambled records length: {count_scramble}")
             info_log.info("Done")
