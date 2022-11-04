@@ -80,6 +80,48 @@ flags
  ┃ ┃ ┣ 📜HP_HP_MAPPINGS.tsv
  ┃ ┃ ┣ 📜HP_MP_MAPPINGS.tsv
  ┃ ┃ ┗ 📜HP_ZP_MAPPINGS.tsv
+📦raw
+ ┣ 📂data
+ ┃ ┣ 📂2209_hg19
+ ┃ ┃ ┣ 📂2209_hg19
+ ┃ ┃ ┃ ┣ 📜2209_hg19_clinvar_whitelist.tsv.gz
+ ┃ ┃ ┃ ┣ 📜2209_hg19_clinvar_whitelist.tsv.gz.tbi
+ ┃ ┃ ┃ ┣ 📜2209_hg19_genome.h2.db
+ ┃ ┃ ┃ ┣ 📜2209_hg19_transcripts_ensembl.ser
+ ┃ ┃ ┃ ┣ 📜2209_hg19_transcripts_refseq.ser
+ ┃ ┃ ┃ ┣ 📜2209_hg19_transcripts_ucsc.ser
+ ┃ ┃ ┃ ┗ 📜2209_hg19_variants.mv.db
+ ┃ ┃ ┗ 📜2209_hg19.sha256
+ ┃ ┣ 📂2209_phenotype
+ ┃ ┃ ┣ 📂2209_phenotype
+ ┃ ┃ ┃ ┣ 📂phenix
+ ┃ ┃ ┃ ┃ ┣ 📂out
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜1.out
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜10.out
+ ┃ ┃ ┃ ┃ ┣ 📜ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
+ ┃ ┃ ┃ ┃ ┗ 📜hp.obo
+ ┃ ┃ ┃ ┣ 📜2209_phenotype.h2.db
+ ┃ ┃ ┃ ┣ 📜2209_phenotype.h2.db.mv.db
+ ┃ ┃ ┃ ┣ 📜2209_phenotype.h2.db.trace.db
+ ┃ ┃ ┃ ┣ 📜2209_phenotype.trace.db
+ ┃ ┃ ┃ ┣ 📜hp.obo
+ ┃ ┃ ┃ ┗ 📜rw_string_10.mv
+ ┃ ┃ ┗ 📜2209_phenotype.sha256
+ ┃ ┣ 📜2209_hg19.zip
+ ┃ ┗ 📜2209_phenotype.zip
+ ┣ 📂exomiser-cli-13.1.0
+ ┃ ┣ 📂examples
+ ┃ ┃ ┣ 📜Pfeiffer.vcf
+ ┃ ┃ ┣ 📜Pfeiffer.vcf.gz
+ ┃ ┃ ┣ 📜Pfeiffer.vcf.gz.tbi
+ ┃ ┃ ┣ 📜exome-analysis.yml
+ ┃ ┃ ┣ 📜output-options.yml
+ ┃ ┃ ┗ 📜test-analysis-multisample.yml
+ ┃ ┣ 📂lib
+ ┃ ┗ 📜exomiser-cli-13.1.0.jar
+ ┣ 📂lib
+ ┃ ┗ 📜h2.jar
+ ┗ 📜exomiser-cli-13.1.0-distribution.zip
 ```
 
 ---
