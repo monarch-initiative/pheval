@@ -72,9 +72,11 @@ flags
  ┃ ┃ ┣ 📜HP_HP_MAPPINGS.tsv
  ┃ ┃ ┣ 📜HP_MP_MAPPINGS.tsv
  ┃ ┃ ┗ 📜HP_ZP_MAPPINGS.tsv
- ┃ ┣ 📂run_exomiser13.1.0_scrambled_1
+ ┃ ┣ 📂run_exomiser13.1.0_scrambled_0.5
  ┃ ┃ ┗ 📜HP_HP_MAPPINGS.tsv
- ┃ ┗ 📂run_exomiser13.1.0_scrambled_2
+ ┃ ┃ ┣ 📜HP_MP_MAPPINGS.tsv
+ ┃ ┃ ┗ 📜HP_ZP_MAPPINGS.tsv
+ ┃ ┗ 📂run_exomiser13.1.0_scrambled_0.75
  ┃ ┃ ┣ 📜HP_HP_MAPPINGS.tsv
  ┃ ┃ ┣ 📜HP_MP_MAPPINGS.tsv
  ┃ ┃ ┗ 📜HP_ZP_MAPPINGS.tsv
