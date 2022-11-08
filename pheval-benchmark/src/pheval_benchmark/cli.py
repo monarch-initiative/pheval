@@ -11,11 +11,10 @@ warnings.filterwarnings("ignore")
 def pheval_benchmark():
     """ PhEval - A benchmarking CLI. """
 
-
-pheval_benchmark.add_command(prepare_exomiser_batch)
-pheval_benchmark.add_command(assess_prioritisation)
 pheval_benchmark.add_command(spike_vcf)
 pheval_benchmark.add_command(create_noisy_phenopackets)
+pheval_benchmark.add_command(prepare_exomiser_batch)
+pheval_benchmark.add_command(assess_prioritisation)
 
 
 if __name__ == '__main__':
