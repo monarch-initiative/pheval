@@ -1,8 +1,9 @@
-import click
 import logging
-from .cli_pheval import run
-from .cli_pheval_utils import scramble_semsim, scramble_phenopacket
 
+import click
+
+from .cli_pheval import run
+from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
 
 info_log = logging.getLogger("info")
 
@@ -26,13 +27,16 @@ def main(verbose: int, quiet: bool) -> None:
     if quiet:
         info_log.setLevel(level=logging.ERROR)
 
+
 @click.group()
 def pheval():
     pass
 
+
 @click.group()
 def pheval_utils():
     pass
+
 
 pheval.add_command(run)
 
