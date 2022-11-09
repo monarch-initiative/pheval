@@ -47,13 +47,16 @@ class RankStatsWriter:
     def __init__(self, file: str):
         self.file = open(file, 'w')
         self.writer = csv.writer(self.file, delimiter='\t')
-        self.writer.writerow(['results_directory_path', 'top', 'top3', 'top5', 'percentage_found', 'found', 'total'])
+        self.writer.writerow(
+            ['results_directory_path', 'top', 'percentage_top', 'top3', 'percentage_top3', 'top5', 'percentage_top5',
+             'found', 'percentage_found', 'total'])
 
     def write_row(self, directory, rank_stats: RankStats):
         try:
-            self.writer.writerow([directory, rank_stats.percentage_top(), rank_stats.percentage_top3(),
-                                  rank_stats.percentage_top5(), rank_stats.percentage_found(), rank_stats.found,
-                                  rank_stats.total])
+            self.writer.writerow(
+                [directory, rank_stats.top, rank_stats.percentage_top(), rank_stats.top3, rank_stats.percentage_top3(),
+                 rank_stats.top5, rank_stats.percentage_top5(), rank_stats.found, rank_stats.percentage_found(),
+                 rank_stats.total])
         except IOError:
             print("Error writing ", self.file)
 
@@ -82,7 +85,7 @@ def diagnosed_genes(ppacket: str) -> list:
     with open(ppacket) as pfile:
         genes = []
         pheno = json.load(pfile)
-        if "interpretations" in pheno["proband"]:
+        if "proband" in pheno:
             interpretations = pheno["proband"]["interpretations"]
         else:
             interpretations = pheno["interpretations"]
@@ -101,7 +104,7 @@ def diagnosed_variants(ppacket: str) -> list:
     with open(ppacket) as pfile:
         variants = []
         pheno = json.load(pfile)
-        if "interpretations" in pheno["proband"]:
+        if "proband" in pheno:
             interpretations = pheno["proband"]["interpretations"]
         else:
             interpretations = pheno["interpretations"]
@@ -215,20 +218,18 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, rank
 def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix, threshold):
     """ Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
     from confirmed cases in phenopackets. """
-    gene_stats_writer = RankStatsWriter(output_prefix + "-gene-prioritisation.txt")
-    variants_stats_writer = RankStatsWriter(output_prefix + "-variant-prioritisation.txt")
+    gene_stats_writer = RankStatsWriter(output_prefix + "-gene-prioritisation.tsv")
+    variants_stats_writer = RankStatsWriter(output_prefix + "-variant-prioritisation.tsv")
     directories = open(directory_list).read().splitlines()
     for directory in directories:
         gene_rank_stats = RankStats()
         variant_rank_stats = RankStats()
         exomiser_json_results = directory_files(directory)
         for exomiser_result in exomiser_json_results:
-            phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser-results.json", ".json"))
-            # phenopacket = phenopacket_dir + exomiser_result.replace("-exomiser-results.json", ".json")
+            phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser.json", ".json"))
             genes = diagnosed_genes(phenopacket)
             variants = diagnosed_variants(phenopacket)
             exomiser_full_path = os.path.join(directory, exomiser_result)
-            # exomiser_full_path = directory + exomiser_result
             ranking_dict = ranking(exomiser_full_path, ranking_method)
             assess_gene(ranking_dict, genes, gene_rank_stats, threshold, ranking_method)
             assess_variant(ranking_dict, variants, variant_rank_stats, threshold, ranking_method)
