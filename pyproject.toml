@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pheval"
+version = "0.1.0"
+description = ""
+authors = ["Nico Matentzoglu <nicolas.matentzoglu@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pheval", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jaydebeapi = ">=1.2.3"
+tqdm = ">=4.64.1"
+pandas = ">=1.5.1"
+deprecation = ">=2.1.0"
+click = ">=8.1.3"
+
+[tool.poetry.scripts]
+pheval = "pheval.cli:pheval"
+pheval-utils = "pheval.cli:pheval_utils"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
