@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "pheval", from = "src"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10"
+python = ">=3.9"
 jaydebeapi = ">=1.2.3"
 tqdm = ">=4.64.1"
 pandas = ">=1.5.1"
