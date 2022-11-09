@@ -177,7 +177,7 @@ def create_split_batch(max_jobs, prefix, temp_name):
               required=True, metavar='TEXT',
               help="Prefix of generated batch files.")
 @click.option("--max-jobs", "-j",
-              required=False, metavar='<int>', default=False, show_default=True,
+              required=False, metavar='<int>', default=0, show_default=True,
               help="Number of jobs in each file.")
 @click.option("--output-options-dir", "-O",
               required=False, metavar='PATH',
@@ -185,7 +185,7 @@ def create_split_batch(max_jobs, prefix, temp_name):
 @click.option("--output-options-file", "-o",
               required=False, metavar='FILE',
               help="Path to the output options file. ")
-def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jobs=50, output_options_dir=None,
+def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jobs, output_options_dir=None,
                            output_options_file=None):
     """ Generate Exomiser batch files. """
     ppackets = phenopacket_list(phenopacket_dir)
@@ -194,7 +194,7 @@ def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jo
         output_opt = output_options_list(output_options_dir)
     else:
         output_opt = None
-    if max_jobs:
+    if max_jobs != 0:
         temp_name = create_temp_commands(analysis, ppackets, vcf, genome_assembly, output_opt, output_options_file)
         create_split_batch(max_jobs, batch_prefix, temp_name)
     else:
