@@ -4,6 +4,7 @@ import os
 import yaml
 import click
 import tempfile
+from pheval_benchmark.create_spiked_vcf import MutuallyExclusiveOptionError
 
 
 class IncompatibleGenomeAssemblyError(Exception):
@@ -179,10 +180,12 @@ def create_split_batch(max_jobs, prefix, temp_name):
 @click.option("--max-jobs", "-j",
               required=False, metavar='<int>', default=0, show_default=True,
               help="Number of jobs in each file.")
-@click.option("--output-options-dir", "-O",
+@click.option("--output-options-dir", "-O", cls=MutuallyExclusiveOptionError,
+              mutually_exclusive=["output_options_file"],
               required=False, metavar='PATH',
               help="Path to the output options directory. ")
-@click.option("--output-options-file", "-o",
+@click.option("--output-options-file", "-o", cls=MutuallyExclusiveOptionError,
+              mutually_exclusive=["output_options_dir"],
               required=False, metavar='FILE',
               help="Path to the output options file. ")
 def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jobs, output_options_dir=None,
