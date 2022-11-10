@@ -5,7 +5,101 @@ import json
 import csv
 import click
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import pandas as pd
+from statistics import mean
+
+
+class PhenopacketReader:
+
+    def __init__(self, file: str):
+        file = open(file, "r")
+        self.pheno = json.load(file)
+        file.close()
+
+    def interpretations(self):
+        if "proband" in self.pheno:
+            pheno_interpretation = self.pheno["proband"]["interpretations"]
+        else:
+            pheno_interpretation = self.pheno["interpretations"]
+        return pheno_interpretation
+
+    @staticmethod
+    def diagnosed_genes(pheno_interpretation):
+        genes = []
+        genomic_interpretations = []
+        for i in pheno_interpretation:
+            genomic_interpretations = i["diagnosis"]["genomicInterpretations"]
+        for g in genomic_interpretations:
+            gene = g["variantInterpretation"]["variationDescriptor"]["geneContext"]["symbol"]
+            genes.append(gene)
+        genes = list(set(genes))
+        return genes
+
+    @staticmethod
+    def diagnosed_variants(pheno_interpretation):
+        variants = []
+        genomic_interpretations = []
+        for i in pheno_interpretation:
+            genomic_interpretations = i["diagnosis"]["genomicInterpretations"]
+        for g in genomic_interpretations:
+            gene = defaultdict(dict)
+            gene_symbol = g["variantInterpretation"]["variationDescriptor"]["geneContext"]["symbol"]
+            variant = g["variantInterpretation"]["variationDescriptor"]["vcfRecord"]
+            gene["geneSymbol"] = gene_symbol
+            gene["variant"] = variant
+            variants.append(gene)
+        return variants
+
+
+@dataclass
+class PrioritisationRanks:
+    """ Class for keeping track of gene ranks for different runs"""
+    gene_index: int = 0
+    variant_index: int = 0
+    directory: str = ""
+    phenopacket: str = ""
+    gene: str = ""
+    variant: str = ""
+    gene_rank_comparison = defaultdict(dict)
+    variant_rank_comparison = defaultdict(dict)
+    rank: int = 0
+
+    def add_gene_rank(self):
+        self.gene_index += 1
+        self.gene_rank_comparison[self.gene_index]["Phenopacket"] = self.phenopacket
+        self.gene_rank_comparison[self.gene_index]["Gene"] = self.gene
+        self.gene_rank_comparison[self.gene_index][self.directory] = int(self.rank)
+
+    def add_variant_rank(self):
+        self.variant_index += 1
+        self.variant_rank_comparison[self.variant_index]["Phenopacket"] = self.phenopacket
+        self.variant_rank_comparison[self.variant_index]["Variant"] = self.variant
+        self.variant_rank_comparison[self.variant_index][self.directory] = self.rank
+
+    def output_gene_comparison(self, prefix: str):
+        gene_comparison = pd.DataFrame.from_dict(self.gene_rank_comparison, orient='index')
+        gene_comparison.index.name = "index"
+        gene_comparison.to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
+
+    def output_variant_comparison(self, prefix: str):
+        variant_comparison = pd.DataFrame.from_dict(self.variant_rank_comparison, orient='index')
+        variant_comparison.index.name = "index"
+        variant_comparison.to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
+
+    def output_top5_gene_comparison(self, prefix: str):
+        gene_comparison_top5 = pd.DataFrame.from_dict(self.gene_rank_comparison, orient='index')
+        gene_comparison_top5 = gene_comparison_top5[
+            ((gene_comparison_top5.iloc[:, 2:] > 0) & (gene_comparison_top5.iloc[:, 2:] <= 5)).any(axis=1)]
+        gene_comparison_top5 = gene_comparison_top5.reset_index(drop=True)
+        gene_comparison_top5.to_csv(prefix + "-top5_gene_rank_comparison.tsv", sep="\t")
+
+    def output_top5_variant_comparison(self, prefix: str):
+        variant_comparison_top5 = pd.DataFrame.from_dict(self.variant_rank_comparison, orient='index')
+        variant_comparison_top5 = variant_comparison_top5[
+            ((variant_comparison_top5.iloc[:, 2:] > 0) & (variant_comparison_top5.iloc[:, 2:] <= 5)).any(axis=1)]
+        variant_comparison_top5 = variant_comparison_top5.reset_index(drop=True)
+        variant_comparison_top5.to_csv(prefix + "-top5_variant_rank_comparison.tsv", sep="\t")
 
 
 @dataclass
@@ -16,8 +110,10 @@ class RankStats:
     top5: int = 0
     found: int = 0
     total: int = 0
+    ranks: list = field(default_factory=list)
 
     def add_rank(self, rank: int):
+        self.ranks.append(1 / rank)
         self.found += 1
         if rank == 1:
             self.top += 1
@@ -41,6 +137,9 @@ class RankStats:
     def percentage_found(self) -> float:
         return 100 * self.found / self.total
 
+    def mean_reciprocal_rank(self):
+        return mean(self.ranks)
+
 
 class RankStatsWriter:
 
@@ -49,14 +148,14 @@ class RankStatsWriter:
         self.writer = csv.writer(self.file, delimiter='\t')
         self.writer.writerow(
             ['results_directory_path', 'top', 'percentage_top', 'top3', 'percentage_top3', 'top5', 'percentage_top5',
-             'found', 'percentage_found', 'total'])
+             'found', 'percentage_found', 'total', "mean_reciprocal_rank"])
 
     def write_row(self, directory, rank_stats: RankStats):
         try:
             self.writer.writerow(
                 [directory, rank_stats.top, rank_stats.percentage_top(), rank_stats.top3, rank_stats.percentage_top3(),
                  rank_stats.top5, rank_stats.percentage_top5(), rank_stats.found, rank_stats.percentage_found(),
-                 rank_stats.total])
+                 rank_stats.total, rank_stats.mean_reciprocal_rank()])
         except IOError:
             print("Error writing ", self.file)
 
@@ -76,49 +175,8 @@ def directory_files(directory: str) -> list:
         filename = os.fsdecode(file)
         if filename.endswith(".json"):
             exomiser_json_result_list.append(filename)
+    exomiser_json_result_list.sort()
     return exomiser_json_result_list
-
-
-def diagnosed_genes(ppacket: str) -> list:
-    """ Retrieves a list of unique diagnosed genes contained within the interpretations block of a phenopacket. """
-    genomic_interpretations = []
-    with open(ppacket) as pfile:
-        genes = []
-        pheno = json.load(pfile)
-        if "proband" in pheno:
-            interpretations = pheno["proband"]["interpretations"]
-        else:
-            interpretations = pheno["interpretations"]
-        for i in interpretations:
-            genomic_interpretations = i["diagnosis"]["genomicInterpretations"]
-        for g in genomic_interpretations:
-            gene = g["variantInterpretation"]["variationDescriptor"]["geneContext"]["symbol"]
-            genes.append(gene)
-        genes = list(set(genes))
-    pfile.close()
-    return genes
-
-
-def diagnosed_variants(ppacket: str) -> list:
-    """ Returns a list of dictionaries containing both gene and variant data. """
-    with open(ppacket) as pfile:
-        variants = []
-        pheno = json.load(pfile)
-        if "proband" in pheno:
-            interpretations = pheno["proband"]["interpretations"]
-        else:
-            interpretations = pheno["interpretations"]
-        for i in interpretations:
-            genomic_interpretations = i["diagnosis"]["genomicInterpretations"]
-        for g in genomic_interpretations:
-            gene = defaultdict(dict)
-            gene_symbol = g["variantInterpretation"]["variationDescriptor"]["geneContext"]["symbol"]
-            variant = g["variantInterpretation"]["variationDescriptor"]["vcfRecord"]
-            gene["geneSymbol"] = gene_symbol
-            gene["variant"] = variant
-            variants.append(gene)
-    pfile.close()
-    return variants
 
 
 def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
@@ -154,7 +212,35 @@ def ranking(exomiser_full_path: str, ranking_method: str) -> dict:
     return ranks
 
 
-def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold, ranking_method):
+def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, ranking_method,
+                gene_ranks: PrioritisationRanks):
+    """ Assigns a simple ranking to the gene when found within the json results file.
+     Iterates through the json array in order of output from Exomiser."""
+    for g in genes:
+        rank_stats.total += 1
+        for key, info in ranks.items():
+            if g == info["geneSymbol"] and float(threshold) != 0.0:
+                if ranking_method != "pValue" and float(threshold) < float(info[ranking_method]):
+                    rank = info["rank"]
+                    gene_ranks.rank, gene_ranks.gene = rank, g
+                    rank_stats.add_rank(rank)
+                    break
+                if ranking_method == "pValue" and float(threshold) > float(info[ranking_method]):
+                    rank = info["rank"]
+                    gene_ranks.rank, gene_ranks.gene = rank, g
+                    rank_stats.add_rank(rank)
+                    break
+            if g == info["geneSymbol"] and float(threshold) == 0.0:
+                rank = info["rank"]
+                gene_ranks.rank, gene_ranks.gene = rank, g
+                rank_stats.add_rank(rank)
+                break
+            gene_ranks.rank = 0
+        gene_ranks.add_gene_rank()
+
+
+def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold, ranking_method,
+                   variant_ranks: PrioritisationRanks):
     for variant in variants:
         rank_stats.total += 1
         key, info = variant.items()
@@ -168,39 +254,26 @@ def assess_variant(ranks: dict, variants: list, rank_stats: RankStats, threshold
                             and cv["ref"] == variant["ref"] and cv["alt"] == variant["alt"] and float(threshold) != 0.0:
                         if ranking_method != "pValue" and float(threshold) < float(info1[ranking_method]):
                             rank = info1["rank"]
+                            variant_ranks.rank, variant_ranks.variant = rank, variant["chrom"] + "_" + variant[
+                                "pos"] + "_" + variant["ref"] + '_' + variant["alt"]
                             rank_stats.add_rank(rank)
                             break
                         if ranking_method == "pValue" and float(threshold) > float(info1[ranking_method]):
                             rank = info1["rank"]
+                            variant_ranks.rank, variant_ranks.variant = rank, variant["chrom"] + "_" + variant[
+                                "pos"] + "_" + variant["ref"] + '_' + variant["alt"]
                             rank_stats.add_rank(rank)
                             break
                     if variant["chrom"] == cv["contigName"] and int(cv["start"]) == int(variant["pos"]) \
                             and cv["ref"] == variant["ref"] and cv["alt"] == variant["alt"] and float(threshold) == 0.0:
                         rank = info1["rank"]
+                        variant_ranks.rank, variant_ranks.variant = rank, variant["chrom"] + "_" + variant[
+                            "pos"] + "_" + variant["ref"] + '_' + variant["alt"]
                         rank_stats.add_rank(rank)
                         break
                 break
-
-
-def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, ranking_method):
-    """ Assigns a simple ranking to the gene when found within the json results file.
-     Iterates through the json array in order of output from Exomiser."""
-    for g in genes:
-        rank_stats.total += 1
-        for key, info in ranks.items():
-            if g == info["geneSymbol"] and float(threshold) != 0.0:
-                if ranking_method != "pValue" and float(threshold) < float(info[ranking_method]):
-                    rank = info["rank"]
-                    rank_stats.add_rank(rank)
-                    break
-                if ranking_method == "pValue" and float(threshold) > float(info[ranking_method]):
-                    rank = info["rank"]
-                    rank_stats.add_rank(rank)
-                    break
-            if g == info["geneSymbol"] and float(threshold) == 0.0:
-                rank = info["rank"]
-                rank_stats.add_rank(rank)
-                break
+            variant_ranks.rank = 0
+        variant_ranks.add_variant_rank()
 
 
 @click.command()
@@ -218,23 +291,31 @@ def assess_gene(ranks: dict, genes: list, rank_stats: RankStats, threshold, rank
 def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix, threshold):
     """ Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
     from confirmed cases in phenopackets. """
-    gene_stats_writer = RankStatsWriter(output_prefix + "-gene-prioritisation.tsv")
-    variants_stats_writer = RankStatsWriter(output_prefix + "-variant-prioritisation.tsv")
+    gene_stats_writer = RankStatsWriter(output_prefix + "-gene_prioritisation.tsv")
+    variants_stats_writer = RankStatsWriter(output_prefix + "-variant_prioritisation.tsv")
     directories = open(directory_list).read().splitlines()
     for directory in directories:
+        gene_ranks = PrioritisationRanks()
+        variant_ranks = PrioritisationRanks()
+        gene_ranks.directory, variant_ranks.directory = directory, directory
         gene_rank_stats = RankStats()
         variant_rank_stats = RankStats()
         exomiser_json_results = directory_files(directory)
         for exomiser_result in exomiser_json_results:
+            variant_ranks.phenopacket, gene_ranks.phenopacket = exomiser_result, exomiser_result
             phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser.json", ".json"))
-            genes = diagnosed_genes(phenopacket)
-            variants = diagnosed_variants(phenopacket)
+            interpretations = PhenopacketReader(phenopacket).interpretations()
+            genes = PhenopacketReader.diagnosed_genes(interpretations)
+            variants = PhenopacketReader.diagnosed_variants(interpretations)
             exomiser_full_path = os.path.join(directory, exomiser_result)
             ranking_dict = ranking(exomiser_full_path, ranking_method)
-            assess_gene(ranking_dict, genes, gene_rank_stats, threshold, ranking_method)
-            assess_variant(ranking_dict, variants, variant_rank_stats, threshold, ranking_method)
+            assess_gene(ranking_dict, genes, gene_rank_stats, threshold, ranking_method, gene_ranks)
+            assess_variant(ranking_dict, variants, variant_rank_stats, threshold, ranking_method, variant_ranks)
         gene_stats_writer.write_row(directory, gene_rank_stats)
         variants_stats_writer.write_row(directory, variant_rank_stats)
-
+        gene_ranks.output_gene_comparison(output_prefix)
+        variant_ranks.output_variant_comparison(output_prefix)
+        gene_ranks.output_top5_gene_comparison(output_prefix)
+        variant_ranks.output_top5_variant_comparison(output_prefix)
     gene_stats_writer.close()
     variants_stats_writer.close()
