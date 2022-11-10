@@ -88,13 +88,13 @@ jobs:
       #----------------------------------------------
       #        run test suite + coverage report
       #----------------------------------------------
-      #- name: Generate coverage results
-      #  run: |
-      #    poetry run pip install -U pytest
-      #    poetry run coverage run -p -m pytest tests/
-      #    poetry run coverage combine
-      #    poetry run coverage xml
-      #    poetry run coverage report -m
+      - name: Generate coverage results
+        run: |
+          poetry run pip install -U pytest
+          poetry run coverage run -p -m pytest tests/
+          poetry run coverage combine
+          poetry run coverage xml
+          poetry run coverage report -m
 
       #----------------------------------------------
       #           upload coverage results
