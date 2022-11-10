@@ -11,7 +11,8 @@ import os
 import warnings
 
 warnings.filterwarnings("ignore")
-resource = OntologyResource(slug='src/pheval_benchmark/resources/obo/hp.obo', local=True)
+path_to_obo = os.path.dirname(os.path.realpath(__file__)) + "/resources/obo/hp.obo"
+resource = OntologyResource(slug=path_to_obo, local=True)
 oi = ProntoImplementation(resource)
 
 
