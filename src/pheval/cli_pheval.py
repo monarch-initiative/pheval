@@ -61,3 +61,13 @@ def run(
     output_options_file,
 ):
     print("running pheval::run command")
+
+
+def prepare_run(
+    prepare_method: str
+):
+    print("running pheval::run command")
+    # see https://stackoverflow.com/questions/67631/how-do-i-import-a-module-given-the-full-path
+    module = load_module_from_string(prepare_method)
+    runner = module.Runner()
+    runner.run()
