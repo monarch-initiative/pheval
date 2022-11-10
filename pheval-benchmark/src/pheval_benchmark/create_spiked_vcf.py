@@ -165,7 +165,7 @@ class VcfWriter(VcfReader):
 
     def construct_variant(self, variant):
         genotype_codes = {"hemizygous": "0/1", "homozygous": "1/1", "heterozygous": "0/1",
-                          "compound_heterozygous": "0/1"}
+                          "compound heterozygous": "0/1"}
         if self.chr_status is True:
             variant.chrom = "chr" + variant.chrom
         variant_data = [variant.chrom, str(variant.pos), ".", variant.ref, variant.alt,
