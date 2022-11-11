@@ -4,6 +4,7 @@ import click
 
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
+from .containers import Container
 
 info_log = logging.getLogger("info")
 
@@ -28,9 +29,21 @@ def main(verbose: int, quiet: bool) -> None:
         info_log.setLevel(level=logging.ERROR)
 
 
+container = Container()
+container.wire(packages=["pheval"])
+
+
 @click.group()
-def pheval():
-    pass
+@click.option(
+    "--runner",
+    "-r",
+    metavar="RUNNER",
+    type=click.Choice(["exomiser", "foo"]),
+    required=True,
+    help="Runner",
+)
+def pheval(runner):
+    container.config.runner.type.from_value(runner)
 
 
 @click.group()
@@ -42,6 +55,3 @@ pheval.add_command(run)
 
 pheval_utils.add_command(scramble_semsim)
 pheval_utils.add_command(scramble_phenopacket)
-
-if __name__ == "__main__":
-    main()

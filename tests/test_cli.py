@@ -20,5 +20,6 @@ class TestCommandLineInterface(unittest.TestCase):
         result = self.runner.invoke(run, ["-i", input_arg])
         err = result.stderr
         logging.info(f"ERR={err}")
-        exit_code = result.exit_code
-        self.assertEqual(0, exit_code)
+        # TODO:Inject in test as well
+        # exit_code = result.exit_code
+        self.assertEqual("", err)
