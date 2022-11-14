@@ -362,9 +362,8 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
     gene_stats_writer = RankStatsWriter(output_prefix + "-gene_summary.tsv")
     variants_stats_writer = RankStatsWriter(output_prefix + "-variant_summary.tsv")
     directories = open(directory_list).read().splitlines()
-    prioritisation_ranks = PrioritisationRanks()
     for directory in directories:
-        prioritisation_ranks.directory = directory
+        prioritisation_ranks = PrioritisationRanks(directory=directory)
         gene_rank_stats, variant_rank_stats = RankStats(), RankStats()
         exomiser_json_results = DirectoryFiles(directory, ".json").obtain_files()
         for exomiser_result in exomiser_json_results:
