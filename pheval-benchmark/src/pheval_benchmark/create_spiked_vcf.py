@@ -10,7 +10,7 @@ from click import Option, UsageError
 from phenopackets import Phenopacket
 from dataclasses import dataclass
 from google.protobuf.json_format import Parse
-from pheval_benchmark.assess_prioritisation import directory_files
+from pheval_benchmark.assess_prioritisation import DirectoryFiles
 import pheval_benchmark.create_batch_commands
 
 logging.basicConfig(filename="log.txt", filemode='w')
@@ -202,7 +202,7 @@ def create_basic_vcf(phenopacket_dir, template_vcf, vcf_dir, output_dir) -> list
         os.mkdir(os.path.join(output_dir, ''))
     except FileExistsError:
         pass
-    phenopackets = directory_files(phenopacket_dir)
+    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files()
     for phenopacket in phenopackets:
         vcf_file_name = phenopacket.replace(".json", ".vcf")
         if template_vcf is not None:
