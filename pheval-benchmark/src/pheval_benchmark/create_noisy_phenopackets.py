@@ -3,7 +3,7 @@ from oaklib.resource import OntologyResource
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from phenopackets import Phenopacket, PhenotypicFeature, OntologyClass
 from google.protobuf.json_format import Parse, MessageToJson
-from pheval_benchmark.assess_prioritisation import directory_files
+from pheval_benchmark.assess_prioritisation import DirectoryFiles
 import json
 import random
 import pathlib
@@ -125,7 +125,7 @@ def create_noisy_phenopackets(phenopacket_dir: str, max_real_id: int, number_of_
         os.mkdir(os.path.join(output_dir, ''))
     except FileExistsError:
         pass
-    phenopackets = directory_files(phenopacket_dir)
+    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files()
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
         all_phenotypic_features = separate_phenotypic_features(phenopacket_full_path)
