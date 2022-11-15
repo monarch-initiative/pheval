@@ -6,12 +6,11 @@ import os
 import random
 import logging
 from pathlib import Path
-from click import Option, UsageError
 from phenopackets import Phenopacket
 from dataclasses import dataclass
 from google.protobuf.json_format import Parse
-from pheval_benchmark.assess_prioritisation import DirectoryFiles
-import pheval_benchmark.create_batch_commands
+from pheval_benchmark.utils.utils import DirectoryFiles
+from pheval_benchmark.custom_exceptions import MutuallyExclusiveOptionError, InputError, IncompatibleGenomeAssemblyError
 
 logging.basicConfig(filename="log.txt", filemode='w')
 
@@ -24,49 +23,6 @@ genome_assemblies = {
                "7": 159138663, "8": 146364022, "9": 141213431, "10": 135534747, "11": 135006516, "12": 133851895,
                "13": 115169878, "14": 107349540, "15": 102531392, "16": 90354753, "17": 81195210, "18": 78077248,
                '19': 59128983, "20": 63025520, '21': 48129895, '22': 51304566}}
-
-
-class InputError(Exception):
-    """ Exception raised for missing required inputs."""
-
-    def __init__(self, file, message="Missing required input"):
-        self.file: str = file
-        self.message: str = message
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f'{self.message} -> {self.file} '
-
-
-class MutuallyExclusiveOptionError(Option):
-    """ Exception raised for when """
-
-    def __init__(self, *args, **kwargs):
-        self.mutually_exclusive = set(kwargs.pop('mutually_exclusive', []))
-        help_ = kwargs.get('help', '')
-        if self.mutually_exclusive:
-            ex_str = ', '.join(self.mutually_exclusive)
-            kwargs['help'] = help_ + (
-                    ' NOTE: This argument is mutually exclusive with '
-                    ' arguments: [' + ex_str + '].'
-            )
-        super(MutuallyExclusiveOptionError, self).__init__(*args, **kwargs)
-
-    def handle_parse_result(self, ctx, opts, args):
-        if self.mutually_exclusive.intersection(opts) and self.name in opts:
-            raise UsageError(
-                "Illegal usage: `{}` is mutually exclusive with "
-                "arguments `{}`.".format(
-                    self.name,
-                    ', '.join(self.mutually_exclusive)
-                )
-            )
-
-        return super(MutuallyExclusiveOptionError, self).handle_parse_result(
-            ctx,
-            opts,
-            args
-        )
 
 
 @dataclass
@@ -100,6 +56,25 @@ class PhenopacketReader:
                                       record.ref, record.alt, genotype.label)
                 all_variants.append(variant)
             return all_variants
+
+
+class BasicVcf:
+    def __init__(self, phenopacket_dir, template_vcf, vcf_dir, output_dir):
+        self.phenopacket_dir = phenopacket_dir
+        self.template_vcf = template_vcf
+        self.vcf_dir = vcf_dir
+        self.output_dir = output_dir
+
+    def create_basic_vcf(self) -> list:
+        phenopackets = DirectoryFiles(self.phenopacket_dir, ".json").obtain_files_suffix()
+        for phenopacket in phenopackets:
+            vcf_file_name = phenopacket.replace(".json", ".vcf")
+            if self.template_vcf is not None:
+                shutil.copyfile(self.template_vcf, os.path.join(self.output_dir, vcf_file_name))
+            if self.vcf_dir is not None:
+                file = random.choice(os.listdir(self.vcf_dir))
+                shutil.copyfile(file, os.path.join(self.output_dir, vcf_file_name))
+        return phenopackets
 
 
 class VcfReader:
@@ -137,10 +112,8 @@ class VcfWriter(VcfReader):
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         for variant in self.variant_info:
             if variant.assembly not in compatible_genome_assembly:
-                raise pheval_benchmark.create_batch_commands.IncompatibleGenomeAssemblyError(variant.assembly,
-                                                                                             self.vcf_name.split("/")[
-                                                                                                 1].replace(
-                                                                                                 "vcf", "json"))
+                raise IncompatibleGenomeAssemblyError(variant.assembly,
+                                                      self.vcf_name.split("/")[1].replace("vcf", "json"))
             if variant.assembly == "hg19":
                 variant.assembly = "GRCh37"
             if variant.assembly == "hg38":
@@ -196,23 +169,6 @@ class VcfWriter(VcfReader):
         file.close()
 
 
-def create_basic_vcf(phenopacket_dir, template_vcf, vcf_dir, output_dir) -> list:
-    """ Copies a template VCF file to a new output directory with the same file prefix as the phenopacket file."""
-    try:
-        os.mkdir(os.path.join(output_dir, ''))
-    except FileExistsError:
-        pass
-    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files()
-    for phenopacket in phenopackets:
-        vcf_file_name = phenopacket.replace(".json", ".vcf")
-        if template_vcf is not None:
-            shutil.copyfile(template_vcf, os.path.join(output_dir, vcf_file_name))
-        if vcf_dir is not None:
-            file = random.choice(os.listdir(vcf_dir))
-            shutil.copyfile(file, os.path.join(output_dir, vcf_file_name))
-    return phenopackets
-
-
 @click.command()
 @click.option("--phenopacket-dir", "-p", metavar='PATH', required=True, help="Path to phenopackets directory")
 @click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="FILE", required=False,
@@ -225,7 +181,11 @@ def spike_vcf(phenopacket_dir, output_dir, template_vcf=None, vcf_dir=None):
     """ Spikes variants into a template VCF file. """
     if template_vcf is None and vcf_dir is None:
         raise InputError("VCF")
-    phenopackets = create_basic_vcf(phenopacket_dir, template_vcf, vcf_dir, output_dir)
+    try:
+        os.mkdir(os.path.join(output_dir, ''))
+    except FileExistsError:
+        pass
+    phenopackets = BasicVcf(phenopacket_dir, template_vcf, vcf_dir, output_dir).create_basic_vcf()
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
         vcf_full_path = os.path.join(output_dir, phenopacket.replace(".json", ".vcf"))
