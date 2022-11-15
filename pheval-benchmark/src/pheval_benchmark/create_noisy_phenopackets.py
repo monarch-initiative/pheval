@@ -3,7 +3,7 @@ from oaklib.resource import OntologyResource
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from phenopackets import Phenopacket, PhenotypicFeature, OntologyClass
 from google.protobuf.json_format import Parse, MessageToJson
-from pheval_benchmark.assess_prioritisation import DirectoryFiles
+from pheval_benchmark.utils.utils import DirectoryFiles
 import json
 import random
 import pathlib
