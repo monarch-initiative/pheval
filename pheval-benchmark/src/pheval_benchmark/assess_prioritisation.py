@@ -4,70 +4,12 @@ import os
 import json
 import csv
 import click
-from phenopackets import Phenopacket, Family
-from google.protobuf.json_format import Parse
 from collections import defaultdict
 from dataclasses import dataclass, field
 import pandas as pd
 from statistics import mean
-
-
-class DirectoryFiles:
-    """ Class that retrieves an ordered list of relevant files from a directory"""
-
-    def __init__(self, directory: str, file_suffix: str):
-        self.directory = directory
-        self.file_suffix = file_suffix
-
-    def obtain_files(self) -> list:
-        file_list = []
-        directory_ = os.fsencode(os.path.join(self.directory, ''))
-        for file in os.listdir(directory_):
-            filename = os.fsdecode(file)
-            if filename.endswith(self.file_suffix):
-                file_list.append(filename)
-        file_list.sort()
-        return file_list
-
-
-class PhenopacketReader:
-    """ Class for reading Phenopackets and retrieving relevant data. """
-
-    def __init__(self, file: str):
-        file = open(file, "r")
-        phenopacket = json.load(file)
-        if "proband" in phenopacket:
-            self.pheno = Parse(json.dumps(phenopacket), Family())
-        else:
-            self.pheno = Parse(json.dumps(phenopacket), Phenopacket())
-        file.close()
-
-    def interpretations(self) -> list:
-        if hasattr(self.pheno, 'proband'):
-            pheno_interpretation = self.pheno.proband.interpretations
-        else:
-            pheno_interpretation = self.pheno.interpretations
-        return pheno_interpretation
-
-    @staticmethod
-    def diagnosed_genes(pheno_interpretation: list) -> list:
-        genes = []
-        for i in pheno_interpretation:
-            for g in i.diagnosis.genomic_interpretations:
-                genes.append(g.variant_interpretation.variation_descriptor.gene_context.symbol)
-        genes = list(set(genes))
-        return genes
-
-    @staticmethod
-    def diagnosed_variants(pheno_interpretation: list) -> list:
-        variants = []
-        for i in pheno_interpretation:
-            for g in i.diagnosis.genomic_interpretations:
-                variant = defaultdict(dict)
-                variant["geneSymbol"] = g.variant_interpretation.variation_descriptor.gene_context.symbol
-                variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
-                variants.append(variant)
-        return variants
+from pheval_benchmark.utils.utils import DirectoryFiles
+from pheval_benchmark.utils.phenopacket_utils import PhenopacketReader
 
 
 @dataclass
@@ -95,21 +37,17 @@ class PrioritisationRanks:
         self.variant_rank_comparison[self.variant_index]["Variant"] = self.variant
         self.variant_rank_comparison[self.variant_index][self.directory] = self.rank
 
-    def generate_output(self, prefix: str):
-        gene_comparison = pd.DataFrame.from_dict(self.gene_rank_comparison, orient='index')
-        gene_comparison['absolute_rank_difference'] = pd.Series.abs(
-            gene_comparison.iloc[:, 2] - gene_comparison.iloc[:, 3])
-        gene_comparison.to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
-        # gene_comparison_top5 = gene_comparison[
-        #     ((gene_comparison.iloc[:, 2:] > 0) & (gene_comparison.iloc[:, 2:] <= 5)).any(axis=1)]
-        # gene_comparison_top5.to_csv(prefix + "-top5_gene_rank_comparison.tsv", sep="\t")
-        variant_comparison = pd.DataFrame.from_dict(self.variant_rank_comparison, orient='index')
-        variant_comparison['absolute_rank_difference'] = pd.Series.abs(
-            variant_comparison.iloc[:, 2] - variant_comparison.iloc[:, 3])
-        variant_comparison.to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
-        # variant_comparison_top5 = variant_comparison[
-        #     ((variant_comparison.iloc[:, 2:] > 0) & (variant_comparison.iloc[:, 2:] <= 5)).any(axis=1)]
-        # variant_comparison_top5.to_csv(prefix + "-top5_variant_rank_comparison.tsv", sep="\t")
+    def generate_dataframes(self):
+        return pd.DataFrame.from_dict(self.gene_rank_comparison, orient='index'), pd.DataFrame.from_dict(
+            self.variant_rank_comparison, orient='index')
+
+    @staticmethod
+    def generate_output(gene_ranks, variant_ranks, prefix):
+        gene_ranks['absolute_rank_difference'] = pd.Series.abs(gene_ranks.iloc[:, 2] - gene_ranks.iloc[:, 3])
+        gene_ranks.to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
+        variant_ranks['absolute_rank_difference'] = pd.Series.abs(
+            variant_ranks.iloc[:, 2] - variant_ranks.iloc[:, 3])
+        variant_ranks.to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
 
 
 @dataclass
@@ -362,10 +300,11 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
     gene_stats_writer = RankStatsWriter(output_prefix + "-gene_summary.tsv")
     variants_stats_writer = RankStatsWriter(output_prefix + "-variant_summary.tsv")
     directories = open(directory_list).read().splitlines()
+    gene_ranks, variant_ranks = None, None
     for directory in directories:
         prioritisation_ranks = PrioritisationRanks(directory=directory)
         gene_rank_stats, variant_rank_stats = RankStats(), RankStats()
-        exomiser_json_results = DirectoryFiles(directory, ".json").obtain_files()
+        exomiser_json_results = DirectoryFiles(directory, ".json").obtain_files_suffix()
         for exomiser_result in exomiser_json_results:
             prioritisation_ranks.phenopacket = exomiser_result
             phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser.json", ".json"))
@@ -380,6 +319,7 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
             assess.assess_variant(variant_rank_stats)
         gene_stats_writer.write_row(directory, gene_rank_stats)
         variants_stats_writer.write_row(directory, variant_rank_stats)
-    prioritisation_ranks.generate_output(output_prefix)
+        gene_ranks, variant_ranks = prioritisation_ranks.generate_dataframes()
+    PrioritisationRanks.generate_output(gene_ranks, variant_ranks, output_prefix)
     gene_stats_writer.close()
     variants_stats_writer.close()
