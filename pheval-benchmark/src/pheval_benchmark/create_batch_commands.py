@@ -106,7 +106,7 @@ class CreateBatchFiles:
 @click.option("--phenopacket-dir", "-p",
               required=True, metavar='PATH',
               help="Path to phenopackets.")
-@click.option("--vcfs", "-v",
+@click.option("--vcf-dir", "-v",
               required=True, metavar='PATH',
               help="Path to VCF files.")
 @click.option("--batch-prefix", "-b",
@@ -123,13 +123,13 @@ class CreateBatchFiles:
               mutually_exclusive=["output_options_dir"],
               required=False, metavar='FILE',
               help="Path to the output options file. ")
-def prepare_exomiser_batch(analysis, phenopacket_dir, vcfs, batch_prefix, max_jobs, output_options_dir=None,
+def prepare_exomiser_batch(analysis, phenopacket_dir, vcf_dir, batch_prefix, max_jobs, output_options_dir=None,
                            output_options_file=None):
     """ Generate Exomiser batch files. """
     vcf, genome_assembly = [], []
     ppackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_full_path()
     for ppacket in ppackets:
-        vcf_file, assembly = PhenopacketReader(ppacket).vcf_file_data(vcfs)
+        vcf_file, assembly = PhenopacketReader(ppacket).vcf_file_data(vcf_dir)
         vcf.append(vcf_file)
         genome_assembly.append(assembly)
     if output_options_dir is not None:
