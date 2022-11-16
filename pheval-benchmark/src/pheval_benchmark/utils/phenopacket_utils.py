@@ -25,7 +25,19 @@ class PhenopacketReader:
         else:
             pheno_interpretation = self.pheno.interpretations
         return pheno_interpretation
-
+    
+    def variants(self) -> list:
+        all_variants = []
+        interpretation = self.interpretations()
+        for i in interpretation:
+            for g in i.diagnosis.genomic_interpretations:
+                record = g.variant_interpretation.variation_descriptor.vcf_record
+                genotype = g.variant_interpretation.variation_descriptor.allelic_state
+                variant = ProbandData(self.pheno.subject.id, record.genome_assembly, "chr" + record.chrom, record.pos,
+                                      record.ref, record.alt, genotype.label)
+                all_variants.append(variant)
+        return all_variants
+    
     def files(self) -> list:
         return self.pheno.files
 
