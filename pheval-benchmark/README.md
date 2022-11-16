@@ -21,22 +21,29 @@ poetry install
 Details on commands:
 
 ```
+
 python src/pheval_benchmark/cli.py
+
 ```
 or
 
 ```
+
 poetry run pheval
+
 ```
 or
 
 ```
+
 pheval
+
 ```
 
 To create spiked VCF files for disease phenopackets:
 
 ```
+
 pheval spike-vcf --phenopacket-dir src/pheval_benchmark/resources/disease_phenopackets --template-vcf template_exome_vcf_hg19.vcf.gz --output-dir spiked_vcf
 
 ```
@@ -55,6 +62,7 @@ To create batch files to run with Exomiser:
 Example:
 
 ```
+
 pheval prepare-exomiser-batch --analysis PATH/TO/ANALYSIS/YML --phenopacket-dir src/pheval_benchmark/resources/disease_phenopackets --vcf-dir PATH/TO/SPIKED/VCF/DIR --batch-prefix Exomiser-run
 
 ```
@@ -64,6 +72,7 @@ To analyse the prioritisation of two Exomiser runs:
 Example:
 
 ```
+
 pheval assess-prioritisation --directory-list /PATH/TO/LIST/OF/DIRECTORIES --phenopacket-dir src/pheval_benchmark/resources/disease_phenopackets --output-prefix Comparison
 
 ```
