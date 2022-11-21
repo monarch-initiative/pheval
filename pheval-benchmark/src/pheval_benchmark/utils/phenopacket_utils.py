@@ -1,13 +1,29 @@
 import json
 import os
 from collections import defaultdict
-from phenopackets import Phenopacket, Family
+from dataclasses import dataclass
+
 from google.protobuf.json_format import Parse
-from pheval_benchmark.custom_exceptions import IncompatibleGenomeAssemblyError, IncorrectFileFormatError
+from phenopackets import Family, Phenopacket
+
+from pheval_benchmark.custom_exceptions import (
+    IncompatibleGenomeAssemblyError, IncorrectFileFormatError)
+
+
+@dataclass
+class CausativeVariant:
+    phenopacket: str
+    proband_id: str
+    assembly: str
+    chrom: str
+    pos: str
+    ref: str
+    alt: str
+    genotype: str
 
 
 class PhenopacketReader:
-    """ Class for reading Phenopackets and retrieving relevant data. """
+    """Class for reading Phenopackets and retrieving relevant data."""
 
     def __init__(self, file: str):
         self.file_name = file
@@ -19,25 +35,49 @@ class PhenopacketReader:
             self.pheno = Parse(json.dumps(phenopacket), Phenopacket())
         file.close()
 
+    def phenotypic_features(self) -> list:
+        if hasattr(self.pheno, "proband"):
+            all_phenotypic_features = self.pheno.proband.phenotypic_features
+        else:
+            all_phenotypic_features = self.pheno.phenotypic_features
+        return all_phenotypic_features
+
+    def remove_excluded_phenotypic_features(self) -> dict:
+        phenotypic_features = {}
+        all_phenotypic_features = self.phenotypic_features()
+        for p in all_phenotypic_features:
+            if p.excluded:
+                continue
+            phenotypic_features[p.type.id] = p.type.label
+        return phenotypic_features
+
     def interpretations(self) -> list:
-        if hasattr(self.pheno, 'proband'):
+        if hasattr(self.pheno, "proband"):
             pheno_interpretation = self.pheno.proband.interpretations
         else:
             pheno_interpretation = self.pheno.interpretations
         return pheno_interpretation
-    
-    def variants(self) -> list:
+
+    def causative_variants(self) -> list[CausativeVariant]:
         all_variants = []
         interpretation = self.interpretations()
         for i in interpretation:
             for g in i.diagnosis.genomic_interpretations:
                 record = g.variant_interpretation.variation_descriptor.vcf_record
                 genotype = g.variant_interpretation.variation_descriptor.allelic_state
-                variant = ProbandData(self.pheno.subject.id, record.genome_assembly, "chr" + record.chrom, record.pos,
-                                      record.ref, record.alt, genotype.label)
+                variant = CausativeVariant(
+                    self.file_name,
+                    self.pheno.subject.id,
+                    record.genome_assembly,
+                    record.chrom,
+                    record.pos,
+                    record.ref,
+                    record.alt,
+                    genotype.label,
+                )
                 all_variants.append(variant)
         return all_variants
-    
+
     def files(self) -> list:
         return self.pheno.files
 
@@ -50,7 +90,7 @@ class PhenopacketReader:
             if file.file_attributes["fileFormat"].upper() == "VCF":
                 vcf_path = file.uri
                 if "/" in vcf_path:
-                    vcf_name = vcf_path.rsplit('/')[-1]
+                    vcf_name = vcf_path.rsplit("/")[-1]
                 if "/" not in vcf_path:
                     vcf_name = vcf_path
             if not vcf_name.endswith(".vcf") and not vcf_name.endswith(".vcf.gz"):
@@ -67,7 +107,9 @@ class PhenopacketReader:
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(g.variant_interpretation.variation_descriptor.gene_context.symbol)
+                genes.append(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol
+                )
         genes = list(set(genes))
         return genes
 
@@ -77,7 +119,11 @@ class PhenopacketReader:
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
                 variant = defaultdict(dict)
-                variant["geneSymbol"] = g.variant_interpretation.variation_descriptor.gene_context.symbol
-                variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
+                variant[
+                    "geneSymbol"
+                ] = g.variant_interpretation.variation_descriptor.gene_context.symbol
+                variant[
+                    "variant"
+                ] = g.variant_interpretation.variation_descriptor.vcf_record
                 variants.append(variant)
         return variants

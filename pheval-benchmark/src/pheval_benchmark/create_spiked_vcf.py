@@ -1,18 +1,19 @@
 #!/usr/bin/python
 import click
 import shutil
-import json
 import os
 import random
 import logging
-from pathlib import Path
-from phenopackets import Phenopacket
 from dataclasses import dataclass
-from google.protobuf.json_format import Parse
 from pheval_benchmark.utils.utils import DirectoryFiles
+from pheval_benchmark.utils.phenopacket_utils import PhenopacketReader, CausativeVariant
 from pheval_benchmark.custom_exceptions import MutuallyExclusiveOptionError, InputError, IncompatibleGenomeAssemblyError
 
-logging.basicConfig(filename="log.txt", filemode='w')
+logger = logging.getLogger(__name__)
+ch = logging.StreamHandler()
+fh = logging.FileHandler(r'pheval_logger.txt')
+logger.addHandler(ch)
+logger.addHandler(fh)
 
 genome_assemblies = {
     "GRCh38": {"1": 248956422, "2": 242193529, "3": 198295559, "4": 190214555, "5": 181538259, "6": 170805979,
@@ -26,145 +27,108 @@ genome_assemblies = {
 
 
 @dataclass
-class ProbandData:
-    proband_id: str
+class VcfHeader:
+    sample_id: str
     assembly: str
-    chrom: str
-    pos: str
-    ref: str
-    alt: str
-    genotype: str
+    chr_status: bool
 
 
-class PhenopacketReader:
-
-    def __init__(self, file: str):
-        file_name = Path(file).name
-        self.vcf_file_name = file_name.replace(".json", ".vcf")
-        with open(file) as f:
-            ppacket = json.load(f)
-        f.close()
-        self.ppacket = Parse(json.dumps(ppacket), Phenopacket())
-
-    def extract_data(self):
-        all_variants = []
-        for i in self.ppacket.interpretations:
-            for g in i.diagnosis.genomic_interpretations:
-                record = g.variant_interpretation.variation_descriptor.vcf_record
-                genotype = g.variant_interpretation.variation_descriptor.allelic_state
-                variant = ProbandData(self.ppacket.subject.id, record.genome_assembly, "chr" + record.chrom, record.pos,
-                                      record.ref, record.alt, genotype.label)
-                all_variants.append(variant)
-            return all_variants
+class VcfPicker:
+    def __init__(self, template_vcf, vcf_dir):
+        if template_vcf is not None:
+            self.vcf_file = template_vcf
+        if vcf_dir is not None:
+            self.vcf_file = random.choice(os.listdir(vcf_dir))
 
 
-class BasicVcf:
-    def __init__(self, phenopacket_dir, template_vcf, vcf_dir, output_dir):
-        self.phenopacket_dir = phenopacket_dir
-        self.template_vcf = template_vcf
-        self.vcf_dir = vcf_dir
-        self.output_dir = output_dir
+class VcfParser:
+    def __init__(self, template_vcf_file: str):
+        self.vcf_file = open(template_vcf_file)
 
-    def create_basic_vcf(self) -> list:
-        phenopackets = DirectoryFiles(self.phenopacket_dir, ".json").obtain_files_suffix()
-        for phenopacket in phenopackets:
-            vcf_file_name = phenopacket.replace(".json", ".vcf")
-            if self.template_vcf is not None:
-                shutil.copyfile(self.template_vcf, os.path.join(self.output_dir, vcf_file_name))
-            if self.vcf_dir is not None:
-                file = random.choice(os.listdir(self.vcf_dir))
-                shutil.copyfile(file, os.path.join(self.output_dir, vcf_file_name))
-        return phenopackets
-
-
-class VcfReader:
-    def __init__(self, file: str):
-        self.file = open(file)
-
-    def extract_sample_id(self):
-        template_vcf_sample_id: str = ""
-        for line in self.file:
+    def parse_header(self) -> VcfHeader:
+        assembly_dict = {}
+        sample_id = ""
+        chr_status = False
+        for line in self.vcf_file:
+            if line.startswith("##contig=<ID"):
+                line_split = line.split(",")
+                chromosome = line_split[0].split("=")[2]
+                if "chr" in chromosome:
+                    chr_status = True
+                    chromosome = chromosome.replace("chr", "")
+                length = line_split[1].split("=")[1]
+                assembly_dict[chromosome] = int(length)
+                assembly_dict = {i: assembly_dict[i] for i in assembly_dict if i.isdigit()}
             if line.startswith("#CHROM"):
-                template_vcf_sample_id = line.split("\t")[9].rstrip()
-                break
-        self.file.seek(0)
-        return template_vcf_sample_id
-
-    def close_file(self):
-        try:
-            self.file.close()
-        except IOError:
-            print("Error closing ", self.file)
+                sample_id = line.split("\t")[9].rstrip()
+        assembly = [k for k, v in genome_assemblies.items() if v == assembly_dict][0]
+        self.vcf_file.close()
+        return VcfHeader(sample_id, assembly, chr_status)
 
 
-class VcfWriter(VcfReader):
-    def __init__(self, copied_vcf: str, list_of_proband_data):
-        super().__init__(copied_vcf)
-        self.sample_id = self.extract_sample_id()
-        self.text = self.file.readlines()
-        self.variant_info = list_of_proband_data
-        self.vcf_name = copied_vcf
-        self.updated_vcf = []
-        self.chr_status = False
+class ProbandVariantChecker:
+    def __init__(self, list_of_variant_proband_data: list[CausativeVariant], vcf_header: VcfHeader):
+        self.list_of_variant_proband_data = list_of_variant_proband_data
+        self.vcf_header = vcf_header
+        self.compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
 
-    def check_variants(self):
+    def check_variant_assembly(self) -> list[CausativeVariant]:
         incorrect_variants = []
-        compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        for variant in self.variant_info:
-            if variant.assembly not in compatible_genome_assembly:
-                raise IncompatibleGenomeAssemblyError(variant.assembly,
-                                                      self.vcf_name.split("/")[1].replace("vcf", "json"))
-            if variant.assembly == "hg19":
-                variant.assembly = "GRCh37"
-            if variant.assembly == "hg38":
-                variant.assembly = "GRCh38"
-            for line in self.text:
-                if line.startswith("##contig=<ID"):
-                    line = line.split(",")
-                    if "chr" in line[0]:
-                        self.chr_status = True
-                    chromosome = line[0].split("=")[2]
-                    length = line[1].split("=")[1]
-                    try:
-                        if self.chr_status:
-                            chromosome = chromosome.replace("chr", "")
-                        if genome_assemblies[variant.assembly][chromosome] == int(length):
-                            pass
-                        else:
-                            incorrect_variants.append(variant)
-                    except KeyError:
-                        pass
+        for variant in self.list_of_variant_proband_data:
+            if variant.assembly not in self.compatible_genome_assembly:
+                raise IncompatibleGenomeAssemblyError(variant.assembly, variant.phenopacket)
+            if variant.assembly != self.vcf_header.assembly:
+                incorrect_variants.append(variant)
         return incorrect_variants
 
-    def construct_variant(self, variant):
+
+class VcfWriter:
+    def __init__(self, phenopacket: str, phenopacket_dir: str, vcf_file: str, output_dir: str,
+                 list_of_variant_proband_data: list[CausativeVariant], vcf_header: VcfHeader):
+        self.phenopacket = phenopacket
+        self.phenopacket_dir = phenopacket_dir
+        self.vcf_file = vcf_file
+        self.output_dir = output_dir
+        self.list_of_proband_variant_data = list_of_variant_proband_data
+        self.vcf_header = vcf_header
+        self.proband_vcf_file_name = os.path.join(self.output_dir, self.phenopacket.replace(".json", ".vcf"))
+
+    def copy_template_vcf(self) -> None:
+        shutil.copyfile(self.vcf_file, self.proband_vcf_file_name)
+
+    def construct_variant(self, variant: CausativeVariant) -> list[str]:
         genotype_codes = {"hemizygous": "0/1", "homozygous": "1/1", "heterozygous": "0/1",
                           "compound heterozygous": "0/1"}
-        if self.chr_status is True:
+        if self.vcf_header.chr_status is True:
             variant.chrom = "chr" + variant.chrom
         variant_data = [variant.chrom, str(variant.pos), ".", variant.ref, variant.alt,
                         "100", "PASS", "SPIKED_VARIANT_" + variant.genotype.upper(), "GT:AD:DP:GQ:PL",
                         genotype_codes[variant.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n"]
         return variant_data
 
-    def construct_records(self):
-        for variant in self.variant_info:
+    def construct_vcf_records(self) -> list[str]:
+        vcf_file = open(self.vcf_file)
+        vcf_contents = vcf_file.readlines()
+        vcf_file.close()
+        for variant in self.list_of_proband_variant_data:
             variant = self.construct_variant(variant)
-            locs = [i for i, val in enumerate(self.text) if
+            locs = [i for i, val in enumerate(vcf_contents) if
                     val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])][-1] + 1
-            self.text.insert(locs, "\t".join(variant))
-        return self.text
+            vcf_contents.insert(locs, "\t".join(variant))
+        return vcf_contents
 
-    def construct_header(self):
-        updated_records = self.construct_records()
+    def construct_header(self) -> list[str]:
+        updated_vcf = []
+        updated_records = self.construct_vcf_records()
         for line in updated_records:
-            text = line.replace(self.sample_id, self.variant_info[0].proband_id)
-            self.updated_vcf.append(text)
-        return self.updated_vcf
+            text = line.replace(self.vcf_header.sample_id, self.list_of_proband_variant_data[0].proband_id)
+            updated_vcf.append(text)
+        return updated_vcf
 
-    def write_vcf(self):
+    def write_vcf(self) -> None:
+        self.copy_template_vcf()
         new_vcf = self.construct_header()
-        self.close_file()
-        with open(self.vcf_name, 'w') as file:
+        with open(self.proband_vcf_file_name, 'w') as file:
             file.writelines(new_vcf)
         file.close()
 
@@ -185,14 +149,18 @@ def spike_vcf(phenopacket_dir, output_dir, template_vcf=None, vcf_dir=None):
         os.mkdir(os.path.join(output_dir, ''))
     except FileExistsError:
         pass
-    phenopackets = BasicVcf(phenopacket_dir, template_vcf, vcf_dir, output_dir).create_basic_vcf()
+    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_suffix()
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
-        vcf_full_path = os.path.join(output_dir, phenopacket.replace(".json", ".vcf"))
-        phenopacket_data = PhenopacketReader(phenopacket_full_path)
-        phenopacket_proband_data = phenopacket_data.extract_data()
-        incorrect_variants = VcfWriter(vcf_full_path, phenopacket_proband_data).check_variants()
-        if incorrect_variants:
-            logging.error(f'Proband variant does not match Human Genome Build of VCF.: {phenopacket}')
+        phenopacket_proband_variant_data = PhenopacketReader(phenopacket_full_path).causative_variants()
+        chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
+        vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
+        incompatible_variants = ProbandVariantChecker(phenopacket_proband_variant_data,
+                                                      vcf_header).check_variant_assembly()
+        if len(incompatible_variants) != 0:
+            for incompatible_variant in incompatible_variants:
+                logger.error(f' Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket}. '
+                             f' Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}')
             continue
-        VcfWriter(vcf_full_path, phenopacket_proband_data).write_vcf()
+        VcfWriter(phenopacket, phenopacket_dir, chosen_template_vcf.vcf_file, output_dir,
+                  phenopacket_proband_variant_data, vcf_header).write_vcf()
