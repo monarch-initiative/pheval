@@ -22,6 +22,11 @@ coverage = "^6.5.0"
 pheval = "pheval.cli:pheval"
 pheval-utils = "pheval.cli:pheval_utils"
 
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
