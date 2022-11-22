@@ -3,8 +3,8 @@ from oaklib.resource import OntologyResource
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from phenopackets import Phenopacket, PhenotypicFeature, OntologyClass, Family
 from google.protobuf.json_format import MessageToJson
-from pheval_benchmark.utils.utils import DirectoryFiles
-from pheval_benchmark.utils.phenopacket_utils import PhenopacketReader
+from pheval.utils.file_utils import DirectoryFiles
+from pheval.utils.phenopacket_utils import PhenopacketReader
 import random
 import pathlib
 import os
@@ -12,21 +12,20 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-path_to_obo = os.path.dirname(os.path.realpath(__file__)) + "/resources/obo/hp.obo"
-resource = OntologyResource(slug=path_to_obo, local=True)
-ontology = ProntoImplementation(resource)
-entities = list(ontology.entities())
-clean_entities = [x for x in entities if "HP:" in x and "HP:0034334" not in x]
-
 
 class RandomisePhenopackets:
     """ Randomises the Phenopacket phenotype. """
-    def __init__(self, phenotypic_features: dict, number_of_real_id: int, number_of_changed_terms: int,
+    def __init__(self, ontology, phenotypic_features: dict, number_of_real_id: int, number_of_changed_terms: int,
                  number_of_random_terms: int):
+        self.ontology = ontology
         self.phenotypic_features = phenotypic_features
         self.number_of_real_id = number_of_real_id
         self.number_of_changed_terms = number_of_changed_terms
         self.number_of_random_terms = number_of_random_terms
+
+    def create_clean_entities(self):
+        entities = list(self.ontology.entities())
+        return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
 
     def max_real_patient_id(self) -> dict:
         phenotypic_features = list(self.phenotypic_features.items())
@@ -47,26 +46,27 @@ class RandomisePhenopackets:
         parent = {}
         for p in parent_hpo:
             try:
-                parent_id = ontology.hierararchical_parents(p[0])[0]
-                rels = ontology.entity_alias_map(parent_id)
+                parent_id = self.ontology.hierararchical_parents(p[0])[0]
+                rels = self.ontology.entity_alias_map(parent_id)
                 parent_term = rels[(list(rels.keys())[0])]
                 parent_term = ''.join(parent_term)
                 parent[parent_id] = parent_term
             except IndexError:
-                obsolete = ontology.entity_metadata_map(p[0])
+                obsolete = self.ontology.entity_metadata_map(p[0])
                 updated_term = list(obsolete.values())[0][0]
-                parent_id = ontology.hierararchical_parents(updated_term)[0]
-                rels = ontology.entity_alias_map(parent_id)
+                parent_id = self.ontology.hierararchical_parents(updated_term)[0]
+                rels = self.ontology.entity_alias_map(parent_id)
                 parent_term = rels[(list(rels.keys())[0])]
                 parent_term = ''.join(parent_term)
                 parent[parent_id] = parent_term
         return parent
 
     def random_hpo_terms(self) -> dict:
+        clean_entities = self.create_clean_entities()
         random_id = list(random.sample(clean_entities, self.number_of_random_terms))
         random_id_dict = {}
         for r in random_id:
-            rels = ontology.entity_alias_map(r)
+            rels = self.ontology.entity_alias_map(r)
             random_term = rels[(list(rels.keys())[0])]
             random_term = ''.join(random_term)
             random_id_dict[r] = random_term
@@ -136,11 +136,14 @@ def create_noisy_phenopackets(phenopacket_dir: str, max_real_id: int,
     except FileExistsError:
         pass
     phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_suffix()
+    path_to_obo = os.path.dirname(os.path.realpath(__file__)).replace("prepare", "resources/obo/hp.obo")
+    resource = OntologyResource(slug=path_to_obo, local=True)
+    ontology = ProntoImplementation(resource)
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
         phenopacket_contents = PhenopacketReader(phenopacket_full_path)
         phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
-        new_hpo_terms = RandomisePhenopackets(phenotypic_features, max_real_id, number_of_parent_terms,
+        new_hpo_terms = RandomisePhenopackets(ontology, phenotypic_features, max_real_id, number_of_parent_terms,
                                               number_of_random_terms).combine_hpo_terms()
         output_file = os.path.join(output_dir, pathlib.Path(phenopacket).stem + "-" + output_file_suffix + pathlib.Path(
             phenopacket).suffix)
