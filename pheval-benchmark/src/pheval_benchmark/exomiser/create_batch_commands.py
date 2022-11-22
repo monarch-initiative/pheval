@@ -3,6 +3,7 @@
 import os
 import click
 import tempfile
+from pathlib import Path
 
 from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError
 from pheval.utils.file_utils import DirectoryFiles
@@ -102,13 +103,13 @@ class CreateBatchFiles:
 
 @click.command()
 @click.option("--analysis", "-a",
-              required=True, metavar='FILE',
+              required=True, metavar='FILE', type=Path,
               help="Path to the analysis .yml file.")
 @click.option("--phenopacket-dir", "-p",
-              required=True, metavar='PATH',
+              required=True, metavar='PATH', type=Path,
               help="Path to phenopackets.")
 @click.option("--vcf-dir", "-v",
-              required=True, metavar='PATH',
+              required=True, metavar='PATH', type=Path,
               help="Path to VCF files.")
 @click.option("--batch-prefix", "-b",
               required=True, metavar='TEXT',
@@ -118,14 +119,14 @@ class CreateBatchFiles:
               help="Number of jobs in each file.")
 @click.option("--output-options-dir", "-O", cls=MutuallyExclusiveOptionError,
               mutually_exclusive=["output_options_file"],
-              required=False, metavar='PATH',
+              required=False, metavar='PATH', type=Path,
               help="Path to the output options directory. ")
 @click.option("--output-options-file", "-o", cls=MutuallyExclusiveOptionError,
               mutually_exclusive=["output_options_dir"],
-              required=False, metavar='FILE',
+              required=False, metavar='FILE', type=Path,
               help="Path to the output options file. ")
-def prepare_exomiser_batch(analysis, phenopacket_dir, vcf_dir, batch_prefix, max_jobs, output_options_dir=None,
-                           output_options_file=None):
+def prepare_exomiser_batch(analysis: Path, phenopacket_dir: Path, vcf_dir: Path, batch_prefix, max_jobs,
+                           output_options_dir: Path = None, output_options_file: Path = None):
     """ Generate Exomiser batch files. """
     vcf, genome_assembly = [], []
     ppackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_full_path()
