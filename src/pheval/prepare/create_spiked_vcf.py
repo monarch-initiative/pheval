@@ -6,13 +6,14 @@ import random
 import logging
 from pathlib import Path
 from dataclasses import dataclass
-from pheval.utils.file_utils import DirectoryFiles
 from pheval.utils.phenopacket_utils import PhenopacketReader, CausativeVariant, IncompatibleGenomeAssemblyError
 from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError, InputError
 
+from src.pheval.utils.file_utils import files_with_suffix
+
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()
-fh = logging.FileHandler(r'pheval_logger.txt')
+fh = logging.FileHandler(r'pheval.log')
 logger.addHandler(ch)
 logger.addHandler(fh)
 
@@ -133,19 +134,12 @@ class VcfSpiker:
         file.close()
 
 
-@click.command()
-@click.option("--phenopacket", "-p", metavar='FILE', required=True, help="Path to phenopacket file", type=Path)
-@click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="FILE", required=False,
-              help="Template VCF file", mutually_exclusive=["vcf_dir"], type=Path)
-@click.option("--vcf-dir", "-v", cls=MutuallyExclusiveOptionError, metavar="PATH",
-              help="Directory containing template VCF files", mutually_exclusive=["template_vcf"], type=Path)
-@click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
-              default="vcf", type=Path)
-def create_spiked_vcf(phenopacket: Path, output_dir: Path, template_vcf=None, vcf_dir=None):
-    print(phenopacket, output_dir, template_vcf, vcf_dir)
+def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
+    # this is a separate function to a click command as it will fail if annotated with click annotations
+    # and referenced from another click command
+    if template_vcf is None and vcf_dir is None:
+        raise InputError("Either a template_vcf or vcf_dir must be specified")
     try:
-        # TODO update with path api
-        # os.mkdir(os.path.join(output_dir, ''))
         output_dir.mkdir()
         logger.info(f" Created a directory {output_dir}")
     except FileExistsError:
@@ -168,6 +162,18 @@ def create_spiked_vcf(phenopacket: Path, output_dir: Path, template_vcf=None, vc
 
 
 @click.command()
+@click.option("--phenopacket", "-p", metavar='FILE', required=True, help="Path to phenopacket file", type=Path)
+@click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="FILE", required=False,
+              help="Template VCF file", mutually_exclusive=["vcf_dir"], type=Path)
+@click.option("--vcf-dir", "-v", cls=MutuallyExclusiveOptionError, metavar="PATH",
+              help="Directory containing template VCF files", mutually_exclusive=["template_vcf"], type=Path)
+@click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
+              default="vcf", type=Path)
+def create_spiked_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
+    spike_vcf(phenopacket, output_dir, template_vcf, vcf_dir)
+
+
+@click.command()
 @click.option("--phenopacket-dir", "-p", metavar='PATH', required=True, help="Path to phenopackets directory", type=Path)
 @click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="PATH", required=False,
               help="Template VCF file", mutually_exclusive=["vcf_dir"], type=Path)
@@ -177,25 +183,8 @@ def create_spiked_vcf(phenopacket: Path, output_dir: Path, template_vcf=None, vc
               default="vcf", type=Path)
 def create_spiked_vcfs(phenopacket_dir: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
     """ Spikes variants into a template VCF file. """
-    if template_vcf is None and vcf_dir is None:
-        raise InputError("VCF")
-    try:
-        os.mkdir(os.path.join(output_dir, ''))
-    except FileExistsError:
-        pass
-    phenopackets = [path for path in phenopacket_dir.iterdir() if path.suffix == ".json"]
-    for phenopacket in phenopackets:
-        # phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
-        create_spiked_vcf(phenopacket, output_dir, template_vcf, vcf_dir)
-        # phenopacket_proband_variant_data = PhenopacketReader(phenopacket_full_path).causative_variants()
-        # chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
-        # vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
-        # incompatible_variants = ProbandVariantChecker(phenopacket_proband_variant_data,
-        #                                               vcf_header).check_variant_assembly()
-        # if len(incompatible_variants) != 0:
-        #     for incompatible_variant in incompatible_variants:
-        #         logger.error(f' Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket}. '
-        #                      f' Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}')
-        #     continue
-        # VcfSpiker(phenopacket, chosen_template_vcf.vcf_file, output_dir,
-        #           phenopacket_proband_variant_data, vcf_header).write_vcf()
+    for phenopacket in files_with_suffix(phenopacket_dir, ".json"):
+        spike_vcf(phenopacket, output_dir, template_vcf, vcf_dir)
+
+    # or made a lambda one-liner for maximum wtf...
+    # [spike_vcf(path, output_dir, template_vcf, vcf_dir) for path in phenopacket_dir.iterdir() if path.suffix == ".json"]
