@@ -3,10 +3,10 @@ class PhEvalRunner:
         """PhEvalRunner"""
 
     def prepare(self):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def run(self):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def post_process(self):
-        raise NotImplementedError()
+        raise NotImplementedError
