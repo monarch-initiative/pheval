@@ -1,6 +1,19 @@
 import os
+from pathlib import Path
+
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
+
+def files_with_suffix(dir: Path, suffix: str):
+    files = [path for path in dir.iterdir() if path.suffix == suffix]
+    files.sort()
+    return files
+
+
+def all_files(dir: Path) -> list[Path]:
+    files = [path for path in dir.iterdir()]
+    files.sort()
+    return files
 
 class DirectoryFiles:
     """ Class that retrieves an ordered list of relevant files from a directory"""
