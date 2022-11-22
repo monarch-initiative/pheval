@@ -7,12 +7,12 @@ from google.protobuf.timestamp_pb2 import Timestamp
 from oaklib.implementations.pronto.pronto_implementation import \
     ProntoImplementation
 from oaklib.resource import OntologyResource
-from pheval_benchmark.utils.utils import DirectoryFiles
-from phenopackets import (Diagnosis, Disease, Family, File, GeneDescriptor,
+from phenopackets import (Diagnosis, Family, File, GeneDescriptor,
                           GenomicInterpretation, Individual, Interpretation,
                           MetaData, OntologyClass, Pedigree, Phenopacket,
                           PhenotypicFeature, Resource, VariantInterpretation,
                           VariationDescriptor, VcfRecord)
+from pheval_benchmark.utils.utils import DirectoryFiles
 
 path_to_obo = os.path.dirname(os.path.realpath(__file__)).replace(
     "/exomiser", "/resources/obo/hp.obo"
@@ -31,7 +31,7 @@ class YamlToFamilyPhenopacketConversion:
         yaml_job_file.close()
         self.output_file = file.replace("yml", "json")
         with open(
-            os.path.dirname(os.path.realpath(__file__)) + "/hgnc_complete_set.txt"
+                os.path.dirname(os.path.realpath(__file__)) + "/hgnc_complete_set.txt"
         ) as gene_set:
             self.gene_id_symbol = {}
             next(gene_set)
@@ -101,7 +101,7 @@ class YamlToFamilyPhenopacketConversion:
         int_id = self.job_file["analysis"]["proband"] + "-interpretation"
         interpretations = []
         with open(
-            self.diagnoses
+                self.diagnoses
         ) as di:  # the diagnosed genes file
             genomic_interpretations = []
             for line in di:
@@ -181,10 +181,10 @@ class YamlToFamilyPhenopacketConversion:
                         )
                         variation_descriptor = VariationDescriptor(
                             id=self.job_file["analysis"]["proband"]
-                            + ":"
-                            + l[3]
-                            + ":"
-                            + l[4],
+                               + ":"
+                               + l[3]
+                               + ":"
+                               + l[4],
                             gene_context=gene_context,
                             vcf_record=vcf_record,
                             allelic_state=allelic_state,

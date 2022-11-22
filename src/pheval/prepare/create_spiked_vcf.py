@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from pheval.utils.phenopacket_utils import PhenopacketReader, CausativeVariant, IncompatibleGenomeAssemblyError
 from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError, InputError
 
-from src.pheval.utils.file_utils import files_with_suffix
+from pheval.utils.file_utils import files_with_suffix
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()

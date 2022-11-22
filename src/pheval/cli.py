@@ -2,6 +2,8 @@ import logging
 
 import click
 
+from pheval.exomiser.assess_prioritisation import assess_prioritisation
+from pheval.exomiser.create_batch_commands import prepare_exomiser_batch
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
 from pheval.prepare.create_noisy_phenopackets import create_noisy_phenopackets
@@ -34,18 +36,29 @@ def pheval():
     pass
 
 
+pheval.add_command(run)
+
+
 @click.group()
 def pheval_utils():
     pass
 
-
-pheval.add_command(run)
 
 pheval_utils.add_command(scramble_semsim)
 pheval_utils.add_command(scramble_phenopacket)
 pheval_utils.add_command(create_noisy_phenopackets)
 pheval_utils.add_command(create_spiked_vcfs)
 pheval_utils.add_command(create_spiked_vcf)
+
+
+@click.group()
+def exomiser_benchmark():
+    pass
+
+
+exomiser_benchmark.add_command(prepare_exomiser_batch)
+exomiser_benchmark.add_command(assess_prioritisation)
+
 
 if __name__ == "__main__":
     main()
