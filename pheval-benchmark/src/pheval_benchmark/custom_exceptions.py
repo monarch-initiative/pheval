@@ -44,19 +44,6 @@ class MutuallyExclusiveOptionError(Option):
         )
 
 
-class IncompatibleGenomeAssemblyError(Exception):
-    """ Exception raised for incompatible genome assembly."""
-
-    def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
-        self.assembly: str = assembly
-        self.phenopacket: str = phenopacket
-        self.message: str = message
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f'{self.message} -> {self.assembly} in {self.phenopacket}'
-
-
 class IncorrectFileFormatError(Exception):
     def __init__(self, file, expectation, message="Incorrect File Type"):
         self.file: str = file

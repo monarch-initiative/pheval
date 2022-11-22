@@ -5,9 +5,9 @@ import os
 import random
 import logging
 from dataclasses import dataclass
-from pheval_benchmark.utils.utils import DirectoryFiles
-from pheval_benchmark.utils.phenopacket_utils import PhenopacketReader, CausativeVariant
-from pheval_benchmark.custom_exceptions import MutuallyExclusiveOptionError, InputError, IncompatibleGenomeAssemblyError
+from utils.file_utils import DirectoryFiles
+from utils.phenopacket_utils import PhenopacketReader, CausativeVariant
+from custom_exceptions import MutuallyExclusiveOptionError, InputError, IncompatibleGenomeAssemblyError
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()

@@ -4,10 +4,11 @@ import shutil
 import os
 import random
 import logging
+from pathlib import Path
 from dataclasses import dataclass
 from pheval.utils.file_utils import DirectoryFiles
 from pheval.utils.phenopacket_utils import PhenopacketReader, CausativeVariant, IncompatibleGenomeAssemblyError
-from custom_exceptions import MutuallyExclusiveOptionError, InputError
+from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError, InputError
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()
@@ -34,7 +35,7 @@ class VcfHeader:
 
 
 class VcfPicker:
-    def __init__(self, template_vcf, vcf_dir):
+    def __init__(self, template_vcf: Path, vcf_dir: Path):
         if template_vcf is not None:
             self.vcf_file = template_vcf
         if vcf_dir is not None:
@@ -82,11 +83,10 @@ class ProbandVariantChecker:
         return incorrect_variants
 
 
-class VcfWriter:
-    def __init__(self, phenopacket: str, phenopacket_dir: str, vcf_file: str, output_dir: str,
+class VcfSpiker:
+    def __init__(self, phenopacket: str, vcf_file: str, output_dir: Path,
                  list_of_variant_proband_data: list[CausativeVariant], vcf_header: VcfHeader):
         self.phenopacket = phenopacket
-        self.phenopacket_dir = phenopacket_dir
         self.vcf_file = vcf_file
         self.output_dir = output_dir
         self.list_of_proband_variant_data = list_of_variant_proband_data
@@ -134,14 +134,48 @@ class VcfWriter:
 
 
 @click.command()
-@click.option("--phenopacket-dir", "-p", metavar='PATH', required=True, help="Path to phenopackets directory")
+@click.option("--phenopacket", "-p", metavar='FILE', required=True, help="Path to phenopacket file", type=Path)
 @click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="FILE", required=False,
-              help="Template VCF file", mutually_exclusive=["vcf_dir"])
+              help="Template VCF file", mutually_exclusive=["vcf_dir"], type=Path)
 @click.option("--vcf-dir", "-v", cls=MutuallyExclusiveOptionError, metavar="PATH",
-              help="Directory containing template VCF files", mutually_exclusive=["template_vcf"])
+              help="Directory containing template VCF files", mutually_exclusive=["template_vcf"], type=Path)
 @click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
-              default="vcf")
-def spike_vcf(phenopacket_dir, output_dir, template_vcf=None, vcf_dir=None):
+              default="vcf", type=Path)
+def create_spiked_vcf(phenopacket: Path, output_dir: Path, template_vcf=None, vcf_dir=None):
+    print(phenopacket, output_dir, template_vcf, vcf_dir)
+    try:
+        # TODO update with path api
+        # os.mkdir(os.path.join(output_dir, ''))
+        output_dir.mkdir()
+        logger.info(f" Created a directory {output_dir}")
+    except FileExistsError:
+        pass
+    phenopacket_proband_variant_data = PhenopacketReader(phenopacket).causative_variants()
+    # TODO: check that chosen template is what is expected (VcfPicker)
+    chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
+    vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
+    incompatible_variants = ProbandVariantChecker(phenopacket_proband_variant_data,
+                                                  vcf_header).check_variant_assembly()
+    if len(incompatible_variants) != 0:
+        for incompatible_variant in incompatible_variants:
+            logger.error(
+                f' Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket.absolute().name}. '
+                f' Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}')
+            raise IncompatibleGenomeAssemblyError(assembly=incompatible_variant.assembly,
+                                                  phenopacket=phenopacket.absolute().name)
+    VcfSpiker(phenopacket.name, chosen_template_vcf.vcf_file, output_dir, phenopacket_proband_variant_data,
+              vcf_header).write_vcf()
+
+
+@click.command()
+@click.option("--phenopacket-dir", "-p", metavar='PATH', required=True, help="Path to phenopackets directory", type=Path)
+@click.option("--template-vcf", "-t", cls=MutuallyExclusiveOptionError, metavar="PATH", required=False,
+              help="Template VCF file", mutually_exclusive=["vcf_dir"], type=Path)
+@click.option("--vcf-dir", "-v", cls=MutuallyExclusiveOptionError, metavar="PATH",
+              help="Directory containing template VCF files", mutually_exclusive=["template_vcf"], type=Path)
+@click.option("--output-dir", "-O", metavar="PATH", required=True, help="Path for creation of output directory",
+              default="vcf", type=Path)
+def create_spiked_vcfs(phenopacket_dir: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
     """ Spikes variants into a template VCF file. """
     if template_vcf is None and vcf_dir is None:
         raise InputError("VCF")
@@ -149,18 +183,19 @@ def spike_vcf(phenopacket_dir, output_dir, template_vcf=None, vcf_dir=None):
         os.mkdir(os.path.join(output_dir, ''))
     except FileExistsError:
         pass
-    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_suffix()
+    phenopackets = [path for path in phenopacket_dir.iterdir() if path.suffix == ".json"]
     for phenopacket in phenopackets:
-        phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
-        phenopacket_proband_variant_data = PhenopacketReader(phenopacket_full_path).causative_variants()
-        chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
-        vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
-        incompatible_variants = ProbandVariantChecker(phenopacket_proband_variant_data,
-                                                      vcf_header).check_variant_assembly()
-        if len(incompatible_variants) != 0:
-            for incompatible_variant in incompatible_variants:
-                logger.error(f' Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket}. '
-                             f' Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}')
-            continue
-        VcfWriter(phenopacket, phenopacket_dir, chosen_template_vcf.vcf_file, output_dir,
-                  phenopacket_proband_variant_data, vcf_header).write_vcf()
+        # phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
+        create_spiked_vcf(phenopacket, output_dir, template_vcf, vcf_dir)
+        # phenopacket_proband_variant_data = PhenopacketReader(phenopacket_full_path).causative_variants()
+        # chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
+        # vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
+        # incompatible_variants = ProbandVariantChecker(phenopacket_proband_variant_data,
+        #                                               vcf_header).check_variant_assembly()
+        # if len(incompatible_variants) != 0:
+        #     for incompatible_variant in incompatible_variants:
+        #         logger.error(f' Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket}. '
+        #                      f' Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}')
+        #     continue
+        # VcfSpiker(phenopacket, chosen_template_vcf.vcf_file, output_dir,
+        #           phenopacket_proband_variant_data, vcf_header).write_vcf()
