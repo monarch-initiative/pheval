@@ -1,6 +1,7 @@
 """Runners Module"""
-from dataclasses import dataclass
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
+
 import click
 
 
@@ -33,6 +34,7 @@ class DefaultPhEvalRunner(PhEvalRunner):
     Args:
         PhEvalRunner (PhEvalRunner): Abstract PhEvalRunnerClass
     """
+
     inputdir: click.Path
     testdatadir: click.Path
     tmpdir: click.Path

@@ -3,7 +3,7 @@ from functools import cache
 
 from class_resolver import ClassResolver
 
-from pheval.pipeline import PhEvalRunner
+from pheval.runners.runner import PhEvalRunner
 
 
 @cache
