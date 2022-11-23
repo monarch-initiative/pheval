@@ -1,44 +1,65 @@
+"""pipeline"""
+from dataclasses import dataclass
+
 import click
 
 
+@dataclass
 class PhEvalRunner:
-    def __init__(
-        self,
-        inputdir: click.Path,
-        testdatadir: click.Path,
-        tmpdir: click.Path,
-        outputdir: click.Path,
-        config: click.Path,
-    ):
-        self.inputdir = inputdir
-        self.testdatadir = testdatadir
-        self.tmpdir = tmpdir
-        self.outputdir = outputdir
-        self.config = config
+    """_summary_
 
-    def prepare(self):
-        raise NotImplementedError()
+    Raises:
+        NotImplementedError: _description_
+        NotImplementedError: _description_
+        NotImplementedError: _description_
+    """
+
+    inputdir: click.Path
+    testdatadir: click.Path
+    tmpdir: click.Path
+    outputdir: click.Path
+    config: click.Path
+
+    """_summary_"""
+
+    def prepare(self) -> str:
+        """prepare
+        Raises:
+            NotImplementedError:
+        """
+        raise NotImplementedError
 
     def run(self):
-        raise NotImplementedError()
+        """run
+        Raises:
+            NotImplementedError:
+        """
+        raise NotImplementedError
 
     def post_process(self):
-        raise NotImplementedError()
+        """post_process
+        Raises:
+            NotImplementedError:
+        """
+        raise NotImplementedError
 
 
+@dataclass
 class DefaultPhEvalRunner(PhEvalRunner):
-    def __init__(
-        self,
-        inputdir: click.Path,
-        testdatadir: click.Path,
-        tmpdir: click.Path,
-        outputdir: click.Path,
-        config: click.Path,
-    ):
-        pass
+    """DefaultPhEvalRunner
+    Args:
+        PhEvalRunner (_type_): _description_
+    """
 
-    def prepare(self):
+    inputdir: click.Path
+    testdatadir: click.Path
+    tmpdir: click.Path
+    outputdir: click.Path
+    config: click.Path
+
+    def prepare(self) -> str:
         print("preparing")
+        return "default"
 
     def run(self):
         print("running")

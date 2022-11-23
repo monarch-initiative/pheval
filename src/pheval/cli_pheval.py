@@ -4,8 +4,7 @@ Monarch Initiative
 
 import click
 
-from .pipeline import DefaultPhEvalRunner
-from .runners.exomiser_pheval_runner import ExomiserPhEvalRunner
+from pheval.implementations import get_implementation_resolver
 
 
 @click.command()
@@ -62,11 +61,8 @@ def run(inputdir, testdatadir, runner, tmpdir, outputdir, config) -> None:
         outputdir (Click.Path): The path of the output directory
         config (Click.Path): The path of the configuration file (optional e.g config.yaml)
     """
-    if runner == "exomiser":
-        runner = ExomiserPhEvalRunner(inputdir, testdatadir, tmpdir, outputdir, config)
-    else:
-        runner = DefaultPhEvalRunner(inputdir, testdatadir, tmpdir, outputdir, config)
-
-    runner.prepare()
-    runner.run()
-    runner.post_process()
+    runner_class = get_implementation_resolver().lookup(runner)
+    runner_instance = runner_class(inputdir, testdatadir, tmpdir, outputdir, config)
+    runner_instance.prepare()
+    runner_instance.run()
+    runner_instance.post_process()
