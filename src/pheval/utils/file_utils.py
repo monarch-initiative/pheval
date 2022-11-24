@@ -15,8 +15,9 @@ def all_files(dir: Path) -> list[Path]:
     files.sort()
     return files
 
+
 class DirectoryFiles:
-    """ Class that retrieves an ordered list of relevant files from a directory"""
+    """Class that retrieves an ordered list of relevant files from a directory"""
 
     def __init__(self, directory: str, file_suffix: str):
         self.directory = directory
@@ -24,7 +25,7 @@ class DirectoryFiles:
 
     def obtain_all_files(self) -> list:
         file_list = []
-        file_directory = os.fsdecode(os.path.join(self.directory, ''))
+        file_directory = os.fsdecode(os.path.join(self.directory, ""))
         for file in os.listdir(file_directory):
             filename = os.fsdecode(file)
             file_list.append(os.path.join(file_directory, filename))
@@ -33,7 +34,7 @@ class DirectoryFiles:
 
     def obtain_files_suffix(self) -> list:
         file_list = []
-        directory_ = os.fsencode(os.path.join(self.directory, ''))
+        directory_ = os.fsencode(os.path.join(self.directory, ""))
         for file in os.listdir(directory_):
             filename = os.fsdecode(file)
             if filename.endswith(self.file_suffix):
@@ -43,7 +44,7 @@ class DirectoryFiles:
 
     def obtain_files_full_path(self) -> list:
         file_list = []
-        file_directory = os.fsdecode(os.path.join(self.directory, ''))
+        file_directory = os.fsdecode(os.path.join(self.directory, ""))
         for file in os.listdir(file_directory):
             filename = os.fsdecode(file)
             if not filename.endswith(self.file_suffix):

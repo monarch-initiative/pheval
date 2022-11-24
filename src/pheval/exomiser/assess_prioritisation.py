@@ -1,20 +1,23 @@
 #!/usr/bin/python
 
-import os
-import json
 import csv
-import click
+import json
+import os
 from collections import defaultdict
 from dataclasses import dataclass, field
-import pandas as pd
 from statistics import mean
+
+import click
+import pandas as pd
+
 from pheval.utils.file_utils import DirectoryFiles
 from pheval.utils.phenopacket_utils import PhenopacketReader
 
 
 @dataclass
 class PrioritisationRanks:
-    """ Class for keeping track of gene ranks for different runs"""
+    """Class for keeping track of gene ranks for different runs"""
+
     gene_index: int = 0
     variant_index: int = 0
     directory: str = ""
@@ -33,26 +36,33 @@ class PrioritisationRanks:
 
     def record_variant_rank(self):
         self.variant_index += 1
-        self.variant_rank_comparison[self.variant_index]["Phenopacket"] = self.phenopacket
+        self.variant_rank_comparison[self.variant_index][
+            "Phenopacket"
+        ] = self.phenopacket
         self.variant_rank_comparison[self.variant_index]["Variant"] = self.variant
         self.variant_rank_comparison[self.variant_index][self.directory] = self.rank
 
     def generate_dataframes(self):
-        return pd.DataFrame.from_dict(self.gene_rank_comparison, orient='index'), pd.DataFrame.from_dict(
-            self.variant_rank_comparison, orient='index')
+        return pd.DataFrame.from_dict(
+            self.gene_rank_comparison, orient="index"
+        ), pd.DataFrame.from_dict(self.variant_rank_comparison, orient="index")
 
     @staticmethod
     def generate_output(gene_ranks, variant_ranks, prefix):
-        gene_ranks['absolute_rank_difference'] = pd.Series.abs(gene_ranks.iloc[:, 2] - gene_ranks.iloc[:, 3])
+        gene_ranks["absolute_rank_difference"] = pd.Series.abs(
+            gene_ranks.iloc[:, 2] - gene_ranks.iloc[:, 3]
+        )
         gene_ranks.to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
-        variant_ranks['absolute_rank_difference'] = pd.Series.abs(
-            variant_ranks.iloc[:, 2] - variant_ranks.iloc[:, 3])
+        variant_ranks["absolute_rank_difference"] = pd.Series.abs(
+            variant_ranks.iloc[:, 2] - variant_ranks.iloc[:, 3]
+        )
         variant_ranks.to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
 
 
 @dataclass
 class RankStats:
     """Class for keeping track of the rank stats."""
+
     top: int = 0
     top3: int = 0
     top5: int = 0
@@ -65,9 +75,9 @@ class RankStats:
         self.found += 1
         if rank == 1:
             self.top += 1
-        if rank != '' and rank < 4:
+        if rank != "" and rank < 4:
             self.top3 += 1
-        if rank != '' and rank < 6:
+        if rank != "" and rank < 6:
             self.top5 += 1
 
     def percentage_rank(self, value: int) -> float:
@@ -90,19 +100,42 @@ class RankStats:
 
 
 class RankStatsWriter:
-
     def __init__(self, file: str):
-        self.file = open(file, 'w')
-        self.writer = csv.writer(self.file, delimiter='\t')
-        self.writer.writerow(['results_directory_path', 'top', 'top3', 'top5', 'found', 'total', 'mean_reciprocal_rank',
-                              'percentage_top', 'percentage_top3', 'percentage_top5', 'percentage_found'])
+        self.file = open(file, "w")
+        self.writer = csv.writer(self.file, delimiter="\t")
+        self.writer.writerow(
+            [
+                "results_directory_path",
+                "top",
+                "top3",
+                "top5",
+                "found",
+                "total",
+                "mean_reciprocal_rank",
+                "percentage_top",
+                "percentage_top3",
+                "percentage_top5",
+                "percentage_found",
+            ]
+        )
 
     def write_row(self, directory, rank_stats: RankStats):
         try:
             self.writer.writerow(
-                [directory, rank_stats.top, rank_stats.top3, rank_stats.top5, rank_stats.found, rank_stats.total,
-                 rank_stats.mean_reciprocal_rank(), rank_stats.percentage_top(), rank_stats.percentage_top3(),
-                 rank_stats.percentage_top5(), rank_stats.percentage_found()])
+                [
+                    directory,
+                    rank_stats.top,
+                    rank_stats.top3,
+                    rank_stats.top5,
+                    rank_stats.found,
+                    rank_stats.total,
+                    rank_stats.mean_reciprocal_rank(),
+                    rank_stats.percentage_top(),
+                    rank_stats.percentage_top3(),
+                    rank_stats.percentage_top5(),
+                    rank_stats.percentage_found(),
+                ]
+            )
         except IOError:
             print("Error writing ", self.file)
 
@@ -121,10 +154,14 @@ class RankingDict:
     ranking_method: str
 
     def add_gene(self):
-        self.output_results[self.identifier]["geneSymbol"] = self.original_results["geneIdentifier"]["geneSymbol"]
+        self.output_results[self.identifier]["geneSymbol"] = self.original_results[
+            "geneIdentifier"
+        ]["geneSymbol"]
 
     def add_ranking_method_val(self):
-        self.output_results[self.identifier][self.ranking_method] = round(self.original_results[self.ranking_method], 4)
+        self.output_results[self.identifier][self.ranking_method] = round(
+            self.original_results[self.ranking_method], 4
+        )
 
     # def add_combined_score(self):
     #     try:
@@ -151,10 +188,14 @@ class RankingDict:
     #         self.output_results[self.identifier]["pValue"] = "N/A"
 
     def add_moi(self):
-        self.output_results[self.identifier]["modeOfInheritance"] = self.original_results["modeOfInheritance"]
+        self.output_results[self.identifier][
+            "modeOfInheritance"
+        ] = self.original_results["modeOfInheritance"]
 
     def add_contributing_variants(self):
-        self.output_results[self.identifier]["contributingVariants"] = self.original_results["contributingVariants"]
+        self.output_results[self.identifier][
+            "contributingVariants"
+        ] = self.original_results["contributingVariants"]
 
     def create_ranking_dict(self) -> dict:
         self.add_gene()
@@ -169,7 +210,7 @@ class RankingDict:
 
 
 class RankResults:
-    """ Class for implementing ranking to results - (Exomiser Specific)"""
+    """Class for implementing ranking to results - (Exomiser Specific)"""
 
     def __init__(self, full_path_to_results_file: str, ranking_method: str):
         self.full_path_to_results_file = full_path_to_results_file
@@ -184,16 +225,27 @@ class RankResults:
                 for g in gene:
                     if self.ranking_method in g:
                         if "contributingVariants" in g:
-                            identifier = g["geneIdentifier"]["geneSymbol"] + "_" + g["modeOfInheritance"]
-                            exomiser_json_result_dict = RankingDict(g, identifier, exomiser_json_result,
-                                                                    self.ranking_method).create_ranking_dict()
+                            identifier = (
+                                g["geneIdentifier"]["geneSymbol"]
+                                + "_"
+                                + g["modeOfInheritance"]
+                            )
+                            exomiser_json_result_dict = RankingDict(
+                                g, identifier, exomiser_json_result, self.ranking_method
+                            ).create_ranking_dict()
         jsfile.close()
         if self.ranking_method == "pValue":
-            exomiser_results = sorted(exomiser_json_result_dict.items(), key=lambda x: x[1][self.ranking_method],
-                                      reverse=False)
+            exomiser_results = sorted(
+                exomiser_json_result_dict.items(),
+                key=lambda x: x[1][self.ranking_method],
+                reverse=False,
+            )
         else:
-            exomiser_results = sorted(exomiser_json_result_dict.items(), key=lambda x: x[1][self.ranking_method],
-                                      reverse=True)
+            exomiser_results = sorted(
+                exomiser_json_result_dict.items(),
+                key=lambda x: x[1][self.ranking_method],
+                reverse=True,
+            )
         rank, count, previous, result = 0, 0, None, {}
         for key, info in exomiser_results:
             count += 1
@@ -209,10 +261,17 @@ class RankResults:
 
 
 class AssessmentOfPrioritisation:
-    """ Class for assessing gene and variant prioritisation. """
+    """Class for assessing gene and variant prioritisation."""
 
-    def __init__(self, ranks: dict, threshold: float, ranking_method: str, prioritisation_ranks: PrioritisationRanks,
-                 genes: list, variants: list):
+    def __init__(
+        self,
+        ranks: dict,
+        threshold: float,
+        ranking_method: str,
+        prioritisation_ranks: PrioritisationRanks,
+        genes: list,
+        variants: list,
+    ):
         self.ranks = ranks
         self.threshold = threshold
         self.ranking_method = ranking_method
@@ -225,19 +284,32 @@ class AssessmentOfPrioritisation:
             rank_stats.total += 1
             for key, info in self.ranks.items():
                 if g == info["geneSymbol"] and float(self.threshold) != 0.0:
-                    if self.ranking_method != "pValue" and float(self.threshold) < float(info[self.ranking_method]):
+                    if self.ranking_method != "pValue" and float(
+                        self.threshold
+                    ) < float(info[self.ranking_method]):
                         rank = info["rank"]
-                        self.prioritisation_ranks.rank, self.prioritisation_ranks.gene = rank, g
+                        (
+                            self.prioritisation_ranks.rank,
+                            self.prioritisation_ranks.gene,
+                        ) = (rank, g)
                         rank_stats.add_rank(rank)
                         break
-                    if self.ranking_method == "pValue" and float(self.threshold) > float(info[self.ranking_method]):
+                    if self.ranking_method == "pValue" and float(
+                        self.threshold
+                    ) > float(info[self.ranking_method]):
                         rank = info["rank"]
-                        self.prioritisation_ranks.rank, self.prioritisation_ranks.gene = rank, g
+                        (
+                            self.prioritisation_ranks.rank,
+                            self.prioritisation_ranks.gene,
+                        ) = (rank, g)
                         rank_stats.add_rank(rank)
                         break
                 if g == info["geneSymbol"] and float(self.threshold) == 0.0:
                     rank = info["rank"]
-                    self.prioritisation_ranks.rank, self.prioritisation_ranks.gene = rank, g
+                    self.prioritisation_ranks.rank, self.prioritisation_ranks.gene = (
+                        rank,
+                        g,
+                    )
                     rank_stats.add_rank(rank)
                     break
                 self.prioritisation_ranks.rank = 0
@@ -253,28 +325,67 @@ class AssessmentOfPrioritisation:
                 if gene == info1["geneSymbol"]:
                     cont = info1["contributingVariants"]
                     for cv in cont:
-                        if variant.chrom == cv["contigName"] and int(cv["start"]) == variant.pos and cv["ref"] == \
-                                variant.ref and cv["alt"] == variant.alt and float(self.threshold) != 0.0:
-                            if self.ranking_method != "pValue" and float(self.threshold) < float(
-                                    info1[self.ranking_method]):
+                        if (
+                            variant.chrom == cv["contigName"]
+                            and int(cv["start"]) == variant.pos
+                            and cv["ref"] == variant.ref
+                            and cv["alt"] == variant.alt
+                            and float(self.threshold) != 0.0
+                        ):
+                            if self.ranking_method != "pValue" and float(
+                                self.threshold
+                            ) < float(info1[self.ranking_method]):
                                 rank = info1["rank"]
-                                self.prioritisation_ranks.rank, self.prioritisation_ranks.variant = rank, "_".join(
-                                    [variant.chrom, str(variant.pos), variant.ref, variant.alt])
+                                (
+                                    self.prioritisation_ranks.rank,
+                                    self.prioritisation_ranks.variant,
+                                ) = rank, "_".join(
+                                    [
+                                        variant.chrom,
+                                        str(variant.pos),
+                                        variant.ref,
+                                        variant.alt,
+                                    ]
+                                )
                                 rank_stats.add_rank(rank)
                                 break
-                            if self.ranking_method == "pValue" and float(self.threshold) > float(
-                                    info1[self.ranking_method]):
+                            if self.ranking_method == "pValue" and float(
+                                self.threshold
+                            ) > float(info1[self.ranking_method]):
                                 rank = info1["rank"]
-                                self.prioritisation_ranks.rank, self.prioritisation_ranks.variant = rank, "_".join(
-                                    [variant.chrom, str(variant.pos), variant.ref, variant.alt])
+                                (
+                                    self.prioritisation_ranks.rank,
+                                    self.prioritisation_ranks.variant,
+                                ) = rank, "_".join(
+                                    [
+                                        variant.chrom,
+                                        str(variant.pos),
+                                        variant.ref,
+                                        variant.alt,
+                                    ]
+                                )
                                 rank_stats.add_rank(rank)
                                 break
-                        if variant.chrom == cv["contigName"] and int(cv["start"]) == variant.pos and cv["ref"] == \
-                                variant.ref and cv["alt"] == variant.alt and float(self.threshold) == 0.0:
+                        if (
+                            variant.chrom == cv["contigName"]
+                            and int(cv["start"]) == variant.pos
+                            and cv["ref"] == variant.ref
+                            and cv["alt"] == variant.alt
+                            and float(self.threshold) == 0.0
+                        ):
                             rank = info1["rank"]
 
-                            self.prioritisation_ranks.rank, self.prioritisation_ranks.variant = rank, "_".join(
-                                [variant.chrom, str(variant.pos), variant.ref, variant.alt])
+                            (
+                                self.prioritisation_ranks.rank,
+                                self.prioritisation_ranks.variant,
+                            ) = rank, "_".join(
+                                [
+                                    variant.chrom,
+                                    str(variant.pos),
+                                    variant.ref,
+                                    variant.alt,
+                                ]
+                            )
                             rank_stats.add_rank(rank)
                             break
                     break
@@ -283,20 +394,50 @@ class AssessmentOfPrioritisation:
 
 
 @click.command()
-@click.option("--directory-list", "-d",
-              required=True, metavar='FILE',
-              help="A .txt file containing the full path of results directories,"
-                   " with each new directory contained on a new line.")
-@click.option("--phenopacket-dir", "-p", required=True, metavar='PATH',
-              help="Full path to directory containing phenopackets.")
-@click.option("--output-prefix", "-o", metavar='<str>', required=True, help=" Output file prefix. ")
-@click.option("--ranking-method", "-r", metavar='<str>', default="combinedScore", show_default=True,
-              help="Ranking method for gene prioritisation. Options include: "
-                   "combinedScore, phenotypeScore, variantScore and pValue")
-@click.option("--threshold", "-t", metavar='<float>', default=float(0.0), required=False, help="Score threshold.")
-def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, output_prefix, threshold):
-    """ Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
-    from confirmed cases in phenopackets. """
+@click.option(
+    "--directory-list",
+    "-d",
+    required=True,
+    metavar="FILE",
+    help="A .txt file containing the full path of results directories,"
+    " with each new directory contained on a new line.",
+)
+@click.option(
+    "--phenopacket-dir",
+    "-p",
+    required=True,
+    metavar="PATH",
+    help="Full path to directory containing phenopackets.",
+)
+@click.option(
+    "--output-prefix",
+    "-o",
+    metavar="<str>",
+    required=True,
+    help=" Output file prefix. ",
+)
+@click.option(
+    "--ranking-method",
+    "-r",
+    metavar="<str>",
+    default="combinedScore",
+    show_default=True,
+    help="Ranking method for gene prioritisation. Options include: "
+    "combinedScore, phenotypeScore, variantScore and pValue",
+)
+@click.option(
+    "--threshold",
+    "-t",
+    metavar="<float>",
+    default=float(0.0),
+    required=False,
+    help="Score threshold.",
+)
+def assess_prioritisation(
+    directory_list, phenopacket_dir, ranking_method, output_prefix, threshold
+):
+    """Assesses percentage of top, top3 and top5 genes and variants found Exomiser results
+    from confirmed cases in phenopackets."""
     gene_stats_writer = RankStatsWriter(output_prefix + "-gene_summary.tsv")
     variants_stats_writer = RankStatsWriter(output_prefix + "-variant_summary.tsv")
     directories = open(directory_list).read().splitlines()
@@ -307,14 +448,24 @@ def assess_prioritisation(directory_list, phenopacket_dir, ranking_method, outpu
         exomiser_json_results = DirectoryFiles(directory, ".json").obtain_files_suffix()
         for exomiser_result in exomiser_json_results:
             prioritisation_ranks.phenopacket = exomiser_result
-            phenopacket = os.path.join(phenopacket_dir, exomiser_result.replace("-exomiser.json", ".json"))
+            phenopacket = os.path.join(
+                phenopacket_dir, exomiser_result.replace("-exomiser.json", ".json")
+            )
             interpretations = PhenopacketReader(phenopacket).interpretations()
             genes = PhenopacketReader.diagnosed_genes(interpretations)
             variants = PhenopacketReader.diagnosed_variants(interpretations)
             exomiser_full_path = os.path.join(directory, exomiser_result)
-            ranking_dict = RankResults(exomiser_full_path, ranking_method).rank_results()
-            assess = AssessmentOfPrioritisation(ranking_dict, threshold, ranking_method, prioritisation_ranks, genes,
-                                                variants)
+            ranking_dict = RankResults(
+                exomiser_full_path, ranking_method
+            ).rank_results()
+            assess = AssessmentOfPrioritisation(
+                ranking_dict,
+                threshold,
+                ranking_method,
+                prioritisation_ranks,
+                genes,
+                variants,
+            )
             assess.assess_gene(gene_rank_stats)
             assess.assess_variant(variant_rank_stats)
         gene_stats_writer.write_row(directory, gene_rank_stats)

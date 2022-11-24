@@ -31,7 +31,7 @@ class YamlToFamilyPhenopacketConversion:
         yaml_job_file.close()
         self.output_file = file.replace("yml", "json")
         with open(
-                os.path.dirname(os.path.realpath(__file__)) + "/hgnc_complete_set.txt"
+            os.path.dirname(os.path.realpath(__file__)) + "/hgnc_complete_set.txt"
         ) as gene_set:
             self.gene_id_symbol = {}
             next(gene_set)
@@ -100,9 +100,7 @@ class YamlToFamilyPhenopacketConversion:
     def create_interpretations(self):
         int_id = self.job_file["analysis"]["proband"] + "-interpretation"
         interpretations = []
-        with open(
-                self.diagnoses
-        ) as di:  # the diagnosed genes file
+        with open(self.diagnoses) as di:  # the diagnosed genes file
             genomic_interpretations = []
             for line in di:
                 line = line.strip("\n")
@@ -181,10 +179,10 @@ class YamlToFamilyPhenopacketConversion:
                         )
                         variation_descriptor = VariationDescriptor(
                             id=self.job_file["analysis"]["proband"]
-                               + ":"
-                               + l[3]
-                               + ":"
-                               + l[4],
+                            + ":"
+                            + l[3]
+                            + ":"
+                            + l[4],
                             gene_context=gene_context,
                             vcf_record=vcf_record,
                             allelic_state=allelic_state,

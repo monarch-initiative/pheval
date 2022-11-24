@@ -7,11 +7,11 @@ from pathlib import Path
 from google.protobuf.json_format import Parse
 from phenopackets import Family, Phenopacket
 
-from pheval.prepare.custom_exceptions import (IncorrectFileFormatError)
+from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
 
 class IncompatibleGenomeAssemblyError(Exception):
-    """ Exception raised for incompatible genome assembly."""
+    """Exception raised for incompatible genome assembly."""
 
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
         self.assembly: str = assembly
@@ -20,7 +20,7 @@ class IncompatibleGenomeAssemblyError(Exception):
         super().__init__(self.message)
 
     def __str__(self):
-        return f'{self.message} -> {self.assembly} in {self.phenopacket}'
+        return f"{self.message} -> {self.assembly} in {self.phenopacket}"
 
 
 @dataclass

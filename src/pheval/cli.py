@@ -4,10 +4,13 @@ import click
 
 from pheval.exomiser.assess_prioritisation import assess_prioritisation
 from pheval.exomiser.create_batch_commands import prepare_exomiser_batch
+from pheval.prepare.create_noisy_phenopackets import create_noisy_phenopackets
+from pheval.prepare.create_spiked_vcf import (create_spiked_vcf,
+                                              create_spiked_vcfs)
+
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
-from pheval.prepare.create_noisy_phenopackets import create_noisy_phenopackets
-from pheval.prepare.create_spiked_vcf import create_spiked_vcfs, create_spiked_vcf
+
 info_log = logging.getLogger("info")
 
 
