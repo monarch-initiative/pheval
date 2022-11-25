@@ -2,11 +2,10 @@ import logging
 
 import click
 
-from .prepare.create_noisy_phenopackets import create_noisy_phenopackets
-from .prepare.create_spiked_vcf import create_spiked_vcf, create_spiked_vcfs
-
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
+from .prepare.create_noisy_phenopackets import create_noisy_phenopackets
+from .prepare.create_spiked_vcf import create_spiked_vcf, create_spiked_vcfs
 
 info_log = logging.getLogger("info")
 
