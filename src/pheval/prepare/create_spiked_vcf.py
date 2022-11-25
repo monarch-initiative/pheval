@@ -9,7 +9,7 @@ from pathlib import Path
 import click
 from custom_exceptions import InputError, MutuallyExclusiveOptionError
 
-from ..utils.file_utils import files_with_suffix
+from ..utils.file_utils import all_files, files_with_suffix
 from ..utils.phenopacket_utils import (CausativeVariant,
                                        IncompatibleGenomeAssemblyError,
                                        PhenopacketReader)
@@ -84,11 +84,12 @@ class VcfPicker:
         if template_vcf is not None:
             self.vcf_file = template_vcf
         if vcf_dir is not None:
-            self.vcf_file = secrets.choice(os.listdir(vcf_dir))
+            vcf_files = all_files(vcf_dir)
+            self.vcf_file = secrets.choice(vcf_files)
 
 
 class VcfParser:
-    def __init__(self, template_vcf_file: str):
+    def __init__(self, template_vcf_file: Path):
         self.vcf_file = open(template_vcf_file)
 
     def parse_header(self) -> VcfHeader:
@@ -140,7 +141,7 @@ class VcfSpiker:
     def __init__(
         self,
         phenopacket: str,
-        vcf_file: str,
+        vcf_file: Path,
         output_dir: Path,
         list_of_variant_proband_data: list[CausativeVariant],
         vcf_header: VcfHeader,
