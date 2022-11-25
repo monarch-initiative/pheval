@@ -2,29 +2,22 @@
 name = "pheval"
 version = "0.1.0"
 description = ""
-authors = ["Yasemin Bridges <y.bridges@qmul.ac.uk>",
-  "Jules Jacobsen <j.jacobsen@qmul.ac.uk>",
-  "Nico Matentzoglu <nicolas.matentzoglu@gmail.com>",
-  "Vinícius de Souza <souzadevinicius@gmail.com>"]
+authors = ["Nico Matentzoglu <nicolas.matentzoglu@gmail.com>", "Vinícius de Souza <souzadevinicius@gmail.com>"]
 readme = "README.md"
 packages = [{include = "pheval", from = "src"}]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4.0.0"
+python = ">=3.9"
 jaydebeapi = ">=1.2.3"
 tqdm = ">=4.64.1"
 pandas = ">=1.5.1"
 deprecation = ">=2.1.0"
 click = ">=8.1.3"
-oaklib = "^0.1.54"
-phenopackets = "^2.0.2"
 class-resolver = "^0.3.10"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1.2"
-pylint = "^2.15.6"
+pytest = "^7.2.0"
 coverage = "^6.5.0"
-pycodestyle = "^2.10.0"
 
 [tool.poetry.scripts]
 pheval = "pheval.cli:pheval"
@@ -34,17 +27,6 @@ pheval-utils = "pheval.cli:pheval_utils"
 pythonpath = [
   "src"
 ]
-
-[tool.black]
-line-length = 100
-target-version = ["py39", "py310"]
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 100
-include_trailing_comma = true
-reverse_relative = true
 
 [build-system]
 requires = ["poetry-core"]

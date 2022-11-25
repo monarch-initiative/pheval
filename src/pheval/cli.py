@@ -1,3 +1,4 @@
+"""PhEval CLI Module """
 import logging
 
 import click
@@ -13,7 +14,7 @@ info_log = logging.getLogger("info")
 @click.group()
 @click.option("-v", "--verbose", count=True)
 @click.option("-q", "--quiet")
-def main(verbose: int, quiet: bool) -> None:
+def main(verbose=1, quiet=False) -> None:
     """main CLI method for pheval
 
     Args:
@@ -32,7 +33,7 @@ def main(verbose: int, quiet: bool) -> None:
 
 @click.group()
 def pheval():
-    pass
+    """pheval"""
 
 
 pheval.add_command(run)
@@ -40,7 +41,7 @@ pheval.add_command(run)
 
 @click.group()
 def pheval_utils():
-    pass
+    """pheval_utils"""
 
 
 pheval_utils.add_command(scramble_semsim)
