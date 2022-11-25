@@ -27,7 +27,6 @@ pycodestyle = "^2.10.0"
 [tool.poetry.scripts]
 pheval = "pheval.cli:pheval"
 pheval-utils = "pheval.cli:pheval_utils"
-exomiser-benchmark = "pheval.cli:exomiser_benchmark"
 
 [tool.pytest.ini_options]
 pythonpath = [
