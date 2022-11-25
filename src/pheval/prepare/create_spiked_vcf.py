@@ -8,9 +8,11 @@ from pathlib import Path
 
 import click
 
-from ..prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
+from custom_exceptions import InputError MutuallyExclusiveOptionError
 from ..utils.file_utils import files_with_suffix
-from ..utils.phenopacket_utils import CausativeVariant, IncompatibleGenomeAssemblyError, PhenopacketReader
+from ..utils.phenopacket_utils import (CausativeVariant,
+                                       IncompatibleGenomeAssemblyError,
+                                       PhenopacketReader)
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()
