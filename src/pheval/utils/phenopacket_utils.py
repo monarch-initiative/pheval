@@ -25,7 +25,7 @@ class IncompatibleGenomeAssemblyError(Exception):
 
 @dataclass
 class CausativeVariant:
-    phenopacket: str
+    phenopacket: Path
     proband_id: str
     assembly: str
     chrom: str

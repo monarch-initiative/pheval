@@ -5,15 +5,12 @@ import warnings
 
 import click
 from google.protobuf.json_format import MessageToJson
-from oaklib.implementations.pronto.pronto_implementation import \
-    ProntoImplementation
+from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
 from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
-
-from pheval.utils.file_utils import DirectoryFiles
+from pathlib import Path
+from pheval.utils.file_utils import files_with_suffix
 from pheval.utils.phenopacket_utils import PhenopacketReader
-
-warnings.filterwarnings("ignore")
 
 
 class RandomisePhenopackets:
@@ -138,6 +135,7 @@ class RebuildPhenopackets:
     metavar="PATH",
     required=True,
     help="Path to phenopackets directory",
+    type=Path
 )
 @click.option(
     "--max-real-id",
@@ -183,26 +181,26 @@ class RebuildPhenopackets:
     required=True,
     help="Path for creation of output directory",
     default="noisy_phenopackets",
+    type=Path
 )
 def create_noisy_phenopackets(
-    phenopacket_dir: str,
+    phenopacket_dir: Path,
     max_real_id: int,
     number_of_parent_terms: int,
     number_of_random_terms: int,
     output_file_suffix: str,
-    output_dir: str,
+    output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     try:
-        os.mkdir(os.path.join(output_dir, ""))
+        output_dir.mkdir()
     except FileExistsError:
         pass
-    phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_suffix()
+    phenopackets = files_with_suffix(phenopacket_dir, ".json")
     resource = OntologyResource(slug="hp.obo", local=False)
     ontology = ProntoImplementation(resource)
     for phenopacket in phenopackets:
-        phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)
-        phenopacket_contents = PhenopacketReader(phenopacket_full_path)
+        phenopacket_contents = PhenopacketReader(phenopacket)
         phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
         new_hpo_terms = RandomisePhenopackets(
             ontology,
@@ -213,10 +211,10 @@ def create_noisy_phenopackets(
         ).combine_hpo_terms()
         output_file = os.path.join(
             output_dir,
-            pathlib.Path(phenopacket).stem
+            Path(phenopacket).stem
             + "-"
             + output_file_suffix
-            + pathlib.Path(phenopacket).suffix,
+            + Path(phenopacket).suffix,
         )
         RebuildPhenopackets(
             phenopacket_contents, new_hpo_terms, output_file
