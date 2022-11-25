@@ -31,9 +31,7 @@ class TestCommandLineInterface(unittest.TestCase):
         self.runner = runner
 
     def test_scramble_semsim(self):
-        result = self.runner.invoke(
-            run, ["-i", "./", "-t", "./", "-r", "exomiser", "-o", "./"]
-        )
+        result = self.runner.invoke(run, ["-i", "./", "-t", "./", "-r", "exomiser", "-o", "./"])
         err = result.stderr
         self.assertEqual("", err)
         logging.info(f"ERR={err}")

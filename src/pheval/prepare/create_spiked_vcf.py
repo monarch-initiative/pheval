@@ -9,10 +9,13 @@ from pathlib import Path
 import click
 from custom_exceptions import InputError, MutuallyExclusiveOptionError
 
+from pheval.utils.phenopacket_utils import (
+    CausativeVariant,
+    IncompatibleGenomeAssemblyError,
+    PhenopacketReader,
+)
+
 from ..utils.file_utils import all_files, files_with_suffix
-from ..utils.phenopacket_utils import (CausativeVariant,
-                                       IncompatibleGenomeAssemblyError,
-                                       PhenopacketReader)
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()
@@ -105,9 +108,7 @@ class VcfParser:
                     chromosome = chromosome.replace("chr", "")
                 length = line_split[1].split("=")[1]
                 assembly_dict[chromosome] = int(length)
-                assembly_dict = {
-                    i: assembly_dict[i] for i in assembly_dict if i.isdigit()
-                }
+                assembly_dict = {i: assembly_dict[i] for i in assembly_dict if i.isdigit()}
             if line.startswith("#CHROM"):
                 sample_id = line.split("\t")[9].rstrip()
         assembly = [k for k, v in genome_assemblies.items() if v == assembly_dict][0]
@@ -129,9 +130,7 @@ class ProbandVariantChecker:
         incorrect_variants = []
         for variant in self.list_of_variant_proband_data:
             if variant.assembly not in self.compatible_genome_assembly:
-                raise IncompatibleGenomeAssemblyError(
-                    variant.assembly, variant.phenopacket
-                )
+                raise IncompatibleGenomeAssemblyError(variant.assembly, variant.phenopacket)
             if variant.assembly != self.vcf_header.assembly:
                 incorrect_variants.append(variant)
         return incorrect_variants
@@ -190,8 +189,7 @@ class VcfSpiker:
             locs = [
                 i
                 for i, val in enumerate(vcf_contents)
-                if val.split("\t")[0] == variant[0]
-                and int(val.split("\t")[1]) < int(variant[1])
+                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
             ][-1] + 1
             vcf_contents.insert(locs, "\t".join(variant))
         return vcf_contents
@@ -215,9 +213,7 @@ class VcfSpiker:
         file.close()
 
 
-def spike_vcf(
-    phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None
-):
+def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
     # this is a separate function to a click command as it will fail if annotated with click annotations
     # and referenced from another click command
     if template_vcf is None and vcf_dir is None:
@@ -227,9 +223,7 @@ def spike_vcf(
         logger.info(f" Created a directory {output_dir}")
     except FileExistsError:
         pass
-    phenopacket_proband_variant_data = PhenopacketReader(
-        phenopacket
-    ).causative_variants()
+    phenopacket_proband_variant_data = PhenopacketReader(phenopacket).causative_variants()
     # TODO: check that chosen template is what is expected (VcfPicker)
     chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
     vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()

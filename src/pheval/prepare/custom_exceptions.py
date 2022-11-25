@@ -22,8 +22,7 @@ class MutuallyExclusiveOptionError(Option):
         if self.mutually_exclusive:
             ex_str = ", ".join(self.mutually_exclusive)
             kwargs["help"] = help_ + (
-                " NOTE: This argument is mutually exclusive with "
-                " arguments: [" + ex_str + "]."
+                " NOTE: This argument is mutually exclusive with " " arguments: [" + ex_str + "]."
             )
         super(MutuallyExclusiveOptionError, self).__init__(*args, **kwargs)
 
@@ -34,9 +33,7 @@ class MutuallyExclusiveOptionError(Option):
                 "arguments `{}`.".format(self.name, ", ".join(self.mutually_exclusive))
             )
 
-        return super(MutuallyExclusiveOptionError, self).handle_parse_result(
-            ctx, opts, args
-        )
+        return super(MutuallyExclusiveOptionError, self).handle_parse_result(ctx, opts, args)
 
 
 class IncorrectFileFormatError(Exception):

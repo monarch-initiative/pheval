@@ -120,9 +120,7 @@ class PhenopacketReader:
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(
-                    g.variant_interpretation.variation_descriptor.gene_context.symbol
-                )
+                genes.append(g.variant_interpretation.variation_descriptor.gene_context.symbol)
         genes = list(set(genes))
         return genes
 
@@ -135,8 +133,6 @@ class PhenopacketReader:
                 variant[
                     "geneSymbol"
                 ] = g.variant_interpretation.variation_descriptor.gene_context.symbol
-                variant[
-                    "variant"
-                ] = g.variant_interpretation.variation_descriptor.vcf_record
+                variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
                 variants.append(variant)
         return variants

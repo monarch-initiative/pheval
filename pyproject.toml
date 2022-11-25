@@ -20,8 +20,9 @@ oaklib = "^0.1.54"
 phenopackets = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.2.0"
-coverage = "^6.5.0"
+pytest = "^7.1.2"
+pylint = "^2.15.6"
+pycodestyle = "^2.10.0"
 
 [tool.poetry.scripts]
 pheval = "pheval.cli:pheval"
@@ -32,6 +33,17 @@ exomiser-benchmark = "pheval.cli:exomiser_benchmark"
 pythonpath = [
   "src"
 ]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+include_trailing_comma = true
+reverse_relative = true
 
 [build-system]
 requires = ["poetry-core"]

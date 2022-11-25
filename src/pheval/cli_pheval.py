@@ -16,9 +16,7 @@ from .runners.exomiser_pheval_runner import ExomiserPhEvalRunner
     required=True,
     help="The input directory (relative path: e.g exomiser-13.11)",
 )
-@click.option(
-    "--testdatadir", "-t", metavar="TESTDATA", required=True, help="Test data dir"
-)
+@click.option("--testdatadir", "-t", metavar="TESTDATA", required=True, help="Test data dir")
 @click.option("--runner", "-r", metavar="RUNNER", required=True, help="Runner")
 @click.option("--tmpdir", "-m", metavar="TMPDIR", required=False, help="Tmp dir")
 @click.option("--outputdir", "-o", metavar="OUTPUTDIR", required=True, help="Ouput dir")
