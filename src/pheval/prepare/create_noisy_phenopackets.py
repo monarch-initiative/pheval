@@ -198,10 +198,7 @@ def create_noisy_phenopackets(
     except FileExistsError:
         pass
     phenopackets = DirectoryFiles(phenopacket_dir, ".json").obtain_files_suffix()
-    path_to_obo = os.path.dirname(os.path.realpath(__file__)).replace(
-        "prepare", "resources/obo/hp.obo"
-    )
-    resource = OntologyResource(slug=path_to_obo, local=True)
+    resource = OntologyResource(slug="hp.obo", local=False)
     ontology = ProntoImplementation(resource)
     for phenopacket in phenopackets:
         phenopacket_full_path = os.path.join(phenopacket_dir, phenopacket)

@@ -17,10 +17,10 @@ from pheval_benchmark.utils.utils import DirectoryFiles
 path_to_obo = os.path.dirname(os.path.realpath(__file__)).replace(
     "/exomiser", "/resources/obo/hp.obo"
 )
-resource = OntologyResource(slug=path_to_obo, local=True)
+resource = OntologyResource(slug="hp.obo", local=False)
 oi = ProntoImplementation(resource)
 path_to_geno = os.path.dirname(os.path.realpath(__file__)) + "/geno.owl"
-genotype_resource = OntologyResource(slug=path_to_geno, local=True)
+genotype_resource = OntologyResource(slug="geno.owl", local=False)
 go_oi = ProntoImplementation(genotype_resource)
 
 
