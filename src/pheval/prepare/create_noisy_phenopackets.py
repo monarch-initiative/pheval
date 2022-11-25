@@ -1,12 +1,14 @@
 import os
 import random
 from pathlib import Path
+
 import click
 from google.protobuf.json_format import MessageToJson
 from oaklib.implementations.pronto.pronto_implementation import \
     ProntoImplementation
 from oaklib.resource import OntologyResource
 from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
+
 from pheval.utils.file_utils import files_with_suffix
 from pheval.utils.phenopacket_utils import PhenopacketReader
 
@@ -209,10 +211,10 @@ def create_noisy_phenopackets(
         ).combine_hpo_terms()
         output_file = os.path.join(
             output_dir,
-            Path(phenopacket).stem +
-            "-" +
-            output_file_suffix +
-            Path(phenopacket).suffix,
+            Path(phenopacket).stem
+            + "-"
+            + output_file_suffix
+            + Path(phenopacket).suffix,
         )
         RebuildPhenopackets(
             phenopacket_contents, new_hpo_terms, output_file

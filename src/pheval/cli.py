@@ -2,9 +2,8 @@ import logging
 
 import click
 
-from pheval.prepare.create_noisy_phenopackets import create_noisy_phenopackets
-from pheval.prepare.create_spiked_vcf import (create_spiked_vcf,
-                                              create_spiked_vcfs)
+from .prepare.create_noisy_phenopackets import create_noisy_phenopackets
+from .prepare.create_spiked_vcf import create_spiked_vcf, create_spiked_vcfs
 
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
