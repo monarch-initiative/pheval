@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import logging
 import os
-import random
+import secrets
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
@@ -84,7 +84,7 @@ class VcfPicker:
         if template_vcf is not None:
             self.vcf_file = template_vcf
         if vcf_dir is not None:
-            self.vcf_file = random.choice(os.listdir(vcf_dir))
+            self.vcf_file = secrets.choice(os.listdir(vcf_dir))
 
 
 class VcfParser:
