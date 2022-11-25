@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import click
+from custom_exceptions import InputError, MutuallyExclusiveOptionError
 
-from custom_exceptions import InputError MutuallyExclusiveOptionError
 from ..utils.file_utils import files_with_suffix
 from ..utils.phenopacket_utils import (CausativeVariant,
                                        IncompatibleGenomeAssemblyError,
