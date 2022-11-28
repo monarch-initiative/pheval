@@ -11,8 +11,19 @@ from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
 from pheval.utils.file_utils import files_with_suffix
 from pheval.utils.phenopacket_utils import PhenopacketReader, PhenopacketWriter
 
-resource = OntologyResource(slug="hp.obo", local=False)
-ontology = ProntoImplementation(resource)
+ontology_loaded = False
+
+
+def load_ontology():
+    global ontology_loaded
+
+    if ontology_loaded:
+        pass
+
+    ontology_loaded = True
+    resource = OntologyResource(slug="hp.obo", local=False)
+    ontology = ProntoImplementation(resource)
+    return ontology
 
 
 class RandomisePhenopackets:
@@ -140,6 +151,7 @@ def noisy_phenopacket(
     number_of_random_terms: int,
     output_file_suffix: str,
     output_dir: Path,
+    ontology,
 ):
     phenopacket_contents = PhenopacketReader(phenopacket)
     phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
@@ -228,6 +240,7 @@ def create_noisy_phenopacket(
         output_dir.mkdir()
     except FileExistsError:
         pass
+    ontology = load_ontology()
     noisy_phenopacket(
         phenopacket,
         max_real_id,
@@ -235,6 +248,7 @@ def create_noisy_phenopacket(
         number_of_random_terms,
         output_file_suffix,
         output_dir,
+        ontology,
     )
 
 
@@ -306,6 +320,7 @@ def create_noisy_phenopackets(
         output_dir.mkdir()
     except FileExistsError:
         pass
+    ontology = load_ontology()
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
         noisy_phenopacket(
@@ -315,4 +330,5 @@ def create_noisy_phenopackets(
             number_of_random_terms,
             output_file_suffix,
             output_dir,
+            ontology
         )
