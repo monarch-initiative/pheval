@@ -153,6 +153,10 @@ def noisy_phenopacket(
     output_dir: Path,
     ontology,
 ):
+    try:
+        output_dir.mkdir()
+    except FileExistsError:
+        pass
     phenopacket_contents = PhenopacketReader(phenopacket)
     phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
     new_hpo_terms = RandomisePhenopackets(
@@ -236,10 +240,6 @@ def create_noisy_phenopacket(
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    try:
-        output_dir.mkdir()
-    except FileExistsError:
-        pass
     ontology = load_ontology()
     noisy_phenopacket(
         phenopacket,
@@ -316,10 +316,6 @@ def create_noisy_phenopackets(
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    try:
-        output_dir.mkdir()
-    except FileExistsError:
-        pass
     ontology = load_ontology()
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
