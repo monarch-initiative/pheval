@@ -12,7 +12,6 @@ from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
 class IncompatibleGenomeAssemblyError(Exception):
     """Exception raised for incompatible genome assembly."""
-
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
         self.assembly: str = assembly
         self.phenopacket: str = phenopacket
@@ -49,6 +48,7 @@ class PhenopacketReader:
         file.close()
 
     def phenotypic_features(self) -> list:
+        """Retrieves a list of all HPO terms."""
         if hasattr(self.pheno, "proband"):
             all_phenotypic_features = self.pheno.proband.phenotypic_features
         else:
@@ -56,6 +56,7 @@ class PhenopacketReader:
         return all_phenotypic_features
 
     def remove_excluded_phenotypic_features(self) -> dict:
+        """Removes any HPO terms labelled as excluded."""
         phenotypic_features = {}
         all_phenotypic_features = self.phenotypic_features()
         for p in all_phenotypic_features:
@@ -65,6 +66,7 @@ class PhenopacketReader:
         return phenotypic_features
 
     def interpretations(self) -> list:
+        """Returns all interpretations of a phenopacket."""
         if hasattr(self.pheno, "proband"):
             pheno_interpretation = self.pheno.proband.interpretations
         else:
@@ -72,6 +74,7 @@ class PhenopacketReader:
         return pheno_interpretation
 
     def causative_variants(self) -> list[CausativeVariant]:
+        """Returns all causative variants listed in a phenopacket - for use in spiked VCF."""
         all_variants = []
         interpretation = self.interpretations()
         for i in interpretation:
@@ -92,9 +95,11 @@ class PhenopacketReader:
         return all_variants
 
     def files(self) -> list:
+        """Returns all files associated with a phenopacket."""
         return self.pheno.files
 
     def vcf_file_data(self, vcf_dir):
+        """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         ppacket_files = self.files()
         vcf, genome_assembly = "", ""
@@ -117,6 +122,7 @@ class PhenopacketReader:
 
     @staticmethod
     def diagnosed_genes(pheno_interpretation: list) -> list:
+        """Returns a unique list of all causative genes from a phenopacket."""
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
@@ -126,6 +132,7 @@ class PhenopacketReader:
 
     @staticmethod
     def diagnosed_variants(pheno_interpretation: list) -> list:
+        """Returns a list of all causative variants from a phenopacket - for use in assess-prioritisation."""
         variants = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
@@ -139,11 +146,13 @@ class PhenopacketReader:
 
 
 class PhenopacketWriter:
+    """Writes phenopackets back to file."""
     def __init__(self, altered_phenopacket, output_file):
         self.altered_phenopacket = altered_phenopacket
         self.output_file = output_file
 
     def write_file(self):
+        """Writes a json message to a phenopacket .json file."""
         with open(self.output_file, "w") as outfile:
             outfile.write(self.altered_phenopacket)
         outfile.close()

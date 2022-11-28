@@ -15,6 +15,7 @@ ontology_loaded = False
 
 
 def load_ontology():
+    """Loads ontology once for use in other methods."""
     global ontology_loaded
 
     if ontology_loaded:
@@ -27,8 +28,7 @@ def load_ontology():
 
 
 class RandomisePhenopackets:
-    """Randomises the Phenopacket phenotype."""
-
+    """Randomises the Phenopacket phenotypic profile."""
     def __init__(
         self,
         ontology,
@@ -49,7 +49,7 @@ class RandomisePhenopackets:
         return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
 
     def max_real_patient_id(self) -> dict:
-        """Retains a dictionary of the maximum number of real patient HPO terms."""
+        """Returns a dictionary of the maximum number of real patient HPO terms."""
         phenotypic_features = list(self.phenotypic_features.items())
         if self.number_of_real_id > len(phenotypic_features):
             if len(phenotypic_features) - 2 > 0:
@@ -112,12 +112,12 @@ class RandomisePhenopackets:
 
 class RebuildPhenopackets:
     """Rebuilds the original phenopacket with the randomised phenotypes."""
-
     def __init__(self, phenopacket_contents, hpo_list: list):
         self.phenopacket_contents = phenopacket_contents
         self.hpo_list = hpo_list
 
     def add_randomised_hpo(self):
+        """Adds randomised phenotypic profile to phenopacket."""
         randomised_ppacket = Phenopacket(
             id=self.phenopacket_contents.pheno.id,
             subject=self.phenopacket_contents.pheno.subject,
@@ -129,6 +129,7 @@ class RebuildPhenopackets:
         return randomised_ppacket
 
     def create_json_message(self):
+        """Creates json message for writing to file."""
         randomised_ppacket = self.add_randomised_hpo()
         if hasattr(self.phenopacket_contents.pheno, "proband"):
             family = Family(
@@ -153,6 +154,7 @@ def noisy_phenopacket(
     output_dir: Path,
     ontology,
 ):
+    """Randomises a single phenopacket's phenotypic profile, writing to a new .json file"""
     try:
         output_dir.mkdir()
     except FileExistsError:
@@ -239,7 +241,7 @@ def create_noisy_phenopacket(
     output_file_suffix: str,
     output_dir: Path,
 ):
-    """Generate noisy phenopackets from existing ones."""
+    """Generate a noisy phenopacket from an existing one."""
     ontology = load_ontology()
     noisy_phenopacket(
         phenopacket,
