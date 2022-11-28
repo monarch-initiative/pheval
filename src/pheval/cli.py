@@ -5,7 +5,7 @@ import click
 
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
-from .prepare.create_noisy_phenopackets import create_noisy_phenopackets
+from .prepare.create_noisy_phenopackets import create_noisy_phenopackets, create_noisy_phenopacket
 from .prepare.create_spiked_vcf import create_spiked_vcf, create_spiked_vcfs
 
 info_log = logging.getLogger("info")
@@ -47,6 +47,7 @@ def pheval_utils():
 pheval_utils.add_command(scramble_semsim)
 pheval_utils.add_command(scramble_phenopacket)
 pheval_utils.add_command(create_noisy_phenopackets)
+pheval_utils.add_command(create_noisy_phenopacket)
 pheval_utils.add_command(create_spiked_vcfs)
 pheval_utils.add_command(create_spiked_vcf)
 

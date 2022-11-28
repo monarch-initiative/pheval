@@ -11,17 +11,20 @@ from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
 from pheval.utils.file_utils import files_with_suffix
 from pheval.utils.phenopacket_utils import PhenopacketReader
 
+resource = OntologyResource(slug="hp.obo", local=False)
+ontology = ProntoImplementation(resource)
+
 
 class RandomisePhenopackets:
     """Randomises the Phenopacket phenotype."""
 
     def __init__(
-        self,
-        ontology,
-        phenotypic_features: dict,
-        number_of_real_id: int,
-        number_of_changed_terms: int,
-        number_of_random_terms: int,
+            self,
+            ontology,
+            phenotypic_features: dict,
+            number_of_real_id: int,
+            number_of_changed_terms: int,
+            number_of_random_terms: int,
     ):
         self.ontology = ontology
         self.phenotypic_features = phenotypic_features
@@ -127,6 +130,104 @@ class RebuildPhenopackets:
         outfile.close()
 
 
+def noisy_phenopacket(
+        phenopacket: Path,
+        max_real_id: int,
+        number_of_parent_terms: int,
+        number_of_random_terms: int,
+        output_file_suffix: str,
+        output_dir: Path,
+):
+    phenopacket_contents = PhenopacketReader(phenopacket)
+    phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
+    new_hpo_terms = RandomisePhenopackets(
+        ontology,
+        phenotypic_features,
+        max_real_id,
+        number_of_parent_terms,
+        number_of_random_terms,
+    ).combine_hpo_terms()
+    output_file = os.path.join(
+        output_dir,
+        Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
+    )
+    RebuildPhenopackets(
+        phenopacket_contents, new_hpo_terms, output_file
+    ).write_altered_phenopacket()
+
+
+@click.command()
+@click.option(
+    "--phenopacket",
+    "-P",
+    metavar="PATH",
+    required=True,
+    help="Path to phenopacket to be randomised",
+    type=Path,
+)
+@click.option(
+    "--max-real-id",
+    "-m",
+    metavar="<int>",
+    required=True,
+    help="Maximum number of real patient HPO ids to retain",
+    type=int,
+    default=3,
+    show_default=True,
+)
+@click.option(
+    "--number-of-parent-terms",
+    "-p",
+    metavar="<int>",
+    required=True,
+    help="Number of real patient HPO ids to change to parent terms",
+    type=int,
+    default=2,
+    show_default=True,
+)
+@click.option(
+    "--number-of-random-terms",
+    "-r",
+    metavar="<int>",
+    required=True,
+    help="Number of random HPO ids to introduce",
+    type=int,
+    default=3,
+    show_default=True,
+)
+@click.option(
+    "--output-file-suffix",
+    "-o",
+    metavar="<str>",
+    required=True,
+    help="Suffix to append to output file",
+)
+@click.option(
+    "--output-dir",
+    "-O",
+    metavar="PATH",
+    required=True,
+    help="Path for creation of output directory",
+    default="noisy_phenopackets",
+    type=Path,
+)
+def create_noisy_phenopacket(
+        phenopacket: Path,
+        max_real_id: int,
+        number_of_parent_terms: int,
+        number_of_random_terms: int,
+        output_file_suffix: str,
+        output_dir: Path,
+):
+    """Generate noisy phenopackets from existing ones."""
+    try:
+        output_dir.mkdir()
+    except FileExistsError:
+        pass
+    noisy_phenopacket(phenopacket, max_real_id, number_of_parent_terms, number_of_random_terms, output_file_suffix,
+                      output_dir)
+
+
 @click.command()
 @click.option(
     "--phenopacket-dir",
@@ -183,12 +284,12 @@ class RebuildPhenopackets:
     type=Path,
 )
 def create_noisy_phenopackets(
-    phenopacket_dir: Path,
-    max_real_id: int,
-    number_of_parent_terms: int,
-    number_of_random_terms: int,
-    output_file_suffix: str,
-    output_dir: Path,
+        phenopacket_dir: Path,
+        max_real_id: int,
+        number_of_parent_terms: int,
+        number_of_random_terms: int,
+        output_file_suffix: str,
+        output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     try:
@@ -196,22 +297,6 @@ def create_noisy_phenopackets(
     except FileExistsError:
         pass
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
-    resource = OntologyResource(slug="hp.obo", local=False)
-    ontology = ProntoImplementation(resource)
     for phenopacket in phenopackets:
-        phenopacket_contents = PhenopacketReader(phenopacket)
-        phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
-        new_hpo_terms = RandomisePhenopackets(
-            ontology,
-            phenotypic_features,
-            max_real_id,
-            number_of_parent_terms,
-            number_of_random_terms,
-        ).combine_hpo_terms()
-        output_file = os.path.join(
-            output_dir,
-            Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
-        )
-        RebuildPhenopackets(
-            phenopacket_contents, new_hpo_terms, output_file
-        ).write_altered_phenopacket()
+        noisy_phenopacket(phenopacket, max_real_id, number_of_parent_terms, number_of_random_terms, output_file_suffix,
+                          output_dir)
