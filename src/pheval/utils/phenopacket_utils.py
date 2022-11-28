@@ -12,6 +12,7 @@ from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
 class IncompatibleGenomeAssemblyError(Exception):
     """Exception raised for incompatible genome assembly."""
+
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
         self.assembly: str = assembly
         self.phenopacket: str = phenopacket
@@ -147,6 +148,7 @@ class PhenopacketReader:
 
 class PhenopacketWriter:
     """Writes phenopackets back to file."""
+
     def __init__(self, altered_phenopacket, output_file):
         self.altered_phenopacket = altered_phenopacket
         self.output_file = output_file

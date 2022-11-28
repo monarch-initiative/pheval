@@ -29,6 +29,7 @@ def load_ontology():
 
 class RandomisePhenopackets:
     """Randomises the Phenopacket phenotypic profile."""
+
     def __init__(
         self,
         ontology,
@@ -112,6 +113,7 @@ class RandomisePhenopackets:
 
 class RebuildPhenopackets:
     """Rebuilds the original phenopacket with the randomised phenotypes."""
+
     def __init__(self, phenopacket_contents, hpo_list: list):
         self.phenopacket_contents = phenopacket_contents
         self.hpo_list = hpo_list
@@ -328,5 +330,5 @@ def create_noisy_phenopackets(
             number_of_random_terms,
             output_file_suffix,
             output_dir,
-            ontology
+            ontology,
         )
