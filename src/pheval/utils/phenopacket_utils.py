@@ -136,3 +136,14 @@ class PhenopacketReader:
                 variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
                 variants.append(variant)
         return variants
+
+
+class PhenopacketWriter:
+    def __init__(self, altered_phenopacket, output_file):
+        self.altered_phenopacket = altered_phenopacket
+        self.output_file = output_file
+
+    def write_file(self):
+        with open(self.output_file, "w") as outfile:
+            outfile.write(self.altered_phenopacket)
+        outfile.close()

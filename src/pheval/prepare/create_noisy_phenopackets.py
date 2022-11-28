@@ -9,7 +9,7 @@ from oaklib.resource import OntologyResource
 from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
 
 from pheval.utils.file_utils import files_with_suffix
-from pheval.utils.phenopacket_utils import PhenopacketReader
+from pheval.utils.phenopacket_utils import PhenopacketReader, PhenopacketWriter
 
 resource = OntologyResource(slug="hp.obo", local=False)
 ontology = ProntoImplementation(resource)
@@ -19,12 +19,12 @@ class RandomisePhenopackets:
     """Randomises the Phenopacket phenotype."""
 
     def __init__(
-            self,
-            ontology,
-            phenotypic_features: dict,
-            number_of_real_id: int,
-            number_of_changed_terms: int,
-            number_of_random_terms: int,
+        self,
+        ontology,
+        phenotypic_features: dict,
+        number_of_real_id: int,
+        number_of_changed_terms: int,
+        number_of_random_terms: int,
     ):
         self.ontology = ontology
         self.phenotypic_features = phenotypic_features
@@ -33,10 +33,12 @@ class RandomisePhenopackets:
         self.number_of_random_terms = number_of_random_terms
 
     def create_clean_entities(self):
+        """Returns a list of HPO terms."""
         entities = list(self.ontology.entities())
         return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
 
     def max_real_patient_id(self) -> dict:
+        """Retains a dictionary of the maximum number of real patient HPO terms."""
         phenotypic_features = list(self.phenotypic_features.items())
         if self.number_of_real_id > len(phenotypic_features):
             if len(phenotypic_features) - 2 > 0:
@@ -47,6 +49,7 @@ class RandomisePhenopackets:
         return retained_hpo
 
     def change_to_parent_term(self) -> dict:
+        """Returns a dictionary of the HPO terms that have been changed to a parent term."""
         retained_hpo = self.max_real_patient_id()
         remaining_hpo = list(self.phenotypic_features.items() ^ retained_hpo.items())
         if self.number_of_changed_terms > len(remaining_hpo):
@@ -71,6 +74,7 @@ class RandomisePhenopackets:
         return parent
 
     def random_hpo_terms(self) -> dict:
+        """Returns a dictionary of random HPO terms"""
         clean_entities = self.create_clean_entities()
         random_id = list(random.sample(clean_entities, self.number_of_random_terms))
         random_id_dict = {}
@@ -82,6 +86,7 @@ class RandomisePhenopackets:
         return random_id_dict
 
     def combine_hpo_terms(self) -> list:
+        """Combines real patient HPO terms, parent terms and randomised terms."""
         retained_hpo = self.max_real_patient_id()
         parent = self.change_to_parent_term()
         random_id_dict = self.random_hpo_terms()
@@ -97,10 +102,9 @@ class RandomisePhenopackets:
 class RebuildPhenopackets:
     """Rebuilds the original phenopacket with the randomised phenotypes."""
 
-    def __init__(self, phenopacket_contents, hpo_list: list, output_file: str):
+    def __init__(self, phenopacket_contents, hpo_list: list):
         self.phenopacket_contents = phenopacket_contents
         self.hpo_list = hpo_list
-        self.output_file = output_file
 
     def add_randomised_hpo(self):
         randomised_ppacket = Phenopacket(
@@ -111,32 +115,31 @@ class RebuildPhenopackets:
             files=self.phenopacket_contents.pheno.files,
             meta_data=self.phenopacket_contents.pheno.meta_data,
         )
-        altered_phenopacket = MessageToJson(randomised_ppacket)
-        return altered_phenopacket
+        return randomised_ppacket
 
-    def write_altered_phenopacket(self):
-        altered_phenopacket = self.add_randomised_hpo()
+    def create_json_message(self):
+        randomised_ppacket = self.add_randomised_hpo()
         if hasattr(self.phenopacket_contents.pheno, "proband"):
             family = Family(
                 id=self.phenopacket_contents.pheno.id,
-                proband=altered_phenopacket,
+                proband=randomised_ppacket,
                 pedigree=self.phenopacket_contents.pheno.pedigree,
                 files=self.phenopacket_contents.pheno.files,
                 meta_data=self.phenopacket_contents.pheno.meta_data,
             )
             altered_phenopacket = MessageToJson(family)
-        with open(self.output_file, "w") as outfile:
-            outfile.write(altered_phenopacket)
-        outfile.close()
+        else:
+            altered_phenopacket = MessageToJson(randomised_ppacket)
+        return altered_phenopacket
 
 
 def noisy_phenopacket(
-        phenopacket: Path,
-        max_real_id: int,
-        number_of_parent_terms: int,
-        number_of_random_terms: int,
-        output_file_suffix: str,
-        output_dir: Path,
+    phenopacket: Path,
+    max_real_id: int,
+    number_of_parent_terms: int,
+    number_of_random_terms: int,
+    output_file_suffix: str,
+    output_dir: Path,
 ):
     phenopacket_contents = PhenopacketReader(phenopacket)
     phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
@@ -151,9 +154,10 @@ def noisy_phenopacket(
         output_dir,
         Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
     )
-    RebuildPhenopackets(
-        phenopacket_contents, new_hpo_terms, output_file
-    ).write_altered_phenopacket()
+    altered_phenopacket = RebuildPhenopackets(
+        phenopacket_contents, new_hpo_terms
+    ).create_json_message()
+    PhenopacketWriter(altered_phenopacket, output_file).write_file()
 
 
 @click.command()
@@ -212,20 +216,26 @@ def noisy_phenopacket(
     type=Path,
 )
 def create_noisy_phenopacket(
-        phenopacket: Path,
-        max_real_id: int,
-        number_of_parent_terms: int,
-        number_of_random_terms: int,
-        output_file_suffix: str,
-        output_dir: Path,
+    phenopacket: Path,
+    max_real_id: int,
+    number_of_parent_terms: int,
+    number_of_random_terms: int,
+    output_file_suffix: str,
+    output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     try:
         output_dir.mkdir()
     except FileExistsError:
         pass
-    noisy_phenopacket(phenopacket, max_real_id, number_of_parent_terms, number_of_random_terms, output_file_suffix,
-                      output_dir)
+    noisy_phenopacket(
+        phenopacket,
+        max_real_id,
+        number_of_parent_terms,
+        number_of_random_terms,
+        output_file_suffix,
+        output_dir,
+    )
 
 
 @click.command()
@@ -284,12 +294,12 @@ def create_noisy_phenopacket(
     type=Path,
 )
 def create_noisy_phenopackets(
-        phenopacket_dir: Path,
-        max_real_id: int,
-        number_of_parent_terms: int,
-        number_of_random_terms: int,
-        output_file_suffix: str,
-        output_dir: Path,
+    phenopacket_dir: Path,
+    max_real_id: int,
+    number_of_parent_terms: int,
+    number_of_random_terms: int,
+    output_file_suffix: str,
+    output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     try:
@@ -298,5 +308,11 @@ def create_noisy_phenopackets(
         pass
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
-        noisy_phenopacket(phenopacket, max_real_id, number_of_parent_terms, number_of_random_terms, output_file_suffix,
-                          output_dir)
+        noisy_phenopacket(
+            phenopacket,
+            max_real_id,
+            number_of_parent_terms,
+            number_of_random_terms,
+            output_file_suffix,
+            output_dir,
+        )
