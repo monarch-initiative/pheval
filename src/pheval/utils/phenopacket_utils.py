@@ -4,7 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
-from google.protobuf.json_format import Parse
+from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import Family, Phenopacket
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
@@ -144,6 +144,40 @@ class PhenopacketReader:
                 variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
                 variants.append(variant)
         return variants
+
+
+class PhenopacketRebuilder:
+    """Rebuilds Phenopacket structure for writing to a file."""
+
+    def __init__(self, phenopacket_contents: PhenopacketReader):
+        self.phenopacket_contents = phenopacket_contents
+
+    def add_randomised_hpo(self, hpo_list):
+        """Adds randomised phenotypic profile to phenopacket."""
+        randomised_ppacket = Phenopacket(
+            id=self.phenopacket_contents.pheno.id,
+            subject=self.phenopacket_contents.pheno.subject,
+            phenotypic_features=hpo_list,
+            interpretations=self.phenopacket_contents.pheno.interpretations,
+            files=self.phenopacket_contents.pheno.files,
+            meta_data=self.phenopacket_contents.pheno.meta_data,
+        )
+        return randomised_ppacket
+
+    def create_json_message(self, phenopacket):
+        """Creates json message for writing to file."""
+        if hasattr(self.phenopacket_contents.pheno, "proband"):
+            family = Family(
+                id=self.phenopacket_contents.pheno.id,
+                proband=phenopacket,
+                pedigree=self.phenopacket_contents.pheno.pedigree,
+                files=self.phenopacket_contents.pheno.files,
+                meta_data=self.phenopacket_contents.pheno.meta_data,
+            )
+            altered_phenopacket = MessageToJson(family)
+        else:
+            altered_phenopacket = MessageToJson(phenopacket)
+        return altered_phenopacket
 
 
 class PhenopacketWriter:

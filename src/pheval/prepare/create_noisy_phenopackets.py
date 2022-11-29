@@ -3,13 +3,16 @@ import random
 from pathlib import Path
 
 import click
-from google.protobuf.json_format import MessageToJson
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
-from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
+from phenopackets import OntologyClass, PhenotypicFeature
 
 from pheval.utils.file_utils import files_with_suffix
-from pheval.utils.phenopacket_utils import PhenopacketReader, PhenopacketWriter
+from pheval.utils.phenopacket_utils import (
+    PhenopacketReader,
+    PhenopacketRebuilder,
+    PhenopacketWriter,
+)
 
 ontology_loaded = False
 
@@ -111,42 +114,6 @@ class RandomisePhenopackets:
         return hpo_list
 
 
-class RebuildPhenopackets:
-    """Rebuilds the original phenopacket with the randomised phenotypes."""
-
-    def __init__(self, phenopacket_contents, hpo_list: list):
-        self.phenopacket_contents = phenopacket_contents
-        self.hpo_list = hpo_list
-
-    def add_randomised_hpo(self):
-        """Adds randomised phenotypic profile to phenopacket."""
-        randomised_ppacket = Phenopacket(
-            id=self.phenopacket_contents.pheno.id,
-            subject=self.phenopacket_contents.pheno.subject,
-            phenotypic_features=self.hpo_list,
-            interpretations=self.phenopacket_contents.pheno.interpretations,
-            files=self.phenopacket_contents.pheno.files,
-            meta_data=self.phenopacket_contents.pheno.meta_data,
-        )
-        return randomised_ppacket
-
-    def create_json_message(self):
-        """Creates json message for writing to file."""
-        randomised_ppacket = self.add_randomised_hpo()
-        if hasattr(self.phenopacket_contents.pheno, "proband"):
-            family = Family(
-                id=self.phenopacket_contents.pheno.id,
-                proband=randomised_ppacket,
-                pedigree=self.phenopacket_contents.pheno.pedigree,
-                files=self.phenopacket_contents.pheno.files,
-                meta_data=self.phenopacket_contents.pheno.meta_data,
-            )
-            altered_phenopacket = MessageToJson(family)
-        else:
-            altered_phenopacket = MessageToJson(randomised_ppacket)
-        return altered_phenopacket
-
-
 def noisy_phenopacket(
     phenopacket: Path,
     max_real_id: int,
@@ -174,10 +141,13 @@ def noisy_phenopacket(
         output_dir,
         Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
     )
-    altered_phenopacket = RebuildPhenopackets(
-        phenopacket_contents, new_hpo_terms
-    ).create_json_message()
-    PhenopacketWriter(altered_phenopacket, output_file).write_file()
+    altered_phenopacket = PhenopacketRebuilder(phenopacket_contents).add_randomised_hpo(
+        new_hpo_terms
+    )
+    altered_phenopacket_message = PhenopacketRebuilder(phenopacket_contents).create_json_message(
+        altered_phenopacket
+    )
+    PhenopacketWriter(altered_phenopacket_message, output_file).write_file()
 
 
 @click.command()

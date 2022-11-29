@@ -28,9 +28,10 @@ class TestRandomisePhenopackets(unittest.TestCase):
         )
 
     def test_create_clean_entities(self):
-        clean_entities = self.randomise_phenopacket.create_clean_entities()
-        self.assertTrue("HPO:" in term for term in clean_entities)
-        self.assertFalse("HP:0034334" in clean_entities)
+        self.assertTrue(
+            "HPO:" in term for term in self.randomise_phenopacket.create_clean_entities()
+        )
+        self.assertFalse("HP:0034334" in self.randomise_phenopacket.create_clean_entities())
 
     def test_max_real_patient_id(self):
         self.assertTrue(len(self.randomise_phenopacket.max_real_patient_id()), 3)
