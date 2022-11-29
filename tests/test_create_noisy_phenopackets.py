@@ -1,4 +1,6 @@
+import os
 import unittest
+from pathlib import Path
 
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
@@ -74,4 +76,15 @@ class TestRandomisePhenopackets(unittest.TestCase):
         self.assertEqual(len(self.randomise_phenopacket_single_term.combine_hpo_terms()), 4)
 
 
+class TestNoisyPhenopacket(unittest.TestCase):
+    @classmethod
+    def tearDownClass(cls) -> None:
+        Path.unlink(Path("TEST/Abdul_Wahab-2016-GCDH-Patient_5-TEST.json"))
+        Path.rmdir(Path("TEST"))
+
+    def test_noisy_phenopacket(self):
+        create_noisy_phenopackets.noisy_phenopacket(Path("input_dir/Abdul_Wahab-2016-GCDH-Patient_5.json"), 3, 2, 3,
+                                                    "TEST", Path("TEST"), create_noisy_phenopackets.load_ontology())
+        self.assertTrue(os.path.exists("TEST"))
+        self.assertTrue(os.path.exists("TEST/Abdul_Wahab-2016-GCDH-Patient_5-TEST.json"))
 
