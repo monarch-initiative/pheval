@@ -3,7 +3,15 @@ import unittest
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
 
-from pheval.prepare.create_noisy_phenopackets import RandomisePhenopackets
+# from pheval.prepare.create_noisy_phenopackets import RandomisePhenopackets, load_ontology, ontology_loaded
+from pheval.prepare import create_noisy_phenopackets
+
+
+class TestLoadOntology(unittest.TestCase):
+    def test_load_ontology(self):
+        self.assertFalse(create_noisy_phenopackets.ontology_loaded)
+        create_noisy_phenopackets.load_ontology()
+        self.assertTrue(create_noisy_phenopackets.ontology_loaded)
 
 
 class TestRandomisePhenopackets(unittest.TestCase):
@@ -20,10 +28,10 @@ class TestRandomisePhenopackets(unittest.TestCase):
     def setUpClass(cls) -> None:
         resource = OntologyResource(slug="hp.obo", local=False)
         ontology = ProntoImplementation(resource)
-        cls.randomise_phenopacket = RandomisePhenopackets(
+        cls.randomise_phenopacket = create_noisy_phenopackets.RandomisePhenopackets(
             ontology, cls.phenotypic_features, 3, 2, 3
         )
-        cls.randomise_phenopacket_single_term = RandomisePhenopackets(
+        cls.randomise_phenopacket_single_term = create_noisy_phenopackets.RandomisePhenopackets(
             ontology, cls.phenotypic_features_single_term, 3, 2, 3
         )
 
@@ -64,3 +72,6 @@ class TestRandomisePhenopackets(unittest.TestCase):
     def test_combine_hpo_terms(self):
         self.assertEqual(len(self.randomise_phenopacket.combine_hpo_terms()), 8)
         self.assertEqual(len(self.randomise_phenopacket_single_term.combine_hpo_terms()), 4)
+
+
+
