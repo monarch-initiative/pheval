@@ -183,12 +183,12 @@ class PhenopacketRebuilder:
 class PhenopacketWriter:
     """Writes phenopackets back to file."""
 
-    def __init__(self, altered_phenopacket, output_file: Path):
-        self.altered_phenopacket = altered_phenopacket
+    def __init__(self, altered_phenopacket_message, output_file: Path):
+        self.altered_phenopacket_message = altered_phenopacket_message
         self.output_file = output_file
 
     def write_file(self):
         """Writes a json message to a phenopacket .json file."""
         with open(self.output_file, "w") as outfile:
-            outfile.write(self.altered_phenopacket)
+            outfile.write(self.altered_phenopacket_message)
         outfile.close()
