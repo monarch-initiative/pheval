@@ -9,12 +9,24 @@ from pheval.utils import phenopacket_utils
 
 current_path = str(pathlib.Path(__file__).parent.resolve())
 test_phenopacket = Path(current_path + "/input_dir/test_phenopacket_1.json")
+test_incorrect_assembly_phenopacket = Path(
+    current_path + "/input_dir/test_phenopacket_incorrect_assembly_1.json"
+)
+test_incorrect_filetype_phenopacket = Path(
+    current_path + "/input_dir/test_phenopacket_incorrect_filetype_1.json"
+)
 
 
 class TestPhenopacketReader(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.phenopacket = phenopacket_utils.PhenopacketReader(Path(test_phenopacket))
+        cls.incorrect_assembly_phenopacket = phenopacket_utils.PhenopacketReader(
+            Path(test_incorrect_assembly_phenopacket)
+        )
+        cls.incorrect_filetype_phenopacket = phenopacket_utils.PhenopacketReader(
+            Path(test_incorrect_filetype_phenopacket)
+        )
 
     def test_phenotypic_features(self):
         self.assertTrue(
@@ -64,6 +76,10 @@ class TestPhenopacketReader(unittest.TestCase):
             self.phenopacket.vcf_file_data(Path("input_dir")),
             ("input_dir/test_phenopacket_1.vcf", "GRCh37"),
         )
+        with self.assertRaises(phenopacket_utils.IncompatibleGenomeAssemblyError):
+            self.incorrect_assembly_phenopacket.vcf_file_data(Path("input"))
+        with self.assertRaises(phenopacket_utils.IncorrectFileFormatError):
+            self.incorrect_filetype_phenopacket.vcf_file_data(Path("input"))
 
     def test_diagnosed_genes(self):
         self.assertEqual(len(self.phenopacket.diagnosed_genes()), 2)
@@ -138,8 +154,12 @@ class TestPhenopacketWriter(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         ppacket = phenopacket_utils.PhenopacketReader(Path(test_phenopacket))
-        ppacket_message = phenopacket_utils.PhenopacketRebuilder(ppacket).create_json_message(ppacket.pheno)
-        cls.phenopacket_writer = phenopacket_utils.PhenopacketWriter(ppacket_message, Path("TEST-OUTPUT.json"))
+        ppacket_message = phenopacket_utils.PhenopacketRebuilder(ppacket).create_json_message(
+            ppacket.pheno
+        )
+        cls.phenopacket_writer = phenopacket_utils.PhenopacketWriter(
+            ppacket_message, Path("TEST-OUTPUT.json")
+        )
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -148,4 +168,3 @@ class TestPhenopacketWriter(unittest.TestCase):
     def test_write_file(self):
         self.phenopacket_writer.write_file()
         self.assertTrue(os.path.exists("TEST-OUTPUT.json"))
-
