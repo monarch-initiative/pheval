@@ -3,8 +3,13 @@ import unittest
 from pathlib import Path
 
 from pheval.utils import phenopacket_utils
+from phenopackets import PhenotypicFeature, OntologyClass
 
-test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
+# test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
+import pathlib
+
+current_path = str(pathlib.Path(__file__).parent.resolve())
+test_phenopacket = Path(current_path + "/input_dir/test_phenopacket_1.json")
 
 
 class TestPhenopacketReader(unittest.TestCase):
@@ -74,7 +79,6 @@ class TestPhenopacketReader(unittest.TestCase):
                 diagnosed_variant["geneSymbol"] == "RTTN"
                 or diagnosed_variant["geneSymbol"] == "FGD1"
             )
-            print(diagnosed_variant["variant"])
             self.assertTrue(
                 hasattr(diagnosed_variant["variant"], "genome_assembly")
                 and diagnosed_variant["variant"].genome_assembly == "GRCh37"
@@ -99,3 +103,27 @@ class TestPhenopacketReader(unittest.TestCase):
                 and diagnosed_variant["variant"].alt == "T"
                 or diagnosed_variant["variant"].alt == "A"
             )
+
+
+class TestPhenopacketRebuilder(unittest.TestCase):
+    phenopacket_contents = phenopacket_utils.PhenopacketReader(Path(test_phenopacket))
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.phenopacket_rebuilder = phenopacket_utils.PhenopacketRebuilder(cls.phenopacket_contents)
+        cls.hpo_list = [PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
+                        PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM"))]
+
+    def test_add_randomised_hpo(self):
+        randomised_hpo_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(self.hpo_list)
+        self.assertEqual(self.phenopacket_contents.pheno.subject, randomised_hpo_phenopacket.subject)
+        self.assertNotEqual(self.phenopacket_contents.pheno.phenotypic_features,
+                            randomised_hpo_phenopacket.phenotypic_features)
+        for p_f in randomised_hpo_phenopacket.phenotypic_features:
+            self.assertTrue(p_f.type.id == "HP:0000316" or p_f.type.id == "HP:RANDOM")
+            self.assertTrue(p_f.type.label == "Hypertelorism" or p_f.type.label == "RANDOM")
+
+    def test_create_json_message(self):
+        phenopacket_to_create = self.phenopacket_rebuilder.add_randomised_hpo(self.hpo_list)
+        message = self.phenopacket_rebuilder.create_json_message(phenopacket_to_create)
+        self.assertEqual(type(message), str)
