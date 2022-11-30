@@ -29,7 +29,7 @@ class CausativeVariant:
     proband_id: str
     assembly: str
     chrom: str
-    pos: str
+    pos: int
     ref: str
     alt: str
     genotype: str
@@ -48,7 +48,7 @@ class PhenopacketReader:
             self.pheno = Parse(json.dumps(phenopacket), Phenopacket())
         file.close()
 
-    def phenotypic_features(self) -> list:
+    def phenotypic_features(self):
         """Retrieves a list of all HPO terms."""
         if hasattr(self.pheno, "proband"):
             all_phenotypic_features = self.pheno.proband.phenotypic_features
@@ -99,7 +99,7 @@ class PhenopacketReader:
         """Returns all files associated with a phenopacket."""
         return self.pheno.files
 
-    def vcf_file_data(self, vcf_dir):
+    def vcf_file_data(self, vcf_dir: Path) -> tuple[str, str]:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         ppacket_files = self.files()
@@ -121,9 +121,9 @@ class PhenopacketReader:
             genome_assembly = assembly
         return vcf, genome_assembly
 
-    @staticmethod
-    def diagnosed_genes(pheno_interpretation: list) -> list:
+    def diagnosed_genes(self) -> list:
         """Returns a unique list of all causative genes from a phenopacket."""
+        pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
@@ -131,10 +131,10 @@ class PhenopacketReader:
         genes = list(set(genes))
         return genes
 
-    @staticmethod
-    def diagnosed_variants(pheno_interpretation: list) -> list:
+    def diagnosed_variants(self) -> list:
         """Returns a list of all causative variants from a phenopacket - for use in assess-prioritisation."""
         variants = []
+        pheno_interpretation = self.interpretations()
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
                 variant = defaultdict(dict)
@@ -183,7 +183,7 @@ class PhenopacketRebuilder:
 class PhenopacketWriter:
     """Writes phenopackets back to file."""
 
-    def __init__(self, altered_phenopacket, output_file):
+    def __init__(self, altered_phenopacket, output_file: Path):
         self.altered_phenopacket = altered_phenopacket
         self.output_file = output_file
 
