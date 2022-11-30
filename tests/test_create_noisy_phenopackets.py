@@ -7,6 +7,8 @@ from oaklib.resource import OntologyResource
 
 from pheval.prepare import create_noisy_phenopackets
 
+test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
+
 
 class TestLoadOntology(unittest.TestCase):
     def test_load_ontology(self):
@@ -82,7 +84,14 @@ class TestNoisyPhenopacket(unittest.TestCase):
         Path.rmdir(Path("TEST"))
 
     def test_noisy_phenopacket(self):
-        create_noisy_phenopackets.noisy_phenopacket(Path("input_dir/test_phenopacket_1.json"), 3, 2, 3,
-                                                    "TEST", Path("TEST"), create_noisy_phenopackets.load_ontology())
+        create_noisy_phenopackets.noisy_phenopacket(
+            Path(test_phenopacket),
+            3,
+            2,
+            3,
+            "TEST",
+            Path("TEST"),
+            create_noisy_phenopackets.load_ontology(),
+        )
         self.assertTrue(os.path.exists("TEST"))
         self.assertTrue(os.path.exists("TEST/test_phenopacket_1-TEST.json"))
