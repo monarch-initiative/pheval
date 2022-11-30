@@ -100,7 +100,7 @@ class RandomisePhenopackets:
             random_id_dict[r] = random_term
         return random_id_dict
 
-    def combine_hpo_terms(self) -> list:
+    def combine_hpo_terms(self) -> list[PhenotypicFeature]:
         """Combines real patient HPO terms, parent terms and randomised terms."""
         retained_hpo = self.max_real_patient_id()
         parent = self.change_to_parent_term()
