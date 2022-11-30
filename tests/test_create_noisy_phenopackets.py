@@ -5,7 +5,6 @@ from pathlib import Path
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
 
-# from pheval.prepare.create_noisy_phenopackets import RandomisePhenopackets, load_ontology, ontology_loaded
 from pheval.prepare import create_noisy_phenopackets
 
 
@@ -79,12 +78,11 @@ class TestRandomisePhenopackets(unittest.TestCase):
 class TestNoisyPhenopacket(unittest.TestCase):
     @classmethod
     def tearDownClass(cls) -> None:
-        Path.unlink(Path("TEST/Abdul_Wahab-2016-GCDH-Patient_5-TEST.json"))
+        Path.unlink(Path("TEST/test_phenopacket_1-TEST.json"))
         Path.rmdir(Path("TEST"))
 
     def test_noisy_phenopacket(self):
-        create_noisy_phenopackets.noisy_phenopacket(Path("input_dir/Abdul_Wahab-2016-GCDH-Patient_5.json"), 3, 2, 3,
+        create_noisy_phenopackets.noisy_phenopacket(Path("input_dir/test_phenopacket_1.json"), 3, 2, 3,
                                                     "TEST", Path("TEST"), create_noisy_phenopackets.load_ontology())
         self.assertTrue(os.path.exists("TEST"))
-        self.assertTrue(os.path.exists("TEST/Abdul_Wahab-2016-GCDH-Patient_5-TEST.json"))
-
+        self.assertTrue(os.path.exists("TEST/test_phenopacket_1-TEST.json"))
