@@ -123,7 +123,7 @@ def noisy_phenopacket(
     output_dir: Path,
     ontology,
 ):
-    """Randomises a single phenopacket's phenotypic profile, writing to a new .json file"""
+    """Randomises a single phenopacket phenotypic profile, writing to a new .json file"""
     try:
         output_dir.mkdir()
     except FileExistsError:
@@ -147,7 +147,7 @@ def noisy_phenopacket(
     altered_phenopacket_message = PhenopacketRebuilder(phenopacket_contents).create_json_message(
         altered_phenopacket
     )
-    PhenopacketWriter(altered_phenopacket_message, output_file).write_file()
+    PhenopacketWriter(altered_phenopacket_message, Path(output_file)).write_file()
 
 
 @click.command()
