@@ -1,12 +1,11 @@
-import os
+import os.path
+import pathlib
 import unittest
 from pathlib import Path
 
-from pheval.utils import phenopacket_utils
-from phenopackets import PhenotypicFeature, OntologyClass
+from phenopackets import OntologyClass, PhenotypicFeature
 
-# test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
-import pathlib
+from pheval.utils import phenopacket_utils
 
 current_path = str(pathlib.Path(__file__).parent.resolve())
 test_phenopacket = Path(current_path + "/input_dir/test_phenopacket_1.json")
@@ -111,14 +110,20 @@ class TestPhenopacketRebuilder(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.phenopacket_rebuilder = phenopacket_utils.PhenopacketRebuilder(cls.phenopacket_contents)
-        cls.hpo_list = [PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
-                        PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM"))]
+        cls.hpo_list = [
+            PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
+            PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM")),
+        ]
 
     def test_add_randomised_hpo(self):
         randomised_hpo_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(self.hpo_list)
-        self.assertEqual(self.phenopacket_contents.pheno.subject, randomised_hpo_phenopacket.subject)
-        self.assertNotEqual(self.phenopacket_contents.pheno.phenotypic_features,
-                            randomised_hpo_phenopacket.phenotypic_features)
+        self.assertEqual(
+            self.phenopacket_contents.pheno.subject, randomised_hpo_phenopacket.subject
+        )
+        self.assertNotEqual(
+            self.phenopacket_contents.pheno.phenotypic_features,
+            randomised_hpo_phenopacket.phenotypic_features,
+        )
         for p_f in randomised_hpo_phenopacket.phenotypic_features:
             self.assertTrue(p_f.type.id == "HP:0000316" or p_f.type.id == "HP:RANDOM")
             self.assertTrue(p_f.type.label == "Hypertelorism" or p_f.type.label == "RANDOM")
@@ -127,3 +132,20 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         phenopacket_to_create = self.phenopacket_rebuilder.add_randomised_hpo(self.hpo_list)
         message = self.phenopacket_rebuilder.create_json_message(phenopacket_to_create)
         self.assertEqual(type(message), str)
+
+
+class TestPhenopacketWriter(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        ppacket = phenopacket_utils.PhenopacketReader(Path(test_phenopacket))
+        ppacket_message = phenopacket_utils.PhenopacketRebuilder(ppacket).create_json_message(ppacket.pheno)
+        cls.phenopacket_writer = phenopacket_utils.PhenopacketWriter(ppacket_message, Path("TEST-OUTPUT.json"))
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        Path.unlink(Path("TEST-OUTPUT.json"))
+
+    def test_write_file(self):
+        self.phenopacket_writer.write_file()
+        self.assertTrue(os.path.exists("TEST-OUTPUT.json"))
+
