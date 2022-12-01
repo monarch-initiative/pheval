@@ -78,6 +78,7 @@ genome_assemblies = {
 @dataclass
 class VcfHeader:
     """Data obtained from VCF header"""
+
     sample_id: str
     assembly: str
     chr_status: bool
@@ -101,7 +102,8 @@ class VcfParser:
         self.vcf_file = open(template_vcf_file)
 
     def parse_header(self) -> VcfHeader:
-        """Parses the header of the VCF."""
+        """Parses the header of the VCF, returning the sample_id, genome assembly of the VCF and whether chromosomes
+        are formatted as chr1 or 1."""
         assembly_dict = {}
         sample_id = ""
         chr_status = False
@@ -126,9 +128,9 @@ class ProbandVariantChecker:
     """Performs checks on the proband variant data."""
 
     def __init__(
-            self,
-            list_of_variant_proband_data: list[CausativeVariant],
-            vcf_header: VcfHeader,
+        self,
+        list_of_variant_proband_data: list[CausativeVariant],
+        vcf_header: VcfHeader,
     ):
         self.list_of_variant_proband_data = list_of_variant_proband_data
         self.vcf_header = vcf_header
@@ -147,15 +149,15 @@ class ProbandVariantChecker:
 
 
 class VcfSpiker:
-    """Spikes proband variants into template VCF file."""
+    """Spikes proband variants into template VCF file contents."""
 
     def __init__(
-            self,
-            phenopacket: str,
-            vcf_file: Path,
-            output_dir: Path,
-            list_of_variant_proband_data: list[CausativeVariant],
-            vcf_header: VcfHeader,
+        self,
+        phenopacket: str,
+        vcf_file: Path,
+        output_dir: Path,
+        list_of_variant_proband_data: list[CausativeVariant],
+        vcf_header: VcfHeader,
     ):
         self.phenopacket = phenopacket
         self.vcf_file = vcf_file
@@ -165,10 +167,6 @@ class VcfSpiker:
         self.proband_vcf_file_name = os.path.join(
             self.output_dir, self.phenopacket.replace(".json", ".vcf")
         )
-
-    def copy_template_vcf(self) -> None:
-        """Copies template VCF to new file."""
-        shutil.copyfile(self.vcf_file, self.proband_vcf_file_name)
 
     def construct_variant(self, variant: CausativeVariant) -> list[str]:
         """Constructs variant entries."""
@@ -202,10 +200,10 @@ class VcfSpiker:
         for variant in self.list_of_proband_variant_data:
             variant = self.construct_variant(variant)
             locs = [
-                       i
-                       for i, val in enumerate(vcf_contents)
-                       if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
-                   ][-1] + 1
+                i
+                for i, val in enumerate(vcf_contents)
+                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
+            ][-1] + 1
             vcf_contents.insert(locs, "\t".join(variant))
         return vcf_contents
 
@@ -221,12 +219,20 @@ class VcfSpiker:
             updated_vcf.append(text)
         return updated_vcf
 
-    def write_vcf(self) -> None:
-        """Writes updated VCF file."""
-        self.copy_template_vcf()
-        new_vcf = self.construct_header()
-        with open(self.proband_vcf_file_name, "w") as file:
-            file.writelines(new_vcf)
+
+class VcfWriter:
+    def __init__(self, template_vcf_name: Path, vcf_contents: list[str], file_name: Path):
+        self.template_vcf_name = template_vcf_name
+        self.vcf_contents = vcf_contents
+        self.file_name = file_name
+
+    def copy_template_to_new_file(self):
+        shutil.copyfile(self.template_vcf_name, self.file_name)
+
+    def write_vcf(self):
+        self.copy_template_to_new_file()
+        with open(self.file_name, "w") as file:
+            file.writelines(self.vcf_contents)
         file.close()
 
 
@@ -258,12 +264,18 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
                 assembly=incompatible_variant.assembly,
                 phenopacket=phenopacket.absolute().name,
             )
-    VcfSpiker(
+    vcf_contents = VcfSpiker(
         phenopacket.name,
         chosen_template_vcf.vcf_file,
         output_dir,
         phenopacket_proband_variant_data,
         vcf_header,
+    ).construct_header()
+
+    VcfWriter(
+        chosen_template_vcf.vcf_file,
+        vcf_contents,
+        Path(os.path.join(output_dir, phenopacket.name.replace(".json", ".vcf"))),
     ).write_vcf()
 
 
@@ -305,7 +317,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     type=Path,
 )
 def create_spiked_vcf(
-        phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None
+    phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None
 ):
     """Spikes variants into a template VCF file for a singular phenopacket."""
     spike_vcf(phenopacket, output_dir, template_vcf, vcf_dir)
@@ -349,10 +361,10 @@ def create_spiked_vcf(
     type=Path,
 )
 def create_spiked_vcfs(
-        phenopacket_dir: Path,
-        output_dir: Path,
-        template_vcf: Path = None,
-        vcf_dir: Path = None,
+    phenopacket_dir: Path,
+    output_dir: Path,
+    template_vcf: Path = None,
+    vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
     for phenopacket in files_with_suffix(phenopacket_dir, ".json"):
