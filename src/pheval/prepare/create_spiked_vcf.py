@@ -88,11 +88,16 @@ class VcfPicker:
     """Chooses a VCF file from random for a directory if provided, otherwise selects the single template."""
 
     def __init__(self, template_vcf: Path, vcf_dir: Path):
-        if template_vcf is not None:
-            self.vcf_file = template_vcf
-        if vcf_dir is not None:
-            vcf_files = all_files(vcf_dir)
-            self.vcf_file = secrets.choice(vcf_files)
+        self.template_vcf = template_vcf
+        self.vcf_dir = vcf_dir
+
+    def pick_file(self) -> Path:
+        """Selects a VCF file from random when given a directory, if not, template vcf is assigned."""
+        vcf_file = self.template_vcf
+        if self.vcf_dir is not None:
+            vcf_files = all_files(self.vcf_dir)
+            vcf_file = secrets.choice(vcf_files)
+        return vcf_file
 
 
 class VcfParser:
@@ -153,7 +158,7 @@ class VcfSpiker:
 
     def __init__(
         self,
-        phenopacket: str,
+        phenopacket: Path,
         vcf_file: Path,
         output_dir: Path,
         list_of_variant_proband_data: list[CausativeVariant],
@@ -165,7 +170,7 @@ class VcfSpiker:
         self.list_of_proband_variant_data = list_of_variant_proband_data
         self.vcf_header = vcf_header
         self.proband_vcf_file_name = os.path.join(
-            self.output_dir, self.phenopacket.replace(".json", ".vcf")
+            self.output_dir, self.phenopacket.name.replace(".json", ".vcf")
         )
 
     def construct_variant(self, variant: CausativeVariant) -> list[str]:
@@ -176,7 +181,7 @@ class VcfSpiker:
             "heterozygous": "0/1",
             "compound heterozygous": "0/1",
         }
-        if self.vcf_header.chr_status is True:
+        if self.vcf_header.chr_status is True and "chr" not in variant.chrom:
             variant.chrom = "chr" + variant.chrom
         variant_data = [
             variant.chrom,
@@ -249,8 +254,8 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
         pass
     phenopacket_proband_variant_data = PhenopacketReader(phenopacket).causative_variants()
     # TODO: check that chosen template is what is expected (VcfPicker)
-    chosen_template_vcf = VcfPicker(template_vcf, vcf_dir)
-    vcf_header = VcfParser(chosen_template_vcf.vcf_file).parse_header()
+    chosen_template_vcf = VcfPicker(template_vcf, vcf_dir).pick_file()
+    vcf_header = VcfParser(chosen_template_vcf).parse_header()
     incompatible_variants = ProbandVariantChecker(
         phenopacket_proband_variant_data, vcf_header
     ).check_variant_assembly()
@@ -265,15 +270,15 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
                 phenopacket=phenopacket.absolute().name,
             )
     vcf_contents = VcfSpiker(
-        phenopacket.name,
-        chosen_template_vcf.vcf_file,
+        phenopacket,
+        chosen_template_vcf,
         output_dir,
         phenopacket_proband_variant_data,
         vcf_header,
     ).construct_header()
 
     VcfWriter(
-        chosen_template_vcf.vcf_file,
+        chosen_template_vcf,
         vcf_contents,
         Path(os.path.join(output_dir, phenopacket.name.replace(".json", ".vcf"))),
     ).write_vcf()
