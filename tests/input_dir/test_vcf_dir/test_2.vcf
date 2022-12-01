@@ -1,0 +1,32 @@
+##fileformat=VCFv4.2
+##fileDate=20160824
+##CL=vcffilter -i - -o - --javascript "function record() {HG001.PS=\".\";}"
+##contig=<ID=chr1,length=248956422,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr2,length=242193529,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr3,length=198295559,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr4,length=190214555,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr5,length=181538259,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr6,length=170805979,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr7,length=159345973,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr8,length=145138636,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr9,length=138394717,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr10,length=133797422,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr11,length=135086622,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr12,length=133275309,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr13,length=114364328,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr14,length=107043718,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr15,length=101991189,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr16,length=90338345,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr17,length=83257441,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr18,length=80373285,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr19,length=58617616,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr20,length=64444167,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr21,length=46709983,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chr22,length=50818468,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chrX,length=156040895,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chrY,length=57227415,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+##contig=<ID=chrM,length=16569,assembly=human_GRCh38_no_alt_analysis_set.fasta>
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	HG001
+chr10	19819808	.	C	T	50	PASS	platforms=5;platformnames=Illumina,PacBio,CG,10X,Solid;datasets=5;datasetnames=HiSeqPE300x,CCS15kb_20kb,CGnormal,10XChromiumLR,SolidSE75bp;callsets=7;callsetnames=HiSeqPE300xGATK,CCS15kb_20kbDV,CCS15kb_20kbGATK4,CGnormal,HiSeqPE300xfreebayes,10XLRGATK,SolidSE75GATKHC;datasetsmissingcall=IonExome;callable=CS_HiSeqPE300xGATK_callable,CS_CCS15kb_20kbDV_callable,CS_10XLRGATK_callable,CS_CCS15kb_20kbGATK4_callable,CS_CGnormal_callable,CS_HiSeqPE300xfreebayes_callable	GT:PS:DP:ADALL:AD:GQ	0/1:.:964:173,188:239,249:855
+chr10	19830688	.	CT	C	50	PASS	platforms=5;platformnames=PacBio,CG,Illumina,10X,Solid;datasets=5;datasetnames=CCS15kb_20kb,CGnormal,HiSeqPE300x,10XChromiumLR,SolidSE75bp;callsets=7;callsetnames=CCS15kb_20kbDV,CCS15kb_20kbGATK4,CGnormal,HiSeqPE300xfreebayes,HiSeqPE300xGATK,10XLRGATK,SolidSE75GATKHC;datasetsmissingcall=IonExome;callable=CS_CCS15kb_20kbDV_callable,CS_10XLRGATK_callable,CS_CCS15kb_20kbGATK4_callable,CS_CGnormal_callable,CS_HiSeqPE300xfreebayes_callable	GT:PS:DP:ADALL:AD:GQ	1/1:.:769:0,292:70,137:410
+chr10	19830740	.	G	GT	50	PASS	platforms=3;platformnames=Illumina,PacBio,10X;datasets=3;datasetnames=HiSeqPE300x,CCS15kb_20kb,10XChromiumLR;callsets=4;callsetnames=HiSeqPE300xGATK,CCS15kb_20kbDV,10XLRGATK,HiSeqPE300xfreebayes;datasetsmissingcall=CCS15kb_20kb,CGnormal,IonExome,SolidSE75bp;callable=CS_HiSeqPE300xGATK_callable;filt=CS_CGnormal_filt;difficultregion=GRCh38_AllHomopolymers_gt6bp_imperfectgt10bp_slop5,GRCh38_SimpleRepeat_imperfecthomopolgt10_slop5	GT:PS:DP:ADALL:AD:GQ	1/1:.:575:30,271:7,237:128
