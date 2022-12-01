@@ -142,52 +142,55 @@ class TestVcfSpiker(unittest.TestCase):
 
 class TestVcfWriter(unittest.TestCase):
     vcf_contents = create_spiked_vcf.VcfSpiker(
-            Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_phenopacket_1.json"
-            ),
-            Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
-            ),
-            Path("test_output_dir/"),
-            [
-                create_spiked_vcf.CausativeVariant(
-                    Path(
-                        os.path.dirname(os.path.realpath(__file__))
-                        + "/input_dir/test_phenopacket_1.json"
-                    ),
-                    "TEST1",
-                    "GRCh37",
-                    "1",
-                    886190,
-                    "G",
-                    "A",
-                    "heterozygous",
-                )
-            ],
-            create_spiked_vcf.VcfHeader("TEMPLATE", "GRCh37", True),
-        ).construct_header()
+        Path(os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_phenopacket_1.json"),
+        Path(os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"),
+        Path("test_output_dir/"),
+        [
+            create_spiked_vcf.CausativeVariant(
+                Path(
+                    os.path.dirname(os.path.realpath(__file__))
+                    + "/input_dir/test_phenopacket_1.json"
+                ),
+                "TEST1",
+                "GRCh37",
+                "1",
+                886190,
+                "G",
+                "A",
+                "heterozygous",
+            )
+        ],
+        create_spiked_vcf.VcfHeader("TEMPLATE", "GRCh37", True),
+    ).construct_header()
 
     @classmethod
     def setUpClass(cls) -> None:
-        cls.vcf_writer = create_spiked_vcf.VcfWriter(Path(
+        cls.vcf_writer = create_spiked_vcf.VcfWriter(
+            Path(
                 os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_phenopacket_1.json"
-            ), cls.vcf_contents, Path(Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json")))
+            ),
+            cls.vcf_contents,
+            Path(Path(os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json")),
+        )
 
     @classmethod
     def tearDownClass(cls) -> None:
-        Path.unlink(Path(Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json")))
+        Path.unlink(
+            Path(Path(os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json"))
+        )
 
     def test_copy_template_to_new_file(self):
         self.vcf_writer.copy_template_to_new_file()
-        self.assertTrue(os.path.exists(Path(Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json"))))
+        self.assertTrue(
+            os.path.exists(
+                Path(Path(os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json"))
+            )
+        )
 
     def test_write_vcf(self):
         self.vcf_writer.write_vcf()
-        with open(Path(Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json"))) as f:
+        with open(
+            Path(Path(os.path.dirname(os.path.realpath(__file__)) + "/test_copied_vcf.json"))
+        ) as f:
             self.assertEqual(len(f.readlines()), 68)
         f.close()
-
