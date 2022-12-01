@@ -65,7 +65,7 @@ class TestPhenopacketReader(unittest.TestCase):
 
     def test_files(self):
         self.assertEqual(len(self.phenopacket.files()), 1)
-        self.assertTrue("test_phenopacket_1.vcf" in file.uri for file in self.phenopacket.files())
+        self.assertTrue("test_1.vcf" in file.uri for file in self.phenopacket.files())
         self.assertEqual(
             [{"genomeAssembly": "GRCh37", "fileFormat": "VCF"}],
             [file.file_attributes for file in self.phenopacket.files()],
@@ -74,7 +74,7 @@ class TestPhenopacketReader(unittest.TestCase):
     def test_vcf_file_data(self):
         self.assertEqual(
             self.phenopacket.vcf_file_data(Path("input_dir")),
-            ("input_dir/test_phenopacket_1.vcf", "GRCh37"),
+            ("input_dir/test_1.vcf", "GRCh37"),
         )
         with self.assertRaises(phenopacket_utils.IncompatibleGenomeAssemblyError):
             self.incorrect_assembly_phenopacket.vcf_file_data(Path("input"))

@@ -1,7 +1,7 @@
 {
   "id": "test-phenopacket",
   "subject": {
-    "id": "test-phenopacket-1",
+    "id": "TEST1",
     "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
@@ -208,7 +208,7 @@
         },
         "genomicInterpretations": [
           {
-            "subjectOrBiosampleId": "test-phenopacket-1",
+            "subjectOrBiosampleId": "TEST1",
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
@@ -231,7 +231,7 @@
             }
           },
           {
-            "subjectOrBiosampleId": "test-phenopacket-1",
+            "subjectOrBiosampleId": "TEST1",
             "variantInterpretation": {
               "variationDescriptor": {
                 "geneContext": {
@@ -258,7 +258,7 @@
   ],
   "files": [
     {
-      "uri": "test_phenopacket_1.vcf",
+      "uri": "test_1.vcf",
       "fileAttributes": {
         "genomeAssembly": "GRCh37",
         "fileFormat": "VCF"
