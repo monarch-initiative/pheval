@@ -11,7 +11,9 @@ import click
 from pheval.utils.phenopacket_utils import (
     CausativeVariant,
     IncompatibleGenomeAssemblyError,
-    PhenopacketReader,
+    PhenopacketRebuilder,
+    PhenopacketUtil,
+    phenopacket_reader,
 )
 
 from .custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -252,7 +254,10 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
         logger.info(f" Created a directory {output_dir}")
     except FileExistsError:
         pass
-    phenopacket_proband_variant_data = PhenopacketReader(phenopacket).causative_variants()
+    phenopacket_contents = phenopacket_reader(phenopacket)
+    phenopacket_proband_variant_data = PhenopacketUtil(phenopacket_contents).causative_variants(
+        phenopacket
+    )
     # TODO: check that chosen template is what is expected (VcfPicker)
     chosen_template_vcf = VcfPicker(template_vcf, vcf_dir).pick_file()
     vcf_header = VcfParser(chosen_template_vcf).parse_header()
@@ -282,6 +287,12 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
         vcf_contents,
         Path(os.path.join(output_dir, phenopacket.name.replace(".json", ".vcf"))),
     ).write_vcf()
+    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
+    phenopacket_rebuilder.add_created_vcf_path(
+        Path(os.path.join(output_dir, phenopacket.name.replace(".json", ".vcf"))),
+        vcf_header.assembly,
+    )
+    phenopacket_rebuilder.write_phenopacket(phenopacket)
 
 
 @click.command()
