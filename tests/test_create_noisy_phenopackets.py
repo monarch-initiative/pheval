@@ -1,9 +1,9 @@
 import os
 import unittest
-from pathlib import Path
 
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
+from phenopackets import OntologyClass, PhenotypicFeature
 
 from pheval.prepare import create_noisy_phenopackets
 
@@ -18,14 +18,16 @@ class TestLoadOntology(unittest.TestCase):
 
 
 class TestRandomisePhenopackets(unittest.TestCase):
-    phenotypic_features_single_term = {"HP:0000965": "Cutis marmorata"}
-    phenotypic_features = {
-        "HP:0000256": "Macrocephaly",
-        "HP:0002059": "Cerebral atrophy",
-        "HP:0100309": "Subdural hemorrhage",
-        "HP:0003150": "Glutaric aciduria",
-        "HP:0001332": "Dystonia",
-    }
+    phenotypic_features_single_term = [
+        PhenotypicFeature(type=OntologyClass(id="HP:0000965", label="Cutis marmorata"))
+    ]
+    phenotypic_features = [
+        PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
+        PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
+        PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
+        PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
+        PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
+    ]
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -45,53 +47,35 @@ class TestRandomisePhenopackets(unittest.TestCase):
         self.assertFalse("HP:0034334" in self.randomise_phenopacket.create_clean_entities())
 
     def test_max_real_patient_id(self):
-        self.assertTrue(len(self.randomise_phenopacket.max_real_patient_id()), 3)
+        self.assertTrue(len(self.randomise_phenopacket.retain_real_patient_terms()), 3)
         self.assertTrue(
             all(
-                hpo_term in self.phenotypic_features.keys()
-                for hpo_term in self.randomise_phenopacket.max_real_patient_id().keys()
+                hpo_term in self.phenotypic_features
+                for hpo_term in self.randomise_phenopacket.retain_real_patient_terms()
             )
         )
-        self.assertTrue(len(self.randomise_phenopacket_single_term.max_real_patient_id()), 1)
+        self.assertTrue(len(self.randomise_phenopacket_single_term.retain_real_patient_terms()), 1)
         self.assertEqual(
-            self.phenotypic_features_single_term.keys(),
-            self.randomise_phenopacket_single_term.max_real_patient_id().keys(),
+            self.phenotypic_features_single_term,
+            self.randomise_phenopacket_single_term.retain_real_patient_terms(),
         )
 
     def test_change_to_parent_term(self):
-        self.assertTrue(len(self.randomise_phenopacket.change_to_parent_term()), 2)
+        self.assertTrue(len(self.randomise_phenopacket.convert_patient_terms_to_parent()), 2)
         self.assertFalse(
             all(
-                hpo_term in self.phenotypic_features.keys()
-                for hpo_term in self.randomise_phenopacket.change_to_parent_term().keys()
+                hpo_term in self.phenotypic_features
+                for hpo_term in self.randomise_phenopacket.convert_patient_terms_to_parent()
             )
         )
-        self.assertEqual(self.randomise_phenopacket_single_term.change_to_parent_term(), {})
+        self.assertEqual(
+            self.randomise_phenopacket_single_term.convert_patient_terms_to_parent(), []
+        )
 
     def test_random_hpo_terms(self):
-        self.assertEqual(len(self.randomise_phenopacket.random_hpo_terms()), 3)
-        self.assertEqual(len(self.randomise_phenopacket_single_term.random_hpo_terms()), 3)
+        self.assertEqual(len(self.randomise_phenopacket.create_random_hpo_terms()), 3)
+        self.assertEqual(len(self.randomise_phenopacket_single_term.create_random_hpo_terms()), 3)
 
     def test_combine_hpo_terms(self):
-        self.assertEqual(len(self.randomise_phenopacket.combine_hpo_terms()), 8)
-        self.assertEqual(len(self.randomise_phenopacket_single_term.combine_hpo_terms()), 4)
-
-
-class TestNoisyPhenopacket(unittest.TestCase):
-    @classmethod
-    def tearDownClass(cls) -> None:
-        Path.unlink(Path("TEST/test_phenopacket_1-TEST.json"))
-        Path.rmdir(Path("TEST"))
-
-    def test_noisy_phenopacket(self):
-        create_noisy_phenopackets.noisy_phenopacket(
-            Path(test_phenopacket),
-            3,
-            2,
-            3,
-            "TEST",
-            Path("TEST"),
-            create_noisy_phenopackets.load_ontology(),
-        )
-        self.assertTrue(os.path.exists("TEST"))
-        self.assertTrue(os.path.exists("TEST/test_phenopacket_1-TEST.json"))
+        self.assertEqual(len(self.randomise_phenopacket.randomise_hpo_terms()), 8)
+        self.assertEqual(len(self.randomise_phenopacket_single_term.randomise_hpo_terms()), 4)

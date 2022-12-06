@@ -8,11 +8,7 @@ from oaklib.resource import OntologyResource
 from phenopackets import OntologyClass, PhenotypicFeature
 
 from pheval.utils.file_utils import files_with_suffix
-from pheval.utils.phenopacket_utils import (
-    PhenopacketReader,
-    PhenopacketRebuilder,
-    PhenopacketWriter,
-)
+from pheval.utils.phenopacket_utils import PhenopacketRebuilder, PhenopacketUtil, phenopacket_reader
 
 ontology_loaded = False
 
@@ -26,8 +22,7 @@ def load_ontology():
 
     ontology_loaded = True
     resource = OntologyResource(slug="hp.obo", local=False)
-    ontology = ProntoImplementation(resource)
-    return ontology
+    return ProntoImplementation(resource)
 
 
 class RandomisePhenopackets:
@@ -36,7 +31,7 @@ class RandomisePhenopackets:
     def __init__(
         self,
         ontology,
-        phenotypic_features: dict,
+        phenotypic_features: list[PhenotypicFeature],
         number_of_real_id: int,
         number_of_changed_terms: int,
         number_of_random_terms: int,
@@ -47,71 +42,68 @@ class RandomisePhenopackets:
         self.number_of_changed_terms = number_of_changed_terms
         self.number_of_random_terms = number_of_random_terms
 
-    def create_clean_entities(self):
+    def create_clean_entities(self) -> list:
         """Returns a list of HPO terms."""
         entities = list(self.ontology.entities())
         return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
 
-    def max_real_patient_id(self) -> dict:
+    def retain_real_patient_terms(self) -> list[PhenotypicFeature]:
         """Returns a dictionary of the maximum number of real patient HPO terms."""
-        phenotypic_features = list(self.phenotypic_features.items())
-        if self.number_of_real_id > len(phenotypic_features):
-            if len(phenotypic_features) - 2 > 0:
-                self.number_of_real_id = len(phenotypic_features) - 2
+        if self.number_of_real_id > len(self.phenotypic_features):
+            if len(self.phenotypic_features) - 2 > 0:
+                self.number_of_real_id = len(self.phenotypic_features) - 2
             else:
                 self.number_of_real_id = 1
-        retained_hpo = dict(random.sample(phenotypic_features, self.number_of_real_id))
-        return retained_hpo
+        return random.sample(self.phenotypic_features, self.number_of_real_id)
 
-    def change_to_parent_term(self) -> dict:
+    def convert_patient_terms_to_parent(self) -> list[PhenotypicFeature]:
         """Returns a dictionary of the HPO terms that have been changed to a parent term."""
-        retained_hpo = self.max_real_patient_id()
-        remaining_hpo = list(self.phenotypic_features.items() ^ retained_hpo.items())
+        retained_hpo = self.retain_real_patient_terms()
+        remaining_hpo = [i for i in self.phenotypic_features if i not in retained_hpo]
         if self.number_of_changed_terms > len(remaining_hpo):
             self.number_of_changed_terms = len(remaining_hpo)
-        parent_hpo = list(random.sample(remaining_hpo, self.number_of_changed_terms))
-        parent = {}
-        for p in parent_hpo:
+        hpo_terms_to_be_changed = random.sample(remaining_hpo, self.number_of_changed_terms)
+        parent_terms = []
+        for p in hpo_terms_to_be_changed:
             try:
-                parent_id = self.ontology.hierararchical_parents(p[0])[0]
+                parent_id = self.ontology.hierararchical_parents(p.type.id)[0]
                 rels = self.ontology.entity_alias_map(parent_id)
                 parent_term = rels[(list(rels.keys())[0])]
                 parent_term = "".join(parent_term)
-                parent[parent_id] = parent_term
+                parent_terms.append(
+                    PhenotypicFeature(type=OntologyClass(id=parent_id, label=parent_term))
+                )
             except IndexError:
-                obsolete = self.ontology.entity_metadata_map(p[0])
+                obsolete = self.ontology.entity_metadata_map(p.type.id)
                 updated_term = list(obsolete.values())[0][0]
                 parent_id = self.ontology.hierararchical_parents(updated_term)[0]
                 rels = self.ontology.entity_alias_map(parent_id)
                 parent_term = rels[(list(rels.keys())[0])]
                 parent_term = "".join(parent_term)
-                parent[parent_id] = parent_term
-        return parent
+                parent_terms.append(
+                    PhenotypicFeature(type=OntologyClass(id=parent_id, label=parent_term))
+                )
+        return parent_terms
 
-    def random_hpo_terms(self) -> dict:
+    def create_random_hpo_terms(self) -> list[PhenotypicFeature]:
         """Returns a dictionary of random HPO terms"""
         clean_entities = self.create_clean_entities()
-        random_id = list(random.sample(clean_entities, self.number_of_random_terms))
-        random_id_dict = {}
-        for r in random_id:
-            rels = self.ontology.entity_alias_map(r)
+        random_ids = list(random.sample(clean_entities, self.number_of_random_terms))
+        random_id_hpo = []
+        for r_id in random_ids:
+            rels = self.ontology.entity_alias_map(r_id)
             random_term = rels[(list(rels.keys())[0])]
             random_term = "".join(random_term)
-            random_id_dict[r] = random_term
-        return random_id_dict
+            random_id_hpo.append(PhenotypicFeature(type=OntologyClass(id=r_id, label=random_term)))
+        return random_id_hpo
 
-    def combine_hpo_terms(self) -> list[PhenotypicFeature]:
+    def randomise_hpo_terms(self) -> list[PhenotypicFeature]:
         """Combines real patient HPO terms, parent terms and randomised terms."""
-        retained_hpo = self.max_real_patient_id()
-        parent = self.change_to_parent_term()
-        random_id_dict = self.random_hpo_terms()
-        retained_hpo.update(parent)
-        retained_hpo.update(random_id_dict)
-        hpo_list = []
-        for key, value in retained_hpo.items():
-            new_hpo = PhenotypicFeature(type=OntologyClass(id=key, label=value))
-            hpo_list.append(new_hpo)
-        return hpo_list
+        return (
+            self.retain_real_patient_terms()
+            + self.convert_patient_terms_to_parent()
+            + self.create_random_hpo_terms()
+        )
 
 
 def noisy_phenopacket(
@@ -128,26 +120,24 @@ def noisy_phenopacket(
         output_dir.mkdir()
     except FileExistsError:
         pass
-    phenopacket_contents = PhenopacketReader(phenopacket)
-    phenotypic_features = phenopacket_contents.remove_excluded_phenotypic_features()
-    new_hpo_terms = RandomisePhenopackets(
+    phenopacket_contents = phenopacket_reader(phenopacket)
+    phenotypic_features = PhenopacketUtil(
+        phenopacket_contents
+    ).remove_excluded_phenotypic_features()
+    randomised_hpo_terms = RandomisePhenopackets(
         ontology,
         phenotypic_features,
         max_real_id,
         number_of_parent_terms,
         number_of_random_terms,
-    ).combine_hpo_terms()
+    ).randomise_hpo_terms()
     output_file = os.path.join(
         output_dir,
         Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
     )
-    altered_phenopacket = PhenopacketRebuilder(phenopacket_contents).add_randomised_hpo(
-        new_hpo_terms
-    )
-    altered_phenopacket_message = PhenopacketRebuilder(phenopacket_contents).create_json_message(
-        altered_phenopacket
-    )
-    PhenopacketWriter(altered_phenopacket_message, Path(output_file)).write_file()
+    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
+    phenopacket_rebuilder.add_randomised_hpo(randomised_hpo_terms)
+    phenopacket_rebuilder.write_phenopacket(Path(output_file))
 
 
 @click.command()
