@@ -37,7 +37,7 @@ class CausativeVariant:
 
 
 def phenopacket_reader(file: Path):
-    """Reads a phenopacket file, returning a Phenopacket or Family object."""
+    """Reads a phenopacket file, returning its contents."""
     file = open(file, "r")
     phenopacket = json.load(file)
     file.close()
@@ -158,14 +158,12 @@ class PhenopacketRebuilder:
 
     def add_randomised_hpo(self, randomised_hpo):
         """Adds randomised phenotypic profile to phenopacket."""
-        self.phenopacket_contents = Phenopacket(
-            id=self.phenopacket_contents.id,
-            subject=self.phenopacket_contents.subject,
-            phenotypic_features=randomised_hpo,
-            interpretations=self.phenopacket_contents.interpretations,
-            files=self.phenopacket_contents.files,
-            meta_data=self.phenopacket_contents.meta_data,
-        )
+        if hasattr(self.phenopacket_contents, "proband"):
+            del self.phenopacket_contents.proband.phenotypic_features[:]
+            self.phenopacket_contents.proband.phenotypic_features.extend(randomised_hpo)
+        else:
+            del self.phenopacket_contents.phenotypic_features[:]
+            self.phenopacket_contents.phenotypic_features.extend(randomised_hpo)
 
     def add_created_vcf_path(self, vcf_path: Path, genome_assembly: str):
         phenopacket_files = [
@@ -176,21 +174,15 @@ class PhenopacketRebuilder:
             file_attributes={"fileFormat": "VCF", "genomeAssembly": genome_assembly},
         )
         phenopacket_files.append(vcf_file_entry)
-        self.phenopacket_contents = Phenopacket(
-            id=self.phenopacket_contents.id,
-            subject=self.phenopacket_contents.subject,
-            phenotypic_features=self.phenopacket_contents.phenotypic_features,
-            interpretations=self.phenopacket_contents.interpretations,
-            files=phenopacket_files,
-            meta_data=self.phenopacket_contents.meta_data,
-        )
+        del self.phenopacket_contents.files[:]
+        self.phenopacket_contents.files.extend(phenopacket_files)
 
     def create_json_message(self) -> str:
         """Creates json message for writing to file."""
         if hasattr(self.phenopacket_contents, "proband"):
             family = Family(
                 id=self.phenopacket_contents.id,
-                proband=self.phenopacket_contents,
+                proband=self.phenopacket_contents.proband,
                 pedigree=self.phenopacket_contents.pedigree,
                 files=self.phenopacket_contents.files,
                 meta_data=self.phenopacket_contents.meta_data,
