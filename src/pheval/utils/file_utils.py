@@ -11,3 +11,7 @@ def all_files(directory: Path) -> list[Path]:
     files = [path for path in directory.iterdir()]
     files.sort()
     return files
+
+
+def is_gzipped(path: Path) -> bool:
+    return path.name.endswith(".gz")

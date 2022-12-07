@@ -16,7 +16,7 @@ from pheval.utils.phenopacket_utils import (
 )
 
 from .custom_exceptions import InputError, MutuallyExclusiveOptionError
-from ..utils.file_utils import all_files, files_with_suffix
+from ..utils.file_utils import all_files, files_with_suffix, is_gzipped
 
 logger = logging.getLogger(__name__)
 ch = logging.StreamHandler()
@@ -76,10 +76,6 @@ genome_assemblies = {
 }
 
 
-def is_gzipped(path: Path):
-    return path.name.endswith(".gz")
-
-
 @dataclass
 class VcfHeader:
     """Data obtained from VCF header"""
@@ -108,9 +104,9 @@ class VcfPicker:
 class VcfParser:
     """Parses a VCF file."""
 
-    def __init__(self, template_vcf_file: Path):
-        self.file_extension_gz = is_gzipped(template_vcf_file)
-        open_fn = gzip.open if is_gzipped(template_vcf_file) else open
+    def __init__(self, template_vcf_file: Path, file_extension_gz: bool):
+        self.file_extension_gz = file_extension_gz
+        open_fn = gzip.open if file_extension_gz else open
         self.vcf_file = open_fn(template_vcf_file)
 
     def parse_assembly(self) -> tuple[str, bool]:
@@ -214,10 +210,9 @@ class VcfSpiker:
             genotype_codes[variant.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
         ]
 
-    def construct_vcf_records(self) -> list[str]:
+    def construct_vcf_records(self, file_extension_gz) -> list[str]:
         """Inserts spiked variant into correct position within VCF."""
-        file_extension_gz = is_gzipped(self.vcf_file)
-        open_fn = gzip.open if is_gzipped(self.vcf_file) else open
+        open_fn = gzip.open if file_extension_gz else open
         vcf_file = open_fn(self.vcf_file)
         vcf_contents = vcf_file.readlines()
         vcf_contents = [line.decode() for line in vcf_contents if file_extension_gz]
@@ -229,13 +224,14 @@ class VcfSpiker:
                        for i, val in enumerate(vcf_contents)
                        if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
                    ][-1] + 1
+            print(locs)
             vcf_contents.insert(locs, "\t".join(variant))
         return vcf_contents
 
-    def construct_header(self) -> list[str]:
+    def construct_header(self, file_extension_gz) -> list[str]:
         """Constructs the header of the VCF."""
         updated_vcf = []
-        updated_records = self.construct_vcf_records()
+        updated_records = self.construct_vcf_records(file_extension_gz)
         for line in updated_records:
             text = line.replace(
                 self.vcf_header.sample_id,
@@ -246,19 +242,31 @@ class VcfSpiker:
 
 
 class VcfWriter:
-    def __init__(self, template_vcf_name: Path, vcf_contents: list[str], spiked_vcf_file_name: Path):
+    def __init__(self, template_vcf_name: Path, vcf_contents: list[str], spiked_vcf_file_name: Path,
+                 file_extension_gz: bool):
         self.template_vcf_name = template_vcf_name
         self.vcf_contents = vcf_contents
         self.spiked_vcf_file_name = spiked_vcf_file_name
+        self.file_extension_gz = file_extension_gz
 
     def copy_template_to_new_file(self):
         shutil.copyfile(self.template_vcf_name, self.spiked_vcf_file_name)
 
-    def write_vcf(self):
-        self.copy_template_to_new_file()
+    def write_gzip(self):
+        encoded_contents = [line.encode() for line in self.vcf_contents]
+        with gzip.open(self.spiked_vcf_file_name, 'wb') as f:
+            for line in encoded_contents:
+                f.write(line)
+        f.close()
+
+    def write_uncompressed(self):
         with open(self.spiked_vcf_file_name, "w") as file:
             file.writelines(self.vcf_contents)
         file.close()
+
+    def write_vcf_file(self):
+        self.copy_template_to_new_file()
+        self.write_gzip() if self.file_extension_gz else self.write_uncompressed()
 
 
 def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
@@ -278,7 +286,8 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     )
     # TODO: check that chosen template is what is expected (VcfPicker)
     chosen_template_vcf = VcfPicker(template_vcf, vcf_dir).pick_file()
-    vcf_header = VcfParser(chosen_template_vcf).parse_header()
+    file_extension_gz = is_gzipped(chosen_template_vcf)
+    vcf_header = VcfParser(chosen_template_vcf, file_extension_gz).parse_header()
     incompatible_variants = ProbandVariantChecker(
         phenopacket_causative_variants, vcf_header
     ).check_variant_assembly()
@@ -292,22 +301,25 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
                 assembly=incompatible_variant.assembly,
                 phenopacket=phenopacket.absolute().name,
             )
+    spiked_vcf_file_name = output_dir.joinpath(
+        phenopacket.name.replace(".json", ".vcf.gz")) if file_extension_gz else output_dir.joinpath(
+        phenopacket.name.replace(".json", ".vcf"))
     vcf_contents = VcfSpiker(
         phenopacket,
         chosen_template_vcf,
         output_dir,
         phenopacket_causative_variants,
         vcf_header,
-    ).construct_header()
+    ).construct_header(file_extension_gz)
 
     VcfWriter(
         chosen_template_vcf,
         vcf_contents,
-        output_dir.joinpath(phenopacket.name.replace(".json", ".vcf"))
-    ).write_vcf()
+        spiked_vcf_file_name, file_extension_gz
+    ).write_vcf_file()
     phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
     phenopacket_rebuilder.add_created_vcf_path(
-        output_dir.joinpath(phenopacket.name.replace(".json", ".vcf")),
+        spiked_vcf_file_name,
         vcf_header.assembly,
     )
     phenopacket_rebuilder.write_phenopacket(phenopacket)
