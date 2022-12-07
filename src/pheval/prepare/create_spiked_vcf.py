@@ -108,11 +108,9 @@ class VcfParser:
     def __init__(self, template_vcf_file: Path):
         self.vcf_file = open(template_vcf_file)
 
-    def parse_header(self) -> VcfHeader:
-        """Parses the header of the VCF, returning the sample_id, genome assembly of the VCF and whether chromosomes
-        are formatted as chr1 or 1."""
+    def parse_assembly(self) -> tuple[str, bool]:
+        """Parses the genome assembly and format of vcf_records."""
         assembly_dict = {}
-        sample_id = ""
         chr_status = False
         for line in self.vcf_file:
             if line.startswith("##contig=<ID"):
@@ -124,9 +122,20 @@ class VcfParser:
                 length = line_split[1].split("=")[1]
                 assembly_dict[chromosome] = int(length)
                 assembly_dict = {i: assembly_dict[i] for i in assembly_dict if i.isdigit()}
-            if line.startswith("#CHROM"):
-                sample_id = line.split("\t")[9].rstrip()
+        self.vcf_file.seek(0)
         assembly = [k for k, v in genome_assemblies.items() if v == assembly_dict][0]
+        return assembly, chr_status
+
+    def parse_sample_id(self) -> str:
+        """Parses the sample ID of the VCF."""
+        for line in self.vcf_file:
+            if line.startswith("#CHROM"):
+                return line.split("\t")[9].rstrip()
+
+    def parse_header(self) -> VcfHeader:
+        """Parses the header of the VCF."""
+        assembly, chr_status = self.parse_assembly()
+        sample_id = self.parse_sample_id()
         self.vcf_file.close()
         return VcfHeader(sample_id, assembly, chr_status)
 
