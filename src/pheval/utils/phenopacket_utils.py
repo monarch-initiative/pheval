@@ -1,7 +1,6 @@
 import json
 import os
-import typing
-from collections import defaultdict, namedtuple
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -16,7 +15,7 @@ class IncompatibleGenomeAssemblyError(Exception):
 
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
         self.assembly: str = assembly
-        self.phenopacket: str = phenopacket
+        self.phenopacket: Path = phenopacket
         self.message: str = message
         super().__init__(self.message)
 
@@ -102,28 +101,16 @@ class PhenopacketUtil:
         """Returns all files associated with a phenopacket."""
         return self.phenopacket_contents.files
 
-    def vcf_file_data(self, vcf_dir: Path) -> typing.NamedTuple:
+    def vcf_file_data(self, phenopacket: Path, vcf_dir: Path) -> File:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
-        VcfData = namedtuple("VcfData", ["vcf_path", "genome_assembly"])
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        ppacket_files = self.files()
-        vcf, genome_assembly = "", ""
-        for file in ppacket_files:
-            vcf_name = ""
-            if file.file_attributes["fileFormat"].upper() == "VCF":
-                vcf_path = file.uri
-                if "/" in vcf_path:
-                    vcf_name = vcf_path.rsplit("/")[-1]
-                if "/" not in vcf_path:
-                    vcf_name = vcf_path
-            if not vcf_name.endswith(".vcf") and not vcf_name.endswith(".vcf.gz"):
-                raise IncorrectFileFormatError(vcf_name, ".vcf or .vcf.gz file")
-            vcf = vcf_dir.joinpath(vcf_name)
-            assembly = file.file_attributes["genomeAssembly"]
-            if assembly not in compatible_genome_assembly:
-                raise IncompatibleGenomeAssemblyError(assembly, self.phenopacket_contents)
-            genome_assembly = assembly
-        return VcfData(vcf, genome_assembly)
+        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
+        if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(".vcf.gz"):
+            raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
+        if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
+            raise IncompatibleGenomeAssemblyError(vcf_data.file_attributes["genomeAssembly"], phenopacket)
+        vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
+        return vcf_data
 
     def diagnosed_genes(self) -> list[str]:
         """Returns a unique list of all causative genes from a phenopacket."""
@@ -167,7 +154,7 @@ class PhenopacketRebuilder:
 
     def add_created_vcf_path(self, vcf_path: Path, genome_assembly: str):
         phenopacket_files = [
-            file for file in self.phenopacket_contents.files if file.file_attributes != "VCF"
+            file for file in self.phenopacket_contents.files if file.file_attributes["fileFormat"] != "VCF"
         ]
         vcf_file_entry = File(
             uri=os.path.abspath(vcf_path),
@@ -179,17 +166,7 @@ class PhenopacketRebuilder:
 
     def create_json_message(self) -> str:
         """Creates json message for writing to file."""
-        if hasattr(self.phenopacket_contents, "proband"):
-            family = Family(
-                id=self.phenopacket_contents.id,
-                proband=self.phenopacket_contents.proband,
-                pedigree=self.phenopacket_contents.pedigree,
-                files=self.phenopacket_contents.files,
-                meta_data=self.phenopacket_contents.meta_data,
-            )
-            return MessageToJson(family)
-        else:
-            return MessageToJson(self.phenopacket_contents)
+        return MessageToJson(self.phenopacket_contents)
 
     def write_phenopacket(self, output_file: Path):
         phenopacket = self.create_json_message()
