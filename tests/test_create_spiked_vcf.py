@@ -2,7 +2,13 @@ import os
 import unittest
 from pathlib import Path
 
-from pheval.prepare.create_spiked_vcf import VcfPicker, VcfParser, VcfHeader, ProbandVariantChecker, VcfSpiker
+from pheval.prepare.create_spiked_vcf import (
+    ProbandVariantChecker,
+    VcfHeader,
+    VcfParser,
+    VcfPicker,
+    VcfSpiker,
+)
 from pheval.utils.phenopacket_utils import CausativeVariant
 
 
@@ -14,7 +20,8 @@ class TestVcfPicker(unittest.TestCase):
 
     def test_pick_file_from_dir(self):
         self.assertTrue(
-            "test_1.vcf" or "test_2.vcf" == VcfPicker(None, self.vcf_dir).pick_file_from_dir())
+            "test_1.vcf" or "test_2.vcf" == VcfPicker(None, self.vcf_dir).pick_file_from_dir()
+        )
 
     def test_pick_file(self):
         self.assertEqual("test_1.vcf", VcfPicker(self.vcf_file, None).pick_file().name)
@@ -24,17 +31,17 @@ class TestVcfParser(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.hg19_file = VcfParser(
-                    Path(
-                        os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
-                    ),
-                    False,
-                )
+            Path(
+                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
+            ),
+            False,
+        )
         cls.hg38_file = VcfParser(
-                    Path(
-                        os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_2.vcf"
-                    ),
-                    False,
-                )
+            Path(
+                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_2.vcf"
+            ),
+            False,
+        )
 
     def test_parse_assembly(self):
         self.assertEqual(self.hg19_file.parse_assembly(), ("GRCh37", True))
@@ -146,4 +153,6 @@ class TestVcfSpiker(unittest.TestCase):
         for line in updated_vcf_contents:
             if line.startswith("#CHROM"):
                 self.assertTrue("TEST1" in line and "TEMPLATE" not in line)
+
+
 #

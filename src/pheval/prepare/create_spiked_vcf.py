@@ -109,6 +109,9 @@ class VcfParser:
         open_fn = gzip.open if file_extension_gz else open
         self.vcf_file = open_fn(template_vcf_file)
 
+    def close_vcf(self) -> None:
+        self.vcf_file.close()
+
     def parse_assembly(self) -> tuple[str, bool]:
         """Parses the genome assembly and format of vcf_records."""
         vcf_assembly = {}
@@ -131,6 +134,7 @@ class VcfParser:
 
     def parse_sample_id(self) -> str:
         """Parses the sample ID of the VCF."""
+        self.vcf_file.seek(0)
         for line in self.vcf_file:
             if self.file_extension_gz:
                 line = line.decode().strip()
@@ -141,7 +145,7 @@ class VcfParser:
         """Parses the header of the VCF."""
         assembly, chr_status = self.parse_assembly()
         sample_id = self.parse_sample_id()
-        self.vcf_file.close()
+        # self.close_vcf()
         return VcfHeader(sample_id, assembly, chr_status)
 
 
@@ -216,7 +220,11 @@ class VcfSpiker:
         """Inserts spiked variant into correct position within VCF."""
         open_fn = gzip.open if file_extension_gz else open
         vcf_file = open_fn(self.vcf_file)
-        vcf_contents = [line.decode() for line in vcf_file.readlines()] if file_extension_gz else vcf_file.readlines()
+        vcf_contents = (
+            [line.decode() for line in vcf_file.readlines()]
+            if file_extension_gz
+            else vcf_file.readlines()
+        )
         vcf_file.close()
         for variant in self.proband_causative_variants:
             variant = self.construct_variant(variant)
