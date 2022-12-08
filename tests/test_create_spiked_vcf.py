@@ -60,10 +60,7 @@ class TestProbandVariantChecker(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.causative_variants = [
             CausativeVariant(
-                Path(
-                    os.path.dirname(os.path.realpath(__file__))
-                    + "/input_dir/test_phenopacket_1.json"
-                ),
+                Path("/path/to/phenopacket"),
                 "TEST1",
                 "GRCh37",
                 "1",
@@ -95,19 +92,14 @@ class TestVcfSpiker(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.vcf_spiker = VcfSpiker(
-            Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_phenopacket_1.json"
-            ),
+            Path("/path/to/phenopacket"),
             Path(
                 os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
             ),
             Path("test_output_dir/"),
             [
                 CausativeVariant(
-                    Path(
-                        os.path.dirname(os.path.realpath(__file__))
-                        + "/input_dir/test_phenopacket_1.json"
-                    ),
+                    Path("/path/to/phenopacket"),
                     "TEST1",
                     "GRCh37",
                     "1",
@@ -120,9 +112,7 @@ class TestVcfSpiker(unittest.TestCase):
             VcfHeader("TEMPLATE", "GRCh37", True),
         )
         cls.variant = CausativeVariant(
-            Path(
-                os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_phenopacket_1.json"
-            ),
+            Path("/path/to/phenopacket"),
             "TEST1",
             "GRCh37",
             "1",
