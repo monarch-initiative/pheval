@@ -58,7 +58,8 @@ def scramble_phenopacket():
     multiple=True,
     default=["GENE_SYMBOL"],
     metavar="LIST",
-    help="Columns that will be used in comparison",
+    help="""Represents the parameter that specifies which 
+columns will be used to join left and right inputs.""",
 )
 @click.option(
     "--comparison-columns",
@@ -66,7 +67,10 @@ def scramble_phenopacket():
     required=True,
     multiple=True,
     metavar="LIST",
-    help="Columns that will be used in comparison",
+    help="""Represents the parameter that specifies which columns will be
+compared in left and right inputs. 
+This comparison is just a value difference between those two files.
+e.g (left = 5; right = 2; diff = 3)""",
 )
 @click.option(
     "--sort-columns",
@@ -75,7 +79,9 @@ def scramble_phenopacket():
     multiple=True,
     metavar="LIST",
     default=["P-VALUE"],
-    help="Columns that will be used for ranking purposes",
+    help="""Represents the parameter that specifies which columns will
+be used to rank genes.
+- if sort column starts with "-", it will be interpreted as reverse order rank""",
 )
 @click.option(
     "--output",
