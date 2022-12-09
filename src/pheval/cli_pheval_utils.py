@@ -58,7 +58,7 @@ def scramble_phenopacket():
     multiple=True,
     default=["GENE_SYMBOL"],
     metavar="LIST",
-    help="""Represents the parameter that specifies which 
+    help="""Represents the parameter that specifies which
 columns will be used to join left and right inputs.""",
 )
 @click.option(
@@ -68,7 +68,7 @@ columns will be used to join left and right inputs.""",
     multiple=True,
     metavar="LIST",
     help="""Represents the parameter that specifies which columns will be
-compared in left and right inputs. 
+compared in left and right inputs.
 This comparison is just a value difference between those two files.
 e.g (left = 5; right = 2; diff = 3)""",
 )
@@ -100,7 +100,9 @@ def compare_semsim(
 ):
     """compare_semsim"""
     try:
-        dataframe = utils.calc_semsim(left, right, join_columns, comparison_columns, sort_columns)
+        dataframe = utils.calc_semsim(
+            left, right, join_columns, comparison_columns, sort_columns
+        )
         utils.ensure_file_exists(left, right)
         dataframe.to_csv(output, index=False)
         info_log.info("done")

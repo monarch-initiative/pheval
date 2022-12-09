@@ -40,7 +40,8 @@ def intersect_scores(
     left_df = pd.read_csv(left, sep="\t")
     right_df = pd.read_csv(right, sep="\t")
     ensure_columns_exists(
-        cols=[join_columns, comparison_columns, sort_columns], dataframes=[left_df, right_df]
+        cols=[join_columns, comparison_columns, sort_columns],
+        dataframes=[left_df, right_df],
     )
     merged = left_df.merge(right_df, on=join_columns, suffixes=("_left", "_right"))
     return merged
@@ -54,20 +55,31 @@ def calc_semsim(
     sort_columns: List[str],
 ):
     """calc_semsim"""
-    inter_scores = intersect_scores(left, right, join_columns, comparison_columns, sort_columns)
+    inter_scores = intersect_scores(
+        left, right, join_columns, comparison_columns, sort_columns
+    )
 
     for col in comparison_columns:
-        inter_scores[f"{col}_diff"] = inter_scores[f"{col}_left"] - inter_scores[f"{col}_right"]
+        inter_scores[f"{col}_diff"] = (
+            inter_scores[f"{col}_left"] - inter_scores[f"{col}_right"]
+        )
     sort_columns_suffix = list(
-        itertools.chain(*[[f"{j}_{i}" for j in sort_columns] for i in ["left", "right"]])
+        itertools.chain(
+            *[[f"{j}_{i}" for j in sort_columns] for i in ["left", "right"]]
+        )
     )
     ascending = list(map(lambda sort_col: sort_col[0] != "-", sort_columns_suffix))
 
-    inter_scores.sort_values(by=sort_columns_suffix, ascending=ascending, inplace=True, axis=0)
+    inter_scores.sort_values(
+        by=sort_columns_suffix, ascending=ascending, inplace=True, axis=0
+    )
     flat_cols = list(
         itertools.chain(
             *[
-                [f"{j}_{i}" for j in itertools.chain(*[comparison_columns, sort_columns])]
+                [
+                    f"{j}_{i}"
+                    for j in itertools.chain(*[comparison_columns, sort_columns])
+                ]
                 for i in ["left", "right"]
             ],
             inter_scores.columns[inter_scores.columns.str.endswith("_diff")],
