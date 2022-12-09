@@ -4,7 +4,7 @@ import logging
 import click
 
 from .cli_pheval import run
-from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
+from .cli_pheval_utils import compare_semsim, scramble_phenopacket, scramble_semsim
 
 info_log = logging.getLogger("info")
 
@@ -43,6 +43,7 @@ pheval.add_command(run)
 
 pheval_utils.add_command(scramble_semsim)
 pheval_utils.add_command(scramble_phenopacket)
+pheval_utils.add_command(compare_semsim)
 
 if __name__ == "__main__":
     main()
