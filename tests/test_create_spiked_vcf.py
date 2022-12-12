@@ -9,7 +9,7 @@ from pheval.prepare.create_spiked_vcf import (
     VcfPicker,
     VcfSpiker,
 )
-from pheval.utils.phenopacket_utils import CausativeVariant
+from pheval.utils.phenopacket_utils import ProbandCausativeVariant, VariantData
 
 
 class TestVcfPicker(unittest.TestCase):
@@ -59,14 +59,15 @@ class TestProbandVariantChecker(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.causative_variants = [
-            CausativeVariant(
+            ProbandCausativeVariant(
                 Path("/path/to/phenopacket"),
                 "TEST1",
                 "GRCh37",
-                "1",
-                886190,
-                "G",
-                "A",
+                VariantData("1", 886190, "G", "A"),
+                # "1",
+                # 886190,
+                # "G",
+                # "A",
                 "heterozygous",
             )
         ]
@@ -98,27 +99,21 @@ class TestVcfSpiker(unittest.TestCase):
             ),
             Path("test_output_dir/"),
             [
-                CausativeVariant(
+                ProbandCausativeVariant(
                     Path("/path/to/phenopacket"),
                     "TEST1",
                     "GRCh37",
-                    "1",
-                    886190,
-                    "G",
-                    "A",
+                    VariantData("1", 886190, "G", "A"),
                     "heterozygous",
                 )
             ],
             VcfHeader("TEMPLATE", "GRCh37", True),
         )
-        cls.variant = CausativeVariant(
+        cls.variant = ProbandCausativeVariant(
             Path("/path/to/phenopacket"),
             "TEST1",
             "GRCh37",
-            "1",
-            886190,
-            "G",
-            "A",
+            VariantData("1", 886190, "G", "A"),
             "heterozygous",
         )
 
@@ -143,6 +138,3 @@ class TestVcfSpiker(unittest.TestCase):
         for line in updated_vcf_contents:
             if line.startswith("#CHROM"):
                 self.assertTrue("TEST1" in line and "TEMPLATE" not in line)
-
-
-#
