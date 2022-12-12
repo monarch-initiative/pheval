@@ -9,10 +9,10 @@ from pathlib import Path
 import click
 
 from pheval.utils.phenopacket_utils import (
-    CausativeVariant,
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
+    ProbandCausativeVariant,
     phenopacket_reader,
 )
 
@@ -154,14 +154,14 @@ class ProbandVariantChecker:
 
     def __init__(
         self,
-        proband_causative_variants: list[CausativeVariant],
+        proband_causative_variants: list[ProbandCausativeVariant],
         vcf_header: VcfHeader,
     ):
         self.proband_causative_variants = proband_causative_variants
         self.vcf_header = vcf_header
         self.compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
 
-    def check_variant_assembly(self) -> list[CausativeVariant]:
+    def check_variant_assembly(self) -> list[ProbandCausativeVariant]:
         """Checks that proband variant data is compatible with the software and VCF file.
         Returns a list of incorrect variants."""
         incompatible_variants = []
@@ -181,7 +181,7 @@ class VcfSpiker:
         phenopacket: Path,
         vcf_file: Path,
         output_dir: Path,
-        proband_causative_variants: list[CausativeVariant],
+        proband_causative_variants: list[ProbandCausativeVariant],
         vcf_header: VcfHeader,
     ):
         self.phenopacket = phenopacket
@@ -193,7 +193,7 @@ class VcfSpiker:
             self.phenopacket.name.replace(".json", ".vcf")
         )
 
-    def construct_variant(self, variant: CausativeVariant) -> list[str]:
+    def construct_variant(self, proband_variant_data: ProbandCausativeVariant) -> list[str]:
         """Constructs variant entries."""
         genotype_codes = {
             "hemizygous": "0/1",
@@ -201,19 +201,19 @@ class VcfSpiker:
             "heterozygous": "0/1",
             "compound heterozygous": "0/1",
         }
-        if self.vcf_header.chr_status is True and "chr" not in variant.chrom:
-            variant.chrom = "chr" + variant.chrom
+        if self.vcf_header.chr_status is True and "chr" not in proband_variant_data.variant.chrom:
+            proband_variant_data.variant.chrom = "chr" + proband_variant_data.variant.chrom
         return [
-            variant.chrom,
-            str(variant.pos),
+            proband_variant_data.variant.chrom,
+            str(proband_variant_data.variant.pos),
             ".",
-            variant.ref,
-            variant.alt,
+            proband_variant_data.variant.ref,
+            proband_variant_data.variant.alt,
             "100",
             "PASS",
-            "SPIKED_VARIANT_" + variant.genotype.upper(),
+            "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
             "GT:AD:DP:GQ:PL",
-            genotype_codes[variant.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
+            genotype_codes[proband_variant_data.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
         ]
 
     def construct_vcf_records(self, file_extension_gz: bool) -> list[str]:
