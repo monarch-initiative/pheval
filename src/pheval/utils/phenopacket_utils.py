@@ -1,8 +1,8 @@
 import json
 import os
-from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Optional
 
 from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import Family, File, Phenopacket, PhenotypicFeature
@@ -24,14 +24,20 @@ class IncompatibleGenomeAssemblyError(Exception):
 
 
 @dataclass
-class CausativeVariant:
-    phenopacket: Path
-    proband_id: str
-    assembly: str
+class VariantData:
     chrom: str
     pos: int
     ref: str
     alt: str
+    gene: Optional[str] = None
+
+
+@dataclass
+class ProbandCausativeVariant:
+    phenopacket: Path
+    proband_id: str
+    assembly: str
+    variant: VariantData
     genotype: str
 
 
@@ -76,7 +82,7 @@ class PhenopacketUtil:
         else:
             return self.phenopacket_contents.interpretations
 
-    def causative_variants(self, file: Path) -> list[CausativeVariant]:
+    def causative_variants(self, file: Path) -> list[ProbandCausativeVariant]:
         """Returns a list of all causative variants listed in a phenopacket."""
         all_variants = []
         interpretation = self.interpretations()
@@ -84,14 +90,21 @@ class PhenopacketUtil:
             for g in i.diagnosis.genomic_interpretations:
                 vcf_record = g.variant_interpretation.variation_descriptor.vcf_record
                 genotype = g.variant_interpretation.variation_descriptor.allelic_state
-                variant_data = CausativeVariant(
+                variant_data = ProbandCausativeVariant(
                     file,
                     self.phenopacket_contents.subject.id,
                     vcf_record.genome_assembly,
-                    vcf_record.chrom,
-                    vcf_record.pos,
-                    vcf_record.ref,
-                    vcf_record.alt,
+                    VariantData(
+                        vcf_record.chrom,
+                        vcf_record.pos,
+                        vcf_record.ref,
+                        vcf_record.alt,
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
+                    ),
+                    # vcf_record.chrom,
+                    # vcf_record.pos,
+                    # vcf_record.ref,
+                    # vcf_record.alt,
                     genotype.label,
                 )
                 all_variants.append(variant_data)
@@ -126,17 +139,19 @@ class PhenopacketUtil:
         genes = list(set(genes))
         return genes
 
-    def diagnosed_variants(self) -> list:
+    def diagnosed_variants(self) -> list[VariantData]:
         """Returns a list of all variants from a phenopacket - for use in assess-prioritisation."""
         variants = []
         pheno_interpretation = self.interpretations()
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                variant = defaultdict(dict)
-                variant[
-                    "geneSymbol"
-                ] = g.variant_interpretation.variation_descriptor.gene_context.symbol
-                variant["variant"] = g.variant_interpretation.variation_descriptor.vcf_record
+                variant = VariantData(
+                    chrom=g.variant_interpretation.variation_descriptor.vcf_record.chrom,
+                    pos=g.variant_interpretation.variation_descriptor.vcf_record.pos,
+                    ref=g.variant_interpretation.variation_descriptor.vcf_record.ref,
+                    alt=g.variant_interpretation.variation_descriptor.vcf_record.alt,
+                    gene=g.variant_interpretation.variation_descriptor.gene_context.symbol,
+                )
                 variants.append(variant)
         return variants
 

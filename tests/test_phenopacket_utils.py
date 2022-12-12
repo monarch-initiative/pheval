@@ -23,10 +23,10 @@ from phenopackets import (
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 from pheval.utils.phenopacket_utils import (
-    CausativeVariant,
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
+    ProbandCausativeVariant,
 )
 
 proband = Phenopacket(
@@ -260,7 +260,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         for causative_variant in self.phenopacket.causative_variants(
             Path("test-phenopacket-1.json")
         ):
-            self.assertEqual(type(causative_variant), CausativeVariant)
+            self.assertEqual(type(causative_variant), ProbandCausativeVariant)
 
     def test_files(self):
         self.assertEqual(len(self.phenopacket.files()), 2)
@@ -317,18 +317,16 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(len(self.phenopacket.diagnosed_variants()), 2)
         for diagnosed_variant in self.phenopacket.diagnosed_variants():
             self.assertTrue(
-                diagnosed_variant["geneSymbol"] == "RTTN"
-                and diagnosed_variant["variant"].genome_assembly == "GRCh37"
-                and diagnosed_variant["variant"].chrom == "18"
-                and diagnosed_variant["variant"].pos == 67691994
-                and diagnosed_variant["variant"].ref == "G"
-                and diagnosed_variant["variant"].alt == "A"
-                or diagnosed_variant["geneSymbol"] == "FGD1"
-                and diagnosed_variant["variant"].genome_assembly == "GRCh37"
-                and diagnosed_variant["variant"].chrom == "X"
-                and diagnosed_variant["variant"].pos == 54492285
-                and diagnosed_variant["variant"].ref == "C"
-                and diagnosed_variant["variant"].alt == "T"
+                diagnosed_variant.gene == "RTTN"
+                and diagnosed_variant.chrom == "18"
+                and diagnosed_variant.pos == 67691994
+                and diagnosed_variant.ref == "G"
+                and diagnosed_variant.alt == "A"
+                or diagnosed_variant.gene == "FGD1"
+                and diagnosed_variant.chrom == "X"
+                and diagnosed_variant.pos == 54492285
+                and diagnosed_variant.ref == "C"
+                and diagnosed_variant.alt == "T"
             )
 
 
