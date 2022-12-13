@@ -136,7 +136,7 @@ class RankStatsWriter:
             ]
         )
 
-    def write_row(self, directory, rank_stats: RankStats) -> None:
+    def write_row(self, directory: Path, rank_stats: RankStats) -> None:
         try:
             self.writer.writerow(
                 [
