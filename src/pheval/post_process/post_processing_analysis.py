@@ -90,9 +90,9 @@ class RankStats:
         self.found += 1
         if rank == 1:
             self.top += 1
-        if rank != "" and rank < 4:
+        if rank != "" and rank <= 3:
             self.top3 += 1
-        if rank != "" and rank < 6:
+        if rank != "" and rank <= 5:
             self.top5 += 1
 
     def percentage_rank(self, value: int) -> float:
