@@ -52,7 +52,7 @@ class TestVcfParser(unittest.TestCase):
         self.assertEqual(self.hg38_file.parse_sample_id(), "HG001")
 
     def test_parse_header(self):
-        self.assertTrue(type(self.hg19_file.parse_header()) == VcfHeader)
+        self.assertTrue(type(self.hg19_file.parse_vcf_header()) == VcfHeader)
 
 
 class TestProbandVariantChecker(unittest.TestCase):
@@ -64,10 +64,6 @@ class TestProbandVariantChecker(unittest.TestCase):
                 "TEST1",
                 "GRCh37",
                 VariantData("1", 886190, "G", "A"),
-                # "1",
-                # 886190,
-                # "G",
-                # "A",
                 "heterozygous",
             )
         ]

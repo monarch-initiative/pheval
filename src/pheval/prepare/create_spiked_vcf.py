@@ -141,11 +141,11 @@ class VcfParser:
             if line.startswith("#CHROM"):
                 return line.split("\t")[9].rstrip()
 
-    def parse_header(self) -> VcfHeader:
+    def parse_vcf_header(self) -> VcfHeader:
         """Parses the header of the VCF."""
         assembly, chr_status = self.parse_assembly()
         sample_id = self.parse_sample_id()
-        # self.close_vcf()
+        self.close_vcf()
         return VcfHeader(sample_id, assembly, chr_status)
 
 
@@ -228,13 +228,13 @@ class VcfSpiker:
         vcf_file.close()
         for variant in self.proband_causative_variants:
             variant = self.construct_variant(variant)
-            locs = [
+            variant_entry_position = [
                 i
                 for i, val in enumerate(vcf_contents)
                 if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
             ][-1] + 1
 
-            vcf_contents.insert(locs, "\t".join(variant))
+            vcf_contents.insert(variant_entry_position, "\t".join(variant))
         return vcf_contents
 
     def construct_header(self, file_extension_gz: bool) -> list[str]:
@@ -300,7 +300,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     )
     chosen_template_vcf = VcfPicker(template_vcf, vcf_dir).pick_file()
     file_extension_gz = is_gzipped(chosen_template_vcf)
-    vcf_header = VcfParser(chosen_template_vcf, file_extension_gz).parse_header()
+    vcf_header = VcfParser(chosen_template_vcf, file_extension_gz).parse_vcf_header()
     incompatible_variants = ProbandVariantChecker(
         phenopacket_causative_variants, vcf_header
     ).check_variant_assembly()
