@@ -117,7 +117,7 @@ class RankStats:
 class RankStatsWriter:
     """Writes the rank stats for each run."""
 
-    def __init__(self, file: str):
+    def __init__(self, file: Path):
         self.file = open(file, "w")
         self.writer = csv.writer(self.file, delimiter="\t")
         self.writer.writerow(
