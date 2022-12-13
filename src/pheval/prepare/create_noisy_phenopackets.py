@@ -71,11 +71,15 @@ class RandomisePhenopackets:
         parent_terms = []
         for term in hpo_terms_to_be_changed:
             try:
-                parent_terms.append(self.retrieve_hpo_label(self.ontology.hierararchical_parents(term.type.id)[0]))
+                parent_terms.append(
+                    self.retrieve_hpo_label(self.ontology.hierararchical_parents(term.type.id)[0])
+                )
             except IndexError:
                 obsolete_term = self.ontology.entity_metadata_map(term.type.id)
                 updated_term = list(obsolete_term.values())[0][0]
-                parent_terms.append(self.retrieve_hpo_label(self.ontology.hierararchical_parents(updated_term)[0]))
+                parent_terms.append(
+                    self.retrieve_hpo_label(self.ontology.hierararchical_parents(updated_term)[0])
+                )
         return parent_terms
 
     def create_random_hpo_terms(self) -> list[PhenotypicFeature]:
