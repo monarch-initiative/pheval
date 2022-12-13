@@ -47,6 +47,11 @@ class RandomisePhenopackets:
         entities = list(self.ontology.entities())
         return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
 
+    def retrieve_hpo_label(self, hpo_id: str) -> PhenotypicFeature:
+        rels = self.ontology.entity_alias_map(hpo_id)
+        hpo_term = "".join(rels[(list(rels.keys())[0])])
+        return PhenotypicFeature(type=OntologyClass(id=hpo_id, label=hpo_term))
+
     def retain_real_patient_terms(self) -> list[PhenotypicFeature]:
         """Returns a dictionary of the maximum number of real patient HPO terms."""
         if self.number_of_real_id > len(self.phenotypic_features):
@@ -57,45 +62,27 @@ class RandomisePhenopackets:
         return random.sample(self.phenotypic_features, self.number_of_real_id)
 
     def convert_patient_terms_to_parent(self) -> list[PhenotypicFeature]:
-        """Returns a dictionary of the HPO terms that have been changed to a parent term."""
+        """Returns a dictionary of the HPO terms that have been converted to a parent term."""
         retained_hpo = self.retain_real_patient_terms()
         remaining_hpo = [i for i in self.phenotypic_features if i not in retained_hpo]
         if self.number_of_changed_terms > len(remaining_hpo):
             self.number_of_changed_terms = len(remaining_hpo)
         hpo_terms_to_be_changed = random.sample(remaining_hpo, self.number_of_changed_terms)
         parent_terms = []
-        for p in hpo_terms_to_be_changed:
+        for term in hpo_terms_to_be_changed:
             try:
-                parent_id = self.ontology.hierararchical_parents(p.type.id)[0]
-                rels = self.ontology.entity_alias_map(parent_id)
-                parent_term = rels[(list(rels.keys())[0])]
-                parent_term = "".join(parent_term)
-                parent_terms.append(
-                    PhenotypicFeature(type=OntologyClass(id=parent_id, label=parent_term))
-                )
+                parent_terms.append(self.retrieve_hpo_label(self.ontology.hierararchical_parents(term.type.id)[0]))
             except IndexError:
-                obsolete = self.ontology.entity_metadata_map(p.type.id)
-                updated_term = list(obsolete.values())[0][0]
-                parent_id = self.ontology.hierararchical_parents(updated_term)[0]
-                rels = self.ontology.entity_alias_map(parent_id)
-                parent_term = rels[(list(rels.keys())[0])]
-                parent_term = "".join(parent_term)
-                parent_terms.append(
-                    PhenotypicFeature(type=OntologyClass(id=parent_id, label=parent_term))
-                )
+                obsolete_term = self.ontology.entity_metadata_map(term.type.id)
+                updated_term = list(obsolete_term.values())[0][0]
+                parent_terms.append(self.retrieve_hpo_label(self.ontology.hierararchical_parents(updated_term)[0]))
         return parent_terms
 
     def create_random_hpo_terms(self) -> list[PhenotypicFeature]:
         """Returns a dictionary of random HPO terms"""
         clean_entities = self.create_clean_entities()
         random_ids = list(random.sample(clean_entities, self.number_of_random_terms))
-        random_id_hpo = []
-        for r_id in random_ids:
-            rels = self.ontology.entity_alias_map(r_id)
-            random_term = rels[(list(rels.keys())[0])]
-            random_term = "".join(random_term)
-            random_id_hpo.append(PhenotypicFeature(type=OntologyClass(id=r_id, label=random_term)))
-        return random_id_hpo
+        return [self.retrieve_hpo_label(random_id) for random_id in random_ids]
 
     def randomise_hpo_terms(self) -> list[PhenotypicFeature]:
         """Combines real patient HPO terms, parent terms and randomised terms."""
@@ -113,13 +100,13 @@ def noisy_phenopacket(
     number_of_random_terms: int,
     output_file_suffix: str,
     output_dir: Path,
-    ontology,
 ):
     """Randomises a single phenopacket phenotypic profile, writing to a new .json file"""
     try:
         output_dir.mkdir()
     except FileExistsError:
         pass
+    ontology = load_ontology()
     phenopacket_contents = phenopacket_reader(phenopacket)
     phenotypic_features = PhenopacketUtil(
         phenopacket_contents
@@ -204,7 +191,6 @@ def create_noisy_phenopacket(
     output_dir: Path,
 ):
     """Generate a noisy phenopacket from an existing one."""
-    ontology = load_ontology()
     noisy_phenopacket(
         phenopacket,
         max_real_id,
@@ -212,7 +198,6 @@ def create_noisy_phenopacket(
         number_of_random_terms,
         output_file_suffix,
         output_dir,
-        ontology,
     )
 
 
@@ -280,7 +265,6 @@ def create_noisy_phenopackets(
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    ontology = load_ontology()
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
         noisy_phenopacket(
@@ -290,5 +274,4 @@ def create_noisy_phenopackets(
             number_of_random_terms,
             output_file_suffix,
             output_dir,
-            ontology,
         )
