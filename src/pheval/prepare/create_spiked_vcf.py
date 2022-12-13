@@ -145,7 +145,7 @@ class VcfParser:
         """Parses the header of the VCF."""
         assembly, chr_status = self.parse_assembly()
         sample_id = self.parse_sample_id()
-        self.close_vcf()
+        # self.close_vcf()
         return VcfHeader(sample_id, assembly, chr_status)
 
 
