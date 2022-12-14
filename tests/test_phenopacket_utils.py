@@ -26,7 +26,7 @@ from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
-    ProbandCausativeVariant,
+    ProbandCausativeVariant, PhenopacketUpdater, create_hgnc_dict,
 )
 
 proband = Phenopacket(
@@ -258,7 +258,7 @@ class TestPhenopacketUtil(unittest.TestCase):
             == self.phenopacket.causative_variants(Path("test-phenopacket-1.json"))[1]
         )
         for causative_variant in self.phenopacket.causative_variants(
-            Path("test-phenopacket-1.json")
+                Path("test-phenopacket-1.json")
         ):
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
 
@@ -373,3 +373,36 @@ class TestPhenopacketRebuilder(unittest.TestCase):
             if file.file_attributes["fileFormat"] == "VCF"
         ][0]
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
+
+
+class TestPhenopacketUpdater(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls, hgnc_dict=None) -> None:
+        if hgnc_dict is None:
+            hgnc_dict = create_hgnc_dict()
+        cls.phenopacket_contents = PhenopacketUpdater(phenopacket, hgnc_dict, "ensembl_id")
+        cls.family_contents = PhenopacketUpdater(family, hgnc_dict, "entrez_id")
+
+    def test_update_identifier(self):
+        self.assertEqual(self.phenopacket_contents.update_identifier("A2M"), "ENSG00000175899")
+        self.assertEqual(self.phenopacket_contents.update_identifier("GBA"), "ENSG00000177628")
+        self.assertEqual(self.family_contents.update_identifier("A2M"), "2")
+        self.assertEqual(self.family_contents.update_identifier("GBA"), "2629")
+
+    def test_update_gene_symbol(self):
+        self.assertEqual(self.phenopacket_contents.update_gene_symbol("A2M"), "A2M")
+        self.assertEqual(self.phenopacket_contents.update_gene_symbol("GBA"), "GBA1")
+
+    def test_update_gene_context_phenopacket(self):
+        for i in self.phenopacket_contents.update_gene_context_phenopacket().interpretations:
+            for g in i.diagnosis.genomic_interpretations:
+                self.assertTrue(
+                    g.variant_interpretation.variation_descriptor.gene_context.value_id in ["ENSG00000102302",
+                                                                                            "ENSG00000176225"])
+
+    def test_update_gene_context_family(self):
+        for i in self.family_contents.update_gene_context_family().proband.interpretations:
+            for g in i.diagnosis.genomic_interpretations:
+                self.assertTrue(
+                    g.variant_interpretation.variation_descriptor.gene_context.value_id in ["25914",
+                                                                                            "2245"])
