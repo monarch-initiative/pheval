@@ -104,13 +104,13 @@ def noisy_phenopacket(
     number_of_random_terms: int,
     output_file_suffix: str,
     output_dir: Path,
+    ontology,
 ):
     """Randomises a single phenopacket phenotypic profile, writing to a new .json file"""
     try:
         output_dir.mkdir()
     except FileExistsError:
         pass
-    ontology = load_ontology()
     phenopacket_contents = phenopacket_reader(phenopacket)
     phenotypic_features = PhenopacketUtil(
         phenopacket_contents
@@ -195,6 +195,8 @@ def create_noisy_phenopacket(
     output_dir: Path,
 ):
     """Generate a noisy phenopacket from an existing one."""
+    ontology = load_ontology()
+
     noisy_phenopacket(
         phenopacket,
         max_real_id,
@@ -202,6 +204,7 @@ def create_noisy_phenopacket(
         number_of_random_terms,
         output_file_suffix,
         output_dir,
+        ontology,
     )
 
 
@@ -269,6 +272,7 @@ def create_noisy_phenopackets(
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
+    ontology = load_ontology()
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
         noisy_phenopacket(
@@ -278,4 +282,5 @@ def create_noisy_phenopackets(
             number_of_random_terms,
             output_file_suffix,
             output_dir,
+            ontology,
         )
