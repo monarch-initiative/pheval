@@ -1,12 +1,11 @@
 import json
 import os
 from collections import defaultdict
-
-import pandas as pd
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import Family, File, Phenopacket, PhenotypicFeature
 
@@ -45,14 +44,17 @@ class ProbandCausativeVariant:
 
 
 def read_hgnc_data() -> pd.DataFrame:
-    return pd.read_csv(os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
-                       delimiter="\t", dtype=str)
+    return pd.read_csv(
+        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
+        delimiter="\t",
+        dtype=str,
+    )
 
 
 def create_hgnc_dict() -> defaultdict:
     hgnc_df = read_hgnc_data()
     hgnc_data = defaultdict(dict)
-    for index, row in hgnc_df.iterrows():
+    for _index, row in hgnc_df.iterrows():
         previous_names = []
         hgnc_data[row["symbol"]]["ensembl_id"] = row["ensembl_gene_id"]
         hgnc_data[row["symbol"]]["hgnc_id"] = row["hgnc_id"]
@@ -138,7 +140,7 @@ class PhenopacketUtil:
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
-                ".vcf.gz"
+            ".vcf.gz"
         ):
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
@@ -216,7 +218,9 @@ class PhenopacketRebuilder:
 
 
 class PhenopacketUpdater:
-    def __init__(self, phenopacket_contents: Phenopacket, hgnc_data: defaultdict, gene_identifier: str):
+    def __init__(
+        self, phenopacket_contents: Phenopacket, hgnc_data: defaultdict, gene_identifier: str
+    ):
         self.phenopacket_contents = phenopacket_contents
         self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
@@ -242,19 +246,31 @@ class PhenopacketUpdater:
     def update_gene_context_phenopacket(self) -> Phenopacket:
         for i in self.phenopacket_contents.interpretations:
             for g in i.diagnosis.genomic_interpretations:
-                g.variant_interpretation.variation_descriptor.gene_context.symbol = self.update_gene_symbol(
-                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
-                g.variant_interpretation.variation_descriptor.gene_context.value_id = self.update_identifier(
-                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+                g.variant_interpretation.variation_descriptor.gene_context.symbol = (
+                    self.update_gene_symbol(
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol
+                    )
+                )
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
+                    self.update_identifier(
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol
+                    )
+                )
         return self.phenopacket_contents
 
     def update_gene_context_family(self) -> Phenopacket:
         for i in self.phenopacket_contents.proband.interpretations:
             for g in i.diagnosis.genomic_interpretations:
-                g.variant_interpretation.variation_descriptor.gene_context.symbol = self.update_gene_symbol(
-                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
-                g.variant_interpretation.variation_descriptor.gene_context.value_id = self.update_identifier(
-                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+                g.variant_interpretation.variation_descriptor.gene_context.symbol = (
+                    self.update_gene_symbol(
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol
+                    )
+                )
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
+                    self.update_identifier(
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol
+                    )
+                )
         return self.phenopacket_contents
 
     def update_phenopacket_interpretations(self) -> Phenopacket:

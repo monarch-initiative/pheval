@@ -25,8 +25,10 @@ from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
+    PhenopacketUpdater,
     PhenopacketUtil,
-    ProbandCausativeVariant, PhenopacketUpdater, create_hgnc_dict,
+    ProbandCausativeVariant,
+    create_hgnc_dict,
 )
 
 proband = Phenopacket(
@@ -258,7 +260,7 @@ class TestPhenopacketUtil(unittest.TestCase):
             == self.phenopacket.causative_variants(Path("test-phenopacket-1.json"))[1]
         )
         for causative_variant in self.phenopacket.causative_variants(
-                Path("test-phenopacket-1.json")
+            Path("test-phenopacket-1.json")
         ):
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
 
@@ -397,12 +399,14 @@ class TestPhenopacketUpdater(unittest.TestCase):
         for i in self.phenopacket_contents.update_gene_context_phenopacket().interpretations:
             for g in i.diagnosis.genomic_interpretations:
                 self.assertTrue(
-                    g.variant_interpretation.variation_descriptor.gene_context.value_id in ["ENSG00000102302",
-                                                                                            "ENSG00000176225"])
+                    g.variant_interpretation.variation_descriptor.gene_context.value_id
+                    in ["ENSG00000102302", "ENSG00000176225"]
+                )
 
     def test_update_gene_context_family(self):
         for i in self.family_contents.update_gene_context_family().proband.interpretations:
             for g in i.diagnosis.genomic_interpretations:
                 self.assertTrue(
-                    g.variant_interpretation.variation_descriptor.gene_context.value_id in ["25914",
-                                                                                            "2245"])
+                    g.variant_interpretation.variation_descriptor.gene_context.value_id
+                    in ["25914", "2245"]
+                )
