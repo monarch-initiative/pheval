@@ -100,10 +100,10 @@ def compare_semsim(
 ):
     """compare_semsim"""
     try:
+        utils.ensure_file_exists(left, right)
         dataframe = utils.calc_semsim(
             left, right, join_columns, comparison_columns, sort_columns
         )
-        utils.ensure_file_exists(left, right)
         dataframe.to_csv(output, index=False)
         info_log.info("done")
     except (ValueError, FileNotFoundError) as err:
