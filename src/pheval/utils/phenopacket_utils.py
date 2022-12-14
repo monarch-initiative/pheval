@@ -1,5 +1,8 @@
 import json
 import os
+from collections import defaultdict
+
+import pandas as pd
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -39,6 +42,26 @@ class ProbandCausativeVariant:
     assembly: str
     variant: VariantData
     genotype: str
+
+
+def read_hgnc_data() -> pd.DataFrame:
+    return pd.read_csv(os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
+                       delimiter="\t", low_memory=False)
+
+
+def create_hgnc_dict() -> defaultdict:
+    hgnc_df = read_hgnc_data()
+    hgnc_data = defaultdict(dict)
+    for index, row in hgnc_df.iterrows():
+        previous_names = []
+        hgnc_data[row["symbol"]]["ensembl_id"] = row["ensembl_gene_id"]
+        hgnc_data[row["symbol"]]["hgnc_id"] = row["hgnc_id"]
+        hgnc_data[row["symbol"]]["entrez_id"] = row["entrez_id"]
+        previous = str(row["prev_symbol"]).split("|")
+        for p in previous:
+            previous_names.append(p.strip('"'))
+        hgnc_data[row["symbol"]]["previous_symbol"] = previous_names
+    return hgnc_data
 
 
 def phenopacket_reader(file: Path):
@@ -119,7 +142,7 @@ class PhenopacketUtil:
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
-            ".vcf.gz"
+                ".vcf.gz"
         ):
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
@@ -194,3 +217,52 @@ class PhenopacketRebuilder:
         with open(output_file, "w") as outfile:
             outfile.write(phenopacket)
         outfile.close()
+
+
+class PhenopacketUpdater:
+    def __init__(self, phenopacket_contents: Phenopacket, hgnc_data: defaultdict, gene_identifier: str):
+        self.phenopacket_contents = phenopacket_contents
+        self.hgnc_data = hgnc_data
+        self.gene_identifier = gene_identifier
+
+    def update_identifier(self, gene_symbol: str) -> str:
+        if gene_symbol in self.hgnc_data.keys():
+            return self.hgnc_data[gene_symbol][self.gene_identifier]
+        else:
+            for _symbol, data in self.hgnc_data.items():
+                for prev_symbol in data["prev_symbols"]:
+                    if prev_symbol == gene_symbol:
+                        return data[self.gene_identifier]
+
+    def update_gene_symbol(self, gene_symbol: str) -> str:
+        if gene_symbol in self.hgnc_data.keys():
+            return gene_symbol
+        else:
+            for symbol, data in self.hgnc_data.items():
+                for prev_symbol in data["previous_symbol"]:
+                    if prev_symbol == gene_symbol:
+                        return symbol
+
+    def update_gene_context_phenopacket(self) -> Phenopacket:
+        for i in self.phenopacket_contents.interpretations:
+            for g in i.diagnosis.genomic_interpretations:
+                g.variant_interpretation.variation_descriptor.gene_context.symbol = self.update_gene_symbol(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = self.update_identifier(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+        return self.phenopacket_contents
+
+    def update_gene_context_family(self) -> Phenopacket:
+        for i in self.phenopacket_contents.proband.interpretations:
+            for g in i.diagnosis.genomic_interpretations:
+                g.variant_interpretation.variation_descriptor.gene_context.symbol = self.update_gene_symbol(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = self.update_identifier(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol)
+        return self.phenopacket_contents
+
+    def update_phenopacket_interpretations(self):
+        if hasattr(self.phenopacket_contents, "proband"):
+            return self.update_gene_context_family()
+        else:
+            return self.update_gene_context_phenopacket()
