@@ -46,7 +46,7 @@ class ProbandCausativeVariant:
 
 def read_hgnc_data() -> pd.DataFrame:
     return pd.read_csv(os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
-                       delimiter="\t", low_memory=False)
+                       delimiter="\t", dtype=str)
 
 
 def create_hgnc_dict() -> defaultdict:
@@ -124,10 +124,6 @@ class PhenopacketUtil:
                         vcf_record.alt,
                         g.variant_interpretation.variation_descriptor.gene_context.symbol,
                     ),
-                    # vcf_record.chrom,
-                    # vcf_record.pos,
-                    # vcf_record.ref,
-                    # vcf_record.alt,
                     genotype.label,
                 )
                 all_variants.append(variant_data)
@@ -230,7 +226,7 @@ class PhenopacketUpdater:
             return self.hgnc_data[gene_symbol][self.gene_identifier]
         else:
             for _symbol, data in self.hgnc_data.items():
-                for prev_symbol in data["prev_symbols"]:
+                for prev_symbol in data["previous_symbol"]:
                     if prev_symbol == gene_symbol:
                         return data[self.gene_identifier]
 
@@ -261,7 +257,7 @@ class PhenopacketUpdater:
                     g.variant_interpretation.variation_descriptor.gene_context.symbol)
         return self.phenopacket_contents
 
-    def update_phenopacket_interpretations(self):
+    def update_phenopacket_interpretations(self) -> Phenopacket:
         if hasattr(self.phenopacket_contents, "proband"):
             return self.update_gene_context_family()
         else:
