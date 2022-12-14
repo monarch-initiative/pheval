@@ -382,8 +382,12 @@ class TestPhenopacketUpdater(unittest.TestCase):
     def setUpClass(cls, hgnc_dict=None) -> None:
         if hgnc_dict is None:
             hgnc_dict = create_hgnc_dict()
-        cls.phenopacket_contents = PhenopacketUpdater(phenopacket, hgnc_dict, "ensembl_id")
-        cls.family_contents = PhenopacketUpdater(family, hgnc_dict, "entrez_id")
+        cls.phenopacket_contents = PhenopacketUpdater(
+            Path("path/to/phenopacket"), phenopacket, hgnc_dict, "ensembl_id"
+        )
+        cls.family_contents = PhenopacketUpdater(
+            Path("path/to/family/phenopacket"), family, hgnc_dict, "entrez_id"
+        )
 
     def test_update_identifier(self):
         self.assertEqual(self.phenopacket_contents.update_identifier("A2M"), "ENSG00000175899")

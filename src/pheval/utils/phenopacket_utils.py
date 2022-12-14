@@ -1,4 +1,6 @@
 import json
+
+# import logging
 import os
 from collections import defaultdict
 from dataclasses import dataclass
@@ -219,8 +221,13 @@ class PhenopacketRebuilder:
 
 class PhenopacketUpdater:
     def __init__(
-        self, phenopacket_contents: Phenopacket, hgnc_data: defaultdict, gene_identifier: str
+        self,
+        phenopacket: Path,
+        phenopacket_contents: Phenopacket,
+        hgnc_data: defaultdict,
+        gene_identifier: str,
     ):
+        self.phenopacket = phenopacket
         self.phenopacket_contents = phenopacket_contents
         self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
@@ -241,6 +248,7 @@ class PhenopacketUpdater:
             for symbol, data in self.hgnc_data.items():
                 for prev_symbol in data["previous_symbol"]:
                     if prev_symbol == gene_symbol:
+                        # pheval_logger.info(f" {self.phenopacket}: Updated {gene_symbol} to {symbol}")
                         return symbol
 
     def update_gene_context_phenopacket(self) -> Phenopacket:
