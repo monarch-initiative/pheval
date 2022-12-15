@@ -395,9 +395,20 @@ class TestPhenopacketUpdater(unittest.TestCase):
         self.assertEqual(self.family_contents.update_identifier("A2M"), "2")
         self.assertEqual(self.family_contents.update_identifier("GBA"), "2629")
 
-    def test_update_gene_symbol(self):
-        self.assertEqual(self.phenopacket_contents.update_gene_symbol("A2M"), "A2M")
-        self.assertEqual(self.phenopacket_contents.update_gene_symbol("GBA"), "GBA1")
+    # def test_update_gene_symbol(self):
+    #     self.assertEqual(self.phenopacket_contents.update_gene_symbol("A2M"), "A2M")
+    #     self.assertEqual(self.phenopacket_contents.update_gene_symbol("GBA"), "GBA1")
+
+    def test_update_alternate_ids(self):
+        self.assertEqual(len(self.phenopacket_contents.update_alternate_ids("GBA")), 4)
+        self.assertEqual(
+            ["HGNC:4177", "entrez:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
+            self.phenopacket_contents.update_alternate_ids("GBA"),
+        )
+        self.assertEqual(
+            ["HGNC:7", "entrez:2", "ensembl:ENSG00000175899", "symbol:A2M"],
+            self.family_contents.update_alternate_ids("A2M"),
+        )
 
     def test_update_gene_context_phenopacket(self):
         for i in self.phenopacket_contents.update_gene_context_phenopacket().interpretations:

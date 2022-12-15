@@ -61,6 +61,7 @@ def create_hgnc_dict() -> defaultdict:
         hgnc_data[row["symbol"]]["ensembl_id"] = row["ensembl_gene_id"]
         hgnc_data[row["symbol"]]["hgnc_id"] = row["hgnc_id"]
         hgnc_data[row["symbol"]]["entrez_id"] = row["entrez_id"]
+        hgnc_data[row["symbol"]]["refseq_accession"] = row["refseq_accession"]
         previous = str(row["prev_symbol"]).split("|")
         for p in previous:
             previous_names.append(p.strip('"'))
@@ -241,26 +242,51 @@ class PhenopacketUpdater:
                     if prev_symbol == gene_symbol:
                         return data[self.gene_identifier]
 
-    def update_gene_symbol(self, gene_symbol: str) -> str:
+    def update_alternate_ids(self, gene_symbol: str) -> list[str]:
         if gene_symbol in self.hgnc_data.keys():
-            return gene_symbol
+            return [
+                self.hgnc_data[gene_symbol]["hgnc_id"],
+                "entrez:" + self.hgnc_data[gene_symbol]["entrez_id"],
+                "ensembl:" + self.hgnc_data[gene_symbol]["ensembl_id"],
+                "symbol:" + gene_symbol,
+            ]
         else:
             for symbol, data in self.hgnc_data.items():
                 for prev_symbol in data["previous_symbol"]:
                     if prev_symbol == gene_symbol:
-                        # pheval_logger.info(f" {self.phenopacket}: Updated {gene_symbol} to {symbol}")
-                        return symbol
+                        return [
+                            data["hgnc_id"],
+                            "entrez:" + data["entrez_id"],
+                            "ensembl:" + data["ensembl_id"],
+                            "symbol:" + symbol,
+                        ]
+
+    # def update_gene_symbol(self, gene_symbol: str) -> str:
+    #     if gene_symbol in self.hgnc_data.keys():
+    #         return gene_symbol
+    #     else:
+    #         for symbol, data in self.hgnc_data.items():
+    #             for prev_symbol in data["previous_symbol"]:
+    #                 if prev_symbol == gene_symbol:
+    #                     # pheval_logger.info(f" {self.phenopacket}: Updated {gene_symbol} to {symbol}")
+    #                     return symbol
 
     def update_gene_context_phenopacket(self) -> Phenopacket:
         for i in self.phenopacket_contents.interpretations:
             for g in i.diagnosis.genomic_interpretations:
-                g.variant_interpretation.variation_descriptor.gene_context.symbol = (
-                    self.update_gene_symbol(
+                # g.variant_interpretation.variation_descriptor.gene_context.symbol = (
+                #     self.update_gene_symbol(
+                #         g.variant_interpretation.variation_descriptor.gene_context.symbol
+                #     )
+                # )
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
+                    self.update_identifier(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )
-                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
-                    self.update_identifier(
+                del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
+                g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(
+                    self.update_alternate_ids(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )
@@ -269,13 +295,19 @@ class PhenopacketUpdater:
     def update_gene_context_family(self) -> Phenopacket:
         for i in self.phenopacket_contents.proband.interpretations:
             for g in i.diagnosis.genomic_interpretations:
-                g.variant_interpretation.variation_descriptor.gene_context.symbol = (
-                    self.update_gene_symbol(
+                # g.variant_interpretation.variation_descriptor.gene_context.symbol = (
+                #     self.update_gene_symbol(
+                #         g.variant_interpretation.variation_descriptor.gene_context.symbol
+                #     )
+                # )
+                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
+                    self.update_identifier(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )
-                g.variant_interpretation.variation_descriptor.gene_context.value_id = (
-                    self.update_identifier(
+                del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
+                g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(
+                    self.update_alternate_ids(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )
