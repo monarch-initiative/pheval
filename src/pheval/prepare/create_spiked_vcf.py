@@ -282,7 +282,30 @@ class VcfWriter:
         self.write_gzip() if self.file_extension_gz else self.write_uncompressed()
 
 
-def write_created_vcf_path(phenopacket, phenopacket_contents, spiked_vcf_file_name, vcf_header) -> None:
+def check_variants(
+    phenopacket: Path,
+    phenopacket_causative_variants: list[ProbandCausativeVariant],
+    vcf_header: VcfHeader,
+) -> None:
+    """Checks variant compatibility against a VCF for a phenopacket."""
+    incompatible_variants = ProbandVariantChecker(
+        phenopacket_causative_variants, vcf_header
+    ).check_variant_assembly()
+    if len(incompatible_variants) != 0:
+        for incompatible_variant in incompatible_variants:
+            info_log.error(
+                f" Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket.absolute().name}."
+                f" Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}"
+            )
+            raise IncompatibleGenomeAssemblyError(
+                assembly=incompatible_variant.assembly,
+                phenopacket=phenopacket.absolute().name,
+            )
+
+
+def add_created_vcf_path(
+    phenopacket: Path, phenopacket_contents, spiked_vcf_file_name: Path, vcf_header: VcfHeader
+) -> None:
     """Writes the created vcf path to phenopacket"""
     phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
     phenopacket_rebuilder.add_created_vcf_path(
@@ -310,19 +333,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     chosen_template_vcf = VcfPicker(template_vcf, vcf_dir).pick_file()
     file_extension_gz = is_gzipped(chosen_template_vcf)
     vcf_header = VcfParser(chosen_template_vcf, file_extension_gz).parse_vcf_header()
-    incompatible_variants = ProbandVariantChecker(
-        phenopacket_causative_variants, vcf_header
-    ).check_variant_assembly()
-    if len(incompatible_variants) != 0:
-        for incompatible_variant in incompatible_variants:
-            info_log.error(
-                f" Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket.absolute().name}."
-                f" Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}"
-            )
-            raise IncompatibleGenomeAssemblyError(
-                assembly=incompatible_variant.assembly,
-                phenopacket=phenopacket.absolute().name,
-            )
+    check_variants(phenopacket, phenopacket_causative_variants, vcf_header)
     spiked_vcf_file_name = (
         output_dir.joinpath(phenopacket.name.replace(".json", ".vcf.gz"))
         if file_extension_gz
@@ -336,7 +347,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     VcfWriter(
         chosen_template_vcf, vcf_contents, spiked_vcf_file_name, file_extension_gz
     ).write_vcf_file()
-    write_created_vcf_path(phenopacket, phenopacket_contents, spiked_vcf_file_name, vcf_header)
+    add_created_vcf_path(phenopacket, phenopacket_contents, spiked_vcf_file_name, vcf_header)
 
 
 @click.command()

@@ -89,11 +89,9 @@ class TestVcfSpiker(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.vcf_spiker = VcfSpiker(
-            Path("/path/to/phenopacket"),
             Path(
                 os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
             ),
-            Path("test_output_dir/"),
             [
                 ProbandCausativeVariant(
                     Path("/path/to/phenopacket"),
