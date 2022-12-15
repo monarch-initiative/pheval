@@ -13,6 +13,7 @@ from pheval.utils.phenopacket_utils import (
 
 
 def update_outdated_gene_context(phenopacket: Path, gene_identifier: str, hgnc_data: defaultdict):
+    """Updates the gene context of the phenopacket."""
     phenopacket_contents = phenopacket_reader(phenopacket)
     updated_phenopacket_contents = PhenopacketUpdater(
         phenopacket, phenopacket_contents, hgnc_data, gene_identifier

@@ -19,11 +19,7 @@ from pheval.utils.phenopacket_utils import (
 from .custom_exceptions import InputError, MutuallyExclusiveOptionError
 from ..utils.file_utils import all_files, files_with_suffix, is_gzipped
 
-logger = logging.getLogger(__name__)
-ch = logging.StreamHandler()
-fh = logging.FileHandler(r"pheval.log")
-logger.addHandler(ch)
-logger.addHandler(fh)
+info_log = logging.getLogger("info")
 
 genome_assemblies = {
     "GRCh38": {
@@ -94,6 +90,7 @@ class VcfPicker:
         self.vcf_dir = vcf_dir
 
     def pick_file_from_dir(self) -> Path:
+        """Selects a file from a directory at random."""
         return secrets.choice(all_files(self.vcf_dir))
 
     def pick_file(self) -> Path:
@@ -162,7 +159,7 @@ class ProbandVariantChecker:
         self.compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
 
     def check_variant_assembly(self) -> list[ProbandCausativeVariant]:
-        """Checks that proband variant data is compatible with the software and VCF file.
+        """Checks proband variant data is compatible with the software and VCF file.
         Returns a list of incorrect variants."""
         incompatible_variants = []
         for variant in self.proband_causative_variants:
@@ -264,9 +261,11 @@ class VcfWriter:
         self.file_extension_gz = file_extension_gz
 
     def copy_template_to_new_file(self):
+        """Copies template vcf file to a new file."""
         shutil.copyfile(self.template_vcf_name, self.spiked_vcf_file_name)
 
     def write_gzip(self):
+        """Writes gzipped contents of vcf file."""
         encoded_contents = [line.encode() for line in self.vcf_contents]
         with gzip.open(self.spiked_vcf_file_name, "wb") as f:
             for line in encoded_contents:
@@ -274,11 +273,13 @@ class VcfWriter:
         f.close()
 
     def write_uncompressed(self):
+        """Writes an uncompressed version of the vcf file."""
         with open(self.spiked_vcf_file_name, "w") as file:
             file.writelines(self.vcf_contents)
         file.close()
 
     def write_vcf_file(self):
+        """Writes spiked vcf file."""
         self.copy_template_to_new_file()
         self.write_gzip() if self.file_extension_gz else self.write_uncompressed()
 
@@ -291,7 +292,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
         raise InputError("Either a template_vcf or vcf_dir must be specified")
     try:
         output_dir.mkdir()
-        logger.info(f" Created a directory {output_dir}")
+        info_log.info(f" Created a directory {output_dir}")
     except FileExistsError:
         pass
     phenopacket_contents = phenopacket_reader(phenopacket)
@@ -306,7 +307,7 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
     ).check_variant_assembly()
     if len(incompatible_variants) != 0:
         for incompatible_variant in incompatible_variants:
-            logger.error(
+            info_log.error(
                 f" Skipping... Proband variant does not match Human Genome Build of VCF: {phenopacket.absolute().name}."
                 f" Variant Assembly -> {incompatible_variant.assembly} Expected: {vcf_header.assembly}"
             )
