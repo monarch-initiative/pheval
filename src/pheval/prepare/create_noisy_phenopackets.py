@@ -25,6 +25,11 @@ def load_ontology():
     return ProntoImplementation(resource)
 
 
+def phenotypic_abnormality_entities(ontology) -> list:
+    """Returns a list children HPO terms for term Phenotypic Abnormality."""
+    return list(ontology.roots(predicates=["HP:0000118"]))
+
+
 class RandomisePhenopackets:
     """Randomises the Phenopacket phenotypic profile."""
 
@@ -42,18 +47,14 @@ class RandomisePhenopackets:
         self.number_of_changed_terms = number_of_changed_terms
         self.number_of_random_terms = number_of_random_terms
 
-    def create_clean_entities(self) -> list:
-        """Returns a list of HPO terms."""
-        entities = list(self.ontology.entities())
-        return [x for x in entities if "HP:" in x and "HP:0034334" not in x]
-
     def retrieve_hpo_label(self, hpo_id: str) -> PhenotypicFeature:
+        """Retrieves label for hpo id."""
         rels = self.ontology.entity_alias_map(hpo_id)
         hpo_term = "".join(rels[(list(rels.keys())[0])])
         return PhenotypicFeature(type=OntologyClass(id=hpo_id, label=hpo_term))
 
     def retain_real_patient_terms(self) -> list[PhenotypicFeature]:
-        """Returns a dictionary of the maximum number of real patient HPO terms."""
+        """Returns a list of the maximum number of real patient HPO terms."""
         if self.number_of_real_id > len(self.phenotypic_features):
             if len(self.phenotypic_features) - 2 > 0:
                 self.number_of_real_id = len(self.phenotypic_features) - 2
@@ -62,7 +63,7 @@ class RandomisePhenopackets:
         return random.sample(self.phenotypic_features, self.number_of_real_id)
 
     def convert_patient_terms_to_parent(self) -> list[PhenotypicFeature]:
-        """Returns a dictionary of the HPO terms that have been converted to a parent term."""
+        """Returns a list of the HPO terms that have been converted to a parent term."""
         retained_hpo = self.retain_real_patient_terms()
         remaining_hpo = [i for i in self.phenotypic_features if i not in retained_hpo]
         if self.number_of_changed_terms > len(remaining_hpo):
@@ -82,18 +83,17 @@ class RandomisePhenopackets:
                 )
         return parent_terms
 
-    def create_random_hpo_terms(self) -> list[PhenotypicFeature]:
-        """Returns a dictionary of random HPO terms"""
-        clean_entities = self.create_clean_entities()
-        random_ids = list(random.sample(clean_entities, self.number_of_random_terms))
+    def create_random_hpo_terms(self, entities) -> list[PhenotypicFeature]:
+        """Returns a list of random HPO terms"""
+        random_ids = list(random.sample(entities, self.number_of_random_terms))
         return [self.retrieve_hpo_label(random_id) for random_id in random_ids]
 
-    def randomise_hpo_terms(self) -> list[PhenotypicFeature]:
+    def randomise_hpo_terms(self, entities) -> list[PhenotypicFeature]:
         """Combines real patient HPO terms, parent terms and randomised terms."""
         return (
             self.retain_real_patient_terms()
             + self.convert_patient_terms_to_parent()
-            + self.create_random_hpo_terms()
+            + self.create_random_hpo_terms(entities)
         )
 
 
@@ -105,6 +105,7 @@ def noisy_phenopacket(
     output_file_suffix: str,
     output_dir: Path,
     ontology,
+    phenotypic_abnormality_children,
 ):
     """Randomises a single phenopacket phenotypic profile, writing to a new .json file"""
     try:
@@ -121,7 +122,7 @@ def noisy_phenopacket(
         max_real_id,
         number_of_parent_terms,
         number_of_random_terms,
-    ).randomise_hpo_terms()
+    ).randomise_hpo_terms(phenotypic_abnormality_children)
     output_file = os.path.join(
         output_dir,
         Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix,
@@ -196,7 +197,7 @@ def create_noisy_phenopacket(
 ):
     """Generate a noisy phenopacket from an existing one."""
     ontology = load_ontology()
-
+    phenotypic_abnormality_children = phenotypic_abnormality_entities(ontology)
     noisy_phenopacket(
         phenopacket,
         max_real_id,
@@ -205,6 +206,7 @@ def create_noisy_phenopacket(
         output_file_suffix,
         output_dir,
         ontology,
+        phenotypic_abnormality_children,
     )
 
 
@@ -273,6 +275,7 @@ def create_noisy_phenopackets(
 ):
     """Generate noisy phenopackets from existing ones."""
     ontology = load_ontology()
+    phenotypic_abnormality_children = phenotypic_abnormality_entities(ontology)
     phenopackets = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket in phenopackets:
         noisy_phenopacket(
@@ -283,4 +286,5 @@ def create_noisy_phenopackets(
             output_file_suffix,
             output_dir,
             ontology,
+            phenotypic_abnormality_children,
         )

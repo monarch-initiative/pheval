@@ -6,6 +6,7 @@ from oaklib.resource import OntologyResource
 from phenopackets import OntologyClass, PhenotypicFeature
 
 from pheval.prepare import create_noisy_phenopackets
+from pheval.prepare.create_noisy_phenopackets import phenotypic_abnormality_entities
 
 test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
 
@@ -39,12 +40,7 @@ class TestRandomisePhenopackets(unittest.TestCase):
         cls.randomise_phenopacket_single_term = create_noisy_phenopackets.RandomisePhenopackets(
             ontology, cls.phenotypic_features_single_term, 3, 2, 3
         )
-
-    def test_create_clean_entities(self):
-        self.assertTrue(
-            "HPO:" in term for term in self.randomise_phenopacket.create_clean_entities()
-        )
-        self.assertFalse("HP:0034334" in self.randomise_phenopacket.create_clean_entities())
+        cls.phenotypic_abnormality_children = phenotypic_abnormality_entities(ontology)
 
     def test_max_real_patient_id(self):
         self.assertTrue(len(self.randomise_phenopacket.retain_real_patient_terms()), 3)
@@ -73,9 +69,35 @@ class TestRandomisePhenopackets(unittest.TestCase):
         )
 
     def test_random_hpo_terms(self):
-        self.assertEqual(len(self.randomise_phenopacket.create_random_hpo_terms()), 3)
-        self.assertEqual(len(self.randomise_phenopacket_single_term.create_random_hpo_terms()), 3)
+        self.assertEqual(
+            len(
+                self.randomise_phenopacket.create_random_hpo_terms(
+                    self.phenotypic_abnormality_children
+                )
+            ),
+            3,
+        )
+        self.assertEqual(
+            len(
+                self.randomise_phenopacket_single_term.create_random_hpo_terms(
+                    self.phenotypic_abnormality_children
+                )
+            ),
+            3,
+        )
 
     def test_combine_hpo_terms(self):
-        self.assertEqual(len(self.randomise_phenopacket.randomise_hpo_terms()), 8)
-        self.assertEqual(len(self.randomise_phenopacket_single_term.randomise_hpo_terms()), 4)
+        self.assertEqual(
+            len(
+                self.randomise_phenopacket.randomise_hpo_terms(self.phenotypic_abnormality_children)
+            ),
+            8,
+        )
+        self.assertEqual(
+            len(
+                self.randomise_phenopacket_single_term.randomise_hpo_terms(
+                    self.phenotypic_abnormality_children
+                )
+            ),
+            4,
+        )
