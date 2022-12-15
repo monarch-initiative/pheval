@@ -175,20 +175,13 @@ class VcfSpiker:
 
     def __init__(
         self,
-        phenopacket: Path,
         vcf_file: Path,
-        output_dir: Path,
         proband_causative_variants: list[ProbandCausativeVariant],
         vcf_header: VcfHeader,
     ):
-        self.phenopacket = phenopacket
         self.vcf_file = vcf_file
-        self.output_dir = output_dir
         self.proband_causative_variants = proband_causative_variants
         self.vcf_header = vcf_header
-        self.proband_vcf_file_name = self.output_dir.joinpath(
-            self.phenopacket.name.replace(".json", ".vcf")
-        )
 
     def construct_variant(self, proband_variant_data: ProbandCausativeVariant) -> list[str]:
         """Constructs variant entries."""
@@ -213,8 +206,8 @@ class VcfSpiker:
             genotype_codes[proband_variant_data.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
         ]
 
-    def construct_vcf_records(self, file_extension_gz: bool) -> list[str]:
-        """Inserts spiked variant into correct position within VCF."""
+    def load_vcf_contents(self, file_extension_gz) -> list[str]:
+        """Loads the contents of VCF file - handles both uncompressed and gzipped files."""
         open_fn = gzip.open if file_extension_gz else open
         vcf_file = open_fn(self.vcf_file)
         vcf_contents = (
@@ -223,6 +216,11 @@ class VcfSpiker:
             else vcf_file.readlines()
         )
         vcf_file.close()
+        return vcf_contents
+
+    def construct_vcf_records(self, file_extension_gz: bool) -> list[str]:
+        """Inserts spiked variant into correct position within VCF."""
+        vcf_contents = self.load_vcf_contents(file_extension_gz)
         for variant in self.proband_causative_variants:
             variant = self.construct_variant(variant)
             variant_entry_position = [
@@ -265,7 +263,7 @@ class VcfWriter:
         shutil.copyfile(self.template_vcf_name, self.spiked_vcf_file_name)
 
     def write_gzip(self):
-        """Writes gzipped contents of vcf file."""
+        """Writes gzipped vcf file."""
         encoded_contents = [line.encode() for line in self.vcf_contents]
         with gzip.open(self.spiked_vcf_file_name, "wb") as f:
             for line in encoded_contents:
@@ -273,7 +271,7 @@ class VcfWriter:
         f.close()
 
     def write_uncompressed(self):
-        """Writes an uncompressed version of the vcf file."""
+        """Writes an uncompressed vcf file."""
         with open(self.spiked_vcf_file_name, "w") as file:
             file.writelines(self.vcf_contents)
         file.close()
@@ -282,6 +280,16 @@ class VcfWriter:
         """Writes spiked vcf file."""
         self.copy_template_to_new_file()
         self.write_gzip() if self.file_extension_gz else self.write_uncompressed()
+
+
+def write_created_vcf_path(phenopacket, phenopacket_contents, spiked_vcf_file_name, vcf_header) -> None:
+    """Writes the created vcf path to phenopacket"""
+    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
+    phenopacket_rebuilder.add_created_vcf_path(
+        spiked_vcf_file_name,
+        vcf_header.assembly,
+    )
+    phenopacket_rebuilder.write_phenopacket(phenopacket)
 
 
 def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
@@ -321,22 +329,14 @@ def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vc
         else output_dir.joinpath(phenopacket.name.replace(".json", ".vcf"))
     )
     vcf_contents = VcfSpiker(
-        phenopacket,
         chosen_template_vcf,
-        output_dir,
         phenopacket_causative_variants,
         vcf_header,
     ).construct_header(file_extension_gz)
-
     VcfWriter(
         chosen_template_vcf, vcf_contents, spiked_vcf_file_name, file_extension_gz
     ).write_vcf_file()
-    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
-    phenopacket_rebuilder.add_created_vcf_path(
-        spiked_vcf_file_name,
-        vcf_header.assembly,
-    )
-    phenopacket_rebuilder.write_phenopacket(phenopacket)
+    write_created_vcf_path(phenopacket, phenopacket_contents, spiked_vcf_file_name, vcf_header)
 
 
 @click.command()
