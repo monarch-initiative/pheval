@@ -1,4 +1,3 @@
-import copy
 import unittest
 from pathlib import Path
 
@@ -25,173 +24,212 @@ from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
-    PhenopacketUpdater,
+    # GeneIdentifierUpdater,
     PhenopacketUtil,
-    ProbandCausativeVariant,
-    create_hgnc_dict,
+    ProbandCausativeVariant, VariantData, create_hgnc_dict, GeneIdentifierUpdater,
+    # create_hgnc_dict,
 )
+
+interpretations = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(
+                                value_id="NCBIGene:2245", symbol="FGD1"
+                            ),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="X",
+                                pos=54492285,
+                                ref="C",
+                                alt="T",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000134",
+                                label="hemizygous",
+                            ),
+                        ),
+                    ),
+                ),
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(value_id="HGNC:18654", symbol="RTTN"),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="18",
+                                pos=67691994,
+                                ref="G",
+                                alt="A",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000402", label="compound heterozygous"
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
+updated_interpretations = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(
+                                value_id="ENSG00000102302", symbol="FGD1",
+                                alternate_ids=["HGNC:3663", "ncbigene:2245", "ensembl:ENSG00000102302", "symbol:FGD1"]
+                            ),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="X",
+                                pos=54492285,
+                                ref="C",
+                                alt="T",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000134",
+                                label="hemizygous",
+                            ),
+                        ),
+                    ),
+                ),
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(value_id="ENSG00000176225", symbol="RTTN",
+                                                        alternate_ids=["HGNC:18654", "ncbigene:25914",
+                                                                       "ensembl:ENSG00000176225", "symbol:RTTN"]),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="18",
+                                pos=67691994,
+                                ref="G",
+                                alt="A",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000402", label="compound heterozygous"
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
+
+phenotypic_features_none_excluded = [
+    PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
+]
+phenotypic_features_with_excluded = [PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
+                                     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
+                                     PhenotypicFeature(
+                                         type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
+                                     PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
+                                     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
+                                     PhenotypicFeature(
+                                         type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
+                                         excluded=True), ]
+
+phenotypic_features_all_excluded = [
+    PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly"), excluded=True),
+    PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy"), excluded=True),
+    PhenotypicFeature(
+        type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True),
+    PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True),
+    PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia"), excluded=True),
+    PhenotypicFeature(
+        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
+        excluded=True), ]
 
 proband = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
-    phenotypic_features=[
-        PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
-    ],
-    interpretations=[
-        Interpretation(
-            id="test-subject-1-int",
-            progress_status="SOLVED",
-            diagnosis=Diagnosis(
-                genomic_interpretations=[
-                    GenomicInterpretation(
-                        subject_or_biosample_id="test-subject-1",
-                        interpretation_status=4,
-                        variant_interpretation=VariantInterpretation(
-                            acmg_pathogenicity_classification="NOT_PROVIDED",
-                            therapeutic_actionability="UNKNOWN_ACTIONABILITY",
-                            variation_descriptor=VariationDescriptor(
-                                gene_context=GeneDescriptor(
-                                    value_id="NCBIGene:2245", symbol="FGD1"
-                                ),
-                                vcf_record=VcfRecord(
-                                    genome_assembly="GRCh37",
-                                    chrom="X",
-                                    pos=54492285,
-                                    ref="C",
-                                    alt="T",
-                                ),
-                                allelic_state=OntologyClass(
-                                    id="GENO:0000134",
-                                    label="hemizygous",
-                                ),
-                            ),
-                        ),
-                    ),
-                    GenomicInterpretation(
-                        subject_or_biosample_id="test-subject-1",
-                        interpretation_status=4,
-                        variant_interpretation=VariantInterpretation(
-                            acmg_pathogenicity_classification="NOT_PROVIDED",
-                            therapeutic_actionability="UNKNOWN_ACTIONABILITY",
-                            variation_descriptor=VariationDescriptor(
-                                gene_context=GeneDescriptor(value_id="HGNC:18654", symbol="RTTN"),
-                                vcf_record=VcfRecord(
-                                    genome_assembly="GRCh37",
-                                    chrom="18",
-                                    pos=67691994,
-                                    ref="G",
-                                    alt="A",
-                                ),
-                                allelic_state=OntologyClass(
-                                    id="GENO:0000402", label="compound heterozygous"
-                                ),
-                            ),
-                        ),
-                    ),
-                ]
-            ),
-        )
-    ],
+    phenotypic_features=phenotypic_features_none_excluded,
+    interpretations=interpretations,
 )
+
+phenopacket_files = [
+    File(
+        uri="test/path/to/test_1.vcf",
+        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+    ),
+    File(
+        uri="test_1.ped",
+        file_attributes={"fileFormat": "PED", "genomeAssembly": "GRCh37"},
+    ),
+]
+incorrect_genome_assembly = [
+    File(
+        uri="test/path/to/test_1.vcf",
+        file_attributes={"fileFormat": "VCF", "genomeAssembly": "hg10"},
+    ),
+    File(
+        uri="test_1.ped",
+        file_attributes={"fileFormat": "PED", "genomeAssembly": "hg10"},
+    ),
+]
+incorrect_file_format = [
+    File(
+        uri="test/path/to/test_1.ped",
+        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+    ),
+    File(
+        uri="test_1.vcf",
+        file_attributes={"fileFormat": "PED", "genomeAssembly": "GRCh37"},
+    ),
+]
+phenopacket_metadata = MetaData(created_by="pheval-converter", resources=[
+    Resource(id="hp", name="human phenotype ontology", url="http://purl.obolibrary.org/obo/hp.owl",
+             version="hp/releases/2019-11-08", namespace_prefix="HP",
+             iri_prefix="http://purl.obolibrary.org/obo/HP_", )], phenopacket_schema_version="2.0", )
 
 phenopacket = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
-    phenotypic_features=[
-        PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
-        PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
-        PhenotypicFeature(
-            type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
-        ),
-    ],
-    interpretations=[
-        Interpretation(
-            id="test-subject-1-int",
-            progress_status="SOLVED",
-            diagnosis=Diagnosis(
-                genomic_interpretations=[
-                    GenomicInterpretation(
-                        subject_or_biosample_id="test-subject-1",
-                        interpretation_status=4,
-                        variant_interpretation=VariantInterpretation(
-                            acmg_pathogenicity_classification="NOT_PROVIDED",
-                            therapeutic_actionability="UNKNOWN_ACTIONABILITY",
-                            variation_descriptor=VariationDescriptor(
-                                gene_context=GeneDescriptor(
-                                    value_id="NCBIGene:2245", symbol="FGD1"
-                                ),
-                                vcf_record=VcfRecord(
-                                    genome_assembly="GRCh37",
-                                    chrom="X",
-                                    pos=54492285,
-                                    ref="C",
-                                    alt="T",
-                                ),
-                                allelic_state=OntologyClass(
-                                    id="GENO:0000134",
-                                    label="hemizygous",
-                                ),
-                            ),
-                        ),
-                    ),
-                    GenomicInterpretation(
-                        subject_or_biosample_id="test-subject-1",
-                        interpretation_status=4,
-                        variant_interpretation=VariantInterpretation(
-                            acmg_pathogenicity_classification="NOT_PROVIDED",
-                            therapeutic_actionability="UNKNOWN_ACTIONABILITY",
-                            variation_descriptor=VariationDescriptor(
-                                gene_context=GeneDescriptor(value_id="HGNC:18654", symbol="RTTN"),
-                                vcf_record=VcfRecord(
-                                    genome_assembly="GRCh37",
-                                    chrom="18",
-                                    pos=67691994,
-                                    ref="G",
-                                    alt="A",
-                                ),
-                                allelic_state=OntologyClass(
-                                    id="GENO:0000402", label="compound heterozygous"
-                                ),
-                            ),
-                        ),
-                    ),
-                ]
-            ),
-        )
-    ],
-    files=[
-        File(
-            uri="test/path/to/test_1.vcf",
-            file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
-        ),
-        File(
-            uri="test_1.ped",
-            file_attributes={"fileFormat": "PED", "genomeAssembly": "GRCh37"},
-        ),
-    ],
-    meta_data=MetaData(
-        created_by="pheval-converter",
-        resources=[
-            Resource(
-                id="hp",
-                name="human phenotype ontology",
-                url="http://purl.obolibrary.org/obo/hp.owl",
-                version="hp/releases/2019-11-08",
-                namespace_prefix="HP",
-                iri_prefix="http://purl.obolibrary.org/obo/HP_",
-            )
-        ],
-        phenopacket_schema_version="2.0",
-    ),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=interpretations,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
 )
-
+phenopacket_with_all_excluded_terms = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_all_excluded,
+    interpretations=interpretations,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
 family = Family(
     id="test-family-1",
     proband=proband,
@@ -207,8 +245,45 @@ family = Family(
             )
         ]
     ),
-    files=phenopacket.files,
-    meta_data=phenopacket.meta_data,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
+family_incorrect_files = Family(
+    id="test-family-1",
+    proband=proband,
+    pedigree=Pedigree(
+        persons=[
+            Pedigree.Person(
+                family_id="test-family-1",
+                individual_id="test-subject-1",
+                paternal_id="MOTHER",
+                maternal_id="FATHER",
+                sex=1,
+                affected_status=1,
+            )
+        ]
+    ),
+    files=incorrect_genome_assembly,
+    meta_data=phenopacket_metadata,
+)
+
+family_incorrect_file_format = Family(
+    id="test-family-1",
+    proband=proband,
+    pedigree=Pedigree(
+        persons=[
+            Pedigree.Person(
+                family_id="test-family-1",
+                individual_id="test-subject-1",
+                paternal_id="MOTHER",
+                maternal_id="FATHER",
+                sex=1,
+                affected_status=1,
+            )
+        ]
+    ),
+    files=incorrect_file_format,
+    meta_data=phenopacket_metadata,
 )
 
 
@@ -216,120 +291,63 @@ class TestPhenopacketUtil(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.phenopacket = PhenopacketUtil(phenopacket)
+        cls.phenopacket_excluded_pf = PhenopacketUtil(phenopacket_with_all_excluded_terms)
         cls.family = PhenopacketUtil(family)
+        cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
+        cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
 
-    def test_phenotypic_features(self):
-        self.assertTrue(
-            "HP:" in pheno_phenotypic_feature.type.id
-            for pheno_phenotypic_feature in self.phenopacket.phenotypic_features()
-        )
-        self.assertTrue(
-            "HP:" in family_phenotypic_feature.type.id
-            for family_phenotypic_feature in self.family.phenotypic_features()
-        )
-        self.assertEqual(len(self.phenopacket.phenotypic_features()), 6)
-        self.assertEqual(len(self.family.phenotypic_features()), 5)
+    def test_phenotypic_features_phenopacket(self):
+        self.assertEqual(list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded)
+        self.assertEqual(list(self.phenopacket_excluded_pf.phenotypic_features()), phenotypic_features_all_excluded)
 
-    def test_remove_excluded_phenotypic_features(self):
-        self.assertEqual(len(self.phenopacket.remove_excluded_phenotypic_features()), 5)
-        self.assertEqual(len(self.family.remove_excluded_phenotypic_features()), 5)
+    def test_phenotypic_features_family(self):
+        self.assertEqual(list(self.family.phenotypic_features()), phenotypic_features_none_excluded)
 
-    def test_interpretations(self):
-        for interpretation in self.phenopacket.interpretations() and self.family.interpretations():
-            self.assertTrue(hasattr(interpretation, "progress_status"))
-            self.assertTrue(hasattr(interpretation, "diagnosis"))
-            self.assertTrue(hasattr(interpretation.diagnosis, "genomic_interpretations"))
-            for genomic_interpretation in interpretation.diagnosis.genomic_interpretations:
-                self.assertTrue(hasattr(genomic_interpretation, "variant_interpretation"))
-                self.assertTrue(
-                    hasattr(genomic_interpretation.variant_interpretation, "variation_descriptor")
-                )
-                self.assertTrue(
-                    hasattr(
-                        genomic_interpretation.variant_interpretation.variation_descriptor,
-                        "vcf_record",
-                    )
-                )
+    def test_observed_phenotypic_features(self):
+        self.assertEqual(list(self.phenopacket_excluded_pf.observed_phenotypic_features()), [])
+        self.assertEqual(list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded)
+
+    def test_interpretations_phenopacket(self):
+        self.assertEqual(list(self.phenopacket.interpretations()), interpretations)
+
+    def test_interpretations_family(self):
+        self.assertEqual(list(self.family.interpretations()), interpretations)
 
     def test_causative_variants(self):
-        self.assertEqual(
-            len(self.phenopacket.causative_variants(Path("test-phenopacket-1.json"))), 2
-        )
-        self.assertFalse(
-            self.phenopacket.causative_variants(Path("test-phenopacket-1.json"))[0]
-            == self.phenopacket.causative_variants(Path("test-phenopacket-1.json"))[1]
-        )
-        for causative_variant in self.phenopacket.causative_variants(
-            Path("test-phenopacket-1.json")
-        ):
+        for causative_variant in self.phenopacket.causative_variants():
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
 
-    def test_files(self):
-        self.assertEqual(len(self.phenopacket.files()), 2)
-        self.assertEqual(len(self.phenopacket.files()), 2)
-        for file in self.phenopacket.files():
-            self.assertTrue(type(file) is File)
+    def test_files_phenopacket(self):
+        self.assertEqual(list(self.phenopacket.files()), phenopacket_files)
+
+    def test_files_family(self):
+        self.assertEqual(list(self.family.files()), phenopacket_files)
 
     def test_vcf_file_data(self):
         vcf_file_data = self.phenopacket.vcf_file_data(
             Path("test-phenopacket-1.json"), Path("input_dir")
         )
-        self.assertTrue(vcf_file_data.uri == "input_dir/test_1.vcf")
-        self.assertTrue(vcf_file_data.file_attributes["fileFormat"] == "VCF")
-        incorrect_genome_assembly_ppacket = copy.copy(phenopacket)
-        del incorrect_genome_assembly_ppacket.files[:]
-        incorrect_genome_assembly = [
-            File(
-                uri="test/path/to/test_1.vcf",
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "hg10"},
-            )
-            if file.file_attributes["fileFormat"] == "VCF"
-            else file
-            for file in phenopacket.files
-        ]
-        incorrect_genome_assembly_ppacket.files.extend(incorrect_genome_assembly)
+        self.assertEqual(vcf_file_data, File(
+            uri="input_dir/test_1.vcf",
+            file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        ))
         with self.assertRaises(IncompatibleGenomeAssemblyError):
-            PhenopacketUtil(incorrect_genome_assembly_ppacket).vcf_file_data(
+            self.family_incorrect_files.vcf_file_data(
                 Path("test-phenopacket-1.json"), Path("input_dir")
             )
-        incorrect_file_format_ppacket = copy.copy(phenopacket)
-        del incorrect_file_format_ppacket.files[:]
-        incorrect_file_format = [
-            File(
-                uri="test/path/to/test_1.ped",
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
-            )
-            if file.file_attributes["fileFormat"] == "VCF"
-            else file
-            for file in phenopacket.files
-        ]
-        incorrect_file_format_ppacket.files.extend(incorrect_file_format)
         with self.assertRaises(IncorrectFileFormatError):
-            PhenopacketUtil(incorrect_file_format_ppacket).vcf_file_data(
+            self.family_incorrect_file_format.vcf_file_data(
                 Path("test-phenopacket-1.json"), Path("input_dir")
             )
 
     def test_diagnosed_genes(self):
-        self.assertEqual(len(self.phenopacket.diagnosed_genes()), 2)
-        self.assertTrue(
-            all(gene in ["RTTN", "FGD1"] for gene in self.phenopacket.diagnosed_genes())
-        )
+        self.assertEqual(set((["RTTN", "FGD1"])), set(self.phenopacket.diagnosed_genes()))
 
     def test_diagnosed_variants(self):
-        self.assertEqual(len(self.phenopacket.diagnosed_variants()), 2)
-        for diagnosed_variant in self.phenopacket.diagnosed_variants():
-            self.assertTrue(
-                diagnosed_variant.gene == "RTTN"
-                and diagnosed_variant.chrom == "18"
-                and diagnosed_variant.pos == 67691994
-                and diagnosed_variant.ref == "G"
-                and diagnosed_variant.alt == "A"
-                or diagnosed_variant.gene == "FGD1"
-                and diagnosed_variant.chrom == "X"
-                and diagnosed_variant.pos == 54492285
-                and diagnosed_variant.ref == "C"
-                and diagnosed_variant.alt == "T"
-            )
+        self.assertEqual(list(self.phenopacket.diagnosed_variants()),
+                         [VariantData(chrom="X", pos=54492285, ref="C", alt="T", gene="FGD1"),
+                          VariantData(chrom="18", pos=67691994, ref="G", alt="A", gene="RTTN")
+                          ])
 
 
 class TestPhenopacketRebuilder(unittest.TestCase):
@@ -337,91 +355,71 @@ class TestPhenopacketRebuilder(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.phenopacket_rebuilder = PhenopacketRebuilder(phenopacket)
         cls.family_rebuilder = PhenopacketRebuilder(family)
+        cls.randomised_phenotype = [
+            PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
+            PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM")),
+        ]
 
-    def test_add_randomised_hpo(self):
-        self.phenopacket_rebuilder.add_randomised_hpo(
-            [
-                PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
-                PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM")),
-            ]
-        )
-        self.family_rebuilder.add_randomised_hpo(
-            [
-                PhenotypicFeature(type=OntologyClass(id="HP:0000316", label="Hypertelorism")),
-                PhenotypicFeature(type=OntologyClass(id="HP:RANDOM", label="RANDOM")),
-            ]
-        )
-        self.assertEqual(
-            len(self.phenopacket_rebuilder.phenopacket_contents.phenotypic_features), 2
-        )
-        self.assertEqual(
-            len(self.family_rebuilder.phenopacket_contents.proband.phenotypic_features), 2
-        )
-        for p_f in self.phenopacket_rebuilder.phenopacket_contents.phenotypic_features:
-            self.assertTrue(
-                p_f.type.id == "HP:0000316"
-                and p_f.type.label == "Hypertelorism"
-                or p_f.type.id == "HP:RANDOM"
-                and p_f.type.label == "RANDOM"
-            )
+    def test_update_interpretations_phenopacket(self):
+        phenopacket_updated_interpretations = self.phenopacket_rebuilder.update_interpretations(updated_interpretations)
+        self.assertNotEqual(list(updated_interpretations),
+                            list(self.phenopacket_rebuilder.phenopacket.interpretations))
+        self.assertEqual(list(phenopacket_updated_interpretations.interpretations), updated_interpretations)
+
+    def test_update_interpretations_family(self):
+        family_updated_interpretations = self.family_rebuilder.update_interpretations(updated_interpretations)
+        self.assertNotEqual(list(updated_interpretations),
+                            list(self.family_rebuilder.phenopacket.proband.interpretations))
+        self.assertEqual(list(family_updated_interpretations.proband.interpretations), updated_interpretations)
+
+    def test_add_randomised_hpo_phenopacket(self):
+        random_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(self.randomised_phenotype)
+        self.assertNotEqual(random_phenopacket.phenotypic_features,
+                            self.phenopacket_rebuilder.phenopacket.phenotypic_features)
+        self.assertEqual(list(random_phenopacket.phenotypic_features), self.randomised_phenotype)
+
+    def test_add_randomised_hpo_family(self):
+        random_family = self.family_rebuilder.add_randomised_hpo(self.randomised_phenotype)
+        self.assertNotEqual(random_family.proband.phenotypic_features,
+                            self.family_rebuilder.phenopacket.proband.phenotypic_features)
+        self.assertEqual(list(random_family.proband.phenotypic_features), self.randomised_phenotype)
 
     def test_add_created_vcf_path(self):
-        self.phenopacket_rebuilder.add_created_vcf_path(
+        updated_phenopacket = self.phenopacket_rebuilder.add_created_vcf_path(
             Path("input_dir/test_vcf_dir/test_1.vcf"), "GRCh37"
         )
         vcf_file = [
             file
-            for file in self.phenopacket_rebuilder.phenopacket_contents.files
+            for file in updated_phenopacket.files
             if file.file_attributes["fileFormat"] == "VCF"
         ][0]
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
 
 
-class TestPhenopacketUpdater(unittest.TestCase):
+class TestGeneIdentifierUpdater(unittest.TestCase):
     @classmethod
     def setUpClass(cls, hgnc_dict=None) -> None:
         if hgnc_dict is None:
             hgnc_dict = create_hgnc_dict()
-        cls.phenopacket_contents = PhenopacketUpdater(
-            Path("path/to/phenopacket"), phenopacket, hgnc_dict, "ensembl_id"
-        )
-        cls.family_contents = PhenopacketUpdater(
-            Path("path/to/family/phenopacket"), family, hgnc_dict, "entrez_id"
-        )
+        cls.gene_identifier_updater_ens = GeneIdentifierUpdater(hgnc_dict, "ensembl_id")
+        cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(hgnc_dict, "entrez_id")
 
-    def test_update_identifier(self):
-        self.assertEqual(self.phenopacket_contents.update_identifier("A2M"), "ENSG00000175899")
-        self.assertEqual(self.phenopacket_contents.update_identifier("GBA"), "ENSG00000177628")
-        self.assertEqual(self.family_contents.update_identifier("A2M"), "2")
-        self.assertEqual(self.family_contents.update_identifier("GBA"), "2629")
+    def test_find_identifier(self):
+        self.assertEqual(self.gene_identifier_updater_ens.find_identifier("A2M"), "ENSG00000175899")
+        self.assertEqual(self.gene_identifier_updater_ens.find_identifier("GBA"), "ENSG00000177628")
+        self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
+        self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA"), "2629")
 
-    # def test_update_gene_symbol(self):
-    #     self.assertEqual(self.phenopacket_contents.update_gene_symbol("A2M"), "A2M")
-    #     self.assertEqual(self.phenopacket_contents.update_gene_symbol("GBA"), "GBA1")
-
-    def test_update_alternate_ids(self):
-        self.assertEqual(len(self.phenopacket_contents.update_alternate_ids("GBA")), 4)
+    def test_find_alternate_ids(self):
         self.assertEqual(
-            ["HGNC:4177", "entrez:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
-            self.phenopacket_contents.update_alternate_ids("GBA"),
+            ["HGNC:4177", "ncbigene:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
+            self.gene_identifier_updater_ens.find_alternate_ids("GBA"),
         )
         self.assertEqual(
-            ["HGNC:7", "entrez:2", "ensembl:ENSG00000175899", "symbol:A2M"],
-            self.family_contents.update_alternate_ids("A2M"),
+            ["HGNC:7", "ncbigene:2", "ensembl:ENSG00000175899", "symbol:A2M"],
+            self.gene_identifier_updater_entrez.find_alternate_ids("A2M"),
         )
 
-    def test_update_gene_context_phenopacket(self):
-        for i in self.phenopacket_contents.update_gene_context_phenopacket().interpretations:
-            for g in i.diagnosis.genomic_interpretations:
-                self.assertTrue(
-                    g.variant_interpretation.variation_descriptor.gene_context.value_id
-                    in ["ENSG00000102302", "ENSG00000176225"]
-                )
-
-    def test_update_gene_context_family(self):
-        for i in self.family_contents.update_gene_context_family().proband.interpretations:
-            for g in i.diagnosis.genomic_interpretations:
-                self.assertTrue(
-                    g.variant_interpretation.variation_descriptor.gene_context.value_id
-                    in ["25914", "2245"]
-                )
+    def test_update_genomic_interpretations_gene_identifier(self):
+        self.assertEqual(list(self.gene_identifier_updater_ens.update_genomic_interpretations_gene_identifier(
+            phenopacket.interpretations)), updated_interpretations)
