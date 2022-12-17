@@ -6,18 +6,23 @@ import click
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
+    PhenopacketRebuilder,
+    PhenopacketUtil,
     create_hgnc_dict,
-    phenopacket_reader, write_phenopacket, PhenopacketUtil, PhenopacketRebuilder,
+    phenopacket_reader,
+    write_phenopacket,
 )
 
 
-def update_outdated_gene_context(phenopacket_path: Path, gene_identifier: str, hgnc_data: defaultdict):
+def update_outdated_gene_context(
+    phenopacket_path: Path, gene_identifier: str, hgnc_data: defaultdict
+):
     """Updates the gene context of the phenopacket."""
     phenopacket = phenopacket_reader(phenopacket_path)
     interpretations = PhenopacketUtil(phenopacket).interpretations()
-    updated_interpretations = GeneIdentifierUpdater(hgnc_data,
-                                                    gene_identifier).update_genomic_interpretations_gene_identifier(
-        interpretations)
+    updated_interpretations = GeneIdentifierUpdater(
+        hgnc_data, gene_identifier
+    ).update_genomic_interpretations_gene_identifier(interpretations)
 
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
@@ -69,5 +74,7 @@ def update_phenopackets(phenopacket_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for phenopackets."""
     hgnc_data = create_hgnc_dict()
     for phenopacket_path in all_files(phenopacket_dir):
-        updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
+        updated_phenopacket = update_outdated_gene_context(
+            phenopacket_path, gene_identifier, hgnc_data
+        )
         write_phenopacket(updated_phenopacket, phenopacket_path)
