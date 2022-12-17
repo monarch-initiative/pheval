@@ -233,11 +233,11 @@ class VcfWriter:
         self.vcf_contents = vcf_contents
         self.spiked_vcf_file_path = spiked_vcf_file_path
 
-    def copy_template_to_new_file(self):
+    def copy_template_to_new_file(self) -> None:
         """Copies template vcf file to a new file."""
         shutil.copyfile(self.template_vcf_name, self.spiked_vcf_file_path)
 
-    def write_gzip(self):
+    def write_gzip(self) -> None:
         """Writes gzipped vcf file."""
         encoded_contents = [line.encode() for line in self.vcf_contents]
         with gzip.open(self.spiked_vcf_file_path, "wb") as f:
@@ -245,21 +245,20 @@ class VcfWriter:
                 f.write(line)
         f.close()
 
-    def write_uncompressed(self):
+    def write_uncompressed(self) -> None:
         """Writes an uncompressed vcf file."""
         with open(self.spiked_vcf_file_path, "w") as file:
             file.writelines(self.vcf_contents)
         file.close()
 
-    def write_vcf_file(self):
+    def write_vcf_file(self) -> None:
         """Writes spiked vcf file."""
         self.copy_template_to_new_file()
         self.write_gzip() if is_gzipped(self.spiked_vcf_file_path) else self.write_uncompressed()
 
 
-
 def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf_path: Path = None,
-              vcf_dir: Path = None):
+              vcf_dir: Path = None) -> tuple[Path, str, list[str]]:
     """Spikes VCF records with variants."""
     # this is a separate function to a click command as it will fail if annotated with click annotations
     # and referenced from another click command
@@ -277,6 +276,16 @@ def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf
     check_variant_assembly(phenopacket_causative_variants, vcf_header, phenopacket)
     return template_vcf_path, vcf_header.assembly, VcfSpiker(vcf_contents, phenopacket_causative_variants,
                                                              vcf_header).construct_vcf()
+
+
+def generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir) -> tuple[Path, str]:
+    """Writes spiked vcf contents to a new file."""
+    template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(phenopacket, output_dir, template_vcf_path, vcf_dir)
+    spiked_vcf_path = output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz")) if is_gzipped(
+        template_vcf_path) else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
+    VcfWriter(
+        template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
+    return spiked_vcf_path, vcf_assembly
 
 
 @click.command()
@@ -319,13 +328,10 @@ def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf
 def create_spiked_vcf(
         phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
 ):
-    """Spikes variants into a template VCF file for a singular phenopacket."""
+    """Spikes variants into a template VCF file for a single phenopacket."""
     phenopacket = phenopacket_reader(phenopacket_path)
-    template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(phenopacket, output_dir, template_vcf_path, vcf_dir)
-    spiked_vcf_path = output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz")) if is_gzipped(
-        template_vcf_path) else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
-    VcfWriter(
-        template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
+    spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path,
+                                                             template_vcf_path, vcf_dir)
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_path, vcf_assembly)
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
@@ -376,14 +382,11 @@ def create_spiked_vcfs(
     """Spikes variants into a template VCF file for a directory of phenopackets."""
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         phenopacket = phenopacket_reader(phenopacket_path)
-        template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(phenopacket, output_dir, template_vcf_path, vcf_dir)
-        spiked_vcf_path = output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz")) if is_gzipped(
-            template_vcf_path) else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
-        VcfWriter(
-            template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
+        spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path,
+                                                                 template_vcf_path, vcf_dir)
         updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_path, vcf_assembly)
         write_phenopacket(updated_phenopacket, phenopacket_path)
-
     # or made a lambda one-liner for maximum wtf...
     # [spike_vcf(path, output_dir, template_vcf, vcf_dir) for path in phenopacket_dir.iterdir() if path.suffix ==
     # ".json"]
+
