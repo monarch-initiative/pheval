@@ -16,12 +16,13 @@ from pheval.utils.phenopacket_utils import (
 
 
 def load_ontology():
-    """Loads ontology once for use in other methods."""
+    """Loads human phenotype ontology."""
     resource = OntologyResource(slug="hp.obo", local=False)
     return ProntoImplementation(resource)
 
 
 class HpoRandomiser:
+    """Randomises phenopacket phenotypic features. """
     def __init__(self, hpo_ontology):
         self.hpo_ontology = hpo_ontology
         self.phenotypic_abnormalities = set(hpo_ontology.roots(predicates=["HP:0000118"]))
@@ -90,6 +91,7 @@ class HpoRandomiser:
         number_of_parent_terms: int,
         number_of_random_terms: int,
     ) -> list[PhenotypicFeature]:
+        """Returns a list of randomised HPO terms."""
         retained_patient_terms = self.retain_real_patient_terms(phenotypic_features, max_real_id)
         return (
             retained_patient_terms
@@ -107,6 +109,7 @@ def noisy_phenopacket(
     number_of_random_terms: int,
     phenopacket: Phenopacket or Family,
 ) -> Phenopacket or Family:
+    """Randomises the phenotypic profile of a phenopacket."""
     # phenopacket_util = PhenopacketUtil(phenopacket)
     # phenotypic_features = phenopacket_util.observed_phenotypic_features()
     phenotypic_features = PhenopacketUtil(phenopacket).observed_phenotypic_features()
