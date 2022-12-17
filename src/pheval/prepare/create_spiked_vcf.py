@@ -257,13 +257,6 @@ class VcfWriter:
         self.write_gzip() if is_gzipped(self.spiked_vcf_file_path) else self.write_uncompressed()
 
 
-def add_vcf_path_to_phenopacket(
-        phenopacket_path: Path, phenopacket: Phenopacket or Family, spiked_vcf_path: Path, vcf_header: VcfHeader
-) -> None:
-    """Writes the created vcf path to phenopacket"""
-    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_path, vcf_header.assembly)
-    write_phenopacket(updated_phenopacket, phenopacket_path)
-
 
 def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf_path: Path = None,
               vcf_dir: Path = None):
