@@ -226,6 +226,7 @@ class VcfSpiker:
         return updated_vcf_file
 
     def construct_vcf(self) -> list[str]:
+        """Constructs the entire spiked VCF."""
         return self.construct_header(self.construct_vcf_records())
 
 
@@ -266,45 +267,37 @@ class VcfWriter:
 
 def spike_vcf(
     phenopacket: Phenopacket or Family,
-    output_dir: Path,
-    template_vcf_path: Path = None,
-    vcf_dir: Path = None,
-) -> tuple[Path, str, list[str]]:
+    chosen_template_vcf: Path,
+) -> tuple[str, list[str]]:
     """Spikes VCF records with variants."""
     # this is a separate function to a click command as it will fail if annotated with click annotations
     # and referenced from another click command
-    if template_vcf_path is None and vcf_dir is None:
-        raise InputError("Either a template_vcf or vcf_dir must be specified")
-    try:
-        output_dir.mkdir()
-        info_log.info(f" Created a directory {output_dir}")
-    except FileExistsError:
-        pass
     phenopacket_causative_variants = PhenopacketUtil(phenopacket).causative_variants()
-    chosen_template_vcf = VcfPicker(template_vcf_path, vcf_dir).pick_file()
     vcf_contents = read_vcf(chosen_template_vcf)
     vcf_header = VcfHeaderParser(vcf_contents).parse_vcf_header()
     check_variant_assembly(phenopacket_causative_variants, vcf_header, phenopacket)
     return (
-        template_vcf_path,
         vcf_header.assembly,
         VcfSpiker(vcf_contents, phenopacket_causative_variants, vcf_header).construct_vcf(),
     )
 
 
 def generate_spiked_vcf_file(
-    output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+    output_dir, phenopacket, phenopacket_path, chosen_template_vcf: Path
 ) -> tuple[Path, str]:
     """Writes spiked vcf contents to a new file."""
-    chosen_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(
-        phenopacket, output_dir, template_vcf_path, vcf_dir
-    )
+    try:
+        output_dir.mkdir()
+        info_log.info(f" Created a directory {output_dir}")
+    except FileExistsError:
+        pass
+    vcf_assembly, spiked_vcf = spike_vcf(phenopacket, chosen_template_vcf)
     spiked_vcf_path = (
         output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
-        if is_gzipped(chosen_vcf_path)
+        if is_gzipped(chosen_template_vcf)
         else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
     )
-    VcfWriter(template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
+    VcfWriter(chosen_template_vcf, spiked_vcf, spiked_vcf_path).write_vcf_file()
     return spiked_vcf_path, vcf_assembly
 
 
@@ -349,9 +342,12 @@ def create_spiked_vcf(
     phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
 ):
     """Spikes variants into a template VCF file for a single phenopacket."""
+    if template_vcf_path is None and vcf_dir is None:
+        raise InputError("Either a template_vcf or vcf_dir must be specified")
+    vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
     phenopacket = phenopacket_reader(phenopacket_path)
     spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
-        output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+        output_dir, phenopacket, phenopacket_path, vcf_file_path
     )
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
         spiked_vcf_path, vcf_assembly
@@ -403,10 +399,13 @@ def create_spiked_vcfs(
     vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
+    if template_vcf_path is None and vcf_dir is None:
+        raise InputError("Either a template_vcf or vcf_dir must be specified")
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
+        vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
         phenopacket = phenopacket_reader(phenopacket_path)
         spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
-            output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+            output_dir, phenopacket, phenopacket_path, vcf_file_path
         )
         updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
             spiked_vcf_path, vcf_assembly
