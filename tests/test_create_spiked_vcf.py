@@ -2,7 +2,7 @@ import os
 import unittest
 from pathlib import Path
 
-from pheval.prepare.create_spiked_vcf import (  # VcfParser,; VcfSpiker,
+from pheval.prepare.create_spiked_vcf import (
     VcfHeader,
     VcfHeaderParser,
     VcfPicker,
