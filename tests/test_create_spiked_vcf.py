@@ -60,7 +60,6 @@ class TestProbandVariantChecker(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.causative_variants = [
             ProbandCausativeVariant(
-                Path("/path/to/phenopacket"),
                 "TEST1",
                 "GRCh37",
                 VariantData("1", 886190, "G", "A"),
@@ -73,13 +72,13 @@ class TestProbandVariantChecker(unittest.TestCase):
     def test_check_variant_assembly(self):
         self.assertTrue(
             ProbandVariantChecker(
-                self.causative_variants, self.vcf_header_compatible
+                self.causative_variants, self.vcf_header_compatible, Path("/path/to/phenopacket")
             ).check_variant_assembly()
             == []
         )
         self.assertTrue(
             ProbandVariantChecker(
-                self.causative_variants, self.vcf_header_incompatible
+                self.causative_variants, self.vcf_header_incompatible, Path("/path/to/phenopacket")
             ).check_variant_assembly()
             != []
         )
@@ -94,7 +93,6 @@ class TestVcfSpiker(unittest.TestCase):
             ),
             [
                 ProbandCausativeVariant(
-                    Path("/path/to/phenopacket"),
                     "TEST1",
                     "GRCh37",
                     VariantData("1", 886190, "G", "A"),
@@ -104,7 +102,6 @@ class TestVcfSpiker(unittest.TestCase):
             VcfHeader("TEMPLATE", "GRCh37", True),
         )
         cls.variant = ProbandCausativeVariant(
-            Path("/path/to/phenopacket"),
             "TEST1",
             "GRCh37",
             VariantData("1", 886190, "G", "A"),
