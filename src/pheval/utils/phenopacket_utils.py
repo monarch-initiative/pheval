@@ -10,7 +10,7 @@ from typing import Optional
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
-from phenopackets import Family, File, Phenopacket, PhenotypicFeature, Interpretation
+from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
@@ -210,9 +210,7 @@ class PhenopacketRebuilder:
     def add_created_vcf_path(self, vcf_path: Path, genome_assembly: str):
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
-            file
-            for file in phenopacket.files
-            if file.file_attributes["fileFormat"] != "VCF"
+            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
         ]
         vcf_file_entry = File(
             uri=os.path.abspath(vcf_path),
