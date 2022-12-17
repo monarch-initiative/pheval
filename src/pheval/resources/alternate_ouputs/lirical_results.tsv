@@ -1,0 +1,709 @@
+! LIRICAL TSV Output (2.0.0-RC1)							
+! Sample: Patient 5							
+! Observed HPO terms							
+! Macrocephaly <a href="https://hpo.jax.org/app/browse/term/HP:0000256">HP:0000256</a>							
+! Cerebral atrophy <a href="https://hpo.jax.org/app/browse/term/HP:0002059">HP:0002059</a>							
+! Subdural hemorrhage <a href="https://hpo.jax.org/app/browse/term/HP:0100309">HP:0100309</a>							
+! Glutaric aciduria <a href="https://hpo.jax.org/app/browse/term/HP:0003150">HP:0003150</a>							
+! Dystonia <a href="https://hpo.jax.org/app/browse/term/HP:0001332">HP:0001332</a>							
+rank	diseaseName	diseaseCurie	pretestprob	posttestprob	compositeLR	entrezGeneId	variants
+1	Glutaric acidemia I	OMIM:231670	1/8371	65.60%	4.203	NCBIGene:2639	19:12998205G>C NM_006563.3:: pathogenicity:0.0 [0/0]; 
+19:13002033A>G NM_000159.3:c.-35+17A>G:p.(=) pathogenicity:0.0 [1/1]; 19:13002400G>C NM_000159.3:c.127+64G>C:p.(=) pathogenicity:0.0 [0/1]; 
+19:13002563T>G NM_000159.3:c.128-82T>G:p.(=) pathogenicity:0.0 [0/1]; 19:13007113G>A NM_000159.3:c.730G>A:p.(G244S) pathogenicity:1.0 [1/1]; 
+19:13008264C>T NM_000159.3:c.1082+22C>T:p.(=) pathogenicity:0.0 [0/1]; 19:13008607G>T NM_000159.3:c.1173G>T:p.(=) pathogenicity:0.0 [0/1]; 
+19:13010520A>G NM_013976.3:c.1250A>G:p.(Q417R) pathogenicity:0.0 [0/1]; 19:13010643G>T NM_001105578.1:c.612+175C>A:p.(=) pathogenicity:0.0 [0/1]
+2	Brain small vessel disease 2	OMIM:614483	1/8371	0.00%	-1.876	NCBIGene:1284	13:110959643A>C NM_001846.2:c.-277A>C:p.(=) 
+pathogenicity:0.0 [1/1]; 13:110962155G>A NM_001846.2:c.99+1685G>A:p.(=) pathogenicity:0.0 [1/1]; 13:110963428G>T NM_001846.2:c.99+2958G>T:p.(=) 
+pathogenicity:0.0 [./.]; 13:110966164TGTCCACCCGGCAGGCTCCCACCCCGGTGCCCCGC>T NM_001846.2:c.99+5695_99+5728del:p.(=) pathogenicity:0.0 [./.]; 
+13:110979797G>C NM_001846.2:c.99+19327G>C:p.(=) pathogenicity:0.0 [1/1]; 13:110988416G>A NM_001846.2:c.100-21403G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:110999616C>A NM_001846.2:c.100-10203C>A:p.(=) pathogenicity:0.0 [1/1]; 13:110999664A>T NM_001846.2:c.100-10155A>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111008442GC>G NM_001846.2:c.100-1376del:p.(=) pathogenicity:0.0 [0/1]; 13:111009643G>A NM_001846.2:c.100-176G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111014165A>C NM_001846.2:c.180+4266A>C:p.(=) pathogenicity:0.0 [1/1]; 13:111016025C>T NM_001846.2:c.180+6126C>T:p.(=) pathogenicity:0.0 [./.]; 
+13:111022143T>C NM_001846.2:c.180+12244T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111033821C>A NM_001846.2:c.180+23922C>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111035556T>C NM_001846.2:c.180+25657T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111040299C>T NM_001846.2:c.180+30400C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111047350C>A NM_001846.2:c.181-29731C>A:p.(=) pathogenicity:0.0 [1/1]; 13:111060503G>A NM_001846.2:c.181-16578G>A:p.(=) pathogenicity:0.0 [0/0]; 
+13:111060509G>C NM_001846.2:c.181-16572G>C:p.(=) pathogenicity:0.0 [0/0]; 13:111061059T>C NM_001846.2:c.181-16022T>C:p.(=) pathogenicity:0.0 [./.]; 
+13:111062076A>G NM_001846.2:c.181-15005A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111062680G>A NM_001846.2:c.181-14401G>A:p.(=) pathogenicity:0.0 [./.]; 
+13:111063757C>T NM_001846.2:c.181-13324C>T:p.(=) pathogenicity:0.0 [1/1]; 13:111069635G>A NM_001846.2:c.181-7446G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111074859A>G NM_001846.2:c.181-2222A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111076987C>CAAAA NM_001846.2:c.181-94_181-93insAAAA:p.(=) 
+pathogenicity:0.0 [1/1]; 13:111077197G>A NM_001846.2:c.297G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111077400AT>A NM_001846.2:c.360+57del:p.(=) 
+pathogenicity:0.0 [1/1]; 13:111077450G>A NM_001846.2:c.360+106G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111077516A>G NM_001846.2:c.360+172A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 13:111080525TAGAC>T NM_001846.2:c.361-288_361-285del:p.(=) pathogenicity:0.0 [1/1]; 13:111080609G>A 
+NM_001846.2:c.361-205G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111082058T>C NM_001846.2:c.478-174T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111082157C>A 
+NM_001846.2:c.478-75C>A:p.(=) pathogenicity:0.0 [1/1]; 13:111085789G>GA NM_001846.2:c.685-959_685-958insA:p.(=) pathogenicity:0.0 [./.]; 
+13:111086506G>A NM_001846.2:c.685-242G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111090854A>G NM_001846.2:c.862-111A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111090909T>C NM_001846.2:c.862-56T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111090924G>A NM_001846.2:c.862-41G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111091157C>A NM_001846.2:c.912+142C>A:p.(=) pathogenicity:0.0 [0/1]; 13:111091231A>G NM_001846.2:c.912+216A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111098110C>T NM_001846.2:c.958-66C>T:p.(=) pathogenicity:0.0 [1/1]; 13:111098338A>T NM_001846.2:c.1011+109A>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111098700A>G NM_001846.2:c.1012-445A>G:p.(=) pathogenicity:0.0 [./.]; 13:111099057G>A NM_001846.2:c.1012-88G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111099122G>A NM_001846.2:c.1012-23G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111102718C>T NM_001846.2:c.1256C>T:p.(A419V) pathogenicity:1.0 [0/1]; 
+13:111102865G>A NM_001846.2:c.1339+64G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111107640G>A NM_001846.2:c.1340-2050G>A:p.(=) pathogenicity:0.0 [./.]; 
+13:111109157G>A NM_001846.2:c.1340-533G>A:p.(=) pathogenicity:0.0 [./.]; 13:111109575TGATG>T NM_001846.2:c.1340-114_1340-111del:p.(=) 
+pathogenicity:0.0 [1/1]; 13:111109580CCCTGCGTCTGCGTGGGACCCCAGGCGTCCGTGGGGCTG>C NM_001846.2:c.1340-109_1340-72del:p.(=) pathogenicity:0.0 [1/1]; 
+13:111109859A>G NM_001846.2:c.1432+77A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111109960T>C NM_001846.2:c.1432+178T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111111023T>C NM_001846.2:c.1433-95T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111111043G>A NM_001846.2:c.1433-75G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111111173G>A NM_001846.2:c.1488G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111111235G>A NM_001846.2:c.1550G>A:p.(R517K) pathogenicity:0.0 [1/1]; 
+13:111111382G>A NM_001846.2:c.1596+101G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111111455T>C NM_001846.2:c.1596+174T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111114176C>A NM_001846.2:c.1597-285C>A:p.(=) pathogenicity:0.0 [./.]; 13:111114177C>A NM_001846.2:c.1597-284C>A:p.(=) pathogenicity:0.0 [./.]; 
+13:111114554G>A NM_001846.2:c.1669+21G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111114920A>G NM_001846.2:c.1776+189A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111117668G>A NM_001846.2:c.1777-84G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111117745C>T NM_001846.2:c.1777-7C>T:p.? pathogenicity:0.0 [1/1]; 
+13:111118102G>A NM_001846.2:c.1978+149G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111118221T>C NM_001846.2:c.1979-129T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111118546T>G NM_001846.2:c.2038+137T>G:p.(=) pathogenicity:0.0 [1/1]; 13:111119052C>G NM_001846.2:c.2039-335C>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111119077A>G NM_001846.2:c.2039-310A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111119146A>T NM_001846.2:c.2039-241A>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111119296A>G NM_001846.2:c.2039-91A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111119620C>T NM_001846.2:c.2095+177C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111119654T>C NM_001846.2:c.2095+211T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111121444C>A NM_001846.2:c.2096-120C>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111121483A>G NM_001846.2:c.2096-81A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111121620C>T NM_001846.2:c.2152C>T:p.(P718S) pathogenicity:0.0 [1/1]; 
+13:111121717A>G NM_001846.2:c.2203+46A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111121873C>T NM_001846.2:c.2203+202C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111130226G>A NM_001846.2:c.2426-124G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111130599G>C NM_001846.2:c.2587+88G>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111132413C>T NM_001846.2:c.2588-154C>T:p.(=) pathogenicity:0.0 [0/1]; 13:111132490A>G NM_001846.2:c.2588-77A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111132556C>T NM_001846.2:c.2588-11C>T:p.(=) pathogenicity:0.0 [0/1]; 13:111132820G>A NM_001846.2:c.2758+83G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111134466A>T NM_001846.2:c.2759-397A>T:p.(=) pathogenicity:0.0 [./.]; 13:111134780G>A NM_001846.2:c.2759-83G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111137167T>C NM_001846.2:c.2903-85T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111138538T>C NM_001846.2:c.3207+355T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111143755T>C NM_001846.2:c.3454+68T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111145073G>C NM_001846.2:c.3563-485G>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111145310A>C NM_001846.2:c.3563-248A>C:p.(=) pathogenicity:0.0 [./.]; 13:111145398AGGTGAAATAACGATGAGTGACACCCCCATG>A 
+NM_001846.2:c.3563-159_3563-130del:p.(=) pathogenicity:0.0 [1/1]; 13:111145676G>C NM_001846.2:c.3634+47G>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111146417A>ATT NM_001846.2:c.3634+788_3634+789insTT:p.(=) pathogenicity:0.0 [1/1]; 13:111146678GA>G NM_001846.2:c.3635-1010del:p.(=) 
+pathogenicity:0.0 [1/1]; 13:111148659G>C NM_001846.2:c.3760+845G>C:p.(=) pathogenicity:0.0 [1/1]; 13:111149960CAG>C 
+NM_001846.2:c.3760+2147_3760+2148del:p.(=) pathogenicity:0.0 [1/1]; 13:111150706T>C NM_001846.2:c.3760+2892T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111150714T>C NM_001846.2:c.3760+2900T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111151692T>C NM_001846.2:c.3761-2323T>C:p.(=) pathogenicity:0.0 [./.]; 
+13:111153934G>A NM_001846.2:c.3761-81G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111154058T>A NM_001846.2:c.3804A>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111154061T>C NM_001846.2:c.3807C>C:p.(=) pathogenicity:0.0 [1/1]; 13:111154160G>A NM_001846.2:c.3877+29G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111155271T>C NM_001846.2:c.3878-197T>C:p.(=) pathogenicity:0.0 [0/1]; 13:111155363G>A NM_001846.2:c.3878-105G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:111155428C>T NM_001846.2:c.3878-40C>T:p.(=) pathogenicity:0.0 [1/1]; 13:111155711C>T NM_001846.2:c.4040-19C>T:p.(=) pathogenicity:0.0 [0/1]; 
+13:111155773T>C NM_001846.2:c.4083C>C:p.(=) pathogenicity:0.0 [1/1]; 13:111155779G>A NM_001846.2:c.4089G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111156011A>C NM_001846.2:c.4138+183A>C:p.(=) pathogenicity:0.0 [0/1]; 13:111156021C>T NM_001846.2:c.4139-173C>T:p.(=) pathogenicity:0.0 [0/1]; 
+13:111156047C>G NM_001846.2:c.4139-147C>G:p.(=) pathogenicity:0.0 [0/1]; 13:111156153G>A NM_001846.2:c.4139-41G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:111156411G>A NM_001846.2:c.4285+71G>A:p.(=) pathogenicity:0.0 [0/1]; 13:111156499C>T NM_001846.2:c.4290T>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:111156773A>G NM_001846.2:c.4402+162A>G:p.(=) pathogenicity:0.0 [1/1]; 13:111158874A>G NM_001846.2:c.4515A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111159054G>A NM_001846.2:c.4594+101G>A:p.(=) pathogenicity:0.0 [1/1]; 13:111160418C>T NM_001846.2:c.4731C>T:p.(=) pathogenicity:0.1 [0/1]; 
+13:111164614T>C NM_001846.2:c.*76T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111164628TAA>T NM_001846.2:c.*101_*102del:p.(=) pathogenicity:0.0 [1/1]; 
+13:111164955C>G NM_001846.2:c.*417C>G:p.(=) pathogenicity:0.0 [1/1]; 13:111165095A>G NM_001846.2:c.*557A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:111165188T>C NM_001846.2:c.*650T>C:p.(=) pathogenicity:0.0 [1/1]; 13:111165201T>C NM_001846.2:c.*663T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:111169661T>C NM_001846.2:: pathogenicity:0.0 [1/1]
+3	Diencephalic-mesencephalic junction dysplasia syndrome 2	OMIM:618646	1/8371	0.00%	-2.487	NCBIGene:170825	4:54950725C>T 
+NM_133267.2:: pathogenicity:0.0 [1/1]; 4:54966667C>T NM_133267.2:c.156C>T:p.(=) pathogenicity:0.0 [1/1]; 4:54966830G>A NM_133267.2:c.319A>A:p.(=) 
+pathogenicity:0.0 [1/1]; 4:54966910G>GCACCAC NM_133267.2:c.402_407dup:p.(H138_H139dup) pathogenicity:0.9 [1/1]; 4:54967709C>A 
+NM_133267.2:c.575-40C>A:p.(=) pathogenicity:0.0 [1/1]; 4:55002331T>C NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55009968C>T NM_133267.2:: 
+pathogenicity:0.0 [1/1]; 4:55010012G>T NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55011769T>C NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55013951T>C 
+NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55026539ACT>A NM_133267.2:: pathogenicity:0.0 [./.]; 4:55075763AG>A NM_133267.2:: pathogenicity:0.0 [1/1]; 
+4:55075765AAAG>A NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55082158G>A NM_133267.2:: pathogenicity:0.0 [1/1]; 4:55087144G>A NM_133267.2:: 
+pathogenicity:0.0 [0/1]; 4:55087241C>CA NM_133267.2:: pathogenicity:0.0 [0/1]; 4:55087581C>A NM_133267.2:: pathogenicity:0.0 [0/1]
+4	Phenylketonuria	OMIM:261600	1/8371	0.00%	-3.244	NCBIGene:5053	12:103227951A>T NM_000277.1:: pathogenicity:0.0 [1/1]; 
+12:103227955A>T NM_000277.1:: pathogenicity:0.0 [1/1]; 12:103227959A>T NM_000277.1:: pathogenicity:0.0 [1/1]; 12:103234252T>C 
+NM_000277.1:c.1241A>G:p.(Y414C) pathogenicity:1.0 [0/1]; 12:103234479A>G NM_000277.1:c.1200-186T>C:p.(=) pathogenicity:0.0 [1/1]; 12:103237468G>C 
+NM_000277.1:c.1155G>G:p.(=) pathogenicity:0.0 [1/1]; 12:103237909T>A NM_000277.1:c.1065+205A>T:p.(=) pathogenicity:0.0 [1/1]; 12:103238017C>T 
+NM_000277.1:c.1065+97G>A:p.(=) pathogenicity:0.0 [1/1]; 12:103238319GTGTCTA>G NM_000277.1:c.970-116_970-111del:p.(=) pathogenicity:0.0 [1/1]; 
+12:103238404C>T NM_000277.1:c.970-195G>A:p.(=) pathogenicity:0.0 [./.]; 12:103246700C>T NM_000277.1:c.735G>A:p.(=) pathogenicity:0.0 [1/1]; 
+12:103250460T>C NM_000277.1:c.510-1350A>G:p.(=) pathogenicity:0.0 [1/1]; 12:103260273T>G NM_000277.1:c.509+101A>C:p.(=) pathogenicity:0.0 [1/1]; 
+12:103271350G>A NM_000277.1:c.353-22C>T:p.(=) pathogenicity:0.0 [1/1]
+5	Smith-Lemli-Opitz syndrome	OMIM:270400	1/8371	0.00%	-3.341	NCBIGene:1717	11:71139736A>C NM_001163817.1:: pathogenicity:0.0 
+[1/1]; 11:71140455T>G NM_001163817.1:: pathogenicity:0.0 [./.]; 11:71140486C>A NM_001163817.1:: pathogenicity:0.0 [./.]; 11:71145778G>A 
+NM_001163817.1:c.*643C>T:p.(=) pathogenicity:0.0 [./.]; 11:71146577G>A NM_001163817.1:c.1272C>T:p.(=) pathogenicity:0.0 [1/1]; 11:71146691A>G 
+NM_001163817.1:c.1158T>C:p.(=) pathogenicity:0.0 [1/1]; 11:71146837C>T NM_001163817.1:c.1012G>A:p.(V338M) pathogenicity:0.8 [0/1]; 11:71146952G>A 
+NM_001163817.1:c.964-67C>T:p.(=) pathogenicity:0.0 [1/1]; 11:71148304T>G NM_001163817.1:c.963+554A>C:p.(=) pathogenicity:0.0 [1/1]; 11:71149069A>G 
+NM_001163817.1:c.832-80T>C:p.(=) pathogenicity:0.0 [1/1]; 11:71149137G>A NM_001163817.1:c.832-148C>T:p.(=) pathogenicity:0.0 [1/1]; 11:71149856C>T 
+NM_001163817.1:c.831+69G>A:p.(=) pathogenicity:0.0 [1/1]; 11:71150217C>T NM_001163817.1:c.627-88G>A:p.(=) pathogenicity:0.0 [1/1]; 11:71150296C>T 
+NM_001163817.1:c.627-167G>A:p.(=) pathogenicity:0.0 [1/1]; 11:71153459C>A NM_001163817.1:c.322-60G>T:p.(=) pathogenicity:0.0 [1/1]; 11:71154204A>G 
+NM_001163817.1:c.322-805T>C:p.(=) pathogenicity:0.0 [./.]; 11:71154820G>A NM_001163817.1:c.321+219C>T:p.(=) pathogenicity:0.0 [1/1]; 11:71155153A>G 
+NM_001163817.1:c.207T>C:p.(=) pathogenicity:0.0 [1/1]; 11:71155171C>T NM_001163817.1:c.189G>A:p.(=) pathogenicity:0.0 [1/1]; 11:71155641A>G 
+NM_001163817.1:c.98+260T>C:p.(=) pathogenicity:0.0 [1/1]; 11:71158841A>C NM_001163817.1:c.-131-61T>G:p.(=) pathogenicity:0.0 [0/1]; 11:71159429G>A 
+NM_001163817.1:c.-202C>T:p.(=) pathogenicity:0.0 [1/1]; 11:71160395G>C NM_001360.2:: pathogenicity:0.0 [1/1]
+6	Leber optic atrophy	OMIM:535000	1/8371	0.00%	-3.559	NCBIGene:4540	MT:12706T>C MTND5:c.370T>C:p.(F124L) pathogenicity:1.0 
+[1/1]; MT:12851G>A MTND5:c.515T>A:p.(I172N) pathogenicity:0.6 [1/1]; MT:13327T>C MTND5:c.991A>C:p.(T331P) pathogenicity:0.6 [1/1]; MT:13681C>T 
+MTND5:c.1345A>T:p.(T449S) pathogenicity:0.6 [1/1]
+7	Mitochondrial myopathy, encephalopathy, lactic acidosis, and stroke-like episodes	OMIM:540000	1/8371	0.00%	-3.762	
+NCBIGene:4540	MT:12706T>C MTND5:c.370T>C:p.(F124L) pathogenicity:1.0 [1/1]; MT:12851G>A MTND5:c.515T>A:p.(I172N) pathogenicity:0.6 [1/1]; 
+MT:13327T>C MTND5:c.991A>C:p.(T331P) pathogenicity:0.6 [1/1]; MT:13681C>T MTND5:c.1345A>T:p.(T449S) pathogenicity:0.6 [1/1]
+8	Mucolipidosis IV	OMIM:252650	1/8371	0.00%	-3.777	NCBIGene:57192	19:7593048C>T NM_020533.2:c.782C>T:p.(T261M) 
+pathogenicity:0.8 [0/1]; 19:7593169A>G NM_020533.2:c.877+26A>G:p.(=) pathogenicity:0.0 [0/1]; 19:7594392G>C NM_020533.2:c.1237-84G>C:p.(=) 
+pathogenicity:0.0 [0/1]; 19:7594397T>C NM_020533.2:c.1237-79T>C:p.(=) pathogenicity:0.0 [0/1]; 19:7594401A>C NM_020533.2:c.1237-75A>C:p.(=) 
+pathogenicity:0.0 [0/1]; 19:7595074A>G NM_020533.2:c.1360-98A>G:p.(=) pathogenicity:0.0 [0/1]
+9	Combined oxidative phosphorylation deficiency 22	OMIM:616045	1/8371	0.00%	-4.099	NCBIGene:498	18:43652345A>G NM_024430.3:: 
+pathogenicity:0.0 [1/1]; 18:43655239G>A NM_024430.3:: pathogenicity:0.0 [1/1]; 18:43656620T>A NM_024430.3:: pathogenicity:0.0 [./.]; 18:43661443C>T 
+NM_001257334.1:: pathogenicity:0.0 [1/1]; 18:43661446C>G NM_001257334.1:: pathogenicity:0.0 [1/1]; 18:43664115T>C NM_001001935.2:c.*133A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 18:43664801AAC>A NM_001001935.2:c.1280-183_1280-182del:p.(=) pathogenicity:0.0 [1/1]; 18:43665982C>T 
+NM_001001935.2:c.1279+97G>A:p.(=) pathogenicity:0.0 [1/1]; 18:43666280TAGTTAATATATTAATACCTTAAGA>T NM_001001935.2:c.1134+49_1135-58del:p.(=) 
+pathogenicity:0.0 [1/1]; 18:43666774T>C NM_001001935.2:c.1026+200A>G:p.(=) pathogenicity:0.0 [1/1]; 18:43666786C>T 
+NM_001001935.2:c.1026+188G>A:p.(=) pathogenicity:0.0 [1/1]; 18:43666861T>C NM_001001935.2:c.1026+113A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43666952C>A NM_001001935.2:c.1026+22G>T:p.(=) pathogenicity:0.0 [1/1]; 18:43667528T>C NM_001001935.2:c.650-70A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43668321G>T NM_001001935.2:c.501-98C>A:p.(=) pathogenicity:0.0 [1/1]; 18:43669980T>C NM_001001935.2:c.160-18A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43674879A>T NM_001001937.1:c.139+140T>A:p.(=) pathogenicity:0.0 [0/1]; 18:43675364T>C NM_001001937.1:c.61-267A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43678024G>A NM_001001937.1:c.60+114C>T:p.(=) pathogenicity:0.0 [1/1]; 18:43678035T>C NM_001001937.1:c.60+103A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43678328ACC>A XM_005258282.1:c.34_35del:p.(G12fs) pathogenicity:1.0 [1/1]; 18:43678333CTCT>C XM_005258282.1:c.28_30del:p.(R10del) 
+pathogenicity:0.0 [1/1]; 18:43678336T>C XM_005258282.1:c.28A>G:p.(R10G) pathogenicity:0.0 [0/1]; 18:43678706C>T NM_001001937.1:c.-48-461G>A:p.(=) 
+pathogenicity:0.0 [1/1]
+10	Congenital cataracts, hearing loss, and neurodegeneration	OMIM:614482	1/8371	0.00%	-4.234	NCBIGene:9197	3:155526790C>T 
+XM_005247378.1:: pathogenicity:0.0 [./.]; 3:155527287A>T XM_005247378.1:: pathogenicity:0.0 [./.]; 3:155528565T>C XM_005247378.1:: pathogenicity:0.0 
+[1/1]; 3:155546124C>T NM_001190992.1:c.1525G>A:p.(G509S) pathogenicity:0.9 [0/1]; 3:155551990G>A NM_001190992.1:c.964-160C>T:p.(=) pathogenicity:0.0 
+[1/1]; 3:155569197AT>A NM_001190992.1:c.775+1814del:p.(=) pathogenicity:0.0 [1/1]; 3:155570076C>A NM_001190992.1:c.775+936G>T:p.(=) 
+pathogenicity:0.0 [./.]; 3:155572129C>T NM_001190992.1:c.-343G>A:p.(=) pathogenicity:0.0 [1/1]; 3:155578665C>A NM_003875.2:: pathogenicity:0.0 
+[./.]; 3:155579375AT>A NM_003875.2:: pathogenicity:0.0 [1/1]; 3:155582285C>T NM_003875.2:: pathogenicity:0.0 [1/1]; 3:155582293A>C NM_003875.2:: 
+pathogenicity:0.0 [1/1]; 3:155582301T>C NM_003875.2:: pathogenicity:0.0 [1/1]; 3:155584650A>C NM_003875.2:: pathogenicity:0.0 [1/1]; 3:155584653C>G 
+NM_003875.2:: pathogenicity:0.0 [1/1]
+11	Epileptic encephalopathy, early infantile, 14	OMIM:614959	1/8371	0.00%	-4.359	NCBIGene:57582	9:138591980C>T NM_001101677.1:: 
+pathogenicity:0.0 [1/1]; 9:138596974G>A NM_001272003.1:c.110+2760G>A:p.(=) pathogenicity:0.0 [./.]; 9:138610259A>G 
+NM_001272003.1:c.110+16045A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138639874A>G NM_001272003.1:c.111-2070A>G:p.(=) pathogenicity:0.0 [1/1]; 
+9:138642912C>A NM_001272003.1:c.290+25C>A:p.(=) pathogenicity:0.0 [0/1]; 9:138644203T>C NM_001272003.1:c.290+1316T>C:p.(=) pathogenicity:0.0 [1/1]; 
+9:138645716C>T NM_001272003.1:c.291-67C>T:p.(=) pathogenicity:0.0 [0/1]; 9:138646881C>T NM_001272003.1:c.348-86C>T:p.(=) pathogenicity:0.0 [0/1]; 
+9:138648851C>CTCCCATCT NM_001272003.1:c.456+73_456+74insTCCCATCT:p.(=) pathogenicity:0.0 [0/1]; 9:138648955A>C NM_001272003.1:c.457-47A>C:p.(=) 
+pathogenicity:0.0 [0/0]; 9:138653491G>T NM_001272003.1:c.900+1786G>T:p.(=) pathogenicity:0.0 [0/0]; 9:138653508A>G 
+NM_001272003.1:c.900+1803A>G:p.(=) pathogenicity:0.0 [0/0]; 9:138655660G>A NM_001272003.1:c.901-1217G>A:p.(=) pathogenicity:0.0 [1/1]; 
+9:138655672T>G NM_001272003.1:c.901-1205T>G:p.(=) pathogenicity:0.0 [1/1]; 9:138656707A>G NM_001272003.1:c.901-170A>G:p.(=) pathogenicity:0.0 [./.]; 
+9:138656783T>C NM_001272003.1:c.901-94T>C:p.(=) pathogenicity:0.0 [1/1]; 9:138656838A>G NM_001272003.1:c.901-39A>G:p.(=) pathogenicity:0.0 [1/1]; 
+9:138657053T>G NM_001272003.1:c.1065+12T>G:p.(=) pathogenicity:0.0 [1/1]; 9:138657171T>C NM_001272003.1:c.1065+130T>C:p.(=) pathogenicity:0.0 [1/1]; 
+9:138657195CGCCATCCTCTCCCCAGGACT>C NM_001272003.1:c.1065+155_1065+174del:p.(=) pathogenicity:0.0 [1/1]; 9:138657635A>G 
+NM_001272003.1:c.1202+29A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138657687G>A NM_001272003.1:c.1202+81G>A:p.(=) pathogenicity:0.0 [1/1]; 9:138657727A>C 
+NM_001272003.1:c.1202+121A>C:p.(=) pathogenicity:0.0 [1/1]; 9:138659562C>G NM_001272003.1:c.1203-894C>G:p.(=) pathogenicity:0.0 [1/1]; 
+9:138660237G>A NM_001272003.1:c.1203-219G>A:p.(=) pathogenicity:0.0 [1/1]; 9:138660879A>G NM_001272003.1:c.1375+96A>G:p.(=) pathogenicity:0.0 [1/1]; 
+9:138660945ATGCGTGTGCACACGTGGGTGTCGGTGCGTCTGGGGCAGGG>A NM_001272003.1:c.1375+163_1375+202del:p.(=) pathogenicity:0.0 [1/1]; 9:138660989A>G 
+NM_001272003.1:c.1375+206A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138662309A>G NM_001272003.1:c.1634+16A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138662360T>G 
+NM_001272003.1:c.1634+67T>G:p.(=) pathogenicity:0.0 [1/1]; 9:138662962G>A NM_001272003.1:c.1873+21G>A:p.(=) pathogenicity:0.0 [1/1]; 9:138663945G>A 
+NM_001272003.1:c.1874-616G>A:p.(=) pathogenicity:0.0 [./.]; 9:138664973G>A NM_001272003.1:c.2108+178G>A:p.(=) pathogenicity:0.0 [1/1]; 
+9:138665623A>G NM_001272003.1:c.2108+828A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138669261G>A NM_001272003.1:c.2292G>A:p.(=) pathogenicity:0.0 [1/1]; 
+9:138669831A>ATGCTCTCAGCTCCTCCC NM_001272003.1:c.2388-439_2388-438insTGCTCTCAGCTCCTCCC:p.(=) pathogenicity:0.0 [0/1]; 9:138672257C>T 
+NM_001272003.1:c.2706+941C>T:p.(=) pathogenicity:0.0 [1/1]; 9:138674133C>T NM_001272003.1:c.2707-1737C>T:p.(=) pathogenicity:0.0 [1/1]; 
+9:138674134A>G NM_001272003.1:c.2707-1736A>G:p.(=) pathogenicity:0.0 [1/1]; 9:138675790C>G NM_001272003.1:c.2707-80C>G:p.(=) pathogenicity:0.0 
+[0/1]; 9:138675801A>C NM_001272003.1:c.2707-69A>C:p.(=) pathogenicity:0.0 [0/1]; 9:138676328GCTCCCTCCCTCC>G 
+NM_001272003.1:c.2809-52_2809-41del:p.(=) pathogenicity:0.0 [0/1]; 9:138678016CGCCCT>C NM_001272003.1:c.3043-26_3043-22del:p.(=) pathogenicity:0.0 
+[0/1]; 9:138683575T>C NM_001272003.1:c.3431-68T>C:p.(=) pathogenicity:0.0 [0/1]; 9:138683790T>C NM_001272003.1:c.3515+63T>C:p.(=) pathogenicity:0.0 
+[0/1]; 9:138683798C>T NM_001272003.1:c.3515+71C>T:p.(=) pathogenicity:0.0 [0/1]; 9:138683984A>G NM_001272003.1:c.3613A>G:p.(T1205A) 
+pathogenicity:1.0 [0/1]; 9:138684454A>G NM_001272003.1:c.*447A>G:p.(=) pathogenicity:0.0 [0/1]; 9:138695875CT>C XM_005263397.1:: pathogenicity:0.0 
+[./.]
+12	Plasminogen deficiency, type I	OMIM:217090	1/8371	0.00%	-4.364	NCBIGene:5340	6:161100557G>T XM_005266985.1:: pathogenicity:0.0 
+[1/1]; 6:161100558C>T XM_005266985.1:: pathogenicity:0.0 [1/1]; 6:161122931G>A NM_001168338.1:: pathogenicity:0.0 [0/1]; 6:161123158G>T 
+NM_001168338.1:: pathogenicity:0.0 [0/1]; 6:161123185T>C NM_001168338.1:: pathogenicity:0.0 [0/1]; 6:161123413G>T NM_000301.3:c.49+28G>T:p.(=) 
+pathogenicity:0.0 [0/1]; 6:161123842C>A NM_000301.3:c.49+457C>A:p.(=) pathogenicity:0.0 [0/0]; 6:161127501A>G NM_000301.3:c.112A>G:p.(K38E) 
+pathogenicity:0.8 [0/1]; 6:161128922A>G NM_000301.3:c.292+84A>G:p.(=) pathogenicity:0.0 [1/1]; 6:161129013G>A NM_000301.3:c.292+175G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 6:161132146C>T NM_000301.3:c.330C>T:p.(=) pathogenicity:0.0 [1/1]; 6:161132417T>G NM_000301.3:c.407+194T>G:p.(=) 
+pathogenicity:0.0 [1/1]; 6:161132725T>C NM_000301.3:c.407+502T>C:p.(=) pathogenicity:0.0 [1/1]; 6:161132804T>C NM_000301.3:c.407+581T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 6:161132830G>A NM_000301.3:c.407+607G>A:p.(=) pathogenicity:0.0 [1/1]; 6:161133125G>C NM_000301.3:c.408-893G>C:p.(=) 
+pathogenicity:0.0 [./.]; 6:161134273C>G NM_000301.3:c.547+116C>G:p.(=) pathogenicity:0.0 [1/1]; 6:161135667CTTATTGCCAATT>C 
+NM_000301.3:c.548-158_548-147del:p.(=) pathogenicity:0.0 [1/1]; 6:161137663T>G NM_000301.3:c.669-14T>G:p.(=) pathogenicity:0.0 [1/1]; 6:161139857A>G 
+NM_000301.3:c.1083A>G:p.(=) pathogenicity:0.0 [1/1]; 6:161143608T>C NM_000301.3:c.1256+9T>C:p.(=) pathogenicity:0.0 [1/1]; 6:161152240G>A 
+NM_000301.3:c.1414G>A:p.(D472N) pathogenicity:0.0 [1/1]; 6:161152294A>G NM_000301.3:c.1438+30A>G:p.(=) pathogenicity:0.0 [1/1]; 6:161153080A>C 
+NM_000301.3:c.1587+155A>C:p.(=) pathogenicity:0.0 [1/1]; 6:161156296C>T NM_000301.3:c.1681+1176C>T:p.(=) pathogenicity:0.0 [1/1]; 6:161158998C>CA 
+NM_000301.3:c.1803-572_1803-571insA:p.(=) pathogenicity:0.0 [1/1]; 6:161159001T>A NM_000301.3:c.1803-569T>A:p.(=) pathogenicity:0.0 [1/1]; 
+6:161159006T>C NM_000301.3:c.1803-564T>C:p.(=) pathogenicity:0.0 [1/1]; 6:161159016A>G NM_000301.3:c.1803-554A>G:p.(=) pathogenicity:0.0 [1/1]; 
+6:161160083G>A NM_000301.3:c.1878-17G>A:p.(=) pathogenicity:0.0 [1/1]; 6:161174658G>A NM_000301.3:c.*565G>A:p.(=) pathogenicity:0.0 [1/1]; 
+6:161175004C>T NM_000301.3:c.*911C>T:p.(=) pathogenicity:0.0 [1/1]; 6:161204811T>TGA XR_245517.1:: pathogenicity:0.0 [1/1]; 6:161240761C>T 
+XR_245517.1:: pathogenicity:0.0 [./.]; 6:161268900G>GA XR_245517.1:: pathogenicity:0.0 [1/1]; 6:161316375G>C XR_245517.1:: pathogenicity:0.0 [1/1]; 
+6:161318736C>A XR_245517.1:: pathogenicity:0.0 [./.]; 6:161318811A>T XR_245517.1:: pathogenicity:0.0 [./.]; 6:161319046T>A XR_245517.1:: 
+pathogenicity:0.0 [./.]; 6:161319183C>T XR_245517.1:: pathogenicity:0.0 [./.]; 6:161319568ATT>A XR_245517.1:: pathogenicity:0.0 [0/1]; 
+6:161319570T>TAGAAA XR_245517.1:: pathogenicity:0.0 [0/1]; 6:161319572C>CAGGAGAA XR_245517.1:: pathogenicity:0.0 [0/1]; 6:161319573T>A XR_245517.1:: 
+pathogenicity:0.0 [0/1]; 6:161321103A>C XR_245517.1:: pathogenicity:0.0 [1/1]; 6:161321552C>A XR_245517.1:: pathogenicity:0.0 [0/1]; 6:161337411A>T 
+XR_245517.1:: pathogenicity:0.0 [./.]; 6:161343052T>G XR_245517.1:: pathogenicity:0.0 [1/1]; 6:161353662T>C XR_245517.1:: pathogenicity:0.0 [1/1]; 
+6:161398072CAAA>C XR_245517.1:: pathogenicity:0.0 [1/1]; 6:161410588CAA>C XR_245517.1:: pathogenicity:0.0 [./.]
+13	Cerebellar ataxia, mental retardation, and dysequilibrium syndrome4	OMIM:615268	1/8371	0.00%	-4.831	NCBIGene:51761	
+13:25919524A>ATAGAT NM_014089.3:: pathogenicity:0.0 [./.]; 13:25919624C>T NM_014089.3:: pathogenicity:0.0 [./.]; 13:25919651TTTC>T NM_014089.3:: 
+pathogenicity:0.0 [1/1]; 13:25924330A>G NM_016529.4:: pathogenicity:0.0 [./.]; 13:25946418C>G NM_016529.4:c.68C>G:p.(S23W) pathogenicity:1.0 [0/1]; 
+13:25948641T>C NM_016529.4:c.76+2215T>C:p.(=) pathogenicity:0.0 [1/1]; 13:25955112C>T NM_016529.4:c.76+8686C>T:p.(=) pathogenicity:0.0 [./.]; 
+13:25988656T>C NM_016529.4:c.76+42230T>C:p.(=) pathogenicity:0.0 [1/1]; 13:25996178C>T NM_016529.4:c.77-46937C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:25998243A>G NM_016529.4:c.77-44872A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26000360C>A NM_016529.4:c.77-42755C>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26003981A>G NM_016529.4:c.77-39134A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26014412C>A NM_016529.4:c.77-28703C>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26020247G>T NM_016529.4:c.77-22868G>T:p.(=) pathogenicity:0.0 [0/0]; 13:26020255C>T NM_016529.4:c.77-22860C>T:p.(=) pathogenicity:0.0 [0/0]; 
+13:26034969C>G NM_016529.4:c.77-8146C>G:p.(=) pathogenicity:0.0 [1/1]; 13:26038245A>G NM_016529.4:c.77-4870A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:26043182A>C NM_016529.4:c.144A>C:p.(=) pathogenicity:0.0 [0/1]; 13:26043405T>C NM_016529.4:c.221+146T>C:p.(=) pathogenicity:0.0 [0/1]; 
+13:26064368G>A NM_016529.4:c.221+21109G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26074297A>G NM_016529.4:c.222-29840A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:26104547G>A NM_016529.4:c.322-153G>A:p.(=) pathogenicity:0.0 [0/1]; 13:26104943T>G NM_016529.4:c.420+145T>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:26107591A>C NM_016529.4:c.507+140A>C:p.(=) pathogenicity:0.0 [0/1]; 13:26107595C>T NM_016529.4:c.507+144C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:26107596T>G NM_016529.4:c.507+145T>G:p.(=) pathogenicity:0.0 [1/1]; 13:26107606C>T NM_016529.4:c.507+155C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:26120809C>T NM_016529.4:c.891+3269C>T:p.(=) pathogenicity:0.0 [1/1]; 13:26121300A>G NM_016529.4:c.891+3760A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:26125651G>A NM_016529.4:c.1057+10G>A:p.(=) pathogenicity:0.0 [0/1]; 13:26125731T>C NM_016529.4:c.1057+90T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:26127821G>C NM_016529.4:c.1058-110G>C:p.(=) pathogenicity:0.0 [1/1]; 13:26128096T>C NM_016529.4:c.1185+38T>C:p.(=) pathogenicity:0.0 [0/1]; 
+13:26128128C>A NM_016529.4:c.1185+70C>A:p.(=) pathogenicity:0.0 [1/1]; 13:26128129A>G NM_016529.4:c.1185+71A>G:p.(=) pathogenicity:0.0 [1/1]; 
+13:26128260C>G NM_016529.4:c.1185+202C>G:p.(=) pathogenicity:0.0 [1/1]; 13:26128982G>A NM_016529.4:c.1186-147G>A:p.(=) pathogenicity:0.0 [0/1]; 
+13:26132841C>A NM_016529.4:c.1264-270C>A:p.(=) pathogenicity:0.0 [1/1]; 13:26132951G>A NM_016529.4:c.1264-160G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26133009C>T NM_016529.4:c.1264-102C>T:p.(=) pathogenicity:0.0 [1/1]; 13:26137813T>A NM_016529.4:c.1398-281T>A:p.(=) pathogenicity:0.0 [./.]; 
+13:26137957T>C NM_016529.4:c.1398-137T>C:p.(=) pathogenicity:0.0 [1/1]; 13:26137989T>C NM_016529.4:c.1398-105T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:26139746T>C NM_016529.4:c.1473+1577T>C:p.(=) pathogenicity:0.0 [1/1]; 13:26144896C>T NM_016529.4:c.1474-9C>T:p.(=) pathogenicity:0.0 [0/1]; 
+13:26148727A>G NM_016529.4:c.1663-219A>G:p.(=) pathogenicity:0.0 [0/1]; 13:26148966C>T NM_016529.4:c.1683C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:26155953G>C NM_016529.4:c.2008-4G>C:p.? pathogenicity:0.0 [1/1]; 13:26156262C>T NM_016529.4:c.2146+167C>T:p.(=) pathogenicity:0.0 [1/1]; 
+13:26166650C>G NM_016529.4:c.2211+2813C>G:p.(=) pathogenicity:0.0 [./.]; 13:26170250T>C NM_016529.4:c.2211+6413T>C:p.(=) pathogenicity:0.0 [1/1]; 
+13:26199181C>G NM_016529.4:c.2211+35344C>G:p.(=) pathogenicity:0.0 [./.]; 13:26217491G>A NM_016529.4:c.2211+53654G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26231549G>A NM_016529.4:c.2212-41762G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26234647G>T NM_016529.4:c.2212-38664G>T:p.(=) pathogenicity:0.0 [./.]; 
+13:26236041A>G NM_016529.4:c.2212-37270A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26260765AT>A NM_016529.4:c.2212-12545del:p.(=) pathogenicity:0.0 [1/1]; 
+13:26260770G>A NM_016529.4:c.2212-12541G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26261637A>AC NM_016529.4:c.2212-11674_2212-11673insC:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26268019C>T NM_016529.4:c.2212-5292C>T:p.(=) pathogenicity:0.0 [1/1]; 13:26273385G>C NM_016529.4:c.2286G>C:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26273403C>A NM_016529.4:c.2304C>A:p.(=) pathogenicity:0.0 [0/1]; 13:26289912A>G NM_016529.4:c.2384+16429A>G:p.(=) 
+pathogenicity:0.0 [./.]; 13:26293871A>G NM_016529.4:c.2384+20388A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26307413T>C NM_016529.4:c.2384+33930T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26319140A>G NM_016529.4:c.2385-24044A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26345934T>C NM_016529.4:c.2568+2567T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26345936G>T NM_016529.4:c.2568+2569G>T:p.(=) pathogenicity:0.0 [1/1]; 13:26356961C>T NM_016529.4:c.2679+7864C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26377897T>C NM_016529.4:c.2680-24359T>C:p.(=) pathogenicity:0.0 [./.]; 13:26386553C>T NM_016529.4:c.2680-15703C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 13:26410742T>C NM_016529.4:c.2755-559T>C:p.(=) pathogenicity:0.0 [./.]; 13:26411084T>C NM_016529.4:c.2755-217T>C:p.(=) 
+pathogenicity:0.0 [./.]; 13:26417186T>TA NM_016529.4:c.2956+3424_2956+3425insA:p.(=) pathogenicity:0.0 [1/1]; 13:26421178T>A 
+NM_016529.4:c.2956+7416T>A:p.(=) pathogenicity:0.0 [1/1]; 13:26422130G>A NM_016529.4:c.2956+8368G>A:p.(=) pathogenicity:0.0 [./.]; 13:26423082A>C 
+NM_016529.4:c.2956+9320A>C:p.(=) pathogenicity:0.0 [./.]; 13:26435774T>C NM_016529.4:c.3076-665T>C:p.(=) pathogenicity:0.0 [1/1]; 13:26436641C>T 
+NM_016529.4:c.3183+95C>T:p.(=) pathogenicity:0.0 [0/1]; 13:26442685CT>C NM_016529.4:c.3183+6140del:p.(=) pathogenicity:0.0 [./.]; 13:26442696A>G 
+NM_016529.4:c.3183+6150A>G:p.(=) pathogenicity:0.0 [./.]; 13:26448329T>C NM_016529.4:c.3183+11783T>C:p.(=) pathogenicity:0.0 [1/1]; 13:26459619G>A 
+NM_016529.4:c.3183+23073G>A:p.(=) pathogenicity:0.0 [0/1]; 13:26466128CT>C NM_016529.4:c.3183+29583del:p.(=) pathogenicity:0.0 [1/1]; 13:26466393T>C 
+NM_016529.4:c.3183+29847T>C:p.(=) pathogenicity:0.0 [./.]; 13:26480090G>T NM_016529.4:c.3183+43544G>T:p.(=) pathogenicity:0.0 [1/1]; 13:26480093A>G 
+NM_016529.4:c.3183+43547A>G:p.(=) pathogenicity:0.0 [1/1]; 13:26519541G>A NM_016529.4:c.3184-16172G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26523252A>G 
+NM_016529.4:c.3184-12461A>G:p.(=) pathogenicity:0.0 [./.]; 13:26532182G>A NM_016529.4:c.3184-3531G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26532473C>A 
+NM_016529.4:c.3184-3240C>A:p.(=) pathogenicity:0.0 [1/1]; 13:26535052T>C NM_016529.4:c.3184-661T>C:p.(=) pathogenicity:0.0 [1/1]; 13:26535625G>A 
+NM_016529.4:c.3184-88G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26547225A>T NM_016529.4:c.3377+4408A>T:p.(=) pathogenicity:0.0 [1/1]; 13:26547353G>A 
+NM_016529.4:c.3377+4536G>A:p.(=) pathogenicity:0.0 [0/1]; 13:26570050A>C NM_016529.4:c.3378-16619A>C:p.(=) pathogenicity:0.0 [1/1]; 13:26577357A>G 
+NM_016529.4:c.3378-9312A>G:p.(=) pathogenicity:0.0 [./.]; 13:26577498T>TC NM_016529.4:c.3378-9171_3378-9170insC:p.(=) pathogenicity:0.0 [./.]; 
+13:26577514G>A NM_016529.4:c.3378-9155G>A:p.(=) pathogenicity:0.0 [1/1]; 13:26579592G>A NM_016529.4:c.3378-7077G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26586073T>TA NM_016529.4:c.3378-596_3378-595insA:p.(=) pathogenicity:0.0 [1/1]; 13:26586775C>T NM_016529.4:c.3469+15C>T:p.(=) pathogenicity:0.0 
+[0/1]; 13:26586788A>C NM_016529.4:c.3469+28A>C:p.(=) pathogenicity:0.0 [0/1]; 13:26587321C>A NM_016529.4:c.3469+561C>A:p.(=) pathogenicity:0.0 
+[1/1]; 13:26594700T>G NM_016529.4:c.*577T>G:p.(=) pathogenicity:0.0 [0/1]; 13:26595421G>A XM_005266419.1:c.*1298G>A:p.(=) pathogenicity:0.0 [1/1]; 
+13:26601738A>G XM_005266420.1:: pathogenicity:0.0 [1/1]; 13:26613382C>G NM_001007538.1:: pathogenicity:0.0 [1/1]
+14	Ceroid lipofuscinosis, neuronal, 2	OMIM:204500	1/8371	0.00%	-4.887	NCBIGene:1200	11:6636300A>G NM_000391.3:c.1426-78T>C:p.(=) 
+pathogenicity:0.0 [0/1]; 11:6636900G>C NM_000391.3:c.1146-107C>G:p.(=) pathogenicity:0.0 [0/1]; 11:6637518A>G NM_000391.3:c.1075+28T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 11:6637739ATT>A NM_000391.3:c.887-7_887-6del:p.? pathogenicity:0.0 [0/1]; 11:6638385C>T NM_000391.3:c.509-1G>A:p.? 
+pathogenicity:1.0 [0/1]; 11:6638506A>T NM_000391.3:c.508+26T>A:p.(=) pathogenicity:0.0 [0/1]; 11:6639351T>C NM_000391.3:c.230-344A>G:p.(=) 
+pathogenicity:0.0 [1/1]
+15	Mitochondrial complex V (atp synthase) deficiency, nuclear type 4	OMIM:615228	1/8371	0.00%	-4.924	NCBIGene:498	
+18:43652345A>G NM_024430.3:: pathogenicity:0.0 [1/1]; 18:43655239G>A NM_024430.3:: pathogenicity:0.0 [1/1]; 18:43656620T>A NM_024430.3:: 
+pathogenicity:0.0 [./.]; 18:43661443C>T NM_001257334.1:: pathogenicity:0.0 [1/1]; 18:43661446C>G NM_001257334.1:: pathogenicity:0.0 [1/1]; 
+18:43664115T>C NM_001001935.2:c.*133A>G:p.(=) pathogenicity:0.0 [1/1]; 18:43664801AAC>A NM_001001935.2:c.1280-183_1280-182del:p.(=) 
+pathogenicity:0.0 [1/1]; 18:43665982C>T NM_001001935.2:c.1279+97G>A:p.(=) pathogenicity:0.0 [1/1]; 18:43666280TAGTTAATATATTAATACCTTAAGA>T 
+NM_001001935.2:c.1134+49_1135-58del:p.(=) pathogenicity:0.0 [1/1]; 18:43666774T>C NM_001001935.2:c.1026+200A>G:p.(=) pathogenicity:0.0 [1/1]; 
+18:43666786C>T NM_001001935.2:c.1026+188G>A:p.(=) pathogenicity:0.0 [1/1]; 18:43666861T>C NM_001001935.2:c.1026+113A>G:p.(=) pathogenicity:0.0 
+[1/1]; 18:43666952C>A NM_001001935.2:c.1026+22G>T:p.(=) pathogenicity:0.0 [1/1]; 18:43667528T>C NM_001001935.2:c.650-70A>G:p.(=) pathogenicity:0.0 
+[1/1]; 18:43668321G>T NM_001001935.2:c.501-98C>A:p.(=) pathogenicity:0.0 [1/1]; 18:43669980T>C NM_001001935.2:c.160-18A>G:p.(=) pathogenicity:0.0 
+[1/1]; 18:43674879A>T NM_001001937.1:c.139+140T>A:p.(=) pathogenicity:0.0 [0/1]; 18:43675364T>C NM_001001937.1:c.61-267A>G:p.(=) pathogenicity:0.0 
+[1/1]; 18:43678024G>A NM_001001937.1:c.60+114C>T:p.(=) pathogenicity:0.0 [1/1]; 18:43678035T>C NM_001001937.1:c.60+103A>G:p.(=) pathogenicity:0.0 
+[1/1]; 18:43678328ACC>A XM_005258282.1:c.34_35del:p.(G12fs) pathogenicity:1.0 [1/1]; 18:43678333CTCT>C XM_005258282.1:c.28_30del:p.(R10del) 
+pathogenicity:0.0 [1/1]; 18:43678336T>C XM_005258282.1:c.28A>G:p.(R10G) pathogenicity:0.0 [0/1]; 18:43678706C>T NM_001001937.1:c.-48-461G>A:p.(=) 
+pathogenicity:0.0 [1/1]
+16	Neurodevelopmental disorder with central hypotonia and dysmorphic facies	OMIM:619797	1/8371	0.00%	-4.994	NCBIGene:9759	
+2:239849183T>C NR_034162.1:: pathogenicity:0.0 [./.]; 2:239849200A>G NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239850235C>T NR_034162.1:: 
+pathogenicity:0.0 [1/1]; 2:239850444A>G NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239854543GAAGAA>G NR_034162.1:: pathogenicity:0.0 [./.]; 
+2:239854550TGAACC>T NR_034162.1:: pathogenicity:0.0 [./.]; 2:239862093A>G NR_034162.1:: pathogenicity:0.0 [./.]; 2:239864510C>T NR_034162.1:: 
+pathogenicity:0.0 [./.]; 2:239864519G>A NR_034162.1:: pathogenicity:0.0 [./.]; 2:239865546C>T NR_034162.1:: pathogenicity:0.0 [0/1]; 2:239871408T>A 
+NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239876891G>C NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239888961C>CA NR_034162.1:: pathogenicity:0.0 [1/1]; 
+2:239889955T>C NR_034162.1:: pathogenicity:0.0 [./.]; 2:239892918C>T NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239910013G>T NR_034162.1:: 
+pathogenicity:0.0 [1/1]; 2:239915134G>GGAAA NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239919408G>T NR_034162.1:: pathogenicity:0.0 [./.]; 
+2:239919412G>A NR_034162.1:: pathogenicity:0.0 [./.]; 2:239928243T>TTCTC NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239935135T>G NR_034162.1:: 
+pathogenicity:0.0 [1/1]; 2:239935144C>A NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239935441A>G NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239937343C>A 
+NR_034162.1:: pathogenicity:0.0 [./.]; 2:239937344A>G NR_034162.1:: pathogenicity:0.0 [./.]; 2:239937683C>T NR_034162.1:: pathogenicity:0.0 [1/1]; 
+2:239937689A>G NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239937948T>C NR_034162.1:: pathogenicity:0.0 [./.]; 2:239947653C>T NR_034162.1:: 
+pathogenicity:0.0 [./.]; 2:239949455T>A NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239951235G>T NR_034162.1:: pathogenicity:0.0 [./.]; 2:239953723T>C 
+NR_034162.1:: pathogenicity:0.0 [./.]; 2:239959350AC>A NR_034162.1:: pathogenicity:0.0 [./.]; 
+2:239960133CGGGGCGGCTGGCCAGGCGGGGGCTGCCCCCCACCTCCCAGAT>C NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239960194G>A NR_034162.1:: pathogenicity:0.0 
+[1/1]; 2:239961625C>CACAT NR_034162.1:: pathogenicity:0.0 [./.]; 2:239962156T>C NR_034162.1:: pathogenicity:0.0 [1/1]; 2:239976597C>T 
+NM_006037.3:c.2989-68G>A:p.(=) pathogenicity:0.0 [0/1]; 2:240003870G>A NM_006037.3:c.2565C>T:p.(=) pathogenicity:0.0 [0/1]; 2:240015784T>C 
+NM_006037.3:c.2265+922A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240016488A>G NM_006037.3:c.2265+218T>C:p.(=) pathogenicity:0.0 [0/1]; 2:240020717T>G 
+NM_006037.3:c.2218+3755A>C:p.(=) pathogenicity:0.0 [1/1]; 2:240028660T>C NM_006037.3:c.2097+1086A>G:p.(=) pathogenicity:0.0 [./.]; 2:240028669T>C 
+NM_006037.3:c.2097+1077A>G:p.(=) pathogenicity:0.0 [./.]; 2:240029736T>C NM_006037.3:c.2097+10A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240032319G>A 
+NM_006037.3:c.1963+903C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240033685T>C NM_006037.3:c.1777-277A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240039119C>A 
+NM_006037.3:c.1519-2113G>T:p.(=) pathogenicity:0.0 [1/1]; 2:240041048G>A NM_006037.3:c.1519-4042C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240041184A>G 
+NM_006037.3:c.1519-4178T>C:p.(=) pathogenicity:0.0 [1/1]; 2:240048027C>T NM_006037.3:c.1518+125G>A:p.(=) pathogenicity:0.0 [0/1]; 2:240055901G>A 
+NM_006037.3:c.1294+40C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240061400C>T NM_006037.3:c.958G>A:p.(V320I) pathogenicity:0.9 [0/1]; 2:240063802G>T 
+NM_006037.3:c.866-2310C>A:p.(=) pathogenicity:0.0 [./.]; 2:240065919T>C NM_006037.3:c.865+360A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240066417A>G 
+NM_006037.3:c.734-7T>C:p.? pathogenicity:0.0 [1/1]; 2:240066526T>C NM_006037.3:c.734-116A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240067229G>A 
+NM_006037.3:c.734-819C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240067231C>T NM_006037.3:c.734-821G>A:p.(=) pathogenicity:0.0 [1/1]; 2:240067704A>G 
+NM_006037.3:c.734-1294T>C:p.(=) pathogenicity:0.0 [./.]; 2:240069503C>A NM_006037.3:c.734-3093G>T:p.(=) pathogenicity:0.0 [./.]; 2:240070419A>G 
+NM_006037.3:c.734-4009T>C:p.(=) pathogenicity:0.0 [1/1]; 2:240074584A>G NM_006037.3:c.733+3764T>C:p.(=) pathogenicity:0.0 [1/1]; 2:240084785T>TC 
+NM_006037.3:c.611+713_611+714insG:p.(=) pathogenicity:0.0 [1/1]; 2:240085403C>A NM_006037.3:c.611+96G>T:p.(=) pathogenicity:0.0 [1/1]; 
+2:240088475G>A NM_006037.3:c.491-2856C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240092739G>A NM_006037.3:c.490+5370C>T:p.(=) pathogenicity:0.0 [./.]; 
+2:240092865CAAA>C NM_006037.3:c.490+5241_490+5243del:p.(=) pathogenicity:0.0 [1/1]; 2:240100263T>C NM_006037.3:c.340-2004A>G:p.(=) pathogenicity:0.0 
+[1/1]; 2:240102871C>T NM_006037.3:c.340-4612G>A:p.(=) pathogenicity:0.0 [1/1]; 2:240110777G>A NM_006037.3:c.339+752C>T:p.(=) pathogenicity:0.0 
+[./.]; 2:240111870CG>C NM_006037.3:c.95-98del:p.(=) pathogenicity:0.0 [0/1]; 2:240112972G>A NM_006037.3:c.95-1199C>T:p.(=) pathogenicity:0.0 [1/1]; 
+2:240113365T>C NM_006037.3:c.95-1592A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240113374T>C NM_006037.3:c.95-1601A>G:p.(=) pathogenicity:0.0 [1/1]; 
+2:240113394T>C NM_006037.3:c.95-1621A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240113436C>T NM_006037.3:c.95-1663G>A:p.(=) pathogenicity:0.0 [1/1]; 
+2:240115701G>A NM_006037.3:c.95-3928C>T:p.(=) pathogenicity:0.0 [1/1]; 2:240116841A>G NM_006037.3:c.95-5068T>C:p.(=) pathogenicity:0.0 [1/1]; 
+2:240127416G>A NM_006037.3:c.95-15643C>T:p.(=) pathogenicity:0.0 [./.]; 2:240137886TTA>T NM_006037.3:c.94+20401_94+20402del:p.(=) pathogenicity:0.0 
+[1/1]; 2:240143872C>T NM_006037.3:c.94+14417G>A:p.(=) pathogenicity:0.0 [./.]; 2:240144903G>A NM_006037.3:c.94+13386C>T:p.(=) pathogenicity:0.0 
+[1/1]; 2:240144958C>A NM_006037.3:c.94+13331G>T:p.(=) pathogenicity:0.0 [1/1]; 2:240147224G>T NM_006037.3:c.94+11065C>A:p.(=) pathogenicity:0.0 
+[0/0]; 2:240148361T>TGGG NM_006037.3:c.94+9927_94+9928insCCC:p.(=) pathogenicity:0.0 [./.]; 2:240151759C>T NM_006037.3:c.94+6530G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 2:240153158C>CG NM_006037.3:c.94+5130_94+5131insC:p.(=) pathogenicity:0.0 [./.]; 2:240153159A>G 
+NM_006037.3:c.94+5130T>C:p.(=) pathogenicity:0.0 [./.]; 2:240176498T>A NM_006037.3:c.23-18138A>T:p.(=) pathogenicity:0.0 [1/1]; 2:240190926T>C 
+NM_006037.3:c.23-32566A>G:p.(=) pathogenicity:0.0 [1/1]; 2:240198239A>C NM_006037.3:c.23-39879T>G:p.(=) pathogenicity:0.0 [1/1]; 2:240215819A>G 
+NM_006037.3:c.23-57459T>C:p.(=) pathogenicity:0.0 [1/1]; 2:240215984G>GTCCC NM_006037.3:c.23-57625_23-57624insGGGA:p.(=) pathogenicity:0.0 [1/1]; 
+2:240230131CAG>C NM_006037.3:c.22+44240_22+44241del:p.(=) pathogenicity:0.0 [./.]; 2:240241121C>T NM_006037.3:c.22+33252G>A:p.(=) pathogenicity:0.0 
+[1/1]; 2:240304863C>G NM_006037.3:c.-220+17208G>C:p.(=) pathogenicity:0.0 [1/1]; 2:240307801A>G NM_006037.3:c.-220+14270T>C:p.(=) pathogenicity:0.0 
+[1/1]; 2:240321793C>T NM_006037.3:c.-220+278G>A:p.(=) pathogenicity:0.0 [1/1]
+17	Epileptic encephalopathy, early infantile, 68	OMIM:618201	1/8371	0.00%	-5.016	NCBIGene:22906	3:42069490A>C 
+XM_005264959.1:c.-519+13881A>C:p.(=) pathogenicity:0.0 [./.]; 3:42084422A>AC XM_005264959.1:c.-519+28813_-519+28814insC:p.(=) pathogenicity:0.0 
+[./.]; 3:42105675A>G XM_005264959.1:c.-518-22921A>G:p.(=) pathogenicity:0.0 [1/1]; 3:42115781A>G XM_005264959.1:c.-518-12815A>G:p.(=) 
+pathogenicity:0.0 [./.]; 3:42117484C>A XM_005264959.1:c.-518-11112C>A:p.(=) pathogenicity:0.0 [1/1]; 3:42121629G>A 
+XM_005264959.1:c.-518-6967G>A:p.(=) pathogenicity:0.0 [./.]; 3:42124035C>T XM_005264959.1:c.-518-4561C>T:p.(=) pathogenicity:0.0 [1/1]; 
+3:42124365C>T XM_005264959.1:c.-518-4231C>T:p.(=) pathogenicity:0.0 [1/1]; 3:42133149C>G NM_001042646.2:c.91+97C>G:p.(=) pathogenicity:0.0 [1/1]; 
+3:42136009T>C NM_001042646.2:c.91+2957T>C:p.(=) pathogenicity:0.0 [./.]; 3:42144981C>T NM_001042646.2:c.91+11929C>T:p.(=) pathogenicity:0.0 [1/1]; 
+3:42148299A>G NM_001042646.2:c.91+15247A>G:p.(=) pathogenicity:0.0 [1/1]; 3:42185509G>T NM_001042646.2:c.286+18403G>T:p.(=) pathogenicity:0.0 [0/0]; 
+3:42185562G>A NM_001042646.2:c.286+18456G>A:p.(=) pathogenicity:0.0 [0/0]; 3:42201759G>A NM_001042646.2:c.287-16547G>A:p.(=) pathogenicity:0.0 
+[0/1]; 3:42202061G>T NM_001042646.2:c.287-16245G>T:p.(=) pathogenicity:0.0 [1/1]; 3:42203993A>G NM_001042646.2:c.287-14313A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 3:42207539T>C NM_001042646.2:c.287-10767T>C:p.(=) pathogenicity:0.0 [1/1]; 3:42219452T>C NM_001042646.2:c.363+1070T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 3:42219684AGGC>A NM_001042646.2:c.363+1303_363+1305del:p.(=) pathogenicity:0.0 [1/1]; 3:42226151T>C 
+NM_001042646.2:c.364-26T>C:p.(=) pathogenicity:0.0 [1/1]; 3:42226438C>G NM_001042646.2:c.480+145C>G:p.(=) pathogenicity:0.0 [1/1]; 3:42229296G>A 
+NM_001042646.2:c.481-241G>A:p.(=) pathogenicity:0.0 [1/1]; 3:42232837G>A NM_001042646.2:c.691-213G>A:p.(=) pathogenicity:0.0 [1/1]; 3:42234758C>A 
+NM_001042646.2:c.900+61C>A:p.(=) pathogenicity:0.0 [0/1]; 3:42235280TATCTTAGGAAGTG>T NM_001042646.2:c.901-35_901-23del:p.(=) pathogenicity:0.0 
+[0/1]; 3:42236415A>G NM_001042646.2:c.1095A>G:p.(=) pathogenicity:0.0 [1/1]; 3:42241661A>C NM_001042646.2:c.1191-649A>C:p.(=) pathogenicity:0.0 
+[1/1]; 3:42249636G>A NM_001042646.2:c.1745-1623G>A:p.(=) pathogenicity:0.0 [1/1]; 3:42251263C>T NM_001042646.2:c.1749C>T:p.(=) pathogenicity:0.0 
+[1/1]; 3:42251329C>T NM_001042646.2:c.1815C>T:p.(=) pathogenicity:0.0 [0/1]; 3:42251498G>C NM_001265608.1:c.1984G>C:p.(V662L) pathogenicity:0.9 
+[0/1]; 3:42264393A>G NM_001042646.2:c.2067-41A>G:p.(=) pathogenicity:0.0 [0/1]; 3:42264422T>C NM_001042646.2:c.2067-12T>C:p.(=) pathogenicity:0.0 
+[0/1]; 3:42265270TCTC>T NM_001042646.2:c.*45_*47del:p.(=) pathogenicity:0.0 [0/1]; 3:42265369C>T NM_001042646.2:c.*140C>T:p.(=) pathogenicity:0.0 
+[0/1]; 3:42265634C>T NM_001042646.2:c.*405C>T:p.(=) pathogenicity:0.0 [0/1]; 3:42266346A>G NM_001042646.2:c.*1117A>G:p.(=) pathogenicity:0.0 [0/1]; 
+3:42266349C>T NM_001042646.2:c.*1120C>T:p.(=) pathogenicity:0.0 [0/1]; 3:42266360T>C NM_001042646.2:c.*1131T>C:p.(=) pathogenicity:0.0 [0/1]; 
+3:42266621T>C NM_001042646.2:c.*1392T>C:p.(=) pathogenicity:0.0 [1/1]; 3:42266833C>A NM_001042646.2:c.*1604C>A:p.(=) pathogenicity:0.0 [0/1]; 
+3:42299220G>T XM_005265527.1:: pathogenicity:0.0 [0/0]
+18	Microcephaly and chorioretinopathy, autosomal recessive, 1	OMIM:251270	1/8371	0.00%	-5.099	NCBIGene:85378	22:50656096A>G 
+XM_005261939.1:: pathogenicity:0.0 [1/1]; 22:50657010C>G XM_005261954.1:c.4837G>C:p.(V1613L) pathogenicity:0.0 [1/1]; 22:50657112C>T 
+NM_020461.3:c.4821+20G>A:p.(=) pathogenicity:0.0 [0/1]; 22:50658053A>G NM_020461.3:c.4315+20T>C:p.(=) pathogenicity:0.0 [1/1]; 22:50658274C>G 
+NM_020461.3:c.4168-54G>C:p.(=) pathogenicity:0.0 [0/1]; 22:50658424T>C NM_020461.3:c.4129A>G:p.(T1377A) pathogenicity:0.0 [0/1]; 22:50658501A>G 
+NM_020461.3:c.4109-57T>C:p.(=) pathogenicity:0.0 [0/1]; 22:50658570A>G NM_020461.3:c.4108+110T>C:p.(=) pathogenicity:0.0 [0/1]; 22:50664612A>G 
+NM_020461.3:c.1700T>C:p.(L567S) pathogenicity:0.0 [1/1]; 22:50666223G>A NM_020461.3:c.1412+113C>T:p.(=) pathogenicity:0.0 [0/1]; 22:50672479A>G 
+NM_020461.3:c.906-524T>C:p.(=) pathogenicity:0.0 [1/1]; 22:50672877T>C NM_020461.3:c.906-922A>G:p.(=) pathogenicity:0.0 [1/1]; 22:50676566A>AAG 
+NM_020461.3:c.905+2066_905+2067insCT:p.(=) pathogenicity:0.0 [1/1]; 22:50678571T>C NM_020461.3:c.905+62A>G:p.(=) pathogenicity:0.0 [0/1]; 
+22:50682064G>A NM_020461.3:c.741+84C>T:p.(=) pathogenicity:0.0 [1/1]; 22:50682067G>A NM_020461.3:c.741+81C>T:p.(=) pathogenicity:0.0 [1/1]; 
+22:50682446T>C NM_020461.3:c.443A>G:p.(Y148C) pathogenicity:1.0 [0/1]; 22:50682865G>A NM_020461.3:c.24C>T:p.(=) pathogenicity:0.0 [0/1]; 
+22:50683032A>AT NM_020461.3:c.-145dup:p.(=) pathogenicity:0.0 [0/1]
+19	Dystonia 24	OMIM:615034	1/8371	0.00%	-5.229	NCBIGene:63982	11:25110148T>C NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25116395CAAAAA>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25129580C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25137818AG>A 
+NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25162545C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25168602C>T NM_001252010.1:: pathogenicity:0.0 
+[1/1]; 11:25168607CA>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25178402A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25180965A>G 
+NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25185208C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25185247G>A NM_001252010.1:: pathogenicity:0.0 
+[1/1]; 11:25192541T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25194323C>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25195026C>T 
+NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25243463G>A NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25281943G>A NM_001252010.1:: pathogenicity:0.0 
+[1/1]; 11:25297323T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25316492C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25319731G>A 
+NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25322019CTTTT>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25323707T>A NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25326229T>TAG NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25336459A>G NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25336649G>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25341240CT>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25355933C>CAG NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25360592C>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25370782A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25382530A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25394403A>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25394425A>G NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25394751C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25404830T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25404880A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25404929A>ACTT NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25413153G>T NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25417316G>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25417320T>C NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25424093C>CTT NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25426345T>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25430358T>A NM_001252010.1:: 
+pathogenicity:0.0 [0/0]; 11:25432873A>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25437426A>G NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25437432T>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25443620T>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25456008G>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25456058C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25469690A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25491165T>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25547936C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25552727C>G NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25564942C>G NM_001252010.1:: pathogenicity:0.0 [0/0]; 11:25634499C>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25638950G>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25653252A>AT NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25653946T>C NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25653960C>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25655220G>A NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25655354T>A NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25659186G>A NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25664846T>C NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25669726A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25679776T>C NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25679785G>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25680227G>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25681547C>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25691560C>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25693015T>TTTTC NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25697501T>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25701351G>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25701663C>T NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25704676GT>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25741098T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25741140A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25743941T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25751372C>T NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25752616A>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25752620C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25759458C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25761197G>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25761288G>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25763199A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25766533T>G NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25773574T>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25793221T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25801127G>T NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25807374C>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25834661G>A NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:25842870C>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25842989G>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25861933C>T NM_001252010.1:: 
+pathogenicity:0.0 [./.]; 11:25870298TC>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25879667A>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:25879885A>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:25881308C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25881310G>T NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25929959A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25952011T>C NM_001252010.1:: pathogenicity:0.0 [0/1]; 
+11:25952012C>A NM_001252010.1:: pathogenicity:0.0 [0/1]; 11:25967674A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:25968097T>C NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:25969747AAAAC>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26021626TG>T NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:26029733A>C NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26029734G>A NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26031196C>T NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26034861C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26034864A>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:26034905A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26035631G>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26035659G>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26036075C>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26036078C>G NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:26036922C>CA NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26036969A>G NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26037106G>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26037406A>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26037410G>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:26039245T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26039544T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26045753A>G NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26048594G>T NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26063045G>A NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:26071977GT>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26071980A>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26071993C>A NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26074439T>C NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26075295C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 
+11:26075301T>G NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26087240G>A NM_001252010.1:: pathogenicity:0.0 [0/1]; 11:26088637A>G NM_001252010.1:: 
+pathogenicity:0.0 [1/1]; 11:26095545A>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26180662T>G NM_001252010.1:: pathogenicity:0.0 [./.]; 
+11:26188986C>T NM_001252010.1:: pathogenicity:0.0 [1/1]; 11:26191993A>AG NM_001252010.1:: pathogenicity:0.0 [./.]; 11:26229773A>G 
+XM_005253063.1:c.154+18896A>G:p.(=) pathogenicity:0.0 [./.]; 11:26229781G>A XM_005253063.1:c.154+18904G>A:p.(=) pathogenicity:0.0 [./.]; 
+11:26230707G>C XM_005253063.1:c.154+19830G>C:p.(=) pathogenicity:0.0 [1/1]; 11:26241212C>A XM_005253063.1:c.154+30335C>A:p.(=) pathogenicity:0.0 
+[0/1]; 11:26244761A>C XM_005253063.1:c.154+33884A>C:p.(=) pathogenicity:0.0 [1/1]; 11:26244782C>T XM_005253063.1:c.154+33905C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26244793T>C XM_005253063.1:c.154+33916T>C:p.(=) pathogenicity:0.0 [1/1]; 11:26244872A>C 
+XM_005253063.1:c.154+33995A>C:p.(=) pathogenicity:0.0 [1/1]; 11:26244932T>C XM_005253063.1:c.154+34055T>C:p.(=) pathogenicity:0.0 [./.]; 
+11:26297704G>A XM_005253063.1:c.155-33488G>A:p.(=) pathogenicity:0.0 [1/1]; 11:26328429A>AT XM_005253063.1:c.155-2763_155-2762insT:p.(=) 
+pathogenicity:0.0 [./.]; 11:26353561T>C XM_005253063.1:c.229+22295T>C:p.(=) pathogenicity:0.0 [1/1]; 11:26353643T>A 
+XM_005253063.1:c.229+22377T>A:p.(=) pathogenicity:0.0 [0/1]; 11:26353991T>TA NM_031418.2:c.46+123_46+124insA:p.(=) pathogenicity:0.0 [1/1]; 
+11:26371946T>C NM_031418.2:c.46+18078T>C:p.(=) pathogenicity:0.0 [./.]; 11:26406319C>A NM_031418.2:c.46+52451C>A:p.(=) pathogenicity:0.0 [./.]; 
+11:26447813TTTG>T NM_031418.2:c.47-15651_47-15649del:p.(=) pathogenicity:0.0 [1/1]; 11:26448386C>T NM_031418.2:c.47-15079C>T:p.(=) pathogenicity:0.0 
+[./.]; 11:26460581AATT>A NM_031418.2:c.47-2883_47-2881del:p.(=) pathogenicity:0.0 [0/1]; 11:26465231TTGTC>T NM_031418.2:c.242-80_242-77del:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26465500G>A NM_031418.2:c.313+117G>A:p.(=) pathogenicity:0.0 [1/1]; 11:26482260C>CA 
+NM_031418.2:c.314-2317_314-2316insA:p.(=) pathogenicity:0.0 [1/1]; 11:26482262G>A NM_031418.2:c.314-2315G>A:p.(=) pathogenicity:0.0 [1/1]; 
+11:26482280A>G NM_031418.2:c.314-2297A>G:p.(=) pathogenicity:0.0 [1/1]; 11:26502894G>A NM_031418.2:c.432+18199G>A:p.(=) pathogenicity:0.0 [./.]; 
+11:26508110G>A NM_031418.2:c.433-21541G>A:p.(=) pathogenicity:0.0 [./.]; 11:26516547G>A NM_031418.2:c.433-13104G>A:p.(=) pathogenicity:0.0 [1/1]; 
+11:26518521G>GTA NM_031418.2:c.433-11130_433-11129insTA:p.(=) pathogenicity:0.0 [1/1]; 11:26527171G>A NM_031418.2:c.433-2480G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26534650A>G NM_031418.2:c.592-3724A>G:p.(=) pathogenicity:0.0 [1/1]; 11:26534652C>T NM_031418.2:c.592-3722C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26540318A>T NM_031418.2:c.692+1844A>T:p.(=) pathogenicity:0.0 [./.]; 11:26542814T>A NM_031418.2:c.692+4340T>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26546987A>G NM_031418.2:c.693-195A>G:p.(=) pathogenicity:0.0 [1/1]; 11:26547348G>A NM_031418.2:c.737+122G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26547353T>G NM_031418.2:c.737+127T>G:p.(=) pathogenicity:0.0 [1/1]; 11:26551681T>C NM_031418.2:c.738-1071T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26552679T>A NM_031418.2:c.738-73T>A:p.(=) pathogenicity:0.0 [1/1]; 11:26552696T>A NM_031418.2:c.738-56T>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26552702T>C NM_031418.2:c.738-50T>C:p.(=) pathogenicity:0.0 [1/1]; 11:26554127C>T NM_031418.2:c.869+1244C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26554152T>A NM_031418.2:c.869+1269T>A:p.(=) pathogenicity:0.0 [1/1]; 11:26555372C>T NM_031418.2:c.870-631C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26555379T>C NM_031418.2:c.870-624T>C:p.(=) pathogenicity:0.0 [1/1]; 11:26556254A>G NM_031418.2:c.976+145A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26556395G>A NM_031418.2:c.976+286G>A:p.(=) pathogenicity:0.0 [./.]; 11:26556679C>G NM_031418.2:c.976+570C>G:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26556742A>T NM_031418.2:c.976+633A>T:p.(=) pathogenicity:0.0 [1/1]; 11:26558841G>A NM_031418.2:c.977-112G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26559172G>A NM_031418.2:c.1032+164G>A:p.(=) pathogenicity:0.0 [1/1]; 11:26560017T>C NM_031418.2:c.1032+1009T>C:p.(=) 
+pathogenicity:0.0 [./.]; 11:26563464A>T NM_031418.2:c.1033-30A>T:p.(=) pathogenicity:0.0 [1/1]; 11:26563652T>G NM_031418.2:c.1154+37T>G:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26566670A>G NM_031418.2:c.1155-2293A>G:p.(=) pathogenicity:0.0 [./.]; 11:26567785G>A NM_031418.2:c.1155-1178G>A:p.(=) 
+pathogenicity:0.0 [./.]; 11:26568404A>G NM_031418.2:c.1155-559A>G:p.(=) pathogenicity:0.0 [./.]; 11:26568966A>G NM_031418.2:c.1158A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26569239TG>T NM_031418.2:c.1289+143del:p.(=) pathogenicity:0.0 [0/1]; 11:26569240G>T NM_031418.2:c.1289+143G>T:p.(=) 
+pathogenicity:0.0 [0/1]; 11:26569454A>T NM_031418.2:c.1289+357A>T:p.(=) pathogenicity:0.0 [./.]; 11:26574114G>A NM_031418.2:c.1290-682G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26574630A>G NM_031418.2:c.1290-166A>G:p.(=) pathogenicity:0.0 [./.]; 11:26574740T>C NM_031418.2:c.1290-56T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26574782TG>T NM_031418.2:c.1290-13del:p.(=) pathogenicity:0.0 [0/1]; 11:26576257T>C NM_031418.2:c.1386+1365T>C:p.(=) 
+pathogenicity:0.0 [1/1]; 11:26581382TACACACAC>T NM_031418.2:c.1447+57_1447+64del:p.(=) pathogenicity:0.0 [0/1]; 11:26581840CT>C 
+NM_031418.2:c.1447+515del:p.(=) pathogenicity:0.0 [./1]; 11:26581840C>CT NM_031418.2:c.1447+514_1447+515insT:p.(=) pathogenicity:0.0 [./1]; 
+11:26584445G>A NM_001135091.1:c.925+218C>T:p.(=) pathogenicity:0.0 [1/1]; 11:26584625C>A NM_001135091.1:c.925+38G>T:p.(=) pathogenicity:0.0 [1/1]; 
+11:26586801G>A NM_001135091.1:c.686C>T:p.(T229I) pathogenicity:0.0 [1/1]; 11:26586990T>C NM_001135091.1:c.497A>G:p.(N166S) pathogenicity:1.0 [0/1]; 
+11:26587133T>C NM_001135091.1:c.354A>G:p.(=) pathogenicity:0.0 [1/1]; 11:26597862A>G NM_031418.2:c.1447+16536A>G:p.(=) pathogenicity:0.0 [./.]; 
+11:26609575G>T NM_031418.2:c.1448-10337G>T:p.(=) pathogenicity:0.0 [1/1]; 11:26613668T>C NM_031418.2:c.1448-6244T>C:p.(=) pathogenicity:0.0 [1/1]; 
+11:26619549A>G NM_031418.2:c.1448-363A>G:p.(=) pathogenicity:0.0 [1/1]; 11:26624297CA>C NM_031418.2:c.1836+3037del:p.(=) pathogenicity:0.0 [1/1]; 
+11:26645894A>T NM_031418.2:c.1837-115A>T:p.(=) pathogenicity:0.0 [0/1]; 11:26655627CA>C NM_031418.2:c.1874-123del:p.(=) pathogenicity:0.0 [1/1]; 
+11:26661107A>G NM_031418.2:c.2141+319A>G:p.(=) pathogenicity:0.0 [0/1]; 11:26664190A>G NM_031418.2:c.2276-539A>G:p.(=) pathogenicity:0.0 [1/1]; 
+11:26664241C>T NM_031418.2:c.2276-488C>T:p.(=) pathogenicity:0.0 [1/1]; 11:26683500T>C NM_031418.2:c.*1509T>C:p.(=) pathogenicity:0.0 [0/1]
+20	Dworschak-Punetha neurodevelopmental syndrome	OMIM:619955	1/8371	0.00%	-5.232	NCBIGene:5361	3:126682205C>CA NM_032343.2:: 
+pathogenicity:0.0 [1/1]; 3:126684898A>C NM_032242.3:: pathogenicity:0.0 [./.]; 3:126706800C>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126707376T>C 
+NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126708453T>C NM_032242.3:c.1017T>C:p.(=) pathogenicity:0.0 [1/1]; 3:126709863T>C 
+NM_032242.3:c.1195-364T>C:p.(=) pathogenicity:0.0 [1/1]; 3:126713999G>A NM_032242.3:c.1377+3590G>A:p.(=) pathogenicity:0.0 [1/1]; 3:126715803C>A 
+NM_032242.3:c.1377+5394C>A:p.(=) pathogenicity:0.0 [./.]; 3:126723373G>T NM_032242.3:c.1519-81G>T:p.(=) pathogenicity:0.0 [0/1]; 3:126723374C>T 
+NM_032242.3:c.1519-80C>T:p.(=) pathogenicity:0.0 [0/1]; 3:126724151G>A NM_032242.3:c.1897+65G>A:p.(=) pathogenicity:0.0 [0/1]; 3:126726705A>G 
+NM_032242.3:c.2061A>G:p.(=) pathogenicity:0.0 [0/1]; 3:126729263C>T NM_032242.3:c.2113-1538C>T:p.(=) pathogenicity:0.0 [1/1]; 3:126730873G>A 
+NM_032242.3:c.2185G>A:p.(A729T) pathogenicity:1.0 [0/1]; 3:126733053C>T NM_032242.3:c.2439C>T:p.(=) pathogenicity:0.0 [0/1]; 3:126739291T>C 
+NM_032242.3:c.4038+104T>C:p.(=) pathogenicity:0.0 [1/1]; 3:126741108G>A NM_032242.3:c.4219G>A:p.(V1407M) pathogenicity:1.0 [0/1]; 3:126742581A>G 
+NM_032242.3:c.4362+920A>G:p.(=) pathogenicity:0.0 [./.]; 3:126746690A>G NM_032242.3:c.4363-93A>G:p.(=) pathogenicity:0.0 [1/1]; 3:126746731T>G 
+NM_032242.3:c.4363-52T>G:p.(=) pathogenicity:0.0 [1/1]; 3:126747190G>A NM_032242.3:c.4669+7G>A:p.? pathogenicity:0.4 [0/1]; 3:126747367T>C 
+NM_032242.3:c.4669+184T>C:p.(=) pathogenicity:0.0 [1/1]; 3:126747633G>A NM_032242.3:c.4670-203G>A:p.(=) pathogenicity:0.0 [1/1]; 3:126748151T>C 
+NM_032242.3:c.4774-132T>C:p.(=) pathogenicity:0.0 [1/1]; 3:126748688A>G NM_032242.3:c.4871-29A>G:p.(=) pathogenicity:0.0 [0/1]; 3:126751478C>T 
+NM_032242.3:c.5444+36C>T:p.(=) pathogenicity:0.0 [1/1]; 3:126751689G>A NM_032242.3:c.5595+10G>A:p.(=) pathogenicity:0.0 [1/1]; 3:126752969C>A 
+NM_032242.3:c.*109C>A:p.(=) pathogenicity:0.0 [0/1]; 3:126753195G>A NM_032242.3:c.*335G>A:p.(=) pathogenicity:0.0 [0/1]; 3:126753508G>GC 
+NM_032242.3:c.*652dup:p.(=) pathogenicity:0.0 [0/1]; 3:126753566C>T NM_032242.3:c.*706C>T:p.(=) pathogenicity:0.0 [0/1]; 3:126753653G>A 
+NM_032242.3:c.*793G>A:p.(=) pathogenicity:0.0 [0/1]; 3:126753834T>G NM_032242.3:c.*974T>G:p.(=) pathogenicity:0.0 [0/1]; 3:126754644G>C 
+NM_032242.3:c.*1784G>C:p.(=) pathogenicity:0.0 [1/1]; 3:126754746C>T NM_032242.3:c.*1886C>T:p.(=) pathogenicity:0.0 [0/1]; 3:126755552T>C 
+NM_032242.3:c.*2692T>C:p.(=) pathogenicity:0.0 [0/1]; 3:126756275C>T NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126756304G>T NM_032242.3:: 
+pathogenicity:0.0 [1/1]; 3:126771417A>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126783267A>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126789225G>A 
+NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126794362C>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126801956T>G NM_032242.3:: pathogenicity:0.0 [./.]; 
+3:126813954T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126819635T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126823115A>C NM_032242.3:: 
+pathogenicity:0.0 [1/1]; 3:126823121C>T NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126824251A>G NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126824354G>T 
+NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126825686G>A NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126825918T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 
+3:126826956G>C NM_032242.3:: pathogenicity:0.0 [./.]; 3:126838838G>T NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126838848G>T NM_032242.3:: 
+pathogenicity:0.0 [1/1]; 3:126868547T>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126868879A>G NM_032242.3:: pathogenicity:0.0 [./.]; 3:126870738G>A 
+NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126870844T>A NM_032242.3:: pathogenicity:0.0 [0/1]; 3:126870851TTAAAAAA>T NM_032242.3:: pathogenicity:0.0 
+[0/1]; 3:126871475A>G NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126872209T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126874166T>TTG NM_032242.3:: 
+pathogenicity:0.0 [1/1]; 3:126880488T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126887306T>C NM_032242.3:: pathogenicity:0.0 [./.]; 3:126893716A>C 
+NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126896547G>A NM_032242.3:: pathogenicity:0.0 [1/1]; 3:126899748T>C NM_032242.3:: pathogenicity:0.0 [1/1]; 
+3:126904293C>T NM_032242.3:: pathogenicity:0.0 [1/1]
+21	Factor V and factor VIII, combined deficiency of	OMIM:613625	1/8371	0.00%	-5.323	NCBIGene:90411	2:47086617G>T NR_024452.1:: 
+pathogenicity:0.0 [1/1]; 2:47090944T>C NR_024452.1:: pathogenicity:0.0 [1/1]; 2:47091785A>G NR_024452.1:: pathogenicity:0.0 [./.]; 2:47094449C>G 
+NR_024452.1:: pathogenicity:0.0 [1/1]; 2:47100999T>C NR_024452.1:: pathogenicity:0.0 [1/1]; 2:47105359C>CCA NR_024452.1:: pathogenicity:0.0 [./.]; 
+2:47115200A>G NR_024452.1:: pathogenicity:0.0 [0/1]; 2:47132627G>A NM_001171506.2:c.416C>T:p.(A139V) pathogenicity:1.0 [0/1]; 2:47140531AAG>A 
+NM_001171511.2:c.93-5425_93-5424del:p.(=) pathogenicity:0.0 [1/1]; 2:47142950GCCCC>G NM_001171511.2:c.93-7846_93-7843del:p.(=) pathogenicity:0.0 
+[1/1]
+22	Robinow syndrome, autosomal dominant 3	OMIM:616894	1/8371	0.00%	-5.395	NCBIGene:1857	3:183876512A>C 
+NM_004423.3:c.161+2928A>C:p.(=) pathogenicity:0.0 [1/1]; 3:183882962C>G NM_004423.3:c.661C>G:p.(R221G) pathogenicity:1.0 [0/1]; 3:183884550T>C 
+NM_004423.3:c.1049-64T>C:p.(=) pathogenicity:0.0 [0/1]; 3:183889337A>T XM_005247172.1:c.2126-18A>T:p.(=) pathogenicity:0.0 [0/1]; 3:183890097G>A 
+NM_004423.3:c.*1554G>A:p.(=) pathogenicity:0.0 [0/1]
+23	Ventricular tachycardia, catecholaminergic polymorphic, 2	OMIM:611938	1/8371	0.00%	-5.736	NCBIGene:845	1:116242737CAT>C 
+NM_001232.3:c.*1123_*1124del:p.(=) pathogenicity:0.0 [0/1]; 1:116242844AT>A NM_001232.3:c.*1017del:p.(=) pathogenicity:0.0 [0/1]; 1:116243230C>G 
+NM_001232.3:c.*632G>C:p.(=) pathogenicity:0.0 [1/1]; 1:116243380G>A NM_001232.3:c.*482C>T:p.(=) pathogenicity:0.0 [1/1]; 1:116243877G>A 
+NM_001232.3:c.1185C>T:p.(=) pathogenicity:0.0 [0/1]; 1:116245809C>T NM_001232.3:c.940-193G>A:p.(=) pathogenicity:0.0 [1/1]; 1:116247466C>T 
+NM_001232.3:c.939+347G>A:p.(=) pathogenicity:0.0 [1/1]; 1:116247535G>C NM_001232.3:c.939+278C>G:p.(=) pathogenicity:0.0 [1/1]; 1:116247545C>T 
+NM_001232.3:c.939+268G>A:p.(=) pathogenicity:0.0 [1/1]; 1:116247557C>G NM_001232.3:c.939+256G>C:p.(=) pathogenicity:0.0 [./.]; 1:116247623C>T 
+NM_001232.3:c.939+190G>A:p.(=) pathogenicity:0.0 [./.]; 1:116247790G>A NM_001232.3:c.939+23C>T:p.(=) pathogenicity:0.0 [1/1]; 1:116247826T>C 
+NM_001232.3:c.926A>G:p.(D309G) pathogenicity:1.0 [0/1]; 1:116254213G>GGT NM_001232.3:c.838+6247_838+6248insAC:p.(=) pathogenicity:0.0 [1/1]; 
+1:116254214A>T NM_001232.3:c.838+6247T>A:p.(=) pathogenicity:0.0 [1/1]; 1:116257891C>T NM_001232.3:c.838+2570G>A:p.(=) pathogenicity:0.0 [./.]; 
+1:116260066C>G NM_001232.3:c.838+395G>C:p.(=) pathogenicity:0.0 [./.]; 1:116260532A>T NM_001232.3:c.784-17T>A:p.(=) pathogenicity:0.0 [1/1]; 
+1:116260544C>T NM_001232.3:c.784-29G>A:p.(=) pathogenicity:0.0 [0/1]; 1:116260604G>A NM_001232.3:c.784-89C>T:p.(=) pathogenicity:0.0 [1/1]; 
+1:116268283C>T NM_001232.3:c.738-109G>A:p.(=) pathogenicity:0.0 [1/1]; 1:116268699A>G NM_001232.3:c.738-525T>C:p.(=) pathogenicity:0.0 [1/1]; 
+1:116278503C>A NM_001232.3:c.532+2342G>T:p.(=) pathogenicity:0.0 [./.]; 1:116280144G>A NM_001232.3:c.532+701C>T:p.(=) pathogenicity:0.0 [./.]; 
+1:116281902T>TTGG NM_001232.3:c.421-947_421-946insCCA:p.(=) pathogenicity:0.0 [1/1]; 1:116281904A>T NM_001232.3:c.421-948T>A:p.(=) pathogenicity:0.0 
+[1/1]; 1:116281910GTAT>G NM_001232.3:c.421-957_421-955del:p.(=) pathogenicity:0.0 [1/1]; 1:116283343A>G NM_001232.3:c.420+6T>C:p.? pathogenicity:0.0 
+[1/1]; 1:116283526G>A NM_001232.3:c.320-77C>T:p.(=) pathogenicity:0.0 [1/1]; 1:116283849A>G NM_001232.3:c.320-400T>C:p.(=) pathogenicity:0.0 [1/1]; 
+1:116283921T>C NM_001232.3:c.320-472A>G:p.(=) pathogenicity:0.0 [1/1]; 1:116284135A>C NM_001232.3:c.320-686T>G:p.(=) pathogenicity:0.0 [1/1]; 
+1:116284547G>C NM_001232.3:c.320-1098C>G:p.(=) pathogenicity:0.0 [1/1]; 1:116284557A>C NM_001232.3:c.320-1108T>G:p.(=) pathogenicity:0.0 [1/1]; 
+1:116284575G>A NM_001232.3:c.320-1126C>T:p.(=) pathogenicity:0.0 [1/1]; 1:116284602G>A NM_001232.3:c.320-1153C>T:p.(=) pathogenicity:0.0 [1/1]; 
+1:116284606A>G NM_001232.3:c.320-1157T>C:p.(=) pathogenicity:0.0 [1/1]; 1:116284726G>T NM_001232.3:c.320-1277C>A:p.(=) pathogenicity:0.0 [1/1]; 
+1:116285449T>G NM_001232.3:c.319+2000A>C:p.(=) pathogenicity:0.0 [1/1]; 1:116285853T>TATTC NM_001232.3:c.319+1595_319+1596insGAAT:p.(=) 
+pathogenicity:0.0 [1/1]; 1:116285906T>G NM_001232.3:c.319+1543A>C:p.(=) pathogenicity:0.0 [1/1]; 1:116287305C>T NM_001232.3:c.319+144G>A:p.(=) 
+pathogenicity:0.0 [1/1]; 1:116287634A>G NM_001232.3:c.235-101T>C:p.(=) pathogenicity:0.0 [1/1]; 1:116287651G>A NM_001232.3:c.235-118C>T:p.(=) 
+pathogenicity:0.0 [1/1]; 1:116289164A>G NM_001232.3:c.235-1631T>C:p.(=) pathogenicity:0.0 [./.]; 1:116292355G>A NM_001232.3:c.235-4822C>T:p.(=) 
+pathogenicity:0.0 [./.]; 1:116292369T>C NM_001232.3:c.235-4836A>G:p.(=) pathogenicity:0.0 [./.]; 1:116292387C>T NM_001232.3:c.235-4854G>A:p.(=) 
+pathogenicity:0.0 [./.]; 1:116292402A>G NM_001232.3:c.235-4869T>C:p.(=) pathogenicity:0.0 [./.]; 1:116293111A>C NM_001232.3:c.235-5578T>G:p.(=) 
+pathogenicity:0.0 [1/1]; 1:116310818G>C NM_001232.3:c.234+111C>G:p.(=) pathogenicity:0.0 [./.]; 1:116310967T>C NM_001232.3:c.196A>G:p.(T66A) 
+pathogenicity:0.0 [0/1]; 1:116311198T>C NM_001232.3:c.-36A>G:p.(=) pathogenicity:0.0 [1/1]; 1:116311366G>GCACACACA NM_001232.3:c.-212_-205dup:p.(=) 
+pathogenicity:0.0 [0/1]; 1:116315386C>CG NM_001232.3:: pathogenicity:0.0 [1/1]; 1:116315787T>C NM_001232.3:: pathogenicity:0.0 [1/1]; 1:116323181C>T 
+NM_001111061.1:: pathogenicity:0.0 [./.]; 1:116340260A>G NM_001111061.1:: pathogenicity:0.0 [./.]
+24	Polyendocrine-Polyneuropathy syndrome	OMIM:616113	1/8371	0.00%	-5.857	NCBIGene:23312	15:51706015A>G NM_001174117.1:: 
+pathogenicity:0.0 [1/1]; 15:51717067T>TA NM_001174117.1:: pathogenicity:0.0 [1/1]; 15:51741056G>A NM_001174116.1:c.*125C>T:p.(=) pathogenicity:0.0 
+[0/1]; 15:51741579C>T NM_001174116.1:c.8905-189G>A:p.(=) pathogenicity:0.0 [0/1]; 15:51745608CTG>C NM_001174116.1:c.8633+137_8633+138del:p.(=) 
+pathogenicity:0.0 [1/1]; 15:51748146T>C NM_001174116.1:c.8463+117A>G:p.(=) pathogenicity:0.0 [0/1]; 15:51748610A>G NM_001174116.1:c.8275-44T>C:p.(=) 
+pathogenicity:0.0 [0/1]; 15:51749345C>G NM_001174116.1:c.8274+180G>C:p.(=) pathogenicity:0.0 [1/1]; 15:51749726A>C NM_001174116.1:c.8136-63T>G:p.(=) 
+pathogenicity:0.0 [0/1]; 15:51750609C>T NM_001174116.1:c.8135+94G>A:p.(=) pathogenicity:0.0 [0/1]; 15:51750652G>A NM_001174116.1:c.8135+51C>T:p.(=) 
+pathogenicity:0.0 [0/1]; 15:51750846G>A NM_001174116.1:c.8014-22C>T:p.(=) pathogenicity:0.0 [0/1]; 15:51751091TAGCAGC>T 
+NM_001174116.1:c.7927-105_7927-100del:p.(=) pathogenicity:0.0 [1/1]; 15:51751435T>G NM_001174116.1:c.7927-443A>C:p.(=) pathogenicity:0.0 [1/1]; 
+15:51757621G>A NM_001174116.1:c.7606+142C>T:p.(=) pathogenicity:0.0 [0/1]; 15:51757826T>C NM_001174116.1:c.7543A>G:p.(M2515V) pathogenicity:1.0 
+[0/1]; 15:51758345CA>C NM_001174116.1:c.7520+35del:p.(=) pathogenicity:0.0 [1/1]; 15:51763249C>G NM_001174116.1:c.7392+171G>C:p.(=) 
+pathogenicity:0.0 [1/1]; 15:51768755AT>A NM_001174116.1:c.6964+30del:p.(=) pathogenicity:0.0 [0/1]; 15:51770456AT>A 
+NM_001174116.1:c.6833+11del:p.(=) pathogenicity:0.0 [1/1]; 15:51780722C>T NM_001174116.1:c.5051+23G>A:p.(=) pathogenicity:0.0 [0/1]; 15:51783820T>C 
+NM_001174116.1:c.4908A>G:p.(=) pathogenicity:0.0 [0/1]; 15:51783981G>C NM_001174116.1:c.4784-37C>G:p.(=) pathogenicity:0.0 [0/1]; 15:51784689T>G 
+NM_001174116.1:c.4784-745A>C:p.(=) pathogenicity:0.0 [1/1]; 15:51784694G>GT NM_001174116.1:c.4784-751_4784-750insA:p.(=) pathogenicity:0.0 [1/1]; 
+15:51791559A>G NM_001174116.1:c.3862T>C:p.(S1288P) pathogenicity:0.0 [0/1]; 15:51795172G>A NM_001174116.1:c.2823C>T:p.(=) pathogenicity:0.0 [0/1]; 
+15:51829812G>A NM_001174116.1:c.1490C>T:p.(T497M) pathogenicity:0.0 [0/1]; 15:51829995T>C NM_001174116.1:c.1346-39A>G:p.(=) pathogenicity:0.0 [0/1]; 
+15:51840194T>C NM_001174116.1:c.568-589A>G:p.(=) pathogenicity:0.0 [./.]; 15:51856190GA>G NM_001174116.1:c.500+131del:p.(=) pathogenicity:0.0 [0/1]; 
+15:51857220C>T NM_001174116.1:c.364+65G>A:p.(=) pathogenicity:0.0 [0/1]; 15:51865334C>A NM_001174116.1:c.213+2919G>T:p.(=) pathogenicity:0.0 [./.]; 
+15:51865877T>C NM_001174116.1:c.213+2376A>G:p.(=) pathogenicity:0.0 [./.]; 15:51868373A>G NM_001174116.1:c.93T>C:p.(=) pathogenicity:0.0 [0/1]; 
+15:51891562G>C NM_001174116.1:c.87+23094C>G:p.(=) pathogenicity:0.0 [1/1]; 15:51905498C>T NM_001174116.1:c.87+9158G>A:p.(=) pathogenicity:0.0 [./.]; 
+15:51914662G>A NM_001174116.1:c.81C>T:p.(=) pathogenicity:0.0 [0/1]; 15:51914716T>C NM_001174116.1:c.27A>G:p.(=) pathogenicity:0.0 [0/1]; 
+15:51914778T>G NM_001174116.1:c.-36A>C:p.(=) pathogenicity:0.0 [0/1]; 15:51927562C>T XM_005254257.1:: pathogenicity:0.0 [1/1]; 15:51951245C>T 
+XM_005254257.1:: pathogenicity:0.0 [./.]; 15:51961871C>A XM_005254257.1:: pathogenicity:0.0 [1/1]
+25	Neurodevelopmental disorder with impaired speech and hyperkinetic movements	OMIM:618425	1/8371	0.00%	-5.872	NCBIGene:7701	
+2:219505465G>A NM_001105537.2:c.4516C>T:p.(R1506W) pathogenicity:0.9 [0/1]; 2:219508372A>T NM_001105537.2:c.2867T>A:p.(L956H) pathogenicity:0.0 
+[1/1]; 2:219511730CAACAG>C NM_001105537.2:c.1274-664_1274-660del:p.(=) pathogenicity:0.0 [1/1]
+26	Apert syndrome	OMIM:101200	1/8371	0.00%	-6.114	NCBIGene:2263	10:122945609T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122952949G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122952977T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122955099G>A XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:122956457A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:122956466T>A XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:122957629C>T XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122957907T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122957909T>C XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:122957978G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122966192T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122966199G>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122988285G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122990333G>T XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:122990338A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:122990486T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122990491T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123003782AG>A XR_246197.1:: pathogenicity:0.0 [./.]; 10:123012755GC>G XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123018937A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:123019020T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123021889T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123023456C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123028019C>G XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123031237T>TC XR_246197.1:: pathogenicity:0.0 [./.]; 10:123033831A>AAAT XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:123044383G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123087186C>T XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123088199C>T XR_246197.1:: 
+pathogenicity:0.0 [0/1]; 10:123089127C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123102705C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123130834C>CAATA XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123150301A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123165700A>G XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:123172616T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123172742T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123172893A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123172899A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123180679T>C XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123180685C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123184085G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123184875G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123198286T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123217507C>T XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123232189G>A XR_246197.1:: pathogenicity:0.0 [./.]; 10:123232212A>T XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:123238968T>C NM_000141.4:c.*403A>G:p.(=) pathogenicity:0.0 [0/1]; 10:123239112G>A NM_001144915.1:c.2107C>T:p.(=) pathogenicity:0.0 [1/1]; 
+10:123243197G>A NM_000141.4:c.2301+15C>T:p.(=) pathogenicity:0.0 [1/1]; 10:123246732TTTCTAAGGCCAGCTCCTGCACC>T 
+NM_000141.4:c.2057+114_2057+135del:p.(=) pathogenicity:0.0 [1/1]; 10:123247037C>T NM_000141.4:c.1987-99G>A:p.(=) pathogenicity:0.0 [1/1]; 
+10:123247044T>C NM_000141.4:c.1987-106A>G:p.(=) pathogenicity:0.0 [1/1]; 10:123248663C>T NM_000141.4:c.1864-1036G>A:p.(=) pathogenicity:0.0 [1/1]; 
+10:123250248G>A NM_000141.4:c.1864-2621C>T:p.(=) pathogenicity:0.0 [1/1]; 10:123263616C>T NM_000141.4:c.1288-161G>A:p.(=) pathogenicity:0.0 [0/1]; 
+10:123279745C>T NM_000141.4:c.749-62G>A:p.(=) pathogenicity:0.0 [1/1]; 10:123281491A>C NM_000141.4:c.749-1808T>G:p.(=) pathogenicity:0.0 [./.]; 
+10:123281870G>A NM_000141.4:c.749-2187C>T:p.(=) pathogenicity:0.0 [./.]; 10:123287104CA>C NM_000141.4:c.749-7422del:p.(=) pathogenicity:0.0 [1/1]; 
+10:123287703T>C NM_000141.4:c.749-8020A>G:p.(=) pathogenicity:0.0 [./.]; 10:123287727T>C NM_000141.4:c.749-8044A>G:p.(=) pathogenicity:0.0 [./.]; 
+10:123297240A>AAG NM_000141.4:c.748+865_748+866insCT:p.(=) pathogenicity:0.0 [1/1]; 10:123298158T>C NM_000141.4:c.696A>G:p.(=) pathogenicity:0.0 
+[1/1]; 10:123313847C>CT NM_000141.4:c.455-2875_455-2874insA:p.(=) pathogenicity:0.0 [0/0]; 10:123329429T>G NM_000141.4:c.110-4211A>C:p.(=) 
+pathogenicity:0.0 [1/1]; 10:123331165C>A NM_000141.4:c.110-5947G>T:p.(=) pathogenicity:0.0 [1/1]; 10:123340633T>C NM_000141.4:c.109+12590A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 10:123350521GCA>G NM_000141.4:c.109+2700_109+2701del:p.(=) pathogenicity:0.0 [0/1]; 10:123353267C>A 
+NM_000141.4:c.65G>T:p.(R22L) pathogenicity:1.0 [0/1]; 10:123356175A>T NM_000141.4:c.-151+1301T>A:p.(=) pathogenicity:0.0 [1/1]; 10:123356197A>T 
+NM_000141.4:c.-151+1279T>A:p.(=) pathogenicity:0.0 [1/1]; 10:123357482T>C NM_000141.4:c.-157A>G:p.(=) pathogenicity:0.0 [0/1]; 10:123357561C>T 
+NM_000141.4:c.-236G>A:p.(=) pathogenicity:0.0 [1/1]; 10:123360913T>C NM_001144919.1:: pathogenicity:0.0 [1/1]; 10:123360914G>C NM_001144919.1:: 
+pathogenicity:0.0 [1/1]; 10:123361741AAAAC>A NM_001144919.1:: pathogenicity:0.0 [1/1]; 10:123366924A>G XM_005269460.1:: pathogenicity:0.0 [./.]; 
+10:123377377C>A XM_005269460.1:: pathogenicity:0.0 [0/0]; 10:123403292A>G XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123403293C>T XM_005269460.1:: 
+pathogenicity:0.0 [1/1]; 10:123403944A>G XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123412894TAA>T XM_005269460.1:: pathogenicity:0.0 [1/1]; 
+10:123426771TATGG>T XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123435538G>GCA XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123442841G>C 
+XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123464764C>A XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123464783C>T XM_005269460.1:: 
+pathogenicity:0.0 [1/1]; 10:123468092A>T XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123473173A>G XM_005269460.1:: pathogenicity:0.0 [0/1]; 
+10:123480130A>C XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123487931T>TG XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123488061G>T 
+XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123488067T>C XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123495024G>A XM_005269460.1:: 
+pathogenicity:0.0 [./.]; 10:123498473A>T XM_005269460.1:: pathogenicity:0.0 [1/1]
+27	Craniometaphyseal dysplasia, autosomal recessive	OMIM:218400	1/8371	0.00%	-6.118	NCBIGene:2697	6:121701733C>G 
+XM_005266861.1:: pathogenicity:0.0 [./.]; 6:121701985CT>C XM_005266861.1:: pathogenicity:0.0 [1/1]; 6:121709228G>A XM_005266861.1:: 
+pathogenicity:0.0 [./.]; 6:121729745G>A XM_005266861.1:: pathogenicity:0.0 [0/1]; 6:121729994GTACACA>G XM_005266861.1:: pathogenicity:0.0 [0/1]; 
+6:121730002T>TGA XM_005266861.1:: pathogenicity:0.0 [0/1]; 6:121730650A>G XM_005266861.1:: pathogenicity:0.0 [0/0]; 6:121738969C>T XM_005266861.1:: 
+pathogenicity:0.0 [0/1]; 6:121739801A>G XM_005266861.1:: pathogenicity:0.0 [./.]; 6:121757084A>G NM_000165.3:c.-17+106A>G:p.(=) pathogenicity:0.0 
+[0/1]; 6:121768699G>A NM_000165.3:c.706G>A:p.(V236I) pathogenicity:0.9 [0/1]; 6:121769905A>AT NM_000165.3:c.*773dup:p.(=) pathogenicity:0.0 [0/1]; 
+6:121809450G>A NM_000165.3:: pathogenicity:0.0 [./.]; 6:121836362T>TTTTG NM_000165.3:: pathogenicity:0.0 [./.]; 6:121857989C>CAG NM_000165.3:: 
+pathogenicity:0.0 [1/1]; 6:121880939G>A NM_000165.3:: pathogenicity:0.0 [./.]; 6:121884929G>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:121904870T>G 
+NM_000165.3:: pathogenicity:0.0 [0/1]; 6:121905686A>AAAAT NM_000165.3:: pathogenicity:0.0 [./.]; 6:121907225T>C NM_000165.3:: pathogenicity:0.0 
+[./.]; 6:121958168A>AAAG NM_000165.3:: pathogenicity:0.0 [1/1]; 6:121962207A>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:121975563A>G NM_000165.3:: 
+pathogenicity:0.0 [1/1]; 6:121977549T>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:121989296G>A NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122001307G>A 
+NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122001385C>G NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122001743T>C NM_000165.3:: pathogenicity:0.0 [1/1]; 
+6:122005073A>T NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122006130C>T NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122020965A>G NM_000165.3:: 
+pathogenicity:0.0 [1/1]; 6:122021680C>CAA NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122021882A>T NM_000165.3:: pathogenicity:0.0 [./.]; 
+6:122030290C>G NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122030293A>T NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122038796T>G NM_000165.3:: 
+pathogenicity:0.0 [1/1]; 6:122040346C>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122050860C>G NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122051142G>A 
+NM_000165.3:: pathogenicity:0.0 [./.]; 6:122051143G>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122052145G>A NM_000165.3:: pathogenicity:0.0 [1/1]; 
+6:122062937C>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122125094T>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122225035C>G NM_000165.3:: 
+pathogenicity:0.0 [./.]; 6:122290881T>C NM_000165.3:: pathogenicity:0.0 [./.]; 6:122292845T>A NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122301496T>C 
+NM_000165.3:: pathogenicity:0.0 [./.]; 6:122319875CTTT>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122322464T>C NM_000165.3:: pathogenicity:0.0 
+[./.]; 6:122323858T>C NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122331651A>G NM_000165.3:: pathogenicity:0.0 [./.]; 6:122331733G>C NM_000165.3:: 
+pathogenicity:0.0 [./.]; 6:122331742C>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122344111G>T NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122346667G>A 
+NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122358547C>G NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122418275C>T NM_000165.3:: pathogenicity:0.0 [1/1]; 
+6:122431692C>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122432585C>T NM_000165.3:: pathogenicity:0.0 [./.]; 6:122459832T>C NM_000165.3:: 
+pathogenicity:0.0 [0/1]; 6:122491037G>GT NM_000165.3:: pathogenicity:0.0 [0/1]; 6:122562949T>G NM_000165.3:: pathogenicity:0.0 [./.]; 6:122574069G>T 
+NM_000165.3:: pathogenicity:0.0 [./.]; 6:122636651A>G NM_000165.3:: pathogenicity:0.0 [./.]; 6:122650534C>T NM_000165.3:: pathogenicity:0.0 [1/1]; 
+6:122682277C>A NM_000165.3:: pathogenicity:0.0 [0/1]; 6:122682327C>A NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122684658G>T NM_000165.3:: 
+pathogenicity:0.0 [./.]; 6:122686952G>A NM_000165.3:: pathogenicity:0.0 [./.]; 6:122686954A>G NM_000165.3:: pathogenicity:0.0 [./.]; 6:122687584A>G 
+NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122687648C>G NM_000165.3:: pathogenicity:0.0 [1/1]; 6:122688288G>A NM_000165.3:: pathogenicity:0.0 [./.]; 
+6:122690880T>C NM_000165.3:: pathogenicity:0.0 [./.]; 6:122698043C>A NM_000165.3:: pathogenicity:0.0 [./.]; 6:122698053C>T NM_000165.3:: 
+pathogenicity:0.0 [./.]; 6:122712859T>C NM_000165.3:: pathogenicity:0.0 [./.]
+28	Crouzon syndrome	OMIM:123500	1/8371	0.00%	-6.171	NCBIGene:2263	10:122945609T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122952949G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122952977T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122955099G>A XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:122956457A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:122956466T>A XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:122957629C>T XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122957907T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122957909T>C XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:122957978G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122966192T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122966199G>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122988285G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:122990333G>T XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:122990338A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:122990486T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:122990491T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123003782AG>A XR_246197.1:: pathogenicity:0.0 [./.]; 10:123012755GC>G XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123018937A>G XR_246197.1:: pathogenicity:0.0 [./.]; 10:123019020T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123021889T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123023456C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123028019C>G XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123031237T>TC XR_246197.1:: pathogenicity:0.0 [./.]; 10:123033831A>AAAT XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:123044383G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123087186C>T XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123088199C>T XR_246197.1:: 
+pathogenicity:0.0 [0/1]; 10:123089127C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123102705C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123130834C>CAATA XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123150301A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123165700A>G XR_246197.1:: 
+pathogenicity:0.0 [./.]; 10:123172616T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123172742T>C XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123172893A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123172899A>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123180679T>C XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123180685C>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123184085G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 
+10:123184875G>A XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123198286T>G XR_246197.1:: pathogenicity:0.0 [1/1]; 10:123217507C>T XR_246197.1:: 
+pathogenicity:0.0 [1/1]; 10:123232189G>A XR_246197.1:: pathogenicity:0.0 [./.]; 10:123232212A>T XR_246197.1:: pathogenicity:0.0 [./.]; 
+10:123238968T>C NM_000141.4:c.*403A>G:p.(=) pathogenicity:0.0 [0/1]; 10:123239112G>A NM_001144915.1:c.2107C>T:p.(=) pathogenicity:0.0 [1/1]; 
+10:123243197G>A NM_000141.4:c.2301+15C>T:p.(=) pathogenicity:0.0 [1/1]; 10:123246732TTTCTAAGGCCAGCTCCTGCACC>T 
+NM_000141.4:c.2057+114_2057+135del:p.(=) pathogenicity:0.0 [1/1]; 10:123247037C>T NM_000141.4:c.1987-99G>A:p.(=) pathogenicity:0.0 [1/1]; 
+10:123247044T>C NM_000141.4:c.1987-106A>G:p.(=) pathogenicity:0.0 [1/1]; 10:123248663C>T NM_000141.4:c.1864-1036G>A:p.(=) pathogenicity:0.0 [1/1]; 
+10:123250248G>A NM_000141.4:c.1864-2621C>T:p.(=) pathogenicity:0.0 [1/1]; 10:123263616C>T NM_000141.4:c.1288-161G>A:p.(=) pathogenicity:0.0 [0/1]; 
+10:123279745C>T NM_000141.4:c.749-62G>A:p.(=) pathogenicity:0.0 [1/1]; 10:123281491A>C NM_000141.4:c.749-1808T>G:p.(=) pathogenicity:0.0 [./.]; 
+10:123281870G>A NM_000141.4:c.749-2187C>T:p.(=) pathogenicity:0.0 [./.]; 10:123287104CA>C NM_000141.4:c.749-7422del:p.(=) pathogenicity:0.0 [1/1]; 
+10:123287703T>C NM_000141.4:c.749-8020A>G:p.(=) pathogenicity:0.0 [./.]; 10:123287727T>C NM_000141.4:c.749-8044A>G:p.(=) pathogenicity:0.0 [./.]; 
+10:123297240A>AAG NM_000141.4:c.748+865_748+866insCT:p.(=) pathogenicity:0.0 [1/1]; 10:123298158T>C NM_000141.4:c.696A>G:p.(=) pathogenicity:0.0 
+[1/1]; 10:123313847C>CT NM_000141.4:c.455-2875_455-2874insA:p.(=) pathogenicity:0.0 [0/0]; 10:123329429T>G NM_000141.4:c.110-4211A>C:p.(=) 
+pathogenicity:0.0 [1/1]; 10:123331165C>A NM_000141.4:c.110-5947G>T:p.(=) pathogenicity:0.0 [1/1]; 10:123340633T>C NM_000141.4:c.109+12590A>G:p.(=) 
+pathogenicity:0.0 [1/1]; 10:123350521GCA>G NM_000141.4:c.109+2700_109+2701del:p.(=) pathogenicity:0.0 [0/1]; 10:123353267C>A 
+NM_000141.4:c.65G>T:p.(R22L) pathogenicity:1.0 [0/1]; 10:123356175A>T NM_000141.4:c.-151+1301T>A:p.(=) pathogenicity:0.0 [1/1]; 10:123356197A>T 
+NM_000141.4:c.-151+1279T>A:p.(=) pathogenicity:0.0 [1/1]; 10:123357482T>C NM_000141.4:c.-157A>G:p.(=) pathogenicity:0.0 [0/1]; 10:123357561C>T 
+NM_000141.4:c.-236G>A:p.(=) pathogenicity:0.0 [1/1]; 10:123360913T>C NM_001144919.1:: pathogenicity:0.0 [1/1]; 10:123360914G>C NM_001144919.1:: 
+pathogenicity:0.0 [1/1]; 10:123361741AAAAC>A NM_001144919.1:: pathogenicity:0.0 [1/1]; 10:123366924A>G XM_005269460.1:: pathogenicity:0.0 [./.]; 
+10:123377377C>A XM_005269460.1:: pathogenicity:0.0 [0/0]; 10:123403292A>G XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123403293C>T XM_005269460.1:: 
+pathogenicity:0.0 [1/1]; 10:123403944A>G XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123412894TAA>T XM_005269460.1:: pathogenicity:0.0 [1/1]; 
+10:123426771TATGG>T XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123435538G>GCA XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123442841G>C 
+XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123464764C>A XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123464783C>T XM_005269460.1:: 
+pathogenicity:0.0 [1/1]; 10:123468092A>T XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123473173A>G XM_005269460.1:: pathogenicity:0.0 [0/1]; 
+10:123480130A>C XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123487931T>TG XM_005269460.1:: pathogenicity:0.0 [./.]; 10:123488061G>T 
+XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123488067T>C XM_005269460.1:: pathogenicity:0.0 [1/1]; 10:123495024G>A XM_005269460.1:: 
+pathogenicity:0.0 [./.]; 10:123498473A>T XM_005269460.1:: pathogenicity:0.0 [1/1]
+29	Spinocerebellar ataxia 42, early-onset, severe, with neurodevelopmental deficits	OMIM:618087	1/8371	0.00%	-6.207	
+NCBIGene:8913	17:48646346A>AGT NM_001256324.1:c.354+4_354+5insGT:p.? pathogenicity:0.8 [0/1]; 17:48646376T>TGTGTGTGTGGTG 
+NM_001256324.1:c.354+34_354+35insGTGTGTGTGGTG:p.(=) pathogenicity:0.0 [0/1]; 17:48652806G>A NM_001256324.1:c.1141-98G>A:p.(=) pathogenicity:0.0 
+[0/1]; 17:48652875A>G NM_001256324.1:c.1141-29A>G:p.(=) pathogenicity:0.0 [0/1]; 17:48655493A>G NM_001256324.1:c.1925-56A>G:p.(=) pathogenicity:0.0 
+[0/1]; 17:48678325A>T NM_001256324.1:c.3792-87A>T:p.(=) pathogenicity:0.0 [1/1]; 17:48679099C>G NM_001256324.1:c.3915+564C>G:p.(=) pathogenicity:0.0 
+[./.]; 17:48680657T>C NM_001256324.1:c.4169+97T>C:p.(=) pathogenicity:0.0 [0/1]; 17:48680780T>A NM_001256324.1:c.4169+220T>A:p.(=) pathogenicity:0.0 
+[./.]; 17:48685019C>A NM_001256324.1:c.4513-169C>A:p.(=) pathogenicity:0.0 [0/0]; 17:48687430C>T NM_001256324.1:c.4705+2050C>T:p.(=) 
+pathogenicity:0.0 [0/1]; 17:48692881C>T NM_001256324.1:c.4857+8C>T:p.? pathogenicity:0.0 [0/1]; 17:48693760G>C NM_001256324.1:c.4967+15G>C:p.(=) 
+pathogenicity:0.0 [0/1]; 17:48696827T>A NM_001256324.1:c.5728-217T>A:p.(=) pathogenicity:0.0 [0/0]; 17:48697481A>G 
+NM_001256324.1:c.5871+294A>G:p.(=) pathogenicity:0.0 [./.]; 17:48701697T>C NM_001256324.1:c.6041-24T>C:p.(=) pathogenicity:0.0 [0/1]; 17:48703752T>C 
+NM_001256324.1:c.6585T>C:p.(=) pathogenicity:0.0 [0/1]
+30	Kabuki syndrome 1	OMIM:147920	1/8371	0.00%	-6.227	NCBIGene:8085	12:49414367T>C NM_003482.3:c.*1196A>G:p.(=) 
+pathogenicity:0.0 [0/1]; 12:49421179G>C NM_003482.3:c.14644-74C>G:p.(=) pathogenicity:0.0 [1/1]; 12:49427108G>A NM_003482.3:c.11380C>T:p.(P3794S) 
+pathogenicity:0.9 [0/1]; 12:49439659C>T NM_003482.3:c.4741+44G>A:p.(=) pathogenicity:0.0 [1/1]
+31	Intellectual developmental disorder with autism and macrocephaly	OMIM:615032	1/8371	0.00%	-6.383	NCBIGene:57680	
+14:21859536T>C NM_001170629.1:c.7065+86A>G:p.(=) pathogenicity:0.0 [0/1]; 14:21860360G>A NM_001170629.1:c.6772-255C>T:p.(=) pathogenicity:0.0 [0/1]; 
+14:21860494T>C NM_001170629.1:c.6771+172A>G:p.(=) pathogenicity:0.0 [0/1]; 14:21861211C>A NM_001170629.1:c.6468+54G>T:p.(=) pathogenicity:0.0 [0/1]; 
+14:21863716C>T NM_001170629.1:c.5128-205G>A:p.(=) pathogenicity:0.0 [0/0]; 14:21864124C>A NM_001170629.1:c.5052-73G>T:p.(=) pathogenicity:0.0 [0/1]; 
+14:21869096G>C NM_001170629.1:c.4308C>G:p.(D1436E) pathogenicity:1.0 [0/1]; 14:21869705C>CT NM_001170629.1:c.4063-34_4063-33insA:p.(=) 
+pathogenicity:0.0 [0/1]; 14:21871653C>T NM_001170629.1:c.3477G>A:p.(=) pathogenicity:0.0 [0/1]; 14:21871999T>G NM_001170629.1:c.3308-177A>C:p.(=) 
+pathogenicity:0.0 [0/1]; 14:21874068G>C NM_001170629.1:c.2908-45C>G:p.(=) pathogenicity:0.0 [0/1]
+32	Febrile seizures, familial, 11	OMIM:614418	1/8371	0.00%	-6.442	NCBIGene:57094	8:68272023G>A XM_005251134.1:: pathogenicity:0.0 
+[1/1]; 8:68311113CTT>C XM_005251134.1:: pathogenicity:0.0 [./.]; 8:68334782G>A NM_020361.4:c.1271C>T:p.(A424V) pathogenicity:1.0 [0/1]; 
+8:68347863ATG>A NM_020361.4:c.839-1390_839-1389del:p.(=) pathogenicity:0.0 [0/1]; 8:68348487A>G NM_020361.4:c.839-2012T>C:p.(=) pathogenicity:0.0 
+[1/1]; 8:68355456T>C NM_020361.4:c.839-8981A>G:p.(=) pathogenicity:0.0 [1/1]; 8:68421565A>G NM_020361.4:c.534+187T>C:p.(=) pathogenicity:0.0 [0/1]; 
+8:68421998T>C NM_020361.4:c.433-145A>G:p.(=) pathogenicity:0.0 [0/0]; 8:68462201T>C NM_020361.4:c.193-31919A>G:p.(=) pathogenicity:0.0 [./.]; 
+8:68462304A>G NM_020361.4:c.193-32022T>C:p.(=) pathogenicity:0.0 [./.]; 8:68474641A>G NM_020361.4:c.193-44359T>C:p.(=) pathogenicity:0.0 [1/1]; 
+8:68569931A>T NM_020361.4:c.117-33445T>A:p.(=) pathogenicity:0.0 [1/1]; 8:68603370C>T NM_020361.4:c.116+54879G>A:p.(=) pathogenicity:0.0 [./.]; 
+8:68662662A>G NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68698420T>A NM_020361.4:: pathogenicity:0.0 [./.]; 8:68725862G>A NM_020361.4:: 
+pathogenicity:0.0 [1/1]; 8:68725959A>G NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68728131T>TC NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68740862C>T 
+NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68745786C>G NM_020361.4:: pathogenicity:0.0 [./.]; 8:68752448C>T NM_020361.4:: pathogenicity:0.0 [./.]; 
+8:68759522C>T NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68775817T>C NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68804242T>C NM_020361.4:: 
+pathogenicity:0.0 [./.]; 8:68856803G>A NM_020361.4:: pathogenicity:0.0 [1/1]; 8:68860423A>G XM_005251312.1:: pathogenicity:0.0 [1/1]
+33	Neurodevelopmental disorder and structural brain anomalies with or without seizures and spasticity	OMIM:618890	1/8371	0.00%	
+-6.451	NCBIGene:25930	3:47391588CTT>C XM_005265005.1:: pathogenicity:0.0 [1/1]; 3:47398225A>AATC XM_005265005.1:: pathogenicity:0.0 [1/1]; 
+3:47405456A>G XM_005265005.1:: pathogenicity:0.0 [./.]; 3:47431736C>A NM_015466.2:c.85-5897C>A:p.(=) pathogenicity:0.0 [1/1]; 3:47431743C>A 
+NM_015466.2:c.85-5890C>A:p.(=) pathogenicity:0.0 [1/1]; 3:47431869GTCT>G NM_015466.2:c.85-5763_85-5761del:p.(=) pathogenicity:0.0 [./.]; 
+3:47437148G>A NM_015466.2:c.85-485G>A:p.(=) pathogenicity:0.0 [./.]; 3:47437449C>A NM_015466.2:c.85-184C>A:p.(=) pathogenicity:0.0 [1/1]; 
+3:47447673C>G NM_015466.2:c.546+137C>G:p.(=) pathogenicity:0.0 [1/1]; 3:47449058T>C NM_015466.2:c.987T>C:p.(=) pathogenicity:0.0 [1/1]; 
+3:47449580T>C NM_015466.2:c.1184+135T>C:p.(=) pathogenicity:0.0 [1/1]; 3:47451411C>T NM_015466.2:c.2130-7C>T:p.? pathogenicity:0.0 [0/1]; 
+3:47452087G>A NM_015466.2:c.2799G>A:p.(=) pathogenicity:0.0 [1/1]; 3:47452118G>A NM_015466.2:c.2830G>A:p.(A944T) pathogenicity:0.0 [0/1]; 
+3:47452311G>T NM_015466.2:c.3023G>T:p.(G1008V) pathogenicity:1.0 [0/1]; 3:47452786G>A NM_015466.2:c.3498G>A:p.(=) pathogenicity:0.0 [0/1]; 
+3:47453216G>A NM_015466.2:c.3888+40G>A:p.(=) pathogenicity:0.0 [0/1]; 3:47454399G>A NM_015466.2:c.4635G>A:p.(=) pathogenicity:0.0 [./1]; 
+3:47454399G>C NM_015466.2:c.4635G>C:p.(=) pathogenicity:0.0 [./1]; 3:47455086G>A NM_012235.2:: pathogenicity:0.0 [0/1]
