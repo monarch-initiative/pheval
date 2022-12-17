@@ -21,13 +21,14 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.phenopacket_utils import (
+from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
+    GeneIdentifierUpdater,
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
-    # GeneIdentifierUpdater,
     PhenopacketUtil,
-    ProbandCausativeVariant, VariantData, create_hgnc_dict, GeneIdentifierUpdater,
-    # create_hgnc_dict,
+    ProbandCausativeVariant,
+    VariantData,
+    create_hgnc_dict,
 )
 
 interpretations = [
@@ -43,9 +44,7 @@ interpretations = [
                         acmg_pathogenicity_classification="NOT_PROVIDED",
                         therapeutic_actionability="UNKNOWN_ACTIONABILITY",
                         variation_descriptor=VariationDescriptor(
-                            gene_context=GeneDescriptor(
-                                value_id="NCBIGene:2245", symbol="FGD1"
-                            ),
+                            gene_context=GeneDescriptor(value_id="NCBIGene:2245", symbol="FGD1"),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh37",
                                 chrom="X",
@@ -99,8 +98,14 @@ updated_interpretations = [
                         therapeutic_actionability="UNKNOWN_ACTIONABILITY",
                         variation_descriptor=VariationDescriptor(
                             gene_context=GeneDescriptor(
-                                value_id="ENSG00000102302", symbol="FGD1",
-                                alternate_ids=["HGNC:3663", "ncbigene:2245", "ensembl:ENSG00000102302", "symbol:FGD1"]
+                                value_id="ENSG00000102302",
+                                symbol="FGD1",
+                                alternate_ids=[
+                                    "HGNC:3663",
+                                    "ncbigene:2245",
+                                    "ensembl:ENSG00000102302",
+                                    "symbol:FGD1",
+                                ],
                             ),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh37",
@@ -123,9 +128,16 @@ updated_interpretations = [
                         acmg_pathogenicity_classification="NOT_PROVIDED",
                         therapeutic_actionability="UNKNOWN_ACTIONABILITY",
                         variation_descriptor=VariationDescriptor(
-                            gene_context=GeneDescriptor(value_id="ENSG00000176225", symbol="RTTN",
-                                                        alternate_ids=["HGNC:18654", "ncbigene:25914",
-                                                                       "ensembl:ENSG00000176225", "symbol:RTTN"]),
+                            gene_context=GeneDescriptor(
+                                value_id="ENSG00000176225",
+                                symbol="RTTN",
+                                alternate_ids=[
+                                    "HGNC:18654",
+                                    "ncbigene:25914",
+                                    "ensembl:ENSG00000176225",
+                                    "symbol:RTTN",
+                                ],
+                            ),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh37",
                                 chrom="18",
@@ -151,26 +163,31 @@ phenotypic_features_none_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
 ]
-phenotypic_features_with_excluded = [PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
-                                     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
-                                     PhenotypicFeature(
-                                         type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
-                                     PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
-                                     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
-                                     PhenotypicFeature(
-                                         type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
-                                         excluded=True), ]
+phenotypic_features_with_excluded = [
+    PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
+    PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
+    PhenotypicFeature(
+        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
+    ),
+]
 
 phenotypic_features_all_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly"), excluded=True),
     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy"), excluded=True),
     PhenotypicFeature(
-        type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True),
-    PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True),
+        type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True
+    ),
+    PhenotypicFeature(
+        type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True
+    ),
     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia"), excluded=True),
     PhenotypicFeature(
-        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
-        excluded=True), ]
+        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
+    ),
+]
 
 proband = Phenopacket(
     id="test-subject",
@@ -209,10 +226,20 @@ incorrect_file_format = [
         file_attributes={"fileFormat": "PED", "genomeAssembly": "GRCh37"},
     ),
 ]
-phenopacket_metadata = MetaData(created_by="pheval-converter", resources=[
-    Resource(id="hp", name="human phenotype ontology", url="http://purl.obolibrary.org/obo/hp.owl",
-             version="hp/releases/2019-11-08", namespace_prefix="HP",
-             iri_prefix="http://purl.obolibrary.org/obo/HP_", )], phenopacket_schema_version="2.0", )
+phenopacket_metadata = MetaData(
+    created_by="pheval-converter",
+    resources=[
+        Resource(
+            id="hp",
+            name="human phenotype ontology",
+            url="http://purl.obolibrary.org/obo/hp.owl",
+            version="hp/releases/2019-11-08",
+            namespace_prefix="HP",
+            iri_prefix="http://purl.obolibrary.org/obo/HP_",
+        )
+    ],
+    phenopacket_schema_version="2.0",
+)
 
 phenopacket = Phenopacket(
     id="test-subject",
@@ -297,15 +324,22 @@ class TestPhenopacketUtil(unittest.TestCase):
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
 
     def test_phenotypic_features_phenopacket(self):
-        self.assertEqual(list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded)
-        self.assertEqual(list(self.phenopacket_excluded_pf.phenotypic_features()), phenotypic_features_all_excluded)
+        self.assertEqual(
+            list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded
+        )
+        self.assertEqual(
+            list(self.phenopacket_excluded_pf.phenotypic_features()),
+            phenotypic_features_all_excluded,
+        )
 
     def test_phenotypic_features_family(self):
         self.assertEqual(list(self.family.phenotypic_features()), phenotypic_features_none_excluded)
 
     def test_observed_phenotypic_features(self):
         self.assertEqual(list(self.phenopacket_excluded_pf.observed_phenotypic_features()), [])
-        self.assertEqual(list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded)
+        self.assertEqual(
+            list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded
+        )
 
     def test_interpretations_phenopacket(self):
         self.assertEqual(list(self.phenopacket.interpretations()), interpretations)
@@ -327,10 +361,13 @@ class TestPhenopacketUtil(unittest.TestCase):
         vcf_file_data = self.phenopacket.vcf_file_data(
             Path("test-phenopacket-1.json"), Path("input_dir")
         )
-        self.assertEqual(vcf_file_data, File(
-            uri="input_dir/test_1.vcf",
-            file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
-        ))
+        self.assertEqual(
+            vcf_file_data,
+            File(
+                uri="input_dir/test_1.vcf",
+                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+            ),
+        )
         with self.assertRaises(IncompatibleGenomeAssemblyError):
             self.family_incorrect_files.vcf_file_data(
                 Path("test-phenopacket-1.json"), Path("input_dir")
@@ -344,10 +381,13 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(set((["RTTN", "FGD1"])), set(self.phenopacket.diagnosed_genes()))
 
     def test_diagnosed_variants(self):
-        self.assertEqual(list(self.phenopacket.diagnosed_variants()),
-                         [VariantData(chrom="X", pos=54492285, ref="C", alt="T", gene="FGD1"),
-                          VariantData(chrom="18", pos=67691994, ref="G", alt="A", gene="RTTN")
-                          ])
+        self.assertEqual(
+            list(self.phenopacket.diagnosed_variants()),
+            [
+                VariantData(chrom="X", pos=54492285, ref="C", alt="T", gene="FGD1"),
+                VariantData(chrom="18", pos=67691994, ref="G", alt="A", gene="RTTN"),
+            ],
+        )
 
 
 class TestPhenopacketRebuilder(unittest.TestCase):
@@ -361,27 +401,45 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         ]
 
     def test_update_interpretations_phenopacket(self):
-        phenopacket_updated_interpretations = self.phenopacket_rebuilder.update_interpretations(updated_interpretations)
-        self.assertNotEqual(list(updated_interpretations),
-                            list(self.phenopacket_rebuilder.phenopacket.interpretations))
-        self.assertEqual(list(phenopacket_updated_interpretations.interpretations), updated_interpretations)
+        phenopacket_updated_interpretations = self.phenopacket_rebuilder.update_interpretations(
+            updated_interpretations
+        )
+        self.assertNotEqual(
+            list(updated_interpretations),
+            list(self.phenopacket_rebuilder.phenopacket.interpretations),
+        )
+        self.assertEqual(
+            list(phenopacket_updated_interpretations.interpretations), updated_interpretations
+        )
 
     def test_update_interpretations_family(self):
-        family_updated_interpretations = self.family_rebuilder.update_interpretations(updated_interpretations)
-        self.assertNotEqual(list(updated_interpretations),
-                            list(self.family_rebuilder.phenopacket.proband.interpretations))
-        self.assertEqual(list(family_updated_interpretations.proband.interpretations), updated_interpretations)
+        family_updated_interpretations = self.family_rebuilder.update_interpretations(
+            updated_interpretations
+        )
+        self.assertNotEqual(
+            list(updated_interpretations),
+            list(self.family_rebuilder.phenopacket.proband.interpretations),
+        )
+        self.assertEqual(
+            list(family_updated_interpretations.proband.interpretations), updated_interpretations
+        )
 
     def test_add_randomised_hpo_phenopacket(self):
-        random_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(self.randomised_phenotype)
-        self.assertNotEqual(random_phenopacket.phenotypic_features,
-                            self.phenopacket_rebuilder.phenopacket.phenotypic_features)
+        random_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(
+            self.randomised_phenotype
+        )
+        self.assertNotEqual(
+            random_phenopacket.phenotypic_features,
+            self.phenopacket_rebuilder.phenopacket.phenotypic_features,
+        )
         self.assertEqual(list(random_phenopacket.phenotypic_features), self.randomised_phenotype)
 
     def test_add_randomised_hpo_family(self):
         random_family = self.family_rebuilder.add_randomised_hpo(self.randomised_phenotype)
-        self.assertNotEqual(random_family.proband.phenotypic_features,
-                            self.family_rebuilder.phenopacket.proband.phenotypic_features)
+        self.assertNotEqual(
+            random_family.proband.phenotypic_features,
+            self.family_rebuilder.phenopacket.proband.phenotypic_features,
+        )
         self.assertEqual(list(random_family.proband.phenotypic_features), self.randomised_phenotype)
 
     def test_add_created_vcf_path(self):
@@ -421,5 +479,11 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         )
 
     def test_update_genomic_interpretations_gene_identifier(self):
-        self.assertEqual(list(self.gene_identifier_updater_ens.update_genomic_interpretations_gene_identifier(
-            phenopacket.interpretations)), updated_interpretations)
+        self.assertEqual(
+            list(
+                self.gene_identifier_updater_ens.update_genomic_interpretations_gene_identifier(
+                    phenopacket.interpretations
+                )
+            ),
+            updated_interpretations,
+        )
