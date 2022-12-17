@@ -296,12 +296,12 @@ def generate_spiked_vcf_file(
     output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
 ) -> tuple[Path, str]:
     """Writes spiked vcf contents to a new file."""
-    template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(
+    chosen_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(
         phenopacket, output_dir, template_vcf_path, vcf_dir
     )
     spiked_vcf_path = (
         output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
-        if is_gzipped(template_vcf_path)
+        if is_gzipped(chosen_vcf_path)
         else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
     )
     VcfWriter(template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
