@@ -22,7 +22,8 @@ def load_ontology():
 
 
 class HpoRandomiser:
-    """Randomises phenopacket phenotypic features. """
+    """Randomises phenopacket phenotypic features."""
+
     def __init__(self, hpo_ontology):
         self.hpo_ontology = hpo_ontology
         self.phenotypic_abnormalities = set(hpo_ontology.roots(predicates=["HP:0000118"]))
