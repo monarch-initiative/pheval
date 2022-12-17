@@ -3,10 +3,12 @@ import gzip
 import logging
 import secrets
 import shutil
+from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
 
 import click
+from phenopackets import Family, Phenopacket
 
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
@@ -16,7 +18,7 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
     write_phenopacket,
 )
-from phenopackets import Phenopacket, Family
+
 from .custom_exceptions import InputError, MutuallyExclusiveOptionError
 from ..utils.file_utils import all_files, files_with_suffix, is_gzipped
 
@@ -103,6 +105,7 @@ def read_vcf(vcf_file: Path) -> list[str]:
     """Reads the contents of a VCF file into memory - handles both uncompressed and gzipped."""
     open_fn = gzip.open if is_gzipped(vcf_file) else open
     vcf = open_fn(vcf_file)
+    # vcf_contents = vcf.readlines()
     vcf_contents = (
         [line.decode() for line in vcf.readlines()] if is_gzipped(vcf_file) else vcf.readlines()
     )
@@ -146,26 +149,30 @@ class VcfHeaderParser:
         return VcfHeader(sample_id, assembly, chr_status)
 
 
-def check_variant_assembly(proband_causative_variants: list[ProbandCausativeVariant], vcf_header: VcfHeader,
-                           phenopacket: Path):
+def check_variant_assembly(
+    proband_causative_variants: list[ProbandCausativeVariant],
+    vcf_header: VcfHeader,
+    phenopacket: Path,
+):
     """Checks the assembly of the variant assembly against the VCF."""
     compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
     for variant in proband_causative_variants:
         if variant.assembly not in compatible_genome_assembly:
             raise IncompatibleGenomeAssemblyError(variant.assembly, phenopacket)
         if variant.assembly != vcf_header.assembly:
-            raise IncompatibleGenomeAssemblyError(assembly=variant.assembly,
-                                                  phenopacket=phenopacket)
+            raise IncompatibleGenomeAssemblyError(
+                assembly=variant.assembly, phenopacket=phenopacket
+            )
 
 
 class VcfSpiker:
     """Spikes proband variants into template VCF file contents."""
 
     def __init__(
-            self,
-            vcf_contents: list[str],
-            proband_causative_variants: list[ProbandCausativeVariant],
-            vcf_header: VcfHeader,
+        self,
+        vcf_contents: list[str],
+        proband_causative_variants: list[ProbandCausativeVariant],
+        vcf_header: VcfHeader,
     ):
         self.vcf_contents = vcf_contents
         self.proband_causative_variants = proband_causative_variants
@@ -196,38 +203,38 @@ class VcfSpiker:
 
     def construct_vcf_records(self):
         """Inserts spiked variant into correct position within VCF."""
+        updated_vcf_records = copy(self.vcf_contents)
         for variant in self.proband_causative_variants:
             variant = self.construct_variant_entry(variant)
             variant_entry_position = [
-                                         i
-                                         for i, val in enumerate(self.vcf_contents)
-                                         if
-                                         val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
-                                     ][-1] + 1
-            self.vcf_contents.insert(variant_entry_position, "\t".join(variant))
+                i
+                for i, val in enumerate(updated_vcf_records)
+                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
+            ][-1] + 1
+            updated_vcf_records.insert(variant_entry_position, "\t".join(variant))
+        return updated_vcf_records
 
-    def construct_header(self) -> list[str]:
+    def construct_header(self, updated_vcf_records) -> list[str]:
         """Constructs the header of the VCF."""
-        updated_vcf = []
-        for line in self.vcf_contents:
+        updated_vcf_file = []
+        for line in updated_vcf_records:
             text = line.replace(
                 self.vcf_header.sample_id,
                 self.proband_causative_variants[0].proband_id,
             )
-            updated_vcf.append(text)
-        return updated_vcf
+            updated_vcf_file.append(text)
+        return updated_vcf_file
 
-    def construct_vcf(self):
-        self.construct_vcf_records()
-        return self.construct_header()
+    def construct_vcf(self) -> list[str]:
+        return self.construct_header(self.construct_vcf_records())
 
 
 class VcfWriter:
     def __init__(
-            self,
-            template_vcf_name: Path,
-            vcf_contents: list[str],
-            spiked_vcf_file_path: Path,
+        self,
+        template_vcf_name: Path,
+        vcf_contents: list[str],
+        spiked_vcf_file_path: Path,
     ):
         self.template_vcf_name = template_vcf_name
         self.vcf_contents = vcf_contents
@@ -257,8 +264,12 @@ class VcfWriter:
         self.write_gzip() if is_gzipped(self.spiked_vcf_file_path) else self.write_uncompressed()
 
 
-def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf_path: Path = None,
-              vcf_dir: Path = None) -> tuple[Path, str, list[str]]:
+def spike_vcf(
+    phenopacket: Phenopacket or Family,
+    output_dir: Path,
+    template_vcf_path: Path = None,
+    vcf_dir: Path = None,
+) -> tuple[Path, str, list[str]]:
     """Spikes VCF records with variants."""
     # this is a separate function to a click command as it will fail if annotated with click annotations
     # and referenced from another click command
@@ -274,17 +285,26 @@ def spike_vcf(phenopacket: Phenopacket or Family, output_dir: Path, template_vcf
     vcf_contents = read_vcf(chosen_template_vcf)
     vcf_header = VcfHeaderParser(vcf_contents).parse_vcf_header()
     check_variant_assembly(phenopacket_causative_variants, vcf_header, phenopacket)
-    return template_vcf_path, vcf_header.assembly, VcfSpiker(vcf_contents, phenopacket_causative_variants,
-                                                             vcf_header).construct_vcf()
+    return (
+        template_vcf_path,
+        vcf_header.assembly,
+        VcfSpiker(vcf_contents, phenopacket_causative_variants, vcf_header).construct_vcf(),
+    )
 
 
-def generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir) -> tuple[Path, str]:
+def generate_spiked_vcf_file(
+    output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+) -> tuple[Path, str]:
     """Writes spiked vcf contents to a new file."""
-    template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(phenopacket, output_dir, template_vcf_path, vcf_dir)
-    spiked_vcf_path = output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz")) if is_gzipped(
-        template_vcf_path) else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
-    VcfWriter(
-        template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
+    template_vcf_path, vcf_assembly, spiked_vcf = spike_vcf(
+        phenopacket, output_dir, template_vcf_path, vcf_dir
+    )
+    spiked_vcf_path = (
+        output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
+        if is_gzipped(template_vcf_path)
+        else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
+    )
+    VcfWriter(template_vcf_path, spiked_vcf, spiked_vcf_path).write_vcf_file()
     return spiked_vcf_path, vcf_assembly
 
 
@@ -326,13 +346,16 @@ def generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path, template
     type=Path,
 )
 def create_spiked_vcf(
-        phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
+    phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
 ):
     """Spikes variants into a template VCF file for a single phenopacket."""
     phenopacket = phenopacket_reader(phenopacket_path)
-    spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path,
-                                                             template_vcf_path, vcf_dir)
-    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_path, vcf_assembly)
+    spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
+        output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+    )
+    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
+        spiked_vcf_path, vcf_assembly
+    )
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
@@ -374,19 +397,21 @@ def create_spiked_vcf(
     type=Path,
 )
 def create_spiked_vcfs(
-        phenopacket_dir: Path,
-        output_dir: Path,
-        template_vcf_path: Path = None,
-        vcf_dir: Path = None,
+    phenopacket_dir: Path,
+    output_dir: Path,
+    template_vcf_path: Path = None,
+    vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         phenopacket = phenopacket_reader(phenopacket_path)
-        spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(output_dir, phenopacket, phenopacket_path,
-                                                                 template_vcf_path, vcf_dir)
-        updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_path, vcf_assembly)
+        spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
+            output_dir, phenopacket, phenopacket_path, template_vcf_path, vcf_dir
+        )
+        updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
+            spiked_vcf_path, vcf_assembly
+        )
         write_phenopacket(updated_phenopacket, phenopacket_path)
     # or made a lambda one-liner for maximum wtf...
     # [spike_vcf(path, output_dir, template_vcf, vcf_dir) for path in phenopacket_dir.iterdir() if path.suffix ==
     # ".json"]
-
