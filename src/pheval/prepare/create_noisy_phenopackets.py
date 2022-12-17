@@ -51,9 +51,7 @@ class HpoRandomiser:
         number_of_parent_terms: int,
     ) -> list[PhenotypicFeature]:
         """Returns a list of the HPO terms that have been converted to a parent term."""
-        remaining_hpo = [
-            i for i in phenotypic_features if i not in retained_phenotypic_features
-        ]
+        remaining_hpo = [i for i in phenotypic_features if i not in retained_phenotypic_features]
         number_of_parent_terms = (
             len(remaining_hpo)
             if number_of_parent_terms > len(remaining_hpo)
@@ -80,7 +78,9 @@ class HpoRandomiser:
 
     def create_random_hpo_terms(self, number_of_random_terms: int) -> list[PhenotypicFeature]:
         """Returns a list of random HPO terms"""
-        random_ids = list(random.sample(sorted(self.phenotypic_abnormalities), number_of_random_terms))
+        random_ids = list(
+            random.sample(sorted(self.phenotypic_abnormalities), number_of_random_terms)
+        )
         return [self.retrieve_hpo_term(random_id) for random_id in random_ids]
 
     def randomise_hpo_terms(
@@ -109,9 +109,7 @@ def noisy_phenopacket(
 ) -> Phenopacket or Family:
     # phenopacket_util = PhenopacketUtil(phenopacket)
     # phenotypic_features = phenopacket_util.observed_phenotypic_features()
-    phenotypic_features = PhenopacketUtil(
-        phenopacket
-    ).observed_phenotypic_features()
+    phenotypic_features = PhenopacketUtil(phenopacket).observed_phenotypic_features()
     random_phenotypes = hpo_randomiser.randomise_hpo_terms(
         phenotypic_features, max_real_id, number_of_parent_terms, number_of_random_terms
     )
@@ -191,7 +189,11 @@ def create_noisy_phenopacket(
     hpo_randomiser = HpoRandomiser(ontology)
     phenopacket_contents = phenopacket_reader(phenopacket)
     created_noisy_phenopacket = noisy_phenopacket(
-        hpo_randomiser, max_real_id, number_of_parent_terms, number_of_random_terms, phenopacket_contents
+        hpo_randomiser,
+        max_real_id,
+        number_of_parent_terms,
+        number_of_random_terms,
+        phenopacket_contents,
     )
     write_phenopacket(
         created_noisy_phenopacket,

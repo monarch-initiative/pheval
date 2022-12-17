@@ -1,14 +1,9 @@
 import os
 import unittest
 
-from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
-from oaklib.resource import OntologyResource
 from phenopackets import OntologyClass, PhenotypicFeature
 
-from pheval.prepare import create_noisy_phenopackets
-from pheval.prepare.create_noisy_phenopackets import load_ontology, HpoRandomiser
-
-# from pheval.prepare.create_noisy_phenopackets import phenotypic_abnormality_entities
+from pheval.prepare.create_noisy_phenopackets import HpoRandomiser, load_ontology
 
 test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
 
@@ -33,45 +28,103 @@ class TestHpoRandomiser(unittest.TestCase):
         cls.hpo_randomiser = HpoRandomiser(cls.hpo_ontology)
 
     def test_retrieve_hpo_term(self):
-        self.assertEqual(self.hpo_randomiser.retrieve_hpo_term("HP:0000256"),
-                         PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")))
+        self.assertEqual(
+            self.hpo_randomiser.retrieve_hpo_term("HP:0000256"),
+            PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
+        )
 
     def test_retain_real_patient_terms(self):
-        self.assertEqual(len(self.hpo_randomiser.retain_real_patient_terms(phenotypic_features, number_of_real_id=2)),
-                         2)
-        self.assertEqual(len(self.hpo_randomiser.retain_real_patient_terms(phenotypic_features, number_of_real_id=7)),
-                         3)
         self.assertEqual(
-            len(self.hpo_randomiser.retain_real_patient_terms(phenotypic_features_single_term, number_of_real_id=7)), 1)
+            len(
+                self.hpo_randomiser.retain_real_patient_terms(
+                    phenotypic_features, number_of_real_id=2
+                )
+            ),
+            2,
+        )
+        self.assertEqual(
+            len(
+                self.hpo_randomiser.retain_real_patient_terms(
+                    phenotypic_features, number_of_real_id=7
+                )
+            ),
+            3,
+        )
+        self.assertEqual(
+            len(
+                self.hpo_randomiser.retain_real_patient_terms(
+                    phenotypic_features_single_term, number_of_real_id=7
+                )
+            ),
+            1,
+        )
 
     def test_convert_patient_terms_to_parent(self):
         self.assertEqual(
-            len(self.hpo_randomiser.convert_patient_terms_to_parent(phenotypic_features,
-                                                                    self.hpo_randomiser.retain_real_patient_terms(
-                                                                        phenotypic_features, number_of_real_id=2),
-                                                                    number_of_parent_terms=2)), 2)
+            len(
+                self.hpo_randomiser.convert_patient_terms_to_parent(
+                    phenotypic_features,
+                    self.hpo_randomiser.retain_real_patient_terms(
+                        phenotypic_features, number_of_real_id=2
+                    ),
+                    number_of_parent_terms=2,
+                )
+            ),
+            2,
+        )
         self.assertEqual(
-            len(self.hpo_randomiser.convert_patient_terms_to_parent(phenotypic_features,
-                                                                    self.hpo_randomiser.retain_real_patient_terms(
-                                                                        phenotypic_features, number_of_real_id=7),
-                                                                    number_of_parent_terms=6)),
-            2)
+            len(
+                self.hpo_randomiser.convert_patient_terms_to_parent(
+                    phenotypic_features,
+                    self.hpo_randomiser.retain_real_patient_terms(
+                        phenotypic_features, number_of_real_id=7
+                    ),
+                    number_of_parent_terms=6,
+                )
+            ),
+            2,
+        )
         self.assertEqual(
-            len(self.hpo_randomiser.convert_patient_terms_to_parent(phenotypic_features_single_term,
-                                                                    self.hpo_randomiser.retain_real_patient_terms(
-                                                                        phenotypic_features_single_term,
-                                                                        number_of_real_id=7),
-                                                                    number_of_parent_terms=6)),
-            0)
+            len(
+                self.hpo_randomiser.convert_patient_terms_to_parent(
+                    phenotypic_features_single_term,
+                    self.hpo_randomiser.retain_real_patient_terms(
+                        phenotypic_features_single_term, number_of_real_id=7
+                    ),
+                    number_of_parent_terms=6,
+                )
+            ),
+            0,
+        )
 
     def test_create_random_hpo_terms(self):
-        self.assertEqual(len(self.hpo_randomiser.create_random_hpo_terms(number_of_random_terms=3)), 3)
-        self.assertEqual(len(self.hpo_randomiser.create_random_hpo_terms(number_of_random_terms=0)), 0)
+        self.assertEqual(
+            len(self.hpo_randomiser.create_random_hpo_terms(number_of_random_terms=3)), 3
+        )
+        self.assertEqual(
+            len(self.hpo_randomiser.create_random_hpo_terms(number_of_random_terms=0)), 0
+        )
 
     def test_randomise_hpo_terms(self):
         self.assertEqual(
-            len(self.hpo_randomiser.randomise_hpo_terms(phenotypic_features, max_real_id=3, number_of_parent_terms=4,
-                                                        number_of_random_terms=3)), 8)
+            len(
+                self.hpo_randomiser.randomise_hpo_terms(
+                    phenotypic_features,
+                    max_real_id=3,
+                    number_of_parent_terms=4,
+                    number_of_random_terms=3,
+                )
+            ),
+            8,
+        )
         self.assertEqual(
-            len(self.hpo_randomiser.randomise_hpo_terms(phenotypic_features_single_term, max_real_id=3, number_of_parent_terms=4,
-                                                        number_of_random_terms=3)), 4)
+            len(
+                self.hpo_randomiser.randomise_hpo_terms(
+                    phenotypic_features_single_term,
+                    max_real_id=3,
+                    number_of_parent_terms=4,
+                    number_of_random_terms=3,
+                )
+            ),
+            4,
+        )
