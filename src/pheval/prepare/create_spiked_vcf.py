@@ -14,6 +14,7 @@ from pheval.utils.phenopacket_utils import (
     PhenopacketUtil,
     ProbandCausativeVariant,
     phenopacket_reader,
+    write_phenopacket,
 )
 
 from .custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -153,9 +154,11 @@ class ProbandVariantChecker:
         self,
         proband_causative_variants: list[ProbandCausativeVariant],
         vcf_header: VcfHeader,
+        phenopacket: Path,
     ):
         self.proband_causative_variants = proband_causative_variants
         self.vcf_header = vcf_header
+        self.phenopacket = phenopacket
         self.compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
 
     def check_variant_assembly(self) -> list[ProbandCausativeVariant]:
@@ -164,7 +167,7 @@ class ProbandVariantChecker:
         incompatible_variants = []
         for variant in self.proband_causative_variants:
             if variant.assembly not in self.compatible_genome_assembly:
-                raise IncompatibleGenomeAssemblyError(variant.assembly, variant.phenopacket)
+                raise IncompatibleGenomeAssemblyError(variant.assembly, self.phenopacket)
             if variant.assembly != self.vcf_header.assembly:
                 incompatible_variants.append(variant)
         return incompatible_variants
@@ -289,7 +292,7 @@ def check_variants(
 ) -> None:
     """Checks variant compatibility against a VCF for a phenopacket."""
     incompatible_variants = ProbandVariantChecker(
-        phenopacket_causative_variants, vcf_header
+        phenopacket_causative_variants, vcf_header, phenopacket
     ).check_variant_assembly()
     if len(incompatible_variants) != 0:
         for incompatible_variant in incompatible_variants:
@@ -304,15 +307,15 @@ def check_variants(
 
 
 def add_created_vcf_path(
-    phenopacket: Path, phenopacket_contents, spiked_vcf_file_name: Path, vcf_header: VcfHeader
+    phenopacket_path: Path, phenopacket, spiked_vcf_file_name: Path, vcf_header: VcfHeader
 ) -> None:
     """Writes the created vcf path to phenopacket"""
-    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket_contents)
+    phenopacket_rebuilder = PhenopacketRebuilder(phenopacket)
     phenopacket_rebuilder.add_created_vcf_path(
         spiked_vcf_file_name,
         vcf_header.assembly,
     )
-    phenopacket_rebuilder.write_phenopacket(phenopacket)
+    write_phenopacket(phenopacket_rebuilder.phenopacket, phenopacket_path)
 
 
 def spike_vcf(phenopacket: Path, output_dir: Path, template_vcf: Path = None, vcf_dir: Path = None):
