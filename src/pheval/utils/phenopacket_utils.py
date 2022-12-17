@@ -207,7 +207,7 @@ class PhenopacketRebuilder:
             phenopacket.phenotypic_features.extend(randomised_hpo)
         return phenopacket
 
-    def add_created_vcf_path(self, vcf_path: Path, genome_assembly: str):
+    def add_spiked_vcf_path(self, vcf_path: Path, genome_assembly: str):
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
             file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
