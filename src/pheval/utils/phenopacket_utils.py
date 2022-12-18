@@ -54,6 +54,7 @@ def read_hgnc_data() -> pd.DataFrame:
 
 
 def create_hgnc_dict() -> defaultdict:
+    """Creates reference for updating gene symbols and identifiers."""
     hgnc_df = read_hgnc_data()
     hgnc_data = defaultdict(dict)
     for _index, row in hgnc_df.iterrows():
@@ -186,7 +187,8 @@ class PhenopacketRebuilder:
     def __init__(self, phenopacket: Phenopacket or Family):
         self.phenopacket = phenopacket
 
-    def update_interpretations(self, interpretations):
+    def update_interpretations(self, interpretations) -> Phenopacket or Family:
+        """Adds the updated interpretations to a phenopacket."""
         phenopacket = copy(self.phenopacket)
         if hasattr(phenopacket, "proband"):
             del phenopacket.proband.interpretations[:]
@@ -196,7 +198,7 @@ class PhenopacketRebuilder:
             phenopacket.interpretations.extend(interpretations)
         return phenopacket
 
-    def add_randomised_hpo(self, randomised_hpo):
+    def add_randomised_hpo(self, randomised_hpo) -> Phenopacket or Family:
         """Adds randomised phenotypic profile to phenopacket."""
         phenopacket = copy(self.phenopacket)
         if hasattr(phenopacket, "proband"):
@@ -207,16 +209,13 @@ class PhenopacketRebuilder:
             phenopacket.phenotypic_features.extend(randomised_hpo)
         return phenopacket
 
-    def add_spiked_vcf_path(self, vcf_path: Path, genome_assembly: str):
+    def add_spiked_vcf_path(self, spiked_vcf_file_data: File) -> Phenopacket or Family:
+        """Adds spiked vcf path to phenopacket."""
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
             file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
         ]
-        vcf_file_entry = File(
-            uri=os.path.abspath(vcf_path),
-            file_attributes={"fileFormat": "VCF", "genomeAssembly": genome_assembly},
-        )
-        phenopacket_files.append(vcf_file_entry)
+        phenopacket_files.append(spiked_vcf_file_data)
         del phenopacket.files[:]
         phenopacket.files.extend(phenopacket_files)
         return phenopacket
@@ -227,7 +226,8 @@ def create_json_message(phenopacket: Phenopacket or Family) -> str:
     return MessageToJson(phenopacket)
 
 
-def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path):
+def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path) -> None:
+    """Writes a phenopacket."""
     phenopacket_json = create_json_message(phenopacket)
     with open(output_file, "w") as outfile:
         outfile.write(phenopacket_json)
@@ -244,6 +244,7 @@ class GeneIdentifierUpdater:
         self.gene_identifier = gene_identifier
 
     def find_identifier(self, gene_symbol: str) -> str:
+        """Finds the specified gene identifier for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
             return self.hgnc_data[gene_symbol][self.gene_identifier]
         else:
@@ -253,6 +254,7 @@ class GeneIdentifierUpdater:
                         return data[self.gene_identifier]
 
     def find_alternate_ids(self, gene_symbol: str) -> list[str]:
+        """Finds the alternate IDs for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
             return [
                 self.hgnc_data[gene_symbol]["hgnc_id"],
@@ -271,7 +273,10 @@ class GeneIdentifierUpdater:
                             "symbol:" + symbol,
                         ]
 
-    def update_genomic_interpretations_gene_identifier(self, interpretations: Interpretation):
+    def update_genomic_interpretations_gene_identifier(
+        self, interpretations: Interpretation
+    ) -> Interpretation:
+        """Updates the genomic interpretations of a phenopacket."""
         updated_interpretations = copy(interpretations)
         for updated_interpretation in updated_interpretations:
             for g in updated_interpretation.diagnosis.genomic_interpretations:

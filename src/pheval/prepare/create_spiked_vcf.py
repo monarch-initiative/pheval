@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import gzip
 import logging
+import os
 import secrets
 import shutil
 from copy import copy
@@ -8,7 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import click
-from phenopackets import Family, Phenopacket
+from phenopackets import Family, File, Phenopacket
 
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
@@ -284,7 +285,7 @@ def spike_vcf(
 
 def generate_spiked_vcf_file(
     output_dir, phenopacket, phenopacket_path, chosen_template_vcf: Path
-) -> tuple[Path, str]:
+) -> File:
     """Writes spiked vcf contents to a new file."""
     try:
         output_dir.mkdir()
@@ -298,7 +299,10 @@ def generate_spiked_vcf_file(
         else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
     )
     VcfWriter(chosen_template_vcf, spiked_vcf, spiked_vcf_path).write_vcf_file()
-    return spiked_vcf_path, vcf_assembly
+    return File(
+        uri=os.path.abspath(spiked_vcf_path),
+        file_attributes={"fileFormat": "VCF", "genomeAssembly": vcf_assembly},
+    )
 
 
 @click.command()
@@ -346,11 +350,11 @@ def create_spiked_vcf(
         raise InputError("Either a template_vcf or vcf_dir must be specified")
     vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
     phenopacket = phenopacket_reader(phenopacket_path)
-    spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
+    spiked_vcf_file_data = generate_spiked_vcf_file(
         output_dir, phenopacket, phenopacket_path, vcf_file_path
     )
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-        spiked_vcf_path, vcf_assembly
+        spiked_vcf_file_data
     )
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
@@ -404,11 +408,11 @@ def create_spiked_vcfs(
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
         phenopacket = phenopacket_reader(phenopacket_path)
-        spiked_vcf_path, vcf_assembly = generate_spiked_vcf_file(
+        spiked_vcf_file_data = generate_spiked_vcf_file(
             output_dir, phenopacket, phenopacket_path, vcf_file_path
         )
         updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-            spiked_vcf_path, vcf_assembly
+            spiked_vcf_file_data
         )
         write_phenopacket(updated_phenopacket, phenopacket_path)
     # or made a lambda one-liner for maximum wtf...
