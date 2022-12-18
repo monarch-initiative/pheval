@@ -123,7 +123,7 @@ def noisy_phenopacket(
 
 @click.command()
 @click.option(
-    "--phenopacket",
+    "--phenopacket-path",
     "-P",
     metavar="PATH",
     required=True,
@@ -177,7 +177,7 @@ def noisy_phenopacket(
     type=Path,
 )
 def create_noisy_phenopacket(
-    phenopacket: Path,
+    phenopacket_path: Path,
     max_real_id: int,
     number_of_parent_terms: int,
     number_of_random_terms: int,
@@ -191,18 +191,18 @@ def create_noisy_phenopacket(
         pass
     ontology = load_ontology()
     hpo_randomiser = HpoRandomiser(ontology)
-    phenopacket_contents = phenopacket_reader(phenopacket)
+    phenopacket = phenopacket_reader(phenopacket_path)
     created_noisy_phenopacket = noisy_phenopacket(
         hpo_randomiser,
         max_real_id,
         number_of_parent_terms,
         number_of_random_terms,
-        phenopacket_contents,
+        phenopacket,
     )
     write_phenopacket(
         created_noisy_phenopacket,
         output_dir.joinpath(
-            Path(phenopacket).stem + "-" + output_file_suffix + Path(phenopacket).suffix
+            phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix
         ),
     )
 
@@ -278,17 +278,14 @@ def create_noisy_phenopackets(
     ontology = load_ontology()
     hpo_randomiser = HpoRandomiser(ontology)
     phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
-    for phenopacket_file in phenopacket_files:
-        phenopacket = phenopacket_reader(phenopacket_file)
+    for phenopacket_path in phenopacket_files:
+        phenopacket = phenopacket_reader(phenopacket_path)
         created_noisy_phenopacket = noisy_phenopacket(
             hpo_randomiser, max_real_id, number_of_parent_terms, number_of_random_terms, phenopacket
         )
         write_phenopacket(
             created_noisy_phenopacket,
             output_dir.joinpath(
-                Path(phenopacket_file).stem
-                + "-"
-                + output_file_suffix
-                + Path(phenopacket_file).suffix,
+                phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix,
             ),
         )

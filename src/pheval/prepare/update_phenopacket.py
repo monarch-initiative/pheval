@@ -29,7 +29,7 @@ def update_outdated_gene_context(
 
 @click.command()
 @click.option(
-    "--phenopacket",
+    "--phenopacket-path",
     "-p",
     metavar="FILE",
     required=True,
@@ -45,11 +45,11 @@ def update_outdated_gene_context(
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopacket(phenopacket: Path, gene_identifier: str):
+def update_phenopacket(phenopacket_path: Path, gene_identifier: str):
     """Update gene symbols and identifiers for a phenopacket."""
     hgnc_data = create_hgnc_dict()
-    updated_phenopacket = update_outdated_gene_context(phenopacket, gene_identifier, hgnc_data)
-    write_phenopacket(updated_phenopacket, phenopacket)
+    updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
+    write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
 @click.command()
