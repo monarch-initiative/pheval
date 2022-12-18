@@ -444,7 +444,10 @@ class TestPhenopacketRebuilder(unittest.TestCase):
 
     def test_add_created_vcf_path(self):
         updated_phenopacket = self.phenopacket_rebuilder.add_spiked_vcf_path(
-            Path("input_dir/test_vcf_dir/test_1.vcf"), "GRCh37"
+            File(
+                uri=str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()),
+                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+            )
         )
         vcf_file = [
             file
