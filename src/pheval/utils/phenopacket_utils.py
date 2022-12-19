@@ -274,8 +274,8 @@ class GeneIdentifierUpdater:
                         ]
 
     def update_genomic_interpretations_gene_identifier(
-        self, interpretations: Interpretation
-    ) -> Interpretation:
+        self, interpretations: list[Interpretation]
+    ) -> list[Interpretation]:
         """Updates the genomic interpretations of a phenopacket."""
         updated_interpretations = copy(interpretations)
         for updated_interpretation in updated_interpretations:
