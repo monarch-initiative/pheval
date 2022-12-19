@@ -277,7 +277,7 @@ class GeneIdentifierUpdater:
         self, interpretations: list[Interpretation]
     ) -> list[Interpretation]:
         """Updates the genomic interpretations of a phenopacket."""
-        updated_interpretations = copy(interpretations)
+        updated_interpretations = copy(list(interpretations))
         for updated_interpretation in updated_interpretations:
             for g in updated_interpretation.diagnosis.genomic_interpretations:
                 g.variant_interpretation.variation_descriptor.gene_context.value_id = (
