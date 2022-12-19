@@ -30,6 +30,7 @@ class HpoRandomiser:
         self.scramble_factor = scramble_factor
 
     def scramble_factor_proportions(self, phenotypic_features: list[PhenotypicFeature]):
+        """Calculate proportion of scrambled hpo terms from scramble factor."""
         if len(phenotypic_features) == 1:
             return 1
         else:
