@@ -99,6 +99,20 @@ class TestCheckVariantAssembly(unittest.TestCase):
                 "heterozygous",
             )
         ]
+        cls.multiple_assemblies = [
+            ProbandCausativeVariant(
+                "TEST1",
+                "hg19",
+                VariantData("1", 886190, "G", "A"),
+                "heterozygous",
+            ),
+            ProbandCausativeVariant(
+                "TEST1",
+                "hg38",
+                VariantData("1", 886190, "G", "A"),
+                "heterozygous",
+            ),
+        ]
         cls.vcf_header_compatible = VcfHeader("TEMPLATE", "GRCh37", True)
         cls.vcf_header_incompatible = VcfHeader("HG001", "GRCh38", False)
 
@@ -109,6 +123,12 @@ class TestCheckVariantAssembly(unittest.TestCase):
             ),
             None,
         )
+
+    def test_check_variant_assembly_phenopacket_assemblies(self):
+        with self.assertRaises(ValueError):
+            check_variant_assembly(
+                self.multiple_assemblies, self.vcf_header_compatible, Path("/path/to/phenopacket")
+            )
 
     def test_check_variant_assembly_incompatible_vcf(self):
         with self.assertRaises(IncompatibleGenomeAssemblyError):
