@@ -139,7 +139,7 @@ class PhenopacketUtil:
         """Returns all files associated with a phenopacket."""
         return self.phenopacket_contents.files
 
-    def vcf_file_data(self, phenopacket: Path, vcf_dir: Path) -> File:
+    def vcf_file_data(self, phenopacket_path: Path, vcf_dir: Path) -> File:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
@@ -149,7 +149,7 @@ class PhenopacketUtil:
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
             raise IncompatibleGenomeAssemblyError(
-                vcf_data.file_attributes["genomeAssembly"], phenopacket
+                vcf_data.file_attributes["genomeAssembly"], phenopacket_path
             )
         vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
         return vcf_data
