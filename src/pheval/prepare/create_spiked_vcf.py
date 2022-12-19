@@ -1,9 +1,7 @@
 #!/usr/bin/python
 import gzip
 import logging
-import os
 import secrets
-import shutil
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
@@ -106,7 +104,6 @@ def read_vcf(vcf_file: Path) -> list[str]:
     """Reads the contents of a VCF file into memory - handles both uncompressed and gzipped."""
     open_fn = gzip.open if is_gzipped(vcf_file) else open
     vcf = open_fn(vcf_file)
-    # vcf_contents = vcf.readlines()
     vcf_contents = (
         [line.decode() for line in vcf.readlines()] if is_gzipped(vcf_file) else vcf.readlines()
     )
@@ -153,17 +150,19 @@ class VcfHeaderParser:
 def check_variant_assembly(
     proband_causative_variants: list[ProbandCausativeVariant],
     vcf_header: VcfHeader,
-    phenopacket: Path,
+    phenopacket_path: Path,
 ):
     """Checks the assembly of the variant assembly against the VCF."""
-    compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-    for variant in proband_causative_variants:
-        if variant.assembly not in compatible_genome_assembly:
-            raise IncompatibleGenomeAssemblyError(variant.assembly, phenopacket)
-        if variant.assembly != vcf_header.assembly:
-            raise IncompatibleGenomeAssemblyError(
-                assembly=variant.assembly, phenopacket=phenopacket
-            )
+    compatible_genome_assembly = {"GRCh37", "hg19", "GRCh38", "hg38"}
+    phenopacket_assembly = list({variant.assembly for variant in proband_causative_variants})
+    if len(phenopacket_assembly) > 1:
+        raise ValueError("Too many genome assemblies!")
+    if phenopacket_assembly[0] not in compatible_genome_assembly:
+        raise IncompatibleGenomeAssemblyError(phenopacket_assembly, phenopacket_path)
+    if phenopacket_assembly[0] != vcf_header.assembly:
+        raise IncompatibleGenomeAssemblyError(
+            assembly=phenopacket_assembly, phenopacket=phenopacket_path
+        )
 
 
 class VcfSpiker:
@@ -234,17 +233,11 @@ class VcfSpiker:
 class VcfWriter:
     def __init__(
         self,
-        template_vcf_name: Path,
         vcf_contents: list[str],
         spiked_vcf_file_path: Path,
     ):
-        self.template_vcf_name = template_vcf_name
         self.vcf_contents = vcf_contents
         self.spiked_vcf_file_path = spiked_vcf_file_path
-
-    def copy_template_to_new_file(self) -> None:
-        """Copies template vcf file to a new file."""
-        shutil.copyfile(self.template_vcf_name, self.spiked_vcf_file_path)
 
     def write_gzip(self) -> None:
         """Writes gzipped vcf file."""
@@ -262,12 +255,12 @@ class VcfWriter:
 
     def write_vcf_file(self) -> None:
         """Writes spiked vcf file."""
-        self.copy_template_to_new_file()
         self.write_gzip() if is_gzipped(self.spiked_vcf_file_path) else self.write_uncompressed()
 
 
 def spike_vcf(
     phenopacket: Phenopacket or Family,
+    phenopacket_path: Path,
     chosen_template_vcf: Path,
 ) -> tuple[str, list[str]]:
     """Spikes VCF records with variants."""
@@ -276,7 +269,7 @@ def spike_vcf(
     phenopacket_causative_variants = PhenopacketUtil(phenopacket).causative_variants()
     vcf_contents = read_vcf(chosen_template_vcf)
     vcf_header = VcfHeaderParser(vcf_contents).parse_vcf_header()
-    check_variant_assembly(phenopacket_causative_variants, vcf_header, phenopacket)
+    check_variant_assembly(phenopacket_causative_variants, vcf_header, phenopacket_path)
     return (
         vcf_header.assembly,
         VcfSpiker(vcf_contents, phenopacket_causative_variants, vcf_header).construct_vcf(),
@@ -284,7 +277,10 @@ def spike_vcf(
 
 
 def generate_spiked_vcf_file(
-    output_dir, phenopacket, phenopacket_path, chosen_template_vcf: Path
+    output_dir: Path,
+    phenopacket: Phenopacket or Family,
+    phenopacket_path: Path,
+    chosen_template_vcf: Path,
 ) -> File:
     """Writes spiked vcf contents to a new file."""
     try:
@@ -292,15 +288,15 @@ def generate_spiked_vcf_file(
         info_log.info(f" Created a directory {output_dir}")
     except FileExistsError:
         pass
-    vcf_assembly, spiked_vcf = spike_vcf(phenopacket, chosen_template_vcf)
+    vcf_assembly, spiked_vcf = spike_vcf(phenopacket, phenopacket_path, chosen_template_vcf)
     spiked_vcf_path = (
         output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
         if is_gzipped(chosen_template_vcf)
         else output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf"))
     )
-    VcfWriter(chosen_template_vcf, spiked_vcf, spiked_vcf_path).write_vcf_file()
+    VcfWriter(spiked_vcf, spiked_vcf_path).write_vcf_file()
     return File(
-        uri=os.path.abspath(spiked_vcf_path),
+        uri=str(spiked_vcf_path.absolute()),
         file_attributes={"fileFormat": "VCF", "genomeAssembly": vcf_assembly},
     )
 
@@ -350,11 +346,11 @@ def create_spiked_vcf(
         raise InputError("Either a template_vcf or vcf_dir must be specified")
     vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
     phenopacket = phenopacket_reader(phenopacket_path)
-    spiked_vcf_file_data = generate_spiked_vcf_file(
+    spiked_vcf_file_message = generate_spiked_vcf_file(
         output_dir, phenopacket, phenopacket_path, vcf_file_path
     )
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-        spiked_vcf_file_data
+        spiked_vcf_file_message
     )
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
@@ -408,11 +404,11 @@ def create_spiked_vcfs(
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
         phenopacket = phenopacket_reader(phenopacket_path)
-        spiked_vcf_file_data = generate_spiked_vcf_file(
+        spiked_vcf_file_message = generate_spiked_vcf_file(
             output_dir, phenopacket, phenopacket_path, vcf_file_path
         )
         updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-            spiked_vcf_file_data
+            spiked_vcf_file_message
         )
         write_phenopacket(updated_phenopacket, phenopacket_path)
     # or made a lambda one-liner for maximum wtf...
