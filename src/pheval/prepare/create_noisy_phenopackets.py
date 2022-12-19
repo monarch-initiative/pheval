@@ -24,9 +24,16 @@ def load_ontology():
 class HpoRandomiser:
     """Randomises phenopacket phenotypic features."""
 
-    def __init__(self, hpo_ontology):
+    def __init__(self, hpo_ontology, scramble_factor: float):
         self.hpo_ontology = hpo_ontology
         self.phenotypic_abnormalities = set(hpo_ontology.roots(predicates=["HP:0000118"]))
+        self.scramble_factor = scramble_factor
+
+    def scramble_factor_proportions(self, phenotypic_features: list[PhenotypicFeature]):
+        if len(phenotypic_features) == 1:
+            return 1
+        else:
+            return int(round(len(phenotypic_features) * self.scramble_factor, 0))
 
     def retrieve_hpo_term(self, hpo_id: str) -> PhenotypicFeature:
         """Retrieves term for hpo id."""
@@ -36,30 +43,27 @@ class HpoRandomiser:
 
     @staticmethod
     def retain_real_patient_terms(
-        phenotypic_features: list[PhenotypicFeature], number_of_real_id
+        phenotypic_features: list[PhenotypicFeature],
+        number_of_scrambled_terms: int,
     ) -> list[PhenotypicFeature]:
         """Returns a list of the maximum number of real patient HPO terms."""
-        if number_of_real_id > len(phenotypic_features):
-            if len(phenotypic_features) - 2 > 0:
-                number_of_real_id = len(phenotypic_features) - 2
-            else:
-                number_of_real_id = 1
+        if len(phenotypic_features) > 1:
+            number_of_real_id = len(phenotypic_features) - number_of_scrambled_terms
+        else:
+            number_of_real_id = 1
         return random.sample(phenotypic_features, number_of_real_id)
 
     def convert_patient_terms_to_parent(
         self,
         phenotypic_features: list[PhenotypicFeature],
         retained_phenotypic_features: list[PhenotypicFeature],
-        number_of_parent_terms: int,
+        number_of_scrambled_terms: int,
     ) -> list[PhenotypicFeature]:
         """Returns a list of the HPO terms that have been converted to a parent term."""
         remaining_hpo = [i for i in phenotypic_features if i not in retained_phenotypic_features]
-        number_of_parent_terms = (
-            len(remaining_hpo)
-            if number_of_parent_terms > len(remaining_hpo)
-            else number_of_parent_terms
-        )
-        hpo_terms_to_be_changed = random.sample(remaining_hpo, number_of_parent_terms)
+        if len(remaining_hpo) == 0:
+            number_of_scrambled_terms = 0
+        hpo_terms_to_be_changed = list(random.sample(remaining_hpo, number_of_scrambled_terms))
         parent_terms = []
         for term in hpo_terms_to_be_changed:
             try:
@@ -78,45 +82,40 @@ class HpoRandomiser:
                 )
         return parent_terms
 
-    def create_random_hpo_terms(self, number_of_random_terms: int) -> list[PhenotypicFeature]:
+    def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> list[PhenotypicFeature]:
         """Returns a list of random HPO terms"""
         random_ids = list(
-            random.sample(sorted(self.phenotypic_abnormalities), number_of_random_terms)
+            random.sample(sorted(self.phenotypic_abnormalities), number_of_scrambled_terms)
         )
         return [self.retrieve_hpo_term(random_id) for random_id in random_ids]
 
     def randomise_hpo_terms(
         self,
         phenotypic_features: list[PhenotypicFeature],
-        max_real_id: int,
-        number_of_parent_terms: int,
-        number_of_random_terms: int,
     ) -> list[PhenotypicFeature]:
         """Returns a list of randomised HPO terms."""
-        retained_patient_terms = self.retain_real_patient_terms(phenotypic_features, max_real_id)
+        number_of_scrambled_terms = self.scramble_factor_proportions(phenotypic_features)
+        retained_patient_terms = self.retain_real_patient_terms(
+            phenotypic_features, number_of_scrambled_terms
+        )
         return (
             retained_patient_terms
             + self.convert_patient_terms_to_parent(
-                phenotypic_features, retained_patient_terms, number_of_parent_terms
+                phenotypic_features, retained_patient_terms, number_of_scrambled_terms
             )
-            + self.create_random_hpo_terms(number_of_random_terms)
+            + self.create_random_hpo_terms(number_of_scrambled_terms)
         )
 
 
 def noisy_phenopacket(
     hpo_randomiser: HpoRandomiser,
-    max_real_id: int,
-    number_of_parent_terms: int,
-    number_of_random_terms: int,
     phenopacket: Phenopacket or Family,
 ) -> Phenopacket or Family:
     """Randomises the phenotypic profile of a phenopacket."""
     # phenopacket_util = PhenopacketUtil(phenopacket)
     # phenotypic_features = phenopacket_util.observed_phenotypic_features()
     phenotypic_features = PhenopacketUtil(phenopacket).observed_phenotypic_features()
-    random_phenotypes = hpo_randomiser.randomise_hpo_terms(
-        phenotypic_features, max_real_id, number_of_parent_terms, number_of_random_terms
-    )
+    random_phenotypes = hpo_randomiser.randomise_hpo_terms(phenotypic_features)
     randomised_phenopacket = PhenopacketRebuilder(phenopacket).add_randomised_hpo(random_phenotypes)
     return randomised_phenopacket
 
@@ -131,34 +130,14 @@ def noisy_phenopacket(
     type=Path,
 )
 @click.option(
-    "--max-real-id",
-    "-m",
-    metavar="<int>",
+    "--scramble-factor",
+    "-s",
+    metavar=float,
     required=True,
-    help="Maximum number of real patient HPO ids to retain",
-    type=int,
-    default=3,
+    default=0.5,
     show_default=True,
-)
-@click.option(
-    "--number-of-parent-terms",
-    "-p",
-    metavar="<int>",
-    required=True,
-    help="Number of real patient HPO ids to change to parent terms",
-    type=int,
-    default=2,
-    show_default=True,
-)
-@click.option(
-    "--number-of-random-terms",
-    "-r",
-    metavar="<int>",
-    required=True,
-    help="Number of random HPO ids to introduce",
-    type=int,
-    default=3,
-    show_default=True,
+    help="Scramble factor for randomising phenopacket phenotypic profiles.",
+    type=float,
 )
 @click.option(
     "--output-file-suffix",
@@ -178,9 +157,7 @@ def noisy_phenopacket(
 )
 def create_noisy_phenopacket(
     phenopacket_path: Path,
-    max_real_id: int,
-    number_of_parent_terms: int,
-    number_of_random_terms: int,
+    scramble_factor: float,
     output_file_suffix: str,
     output_dir: Path,
 ):
@@ -190,13 +167,10 @@ def create_noisy_phenopacket(
     except FileExistsError:
         pass
     ontology = load_ontology()
-    hpo_randomiser = HpoRandomiser(ontology)
+    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
     phenopacket = phenopacket_reader(phenopacket_path)
     created_noisy_phenopacket = noisy_phenopacket(
         hpo_randomiser,
-        max_real_id,
-        number_of_parent_terms,
-        number_of_random_terms,
         phenopacket,
     )
     write_phenopacket(
@@ -217,34 +191,14 @@ def create_noisy_phenopacket(
     type=Path,
 )
 @click.option(
-    "--max-real-id",
-    "-m",
-    metavar="<int>",
+    "--scramble-factor",
+    "-s",
+    metavar=float,
     required=True,
-    help="Maximum number of real patient HPO ids to retain",
-    type=int,
-    default=3,
+    default=0.5,
     show_default=True,
-)
-@click.option(
-    "--number-of-parent-terms",
-    "-p",
-    metavar="<int>",
-    required=True,
-    help="Number of real patient HPO ids to change to parent terms",
-    type=int,
-    default=2,
-    show_default=True,
-)
-@click.option(
-    "--number-of-random-terms",
-    "-r",
-    metavar="<int>",
-    required=True,
-    help="Number of random HPO ids to introduce",
-    type=int,
-    default=3,
-    show_default=True,
+    help="Scramble factor for randomising phenopacket phenotypic profiles.",
+    type=float,
 )
 @click.option(
     "--output-file-suffix",
@@ -264,9 +218,7 @@ def create_noisy_phenopacket(
 )
 def create_noisy_phenopackets(
     phenopacket_dir: Path,
-    max_real_id: int,
-    number_of_parent_terms: int,
-    number_of_random_terms: int,
+    scramble_factor: float,
     output_file_suffix: str,
     output_dir: Path,
 ):
@@ -276,13 +228,11 @@ def create_noisy_phenopackets(
     except FileExistsError:
         pass
     ontology = load_ontology()
-    hpo_randomiser = HpoRandomiser(ontology)
+    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
     phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket_path in phenopacket_files:
         phenopacket = phenopacket_reader(phenopacket_path)
-        created_noisy_phenopacket = noisy_phenopacket(
-            hpo_randomiser, max_real_id, number_of_parent_terms, number_of_random_terms, phenopacket
-        )
+        created_noisy_phenopacket = noisy_phenopacket(hpo_randomiser, phenopacket)
         write_phenopacket(
             created_noisy_phenopacket,
             output_dir.joinpath(
