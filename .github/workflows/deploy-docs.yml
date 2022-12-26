@@ -30,7 +30,7 @@ jobs:
         touch gh-pages/.nojekyll
         ./docs_gen.sh
         poetry run mkdocs build
-        mv site/* ../gh-pages/
+        mv site/* ./gh-pages/
     
     - name: Deploy documentation.
       if: ${{ github.event_name == 'push' }}
