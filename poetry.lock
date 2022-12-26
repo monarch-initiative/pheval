@@ -269,6 +269,17 @@ Markdown = ">=3.3"
 mkdocs = ">=1.1"
 
 [[package]]
+name = "mkdocs-include-dir-to-nav"
+version = "1.2.0"
+description = "A MkDocs plugin include all file in dir to navigation"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+mkdocs = ">=1.0.4"
+
+[[package]]
 name = "mkdocs-material"
 version = "8.5.11"
 description = "Documentation that simply works"
@@ -558,7 +569,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9"
-content-hash = "94b4c65dab1554fb4f4cd1461ca760d1ae4ad5a9fbf6e93ca97e843076d38fda"
+content-hash = "6a3776f95b3d1f7fb10f749500b0a302efc1b738117b96386a4217da45b963aa"
 
 [metadata.files]
 attrs = [
@@ -754,6 +765,10 @@ mkdocs = [
 mkdocs-autorefs = [
     {file = "mkdocs-autorefs-0.4.1.tar.gz", hash = "sha256:70748a7bd025f9ecd6d6feeba8ba63f8e891a1af55f48e366d6d6e78493aba84"},
     {file = "mkdocs_autorefs-0.4.1-py3-none-any.whl", hash = "sha256:a2248a9501b29dc0cc8ba4c09f4f47ff121945f6ce33d760f145d6f89d313f5b"},
+]
+mkdocs-include-dir-to-nav = [
+    {file = "mkdocs_include_dir_to_nav-1.2.0-py3-none-any.whl", hash = "sha256:b09de17ad754aa93aec7ba64acf8fdd53f7a2ceb92e8cffe21646b0e97f4ddf0"},
+    {file = "mkdocs_include_dir_to_nav-1.2.0.tar.gz", hash = "sha256:2d7b0bb581471fce6f215b6381f1f4d90a3a069829281b7f5d01a5b7abee15d0"},
 ]
 mkdocs-material = [
     {file = "mkdocs_material-8.5.11-py3-none-any.whl", hash = "sha256:c907b4b052240a5778074a30a78f31a1f8ff82d7012356dc26898b97559f082e"},

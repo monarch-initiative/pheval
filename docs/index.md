@@ -1,4 +1,4 @@
-# PhEval - Phenotypic Inference Evaluation Framework
+# Phenotypic Inference Evaluation Framework
 
 ## Description
 

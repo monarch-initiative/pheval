@@ -50,16 +50,23 @@ from pheval.implementations import get_implementation_resolver
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
 )
-def run(inputdir, testdatadir, runner, tmpdir, outputdir, config) -> None:
+def run(
+    inputdir: click.Path,
+    testdatadir: click.Path,
+    runner: str,
+    tmpdir: click.Path,
+    outputdir: click.Path,
+    config: click.Path,
+) -> None:
     """PhEval Runner Command Line Interface
 
     Args:
-        inputdir (Click.Path): The input directory (relative path: e.g exomiser-13.11)
-        testdatadir (Click.Path): The input directory (relative path: e.g ./data
+        inputdir (click.Path): The input directory (relative path: e.g exomiser-13.11)
+        testdatadir (click.Path): The input directory (relative path: e.g ./data
         runner (str): Runner implementation (e.g exomiser-13.11)
-        tmpdir (Click.Path): The path of the temporary directory (optional)
-        outputdir (Click.Path): The path of the output directory
-        config (Click.Path): The path of the configuration file (optional e.g config.yaml)
+        tmpdir (click.Path): The path of the temporary directory (optional)
+        outputdir (click.Path): The path of the output directory
+        config (click.Path): The path of the configuration file (optional e.g config.yaml)
     """
     runner_class = get_implementation_resolver().lookup(runner)
     runner_instance = runner_class(inputdir, testdatadir, tmpdir, outputdir, config)

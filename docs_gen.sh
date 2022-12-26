@@ -4,15 +4,15 @@
 
 SOURCE_FOLDER='./src'
 FILES=$(find $SOURCE_FOLDER -type f -iname '*.py' -not -iname '__init__.py' -not -empty)
-rm -rfv ./docs/api
+rm -rf ./docs/api
 
 for f in $FILES
 do
-
     clean_dir=${f#./src/}
-    folder=${clean_dir%/*}
+    last_folder=`dirname $clean_dir`
+    full_fname="${f##*/}"
+    fname="${full_fname%%.*}"
+    mkdir -p ./docs/api/$last_folder
     ref=$(echo $f | sed 's#/#.#g' | sed 's/..src/src/g' | sed 's/\.[^.]*$//')
-    mkdir -p ./docs/api/$folder/
-    touch ./docs/api/$folder/reference.md
-    echo  ::: $ref >> ./docs/api/$folder/reference.md
+    echo ::: $ref >> ./docs/api/$last_folder/$fname.md
 done

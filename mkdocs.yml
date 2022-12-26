@@ -33,8 +33,18 @@ markdown_extensions:
 plugins:
   - search
   - autorefs
+  - include_dir_to_nav
   - mkdocstrings:
       enable_inventory: true
 
 watch:
   - src
+
+nav:
+    - 'index.md'
+    - 'developing_a_pheval_plugin.md'
+    - API Documentation: api/
+    - 'roadmap.md'
+    - 'styleguide.md'
+    - 'contributing.md'
+    - 'CODE_OF_CONDUCT.md'

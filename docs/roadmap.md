@@ -1,5 +1,5 @@
-# PhEval - Roadmap
+# Roadmap
 
-- [ ]  PhEval CLI
-- [ ]  PhEval Exomiser Integration
+- [x]  PhEval CLI
+- [x]  PhEval Exomiser Integration
 - [ ]  PhEval Utils Implementation
