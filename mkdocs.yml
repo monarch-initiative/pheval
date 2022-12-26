@@ -33,21 +33,21 @@ markdown_extensions:
 plugins:
   - search
   - autorefs
-  - include_dir_to_nav
+  # - include_dir_to_nav
   - mkdocstrings:
       enable_inventory: true
 
 watch:
   - src
 
-nav:
-    - 'index.md'
-    - About: 'about.md'
-    - Contact Us: 'contact.md'
-    - API Documentation: api/
-    - Resources for contributors:
-      - 'developing_a_pheval_plugin.md'
-      - 'contributing.md'
-      - 'styleguide.md'
-      - 'CODE_OF_CONDUCT.md'
-    - 'roadmap.md'
+# nav:
+#     - 'index.md'
+#     - About: 'about.md'
+#     - Contact Us: 'contact.md'
+#     - API Documentation: api/
+#     - Resources for contributors:
+#       - 'developing_a_pheval_plugin.md'
+#       - 'contributing.md'
+#       - 'styleguide.md'
+#       - 'CODE_OF_CONDUCT.md'
+#     - 'roadmap.md'
