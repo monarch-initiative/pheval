@@ -28,10 +28,9 @@ jobs:
         echo ${{ secrets.GH_TOKEN }} >> src/pheval/token.txt
         mkdir gh-pages
         touch gh-pages/.nojekyll
-        cd docs/
-        poetry run sphinx-apidoc -o . ../src/pheval/ --ext-autodoc -f
-        poetry run sphinx-build -b html . _build
-        cp -r _build/* ../gh-pages/
+        ./docs_gen.sh
+        mkdocs build
+        mv site/* ../gh-pages/
     
     - name: Deploy documentation.
       if: ${{ github.event_name == 'push' }}
