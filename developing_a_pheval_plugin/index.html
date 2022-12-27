@@ -463,9 +463,129 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Developing a PhEval Plugin
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Developing a PhEval Plugin
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner" class="md-nav__link">
+    src.pheval.runners.runner.PhEvalRunner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-plugin-development-process" class="md-nav__link">
+    Step-by-Step Plugin Development Process
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Plugin Development Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sphintoxetry-cookiecutter-scaffold" class="md-nav__link">
+    1. Sphintoxetry-cookiecutter scaffold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-further-setup" class="md-nav__link">
+    2. Further setup
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Further setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-poetry-if-you-havent-already" class="md-nav__link">
+    Install poetry if you haven't already.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-pheval-dependency" class="md-nav__link">
+    Add PhEval dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-tox-to-see-if-the-setup-works" class="md-nav__link">
+    Run tox to see if the setup works
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-implement-pheval-custom-runner" class="md-nav__link">
+    3. Implement PhEval Custom Runner
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-add-pheval-plugins-section-into-the-pyprojecttoml-file" class="md-nav__link">
+    4. Add PhEval Plugins section into the pyproject.toml file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-it" class="md-nav__link">
+    5. Test it.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -555,6 +675,110 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner" class="md-nav__link">
+    src.pheval.runners.runner.PhEvalRunner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-plugin-development-process" class="md-nav__link">
+    Step-by-Step Plugin Development Process
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Plugin Development Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sphintoxetry-cookiecutter-scaffold" class="md-nav__link">
+    1. Sphintoxetry-cookiecutter scaffold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-further-setup" class="md-nav__link">
+    2. Further setup
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Further setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-poetry-if-you-havent-already" class="md-nav__link">
+    Install poetry if you haven't already.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-pheval-dependency" class="md-nav__link">
+    Add PhEval dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-tox-to-see-if-the-setup-works" class="md-nav__link">
+    Run tox to see if the setup works
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-implement-pheval-custom-runner" class="md-nav__link">
+    3. Implement PhEval Custom Runner
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-add-pheval-plugins-section-into-the-pyprojecttoml-file" class="md-nav__link">
+    4. Add PhEval Plugins section into the pyproject.toml file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-it" class="md-nav__link">
+    5. Test it.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -569,6 +793,166 @@
 
 
 <h1 id="developing-a-pheval-plugin">Developing a PhEval Plugin</h1>
+<h2 id="description">Description</h2>
+<p>Plugin development allows PhEval to be extensible, as we have designed it.
+The plugin goal is to be flexible through custom runner implementations. This plugin development enhances the PhEval functionality. You can build one quickly using this step-by-step process.</p>
+<p><mark><em>All custom Runners implementations must implement all</em> <strong>PhevalRunner</strong> <em>methods</em></mark>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+<a id="src.pheval.runners.runner.PhEvalRunner"></a>
+  <div class="doc doc-contents first">
+      <p class="doc doc-class-bases">
+        Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+  
+      <p>PhEvalRunner Class</p>
+
+
+        <details class="quote">
+          <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PhEvalRunner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;PhEvalRunner Class&quot;&quot;&quot;</span>
+
+    <span class="n">inputdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">testdatadir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">tmpdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">outputdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+</div><hr />
+<h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
+<p>The plugin structure is derived from a <a href="https://cookiecutter.readthedocs.io/en/stable/">cookiecutter</a> template, <a href="https://github.com/hrshdhgd/sphintoxetry-cookiecutter">Sphintoxetry-cookiecutter</a>, and it uses <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, <a href="https://tox.wiki/en/latest/">tox</a> and <a href="https://python-poetry.org">poetry</a> as core dependencies.
+This allows PhEval extensibility to be standardized in terms of documentation and dependency management.</p>
+<h3 id="1-sphintoxetry-cookiecutter-scaffold">1. Sphintoxetry-cookiecutter scaffold</h3>
+<p>First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.</p>
+<p>Install cruft from pip</p>
+<p><div class="highlight"><pre><span></span><code>pip install cruft
+</code></pre></div>
+Next, create a project using the sphintoxetry-cookiecutter template.</p>
+<div class="highlight"><pre><span></span><code>cruft create https://github.com/hrshdhgd/sphintoxetry-cookiecutter
+</code></pre></div>
+<h3 id="2-further-setup">2. Further setup</h3>
+<h4 id="install-poetry-if-you-havent-already">Install poetry if you haven't already.</h4>
+<div class="highlight"><pre><span></span><code>pip install poetry
+</code></pre></div>
+<h4 id="install-dependencies">Install dependencies</h4>
+<div class="highlight"><pre><span></span><code>poetry install
+</code></pre></div>
+<h4 id="add-pheval-dependency">Add PhEval dependency</h4>
+<div class="highlight"><pre><span></span><code>poetry add pheval
+</code></pre></div>
+<h4 id="run-tox-to-see-if-the-setup-works">Run tox to see if the setup works</h4>
+<div class="highlight"><pre><span></span><code>poetry run tox
+</code></pre></div>
+<h3 id="3-implement-pheval-custom-runner">3. Implement PhEval Custom Runner</h3>
+<p><em>The runner name is arbitrary and custom Runner name was chose by demonstrative purposes</em></p>
+<p>Create a runner file inside the plugin project, e.g:</p>
+<p><img alt="a" src="../imgs/plugin_example_folder_structure.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Custom Pheval Runner&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">from</span> <span class="nn">pheval.runners.runner</span> <span class="kn">import</span> <span class="n">PhEvalRunner</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">CustomPhevalRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;_summary_&quot;&quot;&quot;</span>
+
+    <span class="n">inputdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">testdatadir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">tmpdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">outputdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
+
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;preparing&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running with custom pheval Runner&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;post processing&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="4-add-pheval-plugins-section-into-the-pyprojecttoml-file">4. Add PhEval Plugins section into the pyproject.toml file</h3>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry.plugins.&quot;pheval.plugins&quot;]</span><span class="w"></span>
+<span class="n">customrunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pheval_plugin_example.runner:CustomPhevalRunner&quot;</span><span class="w"></span>
+</code></pre></div>
+<p><mark>Replace the value above with the path to your custom runner plugin</mark></p>
+<h3 id="5-test-it">5. Test it.</h3>
+<p>To update your custom pheval runner implementation, you must first install the package</p>
+<div class="highlight"><pre><span></span><code>poetry install
+</code></pre></div>
+<p>Now you have to be able to run PhEval passing your custom runner as parameter. e.g</p>
+<p><div class="highlight"><pre><span></span><code>pheval run -i input.txt -t &#39;./test&#39; -r &#39;customphevalrunner&#39; -o out.txt
+</code></pre></div>
+The <code>-r</code> parameter stands for your plugin runner class name and it must be entirely lowercase.</p>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>preparing
+running with custom pheval Runner
+post processing
+</code></pre></div>
+<p>Pay attention to "<em><mark>running with custom pheval Runner</mark></em>" line, this is exactly what we had implemented in the <strong>CustomPhevalRunner</strong> Example</p>
 
 
 
