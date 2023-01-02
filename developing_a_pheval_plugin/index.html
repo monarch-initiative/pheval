@@ -502,6 +502,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
+    post_process()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
+    prepare()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
+    run()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-by-step-plugin-development-process" class="md-nav__link">
     Step-by-Step Plugin Development Process
   </a>
@@ -696,6 +717,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
+    post_process()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
+    prepare()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
+    run()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-by-step-plugin-development-process" class="md-nav__link">
     Step-by-Step Plugin Development Process
   </a>
@@ -870,22 +912,120 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 
 
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="src.pheval.runners.runner.PhEvalRunner.post_process" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">post_process</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>post_process</p>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="src.pheval.runners.runner.PhEvalRunner.prepare" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">prepare</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>prepare</p>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="src.pheval.runners.runner.PhEvalRunner.run" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>run</p>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
 
 
   </div>
 
   </div>
 
-</div><hr />
+</div><p>handler: python
+options:
+members: - PhEvalRunner
+show_root_heading: false
+show_source: true</p>
+<hr />
 <h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
 <p>The plugin structure is derived from a <a href="https://cookiecutter.readthedocs.io/en/stable/">cookiecutter</a> template, <a href="https://github.com/hrshdhgd/sphintoxetry-cookiecutter">Sphintoxetry-cookiecutter</a>, and it uses <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, <a href="https://tox.wiki/en/latest/">tox</a> and <a href="https://python-poetry.org">poetry</a> as core dependencies.
 This allows PhEval extensibility to be standardized in terms of documentation and dependency management.</p>
 <h3 id="1-sphintoxetry-cookiecutter-scaffold">1. Sphintoxetry-cookiecutter scaffold</h3>
 <p>First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.</p>
 <p>Install cruft from pip</p>
-<p><div class="highlight"><pre><span></span><code>pip install cruft
+<div class="highlight"><pre><span></span><code>pip install cruft
 </code></pre></div>
-Next, create a project using the sphintoxetry-cookiecutter template.</p>
+<p>Next, create a project using the sphintoxetry-cookiecutter template.</p>
 <div class="highlight"><pre><span></span><code>cruft create https://github.com/hrshdhgd/sphintoxetry-cookiecutter
 </code></pre></div>
 <h3 id="2-further-setup">2. Further setup</h3>
@@ -905,7 +1045,7 @@ Next, create a project using the sphintoxetry-cookiecutter template.</p>
 <p><em>The runner name is arbitrary and custom Runner name was chose by demonstrative purposes</em></p>
 <p>Create a runner file inside the plugin project, e.g:</p>
 <p><img alt="a" src="../imgs/plugin_example_folder_structure.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Custom Pheval Runner&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Custom Pheval Runner.&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span> <span class="nn">click</span>
@@ -914,7 +1054,7 @@ Next, create a project using the sphintoxetry-cookiecutter template.</p>
 
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">CustomPhevalRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;_summary_&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;CustomPhevalRunner Class.&quot;&quot;&quot;</span>
 
     <span class="n">inputdir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
     <span class="n">testdatadir</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
@@ -923,15 +1063,15 @@ Next, create a project using the sphintoxetry-cookiecutter template.</p>
     <span class="n">config</span><span class="p">:</span> <span class="n">click</span><span class="o">.</span><span class="n">Path</span>
 
     <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;prepare method.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;preparing&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;run method.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running with custom pheval Runner&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;post_process method.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;post processing&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="4-add-pheval-plugins-section-into-the-pyprojecttoml-file">4. Add PhEval Plugins section into the pyproject.toml file</h3>
@@ -944,9 +1084,9 @@ Next, create a project using the sphintoxetry-cookiecutter template.</p>
 <div class="highlight"><pre><span></span><code>poetry install
 </code></pre></div>
 <p>Now you have to be able to run PhEval passing your custom runner as parameter. e.g</p>
-<p><div class="highlight"><pre><span></span><code>pheval run -i input.txt -t &#39;./test&#39; -r &#39;customphevalrunner&#39; -o out.txt
+<div class="highlight"><pre><span></span><code>pheval run -i input.txt -t &#39;./test&#39; -r &#39;customphevalrunner&#39; -o out.txt
 </code></pre></div>
-The <code>-r</code> parameter stands for your plugin runner class name and it must be entirely lowercase.</p>
+<p>The <code>-r</code> parameter stands for your plugin runner class name and it must be entirely lowercase.</p>
 <p>Output:</p>
 <div class="highlight"><pre><span></span><code>preparing
 running with custom pheval Runner
