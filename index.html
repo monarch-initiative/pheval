@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="assets/_mkdocstrings.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -248,6 +250,19 @@
   <a href="#introduction" class="md-nav__link">
     Introduction
   </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pheval-tool-specific-processing-vp-pipeline" class="md-nav__link">
+    PhEval: Tool-specific processing (VP pipeline)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -595,6 +610,19 @@
     Introduction
   </a>
   
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pheval-tool-specific-processing-vp-pipeline" class="md-nav__link">
+    PhEval: Tool-specific processing (VP pipeline)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -615,6 +643,24 @@
 <h1 id="home">Home</h1>
 <h2 id="introduction">Introduction</h2>
 <p>PhEval - Phenotypic Inference Evaluation Framework</p>
+<h3 id="pheval-tool-specific-processing-vp-pipeline">PhEval: Tool-specific processing (VP pipeline)</h3>
+<div class="mermaid">flowchart LR
+    PC--&gt;DP
+    PC[(Phenopackets Corpus)]
+    SSSOM[Semantic Similarity Profiles Mapping Commons]--&gt;|OAK-SEMSIM|DP[Data Prepare]
+    KG[Source data KG - Monarch KG]--&gt;|KGX-BIOLINK|DP[Data Prepare]
+    ONT[Ontologies - Phenio]--&gt;|OAK-ONTO|DP[Data Prepare]
+    DP--&gt;RP[Run Prepare]
+    RP--&gt;PR[PhEval Runner]
+    PR--&gt;DP2[Data Process]
+    ER[Exomiser Runner]--&gt;PR
+    EDP[Exomiser Data Prepare]--&gt;DP
+    ERP[Exomiser Run Prepare]--&gt;RP
+    PPP[Disease-profile similarity prediction Post-process]--&gt;DP2
+    PV[Phenotype/Variant]--&gt;DP2
+    GVP[Gene VP Post-process]--&gt;DP2
+    EPP[Exomiser Post Process]--&gt;GVP
+    GVP--&gt;VPR[VP Report]</div>
 <p><strong>Quick links:</strong></p>
 <ul>
 <li><a href="https://github.com/monarch-initiative/pheval/">GitHub page</a></li>
@@ -681,6 +727,8 @@
     
     
       <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
     
     
