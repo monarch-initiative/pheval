@@ -1,19 +1,17 @@
 # Developing a PhEval Plugin
 
 ## Description
+
 Plugin development allows PhEval to be extensible, as we have designed it.
 The plugin goal is to be flexible through custom runner implementations. This plugin development enhances the PhEval functionality. You can build one quickly using this step-by-step process.
 
-
-==*All custom Runners implementations must implement all* **PhevalRunner** *methods*==
+==_All custom Runners implementations must implement all_ **PhevalRunner** _methods_==
 ::: src.pheval.runners.runner.PhEvalRunner
-    handler: python
-    options:
-      members:
-        - PhEvalRunner
-      show_root_heading: false
-      show_source: true
-
+handler: python
+options:
+members: - PhEvalRunner
+show_root_heading: false
+show_source: true
 
 ---
 
@@ -23,6 +21,7 @@ The plugin structure is derived from a [cookiecutter](https://cookiecutter.readt
 This allows PhEval extensibility to be standardized in terms of documentation and dependency management.
 
 ### 1. Sphintoxetry-cookiecutter scaffold
+
 First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.
 
 Install cruft from pip
@@ -30,6 +29,7 @@ Install cruft from pip
 ```bash
 pip install cruft
 ```
+
 Next, create a project using the sphintoxetry-cookiecutter template.
 
 ```
@@ -38,7 +38,8 @@ cruft create https://github.com/hrshdhgd/sphintoxetry-cookiecutter
 
 ### 2. Further setup
 
-####  Install poetry if you haven't already.
+#### Install poetry if you haven't already.
+
 ```
 pip install poetry
 ```
@@ -63,14 +64,14 @@ poetry run tox
 
 ### 3. Implement PhEval Custom Runner
 
-*The runner name is arbitrary and custom Runner name was chose by demonstrative purposes*
+_The runner name is arbitrary and custom Runner name was chose by demonstrative purposes_
 
 Create a runner file inside the plugin project, e.g:
 
 ![a](./imgs/plugin_example_folder_structure.png)
 
 ```python
-"""Custom Pheval Runner"""
+"""Custom Pheval Runner."""
 from dataclasses import dataclass
 
 import click
@@ -79,7 +80,7 @@ from pheval.runners.runner import PhEvalRunner
 
 @dataclass
 class CustomPhevalRunner(PhEvalRunner):
-    """_summary_"""
+    """CustomPhevalRunner Class."""
 
     inputdir: click.Path
     testdatadir: click.Path
@@ -88,15 +89,15 @@ class CustomPhevalRunner(PhEvalRunner):
     config: click.Path
 
     def prepare(self):
-        """prepare"""
+        """prepare method."""
         print("preparing")
 
     def run(self):
-        """run"""
+        """run method."""
         print("running with custom pheval Runner")
 
     def post_process(self):
-        """post_process"""
+        """post_process method."""
         print("post processing")
 
 ```
@@ -123,8 +124,8 @@ Now you have to be able to run PhEval passing your custom runner as parameter. e
 ```
 pheval run -i input.txt -t './test' -r 'customphevalrunner' -o out.txt
 ```
-The `-r` parameter stands for your plugin runner class name and it must be entirely lowercase.
 
+The `-r` parameter stands for your plugin runner class name and it must be entirely lowercase.
 
 Output:
 
@@ -134,4 +135,4 @@ running with custom pheval Runner
 post processing
 ```
 
-Pay attention to "*==running with custom pheval Runner==*" line, this is exactly what we had implemented in the **CustomPhevalRunner** Example
+Pay attention to "_==running with custom pheval Runner==_" line, this is exactly what we had implemented in the **CustomPhevalRunner** Example
