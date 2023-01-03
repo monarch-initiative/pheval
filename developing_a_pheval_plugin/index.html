@@ -504,27 +504,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
-    post_process()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
-    prepare()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
-    run()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-by-step-plugin-development-process" class="md-nav__link">
     Step-by-Step Plugin Development Process
   </a>
@@ -719,27 +698,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
-    post_process()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
-    prepare()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
-    run()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-by-step-plugin-development-process" class="md-nav__link">
     Step-by-Step Plugin Development Process
   </a>
@@ -840,8 +798,7 @@
 <h2 id="description">Description</h2>
 <p>Plugin development allows PhEval to be extensible, as we have designed it.
 The plugin goal is to be flexible through custom runner implementations. This plugin development enhances the PhEval functionality. You can build one quickly using this step-by-step process.</p>
-<p><mark><em>All custom Runners implementations must implement all</em> <strong>PhevalRunner</strong> <em>methods</em></mark>
-</p>
+<p><mark><em>All custom Runners implementations must implement all</em> <strong>PhevalRunner</strong> <em>methods</em></mark></p>
 
 
 <div class="doc doc-object doc-class">
@@ -914,111 +871,13 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 
 
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.runners.runner.PhEvalRunner.post_process" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">post_process</span><span class="p">()</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
-  </span>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>post_process</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
-<span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.runners.runner.PhEvalRunner.prepare" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">prepare</span><span class="p">()</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
-  </span>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>prepare</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
-<span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.runners.runner.PhEvalRunner.run" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
-  </span>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>run</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
-<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
 
 
   </div>
 
   </div>
 
-</div><p>handler: python
-options:
-members: - PhEvalRunner
-show_root_heading: false
-show_source: true</p>
-<hr />
+</div><hr />
 <h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
 <p>The plugin structure is derived from a <a href="https://cookiecutter.readthedocs.io/en/stable/">cookiecutter</a> template, <a href="https://github.com/hrshdhgd/sphintoxetry-cookiecutter">Sphintoxetry-cookiecutter</a>, and it uses <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, <a href="https://tox.wiki/en/latest/">tox</a> and <a href="https://python-poetry.org">poetry</a> as core dependencies.
 This allows PhEval extensibility to be standardized in terms of documentation and dependency management.</p>
