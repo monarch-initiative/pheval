@@ -6,13 +6,14 @@ Plugin development allows PhEval to be extensible, as we have designed it.
 The plugin goal is to be flexible through custom runner implementations. This plugin development enhances the PhEval functionality. You can build one quickly using this step-by-step process.
 
 ==_All custom Runners implementations must implement all_ **PhevalRunner** _methods_==
-::: src.pheval.runners.runner.PhEvalRunner
-handler: python
-options:
-members: - PhEvalRunner
-show_root_heading: false
-show_source: true
 
+::: src.pheval.runners.runner.PhEvalRunner
+    handler: python
+    options:
+      members:
+        - PhEvalRunner
+      show_root_heading: false
+      show_source: true
 ---
 
 ## Step-by-Step Plugin Development Process
