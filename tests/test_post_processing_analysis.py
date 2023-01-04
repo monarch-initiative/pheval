@@ -3,7 +3,7 @@ from collections import defaultdict
 from pathlib import Path, PosixPath
 
 from pheval.post_process.post_processing_analysis import (
-    ComparePrioritisationForRuns,
+    PrioritisationRankRecorder,
     GenePrioritisationResultData,
     RankStats,
     VariantPrioritisationResultData,
@@ -13,7 +13,7 @@ from pheval.utils.phenopacket_utils import VariantData
 
 class TestComparePrioritisationForRuns(unittest.TestCase):
     def setUp(self) -> None:
-        self.add_new_phenopacket_variant_record = ComparePrioritisationForRuns(
+        self.add_new_phenopacket_variant_record = PrioritisationRankRecorder(
             1,
             Path("directory1"),
             VariantPrioritisationResultData(
@@ -30,7 +30,7 @@ class TestComparePrioritisationForRuns(unittest.TestCase):
                 },
             ),
         )
-        self.add_new_directory_variant_record = ComparePrioritisationForRuns(
+        self.add_new_directory_variant_record = PrioritisationRankRecorder(
             0,
             Path("directory2"),
             VariantPrioritisationResultData(
@@ -47,7 +47,7 @@ class TestComparePrioritisationForRuns(unittest.TestCase):
                 },
             ),
         )
-        self.add_new_phenopacket_gene_record = ComparePrioritisationForRuns(
+        self.add_new_phenopacket_gene_record = PrioritisationRankRecorder(
             1,
             Path("directory1"),
             GenePrioritisationResultData(Path("/path/to/phenopacket-2.json"), "GENE", 7),
@@ -62,7 +62,7 @@ class TestComparePrioritisationForRuns(unittest.TestCase):
                 },
             ),
         )
-        self.add_new_directory_gene_record = ComparePrioritisationForRuns(
+        self.add_new_directory_gene_record = PrioritisationRankRecorder(
             0,
             Path("directory2"),
             GenePrioritisationResultData(Path("/path/to/phenopacket-1.json"), "LARGE1", 1),

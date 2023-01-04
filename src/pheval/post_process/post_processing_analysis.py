@@ -29,7 +29,7 @@ class VariantPrioritisationResultData:
 
 
 @dataclass
-class ComparePrioritisationForRuns:
+class PrioritisationRankRecorder:
     """Compares the rank of different runs."""
 
     index: int
