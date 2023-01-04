@@ -52,7 +52,7 @@ class PrioritisationRankRecorder:
         self.run_comparison[self.index][self.directory] = self.prioritisation_run_comparison.rank
 
 
-class GenerateRankComparisonOutput:
+class RankComparisonGenerator:
     """Writes the run comparison of rank assignment for prioritisation."""
 
     def __init__(self, run_comparison: defaultdict):
