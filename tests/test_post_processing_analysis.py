@@ -3,8 +3,8 @@ from collections import defaultdict
 from pathlib import Path, PosixPath
 
 from pheval.post_process.post_processing_analysis import (
-    PrioritisationRankRecorder,
     GenePrioritisationResultData,
+    PrioritisationRankRecorder,
     RankStats,
     VariantPrioritisationResultData,
 )

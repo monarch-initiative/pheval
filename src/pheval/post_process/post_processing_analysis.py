@@ -69,11 +69,19 @@ class RankComparisonGenerator:
         return comparison_df
 
     def generate_gene_output(self, prefix: str) -> None:
-        """Generates the output for gene prioritisation comparison."""
-        self.calculate_rank_difference().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
+        """Generates the output for gene prioritisation ranks."""
+        self.generate_dataframe().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
 
     def generate_variant_output(self, prefix: str) -> None:
-        """Generates the output for variant prioritisation comparison."""
+        """Generates the output for variant prioritisation ranks."""
+        self.generate_dataframe().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
+
+    def generate_gene_comparison_output(self, prefix: str) -> None:
+        """Generates the output for gene prioritisation rank comparison."""
+        self.calculate_rank_difference().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
+
+    def generate_variant_comparison_output(self, prefix: str) -> None:
+        """Generates the output for variant prioritisation rank comparison."""
         self.calculate_rank_difference().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
 
 
