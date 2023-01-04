@@ -11,7 +11,7 @@ from pheval.post_process.post_processing_analysis import (
 from pheval.utils.phenopacket_utils import VariantData
 
 
-class TestComparePrioritisationForRuns(unittest.TestCase):
+class TestPrioritisationRankRecorder(unittest.TestCase):
     def setUp(self) -> None:
         self.add_new_phenopacket_variant_record = PrioritisationRankRecorder(
             1,
