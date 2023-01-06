@@ -108,7 +108,7 @@ class HpoRandomiser:
         )
 
 
-def noisy_phenopacket(
+def add_noise_to_phenotypic_profile(
     hpo_randomiser: HpoRandomiser,
     phenopacket: Phenopacket or Family,
 ) -> Phenopacket or Family:
@@ -119,6 +119,47 @@ def noisy_phenopacket(
     random_phenotypes = hpo_randomiser.randomise_hpo_terms(phenotypic_features)
     randomised_phenopacket = PhenopacketRebuilder(phenopacket).add_randomised_hpo(random_phenotypes)
     return randomised_phenopacket
+
+
+def create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_path, scramble_factor):
+    """Creates a scrambled phenopacket."""
+    try:
+        output_dir.mkdir()
+    except FileExistsError:
+        pass
+    ontology = load_ontology()
+    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
+    phenopacket = phenopacket_reader(phenopacket_path)
+    created_noisy_phenopacket = add_noise_to_phenotypic_profile(
+        hpo_randomiser,
+        phenopacket,
+    )
+    write_phenopacket(
+        created_noisy_phenopacket,
+        output_dir.joinpath(
+            phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix
+        ),
+    )
+
+
+def create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor):
+    """Creates scrambled phenopackets."""
+    try:
+        output_dir.mkdir()
+    except FileExistsError:
+        pass
+    ontology = load_ontology()
+    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
+    phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
+    for phenopacket_path in phenopacket_files:
+        phenopacket = phenopacket_reader(phenopacket_path)
+        created_noisy_phenopacket = add_noise_to_phenotypic_profile(hpo_randomiser, phenopacket)
+        write_phenopacket(
+            created_noisy_phenopacket,
+            output_dir.joinpath(
+                phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix,
+            ),
+        )
 
 
 @click.command()
@@ -156,30 +197,14 @@ def noisy_phenopacket(
     default="noisy_phenopackets",
     type=Path,
 )
-def create_noisy_phenopacket(
+def scramble_phenopacket(
     phenopacket_path: Path,
     scramble_factor: float,
     output_file_suffix: str,
     output_dir: Path,
 ):
     """Generate a noisy phenopacket from an existing one."""
-    try:
-        output_dir.mkdir()
-    except FileExistsError:
-        pass
-    ontology = load_ontology()
-    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
-    phenopacket = phenopacket_reader(phenopacket_path)
-    created_noisy_phenopacket = noisy_phenopacket(
-        hpo_randomiser,
-        phenopacket,
-    )
-    write_phenopacket(
-        created_noisy_phenopacket,
-        output_dir.joinpath(
-            phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix
-        ),
-    )
+    create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_path, scramble_factor)
 
 
 @click.command()
@@ -217,26 +242,11 @@ def create_noisy_phenopacket(
     default="noisy_phenopackets",
     type=Path,
 )
-def create_noisy_phenopackets(
+def scramble_phenopackets(
     phenopacket_dir: Path,
     scramble_factor: float,
     output_file_suffix: str,
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    try:
-        output_dir.mkdir()
-    except FileExistsError:
-        pass
-    ontology = load_ontology()
-    hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
-    phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
-    for phenopacket_path in phenopacket_files:
-        phenopacket = phenopacket_reader(phenopacket_path)
-        created_noisy_phenopacket = noisy_phenopacket(hpo_randomiser, phenopacket)
-        write_phenopacket(
-            created_noisy_phenopacket,
-            output_dir.joinpath(
-                phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix,
-            ),
-        )
+    create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor)
