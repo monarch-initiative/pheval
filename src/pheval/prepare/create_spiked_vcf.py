@@ -429,4 +429,4 @@ def create_spiked_vcfs(
     vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
-    create_spiked_vcfs_from_phenopackets(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
+    create_spiked_vcfs_for_phenopackets(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
