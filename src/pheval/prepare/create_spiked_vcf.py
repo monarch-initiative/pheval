@@ -320,7 +320,7 @@ def create_spiked_vcf_for_phenopacket(
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
-def create_spiked_vcfs_from_phenopackets(
+def create_spiked_vcfs_for_phenopackets(
     output_dir: Path, phenopacket_dir: Path, template_vcf_path: Path, vcf_dir: Path
 ):
     """Creates spiked vcfs for phenopackets."""
