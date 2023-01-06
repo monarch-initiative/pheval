@@ -258,7 +258,7 @@ class VcfWriter:
         self.write_gzip() if is_gzipped(self.spiked_vcf_file_path) else self.write_uncompressed()
 
 
-def spike_vcf(
+def spike_vcf_contents(
     phenopacket: Phenopacket or Family,
     phenopacket_path: Path,
     chosen_template_vcf: Path,
@@ -288,7 +288,9 @@ def generate_spiked_vcf_file(
         info_log.info(f" Created a directory {output_dir}")
     except FileExistsError:
         pass
-    vcf_assembly, spiked_vcf = spike_vcf(phenopacket, phenopacket_path, chosen_template_vcf)
+    vcf_assembly, spiked_vcf = spike_vcf_contents(
+        phenopacket, phenopacket_path, chosen_template_vcf
+    )
     spiked_vcf_path = (
         output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
         if is_gzipped(chosen_template_vcf)
@@ -299,6 +301,44 @@ def generate_spiked_vcf_file(
         uri=str(spiked_vcf_path.absolute()),
         file_attributes={"fileFormat": "VCF", "genomeAssembly": vcf_assembly},
     )
+
+
+def create_spiked_vcf_for_phenopacket(
+    output_dir: Path, phenopacket_path: Path, template_vcf_path: Path, vcf_dir: Path
+):
+    """Creates a spiked vcf for a phenopacket."""
+    if template_vcf_path is None and vcf_dir is None:
+        raise InputError("Either a template_vcf or vcf_dir must be specified")
+    vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
+    phenopacket = phenopacket_reader(phenopacket_path)
+    spiked_vcf_file_message = generate_spiked_vcf_file(
+        output_dir, phenopacket, phenopacket_path, vcf_file_path
+    )
+    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
+        spiked_vcf_file_message
+    )
+    write_phenopacket(updated_phenopacket, phenopacket_path)
+
+
+def create_spiked_vcfs_from_phenopackets(
+    output_dir: Path, phenopacket_dir: Path, template_vcf_path: Path, vcf_dir: Path
+):
+    """Creates spiked vcfs for phenopackets."""
+    if template_vcf_path is None and vcf_dir is None:
+        raise InputError("Either a template_vcf or vcf_dir must be specified")
+    for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
+        vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
+        phenopacket = phenopacket_reader(phenopacket_path)
+        spiked_vcf_file_message = generate_spiked_vcf_file(
+            output_dir, phenopacket, phenopacket_path, vcf_file_path
+        )
+        updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
+            spiked_vcf_file_message
+        )
+        write_phenopacket(updated_phenopacket, phenopacket_path)
+    # or made a lambda one-liner for maximum wtf...
+    # [spike_vcf(path, output_dir, template_vcf, vcf_dir) for path in phenopacket_dir.iterdir() if path.suffix ==
+    # ".json"]
 
 
 @click.command()
@@ -342,17 +382,7 @@ def create_spiked_vcf(
     phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
 ):
     """Spikes variants into a template VCF file for a single phenopacket."""
-    if template_vcf_path is None and vcf_dir is None:
-        raise InputError("Either a template_vcf or vcf_dir must be specified")
-    vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
-    phenopacket = phenopacket_reader(phenopacket_path)
-    spiked_vcf_file_message = generate_spiked_vcf_file(
-        output_dir, phenopacket, phenopacket_path, vcf_file_path
-    )
-    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-        spiked_vcf_file_message
-    )
-    write_phenopacket(updated_phenopacket, phenopacket_path)
+    create_spiked_vcf_for_phenopacket(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
 
 
 @click.command()
@@ -399,18 +429,4 @@ def create_spiked_vcfs(
     vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
-    if template_vcf_path is None and vcf_dir is None:
-        raise InputError("Either a template_vcf or vcf_dir must be specified")
-    for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
-        vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
-        phenopacket = phenopacket_reader(phenopacket_path)
-        spiked_vcf_file_message = generate_spiked_vcf_file(
-            output_dir, phenopacket, phenopacket_path, vcf_file_path
-        )
-        updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-            spiked_vcf_file_message
-        )
-        write_phenopacket(updated_phenopacket, phenopacket_path)
-    # or made a lambda one-liner for maximum wtf...
-    # [spike_vcf(path, output_dir, template_vcf, vcf_dir) for path in phenopacket_dir.iterdir() if path.suffix ==
-    # ".json"]
+    create_spiked_vcfs_from_phenopackets(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)

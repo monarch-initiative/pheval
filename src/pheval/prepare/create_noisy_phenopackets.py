@@ -121,7 +121,9 @@ def add_noise_to_phenotypic_profile(
     return randomised_phenopacket
 
 
-def create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_path, scramble_factor):
+def create_scrambled_phenopacket(
+    output_dir: Path, output_file_suffix: str, phenopacket_path: Path, scramble_factor: float
+):
     """Creates a scrambled phenopacket."""
     try:
         output_dir.mkdir()
@@ -142,7 +144,9 @@ def create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_pat
     )
 
 
-def create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor):
+def create_scrambled_phenopackets(
+    output_dir: Path, output_file_suffix: str, phenopacket_dir: Path, scramble_factor: float
+):
     """Creates scrambled phenopackets."""
     try:
         output_dir.mkdir()
