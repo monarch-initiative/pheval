@@ -27,6 +27,23 @@ def update_outdated_gene_context(
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
 
+def update_phenopacket_causative_genes(gene_identifier: str, phenopacket_path: Path):
+    """Updates the gene context within the interpretations for a phenopacket."""
+    hgnc_data = create_hgnc_dict()
+    updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
+    write_phenopacket(updated_phenopacket, phenopacket_path)
+
+
+def update_phenopackets_causative_genes(gene_identifier: str, phenopacket_dir: Path):
+    """Updates the gene context within the interpretations for phenopackets."""
+    hgnc_data = create_hgnc_dict()
+    for phenopacket_path in all_files(phenopacket_dir):
+        updated_phenopacket = update_outdated_gene_context(
+            phenopacket_path, gene_identifier, hgnc_data
+        )
+        write_phenopacket(updated_phenopacket, phenopacket_path)
+
+
 @click.command()
 @click.option(
     "--phenopacket-path",
@@ -47,9 +64,7 @@ def update_outdated_gene_context(
 )
 def update_phenopacket(phenopacket_path: Path, gene_identifier: str):
     """Update gene symbols and identifiers for a phenopacket."""
-    hgnc_data = create_hgnc_dict()
-    updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
-    write_phenopacket(updated_phenopacket, phenopacket_path)
+    update_phenopacket_causative_genes(gene_identifier, phenopacket_path)
 
 
 @click.command()
@@ -72,9 +87,4 @@ def update_phenopacket(phenopacket_path: Path, gene_identifier: str):
 )
 def update_phenopackets(phenopacket_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for phenopackets."""
-    hgnc_data = create_hgnc_dict()
-    for phenopacket_path in all_files(phenopacket_dir):
-        updated_phenopacket = update_outdated_gene_context(
-            phenopacket_path, gene_identifier, hgnc_data
-        )
-        write_phenopacket(updated_phenopacket, phenopacket_path)
+    update_phenopackets_causative_genes(gene_identifier, phenopacket_dir)
