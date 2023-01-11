@@ -136,23 +136,27 @@ class RankStatsWriter:
     """Writes the rank stats for each run."""
 
     def __init__(self, file: Path):
-        self.file = open(file, "w")
-        self.writer = csv.writer(self.file, delimiter="\t")
-        self.writer.writerow(
-            [
-                "results_directory_path",
-                "top",
-                "top3",
-                "top5",
-                "found",
-                "total",
-                "mean_reciprocal_rank",
-                "percentage_top",
-                "percentage_top3",
-                "percentage_top5",
-                "percentage_found",
-            ]
-        )
+        if not file.is_file():
+            self.file = open(file, "w")
+            self.writer = csv.writer(self.file, delimiter="\t")
+            self.writer.writerow(
+                [
+                    "results_directory_path",
+                    "top",
+                    "top3",
+                    "top5",
+                    "found",
+                    "total",
+                    "mean_reciprocal_rank",
+                    "percentage_top",
+                    "percentage_top3",
+                    "percentage_top5",
+                    "percentage_found",
+                ]
+            )
+        else:
+            self.file = open(file, "a")
+            self.writer = csv.writer(self.file, delimiter="\t")
 
     def write_row(self, directory: Path, rank_stats: RankStats) -> None:
         """Writes summary rank stats row for run."""
