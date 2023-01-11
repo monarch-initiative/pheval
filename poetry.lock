@@ -269,6 +269,18 @@ Markdown = ">=3.3"
 mkdocs = ">=1.1"
 
 [[package]]
+name = "mkdocs-click"
+version = "0.8.0"
+description = "An MkDocs extension to generate documentation for Click command line applications"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=8.1,<9.0"
+markdown = ">=3.0.0,<4.0.0"
+
+[[package]]
 name = "mkdocs-include-dir-to-nav"
 version = "1.2.0"
 description = "A MkDocs plugin include all file in dir to navigation"
@@ -569,7 +581,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9"
-content-hash = "6a3776f95b3d1f7fb10f749500b0a302efc1b738117b96386a4217da45b963aa"
+content-hash = "0e44f9c7b2ba4953d70652d2a473aaa6f6f316eac954e50c1db391d1f3eb506a"
 
 [metadata.files]
 attrs = [
@@ -765,6 +777,10 @@ mkdocs = [
 mkdocs-autorefs = [
     {file = "mkdocs-autorefs-0.4.1.tar.gz", hash = "sha256:70748a7bd025f9ecd6d6feeba8ba63f8e891a1af55f48e366d6d6e78493aba84"},
     {file = "mkdocs_autorefs-0.4.1-py3-none-any.whl", hash = "sha256:a2248a9501b29dc0cc8ba4c09f4f47ff121945f6ce33d760f145d6f89d313f5b"},
+]
+mkdocs-click = [
+    {file = "mkdocs_click-0.8.0-py3-none-any.whl", hash = "sha256:f9c26d4abd505bca4113d1529d03d1ae709a68a82fc364db289634788d029353"},
+    {file = "mkdocs_click-0.8.0.tar.gz", hash = "sha256:965f38231eb04d8c980406c5ab4becf7303ef3ffc68fdb29be91927eff1adfbe"},
 ]
 mkdocs-include-dir-to-nav = [
     {file = "mkdocs_include_dir_to_nav-1.2.0-py3-none-any.whl", hash = "sha256:b09de17ad754aa93aec7ba64acf8fdd53f7a2ceb92e8cffe21646b0e97f4ddf0"},

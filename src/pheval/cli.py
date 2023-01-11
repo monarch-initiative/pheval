@@ -16,16 +16,7 @@ def main(verbose=1, quiet=False) -> None:
     """main CLI method for PhEval
 
     Args:
-        verbose (int, optional): Verbose flag
-        
-        
-        
-        
-        
-        
-        
-        
-        .
+        verbose (int, optional): Verbose flag.
         quiet (bool, optional): Queit Flag.
     """
     if verbose >= 2:
