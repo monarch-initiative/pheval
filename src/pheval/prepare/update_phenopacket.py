@@ -31,7 +31,7 @@ def update_phenopacket(gene_identifier: str, phenopacket_path: Path, output_dir:
     """Updates the gene context within the interpretations for a phenopacket."""
     hgnc_data = create_hgnc_dict()
     updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
-    write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path))
+    write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
 def update_phenopackets(gene_identifier: str, phenopacket_dir: Path, output_dir: Path):
@@ -41,7 +41,7 @@ def update_phenopackets(gene_identifier: str, phenopacket_dir: Path, output_dir:
         updated_phenopacket = update_outdated_gene_context(
             phenopacket_path, gene_identifier, hgnc_data
         )
-        write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path))
+        write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
 @click.command("update-phenopacket")
