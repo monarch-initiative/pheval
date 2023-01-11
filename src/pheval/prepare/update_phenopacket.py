@@ -27,14 +27,14 @@ def update_outdated_gene_context(
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
 
-def update_phenopacket_causative_genes(gene_identifier: str, phenopacket_path: Path):
+def update_phenopacket(gene_identifier: str, phenopacket_path: Path):
     """Updates the gene context within the interpretations for a phenopacket."""
     hgnc_data = create_hgnc_dict()
     updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
-def update_phenopackets_causative_genes(gene_identifier: str, phenopacket_dir: Path):
+def update_phenopackets(gene_identifier: str, phenopacket_dir: Path):
     """Updates the gene context within the interpretations for phenopackets."""
     hgnc_data = create_hgnc_dict()
     for phenopacket_path in all_files(phenopacket_dir):
@@ -44,7 +44,7 @@ def update_phenopackets_causative_genes(gene_identifier: str, phenopacket_dir: P
         write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
-@click.command()
+@click.command("update-phenopacket")
 @click.option(
     "--phenopacket-path",
     "-p",
@@ -62,12 +62,12 @@ def update_phenopackets_causative_genes(gene_identifier: str, phenopacket_dir: P
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopacket(phenopacket_path: Path, gene_identifier: str):
+def update_phenopacket_command(phenopacket_path: Path, gene_identifier: str):
     """Update gene symbols and identifiers for a phenopacket."""
-    update_phenopacket_causative_genes(gene_identifier, phenopacket_path)
+    update_phenopacket(gene_identifier, phenopacket_path)
 
 
-@click.command()
+@click.command("update-phenopackets")
 @click.option(
     "--phenopacket-dir",
     "-p",
@@ -85,6 +85,6 @@ def update_phenopacket(phenopacket_path: Path, gene_identifier: str):
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopackets(phenopacket_dir: Path, gene_identifier: str):
+def update_phenopackets_command(phenopacket_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for phenopackets."""
-    update_phenopackets_causative_genes(gene_identifier, phenopacket_dir)
+    update_phenopackets(gene_identifier, phenopacket_dir)
