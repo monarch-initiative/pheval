@@ -27,21 +27,21 @@ def update_outdated_gene_context(
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
 
-def update_phenopacket(gene_identifier: str, phenopacket_path: Path):
+def update_phenopacket(gene_identifier: str, phenopacket_path: Path, output_dir: Path):
     """Updates the gene context within the interpretations for a phenopacket."""
     hgnc_data = create_hgnc_dict()
     updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
-    write_phenopacket(updated_phenopacket, phenopacket_path)
+    write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path))
 
 
-def update_phenopackets(gene_identifier: str, phenopacket_dir: Path):
+def update_phenopackets(gene_identifier: str, phenopacket_dir: Path, output_dir: Path):
     """Updates the gene context within the interpretations for phenopackets."""
     hgnc_data = create_hgnc_dict()
     for phenopacket_path in all_files(phenopacket_dir):
         updated_phenopacket = update_outdated_gene_context(
             phenopacket_path, gene_identifier, hgnc_data
         )
-        write_phenopacket(updated_phenopacket, phenopacket_path)
+        write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path))
 
 
 @click.command("update-phenopacket")
@@ -54,6 +54,14 @@ def update_phenopackets(gene_identifier: str, phenopacket_dir: Path):
     type=Path,
 )
 @click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=True,
+    help="Path to write phenopacket.",
+    type=Path,
+)
+@click.option(
     "--gene-identifier",
     "-g",
     required=False,
@@ -62,9 +70,9 @@ def update_phenopackets(gene_identifier: str, phenopacket_dir: Path):
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopacket_command(phenopacket_path: Path, gene_identifier: str):
+def update_phenopacket_command(phenopacket_path: Path, output_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for a phenopacket."""
-    update_phenopacket(gene_identifier, phenopacket_path)
+    update_phenopacket(gene_identifier, phenopacket_path, output_dir)
 
 
 @click.command("update-phenopackets")
@@ -77,6 +85,14 @@ def update_phenopacket_command(phenopacket_path: Path, gene_identifier: str):
     type=Path,
 )
 @click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=True,
+    help="Path to write phenopacket.",
+    type=Path,
+)
+@click.option(
     "--gene-identifier",
     "-g",
     required=False,
@@ -85,6 +101,6 @@ def update_phenopacket_command(phenopacket_path: Path, gene_identifier: str):
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopackets_command(phenopacket_dir: Path, gene_identifier: str):
+def update_phenopackets_command(phenopacket_dir: Path, output_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for phenopackets."""
-    update_phenopackets(gene_identifier, phenopacket_dir)
+    update_phenopackets(gene_identifier, phenopacket_dir, output_dir)
