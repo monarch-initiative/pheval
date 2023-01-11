@@ -166,7 +166,7 @@ def create_scrambled_phenopackets(
         )
 
 
-@click.command()
+@click.command("scramble-phenopacket")
 @click.option(
     "--phenopacket-path",
     "-P",
@@ -201,7 +201,7 @@ def create_scrambled_phenopackets(
     default="noisy_phenopackets",
     type=Path,
 )
-def scramble_phenopacket(
+def scramble_phenopacket_command(
     phenopacket_path: Path,
     scramble_factor: float,
     output_file_suffix: str,
@@ -211,7 +211,7 @@ def scramble_phenopacket(
     create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_path, scramble_factor)
 
 
-@click.command()
+@click.command("scramble-phenopackets")
 @click.option(
     "--phenopacket-dir",
     "-P",
@@ -246,7 +246,7 @@ def scramble_phenopacket(
     default="noisy_phenopackets",
     type=Path,
 )
-def scramble_phenopackets(
+def scramble_phenopackets_command(
     phenopacket_dir: Path,
     scramble_factor: float,
     output_file_suffix: str,
