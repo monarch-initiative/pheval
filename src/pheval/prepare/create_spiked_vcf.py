@@ -303,7 +303,7 @@ def generate_spiked_vcf_file(
     )
 
 
-def create_spiked_vcf_for_phenopacket(
+def create_spiked_vcf(
     output_dir: Path, phenopacket_path: Path, template_vcf_path: Path, vcf_dir: Path
 ):
     """Creates a spiked vcf for a phenopacket."""
@@ -320,7 +320,7 @@ def create_spiked_vcf_for_phenopacket(
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
-def create_spiked_vcfs_for_phenopackets(
+def create_spiked_vcfs(
     output_dir: Path, phenopacket_dir: Path, template_vcf_path: Path, vcf_dir: Path
 ):
     """Creates spiked vcfs for phenopackets."""
@@ -341,7 +341,7 @@ def create_spiked_vcfs_for_phenopackets(
     # ".json"]
 
 
-@click.command()
+@click.command("create-spiked-vcf")
 @click.option(
     "--phenopacket-path",
     "-p",
@@ -378,14 +378,14 @@ def create_spiked_vcfs_for_phenopackets(
     default="vcf",
     type=Path,
 )
-def create_spiked_vcf(
+def create_spiked_vcf_command(
     phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
 ):
     """Spikes variants into a template VCF file for a single phenopacket."""
-    create_spiked_vcf_for_phenopacket(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
+    create_spiked_vcf(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
 
 
-@click.command()
+@click.command("create-spiked-vcfs")
 @click.option(
     "--phenopacket-dir",
     "-p",
@@ -422,11 +422,11 @@ def create_spiked_vcf(
     default="vcf",
     type=Path,
 )
-def create_spiked_vcfs(
+def create_spiked_vcfs_command(
     phenopacket_dir: Path,
     output_dir: Path,
     template_vcf_path: Path = None,
     vcf_dir: Path = None,
 ):
     """Spikes variants into a template VCF file for a directory of phenopackets."""
-    create_spiked_vcfs_for_phenopackets(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
+    create_spiked_vcfs(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
