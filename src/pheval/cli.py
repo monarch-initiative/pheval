@@ -3,11 +3,17 @@ import logging
 
 import click
 
-from pheval.prepare.update_phenopacket import update_phenopacket_command, update_phenopackets_command
+from pheval.prepare.update_phenopacket import (
+    update_phenopacket_command,
+    update_phenopackets_command,
+)
 
 from .cli_pheval import run
 from .cli_pheval_utils import scramble_semsim
-from .prepare.create_noisy_phenopackets import scramble_phenopacket_command, scramble_phenopackets_command
+from .prepare.create_noisy_phenopackets import (
+    scramble_phenopacket_command,
+    scramble_phenopackets_command,
+)
 from .prepare.create_spiked_vcf import create_spiked_vcf_command, create_spiked_vcfs_command
 
 info_log = logging.getLogger("info")
