@@ -26,6 +26,7 @@ from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_h
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
+    ProbandCausativeGene,
     ProbandCausativeVariant,
     VariantData,
     create_hgnc_dict,
@@ -378,7 +379,15 @@ class TestPhenopacketUtil(unittest.TestCase):
             )
 
     def test_diagnosed_genes(self):
-        self.assertEqual(set((["RTTN", "FGD1"])), set(self.phenopacket.diagnosed_genes()))
+        self.assertEqual(
+            (
+                [
+                    ProbandCausativeGene(gene_symbol="FGD1", gene_identifier="NCBIGene:2245"),
+                    ProbandCausativeGene(gene_symbol="RTTN", gene_identifier="HGNC:18654"),
+                ]
+            ),
+            self.phenopacket.diagnosed_genes(),
+        )
 
     def test_diagnosed_variants(self):
         self.assertEqual(

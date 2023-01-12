@@ -45,6 +45,12 @@ class ProbandCausativeVariant:
     genotype: str
 
 
+@dataclass
+class ProbandCausativeGene:
+    gene_symbol: str
+    gene_identifier: str
+
+
 def read_hgnc_data() -> pd.DataFrame:
     return pd.read_csv(
         os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
@@ -154,14 +160,19 @@ class PhenopacketUtil:
         vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
         return vcf_data
 
-    def diagnosed_genes(self) -> list[str]:
-        """Returns a unique list of all causative genes from a phenopacket."""
+    def diagnosed_genes(self) -> list[ProbandCausativeGene]:
+        """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
         pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(g.variant_interpretation.variation_descriptor.gene_context.symbol)
-        genes = list(set(genes))
+                genes.append(
+                    ProbandCausativeGene(
+                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
+                        g.variant_interpretation.variation_descriptor.gene_context.value_id,
+                    )
+                )
+                genes = list({gene.gene_symbol: gene for gene in genes}.values())
         return genes
 
     def diagnosed_variants(self) -> list[VariantData]:
