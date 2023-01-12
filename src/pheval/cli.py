@@ -3,8 +3,18 @@ import logging
 
 import click
 
+from pheval.prepare.update_phenopacket import (
+    update_phenopacket_command,
+    update_phenopackets_command,
+)
+
 from .cli_pheval import run
-from .cli_pheval_utils import scramble_phenopacket, scramble_semsim
+from .cli_pheval_utils import scramble_semsim
+from .prepare.create_noisy_phenopackets import (
+    scramble_phenopacket_command,
+    scramble_phenopackets_command,
+)
+from .prepare.create_spiked_vcf import create_spiked_vcf_command, create_spiked_vcfs_command
 
 info_log = logging.getLogger("info")
 
@@ -34,15 +44,22 @@ def pheval():
     """pheval"""
 
 
+pheval.add_command(run)
+
+
 @click.group()
 def pheval_utils():
     """pheval_utils"""
 
 
-pheval.add_command(run)
-
 pheval_utils.add_command(scramble_semsim)
-pheval_utils.add_command(scramble_phenopacket)
+pheval_utils.add_command(scramble_phenopackets_command)
+pheval_utils.add_command(scramble_phenopacket_command)
+pheval_utils.add_command(update_phenopacket_command)
+pheval_utils.add_command(update_phenopackets_command)
+pheval_utils.add_command(create_spiked_vcfs_command)
+pheval_utils.add_command(create_spiked_vcf_command)
+
 
 if __name__ == "__main__":
     main()

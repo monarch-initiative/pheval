@@ -9,11 +9,11 @@ import click
 class PhEvalRunner(ABC):
     """PhEvalRunner Class"""
 
-    inputdir: click.Path
-    testdatadir: click.Path
-    tmpdir: click.Path
-    outputdir: click.Path
-    config: click.Path
+    input_dir: click.Path
+    testdata_dir: click.Path
+    tmp_dir: click.Path
+    output_dir: click.Path
+    config_file: click.Path
 
     @abstractmethod
     def prepare(self) -> str:
@@ -35,11 +35,11 @@ class DefaultPhEvalRunner(PhEvalRunner):
         PhEvalRunner (PhEvalRunner): Abstract PhEvalRunnerClass
     """
 
-    inputdir: click.Path
-    testdatadir: click.Path
-    tmpdir: click.Path
-    outputdir: click.Path
-    config: click.Path
+    input_dir: click.Path
+    testdata_dir: click.Path
+    tmp_dir: click.Path
+    output_dir: click.Path
+    config_file: click.Path
 
     def prepare(self):
         print("preparing")

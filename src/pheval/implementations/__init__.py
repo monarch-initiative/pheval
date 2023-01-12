@@ -13,9 +13,7 @@ def get_implementation_resolver() -> ClassResolver[PhEvalRunner]:
     Returns:
         ClassResolver[PhEvalRunner]: _description_
     """
-    implementation_resolver: ClassResolver[
-        PhEvalRunner
-    ] = ClassResolver.from_subclasses(
+    implementation_resolver: ClassResolver[PhEvalRunner] = ClassResolver.from_subclasses(
         PhEvalRunner,
         suffix="Implementation",
     )
