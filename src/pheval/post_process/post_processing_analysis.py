@@ -691,7 +691,7 @@ def benchmark(
     "--directory1",
     "-d1",
     required=True,
-    metavar="DIRECTORY",
+    metavar="PATH",
     help="Baseline results directory for benchmarking, assumes contains subdirectories of standardised_gene_results/"
     "standardised_variant_results and the tool specific results directory.",
     type=Path,
@@ -700,7 +700,7 @@ def benchmark(
     "--directory2",
     "-d2",
     required=True,
-    metavar="DIRECTORY",
+    metavar="PATH",
     help="Comparison results directory for benchmarking, assumes contains subdirectories of standardised_gene_results/"
     "standardised_variant_results and the tool specific results directory.",
     type=Path,
