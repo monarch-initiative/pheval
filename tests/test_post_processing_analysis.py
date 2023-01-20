@@ -4,12 +4,14 @@ from copy import copy
 from pathlib import Path, PosixPath
 
 from pheval.post_process.post_processing_analysis import (
+    AssessGenePrioritisation,
+    AssessVariantPrioritisation,
     GenePrioritisationResultData,
     PrioritisationRankRecorder,
     RankStats,
-    VariantPrioritisationResultData, AssessVariantPrioritisation, AssessGenePrioritisation,
+    VariantPrioritisationResultData,
 )
-from pheval.utils.phenopacket_utils import VariantData, ProbandCausativeGene
+from pheval.utils.phenopacket_utils import ProbandCausativeGene, VariantData
 
 
 class TestPrioritisationRankRecorder(unittest.TestCase):
@@ -462,21 +464,33 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             standardised_variant_results=[
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126730873, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126730873,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "combinedScore": 0.0484,
                     "rank": 1,
                 },
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126730873, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126730873,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "combinedScore": 0.0484,
                     "rank": 1,
                 },
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "combinedScore": 0.0484,
                     "rank": 1,
@@ -495,21 +509,33 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             standardised_variant_results=[
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126730873, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126730873,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
                 },
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126730873, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126730873,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
                 },
                 {
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
@@ -530,7 +556,11 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             self.assess_variant_prioritisation.record_variant_prioritisation_match(
                 result_entry={
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
@@ -551,7 +581,11 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_pvalue_threshold(
                 result_entry={
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
@@ -572,7 +606,11 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_pvalue_threshold(
                 result_entry={
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "pValue": 0.0484,
                     "rank": 1,
@@ -597,7 +635,11 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_threshold(
                 result_entry={
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "combinedScore": 0.0484,
                     "rank": 1,
@@ -618,7 +660,11 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_pvalue_threshold(
                 result_entry={
                     "variant": {
-                        'chrom': "3", 'pos': 126741108, 'ref': "G", 'alt': "A", 'gene': "PLXNA1"
+                        "chrom": "3",
+                        "pos": 126741108,
+                        "ref": "G",
+                        "alt": "A",
+                        "gene": "PLXNA1",
                     },
                     "combinedScore": 0.0484,
                     "rank": 1,
