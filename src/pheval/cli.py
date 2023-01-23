@@ -3,6 +3,7 @@ import logging
 
 import click
 
+from pheval.post_process.post_processing_analysis import benchmark, benchmark_comparison
 from pheval.prepare.update_phenopacket import (
     update_phenopacket_command,
     update_phenopackets_command,
@@ -59,6 +60,8 @@ pheval_utils.add_command(update_phenopacket_command)
 pheval_utils.add_command(update_phenopackets_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
 pheval_utils.add_command(create_spiked_vcf_command)
+pheval_utils.add_command(benchmark)
+pheval_utils.add_command(benchmark_comparison)
 
 
 if __name__ == "__main__":
