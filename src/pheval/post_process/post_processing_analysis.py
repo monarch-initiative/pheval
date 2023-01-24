@@ -240,14 +240,14 @@ class AssessGenePrioritisation:
         self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResultData:
         """Record the gene prioritisation rank if it meets the pvalue threshold."""
-        if float(self.threshold) > float(result_entry[self.ranking_method]):
+        if float(self.threshold) > float(result_entry['score']):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def assess_gene_with_threshold(
         self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResultData:
         """Record the gene prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry[self.ranking_method]):
+        if float(self.threshold) < float(result_entry['score']):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def assess_gene_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict):
@@ -322,14 +322,14 @@ class AssessVariantPrioritisation:
         self, result_entry: dict, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the pvalue threshold."""
-        if float(self.threshold) > float(result_entry[self.ranking_method]):
+        if float(self.threshold) > float(result_entry['score']):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_with_threshold(
         self, result_entry: dict, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry[self.ranking_method]):
+        if float(self.threshold) < float(result_entry['score']):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict):
@@ -400,7 +400,7 @@ def assess_phenopacket_gene_prioritisation(
     proband_causative_genes = obtain_causative_genes(phenopacket_path)
     AssessGenePrioritisation(
         phenopacket_path,
-        results_dir_and_input.results_dir.joinpath("standardised_gene_results/"),
+        results_dir_and_input.results_dir.joinpath("pheval_gene_results/"),
         read_standardised_result(standardised_gene_result),
         threshold,
         ranking_method,
@@ -423,7 +423,7 @@ def assess_phenopacket_variant_prioritisation(
     proband_causative_variants = obtain_causative_variants(phenopacket_path)
     AssessVariantPrioritisation(
         phenopacket_path,
-        results_dir_and_input.results_dir.joinpath("standardised_variant_results/"),
+        results_dir_and_input.results_dir.joinpath("pheval_variant_results/"),
         read_standardised_result(standardised_variant_result),
         threshold,
         ranking_method,
@@ -446,7 +446,7 @@ def assess_prioritisation_for_results_directory(
     gene_rank_stats, variant_rank_stats = RankStats(), RankStats()
     if gene_analysis:
         for standardised_result in files_with_suffix(
-            results_directory_and_input.results_dir.joinpath("standardised_gene_results/"), ".json"
+            results_directory_and_input.results_dir.joinpath("pheval_gene_results/"), ".tsv"
         ):
             assess_phenopacket_gene_prioritisation(
                 standardised_result,
@@ -458,8 +458,8 @@ def assess_prioritisation_for_results_directory(
             )
     if variant_analysis:
         for standardised_result in files_with_suffix(
-            results_directory_and_input.results_dir.joinpath("standardised_variant_results/"),
-            ".json",
+            results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
+            ".tsv",
         ):
             assess_phenopacket_variant_prioritisation(
                 standardised_result,
