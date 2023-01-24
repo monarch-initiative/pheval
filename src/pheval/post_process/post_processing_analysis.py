@@ -615,8 +615,8 @@ def benchmark_runs(
     "-d",
     required=True,
     metavar="PATH",
-    help="General results directory to be benchmarked, assumes contains subdirectories of standardised_gene_results/"
-    "standardised_variant_results and the tool specific results directory. ",
+    help="General results directory to be benchmarked, assumes contains subdirectories of pheval_gene_results/"
+    "pheval_variant_results and the tool specific results directory. ",
     type=Path,
 )
 @click.option(
@@ -691,8 +691,8 @@ def benchmark(
     "-d1",
     required=True,
     metavar="PATH",
-    help="Baseline results directory for benchmarking, assumes contains subdirectories of standardised_gene_results/"
-    "standardised_variant_results and the tool specific results directory.",
+    help="Baseline results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
+    "pheval_variant_results and the tool specific results directory.",
     type=Path,
 )
 @click.option(
@@ -700,8 +700,8 @@ def benchmark(
     "-d2",
     required=True,
     metavar="PATH",
-    help="Comparison results directory for benchmarking, assumes contains subdirectories of standardised_gene_results/"
-    "standardised_variant_results and the tool specific results directory.",
+    help="Comparison results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
+    "pheval_variant_results and the tool specific results directory.",
     type=Path,
 )
 @click.option(
