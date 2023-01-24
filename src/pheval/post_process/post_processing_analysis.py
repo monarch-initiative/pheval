@@ -240,14 +240,14 @@ class AssessGenePrioritisation:
         self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResultData:
         """Record the gene prioritisation rank if it meets the pvalue threshold."""
-        if float(self.threshold) > float(result_entry['score']):
+        if float(self.threshold) > float(result_entry["score"]):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def assess_gene_with_threshold(
         self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResultData:
         """Record the gene prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry['score']):
+        if float(self.threshold) < float(result_entry["score"]):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def assess_gene_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict):
@@ -322,14 +322,14 @@ class AssessVariantPrioritisation:
         self, result_entry: dict, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the pvalue threshold."""
-        if float(self.threshold) > float(result_entry['score']):
+        if float(self.threshold) > float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_with_threshold(
         self, result_entry: dict, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry['score']):
+        if float(self.threshold) < float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict):
