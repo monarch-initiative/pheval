@@ -5,6 +5,7 @@ import unittest
 from click.testing import CliRunner
 
 from pheval.cli_pheval import run
+from pheval.cli_pheval_utils import semsim_heatmap
 
 
 class TestCommandLineInterface(unittest.TestCase):
@@ -26,3 +27,50 @@ class TestCommandLineInterface(unittest.TestCase):
         logging.info("ERR=%s", err)
         exit_code = result.exit_code
         self.assertEqual(0, exit_code)
+
+    def test_semsim_heatmap(self):
+        """test_semsim_heatmap"""
+        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        result = self.runner.invoke(
+            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "jaccard_similarity"]
+        )
+        err = result.stderr
+        self.assertEqual(None, result.exception)
+        logging.info("ERR=%s", err)
+        self.assertEqual(0, result.exit_code)
+
+    def test_semsim_heatmap_invalid_col(self):
+        """test_semsim_heatmap"""
+        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        result = self.runner.invoke(
+            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+        )
+        errmsg = "columns: subject_id, object_id and invalid_col must exist in semsim dataframes"
+        self.assertEqual(errmsg, str(result.exception))
+        logging.info("ERR=%s", result.exception)
+        self.assertEqual(1, result.exit_code)
+
+    def test_semsim_heatmap_invalid_file(self):
+        """test_semsim_heatmap"""
+        semsim1 = "./testdata/semsim/hp-mpx.semsim.tsv"
+        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        result = self.runner.invoke(
+            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+        )
+        self.assertEqual(f"File {semsim1} not found", str(result.exception))
+        logging.info("ERR=%s", result.exception)
+        self.assertEqual(1, result.exit_code)
+
+    def test_semsim_heatmap_invalid_equal_file(self):
+        """test_semsim_heatmap"""
+        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim2 = "./testdata/semsim/hp-mp.semsim.tsv"
+        result = self.runner.invoke(
+            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+        )
+        errmsg = "Semantic similarity profiles are equal. Make sure you have selected different files to analyze"
+        self.assertEqual(errmsg, str(result.exception))
+        logging.info("ERR=%s", result.exception)
+        self.assertEqual(1, result.exit_code)
