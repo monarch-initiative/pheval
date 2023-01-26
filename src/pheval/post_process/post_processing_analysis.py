@@ -1,7 +1,6 @@
 # #!/usr/bin/python
 import csv
 import itertools
-import json
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -21,10 +20,7 @@ from ..utils.phenopacket_utils import (
 
 def read_standardised_result(standardised_result_path: Path) -> dict:
     """Read the standardised result output and return a dictionary."""
-    with open(standardised_result_path) as result:
-        standardised_result = json.load(result)
-    result.close()
-    return standardised_result
+    return pd.read_csv(standardised_result_path, delimiter="\t")
 
 
 @dataclass
@@ -255,7 +251,7 @@ class AssessGenePrioritisation:
         for gene in self.proband_causative_genes:
             rank_stats.total += 1
             gene_match = GenePrioritisationResultData(self.phenopacket_path, gene.gene_symbol)
-            for standardised_gene_result in self.standardised_gene_results:
+            for _index, standardised_gene_result in self.standardised_gene_results.iterrows():
                 if (
                     gene.gene_identifier == standardised_gene_result["gene_identifier"]
                     and float(self.threshold) != 0.0
@@ -307,26 +303,33 @@ class AssessVariantPrioritisation:
 
     def record_variant_prioritisation_match(
         self,
-        result_entry: dict,
+        result_entry: pd.Series,
         rank_stats: RankStats,
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if found within results."""
         rank = result_entry["rank"]
         rank_stats.add_rank(rank)
         variant_match = VariantPrioritisationResultData(
-            self.phenopacket_path, VariantData(**result_entry["variant"]), rank
+            self.phenopacket_path,
+            VariantData(
+                chrom=result_entry["chrom"],
+                pos=result_entry["pos"],
+                ref=result_entry["ref"],
+                alt=result_entry["alt"],
+            ),
+            rank,
         )
         return variant_match
 
     def assess_variant_with_pvalue_threshold(
-        self, result_entry: dict, rank_stats: RankStats
+        self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the pvalue threshold."""
         if float(self.threshold) > float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_with_threshold(
-        self, result_entry: dict, rank_stats: RankStats
+        self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResultData:
         """Record the variant prioritisation rank if it meets the score threshold."""
         if float(self.threshold) < float(result_entry["score"]):
@@ -337,8 +340,10 @@ class AssessVariantPrioritisation:
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
             variant_match = VariantPrioritisationResultData(self.phenopacket_path, variant)
-            for result in self.standardised_variant_results:
-                result_variant = VariantData(**result["variant"])
+            for _index, result in self.standardised_variant_results.iterrows():
+                result_variant = VariantData(
+                    chrom=result["chrom"], pos=result["pos"], ref=result["ref"], alt=result["alt"]
+                )
                 if (
                     variant.chrom == result_variant.chrom
                     and result_variant.pos == variant.pos

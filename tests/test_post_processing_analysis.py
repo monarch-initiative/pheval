@@ -3,6 +3,8 @@ from collections import defaultdict
 from copy import copy
 from pathlib import Path, PosixPath
 
+import pandas as pd
+
 from pheval.post_process.post_processing_analysis import (
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
@@ -150,32 +152,34 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assess_gene_prioritisation = AssessGenePrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=[
-                {
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
-                {
-                    "gene_symbol": "ZNF804B",
-                    "gene_identifier": "ENSG00000182348",
-                    "score": 0.5777,
-                    "rank": 2,
-                },
-                {
-                    "gene_symbol": "SMCO2",
-                    "gene_identifier": "ENSG00000165935",
-                    "score": 0.5777,
-                    "rank": 2,
-                },
-                {
-                    "gene_symbol": "SPNS1",
-                    "gene_identifier": "ENSG00000169682",
-                    "score": 0.3765,
-                    "rank": 4,
-                },
-            ],
+            standardised_gene_results=pd.DataFrame(
+                [
+                    {
+                        "gene_symbol": "PLXNA1",
+                        "gene_identifier": "ENSG00000114554",
+                        "score": 0.8764,
+                        "rank": 1,
+                    },
+                    {
+                        "gene_symbol": "ZNF804B",
+                        "gene_identifier": "ENSG00000182348",
+                        "score": 0.5777,
+                        "rank": 2,
+                    },
+                    {
+                        "gene_symbol": "SMCO2",
+                        "gene_identifier": "ENSG00000165935",
+                        "score": 0.5777,
+                        "rank": 2,
+                    },
+                    {
+                        "gene_symbol": "SPNS1",
+                        "gene_identifier": "ENSG00000169682",
+                        "score": 0.3765,
+                        "rank": 4,
+                    },
+                ]
+            ),
             threshold=0.0,
             ranking_method="combinedScore",
             proband_causative_genes=[
@@ -186,32 +190,34 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assess_gene_prioritisation_pvalue = AssessGenePrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=[
-                {
-                    "gene_symbol": "SPNS1",
-                    "gene_identifier": "ENSG00000169682",
-                    "score": 0.3765,
-                    "rank": 1,
-                },
-                {
-                    "gene_symbol": "ZNF804B",
-                    "gene_identifier": "ENSG00000182348",
-                    "score": 0.5777,
-                    "rank": 2,
-                },
-                {
-                    "gene_symbol": "SMCO2",
-                    "gene_identifier": "ENSG00000165935",
-                    "score": 0.5777,
-                    "rank": 2,
-                },
-                {
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 4,
-                },
-            ],
+            standardised_gene_results=pd.DataFrame(
+                [
+                    {
+                        "gene_symbol": "SPNS1",
+                        "gene_identifier": "ENSG00000169682",
+                        "score": 0.3765,
+                        "rank": 1,
+                    },
+                    {
+                        "gene_symbol": "ZNF804B",
+                        "gene_identifier": "ENSG00000182348",
+                        "score": 0.5777,
+                        "rank": 2,
+                    },
+                    {
+                        "gene_symbol": "SMCO2",
+                        "gene_identifier": "ENSG00000165935",
+                        "score": 0.5777,
+                        "rank": 2,
+                    },
+                    {
+                        "gene_symbol": "PLXNA1",
+                        "gene_identifier": "ENSG00000114554",
+                        "score": 0.8764,
+                        "rank": 4,
+                    },
+                ]
+            ),
             threshold=0.0,
             ranking_method="pValue",
             proband_causative_genes=[
@@ -458,10 +464,8 @@ class TestAssessGenePrioritisation(unittest.TestCase):
 
 class TestAssessVariantPrioritisation(unittest.TestCase):
     def setUp(self) -> None:
-        self.assess_variant_prioritisation = AssessVariantPrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
-            results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=[
+        variant_results = pd.DataFrame(
+            [
                 {
                     "variant": {
                         "chrom": "3",
@@ -495,7 +499,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     "score": 0.0484,
                     "rank": 1,
                 },
-            ],
+            ]
+        )
+        variant_result_format = variant_results.drop("variant", axis=1).join(
+            variant_results.variant.apply(pd.Series)
+        )
+
+        self.assess_variant_prioritisation = AssessVariantPrioritisation(
+            phenopacket_path=Path("/path/to/phenopacket.json"),
+            results_dir=Path("/path/to/results_dir"),
+            standardised_variant_results=variant_result_format,
             threshold=0.0,
             ranking_method="combinedScore",
             proband_causative_variants=[
@@ -506,41 +519,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assess_variant_prioritisation_pvalue = AssessVariantPrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=[
-                {
-                    "variant": {
-                        "chrom": "3",
-                        "pos": 126730873,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-                {
-                    "variant": {
-                        "chrom": "3",
-                        "pos": 126730873,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-                {
-                    "variant": {
-                        "chrom": "3",
-                        "pos": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-            ],
+            standardised_variant_results=variant_result_format,
             threshold=0.0,
             ranking_method="pValue",
             proband_causative_variants=[
@@ -554,22 +533,22 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
     def test_record_variant_prioritisation_match(self):
         self.assertEqual(
             self.assess_variant_prioritisation.record_variant_prioritisation_match(
-                result_entry={
-                    "variant": {
+                result_entry=pd.Series(
+                    {
                         "chrom": "3",
                         "pos": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
+                        "score": 0.0484,
+                        "rank": 1,
+                    }
+                ),
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A", gene="PLXNA1"),
+                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
@@ -579,17 +558,17 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
             assess_with_threshold.assess_variant_with_pvalue_threshold(
-                result_entry={
-                    "variant": {
+                result_entry=pd.Series(
+                    {
                         "chrom": "3",
                         "pos": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
+                        "score": 0.0484,
+                        "rank": 1,
+                    }
+                ),
                 rank_stats=self.variant_rank_stats,
             ),
             None,
@@ -604,22 +583,22 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
             assess_with_threshold.assess_variant_with_pvalue_threshold(
-                result_entry={
-                    "variant": {
+                result_entry=pd.Series(
+                    {
                         "chrom": "3",
                         "pos": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
+                        "score": 0.0484,
+                        "rank": 1,
+                    }
+                ),
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A", gene="PLXNA1"),
+                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
@@ -633,17 +612,17 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
             assess_with_threshold.assess_variant_with_threshold(
-                result_entry={
-                    "variant": {
+                result_entry=pd.Series(
+                    {
                         "chrom": "3",
                         "pos": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
+                        "score": 0.0484,
+                        "rank": 1,
+                    }
+                ),
                 rank_stats=self.variant_rank_stats,
             ),
             None,
@@ -658,22 +637,22 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.1
         self.assertEqual(
             assess_with_threshold.assess_variant_with_pvalue_threshold(
-                result_entry={
-                    "variant": {
+                result_entry=pd.Series(
+                    {
                         "chrom": "3",
                         "pos": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
+                        "score": 0.0484,
+                        "rank": 1,
+                    }
+                ),
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A", gene="PLXNA1"),
+                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
