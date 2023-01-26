@@ -5,7 +5,7 @@ from pathlib import Path, PosixPath
 
 import pandas as pd
 
-from pheval.post_process.post_processing_analysis import (
+from pheval.analyse.analysis import (
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
     GenePrioritisationResultData,
