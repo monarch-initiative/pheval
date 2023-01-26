@@ -3,7 +3,7 @@ import logging
 
 import click
 
-from pheval.post_process.post_processing_analysis import benchmark, benchmark_comparison
+from pheval.analyse.analysis import benchmark, benchmark_comparison
 from pheval.prepare.update_phenopacket import (
     update_phenopacket_command,
     update_phenopackets_command,
