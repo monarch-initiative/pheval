@@ -2,6 +2,7 @@ import difflib
 import itertools
 from os import path
 from pathlib import Path
+from typing import List
 
 import pandas as pd
 
@@ -50,29 +51,30 @@ def ensure_file_exists(*files: str):
             raise FileNotFoundError(f"File {file} not found")
 
 
-def ensure_columns_exists(**kwargs):
+def ensure_columns_exists(cols: list,
+                          dataframes: List[pd.DataFrame],
+                          err_message: str = ""):
     """Ensures the columns exist in dataframes passed as argument (e.g)
 
     "
     ensure_columns_exists(
         cols=['column_a', 'column_b, 'column_c'],
-        message="Custom error message if any column doesn't exist in any dataframe passed as argument",
+        err_message="Custom error message if any column doesn't exist in any dataframe passed as argument",
         dataframes=[data_frame1, data_frame2],
     )
     "
 
     """
-    flat_cols = list(itertools.chain(*kwargs.get("cols")))
-    dataframes = kwargs.get("dataframes")
+    flat_cols = list(itertools.chain(cols))
     if not dataframes or not flat_cols:
         return
-    if kwargs.get("message"):
+    if err_message:
         err_msg = (
-            f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} {kwargs.get("message")}"""
+            f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} {err_message}"""
         )
     else:
         err_msg = f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} \
 - must be present in both left and right files"""
-    for dataframe in kwargs.get("dataframes", [pd.DataFrame()]):
+    for dataframe in dataframes:
         if not all(x in dataframe.columns for x in flat_cols):
             raise ValueError(err_msg)

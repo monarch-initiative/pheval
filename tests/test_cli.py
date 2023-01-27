@@ -30,10 +30,10 @@ class TestCommandLineInterface(unittest.TestCase):
 
     def test_semsim_heatmap(self):
         """test_semsim_heatmap"""
-        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
-        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "jaccard_similarity"]
+            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "jaccard_similarity"]
         )
         err = result.stderr
         self.assertEqual(None, result.exception)
@@ -42,10 +42,10 @@ class TestCommandLineInterface(unittest.TestCase):
 
     def test_semsim_heatmap_invalid_col(self):
         """test_semsim_heatmap"""
-        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
-        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
         )
         errmsg = "columns: subject_id, object_id and invalid_col must exist in semsim dataframes"
         self.assertEqual(errmsg, str(result.exception))
@@ -54,21 +54,21 @@ class TestCommandLineInterface(unittest.TestCase):
 
     def test_semsim_heatmap_invalid_file(self):
         """test_semsim_heatmap"""
-        semsim1 = "./testdata/semsim/hp-mpx.semsim.tsv"
-        semsim2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_left = "./testdata/semsim/hp-mpx.semsim.tsv"
+        semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
         )
-        self.assertEqual(f"File {semsim1} not found", str(result.exception))
+        self.assertEqual(f"File {semsim_left} not found", str(result.exception))
         logging.info("ERR=%s", result.exception)
         self.assertEqual(1, result.exit_code)
 
     def test_semsim_heatmap_invalid_equal_file(self):
         """test_semsim_heatmap"""
-        semsim1 = "./testdata/semsim/hp-mp.semsim.tsv"
-        semsim2 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_right = "./testdata/semsim/hp-mp.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim1", semsim1, "--semsim2", semsim2, "-s", "invalid_col"]
+            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
         )
         errmsg = "Semantic similarity profiles are equal. Make sure you have selected different files to analyze"
         self.assertEqual(errmsg, str(result.exception))

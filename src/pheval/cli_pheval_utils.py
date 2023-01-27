@@ -1,5 +1,7 @@
 """PhEval utils Command Line Interface"""
 
+from pathlib import Path
+
 import click
 
 from pheval.prepare.create_noisy_phenopackets import create_scrambled_phenopackets
@@ -14,7 +16,7 @@ from pheval.utils.semsim_utils import semsim_heatmap_plot
     metavar="FILE",
     help="Path to the semantic similarity profile to be scrambled.",
 )
-def scramble_semsim(input: click.Path):
+def scramble_semsim(input: Path):
     """scramble_semsim"""
     print("running pheval_utils::scramble_semsim command")
 
@@ -53,10 +55,10 @@ def scramble_semsim(input: click.Path):
     default="noisy_phenopackets",
 )
 def scramble_phenopackets_command(
-    phenopacket_dir: click.Path,
+    phenopacket_dir: Path,
     scramble_factor: float,
     output_file_suffix: str,
-    output_dir: click.Path,
+    output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor)
@@ -64,13 +66,15 @@ def scramble_phenopackets_command(
 
 @click.command("semsim-heatmap")
 @click.option(
-    "--semsim1",
+    "--semsim-left",
+    "-L",
     required=True,
     metavar="FILE",
     help="Path to the first semantic similarity profile.",
 )
 @click.option(
-    "--semsim2",
+    "--semsim-right",
+    "-R",
     required=True,
     metavar="FILE",
     help="Path to the second semantic similarity profile.",
@@ -82,9 +86,12 @@ def scramble_phenopackets_command(
     type=str,
     help="Score column that will be used in comparison (e.g jaccard_similarity)",
 )
-def semsim_heatmap(semsim1: click.Path, semsim2: click.Path, score: str):
+def semsim_heatmap(semsim_left: Path, semsim_right: Path, score: str):
     """Plots two semantic similarity profiles as a heatmap showing their differences
+
     Args:
-        input (click.Path): [description]
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
+        score_column (str): Score column that will be computed (e.g. jaccard_similarity)
     """
-    semsim_heatmap_plot(semsim1, semsim2, score)
+    semsim_heatmap_plot(semsim_left, semsim_right, score)

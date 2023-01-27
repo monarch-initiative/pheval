@@ -3,7 +3,8 @@ Contains all pheval utility methods
 """
 
 
-import click
+from pathlib import Path
+
 import numpy
 import pandas as pd
 import plotly.express as px
@@ -12,7 +13,7 @@ import pheval.utils.file_utils as file_utils
 
 
 def filter_non_0_score(data: pd.DataFrame, col: str) -> pd.DataFrame:
-    """Gets rid of data with a score of 0 in the selected column
+    """Removes rows that have value equal to 0 based on the given column passed by col parameter
 
     Args:
         data (pd.DataFrame): Dirty dataframe
@@ -39,47 +40,47 @@ def parse_semsim(df: pd.DataFrame, cols: list) -> pd.DataFrame:
     return df
 
 
-def diff_semsim(data1: pd.DataFrame, data2: pd.DataFrame, score_column: str) -> pd.DataFrame:
+def diff_semsim(semsim_left: pd.DataFrame, semsim_right: pd.DataFrame, score_column: str) -> pd.DataFrame:
     """Calculates score difference between two semantic similarity profiles
 
     Args:
-        data1 (pd.DataFrame): first semantic similarity dataframe
-        data2 (pd.DataFrame): second semantic similarity dataframe
+        semsim_left (pd.DataFrame): first semantic similarity dataframe
+        semsim_right (pd.DataFrame): second semantic similarity dataframe
         score_column (str): [description]
 
     Returns:
         pd.DataFrame: A dataframe with terms and its scores differences
     """
     keys = ["subject_id", "object_id"]
-    df = pd.merge(data1, data2, on=keys, how="outer")
+    df = pd.merge(semsim_left, semsim_right, on=keys, how="outer")
 
     df["diff"] = df[f"{score_column}_x"] - df[f"{score_column}_y"]
     return df[["subject_id", "object_id", "diff"]]
 
 
-def semsim_heatmap_plot(file1: click.Path, file2: click.Path, score_column: str):
+def semsim_heatmap_plot(semsim_left: Path, semsim_right: Path, score_column: str):
     """Plots semantic similarity profiles heatmap
 
     Args:
-        file1 (click.Path): File path of the first semantic similarity profile
-        file2 (click.Path): File path of the second semantic similarity profile
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
     """
-    if file1 == file2:
+    if semsim_left == semsim_right:
         errmsg = "Semantic similarity profiles are equal. Make sure you have selected different files to analyze"
         raise Exception(errmsg)
-    file_utils.ensure_file_exists(file1, file2)
+    file_utils.ensure_file_exists(semsim_left, semsim_right)
     cols = ["subject_id", "object_id", score_column]
-    data1 = pd.read_csv(file1, sep="\t")
-    data2 = pd.read_csv(file2, sep="\t")
+    semsim_left = pd.read_csv(semsim_left, sep="\t")
+    semsim_right = pd.read_csv(semsim_right, sep="\t")
     file_utils.ensure_columns_exists(
-        cols=[cols],
-        message="must exist in semsim dataframes",
-        dataframes=[data1, data2],
+        cols=cols,
+        err_message="must exist in semsim dataframes",
+        dataframes=[semsim_left, semsim_right],
     )
-    data1 = parse_semsim(data1, cols)
-    data2 = parse_semsim(data2, cols)
-    diff_df = diff_semsim(data1, data2, score_column)
+    semsim_left = parse_semsim(semsim_left, cols)
+    semsim_right = parse_semsim(semsim_right, cols)
+    diff_df = diff_semsim(semsim_left, semsim_right, score_column)
     clean_df = filter_non_0_score(diff_df, "diff")
     df = clean_df.pivot(index="subject_id", columns="object_id", values="diff")
     fig = px.imshow(df, text_auto=True)
