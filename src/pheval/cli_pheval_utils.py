@@ -5,7 +5,7 @@ from pathlib import Path
 import click
 
 from pheval.prepare.create_noisy_phenopackets import create_scrambled_phenopackets
-from pheval.utils.semsim_utils import semsim_heatmap_plot
+from pheval.utils.semsim_utils import diff, semsim_heatmap_plot
 
 
 @click.command()
@@ -64,7 +64,7 @@ def scramble_phenopackets_command(
     create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor)
 
 
-@click.command("semsim-heatmap")
+@click.command("semsim-comparison")
 @click.option(
     "--semsim-left",
     "-L",
@@ -80,18 +80,43 @@ def scramble_phenopackets_command(
     help="Path to the second semantic similarity profile.",
 )
 @click.option(
-    "--score",
+    "--score-column",
     "-s",
     required=True,
     type=str,
     help="Score column that will be used in comparison (e.g jaccard_similarity)",
 )
-def semsim_heatmap(semsim_left: Path, semsim_right: Path, score: str):
-    """Plots two semantic similarity profiles as a heatmap showing their differences
+@click.option(
+    "--analysis",
+    "-a",
+    default='heatmap',
+    type=str,
+    help="Score column that will be used in comparison (e.g jaccard_similarity)",
+)
+@click.option(
+    "--output",
+    "-o",
+    metavar="FILE",
+    default='semsim_analysis.tsv',
+    help="Score column that will be used in comparison (e.g jaccard_similarity)",
+)
+def semsim_comparison(semsim_left: click.Path,
+                      semsim_right: click.Path,
+                      score_column: str,
+                      analysis: str,
+                      output: click.Path = 'semsim_analysis.tsv'):
+    """Compares two semantic similarity profiles
 
     Args:
-        semsim_left (Path): File path of the first semantic similarity profile
-        semsim_right (Path): File path of the second semantic similarity profile
+        semsim-left (click.Path): File path of the first semantic similarity profile
+        semsim-right (click.Path): File path of the second semantic similarity profile
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
+        analysis (str): [description]
+        output (click.Path): Output path for the difference tsv
     """
-    semsim_heatmap_plot(semsim_left, semsim_right, score)
+
+    match analysis:
+        case 'heatmap':
+            semsim_heatmap_plot(semsim_left, semsim_right, score_column)
+        case 'diff':
+            diff(semsim_left, semsim_right, score_column, output)

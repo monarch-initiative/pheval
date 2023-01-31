@@ -5,7 +5,7 @@ import unittest
 from click.testing import CliRunner
 
 from pheval.cli_pheval import run
-from pheval.cli_pheval_utils import semsim_heatmap
+from pheval.cli_pheval_utils import semsim_comparison
 
 
 class TestCommandLineInterface(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "jaccard_similarity"]
+            semsim_comparison, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "jaccard_similarity"]
         )
         err = result.stderr
         self.assertEqual(None, result.exception)
@@ -45,7 +45,7 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
+            semsim_comparison, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
         )
         errmsg = "columns: subject_id, object_id and invalid_col must exist in semsim dataframes"
         self.assertEqual(errmsg, str(result.exception))
@@ -57,7 +57,7 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mpx.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
+            semsim_comparison, ["--semsim_left", semsim_left, "--semsim_right", semsim_right, "-s", "invalid_col"]
         )
         self.assertEqual(f"File {semsim_left} not found", str(result.exception))
         logging.info("ERR=%s", result.exception)
@@ -68,7 +68,7 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp.semsim.tsv"
         result = self.runner.invoke(
-            semsim_heatmap, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
+            semsim_comparison, ["--semsim-left", semsim_left, "--semsim-right", semsim_right, "-s", "invalid_col"]
         )
         errmsg = "Semantic similarity profiles are equal. Make sure you have selected different files to analyze"
         self.assertEqual(errmsg, str(result.exception))
