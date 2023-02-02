@@ -88,13 +88,14 @@ inputs/exomiser13/config1:
 	#This actually not correct, it is just a proxy. Add one: altered hpo database
 
 
-results/exomiser13/corpus-1-r%/config1/results.json: inputs/exomiser13/config1
-	pheval run --input-dir $(shell pwd)/$< --testdata-dir $(shell pwd)/corpora/corpus-1-r$* --runner exomiserphevalrunner --tmp-dir $(shell pwd)/$(TMP_DATA)/ --output-dir $(shell pwd)/out --config $(shell pwd)/$</config.yml
+results/exomiser_13_1_0_config1/corpus-1-r%_results: inputs/exomiser13/config1
+	pheval run --input-dir $(shell pwd)/$< --testdata-dir $(shell pwd)/corpora/corpus-1-r$* --runner exomiserphevalrunner --tmp-dir $(shell pwd)/$(TMP_DATA)/ --output-dir $(shell pwd)/results --config $(shell pwd)/$</config.yml
 
 
 corpora/corpus-1-r%/corpus.yml: #corpora/corpus-1/corpus.yml
 	test -d corpora/corpus-1-r$*/phenopackets || mkdir -p corpora/corpus-1-r$*/phenopackets
-	test -d corpora/corpus-1-r$*/vcf || mkdir -p corpora/corpus-1-r$*/vcf; ln -s $(shell pwd)/corpora/vcf/* $(shell dirname $@)/vcf
+	test -d corpora/corpus-1-r$*/vcf || mkdir -p corpora/corpus-1-r$*/vcf
+	test -f $(shell dirname $@)/vcf/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/corpora/vcf/* $(shell dirname $@)/vcf
 
 	pheval-utils scramble-phenopackets --scramble-factor $* --output-dir corpora/corpus-1-r$*/phenopackets --phenopacket-dir=$(TEST_DATA)/phenopackets/single --output-file-suffix=test
 	test -d corpora/corpus-1-r$*/vcf || mkdir -p corpora/corpus-1-r$*/vcf
@@ -112,13 +113,13 @@ prepare-corpus-%: corpora/vcf/template_exome_hg19.vcf.gz
 	$(MAKE) corpora/corpus-$*-r0.5/corpus.yml
 
 run-exomiser-corpus-%: corpora/vcf/template_exome_hg19.vcf.gz
-	$(MAKE) results/exomiser13/corpus-1-r0.9/config1/results.json
-	$(MAKE) results/exomiser13/corpus-1-r0.7/config1/results.json
-	$(MAKE) results/exomiser13/corpus-1-r0.5/config1/results.json
+	$(MAKE) results/exomiser_13_1_0_config1/corpus-1-r0.9_results
+	$(MAKE) results/exomiser_13_1_0_config1/corpus-1-r0.7_results
+	$(MAKE) results/exomiser_13_1_0_config1/corpus-1-r0.5_results
 
 .PHONY: clean
 clean:
-	rm -rf corpora/* inputs/* out/*
+	rm -rf corpora/* inputs/* results/*
 
 
 #illustrates how exomiser should work
