@@ -13,7 +13,7 @@ from ..utils.file_utils import all_files, files_with_suffix, obtain_closest_file
 from ..utils.phenopacket_utils import (
     PhenopacketUtil,
     ProbandCausativeGene,
-    VariantData,
+    GenomicVariant,
     phenopacket_reader,
 )
 
@@ -37,7 +37,7 @@ class VariantPrioritisationResultData:
     """Store rank data for causative variants."""
 
     phenopacket: Path
-    variant: VariantData
+    variant: GenomicVariant
     rank: int = 0
 
 
@@ -292,7 +292,7 @@ class AssessVariantPrioritisation:
         standardised_variant_results: [dict],
         threshold: float,
         ranking_method: str,
-        proband_causative_variants: [VariantData],
+        proband_causative_variants: [GenomicVariant],
     ):
         self.phenopacket_path = phenopacket_path
         self.results_dir = results_dir
@@ -311,7 +311,7 @@ class AssessVariantPrioritisation:
         rank_stats.add_rank(rank)
         variant_match = VariantPrioritisationResultData(
             self.phenopacket_path,
-            VariantData(
+            GenomicVariant(
                 chrom=result_entry["chrom"],
                 pos=result_entry["pos"],
                 ref=result_entry["ref"],
@@ -335,37 +335,28 @@ class AssessVariantPrioritisation:
         if float(self.threshold) < float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
+    def record_matched_variant(self, rank_stats, result) -> VariantPrioritisationResultData:
+        """Return the variant rank result - dealing with the specification of a threshold."""
+        if float(self.threshold) == 0.0:
+            return self.record_variant_prioritisation_match(result, rank_stats)
+        else:
+            return (
+                self.assess_variant_with_threshold(result, rank_stats)
+                if self.ranking_method != "pValue"
+                else self.assess_variant_with_pvalue_threshold(result, rank_stats)
+            )
+
     def assess_variant_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict):
         """Assess variant prioritisation."""
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
             variant_match = VariantPrioritisationResultData(self.phenopacket_path, variant)
             for _index, result in self.standardised_variant_results.iterrows():
-                result_variant = VariantData(
+                result_variant = GenomicVariant(
                     chrom=result["chrom"], pos=result["pos"], ref=result["ref"], alt=result["alt"]
                 )
-                if (
-                    variant.chrom == result_variant.chrom
-                    and result_variant.pos == variant.pos
-                    and result_variant.ref == variant.ref
-                    and result_variant.alt == variant.alt
-                    and float(self.threshold) != 0.0
-                ):
-                    variant_match = (
-                        self.assess_variant_with_threshold(result, rank_stats)
-                        if self.ranking_method != "pValue"
-                        else self.assess_variant_with_pvalue_threshold(result, rank_stats)
-                    )
-                    break
-                if (
-                    variant.chrom == result_variant.chrom
-                    and result_variant.pos == variant.pos
-                    and result_variant.ref == variant.ref
-                    and result_variant.alt == variant.alt
-                    and float(self.threshold) == 0.0
-                ):
-                    variant_match = self.record_variant_prioritisation_match(result, rank_stats)
-                    break
+                if variant == result_variant:
+                    variant_match = self.record_matched_variant(rank_stats, result)
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
