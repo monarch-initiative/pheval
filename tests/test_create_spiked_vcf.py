@@ -11,9 +11,9 @@ from pheval.prepare.create_spiked_vcf import (
     read_vcf,
 )
 from pheval.utils.phenopacket_utils import (
+    GenomicVariant,
     IncompatibleGenomeAssemblyError,
     ProbandCausativeVariant,
-    VariantData,
 )
 
 hg19_vcf = read_vcf(
@@ -87,7 +87,7 @@ class TestCheckVariantAssembly(unittest.TestCase):
             ProbandCausativeVariant(
                 "TEST1",
                 "GRCh37",
-                VariantData("1", 886190, "G", "A"),
+                GenomicVariant("1", 886190, "G", "A"),
                 "heterozygous",
             )
         ]
@@ -95,7 +95,7 @@ class TestCheckVariantAssembly(unittest.TestCase):
             ProbandCausativeVariant(
                 "TEST1",
                 "hg10",
-                VariantData("1", 886190, "G", "A"),
+                GenomicVariant("1", 886190, "G", "A"),
                 "heterozygous",
             )
         ]
@@ -103,13 +103,13 @@ class TestCheckVariantAssembly(unittest.TestCase):
             ProbandCausativeVariant(
                 "TEST1",
                 "hg19",
-                VariantData("1", 886190, "G", "A"),
+                GenomicVariant("1", 886190, "G", "A"),
                 "heterozygous",
             ),
             ProbandCausativeVariant(
                 "TEST1",
                 "hg38",
-                VariantData("1", 886190, "G", "A"),
+                GenomicVariant("1", 886190, "G", "A"),
                 "heterozygous",
             ),
         ]
@@ -154,7 +154,7 @@ class TestVcfSpiker(unittest.TestCase):
                 ProbandCausativeVariant(
                     "TEST1",
                     "GRCh37",
-                    VariantData("1", 886190, "G", "A"),
+                    GenomicVariant("1", 886190, "G", "A"),
                     "heterozygous",
                 )
             ],
@@ -166,13 +166,13 @@ class TestVcfSpiker(unittest.TestCase):
                 ProbandCausativeVariant(
                     "TEST1",
                     "GRCh37",
-                    VariantData("1", 886190, "G", "A"),
+                    GenomicVariant("1", 886190, "G", "A"),
                     "heterozygous",
                 ),
                 ProbandCausativeVariant(
                     "TEST1",
                     "GRCh37",
-                    VariantData("3", 61580860, "G", "A"),
+                    GenomicVariant("3", 61580860, "G", "A"),
                     "homozygous",
                 ),
             ],
@@ -181,7 +181,7 @@ class TestVcfSpiker(unittest.TestCase):
         cls.variant = ProbandCausativeVariant(
             "TEST1",
             "GRCh37",
-            VariantData("1", 886190, "G", "A"),
+            GenomicVariant("1", 886190, "G", "A"),
             "heterozygous",
         )
 
