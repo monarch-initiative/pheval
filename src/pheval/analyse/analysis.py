@@ -9,8 +9,8 @@ from statistics import mean
 import click
 import pandas as pd
 
-from ..utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
-from ..utils.phenopacket_utils import (
+from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
+from pheval.utils.phenopacket_utils import (
     GenomicVariant,
     PhenopacketUtil,
     ProbandCausativeGene,
