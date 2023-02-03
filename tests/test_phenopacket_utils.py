@@ -23,12 +23,12 @@ from phenopackets import (
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
     GeneIdentifierUpdater,
+    GenomicVariant,
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
-    GenomicVariant,
     create_hgnc_dict,
 )
 

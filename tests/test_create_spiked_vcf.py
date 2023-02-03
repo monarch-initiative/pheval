@@ -11,9 +11,9 @@ from pheval.prepare.create_spiked_vcf import (
     read_vcf,
 )
 from pheval.utils.phenopacket_utils import (
+    GenomicVariant,
     IncompatibleGenomeAssemblyError,
     ProbandCausativeVariant,
-    GenomicVariant,
 )
 
 hg19_vcf = read_vcf(
