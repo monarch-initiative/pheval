@@ -15,6 +15,12 @@ class RankedPhEvalGeneResult:
     pheval_gene_result: PhEvalGeneResult
     rank: int
 
+    def as_dict(self):
+        return {'gene_symbol': self.pheval_gene_result.gene_symbol,
+                'gene_identifier': self.pheval_gene_result.gene_identifier,
+                'score': self.pheval_gene_result.score,
+                'rank': self.rank}
+
 
 @dataclass
 class PhEvalVariantResult:
