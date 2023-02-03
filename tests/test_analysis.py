@@ -10,10 +10,12 @@ from pheval.analyse.analysis import (
     AssessVariantPrioritisation,
     GenePrioritisationResultData,
     PrioritisationRankRecorder,
+    RankComparisonGenerator,
     RankStats,
     VariantPrioritisationResultData,
+    merge_results,
 )
-from pheval.utils.phenopacket_utils import ProbandCausativeGene, GenomicVariant
+from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene
 
 
 class TestPrioritisationRankRecorder(unittest.TestCase):
@@ -634,9 +636,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
     def test_assess_variant_with_threshold_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
-        assess_with_threshold.threshold = 0.1
+        assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_pvalue_threshold(
+            assess_with_threshold.assess_variant_with_threshold(
                 result_entry=pd.Series(
                     {
                         "chrom": "3",
@@ -789,3 +791,122 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 },
             },
         )
+
+
+class TestMergeResults(unittest.TestCase):
+    def setUp(self) -> None:
+        self.result_1 = {
+            1: {
+                "Phenopacket": "phenopacket1.json",
+                "Gene": "GCDH",
+                "/path/to/results_directory1": 1,
+            }
+        }
+        self.result_2 = {
+            1: {
+                "Phenopacket": "phenopacket1.json",
+                "Gene": "GCDH",
+                "/path/to/results_directory2": 5,
+            }
+        }
+
+    def test_merge_results(self):
+        self.assertEqual(
+            merge_results(self.result_1, self.result_2),
+            {
+                1: {
+                    "Phenopacket": "phenopacket1.json",
+                    "Gene": "GCDH",
+                    "/path/to/results_directory1": 1,
+                    "/path/to/results_directory2": 5,
+                }
+            },
+        )
+
+
+class TestRankComparisonGenerator(unittest.TestCase):
+    def setUp(self) -> None:
+        self.gene_rank_comparisons = RankComparisonGenerator(
+            defaultdict(
+                dict,
+                {
+                    1: {
+                        "Phenopacket": "phenopacket1.json",
+                        "Gene": "GCDH",
+                        "/path/to/results_directory1": 1,
+                        "/path/to/results_directory2": 5,
+                    }
+                },
+            )
+        )
+        self.variant_rank_comparisons = RankComparisonGenerator(
+            defaultdict(
+                dict,
+                {
+                    1: {
+                        "Phenopacket": "phenopacket1.json",
+                        "Variant": "3_12563453454_C_T",
+                        "/path/to/results_directory1": 9,
+                        "/path/to/results_directory2": 3,
+                    }
+                },
+            )
+        )
+
+    def test_generate_gene_dataframe(self):
+        result = pd.DataFrame(
+            [
+                {
+                    "Phenopacket": "phenopacket1.json",
+                    "Gene": "GCDH",
+                    "/path/to/results_directory1": 1,
+                    "/path/to/results_directory2": 5,
+                }
+            ]
+        )
+        result.index += 1
+        self.assertTrue(result.equals(self.gene_rank_comparisons.generate_dataframe()))
+
+    def test_generate_variant_dataframe(self):
+        result = pd.DataFrame(
+            [
+                {
+                    "Phenopacket": "phenopacket1.json",
+                    "Variant": "3_12563453454_C_T",
+                    "/path/to/results_directory1": 9,
+                    "/path/to/results_directory2": 3,
+                }
+            ]
+        )
+        result.index += 1
+        self.assertTrue(result.equals(self.variant_rank_comparisons.generate_dataframe()))
+
+    def test_calculate_gene_rank_difference(self):
+        result = pd.DataFrame(
+            [
+                {
+                    "Phenopacket": "phenopacket1.json",
+                    "Gene": "GCDH",
+                    "/path/to/results_directory1": 1,
+                    "/path/to/results_directory2": 5,
+                    "rank_decrease": 4,
+                }
+            ]
+        )
+        result.index += 1
+        self.assertTrue(result.equals(self.gene_rank_comparisons.calculate_rank_difference()))
+
+    def test_calculate_variant_rank_difference(self):
+        result = pd.DataFrame(
+            [
+                {
+                    "Phenopacket": "phenopacket1.json",
+                    "Variant": "3_12563453454_C_T",
+                    "/path/to/results_directory1": 9,
+                    "/path/to/results_directory2": 3,
+                    "rank_decrease": -6,
+                }
+            ]
+        )
+        result.index += 1
+        self.assertTrue(result.equals(self.variant_rank_comparisons.calculate_rank_difference()))
