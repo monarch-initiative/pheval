@@ -13,7 +13,7 @@ from pheval.analyse.analysis import (
     RankStats,
     VariantPrioritisationResultData,
 )
-from pheval.utils.phenopacket_utils import ProbandCausativeGene, VariantData
+from pheval.utils.phenopacket_utils import ProbandCausativeGene, GenomicVariant
 
 
 class TestPrioritisationRankRecorder(unittest.TestCase):
@@ -22,7 +22,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
             1,
             Path("directory1"),
             VariantPrioritisationResultData(
-                Path("/path/to/phenopacket-2.json"), VariantData("1", 4896347, "C", "T"), 9
+                Path("/path/to/phenopacket-2.json"), GenomicVariant("1", 4896347, "C", "T"), 9
             ),
             defaultdict(
                 dict,
@@ -39,7 +39,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
             0,
             Path("directory2"),
             VariantPrioritisationResultData(
-                Path("/path/to/phenopacket-1.json"), VariantData("12", 120434, "A", "G"), 9
+                Path("/path/to/phenopacket-1.json"), GenomicVariant("12", 120434, "A", "G"), 9
             ),
             defaultdict(
                 dict,
@@ -512,8 +512,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             threshold=0.0,
             ranking_method="combinedScore",
             proband_causative_variants=[
-                VariantData(chrom="3", pos=126741108, ref="G", alt="A", gene="PLXNA1"),
-                VariantData(chrom="16", pos=133564345, ref="C", alt="T", gene="FAKE1"),
+                GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
+                GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
             ],
         )
         self.assess_variant_prioritisation_pvalue = AssessVariantPrioritisation(
@@ -523,8 +523,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             threshold=0.0,
             ranking_method="pValue",
             proband_causative_variants=[
-                VariantData(chrom="3", pos=126741108, ref="G", alt="A", gene="PLXNA1"),
-                VariantData(chrom="16", pos=133564345, ref="C", alt="T", gene="FAKE1"),
+                GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
+                GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
             ],
         )
         self.variant_rank_stats = RankStats()
@@ -548,7 +548,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
+                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
@@ -598,7 +598,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
+                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
@@ -652,7 +652,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             ),
             VariantPrioritisationResultData(
                 phenopacket=Path("/path/to/phenopacket.json"),
-                variant=VariantData(chrom="3", pos=126741108, ref="G", alt="A"),
+                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
