@@ -6,7 +6,6 @@ from collections import defaultdict
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
@@ -133,7 +132,6 @@ class PhenopacketUtil:
                         vcf_record.pos,
                         vcf_record.ref,
                         vcf_record.alt,
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
                     ),
                     genotype.label,
                 )
