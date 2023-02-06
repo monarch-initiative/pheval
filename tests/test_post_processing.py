@@ -37,31 +37,48 @@ pheval_variant_result = [
 
 
 class TestRankedPhEvalGeneResult(unittest.TestCase):
-
     def setUp(self) -> None:
         self.pheval_gene_result = RankedPhEvalGeneResult(
-            pheval_gene_result=PhEvalGeneResult(gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529),
-            rank=1)
+            pheval_gene_result=PhEvalGeneResult(
+                gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
+            ),
+            rank=1,
+        )
 
     def test_as_dict(self):
-        self.assertEqual(self.pheval_gene_result.as_dict(),
-                         {'gene_symbol': 'A4GNT', 'gene_identifier': 'ENSG00000118017', 'score': 0.6529, 'rank': 1}
-                         )
+        self.assertEqual(
+            self.pheval_gene_result.as_dict(),
+            {
+                "gene_symbol": "A4GNT",
+                "gene_identifier": "ENSG00000118017",
+                "score": 0.6529,
+                "rank": 1,
+            },
+        )
 
 
 class TestRankedPhEvalVariantResult(unittest.TestCase):
-
     def setUp(self) -> None:
-        self.pheval_variant_result = RankedPhEvalVariantResult(pheval_variant_result=PhEvalVariantResult(
-            chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
-        ), rank=3)
+        self.pheval_variant_result = RankedPhEvalVariantResult(
+            pheval_variant_result=PhEvalVariantResult(
+                chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
+            ),
+            rank=3,
+        )
 
     def test_as_dict(self):
-        self.assertEqual(self.pheval_variant_result.as_dict(),
-                         {'chromosome': '12', 'start': 12754332, 'end': 12754333, 'ref': 'T', 'alt': 'G',
-                          'score': 0.9999,
-                          'rank': 3}
-                         )
+        self.assertEqual(
+            self.pheval_variant_result.as_dict(),
+            {
+                "chromosome": "12",
+                "start": 12754332,
+                "end": 12754333,
+                "ref": "T",
+                "alt": "G",
+                "score": 0.9999,
+                "rank": 3,
+            },
+        )
 
 
 class TestResultSorter(unittest.TestCase):
