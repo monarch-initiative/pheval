@@ -8,7 +8,7 @@ from pheval.post_processing.post_processing import (
     ResultSorter,
     ScoreRanker,
     create_pheval_result,
-    rank_pheval_results,
+    rank_pheval_result,
 )
 
 pheval_gene_result = [
@@ -34,6 +34,34 @@ pheval_variant_result = [
     ),
     PhEvalVariantResult(chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578),
 ]
+
+
+class TestRankedPhEvalGeneResult(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.pheval_gene_result = RankedPhEvalGeneResult(
+            pheval_gene_result=PhEvalGeneResult(gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529),
+            rank=1)
+
+    def test_as_dict(self):
+        self.assertEqual(self.pheval_gene_result.as_dict(),
+                         {'gene_symbol': 'A4GNT', 'gene_identifier': 'ENSG00000118017', 'score': 0.6529, 'rank': 1}
+                         )
+
+
+class TestRankedPhEvalVariantResult(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.pheval_variant_result = RankedPhEvalVariantResult(pheval_variant_result=PhEvalVariantResult(
+            chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
+        ), rank=3)
+
+    def test_as_dict(self):
+        self.assertEqual(self.pheval_variant_result.as_dict(),
+                         {'chromosome': '12', 'start': 12754332, 'end': 12754333, 'ref': 'T', 'alt': 'G',
+                          'score': 0.9999,
+                          'rank': 3}
+                         )
 
 
 class TestResultSorter(unittest.TestCase):
@@ -190,7 +218,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
-            rank_pheval_results(self.sorted_gene_result),
+            rank_pheval_result(self.sorted_gene_result),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -221,7 +249,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_variant(self):
         self.assertEqual(
-            rank_pheval_results(self.sorted_variant_result),
+            rank_pheval_result(self.sorted_variant_result),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
