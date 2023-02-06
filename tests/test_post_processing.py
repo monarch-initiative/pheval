@@ -94,7 +94,7 @@ class TestResultSorter(unittest.TestCase):
 
     def test_sort_pheval_results_not_pvalue(self):
         self.assertEqual(
-            self.gene_results.sort_by_decreasing_score(),
+            self.gene_results.sort_pheval_results(),
             [
                 PhEvalGeneResult(
                     gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
@@ -113,7 +113,7 @@ class TestResultSorter(unittest.TestCase):
 
     def test_sort_pheval_results_pvalue(self):
         self.assertEqual(
-            self.variant_results.sort_by_increasing_score(),
+            self.variant_results.sort_pheval_results(),
             [
                 PhEvalVariantResult(
                     chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
