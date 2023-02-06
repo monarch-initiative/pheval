@@ -125,4 +125,4 @@ def create_pheval_result(
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sorted_pheval_result = ResultSorter(pheval_result, ranking_method).sort_pheval_results()
-    return rank_pheval_results(sorted_pheval_result)
+    return rank_pheval_result(sorted_pheval_result)
