@@ -7,7 +7,7 @@ from pheval.post_processing.post_processing import (
     RankedPhEvalVariantResult,
     ResultSorter,
     ScoreRanker,
-    rank_pheval_results,
+    rank_pheval_results, create_pheval_result,
 )
 
 pheval_gene_result = [
@@ -258,3 +258,41 @@ class TestRankPhEvalResults(unittest.TestCase):
                 ),
             ],
         )
+
+
+class TestCreatePhEvalResult(unittest.TestCase):
+
+    def test_create_pheval_result_gene(self):
+        self.assertEqual(create_pheval_result(pheval_gene_result, "combinedScore"),
+                         [RankedPhEvalGeneResult(
+                             pheval_gene_result=PhEvalGeneResult(gene_symbol='MAP3K14',
+                                                                 gene_identifier='ENSG00000006062',
+                                                                 score=0.9234), rank=1), RankedPhEvalGeneResult(
+                             pheval_gene_result=PhEvalGeneResult(gene_symbol='A4GNT', gene_identifier='ENSG00000118017',
+                                                                 score=0.6529), rank=2), RankedPhEvalGeneResult(
+                             pheval_gene_result=PhEvalGeneResult(gene_symbol='OR14J1',
+                                                                 gene_identifier='ENSG00000204695',
+                                                                 score=0.6529), rank=2), RankedPhEvalGeneResult(
+                             pheval_gene_result=PhEvalGeneResult(gene_symbol='PAGE1', gene_identifier='ENSG00000068985',
+                                                                 score=0.5235), rank=4)]
+                         )
+
+    def test_create_pheval_result_variant(self):
+        self.assertEqual(create_pheval_result(pheval_variant_result, "pValue"),
+                         [RankedPhEvalVariantResult(
+                             pheval_variant_result=PhEvalVariantResult(chromosome='X', start=93473023, end=93473024,
+                                                                       ref='A',
+                                                                       alt='G', score=0.1245), rank=1),
+                             RankedPhEvalVariantResult(
+                                 pheval_variant_result=PhEvalVariantResult(chromosome='8', start=532356, end=532357,
+                                                                           ref='A', alt='C',
+                                                                           score=0.4578), rank=2),
+                             RankedPhEvalVariantResult(
+                                 pheval_variant_result=PhEvalVariantResult(chromosome='5', start=23457444233,
+                                                                           end=23457444234, ref='A',
+                                                                           alt='C', score=0.9348), rank=3),
+                             RankedPhEvalVariantResult(
+                                 pheval_variant_result=PhEvalVariantResult(chromosome='12', start=12754332,
+                                                                           end=12754333, ref='T',
+                                                                           alt='G', score=0.9999), rank=4)]
+                         )
