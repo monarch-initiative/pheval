@@ -62,7 +62,7 @@ class RankedPhEvalVariantResult:
 
 class ResultSorter:
     def __init__(
-            self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
+        self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
     ):
         self.pheval_results = pheval_results
         self.ranking_method = ranking_method
@@ -101,7 +101,7 @@ class ScoreRanker:
 
 
 def rank_pheval_results(
-        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
+    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
     Deals with ex aequo scores"""
@@ -120,8 +120,9 @@ def rank_pheval_results(
     return ranked_result
 
 
-def create_pheval_result(pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
-                         ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
+def create_pheval_result(
+    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
+) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sorted_pheval_result = ResultSorter(pheval_result, ranking_method).sort_pheval_results()
     return rank_pheval_results(sorted_pheval_result)
