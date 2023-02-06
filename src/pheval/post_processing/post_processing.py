@@ -66,12 +66,15 @@ class ResultSorter:
         self.ranking_method = ranking_method
 
     def sort_by_decreasing_score(self):
+        """Sort results in descending order."""
         return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=True)
 
     def sort_by_increasing_score(self):
+        """Sort results in ascending order."""
         return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=False)
 
     def sort_pheval_results(self):
+        """Sort results with best score first."""
         return (
             self.sort_by_increasing_score() if self.ranking_method.lower() == "pvalue"
             else self.sort_by_decreasing_score()
