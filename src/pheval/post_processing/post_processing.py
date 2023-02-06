@@ -16,6 +16,7 @@ class RankedPhEvalGeneResult:
     rank: int
 
     def as_dict(self):
+        """Return PhEval gene result as dictionary."""
         return {'gene_symbol': self.pheval_gene_result.gene_symbol,
                 'gene_identifier': self.pheval_gene_result.gene_identifier,
                 'score': self.pheval_gene_result.score,
@@ -27,9 +28,10 @@ class PhEvalVariantResult:
     """Minimal data required from tool-specific output for variant prioritisation."""
     chromosome: str
     start: int
-    stop: int
+    end: int
     ref: str
     alt: str
+    score: float
 
 
 @dataclass
@@ -37,3 +39,13 @@ class RankedPhEvalVariantResult:
     """PhEval variant result with corresponding rank."""
     pheval_variant_result: PhEvalVariantResult
     rank: int
+
+    def as_dict(self):
+        """Return PhEval variant result as dictionary."""
+        return {'chromosome': self.pheval_variant_result.chromosome,
+                'start': self.pheval_variant_result.start,
+                'end': self.pheval_variant_result.end,
+                'ref': self.pheval_variant_result.ref,
+                'alt': self.pheval_variant_result.alt,
+                'score': self.pheval_variant_result.score,
+                'rank': self.rank}
