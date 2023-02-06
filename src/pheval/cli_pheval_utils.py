@@ -91,14 +91,17 @@ def scramble_phenopackets_command(
     "-a",
     default="heatmap",
     type=str,
-    help="Score column that will be used in comparison (e.g jaccard_similarity)",
+    help="""There are two types of analysis:
+        heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
+        score column for this purpose. Defaults to "heatmap".
+        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.""",
 )
 @click.option(
     "--output",
     "-o",
     metavar="FILE",
     default="diff.semsim.tsv",
-    help="The output file that will store the diff result",
+    help="Output path for the difference tsv. Defaults to percentage_diff.semsim.tsv",
 )
 def semsim_comparison(
     semsim_left: Path,
@@ -117,11 +120,16 @@ def semsim_comparison(
         analysis (str): There are two types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
-        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles..
+        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.
     """
+    analysis_type = ["heatmap", "percentage_diff"]
+    if analysis not in analysis_type:
+        raise ValueError(
+            f"""Invalid analysis type: {analysis}.
+    These are the valid analysis types:{','.join(analysis_type)}"""
+        )
 
-    match analysis:
-        case "heatmap":
-            semsim_heatmap_plot(semsim_left, semsim_right, score_column)
-        case "percentage_diff":
-            percentage_diff(semsim_left, semsim_right, score_column, output)
+    if analysis == "heatmap":
+        return semsim_heatmap_plot(semsim_left, semsim_right, score_column)
+    if analysis == "percentage_diff":
+        percentage_diff(semsim_left, semsim_right, score_column, output)
