@@ -61,22 +61,25 @@ class RankedPhEvalVariantResult:
 
 
 class ResultSorter:
-    def __init__(self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str):
+    def __init__(
+        self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
+    ):
         self.pheval_results = pheval_results
         self.ranking_method = ranking_method
 
     def sort_by_decreasing_score(self):
         """Sort results in descending order."""
-        return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=True)
+        return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
 
     def sort_by_increasing_score(self):
         """Sort results in ascending order."""
-        return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=False)
+        return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
 
     def sort_pheval_results(self):
         """Sort results with best score first."""
         return (
-            self.sort_by_increasing_score() if self.ranking_method.lower() == "pvalue"
+            self.sort_by_increasing_score()
+            if self.ranking_method.lower() == "pvalue"
             else self.sort_by_decreasing_score()
         )
 
@@ -84,7 +87,7 @@ class ResultSorter:
 @dataclass
 class ScoreRanker:
     rank: int = 0
-    current_score: float = float('inf')
+    current_score: float = float("inf")
     count: int = 0
 
     def rank_scores(self, round_score):
@@ -92,7 +95,8 @@ class ScoreRanker:
         if round_score > self.current_score:
             raise ValueError(
                 f"Input score {round_score} is greater than previous score of {self.current_score}. "
-                f"Scores must be provided in reverse numerical order i.e. highest to lowest.")
+                f"Scores must be provided in reverse numerical order i.e. highest to lowest."
+            )
         self.count += 1
         if self.current_score == round_score:
             return self.rank
@@ -100,3 +104,22 @@ class ScoreRanker:
         self.rank = self.count
         return self.rank
 
+
+def rank_pheval_results(
+    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
+) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
+    """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
+    Deals with ex aequo scores"""
+    score_ranker = ScoreRanker()
+    ranked_result = []
+    for result in pheval_result:
+        ranked_result.append(
+            RankedPhEvalGeneResult(
+                pheval_gene_result=result, rank=score_ranker.rank_scores(result.score)
+            )
+        ) if type(result) == PhEvalGeneResult else ranked_result.append(
+            RankedPhEvalVariantResult(
+                pheval_variant_result=result, rank=score_ranker.rank_scores(result.score)
+            )
+        )
+    return ranked_result
