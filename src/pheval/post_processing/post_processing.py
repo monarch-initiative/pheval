@@ -100,7 +100,7 @@ class ScoreRanker:
         return self.rank
 
 
-def rank_pheval_results(
+def rank_pheval_result(
     pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
