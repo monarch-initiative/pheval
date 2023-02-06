@@ -6,46 +6,49 @@ from pheval.post_processing.post_processing import (
     ResultSorter,
 )
 
+pheval_gene_result = [
+    PhEvalGeneResult(
+        gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
+    ),
+    PhEvalGeneResult(
+        gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
+    ),
+    PhEvalGeneResult(
+        gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
+    ),
+    PhEvalGeneResult(
+        gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
+    ),
+]
+pheval_variant_result = [
+    PhEvalVariantResult(
+        chromosome="5",
+        start=23457444233,
+        end=23457444234,
+        ref="A",
+        alt="C",
+        score=0.9348,
+    ),
+    PhEvalVariantResult(
+        chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
+    ),
+    PhEvalVariantResult(
+        chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
+    ),
+    PhEvalVariantResult(
+        chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
+    ),
+]
+
 
 class TestResultSorter(unittest.TestCase):
     def setUp(self) -> None:
         self.gene_results = ResultSorter(
-            pheval_results=[
-                PhEvalGeneResult(
-                    gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
-                ),
-                PhEvalGeneResult(
-                    gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
-                ),
-                PhEvalGeneResult(
-                    gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
-                ),
-                PhEvalGeneResult(
-                    gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
-                ),
-            ],
+            pheval_results=pheval_gene_result,
             ranking_method="combinedScore",
         )
         self.variant_results = ResultSorter(
-            pheval_results=[
-                PhEvalVariantResult(
-                    chromosome="5",
-                    start=23457444233,
-                    end=23457444234,
-                    ref="A",
-                    alt="C",
-                    score=0.9348,
-                ),
-                PhEvalVariantResult(
-                    chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
-                ),
-                PhEvalVariantResult(
-                    chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
-                ),
-                PhEvalVariantResult(
-                    chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
-                ),
-            ],
+            pheval_results=pheval_variant_result,
             ranking_method="pValue",
         )
 
@@ -134,3 +137,8 @@ class TestResultSorter(unittest.TestCase):
                 ),
             ],
         )
+
+
+class TestScoreRanker(unittest.TestCase):
+    def test_rank_scores(self):
+        assert False
