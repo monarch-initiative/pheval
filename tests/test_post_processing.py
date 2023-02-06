@@ -3,7 +3,7 @@ import unittest
 from pheval.post_processing.post_processing import (
     PhEvalGeneResult,
     PhEvalVariantResult,
-    ResultSorter,
+    ResultSorter, ScoreRanker,
 )
 
 pheval_gene_result = [
@@ -140,5 +140,23 @@ class TestResultSorter(unittest.TestCase):
 
 
 class TestScoreRanker(unittest.TestCase):
-    def test_rank_scores(self):
-        assert False
+    def setUp(self) -> None:
+        self.score_ranker = ScoreRanker()
+
+    def test_rank_scores_first_rank(self):
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+
+    def test_rank_scores_increase_rank(self):
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+
+    def test_rank_scores_same_rank(self):
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+
+    def test_rank_scores_count_increase(self):
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.1234), 4)
