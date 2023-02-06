@@ -94,7 +94,7 @@ def scramble_phenopackets_command(
     help="""There are two types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
-        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.""",
+        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles""",
 )
 @click.option(
     "--output",
