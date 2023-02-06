@@ -51,9 +51,7 @@ def ensure_file_exists(*files: str):
             raise FileNotFoundError(f"File {file} not found")
 
 
-def ensure_columns_exists(cols: list,
-                          dataframes: List[pd.DataFrame],
-                          err_message: str = ""):
+def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_message: str = ""):
     """Ensures the columns exist in dataframes passed as argument (e.g)
 
     "
@@ -69,9 +67,7 @@ def ensure_columns_exists(cols: list,
     if not dataframes or not flat_cols:
         return
     if err_message:
-        err_msg = (
-            f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} {err_message}"""
-        )
+        err_msg = f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} {err_message}"""
     else:
         err_msg = f"""columns: {", ".join(flat_cols[:-1])} and {flat_cols[-1]} \
 - must be present in both left and right files"""

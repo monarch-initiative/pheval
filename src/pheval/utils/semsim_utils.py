@@ -1,8 +1,8 @@
 """
 Contains all pheval utility methods
 """
+from pathlib import Path
 
-import click
 import numpy
 import pandas as pd
 import plotly.express as px
@@ -38,16 +38,17 @@ def parse_semsim(df: pd.DataFrame, cols: list) -> pd.DataFrame:
     return df
 
 
-def diff_semsim(semsim_left: pd.DataFrame,
-                semsim_right: pd.DataFrame,
-                score_column: str,
-                absolute_diff: bool) -> pd.DataFrame:
+def diff_semsim(
+    semsim_left: pd.DataFrame, semsim_right: pd.DataFrame, score_column: str, absolute_diff: bool
+) -> pd.DataFrame:
     """Calculates score difference between two semantic similarity profiles
 
     Args:
         semsim_left (pd.DataFrame): first semantic similarity dataframe
         semsim_right (pd.DataFrame): second semantic similarity dataframe
-        score_column (str): [description]
+        score_column (str): Score column that will be computed (e.g. jaccard_similarity)
+        absolute_diff (bool, optional): Whether the difference is absolute (True) or percentage (False).
+        Defaults to True.
 
     Returns:
         pd.DataFrame: A dataframe with terms and its scores differences
@@ -56,29 +57,31 @@ def diff_semsim(semsim_left: pd.DataFrame,
     if absolute_diff:
         df["diff"] = df[f"{score_column}_x"] - df[f"{score_column}_y"]
         return df[["subject_id", "object_id", "diff"]]
-    df['diff'] = df.apply(lambda row: get_change(row[f"{score_column}_x"], row[f"{score_column}_y"]), axis=1)
+    df["diff"] = df.apply(
+        lambda row: get_percentage_diff(row[f"{score_column}_x"], row[f"{score_column}_y"]), axis=1
+    )
     return df[["subject_id", "object_id", f"{score_column}_x", f"{score_column}_y", "diff"]]
 
 
-def diff(semsim_left: click.Path, semsim_right: click.Path, score_column: str, output: click.Path):
+def percentage_diff(semsim_left: Path, semsim_right: Path, score_column: str, output: Path):
     """Compares two semantic similarity profiles
 
     Args:
-        semsim_left (click.Path): File path of the first semantic similarity profile
-        semsim_right (click.Path): File path of the second semantic similarity profile
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
-        output (click.Path): Output path for the difference tsv
+        output (Path): Output path for the difference tsv file
     """
     clean_df = semsim_analysis(semsim_left, semsim_right, score_column, absolute_diff=False)
-    clean_df.sort_values(by='diff', ascending=False).to_csv(output, sep='\t', index=False)
+    clean_df.sort_values(by="diff", ascending=False).to_csv(output, sep="\t", index=False)
 
 
-def semsim_heatmap_plot(semsim_left: click.Path, semsim_right: click.Path, score_column: str):
+def semsim_heatmap_plot(semsim_left: Path, semsim_right: Path, score_column: str):
     """Plots semantic similarity profiles heatmap
 
     Args:
-        semsim_left (click.Path): File path of the first semantic similarity profile
-        semsim_right (click.Path): File path of the second semantic similarity profile
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
     """
     clean_df = semsim_analysis(semsim_left, semsim_right, score_column)
@@ -87,7 +90,21 @@ def semsim_heatmap_plot(semsim_left: click.Path, semsim_right: click.Path, score
     fig.show()
 
 
-def semsim_analysis(semsim_left: click.Path, semsim_right: click.Path, score_column: str, absolute_diff=True):
+def semsim_analysis(
+    semsim_left: Path, semsim_right: Path, score_column: str, absolute_diff=True
+) -> pd.DataFrame:
+    """semsim_analysis
+
+    Args:
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
+        score_column (str): Score column that will be computed (e.g. jaccard_similarity)
+        absolute_diff (bool, optional): Whether the difference is absolute (True) or percentage (False).
+        Defaults to True.
+
+    Returns:
+        [pd.DataFrame]: DataFrame with the differences between two semantic similarity profiles
+    """
     validate_semsim_file_comparison(semsim_left, semsim_right)
     cols = ["subject_id", "object_id", score_column]
     semsim_left = pd.read_csv(semsim_left, sep="\t")
@@ -103,13 +120,13 @@ def semsim_analysis(semsim_left: click.Path, semsim_right: click.Path, score_col
     return filter_non_0_score(diff_df, "diff")
 
 
-def validate_semsim_file_comparison(semsim_left: click.Path, semsim_right: click.Path):
+def validate_semsim_file_comparison(semsim_left: Path, semsim_right: Path):
     """Checks if files exist and whether they're different
     Args:
-        semsim_left (click.Path): File path of the first semantic similarity profile
-        semsim_right (click.Path): File path of the second semantic similarity profile
+        semsim_left (Path): File path of the first semantic similarity profile
+        semsim_right (Path): File path of the second semantic similarity profile
     Raises:
-        Exception: [description]
+        Exception: FileNotFoundException
     """
     if semsim_left == semsim_right:
         errmsg = "Semantic similarity profiles are equal. Make sure you have selected different files to analyze"
@@ -117,23 +134,23 @@ def validate_semsim_file_comparison(semsim_left: click.Path, semsim_right: click
     file_utils.ensure_file_exists(semsim_left, semsim_right)
 
 
-def get_change(current: float, previous: float) -> float:
-    """get_change
+def get_percentage_diff(current_number: float, previous_number: float) -> float:
+    """Gets the percentage difference between two numbers
 
     Args:
-        current (float): [description]
-        previous (float): [description]
+        current_number (float): second number in comparison
+        previous_number (float): first number in comparison
 
     Returns:
-        float: [description]
+        float: percentage difference between two numbers
     """
     try:
-        if current == previous:
+        if current_number == previous_number:
             return "{:.2%}".format(0)
-        if current > previous:
-            number = (1 - ((current / previous))) * 100
+        if current_number > previous_number:
+            number = (1 - ((current_number / previous_number))) * 100
         else:
-            number = (100 - ((previous / current) * 100)) * -1
+            number = (100 - ((previous_number / current_number) * 100)) * -1
         return "{:.2%}".format(number / 100)
     except ZeroDivisionError:
         return None
