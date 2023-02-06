@@ -1,3 +1,4 @@
+import operator
 from dataclasses import dataclass
 
 
@@ -57,3 +58,21 @@ class RankedPhEvalVariantResult:
             "score": self.pheval_variant_result.score,
             "rank": self.rank,
         }
+
+
+class ResultSorter:
+    def __init__(self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str):
+        self.pheval_results = pheval_results
+        self.ranking_method = ranking_method
+
+    def sort_by_decreasing_score(self):
+        return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=True)
+
+    def sort_by_increasing_score(self):
+        return sorted(self.pheval_results, key=operator.attrgetter('score'), reverse=False)
+
+    def sort_pheval_results(self):
+        return (
+            self.sort_by_increasing_score() if self.ranking_method.lower() == "pvalue"
+            else self.sort_by_decreasing_score()
+        )
