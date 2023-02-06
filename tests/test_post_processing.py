@@ -3,22 +3,15 @@ import unittest
 from pheval.post_processing.post_processing import (
     PhEvalGeneResult,
     PhEvalVariantResult,
-    ResultSorter, ScoreRanker,
+    ResultSorter,
+    ScoreRanker,
 )
 
 pheval_gene_result = [
-    PhEvalGeneResult(
-        gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
-    ),
-    PhEvalGeneResult(
-        gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
-    ),
-    PhEvalGeneResult(
-        gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
-    ),
-    PhEvalGeneResult(
-        gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
-    ),
+    PhEvalGeneResult(gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529),
+    PhEvalGeneResult(gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234),
+    PhEvalGeneResult(gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529),
+    PhEvalGeneResult(gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235),
 ]
 pheval_variant_result = [
     PhEvalVariantResult(
@@ -35,9 +28,7 @@ pheval_variant_result = [
     PhEvalVariantResult(
         chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
     ),
-    PhEvalVariantResult(
-        chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
-    ),
+    PhEvalVariantResult(chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578),
 ]
 
 
