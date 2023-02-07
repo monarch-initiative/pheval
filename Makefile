@@ -51,7 +51,7 @@ $(RAW_DATA_FOLDER)/random-hp-terms.txt:
 	echo $(TERM) > $@
 
 $(RAW_DATA_FOLDER)/random-mp-terms.txt:
-	$(eval TERM=$(shell bash -c "cat $(RAW_DATA_FOLDER)/hp-mp-merged.owl | grep '<!-- http://purl.obolibrary.org/obo/HP_'  | grep '_' |  shuf -n 100  | head -n 100 | rev | cut -d '/' -f 1 | cut -d ' ' -f 2 | rev | tr '_' ':'"))
+	$(eval TERM=$(shell bash -c "cat $(RAW_DATA_FOLDER)/hp-mp-merged.owl | grep '<!-- http://purl.obolibrary.org/obo/MP_'  | grep '_' |  shuf -n 100  | head -n 100 | rev | cut -d '/' -f 1 | cut -d ' ' -f 2 | rev | tr '_' ':'"))
 	echo $(TERM) > $@
 
 
