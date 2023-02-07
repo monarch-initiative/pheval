@@ -10,7 +10,7 @@ from pheval.prepare.update_phenopacket import (
 )
 
 from .cli_pheval import run
-from .cli_pheval_utils import scramble_semsim
+from .cli_pheval_utils import scramble_semsim, semsim_comparison
 from .prepare.create_noisy_phenopackets import (
     scramble_phenopacket_command,
     scramble_phenopackets_command,
@@ -54,6 +54,7 @@ def pheval_utils():
 
 
 pheval_utils.add_command(scramble_semsim)
+pheval_utils.add_command(semsim_comparison)
 pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(scramble_phenopacket_command)
 pheval_utils.add_command(update_phenopacket_command)
