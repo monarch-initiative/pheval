@@ -36,7 +36,8 @@ $(RAW_DATA_FOLDER)/hp-mp-merged.owl: $(RAW_DATA_FOLDER)/hp.owl $(RAW_DATA_FOLDER
 $(RAW_DATA_FOLDER)/hp-mp-merged2.owl: $(RAW_DATA_FOLDER)/hp-mp-merged.owl
 	test -d $(RAW_DATA_FOLDER) || mkdir -p $(RAW_DATA_FOLDER)
 	$(eval TERM1=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-hp-terms.txt | cut -d ' ' -f1 "))
-	$(eval TERM2=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-hp-terms.txt | cut -d ' ' -f2 "))
+	$(eval TERM2=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-mp-terms.txt | cut -d ' ' -f2 "))
+
 	robot merge --input $< \
 	remove --term $(TERM1) --term $(TERM2) --axioms logical --output $@
 
@@ -50,7 +51,6 @@ $(RAW_DATA_FOLDER)/random-hp-terms.txt:
 	echo $(TERM) > $@
 
 $(RAW_DATA_FOLDER)/random-mp-terms.txt:
-	#TODO: GET BACK TO HP
 	$(eval TERM=$(shell bash -c "cat $(RAW_DATA_FOLDER)/hp-mp-merged.owl | grep '<!-- http://purl.obolibrary.org/obo/HP_'  | grep '_' |  shuf -n 100  | head -n 100 | rev | cut -d '/' -f 1 | cut -d ' ' -f 2 | rev | tr '_' ':'"))
 	echo $(TERM) > $@
 
