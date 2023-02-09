@@ -312,8 +312,8 @@ class AssessVariantPrioritisation:
         variant_match = VariantPrioritisationResultData(
             self.phenopacket_path,
             GenomicVariant(
-                chrom=result_entry["chrom"],
-                pos=result_entry["pos"],
+                chrom=result_entry["chromosome"],
+                pos=result_entry["start"],
                 ref=result_entry["ref"],
                 alt=result_entry["alt"],
             ),
@@ -353,7 +353,7 @@ class AssessVariantPrioritisation:
             variant_match = VariantPrioritisationResultData(self.phenopacket_path, variant)
             for _index, result in self.standardised_variant_results.iterrows():
                 result_variant = GenomicVariant(
-                    chrom=result["chrom"], pos=result["pos"], ref=result["ref"], alt=result["alt"]
+                    chrom=result["chromosome"], pos=result["start"], ref=result["ref"], alt=result["alt"]
                 )
                 if variant == result_variant:
                     variant_match = self.record_matched_variant(rank_stats, result)
