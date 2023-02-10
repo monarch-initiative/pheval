@@ -102,6 +102,7 @@ class ScoreRanker:
         self.sort_order = sort_order
 
     def _check_rank_order(self, round_score: float) -> None:
+        """Check the results are correctly ordered."""
         if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
                 "inf"
         ):
