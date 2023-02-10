@@ -65,8 +65,8 @@ class RankedPhEvalVariantResult:
 
 
 class SortOrder(Enum):
-    ASC = 1
-    DESC = 2
+    ASCENDING = 1
+    DESCENDING = 2
 
 
 class ResultSorter:
@@ -103,10 +103,10 @@ class ScoreRanker:
 
     def _check_rank_order(self, round_score: float):
         match self.sort_order:
-            case SortOrder.ASC:
+            case SortOrder.ASCENDING:
                 if round_score < self.current_score != float("inf"):
                     raise ValueError("Results are not correctly sorted!")
-            case SortOrder.DESC:
+            case SortOrder.DESCENDING:
                 if round_score > self.current_score != float("inf"):
                     raise ValueError("Results are not correctly sorted!")
 
