@@ -87,7 +87,6 @@ class ResultSorter:
         )
 
 
-@dataclass
 class ScoreRanker:
     rank: int = 0
     current_score: float = float("inf")
