@@ -8,7 +8,7 @@ from pheval.post_processing.post_processing import (
     ResultSorter,
     ScoreRanker,
     create_pheval_result,
-    _rank_pheval_result,
+    rank_pheval_result, SortOrder,
 )
 
 pheval_gene_result = [
@@ -85,11 +85,11 @@ class TestResultSorter(unittest.TestCase):
     def setUp(self) -> None:
         self.gene_results = ResultSorter(
             pheval_results=pheval_gene_result,
-            ranking_method="combinedScore",
+            sort_order=SortOrder.DESCENDING,
         )
         self.variant_results = ResultSorter(
             pheval_results=pheval_variant_result,
-            ranking_method="pValue",
+            sort_order=SortOrder.ASCENDING,
         )
 
     def test_sort_by_decreasing_score(self):
@@ -136,6 +136,7 @@ class TestResultSorter(unittest.TestCase):
         )
 
     def test_sort_pheval_results_not_pvalue(self):
+        print(self.gene_results.sort_order)
         self.assertEqual(
             self.gene_results.sort_pheval_results(),
             [
@@ -181,7 +182,7 @@ class TestResultSorter(unittest.TestCase):
 
 class TestScoreRanker(unittest.TestCase):
     def setUp(self) -> None:
-        self.score_ranker = ScoreRanker()
+        self.score_ranker = ScoreRanker(SortOrder.DESCENDING)
 
     def test_rank_scores_first_rank(self):
         self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
@@ -235,7 +236,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
-            _rank_pheval_result(self.sorted_gene_result),
+            rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -266,7 +267,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_variant(self):
         self.assertEqual(
-            _rank_pheval_result(self.sorted_variant_result),
+            rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
@@ -309,7 +310,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 class TestCreatePhEvalResult(unittest.TestCase):
     def test_create_pheval_result_gene(self):
         self.assertEqual(
-            create_pheval_result(pheval_gene_result, "combinedScore"),
+            create_pheval_result(pheval_gene_result, SortOrder.DESCENDING),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -340,7 +341,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
 
     def test_create_pheval_result_variant(self):
         self.assertEqual(
-            create_pheval_result(pheval_variant_result, "pValue"),
+            create_pheval_result(pheval_variant_result, SortOrder.ASCENDING),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
