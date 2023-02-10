@@ -144,6 +144,7 @@ def rank_pheval_result(
 
 
 def return_sort_order(sort_order_str: str) -> SortOrder:
+    """Return the SortOrder Enum from string derived from config."""
     try:
         return SortOrder[sort_order_str.upper()]
     except KeyError:
