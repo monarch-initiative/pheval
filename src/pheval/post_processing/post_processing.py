@@ -76,20 +76,20 @@ class ResultSorter:
         self.pheval_results = pheval_results
         self.ranking_method = ranking_method
 
-    def sort_by_decreasing_score(self):
+    def _sort_by_decreasing_score(self):
         """Sort results in descending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
 
-    def sort_by_increasing_score(self):
+    def _sort_by_increasing_score(self):
         """Sort results in ascending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
 
-    def sort_pheval_results(self):
+    def _sort_pheval_results(self):
         """Sort results with best score first."""
         return (
-            self.sort_by_increasing_score()
+            self._sort_by_increasing_score()
             if self.ranking_method.lower() == "pvalue"
-            else self.sort_by_decreasing_score()
+            else self._sort_by_decreasing_score()
         )
 
 
@@ -110,7 +110,7 @@ class ScoreRanker:
                 if round_score > self.current_score != float("inf"):
                     raise ValueError("Results are not correctly sorted!")
 
-    def rank_scores(self, round_score: float):
+    def _rank_scores(self, round_score: float):
         """Add ranks to a result, equal scores are given the same rank e.g., 1,1,3."""
         self._check_rank_order(round_score)
         self.count += 1
@@ -121,7 +121,7 @@ class ScoreRanker:
         return self.rank
 
 
-def rank_pheval_result(
+def _rank_pheval_result(
         pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
@@ -131,11 +131,11 @@ def rank_pheval_result(
     for result in pheval_result:
         ranked_result.append(
             RankedPhEvalGeneResult(
-                pheval_gene_result=result, rank=score_ranker.rank_scores(result.score)
+                pheval_gene_result=result, rank=score_ranker._rank_scores(result.score)
             )
         ) if type(result) == PhEvalGeneResult else ranked_result.append(
             RankedPhEvalVariantResult(
-                pheval_variant_result=result, rank=score_ranker.rank_scores(result.score)
+                pheval_variant_result=result, rank=score_ranker._rank_scores(result.score)
             )
         )
     return ranked_result
@@ -145,8 +145,8 @@ def create_pheval_result(
         pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
-    sorted_pheval_result = ResultSorter(pheval_result, ranking_method).sort_pheval_results()
-    return rank_pheval_result(sorted_pheval_result)
+    sorted_pheval_result = ResultSorter(pheval_result, ranking_method)._sort_pheval_results()
+    return _rank_pheval_result(sorted_pheval_result)
 
 
 def write_pheval_gene_result(
