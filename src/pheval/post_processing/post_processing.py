@@ -76,15 +76,15 @@ class ResultSorter:
         self.pheval_results = pheval_results
         self.sort_order = sort_order
 
-    def _sort_by_decreasing_score(self):
+    def _sort_by_decreasing_score(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
         """Sort results in descending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
 
-    def _sort_by_increasing_score(self):
+    def _sort_by_increasing_score(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
         """Sort results in ascending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
 
-    def sort_pheval_results(self):
+    def sort_pheval_results(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
         """Sort results with best score first."""
         return (
             self._sort_by_increasing_score()
