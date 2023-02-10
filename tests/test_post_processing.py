@@ -311,7 +311,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 class TestCreatePhEvalResult(unittest.TestCase):
     def test_create_pheval_result_gene(self):
         self.assertEqual(
-            create_pheval_result(pheval_gene_result, SortOrder.DESCENDING),
+            create_pheval_result(pheval_gene_result, "descending"),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -342,7 +342,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
 
     def test_create_pheval_result_variant(self):
         self.assertEqual(
-            create_pheval_result(pheval_variant_result, SortOrder.ASCENDING),
+            create_pheval_result(pheval_variant_result, "ascending"),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
