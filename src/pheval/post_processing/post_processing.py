@@ -102,13 +102,21 @@ class ScoreRanker:
         self.sort_order = sort_order
 
     def _check_rank_order(self, round_score: float):
-        match self.sort_order:
-            case SortOrder.ASCENDING:
-                if round_score < self.current_score != float("inf"):
-                    raise ValueError("Results are not correctly sorted!")
-            case SortOrder.DESCENDING:
-                if round_score > self.current_score != float("inf"):
-                    raise ValueError("Results are not correctly sorted!")
+        if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
+            "inf"
+        ):
+            raise ValueError("Results are not correctly sorted!")
+        elif self.sort_order == SortOrder.DESCENDING and round_score > self.current_score != float(
+            "inf"
+        ):
+            raise ValueError("Results are not correctly sorted!")
+        # match self.sort_order:
+        #     case SortOrder.ASCENDING:
+        #         if round_score < self.current_score != float("inf"):
+        #             raise ValueError("Results are not correctly sorted!")
+        #     case SortOrder.DESCENDING:
+        #         if round_score > self.current_score != float("inf"):
+        #             raise ValueError("Results are not correctly sorted!")
 
     def rank_scores(self, round_score: float):
         """Add ranks to a result, equal scores are given the same rank e.g., 1,1,3."""
