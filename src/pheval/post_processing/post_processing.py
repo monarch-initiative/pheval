@@ -71,10 +71,10 @@ class SortOrder(Enum):
 
 class ResultSorter:
     def __init__(
-            self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
+            self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
     ):
         self.pheval_results = pheval_results
-        self.ranking_method = ranking_method
+        self.sort_order = sort_order
 
     def _sort_by_decreasing_score(self):
         """Sort results in descending order."""
@@ -88,7 +88,7 @@ class ResultSorter:
         """Sort results with best score first."""
         return (
             self._sort_by_increasing_score()
-            if self.ranking_method.lower() == "pvalue"
+            if self.sort_order == SortOrder.ASCENDING
             else self._sort_by_decreasing_score()
         )
 
@@ -121,12 +121,13 @@ class ScoreRanker:
         return self.rank
 
 
-def _rank_pheval_result(
+def rank_pheval_result(
         pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
+        sort_order: SortOrder
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
     Deals with ex aequo scores"""
-    score_ranker = ScoreRanker()
+    score_ranker = ScoreRanker(sort_order)
     ranked_result = []
     for result in pheval_result:
         ranked_result.append(
@@ -142,11 +143,11 @@ def _rank_pheval_result(
 
 
 def create_pheval_result(
-        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], ranking_method: str
+        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
-    sorted_pheval_result = ResultSorter(pheval_result, ranking_method).sort_pheval_results()
-    return _rank_pheval_result(sorted_pheval_result)
+    sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
+    return rank_pheval_result(sorted_pheval_result, sort_order)
 
 
 def write_pheval_gene_result(
