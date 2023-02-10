@@ -7,8 +7,9 @@ from pheval.post_processing.post_processing import (
     RankedPhEvalVariantResult,
     ResultSorter,
     ScoreRanker,
+    SortOrder,
     create_pheval_result,
-    rank_pheval_result, SortOrder,
+    rank_pheval_result,
 )
 
 pheval_gene_result = [
