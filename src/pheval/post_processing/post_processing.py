@@ -101,7 +101,7 @@ class ScoreRanker:
     def __init__(self, sort_order: SortOrder):
         self.sort_order = sort_order
 
-    def _check_rank_order(self, round_score: float):
+    def _check_rank_order(self, round_score: float) -> None:
         if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
                 "inf"
         ):
@@ -111,7 +111,7 @@ class ScoreRanker:
         ):
             raise ValueError("Results are not correctly sorted!")
 
-    def rank_scores(self, round_score: float):
+    def rank_scores(self, round_score: float) -> int:
         """Add ranks to a result, equal scores are given the same rank e.g., 1,1,3."""
         self._check_rank_order(round_score)
         self.count += 1
