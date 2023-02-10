@@ -9,7 +9,7 @@ from pheval.post_processing.post_processing import (
     ScoreRanker,
     SortOrder,
     create_pheval_result,
-    rank_pheval_result,
+    rank_pheval_result, return_sort_order,
 )
 
 pheval_gene_result = [
@@ -393,3 +393,15 @@ class TestCreatePhEvalResult(unittest.TestCase):
                 ),
             ],
         )
+
+
+class TestReturnSortOrder(unittest.TestCase):
+    def test_return_sort_order(self):
+        self.assertEqual(return_sort_order("ascending"), SortOrder.ASCENDING)
+        self.assertEqual(return_sort_order("descending"), SortOrder.DESCENDING)
+
+    def test_return_sort_order_incompatible(self):
+        with self.assertRaises(ValueError):
+            return_sort_order("null")
+
+
