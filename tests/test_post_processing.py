@@ -183,25 +183,38 @@ class TestResultSorter(unittest.TestCase):
 
 class TestScoreRanker(unittest.TestCase):
     def setUp(self) -> None:
-        self.score_ranker = ScoreRanker(SortOrder.DESCENDING)
+        self.score_ranker_descending = ScoreRanker(SortOrder.DESCENDING)
+        self.score_ranker_ascending = ScoreRanker(SortOrder.ASCENDING)
+
+    def test_check_rank_order_descending(self):
+        self.score_ranker_descending.rank_scores(0.9)
+        self.score_ranker_descending.rank_scores(0.8)
+        with self.assertRaises(ValueError):
+            self.score_ranker_descending.rank_scores(0.9)
+
+    def test_check_rank_order_ascending(self):
+        self.score_ranker_ascending.rank_scores(0.1)
+        self.score_ranker_ascending.rank_scores(0.2)
+        with self.assertRaises(ValueError):
+            self.score_ranker_ascending.rank_scores(0.1)
 
     def test_rank_scores_first_rank(self):
-        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
 
     def test_rank_scores_increase_rank(self):
-        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
 
     def test_rank_scores_same_rank(self):
-        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
 
     def test_rank_scores_count_increase(self):
-        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker.rank_scores(0.1234), 4)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker_descending.rank_scores(0.1234), 4)
 
 
 class TestRankPhEvalResults(unittest.TestCase):
