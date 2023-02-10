@@ -137,7 +137,7 @@ class TestResultSorter(unittest.TestCase):
 
     def test_sort_pheval_results_not_pvalue(self):
         self.assertEqual(
-            self.gene_results._sort_pheval_results(),
+            self.gene_results.sort_pheval_results(),
             [
                 PhEvalGeneResult(
                     gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
@@ -156,7 +156,7 @@ class TestResultSorter(unittest.TestCase):
 
     def test_sort_pheval_results_pvalue(self):
         self.assertEqual(
-            self.variant_results._sort_pheval_results(),
+            self.variant_results.sort_pheval_results(),
             [
                 PhEvalVariantResult(
                     chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
@@ -184,22 +184,22 @@ class TestScoreRanker(unittest.TestCase):
         self.score_ranker = ScoreRanker()
 
     def test_rank_scores_first_rank(self):
-        self.assertEqual(self.score_ranker._rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
 
     def test_rank_scores_increase_rank(self):
-        self.assertEqual(self.score_ranker._rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker._rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
 
     def test_rank_scores_same_rank(self):
-        self.assertEqual(self.score_ranker._rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker._rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker._rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
 
     def test_rank_scores_count_increase(self):
-        self.assertEqual(self.score_ranker._rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker._rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker._rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker._rank_scores(0.1234), 4)
+        self.assertEqual(self.score_ranker.rank_scores(0.7342), 1)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.3452), 2)
+        self.assertEqual(self.score_ranker.rank_scores(0.1234), 4)
 
 
 class TestRankPhEvalResults(unittest.TestCase):
