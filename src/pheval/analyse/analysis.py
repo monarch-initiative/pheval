@@ -272,6 +272,7 @@ class AssessGenePrioritisation:
                     gene_match = self.record_matched_gene(
                         gene, rank_stats, standardised_gene_result
                     )
+                    break
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
@@ -360,6 +361,7 @@ class AssessVariantPrioritisation:
                 )
                 if variant == result_variant:
                     variant_match = self.record_matched_variant(rank_stats, result)
+                    break
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
