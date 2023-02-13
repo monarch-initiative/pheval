@@ -2,6 +2,8 @@
 Monarch Initiative
 """
 
+from importlib import Path
+
 import click
 
 from pheval.implementations import get_implementation_resolver
@@ -9,14 +11,14 @@ from pheval.implementations import get_implementation_resolver
 
 @click.command()
 @click.option(
-    "--inputdir",
+    "--input-dir",
     "-i",
     metavar="INPUTDIR",
     required=True,
     help="The input directory (relative path: e.g exomiser-13.11)",
 )
 @click.option(
-    "--testdatadir",
+    "--testdata-dir",
     "-t",
     metavar="TESTDATA",
     required=True,
@@ -30,14 +32,14 @@ from pheval.implementations import get_implementation_resolver
     help="Runner implementation (e.g exomiser-13.11)",
 )
 @click.option(
-    "--tmpdir",
+    "--tmp-dir",
     "-m",
     metavar="TMPDIR",
     required=False,
     help="The path of the temporary directory (optional)",
 )
 @click.option(
-    "--outputdir",
+    "--output-dir",
     "-o",
     metavar="OUTPUTDIR",
     required=True,
@@ -50,26 +52,19 @@ from pheval.implementations import get_implementation_resolver
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
 )
-def run(
-    inputdir: click.Path,
-    testdatadir: click.Path,
-    runner: str,
-    tmpdir: click.Path,
-    outputdir: click.Path,
-    config: click.Path,
-) -> None:
+def run(input_dir: Path, testdata_dir: Path, runner: str, tmp_dir: Path, output_dir: Path, config: Path) -> None:
     """PhEval Runner Command Line Interface
 
     Args:
-        inputdir (click.Path): The input directory (relative path: e.g exomiser-13.11)
-        testdatadir (click.Path): The input directory (relative path: e.g ./data
+        input_dir (Path): The input directory (relative path: e.g exomiser-13.11)
+        testdata_dir (Path): The input directory (relative path: e.g ./data
         runner (str): Runner implementation (e.g exomiser-13.11)
-        tmpdir (click.Path): The path of the temporary directory (optional)
-        outputdir (click.Path): The path of the output directory
-        config (click.Path): The path of the configuration file (optional e.g config.yaml)
+        tmp_dir (Path): The path of the temporary directory (optional)
+        output_dir (Path): The path of the output directory
+        config (Path): The path of the configuration file (optional e.g config.yaml)
     """
     runner_class = get_implementation_resolver().lookup(runner)
-    runner_instance = runner_class(inputdir, testdatadir, tmpdir, outputdir, config)
+    runner_instance = runner_class(input_dir, testdata_dir, tmp_dir, output_dir, config)
     runner_instance.prepare()
     runner_instance.run()
     runner_instance.post_process()
