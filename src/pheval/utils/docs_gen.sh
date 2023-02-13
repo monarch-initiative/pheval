@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # set -e
-
+cd ../../../
 SOURCE_FOLDER='./src'
 FILES=$(find $SOURCE_FOLDER -type f -iname '*.py' -not -iname '__init__.py' -not -empty)
+echo $FILES
 rm -rf ./docs/api
 
 for f in $FILES
