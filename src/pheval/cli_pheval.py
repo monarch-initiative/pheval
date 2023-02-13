@@ -2,7 +2,7 @@
 Monarch Initiative
 """
 
-from importlib import Path
+from pathlib import Path
 
 import click
 
@@ -52,7 +52,9 @@ from pheval.implementations import get_implementation_resolver
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
 )
-def run(input_dir: Path, testdata_dir: Path, runner: str, tmp_dir: Path, output_dir: Path, config: Path) -> None:
+def run(
+    input_dir: Path, testdata_dir: Path, runner: str, tmp_dir: Path, output_dir: Path, config: Path
+) -> None:
     """PhEval Runner Command Line Interface
 
     Args:
