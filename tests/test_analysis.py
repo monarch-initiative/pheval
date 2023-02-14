@@ -251,7 +251,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
         assess_pvalue_threshold.threshold = 0.1
         self.assertEqual(
-            assess_pvalue_threshold.assess_gene_with_pvalue_threshold(
+            assess_pvalue_threshold.assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry={
                     "gene_symbol": "PLXNA1",
@@ -272,7 +272,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
         assess_pvalue_threshold.threshold = 0.9
         self.assertEqual(
-            assess_pvalue_threshold.assess_gene_with_pvalue_threshold(
+            assess_pvalue_threshold.assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry={
                     "gene_symbol": "PLXNA1",
@@ -563,7 +563,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_pvalue_threshold(
+            assess_with_threshold.assess_variant_with_threshold_ascending_order(
                 result_entry=pd.Series(
                     {
                         "chromosome": "3",
@@ -589,7 +589,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_pvalue_threshold(
+            assess_with_threshold.assess_variant_with_threshold_ascending_order(
                 result_entry=pd.Series(
                     {
                         "chromosome": "3",
