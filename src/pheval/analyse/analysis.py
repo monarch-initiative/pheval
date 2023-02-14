@@ -24,7 +24,7 @@ def read_standardised_result(standardised_result_path: Path) -> dict:
 
 
 @dataclass
-class GenePrioritisationResultData:
+class GenePrioritisationResult:
     """Store rank data for causative genes."""
 
     phenopacket: Path
@@ -33,7 +33,7 @@ class GenePrioritisationResultData:
 
 
 @dataclass
-class VariantPrioritisationResultData:
+class VariantPrioritisationResult:
     """Store rank data for causative variants."""
 
     phenopacket: Path
@@ -47,7 +47,7 @@ class PrioritisationRankRecorder:
 
     index: int
     directory: Path
-    prioritisation_run_comparison: VariantPrioritisationResultData or GenePrioritisationResultData
+    prioritisation_run_comparison: VariantPrioritisationResult or GenePrioritisationResult
     run_comparison: defaultdict
 
     def record_rank(self) -> None:
@@ -55,9 +55,9 @@ class PrioritisationRankRecorder:
         self.run_comparison[self.index][
             "Phenopacket"
         ] = self.prioritisation_run_comparison.phenopacket.name
-        if type(self.prioritisation_run_comparison) is GenePrioritisationResultData:
+        if type(self.prioritisation_run_comparison) is GenePrioritisationResult:
             self.run_comparison[self.index]["Gene"] = self.prioritisation_run_comparison.gene
-        if type(self.prioritisation_run_comparison) is VariantPrioritisationResultData:
+        if type(self.prioritisation_run_comparison) is VariantPrioritisationResult:
             variant_info = self.prioritisation_run_comparison.variant
             self.run_comparison[self.index]["Variant"] = "_".join(
                 [variant_info.chrom, str(variant_info.pos), variant_info.ref, variant_info.alt]
@@ -236,23 +236,23 @@ class AssessGenePrioritisation:
 
     def record_gene_prioritisation_match(
             self, gene: ProbandCausativeGene, result_entry: dict, rank_stats: RankStats
-    ) -> GenePrioritisationResultData:
+    ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if found within results."""
         rank = result_entry["rank"]
         rank_stats.add_rank(rank)
-        gene_match = GenePrioritisationResultData(self.phenopacket_path, gene.gene_symbol, rank)
+        gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
         return gene_match
 
     def assess_gene_with_pvalue_threshold(
             self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
-    ) -> GenePrioritisationResultData:
+    ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the pvalue threshold."""
         if float(self.threshold) > float(result_entry["score"]):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def assess_gene_with_threshold(
             self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
-    ) -> GenePrioritisationResultData:
+    ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the score threshold."""
         if float(self.threshold) < float(result_entry["score"]):
             return self.record_gene_prioritisation_match(gene, result_entry, rank_stats)
@@ -274,7 +274,7 @@ class AssessGenePrioritisation:
         """Assess gene prioritisation."""
         for gene in self.proband_causative_genes:
             rank_stats.total += 1
-            gene_match = GenePrioritisationResultData(self.phenopacket_path, gene.gene_symbol)
+            gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
             for _index, standardised_gene_result in self.standardised_gene_results.iterrows():
                 if (
                         gene.gene_identifier == standardised_gene_result["gene_identifier"]
@@ -287,7 +287,7 @@ class AssessGenePrioritisation:
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
-                GenePrioritisationResultData(self.phenopacket_path, gene.gene_symbol)
+                GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
                 if gene_match is None
                 else gene_match,
                 rank_records,
@@ -317,11 +317,11 @@ class AssessVariantPrioritisation:
             self,
             result_entry: pd.Series,
             rank_stats: RankStats,
-    ) -> VariantPrioritisationResultData:
+    ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if found within results."""
         rank = result_entry["rank"]
         rank_stats.add_rank(rank)
-        variant_match = VariantPrioritisationResultData(
+        variant_match = VariantPrioritisationResult(
             self.phenopacket_path,
             GenomicVariant(
                 chrom=result_entry["chromosome"],
@@ -335,19 +335,19 @@ class AssessVariantPrioritisation:
 
     def assess_variant_with_pvalue_threshold(
             self, result_entry: pd.Series, rank_stats: RankStats
-    ) -> VariantPrioritisationResultData:
+    ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the pvalue threshold."""
         if float(self.threshold) > float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
     def assess_variant_with_threshold(
             self, result_entry: pd.Series, rank_stats: RankStats
-    ) -> VariantPrioritisationResultData:
+    ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the score threshold."""
         if float(self.threshold) < float(result_entry["score"]):
             return self.record_variant_prioritisation_match(result_entry, rank_stats)
 
-    def record_matched_variant(self, rank_stats, result) -> VariantPrioritisationResultData:
+    def record_matched_variant(self, rank_stats, result) -> VariantPrioritisationResult:
         """Return the variant rank result - dealing with the specification of a threshold."""
         if float(self.threshold) == 0.0:
             return self.record_variant_prioritisation_match(result, rank_stats)
@@ -362,7 +362,7 @@ class AssessVariantPrioritisation:
         """Assess variant prioritisation."""
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
-            variant_match = VariantPrioritisationResultData(self.phenopacket_path, variant)
+            variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
             for _index, result in self.standardised_variant_results.iterrows():
                 result_variant = GenomicVariant(
                     chrom=result["chromosome"],
@@ -376,7 +376,7 @@ class AssessVariantPrioritisation:
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
-                VariantPrioritisationResultData(self.phenopacket_path, variant)
+                VariantPrioritisationResult(self.phenopacket_path, variant)
                 if variant_match is None
                 else variant_match,
                 rank_records,
