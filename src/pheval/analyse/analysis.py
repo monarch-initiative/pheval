@@ -44,24 +44,31 @@ class VariantPrioritisationResult:
 @dataclass
 class PrioritisationRankRecorder:
     """Compare the ranks of different runs."""
+    # TODO alter tests for new methods
 
     index: int
     directory: Path
     prioritisation_run_comparison: VariantPrioritisationResult or GenePrioritisationResult
     run_comparison: defaultdict
 
+    def _record_gene_rank(self) -> None:
+        """Record gene prioritisation rank."""
+        self.run_comparison[self.index]["Gene"] = self.prioritisation_run_comparison.gene
+
+    def _record_variant_rank(self) -> None:
+        """Record variant prioritisation rank."""
+        variant = self.prioritisation_run_comparison.variant
+        self.run_comparison[self.index]["Variant"] = "_".join(
+            [variant.chrom, str(variant.pos), variant.ref, variant.alt]
+        )
+
     def record_rank(self) -> None:
         """Records the rank for different runs."""
         self.run_comparison[self.index][
             "Phenopacket"
         ] = self.prioritisation_run_comparison.phenopacket.name
-        if type(self.prioritisation_run_comparison) is GenePrioritisationResult:
-            self.run_comparison[self.index]["Gene"] = self.prioritisation_run_comparison.gene
-        if type(self.prioritisation_run_comparison) is VariantPrioritisationResult:
-            variant_info = self.prioritisation_run_comparison.variant
-            self.run_comparison[self.index]["Variant"] = "_".join(
-                [variant_info.chrom, str(variant_info.pos), variant_info.ref, variant_info.alt]
-            )
+        self._record_gene_rank() if type(
+            self.prioritisation_run_comparison) is GenePrioritisationResult else self._record_variant_rank()
         self.run_comparison[self.index][self.directory] = self.prioritisation_run_comparison.rank
 
 
@@ -101,6 +108,7 @@ class RankComparisonGenerator:
 @dataclass
 class RankStats:
     """Class for keeping track of the rank stats."""
+    # TODO ADD TESTS FOR PERCENTAGE 10
 
     top: int = 0
     top3: int = 0
