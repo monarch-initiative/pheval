@@ -217,7 +217,7 @@ class RankStatsWriter:
 
 @dataclass
 class TrackInputOutputDirectories:
-    """Track the input testdata for a corresponding standardised output directory"""
+    """Track the input testdata for a corresponding pheval output directory"""
 
     phenopacket_dir: Path
     results_dir: Path
