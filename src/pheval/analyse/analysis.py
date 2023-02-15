@@ -48,8 +48,6 @@ class VariantPrioritisationResult:
 class PrioritisationRankRecorder:
     """Compare the ranks of different runs."""
 
-    # TODO alter tests for new methods
-
     index: int
     directory: Path
     prioritisation_run_comparison: VariantPrioritisationResult or GenePrioritisationResult
@@ -113,8 +111,6 @@ class RankComparisonGenerator:
 @dataclass
 class RankStats:
     """Class for keeping track of the rank stats."""
-
-    # TODO ADD TESTS FOR PERCENTAGE 10
 
     top: int = 0
     top3: int = 0
