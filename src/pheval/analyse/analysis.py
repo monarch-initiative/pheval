@@ -226,6 +226,7 @@ class TrackInputOutputDirectories:
 
 
 def parse_run_data_text_file(run_data_path: Path) -> [TrackInputOutputDirectories]:
+    """Parse run data .txt file returning a list of input testdata and corresponding output directories."""
     run_data = pd.read_csv(run_data_path, delimiter="\t", header=None)
     run_data_list = []
     for _index, row in run_data.iterrows():
