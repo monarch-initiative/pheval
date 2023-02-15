@@ -469,6 +469,7 @@ def _assess_phenopacket_variant_prioritisation(
 @dataclass
 class TrackGenePrioritisation:
     """Track gene prioritisation for a run."""
+
     results_dir: Path
     ranks: dict
     rank_stats: RankStats
@@ -477,6 +478,7 @@ class TrackGenePrioritisation:
 @dataclass
 class TrackVariantPrioritisation:
     """Track variant prioritisation for a run."""
+
     results_dir: Path
     ranks: dict
     rank_stats: RankStats
@@ -485,6 +487,7 @@ class TrackVariantPrioritisation:
 @dataclass
 class TrackPrioritisation:
     """Track prioritisation for a run."""
+
     gene_prioritisation: TrackGenePrioritisation
     variant_prioritisation: TrackVariantPrioritisation
 
