@@ -85,26 +85,59 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
             ),
         )
 
-    def test_record_rank(self):
-        self.assertEqual(len(self.add_new_phenopacket_variant_record.run_comparison), 1)
-        self.add_new_phenopacket_variant_record.record_rank()
-        self.assertEqual(len(self.add_new_phenopacket_variant_record.run_comparison), 2)
-        for i in list(self.add_new_directory_variant_record.run_comparison.values()):
-            self.assertFalse(Path("directory2") in i)
-        self.assertEqual(len(self.add_new_directory_variant_record.run_comparison), 1)
-        self.add_new_directory_variant_record.record_rank()
-        self.assertEqual(len(self.add_new_directory_variant_record.run_comparison), 1)
-        for i in list(self.add_new_directory_variant_record.run_comparison.values()):
-            self.assertTrue(Path("directory2") in i)
-        self.assertEqual(len(self.add_new_phenopacket_gene_record.run_comparison), 1)
-        self.add_new_phenopacket_gene_record.record_rank()
-        self.assertEqual(len(self.add_new_phenopacket_gene_record.run_comparison), 2)
-        for i in list(self.add_new_directory_gene_record.run_comparison.values()):
-            self.assertFalse(Path("directory2") in i)
+    def test__record_gene_rank_new_directory(self):
+        self.assertEqual(self.add_new_directory_gene_record.run_comparison,
+                         defaultdict(dict,
+                                     {0: {'Phenopacket': 'phenopacket-1.json', 'Gene': 'LARGE1',
+                                          PosixPath('directory1'): 4}}))
         self.add_new_directory_gene_record.record_rank()
-        self.assertEqual(len(self.add_new_directory_gene_record.run_comparison), 1)
-        for i in list(self.add_new_directory_gene_record.run_comparison.values()):
-            self.assertTrue(Path("directory2") in i)
+        self.assertEqual(self.add_new_directory_gene_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Gene': 'LARGE1', PosixPath('directory1'): 4,
+                PosixPath('directory2'): 1}}))
+
+    def test__record_gene_rank_new_phenopacket(self):
+        self.assertEqual(self.add_new_phenopacket_gene_record.run_comparison,
+                         defaultdict(dict,
+                                     {0: {'Phenopacket': 'phenopacket-1.json', 'Gene': 'LARGE1',
+                                          Path('directory1'): 4}}))
+        self.add_new_phenopacket_gene_record.record_rank()
+        self.assertEqual(self.add_new_phenopacket_gene_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Gene': 'LARGE1', Path('directory1'): 4},
+            1: {'Phenopacket': 'phenopacket-2.json', 'Gene': 'GENE', Path('directory1'): 7}})
+                         )
+
+    def test__variant_gene_rank_new_directory(self):
+        self.assertEqual(self.add_new_directory_variant_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Variant': '12_120434_A_G', Path('directory1'): 3}})
+                         )
+        self.add_new_directory_variant_record.record_rank()
+        self.assertEqual(self.add_new_directory_variant_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Variant': '12_120434_A_G', PosixPath('directory1'): 3,
+                PosixPath('directory2'): 9}})
+                         )
+
+    def test__variant_gene_rank_new_phenopacket(self):
+        self.assertEqual(self.add_new_phenopacket_variant_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Variant': '12_120434_A_G', Path('directory1'): 3}})
+                         )
+        self.add_new_phenopacket_variant_record.record_rank()
+        self.assertEqual(self.add_new_phenopacket_variant_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Variant': '12_120434_A_G', PosixPath('directory1'): 3},
+            1: {'Phenopacket': 'phenopacket-2.json', 'Variant': '1_4896347_C_T', PosixPath('directory1'): 9}})
+                         )
+
+    def test_record_rank_gene(self):
+        self.add_new_directory_gene_record.record_rank()
+        self.assertEqual(self.add_new_directory_gene_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Gene': 'LARGE1', PosixPath('directory1'): 4,
+                PosixPath('directory2'): 1}}))
+
+    def test_record_rank_variant(self):
+        self.add_new_directory_variant_record.record_rank()
+        self.assertEqual(self.add_new_directory_variant_record.run_comparison, defaultdict(dict, {
+            0: {'Phenopacket': 'phenopacket-1.json', 'Variant': '12_120434_A_G', PosixPath('directory1'): 3,
+                PosixPath('directory2'): 9}})
+                         )
 
 
 class TestRankStats(unittest.TestCase):
@@ -117,12 +150,9 @@ class TestRankStats(unittest.TestCase):
         self.rank_stats.add_rank(5)
         self.rank_stats.add_rank(7)
         self.rank_stats.add_rank(10)
-        self.assertTrue(
-            self.rank_stats.top == 1 and self.rank_stats.top3 == 2 and self.rank_stats.top5 == 3,
-            self.rank_stats.total == 5
-            and self.rank_stats.found == 5
-            and len(self.rank_stats.reciprocal_ranks) == 5,
-        )
+        self.assertEqual(self.rank_stats, RankStats(top=1, top3=2, top5=3, top10=5, found=5, total=0,
+                                                    reciprocal_ranks=[1.0, 0.3333333333333333, 0.2,
+                                                                      0.14285714285714285, 0.1]))
 
     def test_percentage_rank(self):
         self.rank_stats.found = 10
@@ -139,6 +169,10 @@ class TestRankStats(unittest.TestCase):
     def test_percentage_top5(self):
         self.rank_stats.top5, self.rank_stats.found = 70, 160
         self.assertEqual(self.rank_stats.percentage_top5(), 43.75)
+
+    def test_percentage_top10(self):
+        self.rank_stats.top10, self.rank_stats.found = 100, 160
+        self.assertEqual(self.rank_stats.percentage_top10(), 62.5)
 
     def test_percentage_found(self):
         self.rank_stats.found, self.rank_stats.total = 100, 125
