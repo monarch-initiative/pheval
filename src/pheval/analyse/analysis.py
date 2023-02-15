@@ -1,13 +1,16 @@
 # #!/usr/bin/python
 import csv
 import itertools
+import os
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 from statistics import mean
 
 import click
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import (
@@ -224,6 +227,16 @@ class TrackInputOutputDirectories:
 
     phenopacket_dir: Path
     results_dir: Path
+
+
+def parse_run_data_text_file(run_data_path: Path) -> [TrackInputOutputDirectories]:
+    run_data = pd.read_csv(run_data_path, delimiter="\t", header=None)
+    run_data_list = []
+    for _index, row in run_data.iterrows():
+        run_data_list.append(
+            TrackInputOutputDirectories(phenopacket_dir=Path(row[0]), results_dir=Path(row[1]))
+        )
+    return run_data_list
 
 
 class AssessGenePrioritisation:
@@ -454,6 +467,20 @@ def assess_phenopacket_variant_prioritisation(
     ).assess_variant_prioritisation(variant_rank_stats, variant_rank_comparison)
 
 
+@dataclass
+class TrackGenePrioritisation:
+    results_dir: Path
+    ranks: dict
+    rank_stats: RankStats
+
+
+@dataclass
+class TrackVariantPrioritisation:
+    results_dir: Path
+    ranks: dict
+    rank_stats: RankStats
+
+
 def assess_prioritisation_for_results_directory(
     results_directory_and_input: TrackInputOutputDirectories,
     score_order: str,
@@ -498,7 +525,100 @@ def assess_prioritisation_for_results_directory(
     variants_stats_writer.write_row(
         results_directory_and_input.results_dir, variant_rank_stats
     ) if variant_analysis else None
-    return gene_rank_comparison, variant_rank_comparison
+    return TrackGenePrioritisation(
+        results_dir=results_directory_and_input.results_dir,
+        ranks=gene_rank_comparison,
+        rank_stats=gene_rank_stats,
+    ), TrackVariantPrioritisation(
+        results_dir=results_directory_and_input.results_dir,
+        ranks=variant_rank_comparison,
+        rank_stats=variant_rank_stats,
+    )
+
+
+def generate_gene_stats_bar_plot(gene_prioritisation_data: [TrackGenePrioritisation]):
+    gene_df = []
+    for gene_prioritisation_result in gene_prioritisation_data:
+        gene_df.append(
+            {
+                "rank": "top",
+                "number": gene_prioritisation_result.rank_stats.top,
+                "Run": os.path.basename(gene_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top3",
+                "number": gene_prioritisation_result.rank_stats.top3,
+                "Run": os.path.basename(gene_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top5",
+                "number": gene_prioritisation_result.rank_stats.top5,
+                "Run": os.path.basename(gene_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top10",
+                "number": gene_prioritisation_result.rank_stats.top10,
+                "Run": os.path.basename(gene_prioritisation_result.results_dir),
+            }
+        )
+    df = pd.DataFrame(gene_df)
+    sns.catplot(data=df, kind="bar", x="rank", y="number", hue="Run").set(
+        xlabel="Number of ranked genes",
+        ylabel="Number of matches",
+    )
+    plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
+
+
+def generate_variant_stats_bar_plot(variant_prioritisation_data: [TrackVariantPrioritisation]):
+    gene_df = []
+    for variant_prioritisation_result in variant_prioritisation_data:
+        gene_df.append(
+            {
+                "rank": "top",
+                "number": variant_prioritisation_result.rank_stats.top,
+                "Run": os.path.basename(variant_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top3",
+                "number": variant_prioritisation_result.rank_stats.top3,
+                "Run": os.path.basename(variant_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top5",
+                "number": variant_prioritisation_result.rank_stats.top5,
+                "Run": os.path.basename(variant_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "top10",
+                "number": variant_prioritisation_result.rank_stats.top10,
+                "Run": os.path.basename(variant_prioritisation_result.results_dir),
+            }
+        )
+        gene_df.append(
+            {
+                "rank": "MRR",
+                "number": variant_prioritisation_result.rank_stats.mean_reciprocal_rank(),
+                "Run": os.path.basename(variant_prioritisation_result.results_dir),
+            }
+        )
+    df = pd.DataFrame(gene_df)
+    sns.catplot(data=df, kind="bar", x="rank", y="number", hue="Run").set(
+        xlabel="Number of ranked variants",
+        ylabel="Number of matches",
+    )
+    plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
 
 
 def benchmark_directory(
@@ -554,37 +674,21 @@ def merge_results(result1, result2):
     return result1
 
 
-@dataclass
-class TrackGeneComparisons:
-    """Track the gene ranks for each result in a result directory."""
-
-    directory: Path
-    gene_results: dict
-
-
-@dataclass
-class TrackVariantComparisons:
-    """Track the variant ranks for each result in a result directory."""
-
-    directory: Path
-    variant_results: dict
-
-
 def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the gene rank comparison of two result directories."""
     for pair in comparison_ranks:
-        merged_results = merge_results(pair[0].gene_results, pair[1].gene_results)
+        merged_results = merge_results(pair[0].ranks, pair[1].ranks)
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
-            f"{pair[0].directory.name}__v__{pair[1].directory.name}"
+            f"{pair[0].results_dir.name}__v__{pair[1].results_dir.name}"
         )
 
 
 def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the variant rank comparison of two result directories."""
     for pair in comparison_ranks:
-        merged_results = merge_results(pair[0].variant_results, pair[1].variant_results)
+        merged_results = merge_results(pair[0].ranks, pair[1].ranks)
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
-            f"{pair[0].directory.name}__v__{pair[1].directory.name}"
+            f"{pair[0].results_dir.name}__v__{pair[1].results_dir.name}"
         )
 
 
@@ -607,7 +711,7 @@ def benchmark_runs(
     variant_ranks_for_directories = []
     for results_dir_and_input in results_directories:
         gene_rank_comparison, variant_rank_comparison = defaultdict(dict), defaultdict(dict)
-        gene_ranks, variant_ranks = assess_prioritisation_for_results_directory(
+        gene_prioritisation, variant_prioritisation = assess_prioritisation_for_results_directory(
             results_dir_and_input,
             score_order,
             threshold,
@@ -618,18 +722,16 @@ def benchmark_runs(
             gene_analysis,
             variant_analysis,
         )
-        gene_ranks_for_directories.append(
-            TrackGeneComparisons(results_dir_and_input.results_dir, gene_ranks)
-        )
-        variant_ranks_for_directories.append(
-            TrackVariantComparisons(results_dir_and_input.results_dir, variant_ranks)
-        )
+        gene_ranks_for_directories.append(gene_prioritisation)
+        variant_ranks_for_directories.append(variant_prioritisation)
     generate_gene_rank_comparisons(
         list(itertools.combinations(gene_ranks_for_directories, 2))
     ) if gene_analysis else None
+    generate_gene_stats_bar_plot(gene_ranks_for_directories)
     generate_variant_rank_comparisons(
         list(itertools.combinations(variant_ranks_for_directories, 2))
     ) if variant_analysis else None
+    generate_variant_stats_bar_plot(variant_ranks_for_directories)
 
 
 @click.command()
@@ -713,39 +815,48 @@ def benchmark(
 
 @click.command()
 @click.option(
-    "--directory1",
-    "-d1",
+    "--run-data",
+    "-r",
     required=True,
     metavar="PATH",
-    help="Baseline results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
-    "pheval_variant_results and the tool specific results directory.",
+    help="Path to .txt file containing results directory and corresponding testdata directory separated by tab."
+    "Each run contained to a new line.",
     type=Path,
 )
-@click.option(
-    "--directory2",
-    "-d2",
-    required=True,
-    metavar="PATH",
-    help="Comparison results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
-    "pheval_variant_results and the tool specific results directory.",
-    type=Path,
-)
-@click.option(
-    "--phenopacket-dir1",
-    "-p1",
-    required=True,
-    metavar="PATH",
-    help="Full path to directory containing phenopackets for input for baseline directory.",
-    type=Path,
-)
-@click.option(
-    "--phenopacket-dir2",
-    "-p2",
-    required=True,
-    metavar="PATH",
-    help="Full path to directory containing phenopackets for input for comparison directory.",
-    type=Path,
-)
+# @click.option(
+#     "--directory1",
+#     "-d1",
+#     required=True,
+#     metavar="PATH",
+#     help="Baseline results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
+#          "pheval_variant_results and the tool specific results directory.",
+#     type=Path,
+# )
+# @click.option(
+#     "--directory2",
+#     "-d2",
+#     required=True,
+#     metavar="PATH",
+#     help="Comparison results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
+#          "pheval_variant_results and the tool specific results directory.",
+#     type=Path,
+# )
+# @click.option(
+#     "--phenopacket-dir1",
+#     "-p1",
+#     required=True,
+#     metavar="PATH",
+#     help="Full path to directory containing phenopackets for input for baseline directory.",
+#     type=Path,
+# )
+# @click.option(
+#     "--phenopacket-dir2",
+#     "-p2",
+#     required=True,
+#     metavar="PATH",
+#     help="Full path to directory containing phenopackets for input for comparison directory.",
+#     type=Path,
+# )
 @click.option(
     "--output-prefix",
     "-o",
@@ -788,10 +899,7 @@ def benchmark(
     help="Analyse variant prioritisation",
 )
 def benchmark_comparison(
-    directory1: Path,
-    directory2: Path,
-    phenopacket_dir1: Path,
-    phenopacket_dir2: Path,
+    run_data: Path,
     score_order: str,
     output_prefix: str,
     threshold: float,
@@ -800,10 +908,7 @@ def benchmark_comparison(
 ):
     """Benchmark the gene/variant prioritisation performance for two runs."""
     benchmark_runs(
-        [
-            TrackInputOutputDirectories(results_dir=directory1, phenopacket_dir=phenopacket_dir1),
-            TrackInputOutputDirectories(results_dir=directory2, phenopacket_dir=phenopacket_dir2),
-        ],
+        parse_run_data_text_file(run_data),
         score_order,
         output_prefix,
         threshold,
