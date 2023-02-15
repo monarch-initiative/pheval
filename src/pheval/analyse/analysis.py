@@ -818,19 +818,19 @@ def benchmark_runs(
 )
 @click.option(
     "--gene-analysis/--no-gene-analysis",
-    default=True,
+    default=False,
     required=False,
     type=bool,
     show_default=True,
-    help="Analyse gene prioritisation",
+    help="Specify analysis for gene prioritisation",
 )
 @click.option(
     "--variant-analysis/--no-variant-analysis",
-    default=True,
+    default=False,
     required=False,
     type=bool,
     show_default=True,
-    help="Analyse variant prioritisation",
+    help="Specify analysis for variant prioritisation",
 )
 def benchmark(
     directory: Path,
@@ -924,19 +924,19 @@ def benchmark(
 )
 @click.option(
     "--gene-analysis/--no-gene-analysis",
-    default=True,
+    default=False,
     required=False,
     type=bool,
     show_default=True,
-    help="Analyse gene prioritisation",
+    help="Specify analysis for gene prioritisation",
 )
 @click.option(
     "--variant-analysis/--no-variant-analysis",
-    default=True,
+    default=False,
     required=False,
     type=bool,
     show_default=True,
-    help="Analyse variant prioritisation",
+    help="Specify analysis for variant prioritisation",
 )
 def benchmark_comparison(
     run_data: Path,
