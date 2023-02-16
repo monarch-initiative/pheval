@@ -257,7 +257,7 @@ class AssessGenePrioritisation:
             self,
             phenopacket_path: Path,
             results_dir: Path,
-            standardised_gene_results: [dict],
+            standardised_gene_results: [RankedPhEvalGeneResult],
             threshold: float,
             score_order: str,
             proband_causative_genes: [ProbandCausativeGene],
@@ -270,25 +270,25 @@ class AssessGenePrioritisation:
         self.proband_causative_genes = proband_causative_genes
 
     def _record_gene_prioritisation_match(
-            self, gene: ProbandCausativeGene, result_entry: pd.Series, rank_stats: RankStats
+            self, gene: ProbandCausativeGene, result_entry: RankedPhEvalGeneResult, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if found within results."""
-        rank = result_entry["rank"]
+        rank = result_entry.rank
         rank_stats.add_rank(rank)
         return GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
 
     def _assess_gene_with_threshold_ascending_order(
-            self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
+            self, result_entry: RankedPhEvalGeneResult, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the ascending order threshold."""
-        if float(self.threshold) > float(result_entry["score"]):
+        if float(self.threshold) > float(result_entry.pheval_gene_result.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _assess_gene_with_threshold(
-            self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
+            self, result_entry: RankedPhEvalGeneResult, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry["score"]):
+        if float(self.threshold) < float(result_entry.pheval_gene_result.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _record_matched_gene(
@@ -313,10 +313,10 @@ class AssessGenePrioritisation:
         for gene in self.proband_causative_genes:
             rank_stats.total += 1
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
-            for _index, standardised_gene_result in self.standardised_gene_results.iterrows():
+            for standardised_gene_result in self.standardised_gene_results:
                 if (
-                        gene.gene_identifier == standardised_gene_result["gene_identifier"]
-                        or gene.gene_symbol == standardised_gene_result["gene_symbol"]
+                        gene.gene_identifier == standardised_gene_result.pheval_gene_result.gene_identifier
+                        or gene.gene_symbol == standardised_gene_result.pheval_gene_result.gene_identifier
                 ):
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
@@ -454,11 +454,12 @@ def _assess_phenopacket_gene_prioritisation(
     phenopacket_path = obtain_closest_file_name(
         standardised_gene_result, all_files(results_dir_and_input.phenopacket_dir)
     )
+    pheval_gene_result = _read_standardised_result(standardised_gene_result)
     proband_causative_genes = _obtain_causative_genes(phenopacket_path)
     AssessGenePrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_gene_results/"),
-        _read_standardised_result(standardised_gene_result),
+        parse_pheval_gene_result(pheval_gene_result),
         threshold,
         score_order,
         proband_causative_genes,
