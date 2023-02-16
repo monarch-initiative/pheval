@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+from pheval.post_processing.post_processing import RankedPhEvalGeneResult, PhEvalGeneResult
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import (
     GenomicVariant,
@@ -24,6 +25,19 @@ from pheval.utils.phenopacket_utils import (
 def _read_standardised_result(standardised_result_path: Path) -> dict:
     """Read the standardised result output and return a dictionary."""
     return pd.read_csv(standardised_result_path, delimiter="\t")
+
+
+def parse_pheval_gene_result(pheval_gene_result: pd.DataFrame) -> [RankedPhEvalGeneResult]:
+    """Parse PhEval gene result into RankedPhEvalGeneResult dataclass."""
+    ranked_gene_results = []
+    for _index, result in pheval_gene_result.iterrows():
+        ranked_gene_results.append(RankedPhEvalGeneResult(pheval_gene_result=PhEvalGeneResult(
+            gene_symbol=result["gene_symbol"],
+            gene_identifier=result["gene_identifier"],
+            score=result["score"]
+        ),
+            rank=result["rank"]))
+    return ranked_gene_results
 
 
 @dataclass
@@ -240,13 +254,13 @@ class AssessGenePrioritisation:
     """Assess gene prioritisation."""
 
     def __init__(
-        self,
-        phenopacket_path: Path,
-        results_dir: Path,
-        standardised_gene_results: [dict],
-        threshold: float,
-        score_order: str,
-        proband_causative_genes: [ProbandCausativeGene],
+            self,
+            phenopacket_path: Path,
+            results_dir: Path,
+            standardised_gene_results: [dict],
+            threshold: float,
+            score_order: str,
+            proband_causative_genes: [ProbandCausativeGene],
     ):
         self.phenopacket_path = phenopacket_path
         self.results_dir = results_dir
@@ -256,7 +270,7 @@ class AssessGenePrioritisation:
         self.proband_causative_genes = proband_causative_genes
 
     def _record_gene_prioritisation_match(
-        self, gene: ProbandCausativeGene, result_entry: pd.Series, rank_stats: RankStats
+            self, gene: ProbandCausativeGene, result_entry: pd.Series, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if found within results."""
         rank = result_entry["rank"]
@@ -264,21 +278,21 @@ class AssessGenePrioritisation:
         return GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
 
     def _assess_gene_with_threshold_ascending_order(
-        self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
+            self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the ascending order threshold."""
         if float(self.threshold) > float(result_entry["score"]):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _assess_gene_with_threshold(
-        self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
+            self, result_entry: pd.Series, gene: ProbandCausativeGene, rank_stats: RankStats
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the score threshold."""
         if float(self.threshold) < float(result_entry["score"]):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _record_matched_gene(
-        self, gene: ProbandCausativeGene, rank_stats: RankStats, standardised_gene_result: pd.Series
+            self, gene: ProbandCausativeGene, rank_stats: RankStats, standardised_gene_result: pd.Series
     ) -> GenePrioritisationResult:
         """Return the gene rank result - dealing with the specification of a threshold."""
         if float(self.threshold) == 0.0:
@@ -301,8 +315,8 @@ class AssessGenePrioritisation:
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
             for _index, standardised_gene_result in self.standardised_gene_results.iterrows():
                 if (
-                    gene.gene_identifier == standardised_gene_result["gene_identifier"]
-                    or gene.gene_symbol == standardised_gene_result["gene_symbol"]
+                        gene.gene_identifier == standardised_gene_result["gene_identifier"]
+                        or gene.gene_symbol == standardised_gene_result["gene_symbol"]
                 ):
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
@@ -322,13 +336,13 @@ class AssessVariantPrioritisation:
     """Assess variant prioritisation."""
 
     def __init__(
-        self,
-        phenopacket_path: Path,
-        results_dir: Path,
-        standardised_variant_results: [dict],
-        threshold: float,
-        score_order: str,
-        proband_causative_variants: [GenomicVariant],
+            self,
+            phenopacket_path: Path,
+            results_dir: Path,
+            standardised_variant_results: [dict],
+            threshold: float,
+            score_order: str,
+            proband_causative_variants: [GenomicVariant],
     ):
         self.phenopacket_path = phenopacket_path
         self.results_dir = results_dir
@@ -338,9 +352,9 @@ class AssessVariantPrioritisation:
         self.proband_causative_variants = proband_causative_variants
 
     def _record_variant_prioritisation_match(
-        self,
-        result_entry: pd.Series,
-        rank_stats: RankStats,
+            self,
+            result_entry: pd.Series,
+            rank_stats: RankStats,
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if found within results."""
         rank = result_entry["rank"]
@@ -357,21 +371,21 @@ class AssessVariantPrioritisation:
         )
 
     def _assess_variant_with_threshold_ascending_order(
-        self, result_entry: pd.Series, rank_stats: RankStats
+            self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the ascending order threshold."""
         if float(self.threshold) > float(result_entry["score"]):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _assess_variant_with_threshold(
-        self, result_entry: pd.Series, rank_stats: RankStats
+            self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the score threshold."""
         if float(self.threshold) < float(result_entry["score"]):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _record_matched_variant(
-        self, rank_stats: RankStats, standardised_variant_result: pd.Series
+            self, rank_stats: RankStats, standardised_variant_result: pd.Series
     ) -> VariantPrioritisationResult:
         """Return the variant rank result - dealing with the specification of a threshold."""
         if float(self.threshold) == 0.0:
@@ -388,7 +402,7 @@ class AssessVariantPrioritisation:
             )
 
     def assess_variant_prioritisation(
-        self, rank_stats: RankStats, rank_records: defaultdict
+            self, rank_stats: RankStats, rank_records: defaultdict
     ) -> None:
         """Assess variant prioritisation."""
         for variant in self.proband_causative_variants:
@@ -429,12 +443,12 @@ def _obtain_causative_variants(phenopacket_path: Path) -> [GenomicVariant]:
 
 
 def _assess_phenopacket_gene_prioritisation(
-    standardised_gene_result: Path,
-    score_order: str,
-    results_dir_and_input: TrackInputOutputDirectories,
-    threshold: float,
-    gene_rank_stats: RankStats,
-    gene_rank_comparison: defaultdict,
+        standardised_gene_result: Path,
+        score_order: str,
+        results_dir_and_input: TrackInputOutputDirectories,
+        threshold: float,
+        gene_rank_stats: RankStats,
+        gene_rank_comparison: defaultdict,
 ) -> None:
     """Assess gene prioritisation for a phenopacket."""
     phenopacket_path = obtain_closest_file_name(
@@ -452,12 +466,12 @@ def _assess_phenopacket_gene_prioritisation(
 
 
 def _assess_phenopacket_variant_prioritisation(
-    standardised_variant_result: Path,
-    score_order: str,
-    results_dir_and_input: TrackInputOutputDirectories,
-    threshold: float,
-    variant_rank_stats: RankStats,
-    variant_rank_comparison: defaultdict,
+        standardised_variant_result: Path,
+        score_order: str,
+        results_dir_and_input: TrackInputOutputDirectories,
+        threshold: float,
+        variant_rank_stats: RankStats,
+        variant_rank_comparison: defaultdict,
 ) -> None:
     """Assess variant prioritisation for a phenopacket"""
     phenopacket_path = obtain_closest_file_name(
@@ -501,21 +515,21 @@ class TrackPrioritisation:
 
 
 def _assess_prioritisation_for_results_directory(
-    results_directory_and_input: TrackInputOutputDirectories,
-    score_order: str,
-    threshold: float,
-    gene_rank_comparison: defaultdict,
-    variant_rank_comparison: defaultdict,
-    gene_stats_writer: RankStatsWriter,
-    variants_stats_writer: RankStatsWriter,
-    gene_analysis: bool,
-    variant_analysis: bool,
+        results_directory_and_input: TrackInputOutputDirectories,
+        score_order: str,
+        threshold: float,
+        gene_rank_comparison: defaultdict,
+        variant_rank_comparison: defaultdict,
+        gene_stats_writer: RankStatsWriter,
+        variants_stats_writer: RankStatsWriter,
+        gene_analysis: bool,
+        variant_analysis: bool,
 ) -> TrackPrioritisation:
     """Assess prioritisation for a single results directory."""
     gene_rank_stats, variant_rank_stats = RankStats(), RankStats()
     if gene_analysis:
         for standardised_result in files_with_suffix(
-            results_directory_and_input.results_dir.joinpath("pheval_gene_results/"), ".tsv"
+                results_directory_and_input.results_dir.joinpath("pheval_gene_results/"), ".tsv"
         ):
             _assess_phenopacket_gene_prioritisation(
                 standardised_result,
@@ -527,8 +541,8 @@ def _assess_prioritisation_for_results_directory(
             )
     if variant_analysis:
         for standardised_result in files_with_suffix(
-            results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
-            ".tsv",
+                results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
+                ".tsv",
         ):
             _assess_phenopacket_variant_prioritisation(
                 standardised_result,
@@ -559,7 +573,7 @@ def _assess_prioritisation_for_results_directory(
 
 
 def _generate_stats_bar_plot_data(
-    prioritisation_results: TrackPrioritisation, stats: [], gene_analysis: bool
+        prioritisation_results: TrackPrioritisation, stats: [], gene_analysis: bool
 ) -> [dict]:
     """Generate bar plot data for prioritisation summary stats."""
     prioritisation_result = (
@@ -656,12 +670,12 @@ def generate_benchmark_variant_output(prioritisation_data: TrackPrioritisation) 
 
 
 def benchmark_directory(
-    results_dir_and_input: TrackInputOutputDirectories,
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
+        results_dir_and_input: TrackInputOutputDirectories,
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
 ) -> None:
     """Benchmark prioritisation performance for a single directory."""
     gene_stats_writer = (
@@ -727,7 +741,7 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
 
 
 def generate_benchmark_comparison_gene_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation],
+        prioritisation_stats_for_runs: [TrackPrioritisation],
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
@@ -735,7 +749,7 @@ def generate_benchmark_comparison_gene_output(
 
 
 def generate_benchmark_comparison_variant_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation],
+        prioritisation_stats_for_runs: [TrackPrioritisation],
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking multiple runs."""
     generate_variant_rank_comparisons(
@@ -745,12 +759,12 @@ def generate_benchmark_comparison_variant_output(
 
 
 def benchmark_runs(
-    results_directories: [TrackInputOutputDirectories],
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
+        results_directories: [TrackInputOutputDirectories],
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
 ) -> None:
     """Benchmark several result directories."""
     gene_stats_writer = (
@@ -791,7 +805,7 @@ def benchmark_runs(
     required=True,
     metavar="PATH",
     help="General results directory to be benchmarked, assumes contains subdirectories of pheval_gene_results/"
-    "pheval_variant_results and the tool specific results directory. ",
+         "pheval_variant_results and the tool specific results directory. ",
     type=Path,
 )
 @click.option(
@@ -844,13 +858,13 @@ def benchmark_runs(
     help="Specify analysis for variant prioritisation",
 )
 def benchmark(
-    directory: Path,
-    phenopacket_dir: Path,
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
+        directory: Path,
+        phenopacket_dir: Path,
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
 ):
     """Benchmark the gene/variant prioritisation performance for a single run."""
     benchmark_directory(
@@ -870,8 +884,8 @@ def benchmark(
     required=True,
     metavar="PATH",
     help="Path to .txt file containing testdata directory and corresponding results directory separated by tab."
-    "Each run contained to a new line with the input testdata listed first and on the same line separated by a tab"
-    "the results directory.",
+         "Each run contained to a new line with the input testdata listed first and on the same line separated by a tab"
+         "the results directory.",
     type=Path,
 )
 @click.option(
@@ -916,12 +930,12 @@ def benchmark(
     help="Specify analysis for variant prioritisation",
 )
 def benchmark_comparison(
-    run_data: Path,
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
+        run_data: Path,
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
 ):
     """Benchmark the gene/variant prioritisation performance for two runs."""
     benchmark_runs(
