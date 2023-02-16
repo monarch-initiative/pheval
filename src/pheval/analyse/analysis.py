@@ -50,16 +50,16 @@ class PrioritisationRankRecorder:
 
     index: int
     directory: Path
-    prioritisation_run_comparison: VariantPrioritisationResult or GenePrioritisationResult
+    prioritisation_result: VariantPrioritisationResult or GenePrioritisationResult
     run_comparison: defaultdict
 
     def _record_gene_rank(self) -> None:
         """Record gene prioritisation rank."""
-        self.run_comparison[self.index]["Gene"] = self.prioritisation_run_comparison.gene
+        self.run_comparison[self.index]["Gene"] = self.prioritisation_result.gene
 
     def _record_variant_rank(self) -> None:
         """Record variant prioritisation rank."""
-        variant = self.prioritisation_run_comparison.variant
+        variant = self.prioritisation_result.variant
         self.run_comparison[self.index]["Variant"] = "_".join(
             [variant.chrom, str(variant.pos), variant.ref, variant.alt]
         )
@@ -68,11 +68,11 @@ class PrioritisationRankRecorder:
         """Records the rank for different runs."""
         self.run_comparison[self.index][
             "Phenopacket"
-        ] = self.prioritisation_run_comparison.phenopacket_path.name
+        ] = self.prioritisation_result.phenopacket_path.name
         self._record_gene_rank() if type(
-            self.prioritisation_run_comparison
+            self.prioritisation_result
         ) is GenePrioritisationResult else self._record_variant_rank()
-        self.run_comparison[self.index][self.directory] = self.prioritisation_run_comparison.rank
+        self.run_comparison[self.index][self.directory] = self.prioritisation_result.rank
 
 
 class RankComparisonGenerator:
