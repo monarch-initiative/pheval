@@ -261,8 +261,7 @@ class AssessGenePrioritisation:
         """Record the gene prioritisation rank if found within results."""
         rank = result_entry["rank"]
         rank_stats.add_rank(rank)
-        gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
-        return gene_match
+        return GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
 
     def _assess_gene_with_threshold_ascending_order(
         self, result_entry: dict, gene: ProbandCausativeGene, rank_stats: RankStats
@@ -344,7 +343,7 @@ class AssessVariantPrioritisation:
         """Record the variant prioritisation rank if found within results."""
         rank = result_entry["rank"]
         rank_stats.add_rank(rank)
-        variant_match = VariantPrioritisationResult(
+        return VariantPrioritisationResult(
             self.phenopacket_path,
             GenomicVariant(
                 chrom=result_entry["chromosome"],
@@ -354,7 +353,6 @@ class AssessVariantPrioritisation:
             ),
             rank,
         )
-        return variant_match
 
     def _assess_variant_with_threshold_ascending_order(
         self, result_entry: pd.Series, rank_stats: RankStats
