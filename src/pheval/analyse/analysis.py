@@ -866,40 +866,6 @@ def benchmark(
          "the results directory.",
     type=Path,
 )
-# @click.option(
-#     "--directory1",
-#     "-d1",
-#     required=True,
-#     metavar="PATH",
-#     help="Baseline results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
-#          "pheval_variant_results and the tool specific results directory.",
-#     type=Path,
-# )
-# @click.option(
-#     "--directory2",
-#     "-d2",
-#     required=True,
-#     metavar="PATH",
-#     help="Comparison results directory for benchmarking, assumes contains subdirectories of pheval_gene_results/"
-#          "pheval_variant_results and the tool specific results directory.",
-#     type=Path,
-# )
-# @click.option(
-#     "--phenopacket-dir1",
-#     "-p1",
-#     required=True,
-#     metavar="PATH",
-#     help="Full path to directory containing phenopackets for input for baseline directory.",
-#     type=Path,
-# )
-# @click.option(
-#     "--phenopacket-dir2",
-#     "-p2",
-#     required=True,
-#     metavar="PATH",
-#     help="Full path to directory containing phenopackets for input for comparison directory.",
-#     type=Path,
-# )
 @click.option(
     "--output-prefix",
     "-o",
