@@ -39,7 +39,7 @@ class GenePrioritisationResult:
 class VariantPrioritisationResult:
     """Store rank data for causative variants."""
 
-    phenopacket: Path
+    phenopacket_path: Path
     variant: GenomicVariant
     rank: int = 0
 

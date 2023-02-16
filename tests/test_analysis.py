@@ -694,7 +694,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"),
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
@@ -746,7 +746,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"),
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
@@ -802,7 +802,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 rank_stats=self.variant_rank_stats,
             ),
             VariantPrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"),
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
