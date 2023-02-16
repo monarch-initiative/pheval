@@ -30,7 +30,7 @@ def _read_standardised_result(standardised_result_path: Path) -> dict:
 class GenePrioritisationResult:
     """Store rank data for causative genes."""
 
-    phenopacket: Path
+    phenopacket_path: Path
     gene: str
     rank: int = 0
 
@@ -68,7 +68,7 @@ class PrioritisationRankRecorder:
         """Records the rank for different runs."""
         self.run_comparison[self.index][
             "Phenopacket"
-        ] = self.prioritisation_run_comparison.phenopacket.name
+        ] = self.prioritisation_run_comparison.phenopacket_path.name
         self._record_gene_rank() if type(
             self.prioritisation_run_comparison
         ) is GenePrioritisationResult else self._record_variant_rank()

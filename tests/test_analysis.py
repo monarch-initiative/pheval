@@ -384,7 +384,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 rank_stats=self.gene_rank_stats,
             ),
             GenePrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
 
@@ -424,7 +424,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 rank_stats=self.gene_rank_stats,
             ),
             GenePrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
         self.assertEqual(
@@ -468,7 +468,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 rank_stats=self.gene_rank_stats,
             ),
             GenePrioritisationResult(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
         self.assertEqual(
