@@ -12,7 +12,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-from pheval.post_processing.post_processing import RankedPhEvalGeneResult, PhEvalGeneResult
+from pheval.post_processing.post_processing import (
+    RankedPhEvalGeneResult, PhEvalGeneResult, RankedPhEvalVariantResult,
+    PhEvalVariantResult
+)
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import (
     GenomicVariant,
@@ -38,6 +41,21 @@ def parse_pheval_gene_result(pheval_gene_result: pd.DataFrame) -> [RankedPhEvalG
         ),
             rank=result["rank"]))
     return ranked_gene_results
+
+
+def parse_pheval_variant_result(pheval_variant_result: pd.DataFrame) -> [RankedPhEvalVariantResult]:
+    """Parse PhEval variant result into RankedPhEvalVariantResult dataclass."""
+    ranked_variant_results = []
+    for _index, result in pheval_variant_result.iterrows():
+        ranked_variant_results.append(
+            RankedPhEvalVariantResult(pheval_variant_result=PhEvalVariantResult(chromosome=result["chromosome"],
+                                                                                start=result["start"],
+                                                                                end=result["end"],
+                                                                                ref=result["ref"],
+                                                                                alt=result["alt"],
+                                                                                score=result["score"]),
+                                      rank=result["rank"]))
+    return ranked_variant_results
 
 
 @dataclass
@@ -339,7 +357,7 @@ class AssessVariantPrioritisation:
             self,
             phenopacket_path: Path,
             results_dir: Path,
-            standardised_variant_results: [dict],
+            standardised_variant_results: [RankedPhEvalVariantResult],
             threshold: float,
             score_order: str,
             proband_causative_variants: [GenomicVariant],
@@ -353,35 +371,35 @@ class AssessVariantPrioritisation:
 
     def _record_variant_prioritisation_match(
             self,
-            result_entry: pd.Series,
+            result_entry: RankedPhEvalVariantResult,
             rank_stats: RankStats,
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if found within results."""
-        rank = result_entry["rank"]
+        rank = result_entry.rank
         rank_stats.add_rank(rank)
         return VariantPrioritisationResult(
             self.phenopacket_path,
             GenomicVariant(
-                chrom=result_entry["chromosome"],
-                pos=result_entry["start"],
-                ref=result_entry["ref"],
-                alt=result_entry["alt"],
+                chrom=result_entry.pheval_variant_result.chromosome,
+                pos=result_entry.pheval_variant_result.start,
+                ref=result_entry.pheval_variant_result.ref,
+                alt=result_entry.pheval_variant_result.alt,
             ),
             rank,
         )
 
     def _assess_variant_with_threshold_ascending_order(
-            self, result_entry: pd.Series, rank_stats: RankStats
+            self, result_entry: RankedPhEvalVariantResult, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the ascending order threshold."""
-        if float(self.threshold) > float(result_entry["score"]):
+        if float(self.threshold) > float(result_entry.pheval_variant_result.score):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _assess_variant_with_threshold(
             self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry["score"]):
+        if float(self.threshold) < float(result_entry.pheval_variant_result.score):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _record_matched_variant(
@@ -408,12 +426,12 @@ class AssessVariantPrioritisation:
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
             variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
-            for _index, result in self.standardised_variant_results.iterrows():
+            for result in self.standardised_variant_results:
                 result_variant = GenomicVariant(
-                    chrom=result["chromosome"],
-                    pos=result["start"],
-                    ref=result["ref"],
-                    alt=result["alt"],
+                    chrom=result.pheval_variant_result.chromosome,
+                    pos=result.pheval_variant_result.start,
+                    ref=result.pheval_variant_result.ref,
+                    alt=result.pheval_variant_result.alt,
                 )
                 if variant == result_variant:
                     variant_match = self._record_matched_variant(rank_stats, result)
@@ -479,10 +497,11 @@ def _assess_phenopacket_variant_prioritisation(
         standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
     )
     proband_causative_variants = _obtain_causative_variants(phenopacket_path)
+    pheval_variant_result = _read_standardised_result(standardised_variant_result)
     AssessVariantPrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_variant_results/"),
-        _read_standardised_result(standardised_variant_result),
+        parse_pheval_variant_result(pheval_variant_result),
         threshold,
         score_order,
         proband_causative_variants,
