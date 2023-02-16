@@ -330,7 +330,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 ProbandCausativeGene(gene_symbol="LARGE1", gene_identifier="ENSG00000133424"),
             ],
         )
-        self.assess_gene_prioritisation_pvalue = AssessGenePrioritisation(
+        self.assess_gene_prioritisation_ascending_order = AssessGenePrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
             standardised_gene_results=pd.DataFrame(
@@ -388,11 +388,11 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             ),
         )
 
-    def test_assess_gene_with_pvalue_threshold_fails_cutoff(self):
-        assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
-        assess_pvalue_threshold.threshold = 0.1
+    def test_assess_gene_with_ascending_order_threshold_fails_cutoff(self):
+        assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
+        assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
-            assess_pvalue_threshold._assess_gene_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry={
                     "gene_symbol": "PLXNA1",
@@ -409,11 +409,11 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
-    def test_assess_gene_with_pvalue_threshold_meets_cutoff(self):
-        assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
-        assess_pvalue_threshold.threshold = 0.9
+    def test_assess_gene_with_ascending_order_threshold_meets_cutoff(self):
+        assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
+        assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
-            assess_pvalue_threshold._assess_gene_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry={
                     "gene_symbol": "PLXNA1",
@@ -500,8 +500,8 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_gene_prioritisation_threshold_fails_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_pvalue)
+    def test_assess_gene_prioritisation_threshold_fails_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_gene_prioritisation(
             self.gene_rank_stats, self.gene_rank_records
@@ -526,8 +526,8 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_gene_prioritisation_threshold_meets_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_pvalue)
+    def test_assess_gene_prioritisation_threshold_meets_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_gene_prioritisation(
             self.gene_rank_stats, self.gene_rank_records
@@ -662,7 +662,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
             ],
         )
-        self.assess_variant_prioritisation_pvalue = AssessVariantPrioritisation(
+        self.assess_variant_prioritisation_ascending_order = AssessVariantPrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
             standardised_variant_results=variant_result_format,
@@ -700,8 +700,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             ),
         )
 
-    def test_assess_variant_with_pvalue_threshold_fails_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_with_ascending_order_threshold_fails_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold_ascending_order(
@@ -726,8 +726,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
-    def test_assess_variant_with_pvalue_threshold_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_with_ascending_order_threshold_meets_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold_ascending_order(
@@ -837,8 +837,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_variant_prioritisation_fails_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_prioritisation_fails_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
@@ -863,8 +863,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_variant_prioritisation_meets_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_prioritisation_meets_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
@@ -916,7 +916,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
 
     def test_assess_variant_prioritisation_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.1
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
