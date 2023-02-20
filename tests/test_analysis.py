@@ -297,6 +297,9 @@ class TestRankStats(unittest.TestCase):
         self.rank_stats.found, self.rank_stats.total = 100, 125
         self.assertEqual(self.rank_stats.percentage_found(), 80)
 
+    def test_percentage_difference(self):
+        self.assertEqual(self.rank_stats.percentage_difference(54, 23), 31)
+
     def test_mean_reciprocal_rank(self):
         self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
         self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.5)
@@ -1301,3 +1304,5 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
             ],
         )
+
+
