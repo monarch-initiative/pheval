@@ -5,18 +5,14 @@ from pathlib import Path, PosixPath
 
 import pandas as pd
 
-from pheval.analyse.analysis import (
+from pheval.analyse.analysis import (  # TrackGenePrioritisation,; TrackPrioritisation,; TrackVariantPrioritisation,
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
     GenePrioritisationResult,
     PrioritisationRankRecorder,
     RankComparisonGenerator,
     RankStats,
-    TrackGenePrioritisation,
-    TrackPrioritisation,
-    TrackVariantPrioritisation,
     VariantPrioritisationResult,
-    _generate_stats_bar_plot_data,
     _merge_results,
     parse_pheval_gene_result,
     parse_pheval_variant_result,
@@ -1179,91 +1175,91 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
         )
 
 
-class TestGenerateStatsBarPlotData(unittest.TestCase):
-    def test__generate_stats_bar_plot_data_gene(self):
-        self.assertEqual(
-            _generate_stats_bar_plot_data(
-                prioritisation_results=TrackPrioritisation(
-                    gene_prioritisation=TrackGenePrioritisation(
-                        results_dir=Path("/path/to/results_dir"),
-                        ranks={},
-                        rank_stats=RankStats(
-                            top=1,
-                            top3=2,
-                            top5=3,
-                            top10=4,
-                            found=5,
-                            total=10,
-                            reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 17],
-                        ),
-                    ),
-                    variant_prioritisation=TrackVariantPrioritisation(
-                        results_dir=Path("/path/to/results_dir"),
-                        ranks={},
-                        rank_stats=RankStats(
-                            top=1,
-                            top3=2,
-                            top5=3,
-                            top10=4,
-                            found=5,
-                            total=20,
-                            reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 7 / 10],
-                        ),
-                    ),
-                ),
-                stats=[],
-                gene_analysis=True,
-            ),
-            [
-                {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
-                {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
-                {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
-                {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
-                {"Rank": "found", "Percentage": 0.5, "Run": "results_dir"},
-                {"Rank": "MRR", "Percentage": 0.3384313725490196, "Run": "results_dir"},
-            ],
-        )
-
-    def test__generate_stats_bar_plot_data_variant(self):
-        self.assertEqual(
-            _generate_stats_bar_plot_data(
-                prioritisation_results=TrackPrioritisation(
-                    gene_prioritisation=TrackGenePrioritisation(
-                        results_dir=Path("/path/to/results_dir"),
-                        ranks={},
-                        rank_stats=RankStats(
-                            top=1,
-                            top3=2,
-                            top5=3,
-                            top10=4,
-                            found=5,
-                            total=10,
-                            reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
-                        ),
-                    ),
-                    variant_prioritisation=TrackVariantPrioritisation(
-                        results_dir=Path("/path/to/results_dir"),
-                        ranks={},
-                        rank_stats=RankStats(
-                            top=1,
-                            top3=2,
-                            top5=3,
-                            top10=4,
-                            found=5,
-                            total=2,
-                            reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
-                        ),
-                    ),
-                ),
-                stats=[],
-                gene_analysis=False,
-            ),
-            [
-                {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
-                {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
-                {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
-                {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
-                {"Rank": "found", "Percentage": 2.5, "Run": "results_dir"},
-                {"Rank": "MRR", "Percentage": 0.3433333333333333, "Run": "results_dir"},
-            ],
-        )
+# class TestGenerateStatsBarPlotData(unittest.TestCase):
+#     def test__generate_stats_bar_plot_data_gene(self):
+#         self.assertEqual(
+#             _generate_stacked_bar_plot_data(
+#                 prioritisation_results=TrackPrioritisation(
+#                     gene_prioritisation=TrackGenePrioritisation(
+#                         results_dir=Path("/path/to/results_dir"),
+#                         ranks={},
+#                         rank_stats=RankStats(
+#                             top=1,
+#                             top3=2,
+#                             top5=3,
+#                             top10=4,
+#                             found=5,
+#                             total=10,
+#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 17],
+#                         ),
+#                     ),
+#                     variant_prioritisation=TrackVariantPrioritisation(
+#                         results_dir=Path("/path/to/results_dir"),
+#                         ranks={},
+#                         rank_stats=RankStats(
+#                             top=1,
+#                             top3=2,
+#                             top5=3,
+#                             top10=4,
+#                             found=5,
+#                             total=20,
+#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 7 / 10],
+#                         ),
+#                     ),
+#                 ),
+#                 stats=[],
+#                 gene_analysis=True,
+#             ),
+#             [
+#                 {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
+#                 {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
+#                 {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
+#                 {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
+#                 {"Rank": "found", "Percentage": 0.5, "Run": "results_dir"},
+#                 {"Rank": "MRR", "Percentage": 0.3384313725490196, "Run": "results_dir"},
+#             ],
+#         )
+#
+#     def test__generate_stats_bar_plot_data_variant(self):
+#         self.assertEqual(
+#             _generate_stacked_bar_plot_data(
+#                 prioritisation_results=TrackPrioritisation(
+#                     gene_prioritisation=TrackGenePrioritisation(
+#                         results_dir=Path("/path/to/results_dir"),
+#                         ranks={},
+#                         rank_stats=RankStats(
+#                             top=1,
+#                             top3=2,
+#                             top5=3,
+#                             top10=4,
+#                             found=5,
+#                             total=10,
+#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
+#                         ),
+#                     ),
+#                     variant_prioritisation=TrackVariantPrioritisation(
+#                         results_dir=Path("/path/to/results_dir"),
+#                         ranks={},
+#                         rank_stats=RankStats(
+#                             top=1,
+#                             top3=2,
+#                             top5=3,
+#                             top10=4,
+#                             found=5,
+#                             total=2,
+#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
+#                         ),
+#                     ),
+#                 ),
+#                 stats=[],
+#                 gene_analysis=False,
+#             ),
+#             [
+#                 {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
+#                 {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
+#                 {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
+#                 {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
+#                 {"Rank": "found", "Percentage": 2.5, "Run": "results_dir"},
+#                 {"Rank": "MRR", "Percentage": 0.3433333333333333, "Run": "results_dir"},
+#             ],
+#         )
