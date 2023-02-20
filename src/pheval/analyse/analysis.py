@@ -738,7 +738,7 @@ class PlotGenerator:
                 },
                 {
                     "Rank": "FO/NP",
-                    "Percentage": (100 - rank_stats.percentage_found()) / 100,
+                    "Percentage": rank_stats.percentage_difference(100, rank_stats.percentage_found()) / 100,
                     "Run": result.results_dir.name,
                 },
                 {
@@ -816,7 +816,7 @@ class PlotGenerator:
                 },
                 {
                     "Rank": "FO/NP",
-                    "Percentage": (100 - rank_stats.percentage_found()) / 100,
+                    "Percentage": rank_stats.percentage_difference(100, rank_stats.percentage_found()) / 100,
                     "Run": result.results_dir.name,
                 },
                 {
