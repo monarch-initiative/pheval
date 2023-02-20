@@ -17,7 +17,7 @@ from pheval.analyse.analysis import (
     TrackPrioritisation,
     TrackVariantPrioritisation,
     VariantPrioritisationResult,
-    _merge_results,
+    merge_results,
     parse_pheval_gene_result,
     parse_pheval_variant_result,
 )
@@ -940,7 +940,7 @@ class TestMergeResults(unittest.TestCase):
 
     def test_merge_results(self):
         self.assertEqual(
-            _merge_results(self.result_1, self.result_2),
+            merge_results(self.result_1, self.result_2),
             {
                 1: {
                     "Phenopacket": "phenopacket1.json",

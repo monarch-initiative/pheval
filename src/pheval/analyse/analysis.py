@@ -913,12 +913,12 @@ def benchmark_directory(
     variants_stats_writer.close() if variant_analysis else None
 
 
-def _merge_results(result1: dict, result2: dict) -> dict:
+def merge_results(result1: dict, result2: dict) -> dict:
     """Merge two nested dictionaries containing results on commonalities."""
     for key, val in result1.items():
         if type(val) == dict:
             if key in result2 and type(result2[key] == dict):
-                _merge_results(result1[key], result2[key])
+                merge_results(result1[key], result2[key])
         else:
             if key in result2:
                 result1[key] = result2[key]
@@ -932,7 +932,7 @@ def _merge_results(result1: dict, result2: dict) -> dict:
 def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the gene rank comparison of two result directories."""
     for pair in comparison_ranks:
-        merged_results = _merge_results(
+        merged_results = merge_results(
             pair[0].gene_prioritisation.ranks, pair[1].gene_prioritisation.ranks
         )
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
@@ -943,7 +943,7 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
 def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the variant rank comparison of two result directories."""
     for pair in comparison_ranks:
-        merged_results = _merge_results(
+        merged_results = merge_results(
             pair[0].variant_prioritisation.ranks, pair[1].variant_prioritisation.ranks
         )
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
