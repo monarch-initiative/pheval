@@ -5,13 +5,17 @@ from pathlib import Path, PosixPath
 
 import pandas as pd
 
-from pheval.analyse.analysis import (  # TrackGenePrioritisation,; TrackPrioritisation,; TrackVariantPrioritisation,
+from pheval.analyse.analysis import (
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
     GenePrioritisationResult,
+    PlotGenerator,
     PrioritisationRankRecorder,
     RankComparisonGenerator,
     RankStats,
+    TrackGenePrioritisation,
+    TrackPrioritisation,
+    TrackVariantPrioritisation,
     VariantPrioritisationResult,
     _merge_results,
     parse_pheval_gene_result,
@@ -1175,91 +1179,125 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
         )
 
 
-# class TestGenerateStatsBarPlotData(unittest.TestCase):
-#     def test__generate_stats_bar_plot_data_gene(self):
-#         self.assertEqual(
-#             _generate_stacked_bar_plot_data(
-#                 prioritisation_results=TrackPrioritisation(
-#                     gene_prioritisation=TrackGenePrioritisation(
-#                         results_dir=Path("/path/to/results_dir"),
-#                         ranks={},
-#                         rank_stats=RankStats(
-#                             top=1,
-#                             top3=2,
-#                             top5=3,
-#                             top10=4,
-#                             found=5,
-#                             total=10,
-#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 17],
-#                         ),
-#                     ),
-#                     variant_prioritisation=TrackVariantPrioritisation(
-#                         results_dir=Path("/path/to/results_dir"),
-#                         ranks={},
-#                         rank_stats=RankStats(
-#                             top=1,
-#                             top3=2,
-#                             top5=3,
-#                             top10=4,
-#                             found=5,
-#                             total=20,
-#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 7 / 10],
-#                         ),
-#                     ),
-#                 ),
-#                 stats=[],
-#                 gene_analysis=True,
-#             ),
-#             [
-#                 {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
-#                 {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
-#                 {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
-#                 {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
-#                 {"Rank": "found", "Percentage": 0.5, "Run": "results_dir"},
-#                 {"Rank": "MRR", "Percentage": 0.3384313725490196, "Run": "results_dir"},
-#             ],
-#         )
-#
-#     def test__generate_stats_bar_plot_data_variant(self):
-#         self.assertEqual(
-#             _generate_stacked_bar_plot_data(
-#                 prioritisation_results=TrackPrioritisation(
-#                     gene_prioritisation=TrackGenePrioritisation(
-#                         results_dir=Path("/path/to/results_dir"),
-#                         ranks={},
-#                         rank_stats=RankStats(
-#                             top=1,
-#                             top3=2,
-#                             top5=3,
-#                             top10=4,
-#                             found=5,
-#                             total=10,
-#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
-#                         ),
-#                     ),
-#                     variant_prioritisation=TrackVariantPrioritisation(
-#                         results_dir=Path("/path/to/results_dir"),
-#                         ranks={},
-#                         rank_stats=RankStats(
-#                             top=1,
-#                             top3=2,
-#                             top5=3,
-#                             top10=4,
-#                             found=5,
-#                             total=2,
-#                             reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
-#                         ),
-#                     ),
-#                 ),
-#                 stats=[],
-#                 gene_analysis=False,
-#             ),
-#             [
-#                 {"Rank": "top", "Percentage": 0.2, "Run": "results_dir"},
-#                 {"Rank": "top3", "Percentage": 0.4, "Run": "results_dir"},
-#                 {"Rank": "top5", "Percentage": 0.6, "Run": "results_dir"},
-#                 {"Rank": "top10", "Percentage": 0.8, "Run": "results_dir"},
-#                 {"Rank": "found", "Percentage": 2.5, "Run": "results_dir"},
-#                 {"Rank": "MRR", "Percentage": 0.3433333333333333, "Run": "results_dir"},
-#             ],
-#         )
+class TestPlotGenerator(unittest.TestCase):
+    def setUp(self) -> None:
+        self.gene_plot_generator = PlotGenerator(gene_analysis=True)
+        self.variant_plot_generator = PlotGenerator(gene_analysis=False)
+        self.track_prioritisation = TrackPrioritisation(
+            gene_prioritisation=TrackGenePrioritisation(
+                results_dir=Path("/path/to/results_dir"),
+                ranks={},
+                rank_stats=RankStats(
+                    top=1,
+                    top3=2,
+                    top5=3,
+                    top10=9,
+                    found=20,
+                    total=30,
+                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
+                ),
+            ),
+            variant_prioritisation=TrackVariantPrioritisation(
+                results_dir=Path("/path/to/results_dir"),
+                ranks={},
+                rank_stats=RankStats(
+                    top=1,
+                    top3=2,
+                    top5=3,
+                    top10=4,
+                    found=5,
+                    total=2,
+                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
+                ),
+            ),
+        )
+
+    def test__retrieve_prioritisation_data_gene(self):
+        self.assertEqual(
+            self.gene_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
+            TrackGenePrioritisation(
+                results_dir=Path("/path/to/results_dir"),
+                ranks={},
+                rank_stats=RankStats(
+                    top=1,
+                    top3=2,
+                    top5=3,
+                    top10=9,
+                    found=20,
+                    total=30,
+                    reciprocal_ranks=[1, 0.3333333333333333, 0.2, 0.1, 0.02],
+                ),
+            ),
+        )
+
+    def test__retrieve_prioritisation_data_variant(self):
+        self.assertEqual(
+            self.variant_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
+            TrackVariantPrioritisation(
+                results_dir=PosixPath("/path/to/results_dir"),
+                ranks={},
+                rank_stats=RankStats(
+                    top=1,
+                    top3=2,
+                    top5=3,
+                    top10=4,
+                    found=5,
+                    total=2,
+                    reciprocal_ranks=[1, 0.3333333333333333, 0.2, 0.1, 0.08333333333333333],
+                ),
+            ),
+        )
+
+    def test__generate_stacked_bar_plot_data(self):
+        self.gene_plot_generator._generate_stacked_bar_plot_data(self.track_prioritisation)
+        self.assertEqual(
+            self.gene_plot_generator.stats,
+            [
+                {
+                    "2-3": 5.0,
+                    "4-5": 5.0,
+                    "6-10": 30.0,
+                    ">10": 21.66666666666667,
+                    "FO/NP": 33.33333333333333,
+                    "Run": "results_dir",
+                    "Top": 5.0,
+                }
+            ],
+        )
+
+    def test__generate_stats_mrr_bar_plot_data(self):
+        self.gene_plot_generator._generate_stats_mrr_bar_plot_data(self.track_prioritisation)
+        self.assertEqual(
+            self.gene_plot_generator.mrr,
+            [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"}],
+        )
+
+    def test__generate_cumulative_bar_plot_data(self):
+        self.gene_plot_generator._generate_cumulative_bar_plot_data(self.track_prioritisation)
+        self.assertEqual(
+            self.gene_plot_generator.stats,
+            [
+                {"Rank": "Top", "Percentage": 0.05, "Run": "results_dir"},
+                {"Rank": "Top3", "Percentage": 0.1, "Run": "results_dir"},
+                {"Rank": "Top5", "Percentage": 0.15, "Run": "results_dir"},
+                {"Rank": "Top10", "Percentage": 0.45, "Run": "results_dir"},
+                {"Rank": "Found", "Percentage": 0.6666666666666667, "Run": "results_dir"},
+                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "results_dir"},
+                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
+            ],
+        )
+
+    def test__generate_non_cumulative_bar_plot_data(self):
+        self.gene_plot_generator._generate_non_cumulative_bar_plot_data(self.track_prioritisation)
+        self.assertEqual(
+            self.gene_plot_generator.stats,
+            [
+                {"Rank": "Top", "Percentage": 0.05, "Run": "results_dir"},
+                {"Rank": "2-3", "Percentage": 0.05, "Run": "results_dir"},
+                {"Rank": "4-5", "Percentage": 0.05, "Run": "results_dir"},
+                {"Rank": "6-10", "Percentage": 0.3, "Run": "results_dir"},
+                {"Rank": ">10", "Percentage": 0.2166666666666667, "Run": "results_dir"},
+                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "results_dir"},
+                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
+            ],
+        )
