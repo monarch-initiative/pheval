@@ -203,6 +203,7 @@ class RankStats:
 
     @staticmethod
     def percentage_difference(percentage_value_1: float, percentage_value_2: float) -> float:
+        """Return percentage difference between two percentage values"""
         return percentage_value_1 - percentage_value_2
 
     def mean_reciprocal_rank(self) -> float:
@@ -627,13 +628,15 @@ class PlotGenerator:
         matplotlib.rcParams["axes.spines.top"] = False
 
     def _retrieve_prioritisation_data(self, prioritisation_result: TrackPrioritisation):
+        """Return either gene prioritisation or variant prioritisation stats."""
         return (
             prioritisation_result.gene_prioritisation
             if self.gene_analysis
             else prioritisation_result.variant_prioritisation
         )
 
-    def _generate_stacked_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+    def _generate_stacked_bar_plot_data(self, prioritisation_result: TrackPrioritisation) -> None:
+        """Generate data in correct format for dataframe creation for stacked bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         rank_stats = result.rank_stats
         self.stats.append(
@@ -656,7 +659,8 @@ class PlotGenerator:
             }
         )
 
-    def _generate_stats_mrr_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+    def _generate_stats_mrr_bar_plot_data(self, prioritisation_result: TrackPrioritisation) -> None:
+        """Generate data in correct format for dataframe creation for MRR bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         self.mrr.extend(
             [
@@ -668,7 +672,8 @@ class PlotGenerator:
             ]
         )
 
-    def generate_stacked_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+    def generate_stacked_bar_gene(self, prioritisation_data: [TrackPrioritisation]) -> None:
+        """Generate stacked bar plot and MRR bar plot for gene prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_stacked_bar_plot_data(prioritisation_result)
             self._generate_stats_mrr_bar_plot_data(prioritisation_result)
@@ -684,6 +689,7 @@ class PlotGenerator:
         plt.savefig("gene_mrr.svg", format="svg", bbox_inches="tight")
 
     def generate_stacked_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        """Generate stacked bar plot and MRR bar plot for variant prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_stacked_bar_plot_data(prioritisation_result)
             self._generate_stats_mrr_bar_plot_data(prioritisation_result)
@@ -700,6 +706,7 @@ class PlotGenerator:
         plt.savefig("variant_mrr.svg", format="svg", bbox_inches="tight")
 
     def _generate_cumulative_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+        """Generate data in correct format for dataframe creation for cumulative bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         rank_stats = result.rank_stats
         self.stats.extend(
@@ -743,6 +750,7 @@ class PlotGenerator:
         )
 
     def generate_cumulative_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+        """Generate cumulative bar plot for gene prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_cumulative_bar_plot_data(prioritisation_result)
         gene_prioritisation_df = pd.DataFrame(self.stats)
@@ -752,6 +760,7 @@ class PlotGenerator:
         plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
 
     def generate_cumulative_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        """Generate cumulative bar plot for variant prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_cumulative_bar_plot_data(prioritisation_result)
         variant_prioritisation_df = pd.DataFrame(self.stats)
@@ -763,7 +772,7 @@ class PlotGenerator:
     def _generate_non_cumulative_bar_plot_data(
         self, prioritisation_result: TrackPrioritisation
     ) -> [dict]:
-        """Generate bar plot data for prioritisation summary stats."""
+        """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         rank_stats = result.rank_stats
         self.stats.extend(
@@ -819,6 +828,7 @@ class PlotGenerator:
         )
 
     def generate_non_cumulative_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+        """Generate non-cumulative bar plot for gene prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_non_cumulative_bar_plot_data(prioritisation_result)
         gene_prioritisation_df = pd.DataFrame(self.stats)
@@ -828,6 +838,7 @@ class PlotGenerator:
         plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
 
     def generate_non_cumulative_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        """Generate non-cumulative bar plot for variant prioritisation stats."""
         for prioritisation_result in prioritisation_data:
             self._generate_non_cumulative_bar_plot_data(prioritisation_result)
         variant_prioritisation_df = pd.DataFrame(self.stats)
