@@ -1188,7 +1188,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.variant_plot_generator = PlotGenerator(gene_analysis=False)
         self.track_prioritisation = TrackPrioritisation(
             gene_prioritisation=TrackGenePrioritisation(
-                results_dir=Path("/path/to/results_dir"),
+                results_dir=Path("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
                     top=1,
@@ -1201,7 +1201,7 @@ class TestPlotGenerator(unittest.TestCase):
                 ),
             ),
             variant_prioritisation=TrackVariantPrioritisation(
-                results_dir=Path("/path/to/results_dir"),
+                results_dir=Path("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
                     top=1,
@@ -1219,7 +1219,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.gene_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
             TrackGenePrioritisation(
-                results_dir=Path("/path/to/results_dir"),
+                results_dir=Path("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
                     top=1,
@@ -1237,7 +1237,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.variant_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
             TrackVariantPrioritisation(
-                results_dir=PosixPath("/path/to/results_dir"),
+                results_dir=PosixPath("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
                     top=1,
@@ -1262,7 +1262,7 @@ class TestPlotGenerator(unittest.TestCase):
                     "6-10": 30.0,
                     ">10": 21.66666666666667,
                     "FO/NP": 33.33333333333333,
-                    "Run": "results_dir",
+                    "Run": "tool_corpus_results",
                     "Top": 5.0,
                 }
             ],
@@ -1272,7 +1272,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.gene_plot_generator._generate_stats_mrr_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.mrr,
-            [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"}],
+            [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus_results"}],
         )
 
     def test__generate_cumulative_bar_plot_data(self):
@@ -1280,13 +1280,13 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
-                {"Rank": "Top", "Percentage": 0.05, "Run": "results_dir"},
-                {"Rank": "Top3", "Percentage": 0.1, "Run": "results_dir"},
-                {"Rank": "Top5", "Percentage": 0.15, "Run": "results_dir"},
-                {"Rank": "Top10", "Percentage": 0.45, "Run": "results_dir"},
-                {"Rank": "Found", "Percentage": 0.6666666666666667, "Run": "results_dir"},
-                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "results_dir"},
-                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
+                {"Rank": "Top", "Percentage": 0.05, "Run": "tool_corpus_results"},
+                {"Rank": "Top3", "Percentage": 0.1, "Run": "tool_corpus_results"},
+                {"Rank": "Top5", "Percentage": 0.15, "Run": "tool_corpus_results"},
+                {"Rank": "Top10", "Percentage": 0.45, "Run": "tool_corpus_results"},
+                {"Rank": "Found", "Percentage": 0.6666666666666667, "Run": "tool_corpus_results"},
+                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "tool_corpus_results"},
+                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus_results"},
             ],
         )
 
@@ -1295,12 +1295,12 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
-                {"Rank": "Top", "Percentage": 0.05, "Run": "results_dir"},
-                {"Rank": "2-3", "Percentage": 0.05, "Run": "results_dir"},
-                {"Rank": "4-5", "Percentage": 0.05, "Run": "results_dir"},
-                {"Rank": "6-10", "Percentage": 0.3, "Run": "results_dir"},
-                {"Rank": ">10", "Percentage": 0.2166666666666667, "Run": "results_dir"},
-                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "results_dir"},
-                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
+                {"Rank": "Top", "Percentage": 0.05, "Run": "tool_corpus_results"},
+                {"Rank": "2-3", "Percentage": 0.05, "Run": "tool_corpus_results"},
+                {"Rank": "4-5", "Percentage": 0.05, "Run": "tool_corpus_results"},
+                {"Rank": "6-10", "Percentage": 0.3, "Run": "tool_corpus_results"},
+                {"Rank": ">10", "Percentage": 0.2166666666666667, "Run": "tool_corpus_results"},
+                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "tool_corpus_results"},
+                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus_results"},
             ],
         )
