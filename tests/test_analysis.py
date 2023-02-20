@@ -1304,5 +1304,3 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "results_dir"},
             ],
         )
-
-
