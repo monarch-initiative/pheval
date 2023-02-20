@@ -8,6 +8,7 @@ from pathlib import Path
 from statistics import mean
 
 import click
+import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -199,6 +200,10 @@ class RankStats:
     def percentage_found(self) -> float:
         """Return percentage of matches found."""
         return 100 * self.found / self.total
+
+    @staticmethod
+    def percentage_difference(percentage_value_1: float, percentage_value_2: float) -> float:
+        return percentage_value_1 - percentage_value_2
 
     def mean_reciprocal_rank(self) -> float:
         """Return the mean reciprocal rank."""
@@ -614,108 +619,264 @@ def _assess_prioritisation_for_results_directory(
     )
 
 
-def _generate_stats_bar_plot_data(
-    prioritisation_results: TrackPrioritisation, stats: [], gene_analysis: bool
-) -> [dict]:
-    """Generate bar plot data for prioritisation summary stats."""
-    prioritisation_result = (
-        prioritisation_results.gene_prioritisation
-        if gene_analysis
-        else prioritisation_results.variant_prioritisation
-    )
-    stats.append(
-        {
-            "Rank": "top",
-            "Percentage": prioritisation_result.rank_stats.percentage_top() / 100,
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    stats.append(
-        {
-            "Rank": "top3",
-            "Percentage": prioritisation_result.rank_stats.percentage_top3() / 100,
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    stats.append(
-        {
-            "Rank": "top5",
-            "Percentage": prioritisation_result.rank_stats.percentage_top5() / 100,
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    stats.append(
-        {
-            "Rank": "top10",
-            "Percentage": prioritisation_result.rank_stats.percentage_top10() / 100,
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    stats.append(
-        {
-            "Rank": "found",
-            "Percentage": prioritisation_result.rank_stats.percentage_found() / 100,
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    stats.append(
-        {
-            "Rank": "MRR",
-            "Percentage": prioritisation_result.rank_stats.mean_reciprocal_rank(),
-            "Run": os.path.basename(prioritisation_result.results_dir),
-        }
-    )
-    return stats
+class PlotGenerator:
+    def __init__(self, gene_analysis: bool):
+        self.gene_analysis = gene_analysis
+        self.stats, self.mrr = [], []
+        matplotlib.rcParams["axes.spines.right"] = False
+        matplotlib.rcParams["axes.spines.top"] = False
+
+    def _retrieve_prioritisation_data(self, prioritisation_result: TrackPrioritisation):
+        return (
+            prioritisation_result.gene_prioritisation
+            if self.gene_analysis
+            else prioritisation_result.variant_prioritisation
+        )
+
+    def _generate_stacked_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+        result = self._retrieve_prioritisation_data(prioritisation_result)
+        rank_stats = result.rank_stats
+        self.stats.append(
+            {
+                "Run": os.path.basename(result.results_dir.name),
+                "Top": result.rank_stats.percentage_top(),
+                "2-3": rank_stats.percentage_difference(
+                    rank_stats.percentage_top3(), rank_stats.percentage_top()
+                ),
+                "4-5": rank_stats.percentage_difference(
+                    rank_stats.percentage_top5(), rank_stats.percentage_top3()
+                ),
+                "6-10": rank_stats.percentage_difference(
+                    rank_stats.percentage_top10(), rank_stats.percentage_top5()
+                ),
+                ">10": rank_stats.percentage_difference(
+                    rank_stats.percentage_found(), rank_stats.percentage_top10()
+                ),
+                "FO/NP": rank_stats.percentage_difference(100, rank_stats.percentage_found()),
+            }
+        )
+
+    def _generate_stats_mrr_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+        result = self._retrieve_prioritisation_data(prioritisation_result)
+        self.mrr.extend(
+            [
+                {
+                    "Rank": "MRR",
+                    "Percentage": result.rank_stats.mean_reciprocal_rank(),
+                    "Run": result.results_dir.name,
+                }
+            ]
+        )
+
+    def generate_stacked_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_stacked_bar_plot_data(prioritisation_result)
+            self._generate_stats_mrr_bar_plot_data(prioritisation_result)
+        gene_prioritisation_stats_df = pd.DataFrame(self.stats)
+        gene_prioritisation_stats_df.set_index("Run").plot(
+            kind="bar", stacked=True, colormap="tab10", ylabel="Disease-causing genes (%)"
+        ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+        plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
+        gene_mrr_df = pd.DataFrame(self.mrr)
+        gene_mrr_df.set_index("Run").plot(
+            kind="bar", colormap="tab10", ylabel="Disease-causing genes", legend=False
+        )
+        plt.savefig("gene_mrr.svg", format="svg", bbox_inches="tight")
+
+    def generate_stacked_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_stacked_bar_plot_data(prioritisation_result)
+            self._generate_stats_mrr_bar_plot_data(prioritisation_result)
+        variant_prioritisation_stats_df = pd.DataFrame(self.stats)
+
+        variant_prioritisation_stats_df.set_index("Run").plot(
+            kind="bar", stacked=True, colormap="tab10", ylabel="Disease-causing variants (%)"
+        ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+        plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
+        gene_mrr_df = pd.DataFrame(self.mrr)
+        gene_mrr_df.set_index("Run").plot(
+            kind="bar", colormap="tab10", ylabel="Disease-causing variants", legend=False
+        )
+        plt.savefig("variant_mrr.svg", format="svg", bbox_inches="tight")
+
+    def _generate_cumulative_bar_plot_data(self, prioritisation_result: TrackPrioritisation):
+        result = self._retrieve_prioritisation_data(prioritisation_result)
+        rank_stats = result.rank_stats
+        self.stats.extend(
+            [
+                {
+                    "Rank": "Top",
+                    "Percentage": rank_stats.percentage_top() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "Top3",
+                    "Percentage": rank_stats.percentage_top3() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "Top5",
+                    "Percentage": rank_stats.percentage_top5() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "Top10",
+                    "Percentage": rank_stats.percentage_top10() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "Found",
+                    "Percentage": rank_stats.percentage_found() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "FO/NP",
+                    "Percentage": (100 - rank_stats.percentage_found()) / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "MRR",
+                    "Percentage": rank_stats.mean_reciprocal_rank(),
+                    "Run": result.results_dir.name,
+                },
+            ]
+        )
+
+    def generate_cumulative_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_cumulative_bar_plot_data(prioritisation_result)
+        gene_prioritisation_df = pd.DataFrame(self.stats)
+        sns.catplot(
+            data=gene_prioritisation_df, kind="bar", x="Rank", y="Percentage", hue="Run"
+        ).set(xlabel="Rank", ylabel="Disease-causing genes (%)")
+        plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
+
+    def generate_cumulative_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_cumulative_bar_plot_data(prioritisation_result)
+        variant_prioritisation_df = pd.DataFrame(self.stats)
+        sns.catplot(
+            data=variant_prioritisation_df, kind="bar", x="Rank", y="Percentage", hue="Run"
+        ).set(xlabel="Rank", ylabel="Disease-causing variants (%)")
+        plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
+
+    def _generate_non_cumulative_bar_plot_data(
+        self, prioritisation_result: TrackPrioritisation
+    ) -> [dict]:
+        """Generate bar plot data for prioritisation summary stats."""
+        result = self._retrieve_prioritisation_data(prioritisation_result)
+        rank_stats = result.rank_stats
+        self.stats.extend(
+            [
+                {
+                    "Rank": "Top",
+                    "Percentage": rank_stats.percentage_top() / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "2-3",
+                    "Percentage": rank_stats.percentage_difference(
+                        rank_stats.percentage_top3(), rank_stats.percentage_top()
+                    )
+                    / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "4-5",
+                    "Percentage": rank_stats.percentage_difference(
+                        rank_stats.percentage_top5(), rank_stats.percentage_top3()
+                    )
+                    / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "6-10",
+                    "Percentage": rank_stats.percentage_difference(
+                        rank_stats.percentage_top10(), rank_stats.percentage_top5()
+                    )
+                    / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": ">10",
+                    "Percentage": rank_stats.percentage_difference(
+                        rank_stats.percentage_found(), rank_stats.percentage_top10()
+                    )
+                    / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "FO/NP",
+                    "Percentage": (100 - rank_stats.percentage_found()) / 100,
+                    "Run": result.results_dir.name,
+                },
+                {
+                    "Rank": "MRR",
+                    "Percentage": rank_stats.mean_reciprocal_rank(),
+                    "Run": result.results_dir.name,
+                },
+            ]
+        )
+
+    def generate_non_cumulative_bar_gene(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_non_cumulative_bar_plot_data(prioritisation_result)
+        gene_prioritisation_df = pd.DataFrame(self.stats)
+        sns.catplot(
+            data=gene_prioritisation_df, kind="bar", x="Rank", y="Percentage", hue="Run"
+        ).set(xlabel="Rank", ylabel="Disease-causing genes (%)")
+        plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
+
+    def generate_non_cumulative_bar_variant(self, prioritisation_data: [TrackPrioritisation]):
+        for prioritisation_result in prioritisation_data:
+            self._generate_non_cumulative_bar_plot_data(prioritisation_result)
+        variant_prioritisation_df = pd.DataFrame(self.stats)
+        sns.catplot(
+            data=variant_prioritisation_df, kind="bar", x="Rank", y="Percentage", hue="Run"
+        ).set(xlabel="Rank", ylabel="Disease-causing variants (%)")
+        plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
 
 
-def generate_gene_stats_bar_plot(prioritisation_data: [TrackPrioritisation]) -> None:
+def generate_gene_plots(prioritisation_data: [TrackPrioritisation], plot_type: str) -> None:
     """Generate summary stats bar plot for gene prioritisation."""
-    gene_prioritisation_stats = []
-    for prioritisation_result in prioritisation_data:
-        gene_prioritisation_stats = _generate_stats_bar_plot_data(
-            prioritisation_result, gene_prioritisation_stats, gene_analysis=True
-        )
-    gene_prioritisation_stats_df = pd.DataFrame(gene_prioritisation_stats)
-    sns.catplot(
-        data=gene_prioritisation_stats_df, kind="bar", x="Rank", y="Percentage", hue="Run"
-    ).set(
-        xlabel="Rank",
-        ylabel="Ranked genes (%)",
-    )
-    plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
+    plot_generator = PlotGenerator(gene_analysis=True)
+    if plot_type == "bar_stacked":
+        plot_generator.generate_stacked_bar_gene(prioritisation_data)
+    if plot_type == "bar_cumulative":
+        plot_generator.generate_cumulative_bar_gene(prioritisation_data)
+    if plot_type == "bar_non_cumulative":
+        plot_generator.generate_non_cumulative_bar_gene(prioritisation_data)
 
 
-def generate_variant_stats_bar_plot(prioritisation_data: [TrackPrioritisation]) -> None:
+def generate_variant_plots(prioritisation_data: [TrackPrioritisation], plot_type: str) -> None:
     """Generate summary stats bar plot for variant prioritisation."""
-    variant_prioritisation_stats = []
-    for prioritisation_result in prioritisation_data:
-        variant_prioritisation_stats = _generate_stats_bar_plot_data(
-            prioritisation_result, variant_prioritisation_stats, gene_analysis=False
-        )
-    variant_prioritisation_stats_df = pd.DataFrame(variant_prioritisation_stats)
-    sns.catplot(
-        data=variant_prioritisation_stats_df, kind="bar", x="Rank", y="Percentage", hue="Run"
-    ).set(
-        xlabel="Rank",
-        ylabel="Ranked variants (%)",
-    )
-    plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
+    plot_generator = PlotGenerator(gene_analysis=False)
+    if plot_type == "bar_stacked":
+        plot_generator.generate_stacked_bar_variant(prioritisation_data)
+    if plot_type == "bar_cumulative":
+        plot_generator.generate_cumulative_bar_variant(prioritisation_data)
+    if plot_type == "bar_non_cumulative":
+        plot_generator.generate_non_cumulative_bar_variant(prioritisation_data)
 
 
-def generate_benchmark_gene_output(prioritisation_data: TrackPrioritisation) -> None:
+def generate_benchmark_gene_output(
+    prioritisation_data: TrackPrioritisation, plot_type: str
+) -> None:
     """Generate gene prioritisation outputs for benchmarking single run."""
     RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_gene_output(
         f"{prioritisation_data.gene_prioritisation.results_dir.name}"
     )
-    generate_gene_stats_bar_plot([prioritisation_data])
+    generate_gene_plots([prioritisation_data], plot_type)
 
 
-def generate_benchmark_variant_output(prioritisation_data: TrackPrioritisation) -> None:
+def generate_benchmark_variant_output(
+    prioritisation_data: TrackPrioritisation, plot_type: str
+) -> None:
     """Generate variant prioritisation outputs for benchmarking single run."""
     RankComparisonGenerator(
         prioritisation_data.variant_prioritisation.ranks
     ).generate_variant_output(f"{prioritisation_data.gene_prioritisation.results_dir.name}")
-    generate_variant_stats_bar_plot([prioritisation_data])
+    generate_variant_plots([prioritisation_data], plot_type)
 
 
 def benchmark_directory(
@@ -725,6 +886,7 @@ def benchmark_directory(
     threshold: float,
     gene_analysis: bool,
     variant_analysis: bool,
+    plot_type: str,
 ) -> None:
     """Benchmark prioritisation performance for a single directory."""
     gene_stats_writer = (
@@ -745,8 +907,8 @@ def benchmark_directory(
         gene_analysis,
         variant_analysis,
     )
-    generate_benchmark_gene_output(prioritisation_data) if gene_analysis else None
-    generate_benchmark_variant_output(prioritisation_data) if variant_analysis else None
+    generate_benchmark_gene_output(prioritisation_data, plot_type) if gene_analysis else None
+    generate_benchmark_variant_output(prioritisation_data, plot_type) if variant_analysis else None
     gene_stats_writer.close() if gene_analysis else None
     variants_stats_writer.close() if variant_analysis else None
 
@@ -790,21 +952,21 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
 
 
 def generate_benchmark_comparison_gene_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation],
+    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
-    generate_gene_stats_bar_plot(prioritisation_stats_for_runs)
+    generate_gene_plots(prioritisation_stats_for_runs, plot_type)
 
 
 def generate_benchmark_comparison_variant_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation],
+    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking multiple runs."""
     generate_variant_rank_comparisons(
         list(itertools.combinations(prioritisation_stats_for_runs, 2))
     )
-    generate_variant_stats_bar_plot(prioritisation_stats_for_runs)
+    generate_variant_plots(prioritisation_stats_for_runs, plot_type)
 
 
 def benchmark_runs(
@@ -814,6 +976,7 @@ def benchmark_runs(
     threshold: float,
     gene_analysis: bool,
     variant_analysis: bool,
+    plot_type: str,
 ) -> None:
     """Benchmark several result directories."""
     gene_stats_writer = (
@@ -838,10 +1001,10 @@ def benchmark_runs(
         )
         prioritisation_stats_for_runs.append(prioritisation_stats)
     generate_benchmark_comparison_gene_output(
-        prioritisation_stats_for_runs
+        prioritisation_stats_for_runs, plot_type
     ) if gene_analysis else None
     generate_benchmark_comparison_variant_output(
-        prioritisation_stats_for_runs
+        prioritisation_stats_for_runs, plot_type
     ) if variant_analysis else None
     gene_stats_writer.close() if gene_analysis else None
     variants_stats_writer.close() if variant_analysis else None
@@ -906,6 +1069,14 @@ def benchmark_runs(
     show_default=True,
     help="Specify analysis for variant prioritisation",
 )
+@click.option(
+    "--plot-type",
+    "-p",
+    default="bar_stacked",
+    show_default=True,
+    type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
+    help="Bar chart type to output.",
+)
 def benchmark(
     directory: Path,
     phenopacket_dir: Path,
@@ -914,6 +1085,7 @@ def benchmark(
     threshold: float,
     gene_analysis: bool,
     variant_analysis: bool,
+    plot_type: str,
 ):
     """Benchmark the gene/variant prioritisation performance for a single run."""
     benchmark_directory(
@@ -923,6 +1095,7 @@ def benchmark(
         threshold,
         gene_analysis,
         variant_analysis,
+        plot_type,
     )
 
 
@@ -978,6 +1151,14 @@ def benchmark(
     show_default=True,
     help="Specify analysis for variant prioritisation",
 )
+@click.option(
+    "--plot-type",
+    "-p",
+    default="bar_stacked",
+    show_default=True,
+    type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
+    help="Bar chart type to output.",
+)
 def benchmark_comparison(
     run_data: Path,
     score_order: str,
@@ -985,6 +1166,7 @@ def benchmark_comparison(
     threshold: float,
     gene_analysis: bool,
     variant_analysis: bool,
+    plot_type: str,
 ):
     """Benchmark the gene/variant prioritisation performance for two runs."""
     benchmark_runs(
@@ -994,4 +1176,5 @@ def benchmark_comparison(
         threshold,
         gene_analysis,
         variant_analysis,
+        plot_type,
     )
