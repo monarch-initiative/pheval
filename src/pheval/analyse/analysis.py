@@ -1,7 +1,6 @@
 # #!/usr/bin/python
 import csv
 import itertools
-import os
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -641,7 +640,7 @@ class PlotGenerator:
         rank_stats = result.rank_stats
         self.stats.append(
             {
-                "Run": os.path.basename(result.results_dir.name),
+                "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 "Top": result.rank_stats.percentage_top(),
                 "2-3": rank_stats.percentage_difference(
                     rank_stats.percentage_top3(), rank_stats.percentage_top()
@@ -667,7 +666,7 @@ class PlotGenerator:
                 {
                     "Rank": "MRR",
                     "Percentage": result.rank_stats.mean_reciprocal_rank(),
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 }
             ]
         )
@@ -679,7 +678,12 @@ class PlotGenerator:
             self._generate_stats_mrr_bar_plot_data(prioritisation_result)
         gene_prioritisation_stats_df = pd.DataFrame(self.stats)
         gene_prioritisation_stats_df.set_index("Run").plot(
-            kind="bar", stacked=True, colormap="tab10", ylabel="Disease-causing genes (%)"
+            kind="bar",
+            stacked=True,
+            colormap="tab10",
+            ylabel="Disease-causing genes (%)",
+            figsize=(10, 8),
+            rot=45,
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
         gene_mrr_df = pd.DataFrame(self.mrr)
@@ -714,27 +718,27 @@ class PlotGenerator:
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "Top3",
                     "Percentage": rank_stats.percentage_top3() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "Top5",
                     "Percentage": rank_stats.percentage_top5() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "Top10",
                     "Percentage": rank_stats.percentage_top10() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "Found",
                     "Percentage": rank_stats.percentage_found() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "FO/NP",
@@ -742,12 +746,12 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
             ]
         )
@@ -783,7 +787,7 @@ class PlotGenerator:
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "2-3",
@@ -791,7 +795,7 @@ class PlotGenerator:
                         rank_stats.percentage_top3(), rank_stats.percentage_top()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "4-5",
@@ -799,7 +803,7 @@ class PlotGenerator:
                         rank_stats.percentage_top5(), rank_stats.percentage_top3()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "6-10",
@@ -807,7 +811,7 @@ class PlotGenerator:
                         rank_stats.percentage_top10(), rank_stats.percentage_top5()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": ">10",
@@ -815,7 +819,7 @@ class PlotGenerator:
                         rank_stats.percentage_found(), rank_stats.percentage_top10()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "FO/NP",
@@ -823,12 +827,12 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": result.results_dir.name,
+                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
                 },
             ]
         )
@@ -953,7 +957,10 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
             pair[0].gene_prioritisation.ranks, pair[1].gene_prioritisation.ranks
         )
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
-            f"{pair[0].gene_prioritisation.results_dir.name}__v__{pair[1].gene_prioritisation.results_dir.name}"
+            f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[0].gene_prioritisation.results_dir.name}"
+            f"__v__{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[1].gene_prioritisation.results_dir.name}"
         )
 
 
@@ -964,7 +971,10 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
             pair[0].variant_prioritisation.ranks, pair[1].variant_prioritisation.ranks
         )
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
-            f"{pair[0].variant_prioritisation.results_dir.name}__v__{pair[1].variant_prioritisation.results_dir.name}"
+            f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[0].variant_prioritisation.results_dir.name}"
+            f"__v__{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[1].variant_prioritisation.results_dir.name}"
         )
 
 
