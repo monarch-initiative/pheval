@@ -25,7 +25,7 @@ def find_methods_in_python_file(file_path):
 def list_valid_files():
     """list_valid_files"""
     ignored_files = ["docs_gen", "__init__"]
-    source_folder = f"{os.path.dirname(os.path.realpath(__file__))}/../../src"
+    source_folder = f"{os.path.dirname(os.path.realpath(__file__))}/../../../src"
     files = Path(source_folder).rglob("*.py")
     filtered_files = []
     for file in files:
