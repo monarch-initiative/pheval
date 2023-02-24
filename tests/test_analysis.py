@@ -9,18 +9,19 @@ from pheval.analyse.analysis import (
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
     GenePrioritisationResult,
-    PlotGenerator,
     PrioritisationRankRecorder,
-    RankComparisonGenerator,
-    RankStats,
-    TrackGenePrioritisation,
-    TrackPrioritisation,
-    TrackVariantPrioritisation,
     VariantPrioritisationResult,
-    merge_results,
     parse_pheval_gene_result,
     parse_pheval_variant_result,
 )
+from pheval.analyse.generate_plots import (
+    PlotGenerator,
+    TrackGenePrioritisation,
+    TrackPrioritisation,
+    TrackVariantPrioritisation,
+)
+from pheval.analyse.generate_summary_outputs import RankComparisonGenerator, merge_results
+from pheval.analyse.rank_stats import RankStats
 from pheval.post_processing.post_processing import (
     PhEvalGeneResult,
     PhEvalVariantResult,
