@@ -864,9 +864,9 @@ def generate_gene_plots(prioritisation_data: [TrackPrioritisation], plot_type: s
     plot_generator = PlotGenerator(gene_analysis=True)
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_gene(prioritisation_data)
-    if plot_type == "bar_cumulative":
+    elif plot_type == "bar_cumulative":
         plot_generator.generate_cumulative_bar_gene(prioritisation_data)
-    if plot_type == "bar_non_cumulative":
+    elif plot_type == "bar_non_cumulative":
         plot_generator.generate_non_cumulative_bar_gene(prioritisation_data)
 
 
@@ -875,9 +875,9 @@ def generate_variant_plots(prioritisation_data: [TrackPrioritisation], plot_type
     plot_generator = PlotGenerator(gene_analysis=False)
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_variant(prioritisation_data)
-    if plot_type == "bar_cumulative":
+    elif plot_type == "bar_cumulative":
         plot_generator.generate_cumulative_bar_variant(prioritisation_data)
-    if plot_type == "bar_non_cumulative":
+    elif plot_type == "bar_non_cumulative":
         plot_generator.generate_non_cumulative_bar_variant(prioritisation_data)
 
 
