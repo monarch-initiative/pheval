@@ -18,6 +18,7 @@ from pheval.post_processing.post_processing import (
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
 )
+from pheval.prepare.custom_exceptions import InputError
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import (
     GenomicVariant,
@@ -683,7 +684,7 @@ class PlotGenerator:
             colormap="tab10",
             ylabel="Disease-causing genes (%)",
             figsize=(10, 8),
-            rot=45,
+            # rot=45,
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
         gene_mrr_df = pd.DataFrame(self.mrr)
@@ -1115,6 +1116,8 @@ def benchmark(
     plot_type: str,
 ):
     """Benchmark the gene/variant prioritisation performance for a single run."""
+    if not gene_analysis and not variant_analysis:
+        raise InputError("Need to specify gene analysis and/or variant analysis.")
     benchmark_directory(
         TrackInputOutputDirectories(results_dir=directory, phenopacket_dir=phenopacket_dir),
         score_order,
@@ -1196,6 +1199,8 @@ def benchmark_comparison(
     plot_type: str,
 ):
     """Benchmark the gene/variant prioritisation performance for two runs."""
+    if not gene_analysis and not variant_analysis:
+        raise InputError("Need to specify gene analysis and/or variant analysis.")
     benchmark_runs(
         _parse_run_data_text_file(run_data),
         score_order,
