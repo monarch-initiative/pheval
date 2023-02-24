@@ -1,3 +1,4 @@
+import difflib
 import itertools
 import re
 import unicodedata
@@ -34,19 +35,11 @@ def normalise_file_name(file_path: Path) -> str:
 
 def obtain_closest_file_name(file_to_be_queried: Path, file_paths: list[Path]) -> Path:
     """Obtains the closest file name when given a template file name and a list of full path of files to be queried."""
-    # closest_file_match = difflib.get_close_matches(
-    #     Path(file_to_be_queried).stem,
-    #     [Path(file_path).stem for file_path in file_paths],
-    #     cutoff=0.4,
-    # )[0]
-    # return [file_path for file_path in file_paths if closest_file_match == file_path.stem][0]
-    return [
-        file_path
-        for file_path in file_paths
-        if normalise_file_name(file_to_be_queried.stem).startswith(
-            normalise_file_name(file_path.stem)
-        )
-    ][0]
+    stems = [Path(file_path).stem for file_path in file_paths]
+    closest_file_match = difflib.get_close_matches(
+        str(Path(file_to_be_queried).stem), stems, cutoff=0.1, n=1
+    )[0]
+    return [file_path for file_path in file_paths if closest_file_match == str(file_path.stem)][0]
 
 
 def ensure_file_exists(*files: str):
