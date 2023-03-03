@@ -152,7 +152,7 @@ def semsim_comparison(
 )
 @click.option(
     "--phenopacket-dir",
-    "-p",
+    "-P",
     metavar="PATH",
     help="Path to phenopacket directory for updating.",
     type=Path,
