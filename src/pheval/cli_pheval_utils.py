@@ -154,7 +154,6 @@ def semsim_comparison(
     "--phenopacket-dir",
     "-p",
     metavar="PATH",
-    required=True,
     help="Path to phenopacket directory for updating.",
     type=Path,
     cls=MutuallyExclusiveOptionError,
