@@ -1,7 +1,6 @@
 import random
 from pathlib import Path
 
-import click
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
 from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
@@ -123,7 +122,7 @@ def add_noise_to_phenotypic_profile(
 
 def create_scrambled_phenopacket(
     output_dir: Path, phenopacket_path: Path, scramble_factor: float
-):
+) -> None:
     """Creates a scrambled phenopacket."""
     try:
         output_dir.mkdir()
@@ -138,15 +137,13 @@ def create_scrambled_phenopacket(
     )
     write_phenopacket(
         created_noisy_phenopacket,
-        output_dir.joinpath(
-            phenopacket_path.name
-        ),
+        output_dir.joinpath(phenopacket_path.name),
     )
 
 
 def create_scrambled_phenopackets(
     output_dir: Path, phenopacket_dir: Path, scramble_factor: float
-):
+) -> None:
     """Creates scrambled phenopackets."""
     try:
         output_dir.mkdir()
@@ -166,75 +163,11 @@ def create_scrambled_phenopackets(
         )
 
 
-@click.command("scramble-phenopacket")
-@click.option(
-    "--phenopacket-path",
-    "-P",
-    metavar="PATH",
-    required=True,
-    help="Path to phenopacket to be randomised",
-    type=Path,
-)
-@click.option(
-    "--scramble-factor",
-    "-s",
-    metavar=float,
-    required=True,
-    default=0.5,
-    show_default=True,
-    help="Scramble factor for randomising phenopacket phenotypic profiles.",
-    type=float,
-)
-@click.option(
-    "--output-dir",
-    "-O",
-    metavar="PATH",
-    required=True,
-    help="Path for creation of output directory",
-    default="noisy_phenopackets",
-    type=Path,
-)
-def scramble_phenopacket_command(
-    phenopacket_path: Path,
-    scramble_factor: float,
-    output_dir: Path,
-):
-    """Generate a noisy phenopacket from an existing one."""
-    create_scrambled_phenopacket(output_dir, phenopacket_path, scramble_factor)
-
-
-@click.command("scramble-phenopackets")
-@click.option(
-    "--phenopacket-dir",
-    "-P",
-    metavar="PATH",
-    required=True,
-    help="Path to phenopackets directory",
-    type=Path,
-)
-@click.option(
-    "--scramble-factor",
-    "-s",
-    metavar=float,
-    required=True,
-    default=0.5,
-    show_default=True,
-    help="Scramble factor for randomising phenopacket phenotypic profiles.",
-    type=float,
-)
-@click.option(
-    "--output-dir",
-    "-O",
-    metavar="PATH",
-    required=True,
-    help="Path for creation of output directory",
-    default="noisy_phenopackets",
-    type=Path,
-)
-def scramble_phenopackets_command(
-    phenopacket_dir: Path,
-    scramble_factor: float,
-    output_dir: Path,
-):
-    """Generate noisy phenopackets from existing ones."""
-    create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
+def scramble_phenopackets(
+    output_dir: Path, phenopacket_path: Path, phenopacket_dir: Path, scramble_factor: float
+) -> None:
+    """Create scrambled phenopackets from either a single phenopacket or directory of phenopackets."""
+    if phenopacket_path is not None:
+        create_scrambled_phenopacket(output_dir, phenopacket_path, scramble_factor)
+    elif phenopacket_dir is not None:
+        create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
