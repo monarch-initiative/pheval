@@ -7,12 +7,12 @@ from pheval.analyse.analysis import benchmark, benchmark_comparison
 
 from .cli_pheval import run
 from .cli_pheval_utils import (
+    create_spiked_vcfs_command,
     scramble_phenopackets_command,
     scramble_semsim,
     semsim_comparison,
     update_phenopackets_command,
 )
-from .prepare.create_spiked_vcf import create_spiked_vcf_command, create_spiked_vcfs_command
 
 info_log = logging.getLogger("info")
 
@@ -55,7 +55,6 @@ pheval_utils.add_command(semsim_comparison)
 pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(update_phenopackets_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
-pheval_utils.add_command(create_spiked_vcf_command)
 pheval_utils.add_command(benchmark)
 pheval_utils.add_command(benchmark_comparison)
 
