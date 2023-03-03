@@ -6,6 +6,7 @@ import click
 
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
+from pheval.prepare.update_phenopacket import update_phenopackets
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 
 
@@ -137,3 +138,49 @@ def semsim_comparison(
         return semsim_heatmap_plot(semsim_left, semsim_right, score_column)
     if analysis == "percentage_diff":
         percentage_diff(semsim_left, semsim_right, score_column, output)
+
+
+@click.command("update-phenopackets")
+@click.option(
+    "--phenopacket-path",
+    "-p",
+    metavar="PATH",
+    help="Path to phenopacket.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["phenopacket_dir"],
+)
+@click.option(
+    "--phenopacket-dir",
+    "-p",
+    metavar="PATH",
+    required=True,
+    help="Path to phenopacket directory for updating.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["phenopacket_path"],
+)
+@click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=True,
+    help="Path to write phenopacket.",
+    type=Path,
+)
+@click.option(
+    "--gene-identifier",
+    "-g",
+    required=False,
+    default="ensembl_id",
+    show_default=True,
+    help="Gene identifier to add to phenopacket",
+    type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
+)
+def update_phenopackets_command(
+    phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path, gene_identifier: str
+):
+    """Update gene symbols and identifiers for phenopackets."""
+    if phenopacket_path is None and phenopacket_dir is None:
+        raise InputError("Either a phenopacket or phenopacket directory must be specified")
+    update_phenopackets(gene_identifier, phenopacket_path, phenopacket_dir, output_dir)
