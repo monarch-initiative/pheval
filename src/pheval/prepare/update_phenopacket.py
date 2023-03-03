@@ -46,6 +46,7 @@ def update_phenopackets(
     gene_identifier: str, phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path
 ):
     """Update the gene identifiers in either a single phenopacket or a directory of phenopackets."""
+    output_dir.mkdir(exist_ok=True)
     if phenopacket_path is not None:
         create_updated_phenopacket(gene_identifier, phenopacket_path, output_dir)
     elif phenopacket_dir is not None:
