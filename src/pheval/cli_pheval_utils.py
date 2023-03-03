@@ -4,8 +4,8 @@ from pathlib import Path
 
 import click
 
-from pheval.prepare.create_noisy_phenopackets import create_scrambled_phenopackets
-from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError
+from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
+from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 
 
@@ -24,11 +24,22 @@ def scramble_semsim(input: Path):
 
 @click.command("scramble-phenopackets")
 @click.option(
+    "--phenopacket-path",
+    "-p",
+    metavar="PATH",
+    help="Path to phenopacket.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["phenopacket_dir"],
+)
+@click.option(
     "--phenopacket-dir",
     "-P",
     metavar="PATH",
-    required=True,
-    help="Path to phenopackets directory."
+    help="Path to phenopackets directory.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["phenopacket_path"],
 )
 @click.option(
     "--scramble-factor",
@@ -47,14 +58,19 @@ def scramble_semsim(input: Path):
     required=True,
     help="Path for creation of output directory",
     default="noisy_phenopackets",
+    type=Path,
 )
 def scramble_phenopackets_command(
+    phenopacket_path: Path,
     phenopacket_dir: Path,
     scramble_factor: float,
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
+    if phenopacket_path is None and phenopacket_dir is None:
+        raise InputError("Either a phenopacket or phenopacket directory must be specified")
+    else:
+        scramble_phenopackets(output_dir, phenopacket_path, phenopacket_dir, scramble_factor)
 
 
 @click.command("semsim-comparison")
