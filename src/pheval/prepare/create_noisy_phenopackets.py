@@ -122,7 +122,7 @@ def add_noise_to_phenotypic_profile(
 
 
 def create_scrambled_phenopacket(
-    output_dir: Path, output_file_suffix: str, phenopacket_path: Path, scramble_factor: float
+    output_dir: Path, phenopacket_path: Path, scramble_factor: float
 ):
     """Creates a scrambled phenopacket."""
     try:
@@ -139,13 +139,13 @@ def create_scrambled_phenopacket(
     write_phenopacket(
         created_noisy_phenopacket,
         output_dir.joinpath(
-            phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix
+            phenopacket_path.name
         ),
     )
 
 
 def create_scrambled_phenopackets(
-    output_dir: Path, output_file_suffix: str, phenopacket_dir: Path, scramble_factor: float
+    output_dir: Path, phenopacket_dir: Path, scramble_factor: float
 ):
     """Creates scrambled phenopackets."""
     try:
@@ -161,7 +161,7 @@ def create_scrambled_phenopackets(
         write_phenopacket(
             created_noisy_phenopacket,
             output_dir.joinpath(
-                phenopacket_path.stem + "-" + output_file_suffix + phenopacket_path.suffix,
+                phenopacket_path.name,
             ),
         )
 
@@ -186,13 +186,6 @@ def create_scrambled_phenopackets(
     type=float,
 )
 @click.option(
-    "--output-file-suffix",
-    "-o",
-    metavar="<str>",
-    required=True,
-    help="Suffix to append to output file",
-)
-@click.option(
     "--output-dir",
     "-O",
     metavar="PATH",
@@ -204,11 +197,10 @@ def create_scrambled_phenopackets(
 def scramble_phenopacket_command(
     phenopacket_path: Path,
     scramble_factor: float,
-    output_file_suffix: str,
     output_dir: Path,
 ):
     """Generate a noisy phenopacket from an existing one."""
-    create_scrambled_phenopacket(output_dir, output_file_suffix, phenopacket_path, scramble_factor)
+    create_scrambled_phenopacket(output_dir, phenopacket_path, scramble_factor)
 
 
 @click.command("scramble-phenopackets")
@@ -231,13 +223,6 @@ def scramble_phenopacket_command(
     type=float,
 )
 @click.option(
-    "--output-file-suffix",
-    "-o",
-    metavar="<str>",
-    required=True,
-    help="Suffix to append to output file",
-)
-@click.option(
     "--output-dir",
     "-O",
     metavar="PATH",
@@ -249,8 +234,7 @@ def scramble_phenopacket_command(
 def scramble_phenopackets_command(
     phenopacket_dir: Path,
     scramble_factor: float,
-    output_file_suffix: str,
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor)
+    create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
