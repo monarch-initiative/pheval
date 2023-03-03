@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 
 from pheval.prepare.create_noisy_phenopackets import create_scrambled_phenopackets
+from pheval.prepare.custom_exceptions import MutuallyExclusiveOptionError
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 
 
@@ -27,7 +28,7 @@ def scramble_semsim(input: Path):
     "-P",
     metavar="PATH",
     required=True,
-    help="Path to phenopackets directory",
+    help="Path to phenopackets directory."
 )
 @click.option(
     "--scramble-factor",
@@ -40,13 +41,6 @@ def scramble_semsim(input: Path):
     type=float,
 )
 @click.option(
-    "--output-file-suffix",
-    "-o",
-    metavar="<str>",
-    required=True,
-    help="Suffix to append to output file",
-)
-@click.option(
     "--output-dir",
     "-O",
     metavar="PATH",
@@ -57,11 +51,10 @@ def scramble_semsim(input: Path):
 def scramble_phenopackets_command(
     phenopacket_dir: Path,
     scramble_factor: float,
-    output_file_suffix: str,
     output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
-    create_scrambled_phenopackets(output_dir, output_file_suffix, phenopacket_dir, scramble_factor)
+    create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
 
 
 @click.command("semsim-comparison")
