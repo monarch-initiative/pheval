@@ -7,6 +7,12 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 
 from pheval.analyse.rank_stats import RankStats
+from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
+
+
+def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path:
+    """Trim the end of the corpus results directory name."""
+    return Path(str(corpus_results_directory).replace(PHEVAL_RESULTS_DIRECTORY_SUFFIX, ""))
 
 
 @dataclass
@@ -56,7 +62,8 @@ class PlotGenerator:
         rank_stats = result.rank_stats
         self.stats.append(
             {
-                "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                "Run": f"{result.results_dir.parents[0].name}_"
+                f"{trim_corpus_results_directory_suffix(result.results_dir.name)}",
                 "Top": result.rank_stats.percentage_top(),
                 "2-3": rank_stats.percentage_difference(
                     rank_stats.percentage_top3(), rank_stats.percentage_top()
@@ -82,7 +89,8 @@ class PlotGenerator:
                 {
                     "Rank": "MRR",
                     "Percentage": result.rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_"
+                    f"{trim_corpus_results_directory_suffix(result.results_dir.name)}",
                 }
             ]
         )
@@ -129,32 +137,33 @@ class PlotGenerator:
         """Generate data in correct format for dataframe creation for cumulative bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         rank_stats = result.rank_stats
+        trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(result.results_dir.name)
         self.stats.extend(
             [
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top3",
                     "Percentage": rank_stats.percentage_top3() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top5",
                     "Percentage": rank_stats.percentage_top5() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top10",
                     "Percentage": rank_stats.percentage_top10() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Found",
                     "Percentage": rank_stats.percentage_found() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "FO/NP",
@@ -162,12 +171,12 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
             ]
         )
@@ -198,12 +207,13 @@ class PlotGenerator:
         """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
         result = self._retrieve_prioritisation_data(prioritisation_result)
         rank_stats = result.rank_stats
+        trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(result.results_dir.name)
         self.stats.extend(
             [
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "2-3",
@@ -211,7 +221,7 @@ class PlotGenerator:
                         rank_stats.percentage_top3(), rank_stats.percentage_top()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "4-5",
@@ -219,7 +229,7 @@ class PlotGenerator:
                         rank_stats.percentage_top5(), rank_stats.percentage_top3()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "6-10",
@@ -227,7 +237,7 @@ class PlotGenerator:
                         rank_stats.percentage_top10(), rank_stats.percentage_top5()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": ">10",
@@ -235,7 +245,7 @@ class PlotGenerator:
                         rank_stats.percentage_found(), rank_stats.percentage_top10()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "FO/NP",
@@ -243,12 +253,12 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{result.results_dir.parents[0].name}_{result.results_dir.name}",
+                    "Run": f"{result.results_dir.parents[0].name}_" f"{trimmed_corpus_results_dir}",
                 },
             ]
         )
