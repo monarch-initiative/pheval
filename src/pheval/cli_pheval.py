@@ -24,7 +24,6 @@ from pheval.implementations import get_implementation_resolver
     required=True,
     help="The input directory (relative path: e.g ./data)",
     type=Path,
-
 )
 @click.option(
     "--runner",
@@ -56,19 +55,35 @@ from pheval.implementations import get_implementation_resolver
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
 )
-def run(input_dir: Path, testdata_dir: Path, runner: str, tmp_dir: Path, output_dir: Path, config: Path) -> None:
+@click.option(
+    "--version",
+    "-v",
+    required=False,
+    help="Version of the tool implementation.",
+    type=str,
+)
+def run(
+    input_dir: Path,
+    testdata_dir: Path,
+    runner: str,
+    tmp_dir: Path,
+    output_dir: Path,
+    config: Path,
+    version: str,
+) -> None:
     """PhEval Runner Command Line Interface
 
     Args:
-        input_dir (Click.Path): The input directory (relative path: e.g exomiser-13.11)
-        testdata_dir (Click.Path): The input directory (relative path: e.g ./data
+        input_dir (Path): The input directory (relative path: e.g exomiser-13.11)
+        testdata_dir (Path): The input directory (relative path: e.g ./data
         runner (str): Runner implementation (e.g exomiser-13.11)
-        tmp_dir (Click.Path): The path of the temporary directory (optional)
-        output_dir (Click.Path): The path of the output directory
-        config (Click.Path): The path of the configuration file (optional e.g config.yaml)
+        tmp_dir (Path): The path of the temporary directory (optional)
+        output_dir (Path): The path of the output directory
+        config (Path): The path of the configuration file (optional e.g., config.yaml)
+        version (str): The version of the tool implementation
     """
     runner_class = get_implementation_resolver().lookup(runner)
-    runner_instance = runner_class(input_dir, testdata_dir, tmp_dir, output_dir, config)
+    runner_instance = runner_class(input_dir, testdata_dir, tmp_dir, output_dir, config, version)
     runner_instance.prepare()
     runner_instance.run()
     runner_instance.post_process()
