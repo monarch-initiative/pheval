@@ -3,8 +3,6 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from pathlib import Path
 
-import click
-
 
 @dataclass
 class PhEvalRunner(ABC):
