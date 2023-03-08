@@ -15,6 +15,7 @@ class PhEvalRunner(ABC):
     tmp_dir: Path
     output_dir: Path
     config_file: Path
+    version: str
 
     @abstractmethod
     def prepare(self) -> str:
@@ -41,6 +42,7 @@ class DefaultPhEvalRunner(PhEvalRunner):
     tmp_dir: Path
     output_dir: Path
     config_file: Path
+    version: str
 
     def prepare(self):
         print("preparing")
