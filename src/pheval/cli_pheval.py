@@ -1,6 +1,7 @@
 """
 Monarch Initiative
 """
+from pathlib import Path
 
 import click
 
@@ -14,6 +15,7 @@ from pheval.implementations import get_implementation_resolver
     metavar="INPUTDIR",
     required=True,
     help="The input directory (relative path: e.g exomiser-13.11)",
+    type=Path,
 )
 @click.option(
     "--testdata-dir",
@@ -21,6 +23,8 @@ from pheval.implementations import get_implementation_resolver
     metavar="TESTDATA",
     required=True,
     help="The input directory (relative path: e.g ./data)",
+    type=Path,
+
 )
 @click.option(
     "--runner",
@@ -35,6 +39,7 @@ from pheval.implementations import get_implementation_resolver
     metavar="TMPDIR",
     required=False,
     help="The path of the temporary directory (optional)",
+    type=Path,
 )
 @click.option(
     "--output-dir",
@@ -42,6 +47,7 @@ from pheval.implementations import get_implementation_resolver
     metavar="OUTPUTDIR",
     required=True,
     help="The path of the output directory",
+    type=Path,
 )
 @click.option(
     "--config",
@@ -50,7 +56,7 @@ from pheval.implementations import get_implementation_resolver
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
 )
-def run(input_dir, testdata_dir, runner, tmp_dir, output_dir, config) -> None:
+def run(input_dir: Path, testdata_dir: Path, runner: str, tmp_dir: Path, output_dir: Path, config: Path) -> None:
     """PhEval Runner Command Line Interface
 
     Args:
