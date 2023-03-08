@@ -85,4 +85,3 @@ class OutputDirectoryStructure:
         self.pheval_gene_results_dir.mkdir(parents=True, exist_ok=True)
         if not phenotype_only:
             self.pheval_variant_results_dir.mkdir(parents=True, exist_ok=True)
-
