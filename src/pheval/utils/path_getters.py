@@ -48,8 +48,8 @@ class OutputDirectoryStructure:
     @property
     def tool_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self.tool}_{self.version}_{Path(self.input_dir).name}/"
-            f"{Path(self.testdata_dir).name}_results/{self.tool}_results"
+            f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
+            f"{Path(self.testdata_dir).parents[0]}/results"
         )
 
     @tool_results_dir.setter
