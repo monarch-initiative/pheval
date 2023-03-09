@@ -25,13 +25,13 @@ class OutputDirectoryStructure:
         self.directory_path = directory_path
 
     @property
-    def batch_file_dir(self):
+    def runner_input_commands_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self.tool}_{self.version}_{Path(self.input_dir).name}/{self.tool}_batch_files"
+            f"{self.tool}-{self.version}/{self.tool}_batch_files"
         )
 
-    @batch_file_dir.setter
-    def batch_file_dir(self, directory_path):
+    @runner_input_commands_dir.setter
+    def runner_input_commands_dir(self, directory_path):
         self.directory_path = directory_path
 
     @property
@@ -79,7 +79,7 @@ class OutputDirectoryStructure:
 
     def build_directory_structure(self, phenotype_only: bool):
         self.runner_version_dir.mkdir(exist_ok=True, parents=True)
-        self.batch_file_dir.mkdir(exist_ok=True, parents=True)
+        self.runner_input_commands_dir.mkdir(exist_ok=True, parents=True)
         self.testdata_results_dir.mkdir(parents=True, exist_ok=True)
         self.tool_results_dir.mkdir(parents=True, exist_ok=True)
         self.pheval_gene_results_dir.mkdir(parents=True, exist_ok=True)
