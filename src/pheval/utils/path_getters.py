@@ -11,13 +11,13 @@ class OutputDirectoryStructure:
         self.input_dir = input_dir
         self.testdata_dir = testdata_dir
         self.tool = tool
-        self.version = version.replace(".", "_")
+        self.version = version
         self.directory_path = None
 
     @property
     def tool_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self.tool}_{self.version}_{Path(self.input_dir).name}"
+            f"{self.tool}-{self.version}"
         )
 
     @tool_dir.setter
