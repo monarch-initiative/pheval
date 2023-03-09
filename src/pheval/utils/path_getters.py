@@ -5,7 +5,7 @@ from pheval.utils.constants import PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESUL
 
 class OutputDirectoryStructure:
     def __init__(
-            self, output_dir: Path, input_dir: Path, testdata_dir: Path, tool: str, version: str
+        self, output_dir: Path, input_dir: Path, testdata_dir: Path, tool: str, version: str
     ):
         self.output_dir = output_dir
         self.input_dir = input_dir
@@ -16,9 +16,7 @@ class OutputDirectoryStructure:
 
     @property
     def runner_version_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self.tool}-{self.version}"
-        )
+        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}")
 
     @runner_version_dir.setter
     def runner_version_dir(self, directory_path):
@@ -26,9 +24,7 @@ class OutputDirectoryStructure:
 
     @property
     def runner_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self.tool}-{self.version}/{self.tool}_batch_files"
-        )
+        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}/{self.tool}_batch_files")
 
     @runner_input_commands_dir.setter
     def runner_input_commands_dir(self, directory_path):
