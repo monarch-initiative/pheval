@@ -5,7 +5,7 @@ from pheval.utils.constants import PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESUL
 
 class OutputDirectoryStructure:
     def __init__(
-        self, output_dir: Path, input_dir: Path, testdata_dir: Path, tool: str, version: str
+            self, output_dir: Path, input_dir: Path, testdata_dir: Path, tool: str, version: str
     ):
         self.output_dir = output_dir
         self.input_dir = input_dir
@@ -37,7 +37,8 @@ class OutputDirectoryStructure:
     @property
     def testdata_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self.tool}_{self.version}_{Path(self.input_dir).name}/{Path(self.testdata_dir).name}_results"
+            f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
+            f"{Path(self.testdata_dir).parents[0]}"
         )
 
     @testdata_results_dir.setter
