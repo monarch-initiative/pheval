@@ -59,7 +59,8 @@ class OutputDirectoryStructure:
     @property
     def pheval_gene_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self.tool}_{self.version}_{Path(self.input_dir).name}/{Path(self.testdata_dir).name}_results/"
+            f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
+            f"{Path(self.testdata_dir).parents[0]}/"
             f"{PHEVAL_GENE_RESULTS_DIR}"
         )
 
