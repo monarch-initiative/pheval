@@ -3,7 +3,7 @@ from pathlib import Path
 from pheval.utils.constants import PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESULTS_DIR
 
 
-class OutputDirectoryStructure:
+class PhEvalResultsDirectoryStructure:
     def __init__(
         self, output_dir: Path, input_dir: Path, testdata_dir: Path, tool: str, version: str
     ):
