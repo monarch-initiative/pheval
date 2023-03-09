@@ -6,7 +6,6 @@ from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
 
-import click
 from phenopackets import Family, File, Phenopacket
 
 from pheval.utils.phenopacket_utils import (
@@ -18,7 +17,7 @@ from pheval.utils.phenopacket_utils import (
     write_phenopacket,
 )
 
-from .custom_exceptions import InputError, MutuallyExclusiveOptionError
+from .custom_exceptions import InputError
 from ..utils.file_utils import all_files, files_with_suffix, is_gzipped
 
 info_log = logging.getLogger("info")
@@ -341,92 +340,15 @@ def create_spiked_vcfs(
     # ".json"]
 
 
-@click.command("create-spiked-vcf")
-@click.option(
-    "--phenopacket-path",
-    "-p",
-    metavar="FILE",
-    required=True,
-    help="Path to phenopacket file",
-    type=Path,
-)
-@click.option(
-    "--template-vcf-path",
-    "-t",
-    cls=MutuallyExclusiveOptionError,
-    metavar="FILE",
-    required=False,
-    help="Template VCF file",
-    mutually_exclusive=["vcf_dir"],
-    type=Path,
-)
-@click.option(
-    "--vcf-dir",
-    "-v",
-    cls=MutuallyExclusiveOptionError,
-    metavar="PATH",
-    help="Directory containing template VCF files",
-    mutually_exclusive=["template_vcf"],
-    type=Path,
-)
-@click.option(
-    "--output-dir",
-    "-O",
-    metavar="PATH",
-    required=True,
-    help="Path for creation of output directory",
-    default="vcf",
-    type=Path,
-)
-def create_spiked_vcf_command(
-    phenopacket_path: Path, output_dir: Path, template_vcf_path: Path = None, vcf_dir: Path = None
-):
-    """Spikes variants into a template VCF file for a single phenopacket."""
-    create_spiked_vcf(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
-
-
-@click.command("create-spiked-vcfs")
-@click.option(
-    "--phenopacket-dir",
-    "-p",
-    metavar="PATH",
-    required=True,
-    help="Path to phenopackets directory",
-    type=Path,
-)
-@click.option(
-    "--template-vcf-path",
-    "-t",
-    cls=MutuallyExclusiveOptionError,
-    metavar="PATH",
-    required=False,
-    help="Template VCF file",
-    mutually_exclusive=["vcf_dir"],
-    type=Path,
-)
-@click.option(
-    "--vcf-dir",
-    "-v",
-    cls=MutuallyExclusiveOptionError,
-    metavar="PATH",
-    help="Directory containing template VCF files",
-    mutually_exclusive=["template_vcf"],
-    type=Path,
-)
-@click.option(
-    "--output-dir",
-    "-O",
-    metavar="PATH",
-    required=True,
-    help="Path for creation of output directory",
-    default="vcf",
-    type=Path,
-)
-def create_spiked_vcfs_command(
-    phenopacket_dir: Path,
+def spike_vcfs(
     output_dir: Path,
-    template_vcf_path: Path = None,
-    vcf_dir: Path = None,
+    phenopacket_path: Path,
+    phenopacket_dir: Path,
+    template_vcf_path: Path,
+    vcf_dir: Path,
 ):
-    """Spikes variants into a template VCF file for a directory of phenopackets."""
-    create_spiked_vcfs(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
+    """Create spiked VCF from either a phenopacket or a phenopacket directory."""
+    if phenopacket_path is not None:
+        create_spiked_vcf(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
+    elif phenopacket_dir is not None:
+        create_spiked_vcfs(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
