@@ -46,14 +46,14 @@ class OutputDirectoryStructure:
         self.directory_path = directory_path
 
     @property
-    def tool_results_dir(self):
+    def runner_results_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
             f"{Path(self.testdata_dir).parents[0]}/results"
         )
 
-    @tool_results_dir.setter
-    def tool_results_dir(self, directory_path):
+    @runner_results_dir.setter
+    def runner_results_dir(self, directory_path):
         self.directory_path = directory_path
 
     @property
@@ -82,7 +82,7 @@ class OutputDirectoryStructure:
         self.runner_version_dir.mkdir(exist_ok=True, parents=True)
         self.runner_input_commands_dir.mkdir(exist_ok=True, parents=True)
         self.corpus_variant_dir.mkdir(parents=True, exist_ok=True)
-        self.tool_results_dir.mkdir(parents=True, exist_ok=True)
+        self.runner_results_dir.mkdir(parents=True, exist_ok=True)
         self.pheval_gene_results_dir.mkdir(parents=True, exist_ok=True)
         if not phenotype_only:
             self.pheval_variant_results_dir.mkdir(parents=True, exist_ok=True)
