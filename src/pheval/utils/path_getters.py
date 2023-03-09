@@ -15,13 +15,13 @@ class OutputDirectoryStructure:
         self.directory_path = None
 
     @property
-    def tool_dir(self):
+    def runner_version_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}"
         )
 
-    @tool_dir.setter
-    def tool_dir(self, directory_path):
+    @runner_version_dir.setter
+    def runner_version_dir(self, directory_path):
         self.directory_path = directory_path
 
     @property
@@ -78,7 +78,7 @@ class OutputDirectoryStructure:
         self.directory_path = directory_path
 
     def build_directory_structure(self, phenotype_only: bool):
-        self.tool_dir.mkdir(exist_ok=True, parents=True)
+        self.runner_version_dir.mkdir(exist_ok=True, parents=True)
         self.batch_file_dir.mkdir(exist_ok=True, parents=True)
         self.testdata_results_dir.mkdir(parents=True, exist_ok=True)
         self.tool_results_dir.mkdir(parents=True, exist_ok=True)
