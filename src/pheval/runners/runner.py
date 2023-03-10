@@ -20,9 +20,12 @@ class PhEvalRunner(ABC):
     @abstractmethod
     def build_output_directory_structure(self):
         """build output directory structure"""
-        PhEvalResultsDirectoryStructure(input_dir=self.input_dir, testdata_dir=self.testdata_dir,
-                                        output_dir=self.output_dir,
-                                        version=self.version).build_directory_structure()
+        PhEvalResultsDirectoryStructure(
+            input_dir=self.input_dir,
+            testdata_dir=self.testdata_dir,
+            output_dir=self.output_dir,
+            version=self.version,
+        ).build_directory_structure()
 
     @abstractmethod
     def prepare(self) -> str:

@@ -5,9 +5,7 @@ from pheval.utils.constants import PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESUL
 
 
 class PhEvalResultsDirectoryStructure:
-    def __init__(
-        self, output_dir: Path, input_dir: Path, testdata_dir: Path, version: str
-    ):
+    def __init__(self, output_dir: Path, input_dir: Path, testdata_dir: Path, version: str):
         self.output_dir = output_dir
         self.input_dir = input_dir
         self.testdata_dir = testdata_dir
