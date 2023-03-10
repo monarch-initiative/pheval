@@ -17,7 +17,6 @@ class PhEvalRunner(ABC):
     config_file: Path
     version: str
 
-    @abstractmethod
     def build_output_directory_structure(self):
         """build output directory structure"""
         PhEvalResultsDirectoryStructure(
@@ -53,9 +52,6 @@ class DefaultPhEvalRunner(PhEvalRunner):
     output_dir: Path
     config_file: Path
     version: str
-
-    def build_output_directory_structure(self):
-        print("building output directory structure")
 
     def prepare(self):
         print("preparing")
