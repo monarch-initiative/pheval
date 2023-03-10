@@ -24,7 +24,7 @@ class PhEvalResultsDirectoryStructure:
 
     @property
     def runner_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}/{self.tool}_batch_files")
+        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}/runner_input_commands")
 
     @runner_input_commands_dir.setter
     def runner_input_commands_dir(self, directory_path):
@@ -34,7 +34,7 @@ class PhEvalResultsDirectoryStructure:
     def corpus_variant_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
-            f"{Path(self.testdata_dir).parents[0]}"
+            f"{Path(self.testdata_dir).parent.name}"
         )
 
     @corpus_variant_dir.setter
@@ -45,7 +45,7 @@ class PhEvalResultsDirectoryStructure:
     def runner_results_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
-            f"{Path(self.testdata_dir).parents[0]}/results"
+            f"{Path(self.testdata_dir).parent.name}/results"
         )
 
     @runner_results_dir.setter
@@ -56,7 +56,7 @@ class PhEvalResultsDirectoryStructure:
     def pheval_gene_results_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
-            f"{Path(self.testdata_dir).parents[0]}/"
+            f"{Path(self.testdata_dir).parent.name}/"
             f"{PHEVAL_GENE_RESULTS_DIR}"
         )
 
@@ -68,7 +68,7 @@ class PhEvalResultsDirectoryStructure:
     def pheval_variant_results_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.name)}-{Path(self.testdata_dir).name}-"
-            f"{Path(self.testdata_dir).parents[0]}/"
+            f"{Path(self.testdata_dir).parent.name}/"
             f"{PHEVAL_VARIANT_RESULTS_DIR}"
         )
 
