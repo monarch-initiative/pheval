@@ -1,7 +1,10 @@
 from pathlib import Path
 
 from pheval.config_parser import parse_input_dir_config
-from pheval.utils.constants import PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESULTS_DIR
+from pheval.utils.constants import (
+    PHEVAL_GENE_RESULTS_DIR, PHEVAL_VARIANT_RESULTS_DIR, TOOL_RESULTS_DIR,
+    RUNNER_INPUT_COMMANDS_DIR
+)
 
 
 class PhEvalResultsDirectoryStructure:
@@ -26,7 +29,7 @@ class PhEvalResultsDirectoryStructure:
 
     @property
     def runner_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}/runner_input_commands")
+        return Path(self.output_dir).joinpath(f"{self.tool}-{self.version}/{RUNNER_INPUT_COMMANDS_DIR}")
 
     @runner_input_commands_dir.setter
     def runner_input_commands_dir(self, directory_path):
@@ -47,7 +50,7 @@ class PhEvalResultsDirectoryStructure:
     def runner_results_dir(self):
         return Path(self.output_dir).joinpath(
             f"{self.tool}-{self.version}/{Path(self.input_dir.parent.name)}-{Path(self.testdata_dir).parent.name}-"
-            f"{Path(self.testdata_dir).name}/results"
+            f"{Path(self.testdata_dir).name}/{TOOL_RESULTS_DIR}"
         )
 
     @runner_results_dir.setter
