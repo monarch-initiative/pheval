@@ -21,6 +21,7 @@ phenopackets = "^2.0.2"
 oaklib = "^0.1.55"
 google = "^3.0.0"
 pyaml = "^21.10.1"
+plotly = "^5.13.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
@@ -29,6 +30,9 @@ coverage = "^6.5.0"
 [tool.poetry.scripts]
 pheval = "pheval.cli:pheval"
 pheval-utils = "pheval.cli:pheval_utils"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
 
 [tool.pytest.ini_options]
 pythonpath = [

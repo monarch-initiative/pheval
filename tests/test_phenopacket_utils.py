@@ -23,12 +23,12 @@ from phenopackets import (
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
     GeneIdentifierUpdater,
+    GenomicVariant,
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
-    VariantData,
     create_hgnc_dict,
 )
 
@@ -393,8 +393,8 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(
             list(self.phenopacket.diagnosed_variants()),
             [
-                VariantData(chrom="X", pos=54492285, ref="C", alt="T", gene="FGD1"),
-                VariantData(chrom="18", pos=67691994, ref="G", alt="A", gene="RTTN"),
+                GenomicVariant(chrom="X", pos=54492285, ref="C", alt="T"),
+                GenomicVariant(chrom="18", pos=67691994, ref="G", alt="A"),
             ],
         )
 

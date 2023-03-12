@@ -38,7 +38,8 @@ $(RAW_DATA_FOLDER)/hp-mp-merged.owl: $(RAW_DATA_FOLDER)/hp.owl $(RAW_DATA_FOLDER
 $(RAW_DATA_FOLDER)/hp-mp-merged2.owl: $(RAW_DATA_FOLDER)/hp-mp-merged.owl
 	test -d $(RAW_DATA_FOLDER) || mkdir -p $(RAW_DATA_FOLDER)
 	$(eval TERM1=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-hp-terms.txt | cut -d ' ' -f1 "))
-	$(eval TERM2=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-hp-terms.txt | cut -d ' ' -f2 "))
+	$(eval TERM2=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-mp-terms.txt | cut -d ' ' -f2 "))
+
 	robot merge --input $< \
 	remove --term $(TERM1) --term $(TERM2) --axioms logical --output $@
 

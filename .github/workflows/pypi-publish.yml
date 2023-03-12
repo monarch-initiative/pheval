@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   release:
     types: [published]
-    
+
 jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Poetry
         run: pip install poetry poetry-dynamic-versioning
-    
+
       - name: Install dependencies
         run: poetry install --no-interaction
 

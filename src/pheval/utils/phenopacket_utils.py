@@ -6,7 +6,6 @@ from collections import defaultdict
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
@@ -29,19 +28,18 @@ class IncompatibleGenomeAssemblyError(Exception):
 
 
 @dataclass
-class VariantData:
+class GenomicVariant:
     chrom: str
     pos: int
     ref: str
     alt: str
-    gene: Optional[str] = None
 
 
 @dataclass
 class ProbandCausativeVariant:
     proband_id: str
     assembly: str
-    variant: VariantData
+    variant: GenomicVariant
     genotype: str
 
 
@@ -129,12 +127,11 @@ class PhenopacketUtil:
                 variant_data = ProbandCausativeVariant(
                     self.phenopacket_contents.subject.id,
                     vcf_record.genome_assembly,
-                    VariantData(
+                    GenomicVariant(
                         vcf_record.chrom,
                         vcf_record.pos,
                         vcf_record.ref,
                         vcf_record.alt,
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
                     ),
                     genotype.label,
                 )
@@ -175,18 +172,17 @@ class PhenopacketUtil:
                 genes = list({gene.gene_symbol: gene for gene in genes}.values())
         return genes
 
-    def diagnosed_variants(self) -> list[VariantData]:
+    def diagnosed_variants(self) -> list[GenomicVariant]:
         """Returns a list of all variants from a phenopacket - for use in assess-prioritisation."""
         variants = []
         pheno_interpretation = self.interpretations()
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                variant = VariantData(
+                variant = GenomicVariant(
                     chrom=g.variant_interpretation.variation_descriptor.vcf_record.chrom,
                     pos=g.variant_interpretation.variation_descriptor.vcf_record.pos,
                     ref=g.variant_interpretation.variation_descriptor.vcf_record.ref,
                     alt=g.variant_interpretation.variation_descriptor.vcf_record.alt,
-                    gene=g.variant_interpretation.variation_descriptor.gene_context.symbol,
                 )
                 variants.append(variant)
         return variants
