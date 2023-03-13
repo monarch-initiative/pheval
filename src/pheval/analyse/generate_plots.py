@@ -112,7 +112,7 @@ class PlotGenerator:
         plt.savefig("gene_rank_stats.svg", format="svg", bbox_inches="tight")
         gene_mrr_df = pd.DataFrame(self.mrr)
         gene_mrr_df.set_index("Run").plot(
-            kind="bar", colormap="tab10", ylabel="Disease-causing genes", legend=False
+            kind="bar", colormap="tab10", ylabel="Gene prioritisation mean reciprocal rank", legend=False
         )
         plt.savefig("gene_mrr.svg", format="svg", bbox_inches="tight")
 
@@ -129,7 +129,7 @@ class PlotGenerator:
         plt.savefig("variant_rank_stats.svg", format="svg", bbox_inches="tight")
         gene_mrr_df = pd.DataFrame(self.mrr)
         gene_mrr_df.set_index("Run").plot(
-            kind="bar", colormap="tab10", ylabel="Disease-causing variants", legend=False
+            kind="bar", colormap="tab10", ylabel="Variant prioritisation mean reciprocal rank", legend=False
         )
         plt.savefig("variant_mrr.svg", format="svg", bbox_inches="tight")
 
