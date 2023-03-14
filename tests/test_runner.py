@@ -8,7 +8,7 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.pheval_runner = DefaultPhEvalRunner(
-            input_dir="./tests/input_dir/configs/default/input_dir_config.yaml",
+            input_dir="./tests/input_dir/configs/default/",
             testdata_dir="/corpora/corpus1/default",
             output_dir="/results",
             version="1.0.0",
