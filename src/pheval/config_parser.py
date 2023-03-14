@@ -10,7 +10,7 @@ from serde.yaml import from_yaml
 @dataclass
 class InputDirConfig:
     """
-    Class for defining the fields within the input direcotry config.
+    Class for defining the fields within the input directory config.
 
     Args:
         tool (str): Name of the tool implementation (e.g. exomiser/phen2gene)
