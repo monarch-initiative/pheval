@@ -55,7 +55,7 @@ class PhEvalRunner(ABC):
     @property
     def corpus_variant_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).parent.name}-"
+            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
             f"{Path(self.testdata_dir).parent.name}-"
             f"{Path(self.testdata_dir).name}"
         )
@@ -67,7 +67,7 @@ class PhEvalRunner(ABC):
     @property
     def runner_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).parent.name}-"
+            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
             f"{Path(self.testdata_dir).parent.name}-"
             f"{Path(self.testdata_dir).name}/{TOOL_RESULTS_DIR}"
         )
@@ -79,7 +79,7 @@ class PhEvalRunner(ABC):
     @property
     def pheval_gene_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).parent.name}-"
+            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
             f"{Path(self.testdata_dir).parent.name}-"
             f"{Path(self.testdata_dir).name}/"
             f"{PHEVAL_GENE_RESULTS_DIR}"
@@ -92,7 +92,7 @@ class PhEvalRunner(ABC):
     @property
     def pheval_variant_results_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).parent.name}-"
+            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
             f"{Path(self.testdata_dir).parent.name}-"
             f"{Path(self.testdata_dir).name}/"
             f"{PHEVAL_VARIANT_RESULTS_DIR}"
