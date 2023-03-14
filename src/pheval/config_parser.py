@@ -32,7 +32,7 @@ class InputDirConfig:
 
 def parse_input_dir_config(input_dir: Path) -> InputDirConfig:
     """Reads the config file."""
-    with open(input_dir.joinpath(INPUT_DIR_CONFIG), "r") as config_file:
+    with open(Path(input_dir).joinpath(INPUT_DIR_CONFIG), "r") as config_file:
         config = yaml.safe_load(config_file)
     config_file.close()
     return from_yaml(InputDirConfig, yaml.dump(config))
