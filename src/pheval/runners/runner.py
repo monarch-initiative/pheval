@@ -23,12 +23,16 @@ class PhEvalRunner(ABC):
     config_file: Path
     version: str
     directory_path = None
+    input_dir_config = None
+
+    def __post_init__(self):
+        self.input_dir_config = parse_input_dir_config(self.input_dir)
 
     def _get_tool(self):
-        return parse_input_dir_config(self.input_dir).tool
+        return self.input_dir_config.tool
 
     def _get_phenotype_only(self):
-        return parse_input_dir_config(self.input_dir).phenotype_only
+        return self.input_dir_config.phenotype_only
 
     @property
     def runner_version_dir(self):
