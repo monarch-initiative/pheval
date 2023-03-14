@@ -1,19 +1,19 @@
 """Runners Module"""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-
-import click
+from pathlib import Path
 
 
 @dataclass
 class PhEvalRunner(ABC):
     """PhEvalRunner Class"""
 
-    input_dir: click.Path
-    testdata_dir: click.Path
-    tmp_dir: click.Path
-    output_dir: click.Path
-    config_file: click.Path
+    input_dir: Path
+    testdata_dir: Path
+    tmp_dir: Path
+    output_dir: Path
+    config_file: Path
+    version: str
 
     @abstractmethod
     def prepare(self) -> str:
@@ -35,11 +35,12 @@ class DefaultPhEvalRunner(PhEvalRunner):
         PhEvalRunner (PhEvalRunner): Abstract PhEvalRunnerClass
     """
 
-    input_dir: click.Path
-    testdata_dir: click.Path
-    tmp_dir: click.Path
-    output_dir: click.Path
-    config_file: click.Path
+    input_dir: Path
+    testdata_dir: Path
+    tmp_dir: Path
+    output_dir: Path
+    config_file: Path
+    version: str
 
     def prepare(self):
         print("preparing")
