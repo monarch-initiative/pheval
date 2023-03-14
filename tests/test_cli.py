@@ -30,7 +30,7 @@ class TestCommandLineInterface(unittest.TestCase):
             run,
             [
                 "-i",
-                "./tests/input_dir/configs/default/input_dir_config.yaml",
+                "./tests/input_dir/configs/default",
                 "-t",
                 "./testdata/phenopackets/lirical",
                 "-r",
