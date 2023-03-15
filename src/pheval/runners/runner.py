@@ -5,13 +5,13 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from pheval.config_parser import parse_input_dir_config
+from pheval.construct_metadata import create_run_metadata
 from pheval.utils.constants import (
     PHEVAL_GENE_RESULTS_DIR,
     PHEVAL_VARIANT_RESULTS_DIR,
     RUNNER_INPUT_COMMANDS_DIR,
     TOOL_RESULTS_DIR,
 )
-from pheval.construct_metadata import create_run_metadata
 
 
 @dataclass
