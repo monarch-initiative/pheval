@@ -6,7 +6,7 @@ from typing import Any
 from serde import serde
 
 from pheval.config_parser import InputDirConfig
-from pheval.utils.constants import INPUT_DIR_CONFIG, RUN_METADATA_FILE
+from pheval.utils.constants import RUN_METADATA_FILE
 
 
 @serde
@@ -50,9 +50,9 @@ def create_run_metadata(
         run_metadata=BasicOutputRunMetaData(
             tool=input_dir_config.tool,
             tool_version=tool_version,
-            config=str(Path(input_dir).joinpath(INPUT_DIR_CONFIG)),
+            config=f"{Path(input_dir).parent.name}-{Path(input_dir).name}",
             run_timestamp=int(timeit.default_timer() - start_time),
-            corpus=corpus,
+            corpus=f"{Path(corpus).parent.name}-{Path(corpus).name}",
         ),
         run_metadata_filepath=Path(corpus_variant_path).joinpath(RUN_METADATA_FILE),
     )
