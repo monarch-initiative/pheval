@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import yaml
 from serde import serde
@@ -16,18 +17,17 @@ class InputDirConfig:
 
     Args:
         tool (str): Name of the tool implementation (e.g. exomiser/phen2gene)
-        software_directory (Path or None): Path to the software directory
-        software_config (Path or None): Path to the software configuration file
-        input_directory (Path): Path to the tool input data
+        tool_version (str): Version of the tool implementation
         phenotype_only (bool): Whether the tool is run with HPO terms only (True) or with variant data (False)
+        tool_specific_configuration_options (Any): Tool specific configurations
+
 
     """
 
     tool: str
-    software_directory: Path or None
-    software_config: Path or None
-    input_directory: Path
+    tool_version: str
     phenotype_only: bool
+    tool_specific_configuration_options: Any
 
 
 def parse_input_dir_config(input_dir: Path) -> InputDirConfig:
