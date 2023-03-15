@@ -45,7 +45,7 @@ def create_run_metadata(
     corpus: Path,
     corpus_variant_path: Path,
 ):
-    """Create the basic metadata for a single PhEval run."""
+    """Create the basic metadata record for a single PhEval run."""
     return MetaDataRecord(
         run_metadata=BasicOutputRunMetaData(
             tool=input_dir_config.tool,
