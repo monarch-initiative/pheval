@@ -50,9 +50,9 @@ def create_run_metadata(
         run_metadata=BasicOutputRunMetaData(
             tool=input_dir_config.tool,
             tool_version=tool_version,
-            config=f"{Path(input_dir).parent.name}-{Path(input_dir).name}",
+            config=f"{Path(input_dir).parent.name}/{Path(input_dir).name}",
             run_timestamp=int(timeit.default_timer() - start_time),
-            corpus=f"{Path(corpus).parent.name}-{Path(corpus).name}",
+            corpus=f"{Path(corpus).parent.name}/{Path(corpus).name}",
         ),
         run_metadata_filepath=Path(corpus_variant_path).joinpath(RUN_METADATA_FILE),
     )
