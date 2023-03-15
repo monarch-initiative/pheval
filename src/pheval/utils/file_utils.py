@@ -8,7 +8,7 @@ import pandas as pd
 import yaml
 from serde import to_dict
 
-from pheval.utils.metadata import MetaDataRecord
+from pheval.construct_metadata import MetaDataRecord
 
 
 def files_with_suffix(directory: Path, suffix: str):
