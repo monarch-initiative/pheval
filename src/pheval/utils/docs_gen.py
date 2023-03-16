@@ -55,7 +55,7 @@ def list_valid_files():
 
 def print_api_doc(file_item):
     "print_api_doc"
-    clean_path = str(file_item["folder"]).replace("./", '').replace("/", ".")[1:]
+    clean_path = str(file_item["folder"]).replace("./", "").replace("/", ".")[1:]
     write_doc(file_item, f"::: {clean_path}.{file_item['basename']}")
 
 
