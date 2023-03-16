@@ -7,7 +7,7 @@ from pheval.config_parser import parse_input_dir_config
 from pheval.utils.constants import (
     PHEVAL_GENE_RESULTS_DIR,
     PHEVAL_VARIANT_RESULTS_DIR,
-    RUNNER_INPUT_COMMANDS_DIR,
+    TOOL_INPUT_COMMANDS_DIR,
     TOOL_RESULTS_DIR,
 )
 
@@ -43,13 +43,13 @@ class PhEvalRunner(ABC):
         self.directory_path = Path(directory_path)
 
     @property
-    def runner_input_commands_dir(self):
+    def tool_input_commands_dir(self):
         return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{RUNNER_INPUT_COMMANDS_DIR}"
+            f"{self._get_tool()}-{self.version}/{TOOL_INPUT_COMMANDS_DIR}"
         )
 
-    @runner_input_commands_dir.setter
-    def runner_input_commands_dir(self, directory_path):
+    @tool_input_commands_dir.setter
+    def tool_input_commands_dir(self, directory_path):
         self.directory_path = Path(directory_path)
 
     @property
@@ -105,7 +105,7 @@ class PhEvalRunner(ABC):
     def build_output_directory_structure(self):
         """build output directory structure"""
         self.runner_version_dir.mkdir(exist_ok=True, parents=True)
-        self.runner_input_commands_dir.mkdir(exist_ok=True, parents=True)
+        self.tool_input_commands_dir.mkdir(exist_ok=True, parents=True)
         self.corpus_variant_dir.mkdir(parents=True, exist_ok=True)
         self.runner_results_dir.mkdir(parents=True, exist_ok=True)
         self.pheval_gene_results_dir.mkdir(parents=True, exist_ok=True)

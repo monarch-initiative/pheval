@@ -29,7 +29,7 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
 
     def test_runner_input_commands_dir(self):
         self.assertEqual(
-            self.pheval_runner.runner_input_commands_dir,
+            self.pheval_runner.tool_input_commands_dir,
             Path("/results/defaultrunner-1.0.0/tool_input_commands"),
         )
 

@@ -1,5 +1,5 @@
 PHEVAL_GENE_RESULTS_DIR = "pheval_gene_results/"
 PHEVAL_VARIANT_RESULTS_DIR = "pheval_variant_results/"
 TOOL_RESULTS_DIR = "results/"
-RUNNER_INPUT_COMMANDS_DIR = "tool_input_commands/"
+TOOL_INPUT_COMMANDS_DIR = "tool_input_commands/"
 INPUT_DIR_CONFIG = "config.yaml"
