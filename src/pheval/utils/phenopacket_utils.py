@@ -260,6 +260,19 @@ class GeneIdentifierUpdater:
                     if prev_symbol == gene_symbol:
                         return data[self.gene_identifier]
 
+    def obtain_gene_symbol_from_identifier(
+        self, query_gene_identifier: str, identifier_name: str
+    ) -> str:
+        """
+        Obtain gene symbol from a gene identifier. (e.g.)
+        "
+        obtain_gene_symbol_from_identifier(query_gene_identifier="HGNC:5", identifier_name="hgnc_id")
+        "
+        """
+        for symbol, data in self.hgnc_data.items():
+            if query_gene_identifier == data[identifier_name]:
+                return symbol
+
     def find_alternate_ids(self, gene_symbol: str) -> list[str]:
         """Finds the alternate IDs for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
