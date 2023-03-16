@@ -324,6 +324,12 @@ class TestPhenopacketUtil(unittest.TestCase):
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
 
+    def test_sample_id_phenopacket(self):
+        self.assertEqual(self.phenopacket.sample_id(), "test-subject-1")
+
+    def test_sample_id_family(self):
+        self.assertEqual(self.family.sample_id(), "test-subject-1")
+
     def test_phenotypic_features_phenopacket(self):
         self.assertEqual(
             list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded
