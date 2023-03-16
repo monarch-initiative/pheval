@@ -37,7 +37,7 @@ def list_valid_files():
         folder = "/".join(folder_parts[idx:-1])
         basename = os.path.basename(file).split(".")[0]
 
-        docs_path = f"./docs/api/{folder.replace('src/', '')}/{basename}.md"
+        docs_path = f"../../../docs/api/pheval/{folder.replace('src/', '')}/{basename}.md"
         if basename in ignored_files:
             continue
 
@@ -55,7 +55,7 @@ def list_valid_files():
 
 def print_api_doc(file_item):
     "print_api_doc"
-    clean_path = str(file_item["folder"]).replace("/", ".")
+    clean_path = str(file_item["folder"]).replace("./", '').replace("/", ".")[1:]
     write_doc(file_item, f"::: {clean_path}.{file_item['basename']}")
 
 
@@ -72,22 +72,25 @@ def print_cli_doc(file_item):
     for method in methods:
         content = f"""
 ::: mkdocs-click
-    :module: {file_item['folder'].replace('/', '.')}.{file_item['basename']}
+    :package: {file_item['folder'].replace("./", '').replace('/', '.')}.{file_item['basename']}
+    :module: {file_item['folder'].replace("./", '').replace('/', '.')[1:].replace('src.', '')}.{file_item['basename']}
     :command: {method}
     :depth: 4
     :style: table
+    :list_subcommands: true
         """
         write_doc(file_item, content)
 
 
 def gen_docs():
     """gen_docs"""
-    api_folder = f"{os.path.dirname(os.path.realpath(__file__))}/../../docs/api"
+    api_folder = f"{os.path.dirname(os.path.realpath(__file__))}/../../../docs/api"
     shutil.rmtree(api_folder, ignore_errors=True)
     valid_files = list_valid_files()
     for file_item in valid_files:
         bname = file_item["basename"]
         if bname == "cli":  # or bname.startswith("cli_"):
+            print(bname)
             print_cli_doc(file_item)
         elif bname.startswith("cli_"):
             continue
