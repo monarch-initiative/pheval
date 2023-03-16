@@ -480,6 +480,22 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA"), "2629")
 
+    def test_obtain_gene_symbol_from_identifier_hgnc(self):
+        self.assertEqual(
+            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier(
+                "HGNC:5", "hgnc_id"
+            ),
+            "A1BG",
+        )
+
+    def test_obtain_gene_symbol_from_identifier_entrez(self):
+        self.assertEqual(
+            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier(
+                "65985", "entrez_id"
+            ),
+            "AACS",
+        )
+
     def test_find_alternate_ids(self):
         self.assertEqual(
             ["HGNC:4177", "ncbigene:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
