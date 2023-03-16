@@ -12,7 +12,7 @@ from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.constants import ENSEMBL_ID, HGNC_ID, ENTREZ_ID, REFSEQ_ACCESSION
+from pheval.utils.constants import ENSEMBL_ID, ENTREZ_ID, HGNC_ID, REFSEQ_ACCESSION
 
 
 class IncompatibleGenomeAssemblyError(Exception):

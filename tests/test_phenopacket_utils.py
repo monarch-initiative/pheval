@@ -21,7 +21,7 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.constants import HGNC_ID, ENTREZ_ID
+from pheval.utils.constants import ENTREZ_ID, HGNC_ID
 from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
     GeneIdentifierUpdater,
     GenomicVariant,
@@ -483,17 +483,13 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
 
     def test_obtain_gene_symbol_from_identifier_hgnc(self):
         self.assertEqual(
-            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier(
-                "HGNC:5", HGNC_ID
-            ),
+            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier("HGNC:5", HGNC_ID),
             "A1BG",
         )
 
     def test_obtain_gene_symbol_from_identifier_entrez(self):
         self.assertEqual(
-            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier(
-                "65985", ENTREZ_ID
-            ),
+            self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier("65985", ENTREZ_ID),
             "AACS",
         )
 
