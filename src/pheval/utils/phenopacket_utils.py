@@ -92,6 +92,13 @@ class PhenopacketUtil:
     def __init__(self, phenopacket_contents: Phenopacket):
         self.phenopacket_contents = phenopacket_contents
 
+    def sample_id(self) -> str:
+        """Retrieve the sample ID."""
+        if hasattr(self.phenopacket_contents, "proband"):
+            return self.phenopacket_contents.proband.subject.id
+        else:
+            return self.phenopacket_contents.subject.id
+
     def phenotypic_features(self) -> list[PhenotypicFeature]:
         """Retrieves a list of all HPO terms."""
         if hasattr(self.phenopacket_contents, "proband"):
