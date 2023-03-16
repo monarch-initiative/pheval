@@ -470,8 +470,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             [
                 {
                     "variant": {
-                        "chrom": "3",
-                        "pos": 126730873,
+                        "chromosome": "3",
+                        "start": 126730873,
+                        "end": 126730873,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -481,8 +482,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 },
                 {
                     "variant": {
-                        "chrom": "3",
-                        "pos": 126730873,
+                        "chromosome": "3",
+                        "start": 126730873,
+                        "end": 126730873,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -492,8 +494,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 },
                 {
                     "variant": {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -537,8 +540,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             self.assess_variant_prioritisation.record_variant_prioritisation_match(
                 result_entry=pd.Series(
                     {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -562,8 +566,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_pvalue_threshold(
                 result_entry=pd.Series(
                     {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -587,8 +592,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_pvalue_threshold(
                 result_entry=pd.Series(
                     {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -616,8 +622,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_threshold(
                 result_entry=pd.Series(
                     {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
@@ -641,8 +648,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             assess_with_threshold.assess_variant_with_threshold(
                 result_entry=pd.Series(
                     {
-                        "chrom": "3",
-                        "pos": 126741108,
+                        "chromosome": "3",
+                        "start": 126741108,
+                        "end": 126741108,
                         "ref": "G",
                         "alt": "A",
                         "gene": "PLXNA1",
