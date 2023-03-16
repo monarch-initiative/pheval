@@ -68,7 +68,7 @@ class TestCommandLineInterface(unittest.TestCase):
             .exists()
         )
         self.assertTrue(
-            Path(self.test_dir).joinpath("defaultrunner-1.0.0/runner_input_commands").exists()
+            Path(self.test_dir).joinpath("defaultrunner-1.0.0/tool_input_commands").exists()
         )
 
     def test_semsim_heatmap(self):
