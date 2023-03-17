@@ -10,7 +10,7 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
         cls.pheval_runner = DefaultPhEvalRunner(
             input_dir="./tests/input_dir/configs/default/",
             testdata_dir="/corpora/corpus1/default",
-            output_dir="/results",
+            output_dir="./exomiser-13.2.0/default-corpus1-default",
             version="1.0.0",
             config_file=None,
             tmp_dir=None,
