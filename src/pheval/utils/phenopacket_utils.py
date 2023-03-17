@@ -93,7 +93,7 @@ class PhenopacketUtil:
         self.phenopacket_contents = phenopacket_contents
 
     def sample_id(self) -> str:
-        """Retrieve the sample ID."""
+        """Retrieve the sample ID from a phenopacket or proband of a family."""
         if hasattr(self.phenopacket_contents, "proband"):
             return self.phenopacket_contents.proband.subject.id
         else:
