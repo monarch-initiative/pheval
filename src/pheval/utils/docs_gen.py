@@ -97,7 +97,7 @@ def gen_docs():
             continue
         else:
             print_api_doc(file_item)
-    print('done')
+    print("done")
 
 
 if __name__ == "__main__":
