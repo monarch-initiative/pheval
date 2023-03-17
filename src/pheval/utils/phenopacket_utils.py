@@ -109,14 +109,14 @@ class PhenopacketUtil:
             phenotypic_features.append(p)
         return phenotypic_features
 
-    def negated_phenotypic_features(self) -> [PhenotypicFeature] or None:
+    def negated_phenotypic_features(self) -> [PhenotypicFeature]:
         """Retrieve negated phenotypic features."""
         negated_phenotypic_features = []
         all_phenotypic_features = self.phenotypic_features()
         for p in all_phenotypic_features:
             if p.excluded:
                 negated_phenotypic_features.append(p)
-        return negated_phenotypic_features if negated_phenotypic_features != [] else None
+        return negated_phenotypic_features
 
     def interpretations(self) -> list[Interpretation]:
         """Returns all interpretations of a phenopacket."""
