@@ -12,7 +12,6 @@ from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.constants import ENSEMBL_ID, HGNC_ID, ENTREZ_ID, REFSEQ_ACCESSION
 
 
 class IncompatibleGenomeAssemblyError(Exception):
@@ -64,10 +63,10 @@ def create_hgnc_dict() -> defaultdict:
     hgnc_data = defaultdict(dict)
     for _index, row in hgnc_df.iterrows():
         previous_names = []
-        hgnc_data[row["symbol"]][ENSEMBL_ID] = row["ensembl_gene_id"]
-        hgnc_data[row["symbol"]][HGNC_ID] = row["hgnc_id"]
-        hgnc_data[row["symbol"]][ENTREZ_ID] = row["entrez_id"]
-        hgnc_data[row["symbol"]][REFSEQ_ACCESSION] = row["refseq_accession"]
+        hgnc_data[row["symbol"]]["ensembl_id"] = row["ensembl_gene_id"]
+        hgnc_data[row["symbol"]]["hgnc_id"] = row["hgnc_id"]
+        hgnc_data[row["symbol"]]["entrez_id"] = row["entrez_id"]
+        hgnc_data[row["symbol"]]["refseq_accession"] = row["refseq_accession"]
         previous = str(row["prev_symbol"]).split("|")
         for p in previous:
             previous_names.append(p.strip('"'))
@@ -278,9 +277,9 @@ class GeneIdentifierUpdater:
         """Finds the alternate IDs for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
             return [
-                self.hgnc_data[gene_symbol][HGNC_ID],
-                "ncbigene:" + self.hgnc_data[gene_symbol][ENTREZ_ID],
-                "ensembl:" + self.hgnc_data[gene_symbol][ENSEMBL_ID],
+                self.hgnc_data[gene_symbol]["hgnc_id"],
+                "ncbigene:" + self.hgnc_data[gene_symbol]["entrez_id"],
+                "ensembl:" + self.hgnc_data[gene_symbol]["ensembl_id"],
                 "symbol:" + gene_symbol,
             ]
         else:
@@ -288,9 +287,9 @@ class GeneIdentifierUpdater:
                 for prev_symbol in data["previous_symbol"]:
                     if prev_symbol == gene_symbol:
                         return [
-                            data[HGNC_ID],
-                            "ncbigene:" + data[ENTREZ_ID],
-                            "ensembl:" + data[ENSEMBL_ID],
+                            data["hgnc_id"],
+                            "ncbigene:" + data["entrez_id"],
+                            "ensembl:" + data["ensembl_id"],
                             "symbol:" + symbol,
                         ]
 
