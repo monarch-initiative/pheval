@@ -36,8 +36,7 @@ class PhEvalRunner(ABC):
 
     @property
     def tool_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(TOOL_INPUT_COMMANDS_DIR
-        )
+        return Path(self.output_dir).joinpath(TOOL_INPUT_COMMANDS_DIR)
 
     @tool_input_commands_dir.setter
     def tool_input_commands_dir(self, directory_path):
@@ -53,9 +52,7 @@ class PhEvalRunner(ABC):
 
     @property
     def pheval_gene_results_dir(self):
-        return Path(self.output_dir).joinpath(
-            PHEVAL_GENE_RESULTS_DIR
-        )
+        return Path(self.output_dir).joinpath(PHEVAL_GENE_RESULTS_DIR)
 
     @pheval_gene_results_dir.setter
     def pheval_gene_results_dir(self, directory_path):
@@ -63,8 +60,7 @@ class PhEvalRunner(ABC):
 
     @property
     def pheval_variant_results_dir(self):
-        return Path(self.output_dir).joinpath(PHEVAL_VARIANT_RESULTS_DIR
-        )
+        return Path(self.output_dir).joinpath(PHEVAL_VARIANT_RESULTS_DIR)
 
     @pheval_variant_results_dir.setter
     def pheval_variant_results_dir(self, directory_path):
