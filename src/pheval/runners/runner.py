@@ -36,8 +36,7 @@ class PhEvalRunner(ABC):
 
     @property
     def tool_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{TOOL_INPUT_COMMANDS_DIR}"
+        return Path(self.output_dir).joinpath(TOOL_INPUT_COMMANDS_DIR
         )
 
     @tool_input_commands_dir.setter
@@ -73,9 +72,7 @@ class PhEvalRunner(ABC):
 
     def build_output_directory_structure(self):
         """build output directory structure"""
-        self.runner_version_dir.mkdir(exist_ok=True, parents=True)
         self.tool_input_commands_dir.mkdir(exist_ok=True, parents=True)
-        self.corpus_variant_dir.mkdir(parents=True, exist_ok=True)
         self.runner_results_dir.mkdir(parents=True, exist_ok=True)
         self.pheval_gene_results_dir.mkdir(parents=True, exist_ok=True)
         if not self._get_phenotype_only():
