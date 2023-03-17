@@ -48,21 +48,21 @@ class TestCommandLineInterface(unittest.TestCase):
         self.assertEqual(0, exit_code)
         self.assertTrue(
             Path(self.test_dir)
-            .joinpath("defaultrunner-1.0.0/default-phenopackets-lirical/pheval_gene_results")
+            .joinpath("pheval_gene_results")
             .exists()
         )
         self.assertTrue(
             Path(self.test_dir)
-            .joinpath("defaultrunner-1.0.0/default-phenopackets-lirical/pheval_variant_results")
+            .joinpath("pheval_variant_results")
             .exists()
         )
         self.assertTrue(
             Path(self.test_dir)
-            .joinpath("defaultrunner-1.0.0/default-phenopackets-lirical/results")
+            .joinpath("results")
             .exists()
         )
         self.assertTrue(
-            Path(self.test_dir).joinpath("defaultrunner-1.0.0/tool_input_commands").exists()
+            Path(self.test_dir).joinpath("tool_input_commands").exists()
         )
 
     def test_semsim_heatmap(self):
