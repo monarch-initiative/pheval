@@ -46,12 +46,6 @@ class TestCommandLineInterface(unittest.TestCase):
         logging.info("ERR=%s", err)
         exit_code = result.exit_code
         self.assertEqual(0, exit_code)
-        self.assertTrue(Path(self.test_dir).joinpath("defaultrunner-1.0.0").exists())
-        self.assertTrue(
-            Path(self.test_dir)
-            .joinpath("defaultrunner-1.0.0/default-phenopackets-lirical")
-            .exists()
-        )
         self.assertTrue(
             Path(self.test_dir)
             .joinpath("defaultrunner-1.0.0/default-phenopackets-lirical/pheval_gene_results")
