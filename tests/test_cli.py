@@ -46,24 +46,10 @@ class TestCommandLineInterface(unittest.TestCase):
         logging.info("ERR=%s", err)
         exit_code = result.exit_code
         self.assertEqual(0, exit_code)
-        self.assertTrue(
-            Path(self.test_dir)
-            .joinpath("pheval_gene_results")
-            .exists()
-        )
-        self.assertTrue(
-            Path(self.test_dir)
-            .joinpath("pheval_variant_results")
-            .exists()
-        )
-        self.assertTrue(
-            Path(self.test_dir)
-            .joinpath("results")
-            .exists()
-        )
-        self.assertTrue(
-            Path(self.test_dir).joinpath("tool_input_commands").exists()
-        )
+        self.assertTrue(Path(self.test_dir).joinpath("pheval_gene_results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("pheval_variant_results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("tool_input_commands").exists())
 
     def test_semsim_heatmap(self):
         """test_semsim_heatmap"""
