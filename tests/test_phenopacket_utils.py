@@ -483,7 +483,7 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
     def test_obtain_gene_symbol_from_identifier_hgnc(self):
         self.assertEqual(
             self.gene_identifier_updater_ens.obtain_gene_symbol_from_identifier(
-                "HGNC:5", HGNC_ID
+                "HGNC:5", "hgnc_id"
             ),
             "A1BG",
         )
