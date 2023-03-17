@@ -345,27 +345,7 @@ class TestPhenopacketUtil(unittest.TestCase):
     def test_negated_phenotypic_features_all_excluded(self):
         self.assertEqual(
             self.phenopacket_excluded_pf.negated_phenotypic_features(),
-            [
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0000256", label="Macrocephaly"), excluded=True
-                ),
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0002059", label="Cerebral atrophy"), excluded=True
-                ),
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True
-                ),
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True
-                ),
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0001332", label="Dystonia"), excluded=True
-                ),
-                PhenotypicFeature(
-                    type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
-                    excluded=True,
-                ),
-            ],
+            phenotypic_features_all_excluded,
         )
 
     def test_negated_phenotypic_features_some_excluded(self):
@@ -380,7 +360,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         )
 
     def test_negated_phenotypic_features_none_excluded(self):
-        self.assertEqual(self.family.negated_phenotypic_features(), None)
+        self.assertEqual(self.family.negated_phenotypic_features(), [])
 
     def test_interpretations_phenopacket(self):
         self.assertEqual(list(self.phenopacket.interpretations()), interpretations)
