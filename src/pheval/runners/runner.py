@@ -55,7 +55,7 @@ class PhEvalRunner(ABC):
     @property
     def pheval_gene_results_dir(self):
         return Path(self.output_dir).joinpath(
-            {PHEVAL_GENE_RESULTS_DIR}
+            PHEVAL_GENE_RESULTS_DIR
         )
 
     @pheval_gene_results_dir.setter
@@ -64,11 +64,7 @@ class PhEvalRunner(ABC):
 
     @property
     def pheval_variant_results_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
-            f"{Path(self.testdata_dir).parent.name}-"
-            f"{Path(self.testdata_dir).name}/"
-            f"{PHEVAL_VARIANT_RESULTS_DIR}"
+        return Path(self.output_dir).joinpath(PHEVAL_VARIANT_RESULTS_DIR
         )
 
     @pheval_variant_results_dir.setter
