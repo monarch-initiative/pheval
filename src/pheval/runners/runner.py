@@ -34,7 +34,6 @@ class PhEvalRunner(ABC):
     def _get_phenotype_only(self):
         return self.input_dir_config.phenotype_only
 
-
     @property
     def tool_input_commands_dir(self):
         return Path(self.output_dir).joinpath(
@@ -45,17 +44,6 @@ class PhEvalRunner(ABC):
     def tool_input_commands_dir(self, directory_path):
         self.directory_path = Path(directory_path)
 
-    @property
-    def corpus_variant_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
-            f"{Path(self.testdata_dir).parent.name}-"
-            f"{Path(self.testdata_dir).name}"
-        )
-
-    @corpus_variant_dir.setter
-    def corpus_variant_dir(self, directory_path):
-        self.directory_path = Path(directory_path)
 
     @property
     def runner_results_dir(self):
