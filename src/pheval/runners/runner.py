@@ -44,14 +44,9 @@ class PhEvalRunner(ABC):
     def tool_input_commands_dir(self, directory_path):
         self.directory_path = Path(directory_path)
 
-
     @property
     def runner_results_dir(self):
-        return Path(self.output_dir).joinpath(
-            f"{self._get_tool()}-{self.version}/{Path(self.input_dir).name}-"
-            f"{Path(self.testdata_dir).parent.name}-"
-            f"{Path(self.testdata_dir).name}/{TOOL_RESULTS_DIR}"
-        )
+        return Path(self.output_dir).joinpath(TOOL_RESULTS_DIR)
 
     @runner_results_dir.setter
     def runner_results_dir(self, directory_path):
