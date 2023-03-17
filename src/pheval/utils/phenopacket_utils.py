@@ -75,6 +75,17 @@ def create_hgnc_dict() -> defaultdict:
     return hgnc_data
 
 
+def create_gene_identifier_map() -> dict:
+    hgnc_df = read_hgnc_data()
+    identifier_map = {}
+    for _index, row in hgnc_df.iterrows():
+        identifier_map[row["ensembl_gene_id"]] = row["symbol"]
+        identifier_map[row["hgnc_id"]] = row["symbol"]
+        identifier_map[row["entrez_id"]] = row["symbol"]
+        identifier_map[row["refseq_accession"]] = row["symbol"]
+    return identifier_map
+
+
 def phenopacket_reader(file: Path):
     """Reads a phenopacket file, returning its contents."""
     file = open(file, "r")
@@ -242,13 +253,10 @@ def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path) -> 
 
 
 class GeneIdentifierUpdater:
-    def __init__(
-        self,
-        hgnc_data: defaultdict,
-        gene_identifier: str,
-    ):
+    def __init__(self, gene_identifier: str, hgnc_data: dict = None, identifier_map: dict = None):
         self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
+        self.identifier_map = identifier_map
 
     def find_identifier(self, gene_symbol: str) -> str:
         """Finds the specified gene identifier for a gene symbol."""
@@ -260,20 +268,16 @@ class GeneIdentifierUpdater:
                     if prev_symbol == gene_symbol:
                         return data[self.gene_identifier]
 
-    def obtain_gene_symbol_from_identifier(
-        self, query_gene_identifier: str, identifier_name: str
-    ) -> str:
+    def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
         """
         Obtain gene symbol from a gene identifier. (e.g.)
         "
-        obtain_gene_symbol_from_identifier(query_gene_identifier="HGNC:5", identifier_name="hgnc_id")
+        obtain_gene_symbol_from_identifier(query_gene_identifier="HGNC:5")
         "
         """
-        for symbol, data in self.hgnc_data.items():
-            if query_gene_identifier == data[identifier_name]:
-                return symbol
+        return self.identifier_map[query_gene_identifier]
 
-    def find_alternate_ids(self, gene_symbol: str) -> list[str]:
+    def _find_alternate_ids(self, gene_symbol: str) -> list[str]:
         """Finds the alternate IDs for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
             return [
@@ -307,7 +311,7 @@ class GeneIdentifierUpdater:
                 )
                 del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
                 g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(
-                    self.find_alternate_ids(
+                    self._find_alternate_ids(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )
