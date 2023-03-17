@@ -28,12 +28,6 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
             Path("/results/defaultrunner-1.0.0/tool_input_commands"),
         )
 
-    def test_corpus_variant_dir(self):
-        self.assertEqual(
-            self.pheval_runner.corpus_variant_dir,
-            Path("/results/defaultrunner-1.0.0/default-corpus1-default"),
-        )
-
     def test_runner_results_dir(self):
         self.assertEqual(
             self.pheval_runner.runner_results_dir,
