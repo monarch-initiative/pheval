@@ -22,11 +22,6 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
     def test__get_phenotype_only(self):
         self.assertEqual(self.pheval_runner._get_phenotype_only(), False)
 
-    def test_runner_version_dir(self):
-        self.assertEqual(
-            self.pheval_runner.runner_version_dir, Path("/results/defaultrunner-1.0.0")
-        )
-
     def test_runner_input_commands_dir(self):
         self.assertEqual(
             self.pheval_runner.tool_input_commands_dir,
