@@ -25,23 +25,23 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
     def test_runner_input_commands_dir(self):
         self.assertEqual(
             self.pheval_runner.tool_input_commands_dir,
-            Path("/results/defaultrunner-1.0.0/tool_input_commands"),
+            Path("./defaultrunner-1.0.0/default-corpus1-default/tool_input_commands"),
         )
 
     def test_runner_results_dir(self):
         self.assertEqual(
             self.pheval_runner.runner_results_dir,
-            Path("/results/defaultrunner-1.0.0/default-corpus1-default/results"),
+            Path("./defaultrunner-1.0.0/default-corpus1-default/results"),
         )
 
     def test_pheval_gene_results_dir(self):
         self.assertEqual(
             self.pheval_runner.pheval_gene_results_dir,
-            Path("/results/defaultrunner-1.0.0/default-corpus1-default/pheval_gene_results"),
+            Path("./defaultrunner-1.0.0/default-corpus1-default/pheval_gene_results"),
         )
 
     def test_pheval_variant_results_dir(self):
         self.assertEqual(
             self.pheval_runner.pheval_variant_results_dir,
-            Path("/results/defaultrunner-1.0.0/default-corpus1-default/pheval_variant_results"),
+            Path("./defaultrunner-1.0.0/default-corpus1-default/pheval_variant_results"),
         )
