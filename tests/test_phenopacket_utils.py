@@ -324,6 +324,12 @@ class TestPhenopacketUtil(unittest.TestCase):
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
 
+    def test_sample_id_phenopacket(self):
+        self.assertEqual(self.phenopacket.sample_id(), "test-subject-1")
+
+    def test_sample_id_family(self):
+        self.assertEqual(self.family.sample_id(), "test-subject-1")
+
     def test_phenotypic_features_phenopacket(self):
         self.assertEqual(
             list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded
@@ -341,6 +347,26 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(
             list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded
         )
+
+    def test_negated_phenotypic_features_all_excluded(self):
+        self.assertEqual(
+            self.phenopacket_excluded_pf.negated_phenotypic_features(),
+            phenotypic_features_all_excluded,
+        )
+
+    def test_negated_phenotypic_features_some_excluded(self):
+        self.assertEqual(
+            self.phenopacket.negated_phenotypic_features(),
+            [
+                PhenotypicFeature(
+                    type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"),
+                    excluded=True,
+                )
+            ],
+        )
+
+    def test_negated_phenotypic_features_none_excluded(self):
+        self.assertEqual(self.family.negated_phenotypic_features(), [])
 
     def test_interpretations_phenopacket(self):
         self.assertEqual(list(self.phenopacket.interpretations()), interpretations)

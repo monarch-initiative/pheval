@@ -92,6 +92,13 @@ class PhenopacketUtil:
     def __init__(self, phenopacket_contents: Phenopacket):
         self.phenopacket_contents = phenopacket_contents
 
+    def sample_id(self) -> str:
+        """Retrieve the sample ID from a phenopacket or proband of a family."""
+        if hasattr(self.phenopacket_contents, "proband"):
+            return self.phenopacket_contents.proband.subject.id
+        else:
+            return self.phenopacket_contents.subject.id
+
     def phenotypic_features(self) -> list[PhenotypicFeature]:
         """Retrieves a list of all HPO terms."""
         if hasattr(self.phenopacket_contents, "proband"):
@@ -108,6 +115,15 @@ class PhenopacketUtil:
                 continue
             phenotypic_features.append(p)
         return phenotypic_features
+
+    def negated_phenotypic_features(self) -> [PhenotypicFeature]:
+        """Retrieve negated phenotypic features."""
+        negated_phenotypic_features = []
+        all_phenotypic_features = self.phenotypic_features()
+        for p in all_phenotypic_features:
+            if p.excluded:
+                negated_phenotypic_features.append(p)
+        return negated_phenotypic_features
 
     def interpretations(self) -> list[Interpretation]:
         """Returns all interpretations of a phenopacket."""
