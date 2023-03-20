@@ -21,11 +21,11 @@ info_log = logging.getLogger("info")
 @click.option("-v", "--verbose", count=True)
 @click.option("-q", "--quiet")
 def main(verbose=1, quiet=False) -> None:
-    """main CLI method for pheval
+    """main CLI method for PhEval
 
     Args:
-        verbose (int): _description_
-        quiet (bool): _description_
+        verbose (int, optional): Verbose flag.
+        quiet (bool, optional): Queit Flag.
     """
     if verbose >= 2:
         info_log.setLevel(level=logging.DEBUG)

@@ -1,0 +1,42 @@
+name: Auto-deployment of Documentation
+on:
+  push:
+    branches: [ docs ]
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.0.2
+      with:
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+    - name: Set up Python 3.
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+
+    - name: Install Poetry.
+      uses: snok/install-poetry@v1.3.1
+
+    - name: Install dependencies.
+      run: |
+        poetry install --with docs
+
+    - name: Build documentation.
+      run: |
+        echo ${{ secrets.GH_TOKEN }} >> src/pheval/token.txt
+        mkdir gh-pages
+        touch gh-pages/.nojekyll
+        python ./src/pheval/utils/docs_gen.py
+        export PYTHONPATH=$(pwd)
+        poetry run mkdocs build
+        mv site/* ./gh-pages/
+
+    - name: Deploy documentation.
+      if: ${{ github.event_name == 'push' }}
+      uses: JamesIves/github-pages-deploy-action@v4.4.1
+      with:
+        branch: gh-pages
+        force: true
+        folder: gh-pages
