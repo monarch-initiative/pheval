@@ -21,7 +21,7 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
+from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
     GenomicVariant,
     IncompatibleGenomeAssemblyError,
@@ -29,6 +29,7 @@ from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_h
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
+    create_gene_identifier_map,
     create_hgnc_dict,
 )
 
@@ -494,11 +495,20 @@ class TestPhenopacketRebuilder(unittest.TestCase):
 
 class TestGeneIdentifierUpdater(unittest.TestCase):
     @classmethod
-    def setUpClass(cls, hgnc_dict=None) -> None:
+    def setUpClass(cls, hgnc_dict=None, identifier_map=None) -> None:
         if hgnc_dict is None:
             hgnc_dict = create_hgnc_dict()
-        cls.gene_identifier_updater_ens = GeneIdentifierUpdater(hgnc_dict, "ensembl_id")
-        cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(hgnc_dict, "entrez_id")
+        if identifier_map is None:
+            identifier_map = create_gene_identifier_map()
+        cls.gene_identifier_updater_ens = GeneIdentifierUpdater(
+            hgnc_data=hgnc_dict, gene_identifier="ensembl_id"
+        )
+        cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(
+            hgnc_data=hgnc_dict, gene_identifier="entrez_id"
+        )
+        cls.find_symbol = GeneIdentifierUpdater(
+            gene_identifier="hgnc_id", identifier_map=identifier_map
+        )
 
     def test_find_identifier(self):
         self.assertEqual(self.gene_identifier_updater_ens.find_identifier("A2M"), "ENSG00000175899")
@@ -506,14 +516,30 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA"), "2629")
 
+    def test_obtain_gene_symbol_from_identifier_hgnc(self):
+        self.assertEqual(
+            self.find_symbol.obtain_gene_symbol_from_identifier(
+                "HGNC:5",
+            ),
+            "A1BG",
+        )
+
+    def test_obtain_gene_symbol_from_identifier_entrez(self):
+        self.assertEqual(
+            self.find_symbol.obtain_gene_symbol_from_identifier(
+                "65985",
+            ),
+            "AACS",
+        )
+
     def test_find_alternate_ids(self):
         self.assertEqual(
             ["HGNC:4177", "ncbigene:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
-            self.gene_identifier_updater_ens.find_alternate_ids("GBA"),
+            self.gene_identifier_updater_ens._find_alternate_ids("GBA"),
         )
         self.assertEqual(
             ["HGNC:7", "ncbigene:2", "ensembl:ENSG00000175899", "symbol:A2M"],
-            self.gene_identifier_updater_entrez.find_alternate_ids("A2M"),
+            self.gene_identifier_updater_entrez._find_alternate_ids("A2M"),
         )
 
     def test_update_genomic_interpretations_gene_identifier(self):
