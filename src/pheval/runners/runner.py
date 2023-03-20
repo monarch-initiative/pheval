@@ -4,12 +4,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from pheval.config_parser import parse_input_dir_config
-from pheval.utils.constants import (
-    PHEVAL_GENE_RESULTS_DIR,
-    PHEVAL_VARIANT_RESULTS_DIR,
-    TOOL_INPUT_COMMANDS_DIR,
-    TOOL_RESULTS_DIR,
-)
 
 
 @dataclass
@@ -24,6 +18,10 @@ class PhEvalRunner(ABC):
     version: str
     directory_path = None
     input_dir_config = None
+    __tool_results_dir = "results/"
+    __pheval_gene_results_dir = "pheval_gene_results/"
+    __pheval_variant_results_dir = "pheval_variant_results/"
+    __tool_input_commands_dir = "tool_input_commands/"
 
     def __post_init__(self):
         self.input_dir_config = parse_input_dir_config(self.input_dir)
@@ -36,7 +34,7 @@ class PhEvalRunner(ABC):
 
     @property
     def tool_input_commands_dir(self):
-        return Path(self.output_dir).joinpath(TOOL_INPUT_COMMANDS_DIR)
+        return Path(self.output_dir).joinpath(self.__tool_input_commands_dir)
 
     @tool_input_commands_dir.setter
     def tool_input_commands_dir(self, directory_path):
@@ -44,7 +42,7 @@ class PhEvalRunner(ABC):
 
     @property
     def runner_results_dir(self):
-        return Path(self.output_dir).joinpath(TOOL_RESULTS_DIR)
+        return Path(self.output_dir).joinpath(self.__tool_results_dir)
 
     @runner_results_dir.setter
     def runner_results_dir(self, directory_path):
@@ -52,7 +50,7 @@ class PhEvalRunner(ABC):
 
     @property
     def pheval_gene_results_dir(self):
-        return Path(self.output_dir).joinpath(PHEVAL_GENE_RESULTS_DIR)
+        return Path(self.output_dir).joinpath(self.__pheval_gene_results_dir)
 
     @pheval_gene_results_dir.setter
     def pheval_gene_results_dir(self, directory_path):
@@ -60,7 +58,7 @@ class PhEvalRunner(ABC):
 
     @property
     def pheval_variant_results_dir(self):
-        return Path(self.output_dir).joinpath(PHEVAL_VARIANT_RESULTS_DIR)
+        return Path(self.output_dir).joinpath(self.__pheval_variant_results_dir)
 
     @pheval_variant_results_dir.setter
     def pheval_variant_results_dir(self, directory_path):
