@@ -1,0 +1,141 @@
+{
+  "id": "PMID28679690_p1",
+  "subject": {
+    "id": "PMID28679690_p1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002617",
+        "label": "Vascular dilatation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002205",
+        "label": "Recurrent respiratory infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008905",
+        "label": "Rhizomelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001337",
+        "label": "Tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005257",
+        "label": "Thoracic hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001647",
+        "label": "Bicuspid aortic valve"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001052",
+        "label": "Nevus flammeus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001257",
+        "label": "Spasticity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002169",
+        "label": "Clonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002089",
+        "label": "Pulmonary hypoplasia"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28679690_p1-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28679690_p1",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID28679690_p1_SPART",
+                "geneContext": {
+                  "valueId": "ENSG00000133104",
+                  "symbol": "SPART",
+                  "alternateIds": [
+                    "HGNC:18514",
+                    "ncbigene:23111",
+                    "ensembl:ENSG00000133104",
+                    "symbol:SPART"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.314136Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

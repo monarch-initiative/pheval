@@ -1,0 +1,81 @@
+{
+  "id": "ColumbiaU_7",
+  "subject": {
+    "id": "ColumbiaU_7"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005110",
+        "label": "Atrial fibrillation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001639",
+        "label": "Hypertrophic cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011704",
+        "label": "Sick sinus syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004757",
+        "label": "Paroxysmal atrial fibrillation"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "ColumbiaU_7-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "ColumbiaU_7",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "ColumbiaU_7_LMNA",
+                "geneContext": {
+                  "valueId": "ENSG00000160789",
+                  "symbol": "LMNA",
+                  "alternateIds": [
+                    "HGNC:6636",
+                    "ncbigene:4000",
+                    "ensembl:ENSG00000160789",
+                    "symbol:LMNA"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.237871Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

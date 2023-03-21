@@ -1,0 +1,141 @@
+{
+  "id": "PMID27551680",
+  "subject": {
+    "id": "PMID27551680"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000421",
+        "label": "Epistaxis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001981",
+        "label": "Schistocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011901",
+        "label": "Dysfibrinogenemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011900",
+        "label": "Hypofibrinogenemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000979",
+        "label": "Purpura"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100724",
+        "label": "Hypercoagulability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001902",
+        "label": "Giant platelets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002625",
+        "label": "Deep venous thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002094",
+        "label": "Dyspnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002315",
+        "label": "Headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001259",
+        "label": "Coma"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID27551680-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID27551680",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID27551680_C3AR1",
+                "geneContext": {
+                  "valueId": "ENSG00000171860",
+                  "symbol": "C3AR1",
+                  "alternateIds": [
+                    "HGNC:1319",
+                    "ncbigene:719",
+                    "ensembl:ENSG00000171860",
+                    "symbol:C3AR1"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.281374Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

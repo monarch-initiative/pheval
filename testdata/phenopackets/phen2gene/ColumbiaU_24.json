@@ -1,0 +1,123 @@
+{
+  "id": "ColumbiaU_24",
+  "subject": {
+    "id": "ColumbiaU_24"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002019",
+        "label": "Constipation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002015",
+        "label": "Dysphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001030",
+        "label": "Fragile skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002317",
+        "label": "Unsteady gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002043",
+        "label": "Esophageal stricture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001581",
+        "label": "Recurrent skin infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008066",
+        "label": "Abnormal blistering of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100699",
+        "label": "Scarring"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004057",
+        "label": "Mitten deformity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001518",
+        "label": "Small for gestational age"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "ColumbiaU_24-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "ColumbiaU_24",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "ColumbiaU_24_KMT2D",
+                "geneContext": {
+                  "valueId": "ENSG00000167548",
+                  "symbol": "KMT2D",
+                  "alternateIds": [
+                    "HGNC:7133",
+                    "ncbigene:8085",
+                    "ensembl:ENSG00000167548",
+                    "symbol:KMT2D"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.260987Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

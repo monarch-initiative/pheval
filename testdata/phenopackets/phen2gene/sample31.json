@@ -1,0 +1,141 @@
+{
+  "id": "sample31",
+  "subject": {
+    "id": "sample31"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003128",
+        "label": "Lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002878",
+        "label": "Respiratory failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006554",
+        "label": "Acute hepatic failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001919",
+        "label": "Acute kidney injury"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003256",
+        "label": "Abnormality of the coagulation cascade"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001321",
+        "label": "Cerebellar hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002365",
+        "label": "Hypoplasia of the brainstem"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000967",
+        "label": "Petechiae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001541",
+        "label": "Ascites"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012050",
+        "label": "Anasarca"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001177",
+        "label": "Preaxial hand polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002908",
+        "label": "Conjugated hyperbilirubinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000609",
+        "label": "Optic nerve hypoplasia"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample31-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample31",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample31_KAT6A",
+                "geneContext": {
+                  "valueId": "ENSG00000083168",
+                  "symbol": "KAT6A",
+                  "alternateIds": [
+                    "HGNC:13013",
+                    "ncbigene:7994",
+                    "ensembl:ENSG00000083168",
+                    "symbol:KAT6A"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.592237Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

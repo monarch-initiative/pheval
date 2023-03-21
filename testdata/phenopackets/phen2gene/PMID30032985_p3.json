@@ -1,0 +1,75 @@
+{
+  "id": "PMID30032985_p3",
+  "subject": {
+    "id": "PMID30032985_p3"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001166",
+        "label": "Arachnodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001847",
+        "label": "Long hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000098",
+        "label": "Tall stature"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID30032985_p3-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID30032985_p3",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID30032985_p3_NPR3",
+                "geneContext": {
+                  "valueId": "ENSG00000113389",
+                  "symbol": "NPR3",
+                  "alternateIds": [
+                    "HGNC:7945",
+                    "ncbigene:4883",
+                    "ensembl:ENSG00000113389",
+                    "symbol:NPR3"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.432967Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

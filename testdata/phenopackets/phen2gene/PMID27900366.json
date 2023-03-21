@@ -1,0 +1,87 @@
+{
+  "id": "PMID27900366",
+  "subject": {
+    "id": "PMID27900366"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001350",
+        "label": "Slurred speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500009",
+        "label": "Dysplastic gangliocytoma of the cerebellum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000729",
+        "label": "Autistic behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID27900366-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID27900366",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID27900366_EGFR",
+                "geneContext": {
+                  "valueId": "ENSG00000146648",
+                  "symbol": "EGFR",
+                  "alternateIds": [
+                    "HGNC:3236",
+                    "ncbigene:1956",
+                    "ensembl:ENSG00000146648",
+                    "symbol:EGFR"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.298086Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

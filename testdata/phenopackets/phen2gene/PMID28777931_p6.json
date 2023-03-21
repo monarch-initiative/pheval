@@ -1,0 +1,99 @@
+{
+  "id": "PMID28777931_p6",
+  "subject": {
+    "id": "PMID28777931_p6"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001942",
+        "label": "Metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001332",
+        "label": "Dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000817",
+        "label": "Poor eye contact"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002020",
+        "label": "Gastroesophageal reflux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025116",
+        "label": "Fetal distress"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28777931_p6-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28777931_p6",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID28777931_p6_MRPS34",
+                "geneContext": {
+                  "valueId": "ENSG00000074071",
+                  "symbol": "MRPS34",
+                  "alternateIds": [
+                    "HGNC:16618",
+                    "ncbigene:65993",
+                    "ensembl:ENSG00000074071",
+                    "symbol:MRPS34"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.429757Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

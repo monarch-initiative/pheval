@@ -1,0 +1,105 @@
+{
+  "id": "PMID30275003",
+  "subject": {
+    "id": "PMID30275003"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004445",
+        "label": "Elliptocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000980",
+        "label": "Pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004804",
+        "label": "Congenital hemolytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004823",
+        "label": "Anisopoikilocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004839",
+        "label": "Pyropoikilocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002904",
+        "label": "Hyperbilirubinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001923",
+        "label": "Reticulocytosis"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID30275003-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID30275003",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID30275003_SPTA1",
+                "geneContext": {
+                  "valueId": "ENSG00000163554",
+                  "symbol": "SPTA1",
+                  "alternateIds": [
+                    "HGNC:11272",
+                    "ncbigene:6708",
+                    "ensembl:ENSG00000163554",
+                    "symbol:SPTA1"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.361116Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

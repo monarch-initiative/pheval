@@ -1,0 +1,129 @@
+{
+  "id": "ColumbiaU_22",
+  "subject": {
+    "id": "ColumbiaU_22"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001638",
+        "label": "Cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005157",
+        "label": "Concentric hypertrophic cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001998",
+        "label": "Neonatal hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030148",
+        "label": "Heart murmur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200128",
+        "label": "Biventricular hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005135",
+        "label": "Abnormal T-wave"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001653",
+        "label": "Mitral regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011103",
+        "label": "Abnormal left ventricular outflow tract morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "ColumbiaU_22-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "ColumbiaU_22",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "ColumbiaU_22_PTPN11",
+                "geneContext": {
+                  "valueId": "ENSG00000179295",
+                  "symbol": "PTPN11",
+                  "alternateIds": [
+                    "HGNC:9644",
+                    "ncbigene:5781",
+                    "ensembl:ENSG00000179295",
+                    "symbol:PTPN11"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.257784Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

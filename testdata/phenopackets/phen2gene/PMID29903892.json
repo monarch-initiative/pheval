@@ -1,0 +1,123 @@
+{
+  "id": "PMID29903892",
+  "subject": {
+    "id": "PMID29903892"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001034",
+        "label": "Hypermelanotic macule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012115",
+        "label": "Hepatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001643",
+        "label": "Patent ductus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003256",
+        "label": "Abnormality of the coagulation cascade"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001063",
+        "label": "Acrocyanosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001028",
+        "label": "Hemangioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001635",
+        "label": "Congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001655",
+        "label": "Patent foramen ovale"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100026",
+        "label": "Arteriovenous malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004947",
+        "label": "Arteriovenous fistula"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID29903892-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID29903892",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID29903892_MYH9",
+                "geneContext": {
+                  "valueId": "ENSG00000100345",
+                  "symbol": "MYH9",
+                  "alternateIds": [
+                    "HGNC:7579",
+                    "ncbigene:4627",
+                    "ensembl:ENSG00000100345",
+                    "symbol:MYH9"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.347235Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

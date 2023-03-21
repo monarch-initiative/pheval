@@ -1,0 +1,99 @@
+{
+  "id": "sample12",
+  "subject": {
+    "id": "sample12"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012178",
+        "label": "Reduced natural killer cell activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012532",
+        "label": "Chronic pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001601",
+        "label": "Laryngomalacia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002716",
+        "label": "Lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample12-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample12",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample12_COL7A1",
+                "geneContext": {
+                  "valueId": "ENSG00000114270",
+                  "symbol": "COL7A1",
+                  "alternateIds": [
+                    "HGNC:2214",
+                    "ncbigene:1294",
+                    "ensembl:ENSG00000114270",
+                    "symbol:COL7A1"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.605181Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

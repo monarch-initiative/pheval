@@ -1,0 +1,93 @@
+{
+  "id": "sample71",
+  "subject": {
+    "id": "sample71"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004443",
+        "label": "Lambdoidal craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004442",
+        "label": "Sagittal craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011330",
+        "label": "Metopic synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003508",
+        "label": "Proportionate short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011342",
+        "label": "Mild global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002119",
+        "label": "Ventriculomegaly"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample71-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample71",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample71_GNAS",
+                "geneContext": {
+                  "valueId": "ENSG00000087460",
+                  "symbol": "GNAS",
+                  "alternateIds": [
+                    "HGNC:4392",
+                    "ncbigene:2778",
+                    "ensembl:ENSG00000087460",
+                    "symbol:GNAS"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.619156Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

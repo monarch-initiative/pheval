@@ -1,0 +1,135 @@
+{
+  "id": "PMID28686854_p1",
+  "subject": {
+    "id": "PMID28686854_p1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000212",
+        "label": "Gingival overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000431",
+        "label": "Wide nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000767",
+        "label": "Pectus excavatum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000411",
+        "label": "Protruding ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012531",
+        "label": "Pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002754",
+        "label": "Osteomyelitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005180",
+        "label": "Tricuspid regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000169",
+        "label": "Gingival fibromatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000969",
+        "label": "Edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002355",
+        "label": "Difficulty walking"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28686854_p1-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28686854_p1",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID28686854_p1_REST",
+                "geneContext": {
+                  "valueId": "ENSG00000084093",
+                  "symbol": "REST",
+                  "alternateIds": [
+                    "HGNC:9966",
+                    "ncbigene:5978",
+                    "ensembl:ENSG00000084093",
+                    "symbol:REST"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.446448Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

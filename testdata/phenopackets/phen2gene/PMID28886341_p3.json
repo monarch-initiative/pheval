@@ -1,0 +1,87 @@
+{
+  "id": "PMID28886341_p3",
+  "subject": {
+    "id": "PMID28886341_p3"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004415",
+        "label": "Pulmonary artery stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002136",
+        "label": "Broad-based gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000960",
+        "label": "Sacral dimple"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28886341_p3-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28886341_p3",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID28886341_p3_CDK10",
+                "geneContext": {
+                  "valueId": "ENSG00000185324",
+                  "symbol": "CDK10",
+                  "alternateIds": [
+                    "HGNC:1770",
+                    "ncbigene:8558",
+                    "ensembl:ENSG00000185324",
+                    "symbol:CDK10"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.380379Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

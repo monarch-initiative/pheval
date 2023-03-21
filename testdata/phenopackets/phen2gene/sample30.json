@@ -1,0 +1,87 @@
+{
+  "id": "sample30",
+  "subject": {
+    "id": "sample30"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000175",
+        "label": "Cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100559",
+        "label": "Lower limb asymmetry"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011398",
+        "label": "obsolete Central hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002194",
+        "label": "Delayed gross motor development"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample30-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample30",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample30_KCNK9",
+                "geneContext": {
+                  "valueId": "ENSG00000169427",
+                  "symbol": "KCNK9",
+                  "alternateIds": [
+                    "HGNC:6283",
+                    "ncbigene:51305",
+                    "ensembl:ENSG00000169427",
+                    "symbol:KCNK9"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.627629Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "ColumbiaU_9",
+  "subject": {
+    "id": "ColumbiaU_9"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012411",
+        "label": "Premature pubarche"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010314",
+        "label": "Premature thelarche"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012412",
+        "label": "Premature adrenarche"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000739",
+        "label": "Anxiety"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002474",
+        "label": "Expressive language delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030391",
+        "label": "Spoken word recognition deficit"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000490",
+        "label": "Deeply set eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000194",
+        "label": "Open mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010808",
+        "label": "Protruding tongue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000826",
+        "label": "Precocious puberty"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "ColumbiaU_9-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "ColumbiaU_9",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "ColumbiaU_9_EHMT1",
+                "geneContext": {
+                  "valueId": "ENSG00000181090",
+                  "symbol": "EHMT1",
+                  "alternateIds": [
+                    "HGNC:24650",
+                    "ncbigene:79813",
+                    "ensembl:ENSG00000181090",
+                    "symbol:EHMT1"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.240361Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

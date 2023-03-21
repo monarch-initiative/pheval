@@ -1,0 +1,117 @@
+{
+  "id": "sample2",
+  "subject": {
+    "id": "sample2"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011678",
+        "label": "Tetralogy of Fallot with pulmonary atresia and major aortopulmonary collateral arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001943",
+        "label": "Hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002910",
+        "label": "Elevated hepatic transaminase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002093",
+        "label": "Respiratory insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005768",
+        "label": "2-4 toe cutaneous syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009907",
+        "label": "Attached earlobe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002173",
+        "label": "Hypoglycemic seizures"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample2-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample2",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample2_AGL",
+                "geneContext": {
+                  "valueId": "ENSG00000162688",
+                  "symbol": "AGL",
+                  "alternateIds": [
+                    "HGNC:321",
+                    "ncbigene:178",
+                    "ensembl:ENSG00000162688",
+                    "symbol:AGL"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.573043Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

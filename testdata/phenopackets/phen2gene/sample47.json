@@ -1,0 +1,87 @@
+{
+  "id": "sample47",
+  "subject": {
+    "id": "sample47"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011344",
+        "label": "Severe global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008848",
+        "label": "Moderately short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008527",
+        "label": "Congenital sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001840",
+        "label": "Metatarsus adductus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005617",
+        "label": "Bilateral camptodactyly"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample47-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample47",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample47_MED13L",
+                "geneContext": {
+                  "valueId": "ENSG00000123066",
+                  "symbol": "MED13L",
+                  "alternateIds": [
+                    "HGNC:22962",
+                    "ncbigene:23389",
+                    "ensembl:ENSG00000123066",
+                    "symbol:MED13L"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.618195Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "sample60",
+  "subject": {
+    "id": "sample60"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000105",
+        "label": "Enlarged kidney"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000846",
+        "label": "Adrenal insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000851",
+        "label": "Congenital hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002625",
+        "label": "Deep venous thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200036",
+        "label": "Skin nodule"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample60-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample60",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample60_PMM2",
+                "geneContext": {
+                  "valueId": "ENSG00000140650",
+                  "symbol": "PMM2",
+                  "alternateIds": [
+                    "HGNC:9115",
+                    "ncbigene:5373",
+                    "ensembl:ENSG00000140650",
+                    "symbol:PMM2"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.588708Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "PMID28886343_p2",
+  "subject": {
+    "id": "PMID28886343_p2"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002527",
+        "label": "Falls"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000360",
+        "label": "Tinnitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002497",
+        "label": "Spastic ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002070",
+        "label": "Limb ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001348",
+        "label": "Brisk reflexes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001272",
+        "label": "Cerebellar atrophy"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28886343_p2-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28886343_p2",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "PMID28886343_p2_GRM1",
+                "geneContext": {
+                  "valueId": "ENSG00000152822",
+                  "symbol": "GRM1",
+                  "alternateIds": [
+                    "HGNC:4593",
+                    "ncbigene:2911",
+                    "ensembl:ENSG00000152822",
+                    "symbol:GRM1"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.416267Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

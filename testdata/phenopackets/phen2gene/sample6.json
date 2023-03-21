@@ -1,0 +1,99 @@
+{
+  "id": "sample6",
+  "subject": {
+    "id": "sample6"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001395",
+        "label": "Hepatic fibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001409",
+        "label": "Portal hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000510",
+        "label": "Rod-cone dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003502",
+        "label": "Mild short stature"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample6-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample6",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample6_IFT172",
+                "geneContext": {
+                  "valueId": "ENSG00000138002",
+                  "symbol": "IFT172",
+                  "alternateIds": [
+                    "HGNC:30391",
+                    "ncbigene:26160",
+                    "ensembl:ENSG00000138002",
+                    "symbol:IFT172"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.571770Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

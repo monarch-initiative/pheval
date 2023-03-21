@@ -1,0 +1,159 @@
+{
+  "id": "sample68",
+  "subject": {
+    "id": "sample68"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100022",
+        "label": "Abnormality of movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011398",
+        "label": "obsolete Central hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002194",
+        "label": "Delayed gross motor development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011477",
+        "label": "Upbeat nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000666",
+        "label": "Horizontal nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006934",
+        "label": "Congenital nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002020",
+        "label": "Gastroesophageal reflux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002779",
+        "label": "Tracheomalacia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002871",
+        "label": "Central apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002870",
+        "label": "Obstructive sleep apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000870",
+        "label": "Increased circulating prolactin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030085",
+        "label": "Abnormal CSF lactate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012356",
+        "label": "Decreased mannosylation of N-linked protein glycosylation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003236",
+        "label": "Elevated circulating creatine kinase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000537",
+        "label": "Epicanthus inversus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000954",
+        "label": "Single transverse palmar crease"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample68-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample68",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "sample68_ATP1A3",
+                "geneContext": {
+                  "valueId": "ENSG00000105409",
+                  "symbol": "ATP1A3",
+                  "alternateIds": [
+                    "HGNC:801",
+                    "ncbigene:478",
+                    "ensembl:ENSG00000105409",
+                    "symbol:ATP1A3"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-21T12:33:06.581606Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}
