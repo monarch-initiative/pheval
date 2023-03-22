@@ -4,7 +4,7 @@ from pathlib import Path
 
 import click
 
-from pheval.utils.utils import semsim_randomisation
+from pheval.utils.utils import semsim_randomisation, semsimconvert
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -14,15 +14,8 @@ from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 
 @click.command()
 @click.option(
-    "--semsim-left",
-    "-L",
-    required=True,
-    metavar="FILE",
-    help="Path to the semantic similarity profile to be scrambled.",
-)
-@click.option(
-    "--semsim-right",
-    "-R",
+    "--input",
+    "-i",
     required=True,
     metavar="FILE",
     help="Path to the semantic similarity profile to be scrambled.",
@@ -41,27 +34,16 @@ from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
     default=0.5,
     help="",
 )
-@click.option(
-    "--times",
-    "-T",
-    metavar=int,
-    default=1,
-    help="",
-)
-def scramble_semsim(
-    semsim_left: Path, semsim_right: Path, output: Path, scramble_factor: float, times: int
-):
-    """scramble_semsim
+def semsim_scramble(
+    input: Path, output: Path, scramble_factor: float):
+    """Scrambles semsim profile multiplying score value by scramble factor
 
     Args:
-        semsim_left (Path): [description]
-        semsim_right (Path): [description]
-        output (Path): [description]
-        scramble_factor (float): [description]
-        times (int): [description]
+        input (Path): Path file that points out to the semsim profile
+        output (Path): Path file that points out to the output file
+        scramble_factor (float): Scramble Magnitude
     """
-    semsim_randomisation(semsim_left, semsim_right, output, scramble_factor, times)
-
+    semsim_randomisation(input, output, scramble_factor)
 
 @click.command("scramble-phenopackets")
 @click.option(
@@ -283,3 +265,37 @@ def create_spiked_vcfs_command(
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
     spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, template_vcf_path, vcf_dir)
+    
+@click.command()
+@click.option(
+    "--input",
+    "-i",
+    required=True,
+    metavar="FILE",
+    help="Path to the semsim file.",
+)
+@click.option(
+    "--output",
+    "-o",
+    required=True,
+    metavar="FILE",
+    help="Path to the semsim.h2.db converted file.",
+)
+@click.option(
+    "--subject-prefix",
+    "-s",
+    required=True,
+    metavar="FILE",
+    help="Subject Prefix that will be mapped to the database",
+)
+@click.option(
+    "--object-prefix",
+    "-b",
+    required=True,
+    metavar="FILE",
+    help="Object Prefix that will be mapped to the database.",
+)
+def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+    """convert semsim profile to an exomiser database file"""
+    semsimconvert(input, output, subject_prefix, object_prefix)
+
