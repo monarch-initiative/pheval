@@ -1,0 +1,59 @@
+site_name: PhEval
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/weather-night
+        name: Night Mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Day Mode
+
+markdown_extensions:
+  - pymdownx.emoji
+  - pymdownx.tasklist
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight
+  - mkdocs-click
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra_css:
+  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.css
+extra_javascript:
+  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
+
+plugins:
+  - search
+  - autorefs
+  - include_dir_to_nav
+  - mkdocstrings:
+      enable_inventory: true
+
+watch:
+  - src
+
+nav:
+  - "index.md"
+  - About: "about.md"
+  - Contact Us: "contact.md"
+  - API Documentation: api/pheval/
+  - Resources for contributors:
+      - "developing_a_pheval_plugin.md"
+      - "contributing.md"
+      - "styleguide.md"
+      - "CODE_OF_CONDUCT.md"
+  - "roadmap.md"
+
+
+site_url: https://monarch-initiative.github.io/pheval/
+repo_url: https://github.com/monarch-initiative/pheval
+edit_uri: "edit/docs/docs/"
