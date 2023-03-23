@@ -32,6 +32,14 @@ coverage = "^6.5.0"
 pheval = "pheval.cli:pheval"
 pheval-utils = "pheval.cli:pheval_utils"
 
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+pymdown-extensions = "^9.9"
+mkdocs-material = "^8.5.11"
+mkdocstrings = "^0.19.1"
+mkdocstrings-python = "^0.8.2"
+mkdocs-include-dir-to-nav = "^1.2.0"
+mkdocs-click = "^0.8.0"
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
 
