@@ -1,6 +1,7 @@
 import csv
 import itertools
 from collections import defaultdict
+from copy import deepcopy
 from pathlib import Path
 
 import pandas as pd
@@ -26,6 +27,7 @@ class RankComparisonGenerator:
     def _calculate_rank_difference(self) -> pd.DataFrame:
         """Calculate the rank decrease for runs - taking the first directory as a baseline."""
         comparison_df = self._generate_dataframe()
+        print(len(comparison_df.columns))
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
@@ -141,7 +143,7 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the gene rank comparison of two result directories."""
     for pair in comparison_ranks:
         merged_results = merge_results(
-            pair[0].gene_prioritisation.ranks, pair[1].gene_prioritisation.ranks
+            deepcopy(pair[0].gene_prioritisation.ranks), deepcopy(pair[1].gene_prioritisation.ranks)
         )
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
             f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
@@ -155,7 +157,8 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the variant rank comparison of two result directories."""
     for pair in comparison_ranks:
         merged_results = merge_results(
-            pair[0].variant_prioritisation.ranks, pair[1].variant_prioritisation.ranks
+            deepcopy(pair[0].variant_prioritisation.ranks),
+            deepcopy(pair[1].variant_prioritisation.ranks),
         )
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
             f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
