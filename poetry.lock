@@ -500,7 +500,7 @@ test = ["objgraph", "psutil"]
 
 [[package]]
 name = "griffe"
-version = "0.25.5"
+version = "0.25.4"
 description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
 category = "dev"
 optional = false
@@ -1430,7 +1430,7 @@ jsonasobj = ">=1.2.1"
 
 [[package]]
 name = "pymdown-extensions"
-version = "9.10"
+version = "9.9.2"
 description = "Extension pack for Python Markdown."
 category = "dev"
 optional = false
@@ -1438,7 +1438,6 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 markdown = ">=3.2"
-pyyaml = "*"
 
 [[package]]
 name = "pyparsing"
@@ -2832,8 +2831,8 @@ greenlet = [
     {file = "greenlet-2.0.2.tar.gz", hash = "sha256:e7c8dc13af7db097bed64a051d2dd49e9f0af495c26995c00a9ee842690d34c0"},
 ]
 griffe = [
-    {file = "griffe-0.25.5-py3-none-any.whl", hash = "sha256:1fb9edff48e66d4873014a2ebf21aca5f271d0006a4c937826e3cf592ffb3706"},
-    {file = "griffe-0.25.5.tar.gz", hash = "sha256:11ea3403ef0560a1cbcf7f302eb5d21cf4c1d8ed3f8a16a75aa9f6f458caf3f1"},
+    {file = "griffe-0.25.4-py3-none-any.whl", hash = "sha256:919f935a358b31074d16e324e26b041883c60a8cf10504655e394afc3a7caad8"},
+    {file = "griffe-0.25.4.tar.gz", hash = "sha256:f190edf8ef58d43c856d2d6761ec324a043ff60deb8c14359263571e8b91fe68"},
 ]
 hbreader = [
     {file = "hbreader-0.9.1-py3-none-any.whl", hash = "sha256:9a6e76c9d1afc1b977374a5dc430a1ebb0ea0488205546d4678d6e31cc5f6801"},
@@ -3354,8 +3353,8 @@ pyjsg = [
     {file = "PyJSG-0.11.10.tar.gz", hash = "sha256:4bd6e3ff2833fa2b395bbe803a2d72a5f0bab5b7285bccd0da1a1bc0aee88bfa"},
 ]
 pymdown-extensions = [
-    {file = "pymdown_extensions-9.10-py3-none-any.whl", hash = "sha256:31eaa76ce6f96aabfcea98787c2fff2c5c0611b20a53a94213970cfbf05f02b8"},
-    {file = "pymdown_extensions-9.10.tar.gz", hash = "sha256:562c38eee4ce3f101ce631b804bfc2177a8a76c7e4dc908871fb6741a90257a7"},
+    {file = "pymdown_extensions-9.9.2-py3-none-any.whl", hash = "sha256:c3d804eb4a42b85bafb5f36436342a5ad38df03878bb24db8855a4aa8b08b765"},
+    {file = "pymdown_extensions-9.9.2.tar.gz", hash = "sha256:ebb33069bafcb64d5f5988043331d4ea4929325dc678a6bcf247ddfcf96499f8"},
 ]
 pyparsing = [
     {file = "pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},
