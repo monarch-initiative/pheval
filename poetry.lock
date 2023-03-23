@@ -1062,7 +1062,7 @@ python-versions = ">=3.7"
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 
@@ -2272,6 +2272,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 lock-version = "1.1"
 python-versions = ">=3.9,<4.0.0"
 content-hash = "a01e41833c748ca51cb9458495d62223044b70081734aab28b9926370a077bb5"
+
 
 [metadata.files]
 aiohttp = [
