@@ -48,7 +48,7 @@ class TestCommandLineInterface(unittest.TestCase):
         self.assertEqual(0, exit_code)
         self.assertTrue(Path(self.test_dir).joinpath("pheval_gene_results").exists())
         self.assertTrue(Path(self.test_dir).joinpath("pheval_variant_results").exists())
-        self.assertTrue(Path(self.test_dir).joinpath("results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("raw_results").exists())
         self.assertTrue(Path(self.test_dir).joinpath("tool_input_commands").exists())
 
     def test_semsim_heatmap(self):

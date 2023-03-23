@@ -30,7 +30,7 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
 
     def test_runner_results_dir(self):
         self.assertEqual(
-            self.pheval_runner.runner_results_dir,
+            self.pheval_runner.raw_results_dir,
             Path("./defaultrunner-1.0.0/default-corpus1-default/results"),
         )
 
