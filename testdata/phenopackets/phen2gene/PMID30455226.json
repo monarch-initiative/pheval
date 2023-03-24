@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30455226",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30455226_PPP3CA",
-                "geneContext": {
-                  "valueId": "ENSG00000138814",
-                  "symbol": "PPP3CA",
-                  "alternateIds": [
-                    "HGNC:9314",
-                    "ncbigene:5530",
-                    "ensembl:ENSG00000138814",
-                    "symbol:PPP3CA"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000138814",
+              "symbol": "PPP3CA",
+              "alternateIds": [
+                "HGNC:9314",
+                "ncbigene:5530",
+                "ensembl:ENSG00000138814",
+                "symbol:PPP3CA"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.366509Z",
+    "created": "2023-03-24T13:44:37.932878Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

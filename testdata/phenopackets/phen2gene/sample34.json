@@ -108,20 +108,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample34",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample34_PUF60",
-                "geneContext": {
-                  "valueId": "ENSG00000179950",
-                  "symbol": "PUF60",
-                  "alternateIds": [
-                    "HGNC:17042",
-                    "ncbigene:22827",
-                    "ensembl:ENSG00000179950",
-                    "symbol:PUF60"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000179950",
+              "symbol": "PUF60",
+              "alternateIds": [
+                "HGNC:17042",
+                "ncbigene:22827",
+                "ensembl:ENSG00000179950",
+                "symbol:PUF60"
+              ]
             }
           }
         ]
@@ -129,7 +124,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.553677Z",
+    "created": "2023-03-24T13:44:38.484338Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

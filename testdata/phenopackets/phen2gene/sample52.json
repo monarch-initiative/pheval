@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample52",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample52_CACNA1C",
-                "geneContext": {
-                  "valueId": "ENSG00000151067",
-                  "symbol": "CACNA1C",
-                  "alternateIds": [
-                    "HGNC:1390",
-                    "ncbigene:775",
-                    "ensembl:ENSG00000151067",
-                    "symbol:CACNA1C"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000151067",
+              "symbol": "CACNA1C",
+              "alternateIds": [
+                "HGNC:1390",
+                "ncbigene:775",
+                "ensembl:ENSG00000151067",
+                "symbol:CACNA1C"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.633166Z",
+    "created": "2023-03-24T13:44:38.804107Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -126,20 +126,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28963436_p1",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28963436_p1_NR2F1",
-                "geneContext": {
-                  "valueId": "ENSG00000175745",
-                  "symbol": "NR2F1",
-                  "alternateIds": [
-                    "HGNC:7975",
-                    "ncbigene:7025",
-                    "ensembl:ENSG00000175745",
-                    "symbol:NR2F1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000175745",
+              "symbol": "NR2F1",
+              "alternateIds": [
+                "HGNC:7975",
+                "ncbigene:7025",
+                "ensembl:ENSG00000175745",
+                "symbol:NR2F1"
+              ]
             }
           }
         ]
@@ -147,7 +142,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.320991Z",
+    "created": "2023-03-24T13:44:37.861230Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30275004_p1",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30275004_p1_VARS1",
-                "geneContext": {
-                  "valueId": "ENSG00000204394",
-                  "symbol": "VARS1",
-                  "alternateIds": [
-                    "HGNC:12651",
-                    "ncbigene:7407",
-                    "ensembl:ENSG00000204394",
-                    "symbol:VARS1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000204394",
+              "symbol": "VARS1",
+              "alternateIds": [
+                "HGNC:12651",
+                "ncbigene:7407",
+                "ensembl:ENSG00000204394",
+                "symbol:VARS1"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.362300Z",
+    "created": "2023-03-24T13:44:37.924245Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

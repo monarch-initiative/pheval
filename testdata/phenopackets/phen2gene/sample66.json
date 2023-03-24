@@ -108,20 +108,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample66",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample66_PIGN",
-                "geneContext": {
-                  "valueId": "ENSG00000197563",
-                  "symbol": "PIGN",
-                  "alternateIds": [
-                    "HGNC:8967",
-                    "ncbigene:23556",
-                    "ensembl:ENSG00000197563",
-                    "symbol:PIGN"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000197563",
+              "symbol": "PIGN",
+              "alternateIds": [
+                "HGNC:8967",
+                "ncbigene:23556",
+                "ensembl:ENSG00000197563",
+                "symbol:PIGN"
+              ]
             }
           }
         ]
@@ -129,7 +124,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.635976Z",
+    "created": "2023-03-24T13:44:38.808364Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -150,20 +150,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample14",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample14_TBCK",
-                "geneContext": {
-                  "valueId": "ENSG00000145348",
-                  "symbol": "TBCK",
-                  "alternateIds": [
-                    "HGNC:28261",
-                    "ncbigene:93627",
-                    "ensembl:ENSG00000145348",
-                    "symbol:TBCK"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000145348",
+              "symbol": "TBCK",
+              "alternateIds": [
+                "HGNC:28261",
+                "ncbigene:93627",
+                "ensembl:ENSG00000145348",
+                "symbol:TBCK"
+              ]
             }
           }
         ]
@@ -171,7 +166,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.623729Z",
+    "created": "2023-03-24T13:44:38.788283Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

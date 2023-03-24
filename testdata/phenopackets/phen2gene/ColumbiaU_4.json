@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_4",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_4_SCN1A",
-                "geneContext": {
-                  "valueId": "ENSG00000144285",
-                  "symbol": "SCN1A",
-                  "alternateIds": [
-                    "HGNC:10585",
-                    "ncbigene:6323",
-                    "ensembl:ENSG00000144285",
-                    "symbol:SCN1A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000144285",
+              "symbol": "SCN1A",
+              "alternateIds": [
+                "HGNC:10585",
+                "ncbigene:6323",
+                "ensembl:ENSG00000144285",
+                "symbol:SCN1A"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.233211Z",
+    "created": "2023-03-24T13:44:37.475703Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

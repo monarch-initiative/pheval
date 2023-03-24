@@ -186,20 +186,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27148580",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27148580_CHAMP1",
-                "geneContext": {
-                  "valueId": "ENSG00000198824",
-                  "symbol": "CHAMP1",
-                  "alternateIds": [
-                    "HGNC:20311",
-                    "ncbigene:283489",
-                    "ensembl:ENSG00000198824",
-                    "symbol:CHAMP1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000198824",
+              "symbol": "CHAMP1",
+              "alternateIds": [
+                "HGNC:20311",
+                "ncbigene:283489",
+                "ensembl:ENSG00000198824",
+                "symbol:CHAMP1"
+              ]
             }
           }
         ]
@@ -207,7 +202,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.275186Z",
+    "created": "2023-03-24T13:44:37.674755Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -78,20 +78,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_19",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_19_PLA2G4A",
-                "geneContext": {
-                  "valueId": "ENSG00000116711",
-                  "symbol": "PLA2G4A",
-                  "alternateIds": [
-                    "HGNC:9035",
-                    "ncbigene:5321",
-                    "ensembl:ENSG00000116711",
-                    "symbol:PLA2G4A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000116711",
+              "symbol": "PLA2G4A",
+              "alternateIds": [
+                "HGNC:9035",
+                "ncbigene:5321",
+                "ensembl:ENSG00000116711",
+                "symbol:PLA2G4A"
+              ]
             }
           }
         ]
@@ -99,7 +94,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.253035Z",
+    "created": "2023-03-24T13:44:37.625884Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

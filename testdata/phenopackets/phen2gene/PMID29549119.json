@@ -108,20 +108,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29549119",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29549119_ARID1B",
-                "geneContext": {
-                  "valueId": "ENSG00000049618",
-                  "symbol": "ARID1B",
-                  "alternateIds": [
-                    "HGNC:18040",
-                    "ncbigene:57492",
-                    "ensembl:ENSG00000049618",
-                    "symbol:ARID1B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000049618",
+              "symbol": "ARID1B",
+              "alternateIds": [
+                "HGNC:18040",
+                "ncbigene:57492",
+                "ensembl:ENSG00000049618",
+                "symbol:ARID1B"
+              ]
             }
           }
         ]
@@ -129,7 +124,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.340994Z",
+    "created": "2023-03-24T13:44:37.889803Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

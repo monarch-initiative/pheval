@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample80",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample80_IQSEC2",
-                "geneContext": {
-                  "valueId": "ENSG00000124313",
-                  "symbol": "IQSEC2",
-                  "alternateIds": [
-                    "HGNC:29059",
-                    "ncbigene:23096",
-                    "ensembl:ENSG00000124313",
-                    "symbol:IQSEC2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000124313",
+              "symbol": "IQSEC2",
+              "alternateIds": [
+                "HGNC:29059",
+                "ncbigene:23096",
+                "ensembl:ENSG00000124313",
+                "symbol:IQSEC2"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.599669Z",
+    "created": "2023-03-24T13:44:38.748405Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

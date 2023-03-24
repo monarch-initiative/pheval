@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample75",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample75_SON",
-                "geneContext": {
-                  "valueId": "ENSG00000159140",
-                  "symbol": "SON",
-                  "alternateIds": [
-                    "HGNC:11183",
-                    "ncbigene:6651",
-                    "ensembl:ENSG00000159140",
-                    "symbol:SON"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000159140",
+              "symbol": "SON",
+              "alternateIds": [
+                "HGNC:11183",
+                "ncbigene:6651",
+                "ensembl:ENSG00000159140",
+                "symbol:SON"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.547813Z",
+    "created": "2023-03-24T13:44:38.453397Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27900362",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27900362_PHIP",
-                "geneContext": {
-                  "valueId": "ENSG00000146247",
-                  "symbol": "PHIP",
-                  "alternateIds": [
-                    "HGNC:15673",
-                    "ncbigene:55023",
-                    "ensembl:ENSG00000146247",
-                    "symbol:PHIP"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000146247",
+              "symbol": "PHIP",
+              "alternateIds": [
+                "HGNC:15673",
+                "ncbigene:55023",
+                "ensembl:ENSG00000146247",
+                "symbol:PHIP"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.296937Z",
+    "created": "2023-03-24T13:44:37.822659Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

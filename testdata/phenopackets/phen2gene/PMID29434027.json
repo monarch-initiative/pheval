@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29434027",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29434027_BRAF",
-                "geneContext": {
-                  "valueId": "ENSG00000157764",
-                  "symbol": "BRAF",
-                  "alternateIds": [
-                    "HGNC:1097",
-                    "ncbigene:673",
-                    "ensembl:ENSG00000157764",
-                    "symbol:BRAF"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000157764",
+              "symbol": "BRAF",
+              "alternateIds": [
+                "HGNC:1097",
+                "ncbigene:673",
+                "ensembl:ENSG00000157764",
+                "symbol:BRAF"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.331581Z",
+    "created": "2023-03-24T13:44:37.875451Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

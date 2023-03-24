@@ -18,20 +18,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29167286",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29167286_PRRT2",
-                "geneContext": {
-                  "valueId": "ENSG00000167371",
-                  "symbol": "PRRT2",
-                  "alternateIds": [
-                    "HGNC:30500",
-                    "ncbigene:112476",
-                    "ensembl:ENSG00000167371",
-                    "symbol:PRRT2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000167371",
+              "symbol": "PRRT2",
+              "alternateIds": [
+                "HGNC:30500",
+                "ncbigene:112476",
+                "ensembl:ENSG00000167371",
+                "symbol:PRRT2"
+              ]
             }
           }
         ]
@@ -39,7 +34,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.328735Z",
+    "created": "2023-03-24T13:44:37.871230Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

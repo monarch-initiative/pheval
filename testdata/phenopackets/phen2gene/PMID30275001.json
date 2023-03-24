@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30275001",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30275001_SAMHD1",
-                "geneContext": {
-                  "valueId": "ENSG00000101347",
-                  "symbol": "SAMHD1",
-                  "alternateIds": [
-                    "HGNC:15925",
-                    "ncbigene:25939",
-                    "ensembl:ENSG00000101347",
-                    "symbol:SAMHD1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000101347",
+              "symbol": "SAMHD1",
+              "alternateIds": [
+                "HGNC:15925",
+                "ncbigene:25939",
+                "ensembl:ENSG00000101347",
+                "symbol:SAMHD1"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.359201Z",
+    "created": "2023-03-24T13:44:37.918585Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_20",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_20_DDX3X",
-                "geneContext": {
-                  "valueId": "ENSG00000215301",
-                  "symbol": "DDX3X",
-                  "alternateIds": [
-                    "HGNC:2745",
-                    "ncbigene:1654",
-                    "ensembl:ENSG00000215301",
-                    "symbol:DDX3X"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000215301",
+              "symbol": "DDX3X",
+              "alternateIds": [
+                "HGNC:2745",
+                "ncbigene:1654",
+                "ensembl:ENSG00000215301",
+                "symbol:DDX3X"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.254740Z",
+    "created": "2023-03-24T13:44:37.629646Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

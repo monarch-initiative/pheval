@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30032985_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30032985_p2_NPR3",
-                "geneContext": {
-                  "valueId": "ENSG00000113389",
-                  "symbol": "NPR3",
-                  "alternateIds": [
-                    "HGNC:7945",
-                    "ncbigene:4883",
-                    "ensembl:ENSG00000113389",
-                    "symbol:NPR3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000113389",
+              "symbol": "NPR3",
+              "alternateIds": [
+                "HGNC:7945",
+                "ncbigene:4883",
+                "ensembl:ENSG00000113389",
+                "symbol:NPR3"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.432066Z",
+    "created": "2023-03-24T13:44:38.122933Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

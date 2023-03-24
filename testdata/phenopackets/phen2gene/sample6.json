@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample6",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample6_IFT172",
-                "geneContext": {
-                  "valueId": "ENSG00000138002",
-                  "symbol": "IFT172",
-                  "alternateIds": [
-                    "HGNC:30391",
-                    "ncbigene:26160",
-                    "ensembl:ENSG00000138002",
-                    "symbol:IFT172"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000138002",
+              "symbol": "IFT172",
+              "alternateIds": [
+                "HGNC:30391",
+                "ncbigene:26160",
+                "ensembl:ENSG00000138002",
+                "symbol:IFT172"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.571770Z",
+    "created": "2023-03-24T13:44:38.550645Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

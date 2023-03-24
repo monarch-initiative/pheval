@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample30",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample30_KCNK9",
-                "geneContext": {
-                  "valueId": "ENSG00000169427",
-                  "symbol": "KCNK9",
-                  "alternateIds": [
-                    "HGNC:6283",
-                    "ncbigene:51305",
-                    "ensembl:ENSG00000169427",
-                    "symbol:KCNK9"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000169427",
+              "symbol": "KCNK9",
+              "alternateIds": [
+                "HGNC:6283",
+                "ncbigene:51305",
+                "ensembl:ENSG00000169427",
+                "symbol:KCNK9"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.627629Z",
+    "created": "2023-03-24T13:44:38.795253Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

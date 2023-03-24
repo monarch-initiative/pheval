@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample36",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample36_RET",
-                "geneContext": {
-                  "valueId": "ENSG00000165731",
-                  "symbol": "RET",
-                  "alternateIds": [
-                    "HGNC:9967",
-                    "ncbigene:5979",
-                    "ensembl:ENSG00000165731",
-                    "symbol:RET"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000165731",
+              "symbol": "RET",
+              "alternateIds": [
+                "HGNC:9967",
+                "ncbigene:5979",
+                "ensembl:ENSG00000165731",
+                "symbol:RET"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.551100Z",
+    "created": "2023-03-24T13:44:38.476497Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

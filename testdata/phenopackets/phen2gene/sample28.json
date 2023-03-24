@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample28",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample28_TBXAS1",
-                "geneContext": {
-                  "valueId": "ENSG00000059377",
-                  "symbol": "TBXAS1",
-                  "alternateIds": [
-                    "HGNC:11609",
-                    "ncbigene:6916",
-                    "ensembl:ENSG00000059377",
-                    "symbol:TBXAS1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000059377",
+              "symbol": "TBXAS1",
+              "alternateIds": [
+                "HGNC:11609",
+                "ncbigene:6916",
+                "ensembl:ENSG00000059377",
+                "symbol:TBXAS1"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.567594Z",
+    "created": "2023-03-24T13:44:38.543524Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

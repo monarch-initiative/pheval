@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample79",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample79_SMC1A",
-                "geneContext": {
-                  "valueId": "ENSG00000072501",
-                  "symbol": "SMC1A",
-                  "alternateIds": [
-                    "HGNC:11111",
-                    "ncbigene:8243",
-                    "ensembl:ENSG00000072501",
-                    "symbol:SMC1A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000072501",
+              "symbol": "SMC1A",
+              "alternateIds": [
+                "HGNC:11111",
+                "ncbigene:8243",
+                "ensembl:ENSG00000072501",
+                "symbol:SMC1A"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.628766Z",
+    "created": "2023-03-24T13:44:38.797039Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

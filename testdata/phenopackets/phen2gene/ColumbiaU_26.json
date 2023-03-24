@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_26",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_26_NAA15",
-                "geneContext": {
-                  "valueId": "ENSG00000164134",
-                  "symbol": "NAA15",
-                  "alternateIds": [
-                    "HGNC:30782",
-                    "ncbigene:80155",
-                    "ensembl:ENSG00000164134",
-                    "symbol:NAA15"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000164134",
+              "symbol": "NAA15",
+              "alternateIds": [
+                "HGNC:30782",
+                "ncbigene:80155",
+                "ensembl:ENSG00000164134",
+                "symbol:NAA15"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.263821Z",
+    "created": "2023-03-24T13:44:37.646127Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

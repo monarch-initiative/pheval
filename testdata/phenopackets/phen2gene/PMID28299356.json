@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28299356",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28299356_TUBB3",
-                "geneContext": {
-                  "valueId": "ENSG00000258947",
-                  "symbol": "TUBB3",
-                  "alternateIds": [
-                    "HGNC:20772",
-                    "ncbigene:10381",
-                    "ensembl:ENSG00000258947",
-                    "symbol:TUBB3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000258947",
+              "symbol": "TUBB3",
+              "alternateIds": [
+                "HGNC:20772",
+                "ncbigene:10381",
+                "ensembl:ENSG00000258947",
+                "symbol:TUBB3"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.304937Z",
+    "created": "2023-03-24T13:44:37.837725Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

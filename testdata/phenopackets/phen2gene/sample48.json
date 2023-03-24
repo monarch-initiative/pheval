@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample48",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample48_MED13L",
-                "geneContext": {
-                  "valueId": "ENSG00000123066",
-                  "symbol": "MED13L",
-                  "alternateIds": [
-                    "HGNC:22962",
-                    "ncbigene:23389",
-                    "ensembl:ENSG00000123066",
-                    "symbol:MED13L"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000123066",
+              "symbol": "MED13L",
+              "alternateIds": [
+                "HGNC:22962",
+                "ncbigene:23389",
+                "ensembl:ENSG00000123066",
+                "symbol:MED13L"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.565616Z",
+    "created": "2023-03-24T13:44:38.539107Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

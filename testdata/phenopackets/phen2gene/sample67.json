@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample67",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample67_KCNN4",
-                "geneContext": {
-                  "valueId": "ENSG00000104783",
-                  "symbol": "KCNN4",
-                  "alternateIds": [
-                    "HGNC:6293",
-                    "ncbigene:3783",
-                    "ensembl:ENSG00000104783",
-                    "symbol:KCNN4"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000104783",
+              "symbol": "KCNN4",
+              "alternateIds": [
+                "HGNC:6293",
+                "ncbigene:3783",
+                "ensembl:ENSG00000104783",
+                "symbol:KCNN4"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.576285Z",
+    "created": "2023-03-24T13:44:38.558674Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

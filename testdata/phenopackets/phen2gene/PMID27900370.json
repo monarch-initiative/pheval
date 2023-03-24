@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27900370",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27900370_SLC12A2",
-                "geneContext": {
-                  "valueId": "ENSG00000064651",
-                  "symbol": "SLC12A2",
-                  "alternateIds": [
-                    "HGNC:10911",
-                    "ncbigene:6558",
-                    "ensembl:ENSG00000064651",
-                    "symbol:SLC12A2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000064651",
+              "symbol": "SLC12A2",
+              "alternateIds": [
+                "HGNC:10911",
+                "ncbigene:6558",
+                "ensembl:ENSG00000064651",
+                "symbol:SLC12A2"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.301983Z",
+    "created": "2023-03-24T13:44:37.833028Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

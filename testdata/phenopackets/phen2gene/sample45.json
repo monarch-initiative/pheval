@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample45",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample45_GRIN2B",
-                "geneContext": {
-                  "valueId": "ENSG00000273079",
-                  "symbol": "GRIN2B",
-                  "alternateIds": [
-                    "HGNC:4586",
-                    "ncbigene:2904",
-                    "ensembl:ENSG00000273079",
-                    "symbol:GRIN2B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000273079",
+              "symbol": "GRIN2B",
+              "alternateIds": [
+                "HGNC:4586",
+                "ncbigene:2904",
+                "ensembl:ENSG00000273079",
+                "symbol:GRIN2B"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.568736Z",
+    "created": "2023-03-24T13:44:38.545651Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

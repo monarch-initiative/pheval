@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample16",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample16_NSD1",
-                "geneContext": {
-                  "valueId": "ENSG00000165671",
-                  "symbol": "NSD1",
-                  "alternateIds": [
-                    "HGNC:14234",
-                    "ncbigene:64324",
-                    "ensembl:ENSG00000165671",
-                    "symbol:NSD1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000165671",
+              "symbol": "NSD1",
+              "alternateIds": [
+                "HGNC:14234",
+                "ncbigene:64324",
+                "ensembl:ENSG00000165671",
+                "symbol:NSD1"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.596300Z",
+    "created": "2023-03-24T13:44:38.742699Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

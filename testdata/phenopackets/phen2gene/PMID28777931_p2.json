@@ -108,20 +108,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28777931_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28777931_p2_MRPS34",
-                "geneContext": {
-                  "valueId": "ENSG00000074071",
-                  "symbol": "MRPS34",
-                  "alternateIds": [
-                    "HGNC:16618",
-                    "ncbigene:65993",
-                    "ensembl:ENSG00000074071",
-                    "symbol:MRPS34"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000074071",
+              "symbol": "MRPS34",
+              "alternateIds": [
+                "HGNC:16618",
+                "ncbigene:65993",
+                "ensembl:ENSG00000074071",
+                "symbol:MRPS34"
+              ]
             }
           }
         ]
@@ -129,7 +124,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.423859Z",
+    "created": "2023-03-24T13:44:38.092641Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

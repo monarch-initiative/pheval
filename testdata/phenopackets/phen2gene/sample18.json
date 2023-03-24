@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample18",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample18_TCOF1",
-                "geneContext": {
-                  "valueId": "ENSG00000070814",
-                  "symbol": "TCOF1",
-                  "alternateIds": [
-                    "HGNC:11654",
-                    "ncbigene:6949",
-                    "ensembl:ENSG00000070814",
-                    "symbol:TCOF1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000070814",
+              "symbol": "TCOF1",
+              "alternateIds": [
+                "HGNC:11654",
+                "ncbigene:6949",
+                "ensembl:ENSG00000070814",
+                "symbol:TCOF1"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.606634Z",
+    "created": "2023-03-24T13:44:38.760895Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

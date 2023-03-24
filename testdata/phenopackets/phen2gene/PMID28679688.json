@@ -246,20 +246,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28679688",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28679688_CLUAP1",
-                "geneContext": {
-                  "valueId": "ENSG00000103351",
-                  "symbol": "CLUAP1",
-                  "alternateIds": [
-                    "HGNC:19009",
-                    "ncbigene:23059",
-                    "ensembl:ENSG00000103351",
-                    "symbol:CLUAP1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000103351",
+              "symbol": "CLUAP1",
+              "alternateIds": [
+                "HGNC:19009",
+                "ncbigene:23059",
+                "ensembl:ENSG00000103351",
+                "symbol:CLUAP1"
+              ]
             }
           }
         ]
@@ -267,7 +262,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.310914Z",
+    "created": "2023-03-24T13:44:37.847019Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

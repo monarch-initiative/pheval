@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28757203_p1",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28757203_p1_LIPT2",
-                "geneContext": {
-                  "valueId": "ENSG00000175536",
-                  "symbol": "LIPT2",
-                  "alternateIds": [
-                    "HGNC:37216",
-                    "ncbigene:387787",
-                    "ensembl:ENSG00000175536",
-                    "symbol:LIPT2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000175536",
+              "symbol": "LIPT2",
+              "alternateIds": [
+                "HGNC:37216",
+                "ncbigene:387787",
+                "ensembl:ENSG00000175536",
+                "symbol:LIPT2"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.419419Z",
+    "created": "2023-03-24T13:44:38.051675Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

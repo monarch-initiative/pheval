@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample69",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample69_RYR1",
-                "geneContext": {
-                  "valueId": "ENSG00000196218",
-                  "symbol": "RYR1",
-                  "alternateIds": [
-                    "HGNC:10483",
-                    "ncbigene:6261",
-                    "ensembl:ENSG00000196218",
-                    "symbol:RYR1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000196218",
+              "symbol": "RYR1",
+              "alternateIds": [
+                "HGNC:10483",
+                "ncbigene:6261",
+                "ensembl:ENSG00000196218",
+                "symbol:RYR1"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.595117Z",
+    "created": "2023-03-24T13:44:38.740874Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

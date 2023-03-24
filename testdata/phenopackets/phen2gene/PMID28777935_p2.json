@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28777935_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28777935_p2_YWHAG",
-                "geneContext": {
-                  "valueId": "ENSG00000170027",
-                  "symbol": "YWHAG",
-                  "alternateIds": [
-                    "HGNC:12852",
-                    "ncbigene:7532",
-                    "ensembl:ENSG00000170027",
-                    "symbol:YWHAG"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000170027",
+              "symbol": "YWHAG",
+              "alternateIds": [
+                "HGNC:12852",
+                "ncbigene:7532",
+                "ensembl:ENSG00000170027",
+                "symbol:YWHAG"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.481520Z",
+    "created": "2023-03-24T13:44:38.273616Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

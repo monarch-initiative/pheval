@@ -18,20 +18,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample37",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample37_CYP17A1",
-                "geneContext": {
-                  "valueId": "ENSG00000148795",
-                  "symbol": "CYP17A1",
-                  "alternateIds": [
-                    "HGNC:2593",
-                    "ncbigene:1586",
-                    "ensembl:ENSG00000148795",
-                    "symbol:CYP17A1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000148795",
+              "symbol": "CYP17A1",
+              "alternateIds": [
+                "HGNC:2593",
+                "ncbigene:1586",
+                "ensembl:ENSG00000148795",
+                "symbol:CYP17A1"
+              ]
             }
           }
         ]
@@ -39,7 +34,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.575454Z",
+    "created": "2023-03-24T13:44:38.556792Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

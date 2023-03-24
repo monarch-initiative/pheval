@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample62",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample62_ANKRD11",
-                "geneContext": {
-                  "valueId": "ENSG00000167522",
-                  "symbol": "ANKRD11",
-                  "alternateIds": [
-                    "HGNC:21316",
-                    "ncbigene:29123",
-                    "ensembl:ENSG00000167522",
-                    "symbol:ANKRD11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000167522",
+              "symbol": "ANKRD11",
+              "alternateIds": [
+                "HGNC:21316",
+                "ncbigene:29123",
+                "ensembl:ENSG00000167522",
+                "symbol:ANKRD11"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.621758Z",
+    "created": "2023-03-24T13:44:38.785654Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample42",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample42_PAX6",
-                "geneContext": {
-                  "valueId": "ENSG00000007372",
-                  "symbol": "PAX6",
-                  "alternateIds": [
-                    "HGNC:8620",
-                    "ncbigene:5080",
-                    "ensembl:ENSG00000007372",
-                    "symbol:PAX6"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000007372",
+              "symbol": "PAX6",
+              "alternateIds": [
+                "HGNC:8620",
+                "ncbigene:5080",
+                "ensembl:ENSG00000007372",
+                "symbol:PAX6"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.545691Z",
+    "created": "2023-03-24T13:44:38.410776Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

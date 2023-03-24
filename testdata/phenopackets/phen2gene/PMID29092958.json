@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29092958",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29092958_CCN6",
-                "geneContext": {
-                  "valueId": "ENSG00000112761",
-                  "symbol": "CCN6",
-                  "alternateIds": [
-                    "HGNC:12771",
-                    "ncbigene:8838",
-                    "ensembl:ENSG00000112761",
-                    "symbol:CCN6"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000112761",
+              "symbol": "CCN6",
+              "alternateIds": [
+                "HGNC:12771",
+                "ncbigene:8838",
+                "ensembl:ENSG00000112761",
+                "symbol:CCN6"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.323931Z",
+    "created": "2023-03-24T13:44:37.865656Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

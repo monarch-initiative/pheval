@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28823707_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28823707_p2_TBC1D23",
-                "geneContext": {
-                  "valueId": "ENSG00000036054",
-                  "symbol": "TBC1D23",
-                  "alternateIds": [
-                    "HGNC:25622",
-                    "ncbigene:55773",
-                    "ensembl:ENSG00000036054",
-                    "symbol:TBC1D23"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000036054",
+              "symbol": "TBC1D23",
+              "alternateIds": [
+                "HGNC:25622",
+                "ncbigene:55773",
+                "ensembl:ENSG00000036054",
+                "symbol:TBC1D23"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.453954Z",
+    "created": "2023-03-24T13:44:38.200777Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

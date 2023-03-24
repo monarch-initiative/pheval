@@ -234,20 +234,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27626064",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27626064_ZMYND11",
-                "geneContext": {
-                  "valueId": "ENSG00000015171",
-                  "symbol": "ZMYND11",
-                  "alternateIds": [
-                    "HGNC:16966",
-                    "ncbigene:10771",
-                    "ensembl:ENSG00000015171",
-                    "symbol:ZMYND11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000015171",
+              "symbol": "ZMYND11",
+              "alternateIds": [
+                "HGNC:16966",
+                "ncbigene:10771",
+                "ensembl:ENSG00000015171",
+                "symbol:ZMYND11"
+              ]
             }
           }
         ]
@@ -255,7 +250,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.288330Z",
+    "created": "2023-03-24T13:44:37.810132Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

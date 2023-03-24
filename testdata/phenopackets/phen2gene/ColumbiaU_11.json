@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_11",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_11_MAN2B1",
-                "geneContext": {
-                  "valueId": "ENSG00000104774",
-                  "symbol": "MAN2B1",
-                  "alternateIds": [
-                    "HGNC:6826",
-                    "ncbigene:4125",
-                    "ensembl:ENSG00000104774",
-                    "symbol:MAN2B1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000104774",
+              "symbol": "MAN2B1",
+              "alternateIds": [
+                "HGNC:6826",
+                "ncbigene:4125",
+                "ensembl:ENSG00000104774",
+                "symbol:MAN2B1"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.243037Z",
+    "created": "2023-03-24T13:44:37.555444Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

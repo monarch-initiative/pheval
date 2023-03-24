@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_3",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_3_ARID1B",
-                "geneContext": {
-                  "valueId": "ENSG00000049618",
-                  "symbol": "ARID1B",
-                  "alternateIds": [
-                    "HGNC:18040",
-                    "ncbigene:57492",
-                    "ensembl:ENSG00000049618",
-                    "symbol:ARID1B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000049618",
+              "symbol": "ARID1B",
+              "alternateIds": [
+                "HGNC:18040",
+                "ncbigene:57492",
+                "ensembl:ENSG00000049618",
+                "symbol:ARID1B"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.231766Z",
+    "created": "2023-03-24T13:44:37.472213Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

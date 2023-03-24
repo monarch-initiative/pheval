@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample63",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample63_PMM2",
-                "geneContext": {
-                  "valueId": "ENSG00000140650",
-                  "symbol": "PMM2",
-                  "alternateIds": [
-                    "HGNC:9115",
-                    "ncbigene:5373",
-                    "ensembl:ENSG00000140650",
-                    "symbol:PMM2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000140650",
+              "symbol": "PMM2",
+              "alternateIds": [
+                "HGNC:9115",
+                "ncbigene:5373",
+                "ensembl:ENSG00000140650",
+                "symbol:PMM2"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.587488Z",
+    "created": "2023-03-24T13:44:38.726512Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

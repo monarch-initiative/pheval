@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28679690_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28679690_p2_SPART",
-                "geneContext": {
-                  "valueId": "ENSG00000133104",
-                  "symbol": "SPART",
-                  "alternateIds": [
-                    "HGNC:18514",
-                    "ncbigene:23111",
-                    "ensembl:ENSG00000133104",
-                    "symbol:SPART"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000133104",
+              "symbol": "SPART",
+              "alternateIds": [
+                "HGNC:18514",
+                "ncbigene:23111",
+                "ensembl:ENSG00000133104",
+                "symbol:SPART"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.315485Z",
+    "created": "2023-03-24T13:44:37.852732Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample71",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample71_GNAS",
-                "geneContext": {
-                  "valueId": "ENSG00000087460",
-                  "symbol": "GNAS",
-                  "alternateIds": [
-                    "HGNC:4392",
-                    "ncbigene:2778",
-                    "ensembl:ENSG00000087460",
-                    "symbol:GNAS"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000087460",
+              "symbol": "GNAS",
+              "alternateIds": [
+                "HGNC:4392",
+                "ncbigene:2778",
+                "ensembl:ENSG00000087460",
+                "symbol:GNAS"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.619156Z",
+    "created": "2023-03-24T13:44:38.781195Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -78,20 +78,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30559311",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30559311_BTK",
-                "geneContext": {
-                  "valueId": "ENSG00000010671",
-                  "symbol": "BTK",
-                  "alternateIds": [
-                    "HGNC:1133",
-                    "ncbigene:695",
-                    "ensembl:ENSG00000010671",
-                    "symbol:BTK"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000010671",
+              "symbol": "BTK",
+              "alternateIds": [
+                "HGNC:1133",
+                "ncbigene:695",
+                "ensembl:ENSG00000010671",
+                "symbol:BTK"
+              ]
             }
           }
         ]
@@ -99,7 +94,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.367653Z",
+    "created": "2023-03-24T13:44:37.934735Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

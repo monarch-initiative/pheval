@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample61",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample61_MAF",
-                "geneContext": {
-                  "valueId": "ENSG00000178573",
-                  "symbol": "MAF",
-                  "alternateIds": [
-                    "HGNC:6776",
-                    "ncbigene:4094",
-                    "ensembl:ENSG00000178573",
-                    "symbol:MAF"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000178573",
+              "symbol": "MAF",
+              "alternateIds": [
+                "HGNC:6776",
+                "ncbigene:4094",
+                "ensembl:ENSG00000178573",
+                "symbol:MAF"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.586224Z",
+    "created": "2023-03-24T13:44:38.723763Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

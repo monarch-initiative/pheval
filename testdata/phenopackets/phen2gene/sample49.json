@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample49",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample49_PTPN11",
-                "geneContext": {
-                  "valueId": "ENSG00000179295",
-                  "symbol": "PTPN11",
-                  "alternateIds": [
-                    "HGNC:9644",
-                    "ncbigene:5781",
-                    "ensembl:ENSG00000179295",
-                    "symbol:PTPN11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000179295",
+              "symbol": "PTPN11",
+              "alternateIds": [
+                "HGNC:9644",
+                "ncbigene:5781",
+                "ensembl:ENSG00000179295",
+                "symbol:PTPN11"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.624928Z",
+    "created": "2023-03-24T13:44:38.790291Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

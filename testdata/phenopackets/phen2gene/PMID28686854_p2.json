@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28686854_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28686854_p2_REST",
-                "geneContext": {
-                  "valueId": "ENSG00000084093",
-                  "symbol": "REST",
-                  "alternateIds": [
-                    "HGNC:9966",
-                    "ncbigene:5978",
-                    "ensembl:ENSG00000084093",
-                    "symbol:REST"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000084093",
+              "symbol": "REST",
+              "alternateIds": [
+                "HGNC:9966",
+                "ncbigene:5978",
+                "ensembl:ENSG00000084093",
+                "symbol:REST"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.447378Z",
+    "created": "2023-03-24T13:44:38.156481Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

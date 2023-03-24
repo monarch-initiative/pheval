@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample73",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample73_HNF4A",
-                "geneContext": {
-                  "valueId": "ENSG00000101076",
-                  "symbol": "HNF4A",
-                  "alternateIds": [
-                    "HGNC:5024",
-                    "ncbigene:3172",
-                    "ensembl:ENSG00000101076",
-                    "symbol:HNF4A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000101076",
+              "symbol": "HNF4A",
+              "alternateIds": [
+                "HGNC:5024",
+                "ncbigene:3172",
+                "ensembl:ENSG00000101076",
+                "symbol:HNF4A"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.577381Z",
+    "created": "2023-03-24T13:44:38.560492Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

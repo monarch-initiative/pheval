@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29440180",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29440180_MEN1",
-                "geneContext": {
-                  "valueId": "ENSG00000133895",
-                  "symbol": "MEN1",
-                  "alternateIds": [
-                    "HGNC:7010",
-                    "ncbigene:4221",
-                    "ensembl:ENSG00000133895",
-                    "symbol:MEN1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000133895",
+              "symbol": "MEN1",
+              "alternateIds": [
+                "HGNC:7010",
+                "ncbigene:4221",
+                "ensembl:ENSG00000133895",
+                "symbol:MEN1"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.336323Z",
+    "created": "2023-03-24T13:44:37.882511Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

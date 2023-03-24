@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample51",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample51_TBX3",
-                "geneContext": {
-                  "valueId": "ENSG00000135111",
-                  "symbol": "TBX3",
-                  "alternateIds": [
-                    "HGNC:11602",
-                    "ncbigene:6926",
-                    "ensembl:ENSG00000135111",
-                    "symbol:TBX3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000135111",
+              "symbol": "TBX3",
+              "alternateIds": [
+                "HGNC:11602",
+                "ncbigene:6926",
+                "ensembl:ENSG00000135111",
+                "symbol:TBX3"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.557744Z",
+    "created": "2023-03-24T13:44:38.502004Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

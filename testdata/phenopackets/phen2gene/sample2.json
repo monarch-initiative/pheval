@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample2_AGL",
-                "geneContext": {
-                  "valueId": "ENSG00000162688",
-                  "symbol": "AGL",
-                  "alternateIds": [
-                    "HGNC:321",
-                    "ncbigene:178",
-                    "ensembl:ENSG00000162688",
-                    "symbol:AGL"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000162688",
+              "symbol": "AGL",
+              "alternateIds": [
+                "HGNC:321",
+                "ncbigene:178",
+                "ensembl:ENSG00000162688",
+                "symbol:AGL"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.573043Z",
+    "created": "2023-03-24T13:44:38.552694Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

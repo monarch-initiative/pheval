@@ -132,20 +132,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28050599",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28050599_OPA3",
-                "geneContext": {
-                  "valueId": "ENSG00000125741",
-                  "symbol": "OPA3",
-                  "alternateIds": [
-                    "HGNC:8142",
-                    "ncbigene:80207",
-                    "ensembl:ENSG00000125741",
-                    "symbol:OPA3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000125741",
+              "symbol": "OPA3",
+              "alternateIds": [
+                "HGNC:8142",
+                "ncbigene:80207",
+                "ensembl:ENSG00000125741",
+                "symbol:OPA3"
+              ]
             }
           }
         ]
@@ -153,7 +148,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.303689Z",
+    "created": "2023-03-24T13:44:37.835549Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

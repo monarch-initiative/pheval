@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27148590",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27148590_TMEM87B ",
-                "geneContext": {
-                  "valueId": "ENSG00000153214",
-                  "symbol": "TMEM87B",
-                  "alternateIds": [
-                    "HGNC:25913",
-                    "ncbigene:84910",
-                    "ensembl:ENSG00000153214",
-                    "symbol:TMEM87B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000153214",
+              "symbol": "TMEM87B",
+              "alternateIds": [
+                "HGNC:25913",
+                "ncbigene:84910",
+                "ensembl:ENSG00000153214",
+                "symbol:TMEM87B"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.279885Z",
+    "created": "2023-03-24T13:44:37.680704Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

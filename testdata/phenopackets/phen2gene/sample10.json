@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample10",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample10_DCAF17",
-                "geneContext": {
-                  "valueId": "ENSG00000115827",
-                  "symbol": "DCAF17",
-                  "alternateIds": [
-                    "HGNC:25784",
-                    "ncbigene:80067",
-                    "ensembl:ENSG00000115827",
-                    "symbol:DCAF17"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000115827",
+              "symbol": "DCAF17",
+              "alternateIds": [
+                "HGNC:25784",
+                "ncbigene:80067",
+                "ensembl:ENSG00000115827",
+                "symbol:DCAF17"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.560791Z",
+    "created": "2023-03-24T13:44:38.525557Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

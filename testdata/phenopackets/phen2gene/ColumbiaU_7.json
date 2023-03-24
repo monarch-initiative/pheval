@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_7",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_7_LMNA",
-                "geneContext": {
-                  "valueId": "ENSG00000160789",
-                  "symbol": "LMNA",
-                  "alternateIds": [
-                    "HGNC:6636",
-                    "ncbigene:4000",
-                    "ensembl:ENSG00000160789",
-                    "symbol:LMNA"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000160789",
+              "symbol": "LMNA",
+              "alternateIds": [
+                "HGNC:6636",
+                "ncbigene:4000",
+                "ensembl:ENSG00000160789",
+                "symbol:LMNA"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.237871Z",
+    "created": "2023-03-24T13:44:37.487892Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

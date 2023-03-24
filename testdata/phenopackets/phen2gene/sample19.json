@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample19",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample19_SYNGAP1",
-                "geneContext": {
-                  "valueId": "ENSG00000197283",
-                  "symbol": "SYNGAP1",
-                  "alternateIds": [
-                    "HGNC:11497",
-                    "ncbigene:8831",
-                    "ensembl:ENSG00000197283",
-                    "symbol:SYNGAP1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000197283",
+              "symbol": "SYNGAP1",
+              "alternateIds": [
+                "HGNC:11497",
+                "ncbigene:8831",
+                "ensembl:ENSG00000197283",
+                "symbol:SYNGAP1"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.594208Z",
+    "created": "2023-03-24T13:44:38.739074Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

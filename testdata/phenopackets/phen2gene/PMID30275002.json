@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30275002",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30275002_SMARCA4",
-                "geneContext": {
-                  "valueId": "ENSG00000127616",
-                  "symbol": "SMARCA4",
-                  "alternateIds": [
-                    "HGNC:11100",
-                    "ncbigene:6597",
-                    "ensembl:ENSG00000127616",
-                    "symbol:SMARCA4"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000127616",
+              "symbol": "SMARCA4",
+              "alternateIds": [
+                "HGNC:11100",
+                "ncbigene:6597",
+                "ensembl:ENSG00000127616",
+                "symbol:SMARCA4"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.360065Z",
+    "created": "2023-03-24T13:44:37.920300Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

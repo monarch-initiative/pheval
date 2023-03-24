@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample83",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample83_MECP2",
-                "geneContext": {
-                  "valueId": "ENSG00000169057",
-                  "symbol": "MECP2",
-                  "alternateIds": [
-                    "HGNC:6990",
-                    "ncbigene:4204",
-                    "ensembl:ENSG00000169057",
-                    "symbol:MECP2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000169057",
+              "symbol": "MECP2",
+              "alternateIds": [
+                "HGNC:6990",
+                "ncbigene:4204",
+                "ensembl:ENSG00000169057",
+                "symbol:MECP2"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.604140Z",
+    "created": "2023-03-24T13:44:38.756676Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

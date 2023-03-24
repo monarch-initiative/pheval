@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29437776",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29437776_AIRE",
-                "geneContext": {
-                  "valueId": "ENSG00000160224",
-                  "symbol": "AIRE",
-                  "alternateIds": [
-                    "HGNC:360",
-                    "ncbigene:326",
-                    "ensembl:ENSG00000160224",
-                    "symbol:AIRE"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000160224",
+              "symbol": "AIRE",
+              "alternateIds": [
+                "HGNC:360",
+                "ncbigene:326",
+                "ensembl:ENSG00000160224",
+                "symbol:AIRE"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.333006Z",
+    "created": "2023-03-24T13:44:37.877724Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

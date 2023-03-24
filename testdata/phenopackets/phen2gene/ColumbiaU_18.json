@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_18",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_18_TKT",
-                "geneContext": {
-                  "valueId": "ENSG00000163931",
-                  "symbol": "TKT",
-                  "alternateIds": [
-                    "HGNC:11834",
-                    "ncbigene:7086",
-                    "ensembl:ENSG00000163931",
-                    "symbol:TKT"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000163931",
+              "symbol": "TKT",
+              "alternateIds": [
+                "HGNC:11834",
+                "ncbigene:7086",
+                "ensembl:ENSG00000163931",
+                "symbol:TKT"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.251521Z",
+    "created": "2023-03-24T13:44:37.620685Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

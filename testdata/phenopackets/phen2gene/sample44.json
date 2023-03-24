@@ -102,20 +102,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample44",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample44_HBB",
-                "geneContext": {
-                  "valueId": "ENSG00000244734",
-                  "symbol": "HBB",
-                  "alternateIds": [
-                    "HGNC:4827",
-                    "ncbigene:3043",
-                    "ensembl:ENSG00000244734",
-                    "symbol:HBB"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000244734",
+              "symbol": "HBB",
+              "alternateIds": [
+                "HGNC:4827",
+                "ncbigene:3043",
+                "ensembl:ENSG00000244734",
+                "symbol:HBB"
+              ]
             }
           }
         ]
@@ -123,7 +118,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.642055Z",
+    "created": "2023-03-24T13:44:38.818034Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

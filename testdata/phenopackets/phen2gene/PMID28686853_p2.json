@@ -132,20 +132,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28686853_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28686853_p2_WDR26",
-                "geneContext": {
-                  "valueId": "ENSG00000162923",
-                  "symbol": "WDR26",
-                  "alternateIds": [
-                    "HGNC:21208",
-                    "ncbigene:80232",
-                    "ensembl:ENSG00000162923",
-                    "symbol:WDR26"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000162923",
+              "symbol": "WDR26",
+              "alternateIds": [
+                "HGNC:21208",
+                "ncbigene:80232",
+                "ensembl:ENSG00000162923",
+                "symbol:WDR26"
+              ]
             }
           }
         ]
@@ -153,7 +148,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.465417Z",
+    "created": "2023-03-24T13:44:38.220583Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29695406",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29695406_SOX9",
-                "geneContext": {
-                  "valueId": "ENSG00000125398",
-                  "symbol": "SOX9",
-                  "alternateIds": [
-                    "HGNC:11204",
-                    "ncbigene:6662",
-                    "ensembl:ENSG00000125398",
-                    "symbol:SOX9"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000125398",
+              "symbol": "SOX9",
+              "alternateIds": [
+                "HGNC:11204",
+                "ncbigene:6662",
+                "ensembl:ENSG00000125398",
+                "symbol:SOX9"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.343758Z",
+    "created": "2023-03-24T13:44:37.894022Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

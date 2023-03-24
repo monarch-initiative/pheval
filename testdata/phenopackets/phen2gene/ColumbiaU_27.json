@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_27",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_27_CDKL5",
-                "geneContext": {
-                  "valueId": "ENSG00000008086",
-                  "symbol": "CDKL5",
-                  "alternateIds": [
-                    "HGNC:11411",
-                    "ncbigene:6792",
-                    "ensembl:ENSG00000008086",
-                    "symbol:CDKL5"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000008086",
+              "symbol": "CDKL5",
+              "alternateIds": [
+                "HGNC:11411",
+                "ncbigene:6792",
+                "ensembl:ENSG00000008086",
+                "symbol:CDKL5"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.264810Z",
+    "created": "2023-03-24T13:44:37.648092Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

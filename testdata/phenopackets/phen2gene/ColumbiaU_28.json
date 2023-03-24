@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_28",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_28_POMT1",
-                "geneContext": {
-                  "valueId": "ENSG00000130714",
-                  "symbol": "POMT1",
-                  "alternateIds": [
-                    "HGNC:9202",
-                    "ncbigene:10585",
-                    "ensembl:ENSG00000130714",
-                    "symbol:POMT1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000130714",
+              "symbol": "POMT1",
+              "alternateIds": [
+                "HGNC:9202",
+                "ncbigene:10585",
+                "ensembl:ENSG00000130714",
+                "symbol:POMT1"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.266136Z",
+    "created": "2023-03-24T13:44:37.650095Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

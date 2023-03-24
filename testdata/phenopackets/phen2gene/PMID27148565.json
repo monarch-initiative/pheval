@@ -126,20 +126,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27148565",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27148565_PURA",
-                "geneContext": {
-                  "valueId": "ENSG00000185129",
-                  "symbol": "PURA",
-                  "alternateIds": [
-                    "HGNC:9701",
-                    "ncbigene:5813",
-                    "ensembl:ENSG00000185129",
-                    "symbol:PURA"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000185129",
+              "symbol": "PURA",
+              "alternateIds": [
+                "HGNC:9701",
+                "ncbigene:5813",
+                "ensembl:ENSG00000185129",
+                "symbol:PURA"
+              ]
             }
           }
         ]
@@ -147,7 +142,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.267972Z",
+    "created": "2023-03-24T13:44:37.663772Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

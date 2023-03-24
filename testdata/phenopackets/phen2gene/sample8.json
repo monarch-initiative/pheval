@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample8",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample8_UNC80",
-                "geneContext": {
-                  "valueId": "ENSG00000144406",
-                  "symbol": "UNC80",
-                  "alternateIds": [
-                    "HGNC:26582",
-                    "ncbigene:285175",
-                    "ensembl:ENSG00000144406",
-                    "symbol:UNC80"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000144406",
+              "symbol": "UNC80",
+              "alternateIds": [
+                "HGNC:26582",
+                "ncbigene:285175",
+                "ensembl:ENSG00000144406",
+                "symbol:UNC80"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.563089Z",
+    "created": "2023-03-24T13:44:38.532318Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

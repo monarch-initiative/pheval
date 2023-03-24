@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample12",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample12_COL7A1",
-                "geneContext": {
-                  "valueId": "ENSG00000114270",
-                  "symbol": "COL7A1",
-                  "alternateIds": [
-                    "HGNC:2214",
-                    "ncbigene:1294",
-                    "ensembl:ENSG00000114270",
-                    "symbol:COL7A1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000114270",
+              "symbol": "COL7A1",
+              "alternateIds": [
+                "HGNC:2214",
+                "ncbigene:1294",
+                "ensembl:ENSG00000114270",
+                "symbol:COL7A1"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.605181Z",
+    "created": "2023-03-24T13:44:38.758552Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -120,20 +120,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29970384",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29970384_EFL1",
-                "geneContext": {
-                  "valueId": "ENSG00000140598",
-                  "symbol": "EFL1",
-                  "alternateIds": [
-                    "HGNC:25789",
-                    "ncbigene:79631",
-                    "ensembl:ENSG00000140598",
-                    "symbol:EFL1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000140598",
+              "symbol": "EFL1",
+              "alternateIds": [
+                "HGNC:25789",
+                "ncbigene:79631",
+                "ensembl:ENSG00000140598",
+                "symbol:EFL1"
+              ]
             }
           }
         ]
@@ -141,7 +136,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.349973Z",
+    "created": "2023-03-24T13:44:37.904519Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

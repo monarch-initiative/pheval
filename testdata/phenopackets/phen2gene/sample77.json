@@ -138,20 +138,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample77",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample77_G6PD",
-                "geneContext": {
-                  "valueId": "ENSG00000160211",
-                  "symbol": "G6PD",
-                  "alternateIds": [
-                    "HGNC:4057",
-                    "ncbigene:2539",
-                    "ensembl:ENSG00000160211",
-                    "symbol:G6PD"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000160211",
+              "symbol": "G6PD",
+              "alternateIds": [
+                "HGNC:4057",
+                "ncbigene:2539",
+                "ensembl:ENSG00000160211",
+                "symbol:G6PD"
+              ]
             }
           }
         ]
@@ -159,7 +154,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.570509Z",
+    "created": "2023-03-24T13:44:38.548657Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

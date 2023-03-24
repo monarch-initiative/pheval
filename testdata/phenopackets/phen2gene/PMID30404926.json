@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30404926",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30404926_F13A1",
-                "geneContext": {
-                  "valueId": "ENSG00000124491",
-                  "symbol": "F13A1",
-                  "alternateIds": [
-                    "HGNC:3531",
-                    "ncbigene:2162",
-                    "ensembl:ENSG00000124491",
-                    "symbol:F13A1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000124491",
+              "symbol": "F13A1",
+              "alternateIds": [
+                "HGNC:3531",
+                "ncbigene:2162",
+                "ensembl:ENSG00000124491",
+                "symbol:F13A1"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.364956Z",
+    "created": "2023-03-24T13:44:37.929806Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

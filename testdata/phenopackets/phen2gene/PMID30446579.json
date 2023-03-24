@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30446579",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30446579_PEX26",
-                "geneContext": {
-                  "valueId": "ENSG00000215193",
-                  "symbol": "PEX26",
-                  "alternateIds": [
-                    "HGNC:22965",
-                    "ncbigene:55670",
-                    "ensembl:ENSG00000215193",
-                    "symbol:PEX26"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000215193",
+              "symbol": "PEX26",
+              "alternateIds": [
+                "HGNC:22965",
+                "ncbigene:55670",
+                "ensembl:ENSG00000215193",
+                "symbol:PEX26"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.365728Z",
+    "created": "2023-03-24T13:44:37.931287Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

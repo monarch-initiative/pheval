@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample53",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample53_B3GLCT",
-                "geneContext": {
-                  "valueId": "ENSG00000187676",
-                  "symbol": "B3GLCT",
-                  "alternateIds": [
-                    "HGNC:20207",
-                    "ncbigene:145173",
-                    "ensembl:ENSG00000187676",
-                    "symbol:B3GLCT"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000187676",
+              "symbol": "B3GLCT",
+              "alternateIds": [
+                "HGNC:20207",
+                "ncbigene:145173",
+                "ensembl:ENSG00000187676",
+                "symbol:B3GLCT"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.603118Z",
+    "created": "2023-03-24T13:44:38.754769Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

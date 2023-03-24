@@ -120,20 +120,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30262571",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30262571_CAMK4",
-                "geneContext": {
-                  "valueId": "ENSG00000152495",
-                  "symbol": "CAMK4",
-                  "alternateIds": [
-                    "HGNC:1464",
-                    "ncbigene:814",
-                    "ensembl:ENSG00000152495",
-                    "symbol:CAMK4"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000152495",
+              "symbol": "CAMK4",
+              "alternateIds": [
+                "HGNC:1464",
+                "ncbigene:814",
+                "ensembl:ENSG00000152495",
+                "symbol:CAMK4"
+              ]
             }
           }
         ]
@@ -141,7 +136,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.358004Z",
+    "created": "2023-03-24T13:44:37.916612Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample84",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample84_F8",
-                "geneContext": {
-                  "valueId": "ENSG00000185010",
-                  "symbol": "F8",
-                  "alternateIds": [
-                    "HGNC:3546",
-                    "ncbigene:2157",
-                    "ensembl:ENSG00000185010",
-                    "symbol:F8"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000185010",
+              "symbol": "F8",
+              "alternateIds": [
+                "HGNC:3546",
+                "ncbigene:2157",
+                "ensembl:ENSG00000185010",
+                "symbol:F8"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.558774Z",
+    "created": "2023-03-24T13:44:38.504249Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

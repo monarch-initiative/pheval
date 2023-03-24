@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample11",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample11_CTNNB1",
-                "geneContext": {
-                  "valueId": "ENSG00000168036",
-                  "symbol": "CTNNB1",
-                  "alternateIds": [
-                    "HGNC:2514",
-                    "ncbigene:1499",
-                    "ensembl:ENSG00000168036",
-                    "symbol:CTNNB1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000168036",
+              "symbol": "CTNNB1",
+              "alternateIds": [
+                "HGNC:2514",
+                "ncbigene:1499",
+                "ensembl:ENSG00000168036",
+                "symbol:CTNNB1"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.640612Z",
+    "created": "2023-03-24T13:44:38.815780Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

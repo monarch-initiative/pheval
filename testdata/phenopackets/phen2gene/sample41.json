@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample41",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample41_PACS1",
-                "geneContext": {
-                  "valueId": "ENSG00000175115",
-                  "symbol": "PACS1",
-                  "alternateIds": [
-                    "HGNC:30032",
-                    "ncbigene:55690",
-                    "ensembl:ENSG00000175115",
-                    "symbol:PACS1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000175115",
+              "symbol": "PACS1",
+              "alternateIds": [
+                "HGNC:30032",
+                "ncbigene:55690",
+                "ensembl:ENSG00000175115",
+                "symbol:PACS1"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.634268Z",
+    "created": "2023-03-24T13:44:38.806029Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

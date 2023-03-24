@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample25",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample25_PEX1",
-                "geneContext": {
-                  "valueId": "ENSG00000127980",
-                  "symbol": "PEX1",
-                  "alternateIds": [
-                    "HGNC:8850",
-                    "ncbigene:5189",
-                    "ensembl:ENSG00000127980",
-                    "symbol:PEX1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000127980",
+              "symbol": "PEX1",
+              "alternateIds": [
+                "HGNC:8850",
+                "ncbigene:5189",
+                "ensembl:ENSG00000127980",
+                "symbol:PEX1"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.589662Z",
+    "created": "2023-03-24T13:44:38.731435Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

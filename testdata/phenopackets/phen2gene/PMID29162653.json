@@ -210,20 +210,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29162653",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29162653_EBF3",
-                "geneContext": {
-                  "valueId": "ENSG00000108001",
-                  "symbol": "EBF3",
-                  "alternateIds": [
-                    "HGNC:19087",
-                    "ncbigene:253738",
-                    "ensembl:ENSG00000108001",
-                    "symbol:EBF3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000108001",
+              "symbol": "EBF3",
+              "alternateIds": [
+                "HGNC:19087",
+                "ncbigene:253738",
+                "ensembl:ENSG00000108001",
+                "symbol:EBF3"
+              ]
             }
           }
         ]
@@ -231,7 +226,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.326393Z",
+    "created": "2023-03-24T13:44:37.869115Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

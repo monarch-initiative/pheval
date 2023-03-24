@@ -216,20 +216,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "case6",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "case6_TAF1",
-                "geneContext": {
-                  "valueId": "ENSG00000147133",
-                  "symbol": "TAF1",
-                  "alternateIds": [
-                    "HGNC:11535",
-                    "ncbigene:6872",
-                    "ensembl:ENSG00000147133",
-                    "symbol:TAF1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000147133",
+              "symbol": "TAF1",
+              "alternateIds": [
+                "HGNC:11535",
+                "ncbigene:6872",
+                "ensembl:ENSG00000147133",
+                "symbol:TAF1"
+              ]
             }
           }
         ]
@@ -237,7 +232,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.530183Z",
+    "created": "2023-03-24T13:44:38.331448Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

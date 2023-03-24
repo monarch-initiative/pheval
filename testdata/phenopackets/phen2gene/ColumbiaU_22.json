@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_22",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_22_PTPN11",
-                "geneContext": {
-                  "valueId": "ENSG00000179295",
-                  "symbol": "PTPN11",
-                  "alternateIds": [
-                    "HGNC:9644",
-                    "ncbigene:5781",
-                    "ensembl:ENSG00000179295",
-                    "symbol:PTPN11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000179295",
+              "symbol": "PTPN11",
+              "alternateIds": [
+                "HGNC:9644",
+                "ncbigene:5781",
+                "ensembl:ENSG00000179295",
+                "symbol:PTPN11"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.257784Z",
+    "created": "2023-03-24T13:44:37.636163Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

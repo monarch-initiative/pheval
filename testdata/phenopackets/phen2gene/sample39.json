@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample39",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample39_KMT2A",
-                "geneContext": {
-                  "valueId": "ENSG00000118058",
-                  "symbol": "KMT2A",
-                  "alternateIds": [
-                    "HGNC:7132",
-                    "ncbigene:4297",
-                    "ensembl:ENSG00000118058",
-                    "symbol:KMT2A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000118058",
+              "symbol": "KMT2A",
+              "alternateIds": [
+                "HGNC:7132",
+                "ncbigene:4297",
+                "ensembl:ENSG00000118058",
+                "symbol:KMT2A"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.564409Z",
+    "created": "2023-03-24T13:44:38.536049Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

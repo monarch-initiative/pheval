@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29100085_p7",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29100085_p7_DHX30",
-                "geneContext": {
-                  "valueId": "ENSG00000132153",
-                  "symbol": "DHX30",
-                  "alternateIds": [
-                    "HGNC:16716",
-                    "ncbigene:22907",
-                    "ensembl:ENSG00000132153",
-                    "symbol:DHX30"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000132153",
+              "symbol": "DHX30",
+              "alternateIds": [
+                "HGNC:16716",
+                "ncbigene:22907",
+                "ensembl:ENSG00000132153",
+                "symbol:DHX30"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.405631Z",
+    "created": "2023-03-24T13:44:38.012836Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

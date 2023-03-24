@@ -102,20 +102,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_9",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_9_EHMT1",
-                "geneContext": {
-                  "valueId": "ENSG00000181090",
-                  "symbol": "EHMT1",
-                  "alternateIds": [
-                    "HGNC:24650",
-                    "ncbigene:79813",
-                    "ensembl:ENSG00000181090",
-                    "symbol:EHMT1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000181090",
+              "symbol": "EHMT1",
+              "alternateIds": [
+                "HGNC:24650",
+                "ncbigene:79813",
+                "ensembl:ENSG00000181090",
+                "symbol:EHMT1"
+              ]
             }
           }
         ]
@@ -123,7 +118,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.240361Z",
+    "created": "2023-03-24T13:44:37.493273Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

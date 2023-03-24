@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_21",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_21_HNRNPH2",
-                "geneContext": {
-                  "valueId": "ENSG00000126945",
-                  "symbol": "HNRNPH2",
-                  "alternateIds": [
-                    "HGNC:5042",
-                    "ncbigene:3188",
-                    "ensembl:ENSG00000126945",
-                    "symbol:HNRNPH2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000126945",
+              "symbol": "HNRNPH2",
+              "alternateIds": [
+                "HGNC:5042",
+                "ncbigene:3188",
+                "ensembl:ENSG00000126945",
+                "symbol:HNRNPH2"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.256386Z",
+    "created": "2023-03-24T13:44:37.633127Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

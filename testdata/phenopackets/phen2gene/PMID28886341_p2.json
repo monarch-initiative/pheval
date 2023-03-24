@@ -102,20 +102,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28886341_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28886341_p2_CDK10",
-                "geneContext": {
-                  "valueId": "ENSG00000185324",
-                  "symbol": "CDK10",
-                  "alternateIds": [
-                    "HGNC:1770",
-                    "ncbigene:8558",
-                    "ensembl:ENSG00000185324",
-                    "symbol:CDK10"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000185324",
+              "symbol": "CDK10",
+              "alternateIds": [
+                "HGNC:1770",
+                "ncbigene:8558",
+                "ensembl:ENSG00000185324",
+                "symbol:CDK10"
+              ]
             }
           }
         ]
@@ -123,7 +118,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.379257Z",
+    "created": "2023-03-24T13:44:37.966687Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29728376",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29728376_BTD",
-                "geneContext": {
-                  "valueId": "ENSG00000169814",
-                  "symbol": "BTD",
-                  "alternateIds": [
-                    "HGNC:1122",
-                    "ncbigene:686",
-                    "ensembl:ENSG00000169814",
-                    "symbol:BTD"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000169814",
+              "symbol": "BTD",
+              "alternateIds": [
+                "HGNC:1122",
+                "ncbigene:686",
+                "ensembl:ENSG00000169814",
+                "symbol:BTD"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.344655Z",
+    "created": "2023-03-24T13:44:37.895803Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

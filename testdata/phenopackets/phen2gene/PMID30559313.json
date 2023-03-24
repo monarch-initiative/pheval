@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30559313",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30559313_ADA2",
-                "geneContext": {
-                  "valueId": "ENSG00000093072",
-                  "symbol": "ADA2",
-                  "alternateIds": [
-                    "HGNC:1839",
-                    "ncbigene:51816",
-                    "ensembl:ENSG00000093072",
-                    "symbol:ADA2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000093072",
+              "symbol": "ADA2",
+              "alternateIds": [
+                "HGNC:1839",
+                "ncbigene:51816",
+                "ensembl:ENSG00000093072",
+                "symbol:ADA2"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.368865Z",
+    "created": "2023-03-24T13:44:37.936876Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

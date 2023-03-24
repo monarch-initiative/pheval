@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample59",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample59_WWOX",
-                "geneContext": {
-                  "valueId": "ENSG00000186153",
-                  "symbol": "WWOX",
-                  "alternateIds": [
-                    "HGNC:12799",
-                    "ncbigene:51741",
-                    "ensembl:ENSG00000186153",
-                    "symbol:WWOX"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000186153",
+              "symbol": "WWOX",
+              "alternateIds": [
+                "HGNC:12799",
+                "ncbigene:51741",
+                "ensembl:ENSG00000186153",
+                "symbol:WWOX"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.549045Z",
+    "created": "2023-03-24T13:44:38.461475Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

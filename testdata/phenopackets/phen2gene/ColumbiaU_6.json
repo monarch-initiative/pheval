@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_6",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_6_MYH10",
-                "geneContext": {
-                  "valueId": "ENSG00000133026",
-                  "symbol": "MYH10",
-                  "alternateIds": [
-                    "HGNC:7568",
-                    "ncbigene:4628",
-                    "ensembl:ENSG00000133026",
-                    "symbol:MYH10"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000133026",
+              "symbol": "MYH10",
+              "alternateIds": [
+                "HGNC:7568",
+                "ncbigene:4628",
+                "ensembl:ENSG00000133026",
+                "symbol:MYH10"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.236737Z",
+    "created": "2023-03-24T13:44:37.485022Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

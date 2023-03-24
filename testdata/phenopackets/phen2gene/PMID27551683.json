@@ -144,20 +144,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27551683",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27551683_FGD1",
-                "geneContext": {
-                  "valueId": "ENSG00000102302",
-                  "symbol": "FGD1",
-                  "alternateIds": [
-                    "HGNC:3663",
-                    "ncbigene:2245",
-                    "ensembl:ENSG00000102302",
-                    "symbol:FGD1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000102302",
+              "symbol": "FGD1",
+              "alternateIds": [
+                "HGNC:3663",
+                "ncbigene:2245",
+                "ensembl:ENSG00000102302",
+                "symbol:FGD1"
+              ]
             }
           }
         ]
@@ -165,7 +160,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.283415Z",
+    "created": "2023-03-24T13:44:37.797245Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample76",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample76_EP300",
-                "geneContext": {
-                  "valueId": "ENSG00000100393",
-                  "symbol": "EP300",
-                  "alternateIds": [
-                    "HGNC:3373",
-                    "ncbigene:2033",
-                    "ensembl:ENSG00000100393",
-                    "symbol:EP300"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000100393",
+              "symbol": "EP300",
+              "alternateIds": [
+                "HGNC:3373",
+                "ncbigene:2033",
+                "ensembl:ENSG00000100393",
+                "symbol:EP300"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.574640Z",
+    "created": "2023-03-24T13:44:38.555100Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

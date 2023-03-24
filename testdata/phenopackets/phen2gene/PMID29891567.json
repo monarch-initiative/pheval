@@ -84,20 +84,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29891567",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29891567_ASXL1",
-                "geneContext": {
-                  "valueId": "ENSG00000171456",
-                  "symbol": "ASXL1",
-                  "alternateIds": [
-                    "HGNC:18318",
-                    "ncbigene:171023",
-                    "ensembl:ENSG00000171456",
-                    "symbol:ASXL1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000171456",
+              "symbol": "ASXL1",
+              "alternateIds": [
+                "HGNC:18318",
+                "ncbigene:171023",
+                "ensembl:ENSG00000171456",
+                "symbol:ASXL1"
+              ]
             }
           }
         ]
@@ -105,7 +100,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.345926Z",
+    "created": "2023-03-24T13:44:37.897806Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

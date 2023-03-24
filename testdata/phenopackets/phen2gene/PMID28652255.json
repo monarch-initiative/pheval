@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28652255",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28652255_APTX",
-                "geneContext": {
-                  "valueId": "ENSG00000137074",
-                  "symbol": "APTX",
-                  "alternateIds": [
-                    "HGNC:15984",
-                    "ncbigene:54840",
-                    "ensembl:ENSG00000137074",
-                    "symbol:APTX"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000137074",
+              "symbol": "APTX",
+              "alternateIds": [
+                "HGNC:15984",
+                "ncbigene:54840",
+                "ensembl:ENSG00000137074",
+                "symbol:APTX"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.307830Z",
+    "created": "2023-03-24T13:44:37.843058Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

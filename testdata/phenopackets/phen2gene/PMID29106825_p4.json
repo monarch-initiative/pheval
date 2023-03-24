@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29106825_p4",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29106825_p4_RAB11B",
-                "geneContext": {
-                  "valueId": "ENSG00000185236",
-                  "symbol": "RAB11B",
-                  "alternateIds": [
-                    "HGNC:9761",
-                    "ncbigene:9230",
-                    "ensembl:ENSG00000185236",
-                    "symbol:RAB11B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000185236",
+              "symbol": "RAB11B",
+              "alternateIds": [
+                "HGNC:9761",
+                "ncbigene:9230",
+                "ensembl:ENSG00000185236",
+                "symbol:RAB11B"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.437510Z",
+    "created": "2023-03-24T13:44:38.132429Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

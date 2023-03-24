@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28802248",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28802248_NPC1",
-                "geneContext": {
-                  "valueId": "ENSG00000141458",
-                  "symbol": "NPC1",
-                  "alternateIds": [
-                    "HGNC:7897",
-                    "ncbigene:4864",
-                    "ensembl:ENSG00000141458",
-                    "symbol:NPC1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000141458",
+              "symbol": "NPC1",
+              "alternateIds": [
+                "HGNC:7897",
+                "ncbigene:4864",
+                "ensembl:ENSG00000141458",
+                "symbol:NPC1"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.318951Z",
+    "created": "2023-03-24T13:44:37.858529Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

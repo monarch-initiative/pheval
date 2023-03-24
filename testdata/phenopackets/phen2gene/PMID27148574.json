@@ -174,20 +174,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27148574",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27148574_AHDC1",
-                "geneContext": {
-                  "valueId": "ENSG00000126705",
-                  "symbol": "AHDC1",
-                  "alternateIds": [
-                    "HGNC:25230",
-                    "ncbigene:27245",
-                    "ensembl:ENSG00000126705",
-                    "symbol:AHDC1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000126705",
+              "symbol": "AHDC1",
+              "alternateIds": [
+                "HGNC:25230",
+                "ncbigene:27245",
+                "ensembl:ENSG00000126705",
+                "symbol:AHDC1"
+              ]
             }
           }
         ]
@@ -195,7 +190,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.270497Z",
+    "created": "2023-03-24T13:44:37.668022Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

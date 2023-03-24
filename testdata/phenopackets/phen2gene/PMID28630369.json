@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28630369",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28630369_ALPK3",
-                "geneContext": {
-                  "valueId": "ENSG00000136383",
-                  "symbol": "ALPK3",
-                  "alternateIds": [
-                    "HGNC:17574",
-                    "ncbigene:57538",
-                    "ensembl:ENSG00000136383",
-                    "symbol:ALPK3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000136383",
+              "symbol": "ALPK3",
+              "alternateIds": [
+                "HGNC:17574",
+                "ncbigene:57538",
+                "ensembl:ENSG00000136383",
+                "symbol:ALPK3"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.307010Z",
+    "created": "2023-03-24T13:44:37.841400Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample33",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample33_ANK1",
-                "geneContext": {
-                  "valueId": "ENSG00000029534",
-                  "symbol": "ANK1",
-                  "alternateIds": [
-                    "HGNC:492",
-                    "ncbigene:286",
-                    "ensembl:ENSG00000029534",
-                    "symbol:ANK1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000029534",
+              "symbol": "ANK1",
+              "alternateIds": [
+                "HGNC:492",
+                "ncbigene:286",
+                "ensembl:ENSG00000029534",
+                "symbol:ANK1"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.600753Z",
+    "created": "2023-03-24T13:44:38.750216Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

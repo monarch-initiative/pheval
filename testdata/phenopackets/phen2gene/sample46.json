@@ -78,20 +78,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample46",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample46_DDX11",
-                "geneContext": {
-                  "valueId": "ENSG00000013573",
-                  "symbol": "DDX11",
-                  "alternateIds": [
-                    "HGNC:2736",
-                    "ncbigene:1663",
-                    "ensembl:ENSG00000013573",
-                    "symbol:DDX11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000013573",
+              "symbol": "DDX11",
+              "alternateIds": [
+                "HGNC:2736",
+                "ncbigene:1663",
+                "ensembl:ENSG00000013573",
+                "symbol:DDX11"
+              ]
             }
           }
         ]
@@ -99,7 +94,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.613404Z",
+    "created": "2023-03-24T13:44:38.771481Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

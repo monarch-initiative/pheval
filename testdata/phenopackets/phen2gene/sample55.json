@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample55",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample55_ADSS1",
-                "geneContext": {
-                  "valueId": "ENSG00000185100",
-                  "symbol": "ADSS1",
-                  "alternateIds": [
-                    "HGNC:20093",
-                    "ncbigene:122622",
-                    "ensembl:ENSG00000185100",
-                    "symbol:ADSS1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000185100",
+              "symbol": "ADSS1",
+              "alternateIds": [
+                "HGNC:20093",
+                "ncbigene:122622",
+                "ensembl:ENSG00000185100",
+                "symbol:ADSS1"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.632342Z",
+    "created": "2023-03-24T13:44:38.802664Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28965846_p4",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28965846_p4_FDXR",
-                "geneContext": {
-                  "valueId": "ENSG00000161513",
-                  "symbol": "FDXR",
-                  "alternateIds": [
-                    "HGNC:3642",
-                    "ncbigene:2232",
-                    "ensembl:ENSG00000161513",
-                    "symbol:FDXR"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000161513",
+              "symbol": "FDXR",
+              "alternateIds": [
+                "HGNC:3642",
+                "ncbigene:2232",
+                "ensembl:ENSG00000161513",
+                "symbol:FDXR"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.411466Z",
+    "created": "2023-03-24T13:44:38.023750Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

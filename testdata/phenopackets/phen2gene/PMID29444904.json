@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID29444904",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID29444904_GABRA1",
-                "geneContext": {
-                  "valueId": "ENSG00000022355",
-                  "symbol": "GABRA1",
-                  "alternateIds": [
-                    "HGNC:4075",
-                    "ncbigene:2554",
-                    "ensembl:ENSG00000022355",
-                    "symbol:GABRA1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000022355",
+              "symbol": "GABRA1",
+              "alternateIds": [
+                "HGNC:4075",
+                "ncbigene:2554",
+                "ensembl:ENSG00000022355",
+                "symbol:GABRA1"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.337748Z",
+    "created": "2023-03-24T13:44:37.884657Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

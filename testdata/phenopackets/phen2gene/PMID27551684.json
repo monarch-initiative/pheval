@@ -126,20 +126,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27551684",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27551684_C10ORF2",
-                "geneContext": {
-                  "valueId": "ENSG00000107815",
-                  "symbol": "C10orf2",
-                  "alternateIds": [
-                    "HGNC:1160",
-                    "ncbigene:56652",
-                    "ensembl:ENSG00000107815",
-                    "symbol:TWNK"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000107815",
+              "symbol": "C10orf2",
+              "alternateIds": [
+                "HGNC:1160",
+                "ncbigene:56652",
+                "ensembl:ENSG00000107815",
+                "symbol:TWNK"
+              ]
             }
           }
         ]
@@ -147,7 +142,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.285294Z",
+    "created": "2023-03-24T13:44:37.803204Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

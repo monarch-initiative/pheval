@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample7",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample7_SCN1A",
-                "geneContext": {
-                  "valueId": "ENSG00000144285",
-                  "symbol": "SCN1A",
-                  "alternateIds": [
-                    "HGNC:10585",
-                    "ncbigene:6323",
-                    "ensembl:ENSG00000144285",
-                    "symbol:SCN1A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000144285",
+              "symbol": "SCN1A",
+              "alternateIds": [
+                "HGNC:10585",
+                "ncbigene:6323",
+                "ensembl:ENSG00000144285",
+                "symbol:SCN1A"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.552022Z",
+    "created": "2023-03-24T13:44:38.479352Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

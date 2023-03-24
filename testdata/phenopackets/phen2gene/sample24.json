@@ -42,20 +42,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample24",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample24_TWIST1",
-                "geneContext": {
-                  "valueId": "ENSG00000122691",
-                  "symbol": "TWIST1",
-                  "alternateIds": [
-                    "HGNC:12428",
-                    "ncbigene:7291",
-                    "ensembl:ENSG00000122691",
-                    "symbol:TWIST1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000122691",
+              "symbol": "TWIST1",
+              "alternateIds": [
+                "HGNC:12428",
+                "ncbigene:7291",
+                "ensembl:ENSG00000122691",
+                "symbol:TWIST1"
+              ]
             }
           }
         ]
@@ -63,7 +58,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.626698Z",
+    "created": "2023-03-24T13:44:38.793528Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

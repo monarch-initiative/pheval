@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample50",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample50_ARID2",
-                "geneContext": {
-                  "valueId": "ENSG00000189079",
-                  "symbol": "ARID2",
-                  "alternateIds": [
-                    "HGNC:18037",
-                    "ncbigene:196528",
-                    "ensembl:ENSG00000189079",
-                    "symbol:ARID2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000189079",
+              "symbol": "ARID2",
+              "alternateIds": [
+                "HGNC:18037",
+                "ncbigene:196528",
+                "ensembl:ENSG00000189079",
+                "symbol:ARID2"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.582923Z",
+    "created": "2023-03-24T13:44:38.713725Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

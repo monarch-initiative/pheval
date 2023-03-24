@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample82",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample82_ABCD1",
-                "geneContext": {
-                  "valueId": "ENSG00000101986",
-                  "symbol": "ABCD1",
-                  "alternateIds": [
-                    "HGNC:61",
-                    "ncbigene:215",
-                    "ensembl:ENSG00000101986",
-                    "symbol:ABCD1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000101986",
+              "symbol": "ABCD1",
+              "alternateIds": [
+                "HGNC:61",
+                "ncbigene:215",
+                "ensembl:ENSG00000101986",
+                "symbol:ABCD1"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.583725Z",
+    "created": "2023-03-24T13:44:38.716753Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

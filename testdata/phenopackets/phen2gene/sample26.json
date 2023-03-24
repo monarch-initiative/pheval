@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample26",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample26_AUTS2",
-                "geneContext": {
-                  "valueId": "ENSG00000158321",
-                  "symbol": "AUTS2",
-                  "alternateIds": [
-                    "HGNC:14262",
-                    "ncbigene:26053",
-                    "ensembl:ENSG00000158321",
-                    "symbol:AUTS2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000158321",
+              "symbol": "AUTS2",
+              "alternateIds": [
+                "HGNC:14262",
+                "ncbigene:26053",
+                "ensembl:ENSG00000158321",
+                "symbol:AUTS2"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.597509Z",
+    "created": "2023-03-24T13:44:38.744618Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

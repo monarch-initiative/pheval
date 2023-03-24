@@ -120,20 +120,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27900361",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27900361_ANKRD11",
-                "geneContext": {
-                  "valueId": "ENSG00000167522",
-                  "symbol": "ANKRD11",
-                  "alternateIds": [
-                    "HGNC:21316",
-                    "ncbigene:29123",
-                    "ensembl:ENSG00000167522",
-                    "symbol:ANKRD11"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000167522",
+              "symbol": "ANKRD11",
+              "alternateIds": [
+                "HGNC:21316",
+                "ncbigene:29123",
+                "ensembl:ENSG00000167522",
+                "symbol:ANKRD11"
+              ]
             }
           }
         ]
@@ -141,7 +136,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.295032Z",
+    "created": "2023-03-24T13:44:37.820116Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

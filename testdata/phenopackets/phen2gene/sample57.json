@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample57",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample57_EIF2AK4",
-                "geneContext": {
-                  "valueId": "ENSG00000128829",
-                  "symbol": "EIF2AK4",
-                  "alternateIds": [
-                    "HGNC:19687",
-                    "ncbigene:440275",
-                    "ensembl:ENSG00000128829",
-                    "symbol:EIF2AK4"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000128829",
+              "symbol": "EIF2AK4",
+              "alternateIds": [
+                "HGNC:19687",
+                "ncbigene:440275",
+                "ensembl:ENSG00000128829",
+                "symbol:EIF2AK4"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.566536Z",
+    "created": "2023-03-24T13:44:38.541131Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

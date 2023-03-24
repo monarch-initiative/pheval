@@ -66,20 +66,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample21",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample21_MMUT",
-                "geneContext": {
-                  "valueId": "ENSG00000146085",
-                  "symbol": "MMUT",
-                  "alternateIds": [
-                    "HGNC:7526",
-                    "ncbigene:4594",
-                    "ensembl:ENSG00000146085",
-                    "symbol:MMUT"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000146085",
+              "symbol": "MMUT",
+              "alternateIds": [
+                "HGNC:7526",
+                "ncbigene:4594",
+                "ensembl:ENSG00000146085",
+                "symbol:MMUT"
+              ]
             }
           }
         ]
@@ -87,7 +82,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.612068Z",
+    "created": "2023-03-24T13:44:38.769314Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -108,20 +108,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_2_COL10A1",
-                "geneContext": {
-                  "valueId": "ENSG00000123500",
-                  "symbol": "COL10A1",
-                  "alternateIds": [
-                    "HGNC:2185",
-                    "ncbigene:1300",
-                    "ensembl:ENSG00000123500",
-                    "symbol:COL10A1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000123500",
+              "symbol": "COL10A1",
+              "alternateIds": [
+                "HGNC:2185",
+                "ncbigene:1300",
+                "ensembl:ENSG00000123500",
+                "symbol:COL10A1"
+              ]
             }
           }
         ]
@@ -129,7 +124,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.230022Z",
+    "created": "2023-03-24T13:44:37.441108Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample38",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample38_KAT6B",
-                "geneContext": {
-                  "valueId": "ENSG00000156650",
-                  "symbol": "KAT6B",
-                  "alternateIds": [
-                    "HGNC:17582",
-                    "ncbigene:23522",
-                    "ensembl:ENSG00000156650",
-                    "symbol:KAT6B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000156650",
+              "symbol": "KAT6B",
+              "alternateIds": [
+                "HGNC:17582",
+                "ncbigene:23522",
+                "ensembl:ENSG00000156650",
+                "symbol:KAT6B"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.630098Z",
+    "created": "2023-03-24T13:44:38.799004Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

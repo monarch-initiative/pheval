@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30275003",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30275003_SPTA1",
-                "geneContext": {
-                  "valueId": "ENSG00000163554",
-                  "symbol": "SPTA1",
-                  "alternateIds": [
-                    "HGNC:11272",
-                    "ncbigene:6708",
-                    "ensembl:ENSG00000163554",
-                    "symbol:SPTA1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000163554",
+              "symbol": "SPTA1",
+              "alternateIds": [
+                "HGNC:11272",
+                "ncbigene:6708",
+                "ensembl:ENSG00000163554",
+                "symbol:SPTA1"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.361116Z",
+    "created": "2023-03-24T13:44:37.922258Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

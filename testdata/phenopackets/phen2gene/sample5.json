@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample5",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample5_NPHS2",
-                "geneContext": {
-                  "valueId": "ENSG00000116218",
-                  "symbol": "NPHS2",
-                  "alternateIds": [
-                    "HGNC:13394",
-                    "ncbigene:7827",
-                    "ensembl:ENSG00000116218",
-                    "symbol:NPHS2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000116218",
+              "symbol": "NPHS2",
+              "alternateIds": [
+                "HGNC:13394",
+                "ncbigene:7827",
+                "ensembl:ENSG00000116218",
+                "symbol:NPHS2"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.617214Z",
+    "created": "2023-03-24T13:44:38.777882Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

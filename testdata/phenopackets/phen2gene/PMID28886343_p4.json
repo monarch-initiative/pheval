@@ -30,20 +30,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28886343_p4",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28886343_p4_GRM1",
-                "geneContext": {
-                  "valueId": "ENSG00000152822",
-                  "symbol": "GRM1",
-                  "alternateIds": [
-                    "HGNC:4593",
-                    "ncbigene:2911",
-                    "ensembl:ENSG00000152822",
-                    "symbol:GRM1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000152822",
+              "symbol": "GRM1",
+              "alternateIds": [
+                "HGNC:4593",
+                "ncbigene:2911",
+                "ensembl:ENSG00000152822",
+                "symbol:GRM1"
+              ]
             }
           }
         ]
@@ -51,7 +46,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.418329Z",
+    "created": "2023-03-24T13:44:38.036770Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -138,20 +138,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30068732",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30068732_SDHA",
-                "geneContext": {
-                  "valueId": "ENSG00000073578",
-                  "symbol": "SDHA",
-                  "alternateIds": [
-                    "HGNC:10680",
-                    "ncbigene:6389",
-                    "ensembl:ENSG00000073578",
-                    "symbol:SDHA"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000073578",
+              "symbol": "SDHA",
+              "alternateIds": [
+                "HGNC:10680",
+                "ncbigene:6389",
+                "ensembl:ENSG00000073578",
+                "symbol:SDHA"
+              ]
             }
           }
         ]
@@ -159,7 +154,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.354891Z",
+    "created": "2023-03-24T13:44:37.911888Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

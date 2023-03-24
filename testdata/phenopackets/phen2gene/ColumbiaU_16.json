@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_16",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_16_PTEN",
-                "geneContext": {
-                  "valueId": "ENSG00000171862",
-                  "symbol": "PTEN",
-                  "alternateIds": [
-                    "HGNC:9588",
-                    "ncbigene:5728",
-                    "ensembl:ENSG00000171862",
-                    "symbol:PTEN"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000171862",
+              "symbol": "PTEN",
+              "alternateIds": [
+                "HGNC:9588",
+                "ncbigene:5728",
+                "ensembl:ENSG00000171862",
+                "symbol:PTEN"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.248234Z",
+    "created": "2023-03-24T13:44:37.579949Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

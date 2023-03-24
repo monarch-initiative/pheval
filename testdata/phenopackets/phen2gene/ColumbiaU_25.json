@@ -90,20 +90,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "ColumbiaU_25",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "ColumbiaU_25_SHH",
-                "geneContext": {
-                  "valueId": "ENSG00000164690",
-                  "symbol": "SHH",
-                  "alternateIds": [
-                    "HGNC:10848",
-                    "ncbigene:6469",
-                    "ensembl:ENSG00000164690",
-                    "symbol:SHH"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000164690",
+              "symbol": "SHH",
+              "alternateIds": [
+                "HGNC:10848",
+                "ncbigene:6469",
+                "ensembl:ENSG00000164690",
+                "symbol:SHH"
+              ]
             }
           }
         ]
@@ -111,7 +106,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.262642Z",
+    "created": "2023-03-24T13:44:37.643731Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

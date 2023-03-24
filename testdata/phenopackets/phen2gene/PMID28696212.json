@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28696212",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28696212_SLC19A3",
-                "geneContext": {
-                  "valueId": "ENSG00000135917",
-                  "symbol": "SLC19A3",
-                  "alternateIds": [
-                    "HGNC:16266",
-                    "ncbigene:80704",
-                    "ensembl:ENSG00000135917",
-                    "symbol:SLC19A3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000135917",
+              "symbol": "SLC19A3",
+              "alternateIds": [
+                "HGNC:16266",
+                "ncbigene:80704",
+                "ensembl:ENSG00000135917",
+                "symbol:SLC19A3"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.317544Z",
+    "created": "2023-03-24T13:44:37.856320Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

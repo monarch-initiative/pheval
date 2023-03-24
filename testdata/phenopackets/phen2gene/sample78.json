@@ -54,20 +54,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample78",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample78_WDR45",
-                "geneContext": {
-                  "valueId": "ENSG00000196998",
-                  "symbol": "WDR45",
-                  "alternateIds": [
-                    "HGNC:28912",
-                    "ncbigene:11152",
-                    "ensembl:ENSG00000196998",
-                    "symbol:WDR45"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000196998",
+              "symbol": "WDR45",
+              "alternateIds": [
+                "HGNC:28912",
+                "ncbigene:11152",
+                "ensembl:ENSG00000196998",
+                "symbol:WDR45"
+              ]
             }
           }
         ]
@@ -75,7 +70,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.601940Z",
+    "created": "2023-03-24T13:44:38.752694Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

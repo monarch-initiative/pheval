@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample70",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample70_IL12RB1",
-                "geneContext": {
-                  "valueId": "ENSG00000096996",
-                  "symbol": "IL12RB1",
-                  "alternateIds": [
-                    "HGNC:5971",
-                    "ncbigene:3594",
-                    "ensembl:ENSG00000096996",
-                    "symbol:IL12RB1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000096996",
+              "symbol": "IL12RB1",
+              "alternateIds": [
+                "HGNC:5971",
+                "ncbigene:3594",
+                "ensembl:ENSG00000096996",
+                "symbol:IL12RB1"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.555780Z",
+    "created": "2023-03-24T13:44:38.490681Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

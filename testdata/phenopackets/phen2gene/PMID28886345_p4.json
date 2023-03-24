@@ -18,20 +18,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28886345_p4",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28886345_p4_RAC1",
-                "geneContext": {
-                  "valueId": "ENSG00000136238",
-                  "symbol": "RAC1",
-                  "alternateIds": [
-                    "HGNC:9801",
-                    "ncbigene:5879",
-                    "ensembl:ENSG00000136238",
-                    "symbol:RAC1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000136238",
+              "symbol": "RAC1",
+              "alternateIds": [
+                "HGNC:9801",
+                "ncbigene:5879",
+                "ensembl:ENSG00000136238",
+                "symbol:RAC1"
+              ]
             }
           }
         ]
@@ -39,7 +34,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.442573Z",
+    "created": "2023-03-24T13:44:38.142067Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

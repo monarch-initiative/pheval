@@ -114,20 +114,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample68",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample68_ATP1A3",
-                "geneContext": {
-                  "valueId": "ENSG00000105409",
-                  "symbol": "ATP1A3",
-                  "alternateIds": [
-                    "HGNC:801",
-                    "ncbigene:478",
-                    "ensembl:ENSG00000105409",
-                    "symbol:ATP1A3"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000105409",
+              "symbol": "ATP1A3",
+              "alternateIds": [
+                "HGNC:801",
+                "ncbigene:478",
+                "ensembl:ENSG00000105409",
+                "symbol:ATP1A3"
+              ]
             }
           }
         ]
@@ -135,7 +130,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.581606Z",
+    "created": "2023-03-24T13:44:38.709589Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

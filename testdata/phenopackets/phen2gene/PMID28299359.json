@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28299359",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28299359_AIFM1",
-                "geneContext": {
-                  "valueId": "ENSG00000156709",
-                  "symbol": "AIFM1",
-                  "alternateIds": [
-                    "HGNC:8768",
-                    "ncbigene:9131",
-                    "ensembl:ENSG00000156709",
-                    "symbol:AIFM1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000156709",
+              "symbol": "AIFM1",
+              "alternateIds": [
+                "HGNC:8768",
+                "ncbigene:9131",
+                "ensembl:ENSG00000156709",
+                "symbol:AIFM1"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.306006Z",
+    "created": "2023-03-24T13:44:37.839556Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

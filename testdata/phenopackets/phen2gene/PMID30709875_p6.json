@@ -24,20 +24,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30709875_p6",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30709875_p6_TP53",
-                "geneContext": {
-                  "valueId": "ENSG00000141510",
-                  "symbol": "TP53",
-                  "alternateIds": [
-                    "HGNC:11998",
-                    "ncbigene:7157",
-                    "ensembl:ENSG00000141510",
-                    "symbol:TP53"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000141510",
+              "symbol": "TP53",
+              "alternateIds": [
+                "HGNC:11998",
+                "ncbigene:7157",
+                "ensembl:ENSG00000141510",
+                "symbol:TP53"
+              ]
             }
           }
         ]
@@ -45,7 +40,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.375074Z",
+    "created": "2023-03-24T13:44:37.947742Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -60,20 +60,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27900368",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27900368_SCNN1B",
-                "geneContext": {
-                  "valueId": "ENSG00000168447",
-                  "symbol": "SCNN1B",
-                  "alternateIds": [
-                    "HGNC:10600",
-                    "ncbigene:6338",
-                    "ensembl:ENSG00000168447",
-                    "symbol:SCNN1B"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000168447",
+              "symbol": "SCNN1B",
+              "alternateIds": [
+                "HGNC:10600",
+                "ncbigene:6338",
+                "ensembl:ENSG00000168447",
+                "symbol:SCNN1B"
+              ]
             }
           }
         ]
@@ -81,7 +76,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.300581Z",
+    "created": "2023-03-24T13:44:37.830309Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

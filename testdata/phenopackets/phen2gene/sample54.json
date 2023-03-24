@@ -48,20 +48,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample54",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample54_TSHR",
-                "geneContext": {
-                  "valueId": "ENSG00000165409",
-                  "symbol": "TSHR",
-                  "alternateIds": [
-                    "HGNC:12373",
-                    "ncbigene:7253",
-                    "ensembl:ENSG00000165409",
-                    "symbol:TSHR"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000165409",
+              "symbol": "TSHR",
+              "alternateIds": [
+                "HGNC:12373",
+                "ncbigene:7253",
+                "ensembl:ENSG00000165409",
+                "symbol:TSHR"
+              ]
             }
           }
         ]
@@ -69,7 +64,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.559830Z",
+    "created": "2023-03-24T13:44:38.506532Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

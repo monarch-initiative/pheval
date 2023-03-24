@@ -96,20 +96,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27551680",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27551680_C3AR1",
-                "geneContext": {
-                  "valueId": "ENSG00000171860",
-                  "symbol": "C3AR1",
-                  "alternateIds": [
-                    "HGNC:1319",
-                    "ncbigene:719",
-                    "ensembl:ENSG00000171860",
-                    "symbol:C3AR1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000171860",
+              "symbol": "C3AR1",
+              "alternateIds": [
+                "HGNC:1319",
+                "ncbigene:719",
+                "ensembl:ENSG00000171860",
+                "symbol:C3AR1"
+              ]
             }
           }
         ]
@@ -117,7 +112,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.281374Z",
+    "created": "2023-03-24T13:44:37.683066Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

@@ -18,20 +18,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID30301868",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID30301868_PTEN",
-                "geneContext": {
-                  "valueId": "ENSG00000171862",
-                  "symbol": "PTEN",
-                  "alternateIds": [
-                    "HGNC:9588",
-                    "ncbigene:5728",
-                    "ensembl:ENSG00000171862",
-                    "symbol:PTEN"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000171862",
+              "symbol": "PTEN",
+              "alternateIds": [
+                "HGNC:9588",
+                "ncbigene:5728",
+                "ensembl:ENSG00000171862",
+                "symbol:PTEN"
+              ]
             }
           }
         ]
@@ -39,7 +34,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.364182Z",
+    "created": "2023-03-24T13:44:37.928222Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

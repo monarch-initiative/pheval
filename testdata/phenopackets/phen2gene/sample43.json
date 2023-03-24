@@ -72,20 +72,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample43",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample43_WT1",
-                "geneContext": {
-                  "valueId": "ENSG00000184937",
-                  "symbol": "WT1",
-                  "alternateIds": [
-                    "HGNC:12796",
-                    "ncbigene:7490",
-                    "ensembl:ENSG00000184937",
-                    "symbol:WT1"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000184937",
+              "symbol": "WT1",
+              "alternateIds": [
+                "HGNC:12796",
+                "ncbigene:7490",
+                "ensembl:ENSG00000184937",
+                "symbol:WT1"
+              ]
             }
           }
         ]
@@ -93,7 +88,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.578606Z",
+    "created": "2023-03-24T13:44:38.562535Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

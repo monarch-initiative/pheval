@@ -78,20 +78,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID27900360",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID27900360_SCN8A",
-                "geneContext": {
-                  "valueId": "ENSG00000196876",
-                  "symbol": "SCN8A",
-                  "alternateIds": [
-                    "HGNC:10596",
-                    "ncbigene:6334",
-                    "ensembl:ENSG00000196876",
-                    "symbol:SCN8A"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000196876",
+              "symbol": "SCN8A",
+              "alternateIds": [
+                "HGNC:10596",
+                "ncbigene:6334",
+                "ensembl:ENSG00000196876",
+                "symbol:SCN8A"
+              ]
             }
           }
         ]
@@ -99,7 +94,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.293171Z",
+    "created": "2023-03-24T13:44:37.817190Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

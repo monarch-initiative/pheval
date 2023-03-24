@@ -36,20 +36,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "sample9",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "sample9_ACTG2",
-                "geneContext": {
-                  "valueId": "ENSG00000163017",
-                  "symbol": "ACTG2",
-                  "alternateIds": [
-                    "HGNC:145",
-                    "ncbigene:72",
-                    "ensembl:ENSG00000163017",
-                    "symbol:ACTG2"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000163017",
+              "symbol": "ACTG2",
+              "alternateIds": [
+                "HGNC:145",
+                "ncbigene:72",
+                "ensembl:ENSG00000163017",
+                "symbol:ACTG2"
+              ]
             }
           }
         ]
@@ -57,7 +52,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.625778Z",
+    "created": "2023-03-24T13:44:38.791959Z",
     "createdBy": "pheval-converter",
     "resources": [
       {

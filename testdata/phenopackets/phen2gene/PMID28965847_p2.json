@@ -78,20 +78,15 @@
         "genomicInterpretations": [
           {
             "subjectOrBiosampleId": "PMID28965847_p2",
-            "variantInterpretation": {
-              "variationDescriptor": {
-                "id": "PMID28965847_p2_SUFU",
-                "geneContext": {
-                  "valueId": "ENSG00000107882",
-                  "symbol": "SUFU",
-                  "alternateIds": [
-                    "HGNC:16466",
-                    "ncbigene:51684",
-                    "ensembl:ENSG00000107882",
-                    "symbol:SUFU"
-                  ]
-                }
-              }
+            "gene": {
+              "valueId": "ENSG00000107882",
+              "symbol": "SUFU",
+              "alternateIds": [
+                "HGNC:16466",
+                "ncbigene:51684",
+                "ensembl:ENSG00000107882",
+                "symbol:SUFU"
+              ]
             }
           }
         ]
@@ -99,7 +94,7 @@
     }
   ],
   "metaData": {
-    "created": "2023-03-21T12:33:06.451228Z",
+    "created": "2023-03-24T13:44:38.194345Z",
     "createdBy": "pheval-converter",
     "resources": [
       {
