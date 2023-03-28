@@ -1,0 +1,221 @@
+{
+  "id": "author-1995-7553855-CLN3-proband",
+  "subject": {
+    "id": "proband",
+    "dateOfBirth": "1970-01-01T00:00:00Z",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P11Y"
+      }
+    },
+    "sex": "MALE",
+    "karyotypicSex": "UNKNOWN_KARYOTYPE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [{
+    "type": {
+      "id": "HP:0002312",
+      "label": "Clumsiness"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0002120",
+      "label": "Cerebral cortical atrophy"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0000505",
+      "label": "Visual impairment"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0001290",
+      "label": "Generalized hypotonia"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0001272",
+      "label": "Cerebellar atrophy"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0001922",
+      "label": "Vacuolated lymphocytes"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0001250",
+      "label": "Seizure"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:7553855",
+        "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+      }
+    }]
+  }],
+  "interpretations": [{
+    "id": "author-1995-7553855-CLN3-proband",
+    "progressStatus": "SOLVED",
+    "diagnosis": {
+      "disease": {
+        "id": "OMIM:204200",
+        "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 3; CLN3"
+      },
+      "genomicInterpretations": [{
+        "subjectOrBiosampleId": "proband",
+        "interpretationStatus": "CAUSATIVE",
+        "variantInterpretation": {
+          "acmgPathogenicityClassification": "NOT_PROVIDED",
+          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
+          "variationDescriptor": {
+            "id": "40d7503b42d2dd068d61b72660c6ba48",
+            "vcfRecord": {
+              "genomeAssembly": "GRCh38",
+              "chrom": "16",
+              "pos": "28480659",
+              "ref": "GGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACCAGGACTGGCCAAGTTCCTAAATTTCAAAGGCAGAAGACTTTCCTGTCACAGTTGACAGTTTATTGTAACAGTTACCTGCAGGGGCTGTGGATTTGTAACCTTGAAACAATGAATGCTGGTTATATGAAACTCCTTTTATTAGACTGTTGTAAGGAAGGGTGTTTGCGCCCTTAAAGCTGTAAACTACTGTTTGCCAAGGGCAGTTGAATTTGCTCACCACCCTCAAGATAAATAACCCACTGACTTCAAAGTCACCAATTCTATTATAATTAACTATCTAGAATAAAAGAACTGTACATTTTCTTATAGTTAGAAACATTATTTGAAAGCCTGTCTCTTTGCCTGAGGTAAATGACCTATGATCATGCCACTGTACTCCAGCCTAGGCGACAGAGGAAGGTTCCGACTTTTCCTTTCTTTTTTCTTTTTCTGGGAGACAGGGTCTCGCTCTATTGCCTAGGCTGGAGTGCAGTGGCATGACCTTGGTTACTGCAGCCTTGACCTCATGGGTTCAAGTGATCCTCCCACCTCAGCTTCCCAGTAGCTAAGACTACAGGTGTGCGCCACTGCACCTGGCTAATTTTTGTAGAGATGTGATTGTGCCATGTTGCCCAGGCTGGACTTGAACTACCAAGCTCAAATGATCCACCTGCCTCAGCCTCCCATAGTGCTGGGATTACAGGCATGAGCCACCTGGCCCGGCCCAATCCCAATGCTTAAAACACACACACACACACACACACACACACACACACACGCACACACACACACACACACACTACAAAATCTTGTTCTTCGATTCTTTCTCTCATCTCTATTTCTTACAACTACCCTGAAAAATAGGTATTGGCCACACCCAATTTATACATGAGGAAATTGAGGCTCAGAGAGGTTCTGAGACCTGCCCTAAGTCACACAGTGGCTGAGTACTGAAGCTCAGTTTTGCTTGGCTCCTGAGGCTATACATTTTACATGGAGCTCTGCTGGACTTTGGTTCCCTGTGCTAAGAAATGATAGTGTACAATTTACACTTCCCTGTAATCCCAGCACTTTGGGAGGCTGAGGCCGGCAGATCACCTGAGGTCAAGAGTTCAAGACCAGCCAATATGGCAAAATCCCATCTCTACTAAAAATACAAAAATTAGCCAGGTATGGTGGCGGGCGCCTGTAATCCCAGCTACTCAGGAGACTGAGGCAGGAGAGTCACTTGAACCCGGGAGGCAGAGGTTGCAGTAAGCCAAGATTGCGCTACTGCACTCCAGCCTGGACGACAGAGCGAGACTCTGTCTCAAAAAAAAAAAAAAAAATTTACACTTCCCACTGATAGTGGGAAGCAGGGGGTTTGGGGAAGCTGGGAGCCAAGCTGGGAGCCAAGGTGGGAGTGAAGTGAGGGGCAGGGGTTTGGTACCTGCAGCAGGGCCAGGGCCCAGGTGAAACGGATGCGACAGCAGCGGAGAGAAGAGCGGGAGGCAAAGACGCCAGCCTGGTACAGCATCTGGTACCTGAGGTTAGGGTTGGGGGGAGGAGAGGAGGCTCCTCCAGGGACCATCCCGCTCCCCCCGGTGCCTACTGGGCAGGGCAGCTGCATCACCACGGCGCCCTCCCAGCCCACTGCCCTCGCTCCTCTTACCAGCGGTATTGCTGAGCGTGACTCAGGGAAGTGTTCCAGAAAAAGAGGAGTTCAAACTGCAACAAATACCAGACAGGGGAGATGGACGGGGCTGTGTGGGTCCCAGCCCCAATCGCCACCTCCACACCCCTCCTAGCACCCCTCACTTACAAGTCCCTGGTTAATGAAATACTCGGCAAAGTAAACTACGACCAAGGGAACAATGTACCACAGCAGACCCTGGAAAAGGCAGAAGATATAAGCGGGGGGCCTGGAGGTGAGCAAGCCCCACAGGGACATACCCCAGCCATCATCCGAACCTTGAACACTGTCCACCTTTCCCGAAGGGAGAGGCTGGAGCTGGAGCCTGCAGGGGAACAGAGAGAGAAGGGCAGATGAAGTTTTCACACTGAAGACTCGGCAAAGAGGCACCGGTATGACAGAATTAACCAGACCACGCAACAGTGGGAACTCACTTCCATGCCACTGGATTGGACACTTAAAAATGGTTAAAATGGCTGGGCGCAGTGGCTCATGCTTGTAATCCCAGCACCTTGGGAGACTGAGGTGGGCGGATCACCTGAGGTCAGGAGTTCAAGACCACCCTGGCCAACATGGAGAAACCCCATCTCTACTAAAAATACAAAAATTAGCCATGTGTGGTGGCAGGTGTCTGTAGTCCCAGCTACTCGGGTGGCTGAGGCAGGAGAATCACTTGAACCCAGGAGGCAGAGGTTGTAGTGAGCTGAGATTGCGCCATTGCACTCCAGCCTGGGCAACAAGAGCGAAACTCCACCTCAAAAAAATAAAGTAAGATAAAAAATAATAAAATGGTAAACTTCAAGTAATATACATACTTTATCATGATGAAAATAAAAGCTAACCAGGTGAGACCTCTTCACGTCTCTTTGATTTTTAATTTTTTTTATTTTTTGAGACAGAGTCTCACTCAGTTGCCCAGGCTGCAGTGCAGTGGTGCAATCTCAGCTCACTGCAGCCTCTGCCTCCTGGGTTCAAGTGATTCTCGTGCCTCAGCTTCCCAAGTAGCTGGGACTACAGGCATGCACCACCACACCTGGCTAATTTTTTTATTTTTAGTAGAGACGGGGTTTTACCATGTTGGCCAGACTGGTCTCAAACTCTTGATCTCAAATGATCCATCTGCCTCA",
+              "alt": "G"
+            },
+            "moleculeContext": "genomic",
+            "allelicState": {
+              "id": "GENO:0000136",
+              "label": "homozygous"
+            }
+          }
+        }
+      }]
+    }
+  }],
+  "diseases": [{
+    "term": {
+      "id": "OMIM:204200",
+      "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 3; CLN3"
+    },
+    "excluded": false
+  }],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [{
+      "id": "hp",
+      "name": "human phenotype ontology",
+      "url": "http://purl.obolibrary.org/obo/hp.owl",
+      "version": "2018-03-08",
+      "namespacePrefix": "HP",
+      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+    }, {
+      "id": "pato",
+      "name": "Phenotype And Trait Ontology",
+      "url": "http://purl.obolibrary.org/obo/pato.owl",
+      "version": "2018-03-28",
+      "namespacePrefix": "PATO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+    }, {
+      "id": "geno",
+      "name": "Genotype Ontology",
+      "url": "http://purl.obolibrary.org/obo/geno.owl",
+      "version": "19-03-2018",
+      "namespacePrefix": "GENO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+    }, {
+      "id": "ncbitaxon",
+      "name": "NCBI organismal classification",
+      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "version": "2018-03-02",
+      "namespacePrefix": "NCBITaxon"
+    }, {
+      "id": "eco",
+      "name": "Evidence and Conclusion Ontology",
+      "url": "http://purl.obolibrary.org/obo/eco.owl",
+      "version": "2018-11-10",
+      "namespacePrefix": "ECO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+    }, {
+      "id": "omim",
+      "name": "Online Mendelian Inheritance in Man",
+      "url": "https://www.omim.org",
+      "namespacePrefix": "OMIM"
+    }],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [{
+      "id": "PMID:7553855",
+      "description": "Isolation of a novel gene underlying Batten disease, CLN3. The International Batten Disease Consortium."
+    }]
+  }
+}
