@@ -1,0 +1,189 @@
+{
+  "id": "Goos-2016-27158814-TCF12-F1_index",
+  "subject": {
+    "id": "F1-index",
+    "dateOfBirth": "1970-01-01T00:00:00Z",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y"
+      }
+    },
+    "sex": "MALE",
+    "karyotypicSex": "UNKNOWN_KARYOTYPE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [{
+    "type": {
+      "id": "HP:0001357",
+      "label": "Plagiocephaly"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:27158814",
+        "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0011317",
+      "label": "Right unicoronal synostosis"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:27158814",
+        "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0020049",
+      "label": "Exodeviation"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:27158814",
+        "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0005617",
+      "label": "Bilateral camptodactyly"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:27158814",
+        "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+      }
+    }]
+  }, {
+    "type": {
+      "id": "HP:0002373",
+      "label": "Febrile seizures"
+    },
+    "excluded": false,
+    "evidence": [{
+      "evidenceCode": {
+        "id": "ECO:0000033",
+        "label": "author statement supported by traceable reference"
+      },
+      "reference": {
+        "id": "PMID:27158814",
+        "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+      }
+    }]
+  }],
+  "interpretations": [{
+    "id": "Goos-2016-27158814-TCF12-F1_index",
+    "progressStatus": "SOLVED",
+    "diagnosis": {
+      "disease": {
+        "id": "OMIM:615314",
+        "label": "CRANIOSYNOSTOSIS 3; CRS3"
+      },
+      "genomicInterpretations": [{
+        "subjectOrBiosampleId": "F1-index",
+        "interpretationStatus": "CAUSATIVE",
+        "variantInterpretation": {
+          "acmgPathogenicityClassification": "NOT_PROVIDED",
+          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
+          "variationDescriptor": {
+            "id": "1046f9c59f5c9b6aa9a4223ac7d206ae",
+            "vcfRecord": {
+              "genomeAssembly": "GRCh38",
+              "chrom": "15",
+              "pos": "57186287",
+              "ref": "N",
+              "alt": "DEL"
+            },
+            "moleculeContext": "genomic",
+            "allelicState": {
+              "id": "GENO:0000135",
+              "label": "heterozygous"
+            }
+          }
+        }
+      }]
+    }
+  }],
+  "diseases": [{
+    "term": {
+      "id": "OMIM:615314",
+      "label": "CRANIOSYNOSTOSIS 3; CRS3"
+    },
+    "excluded": false
+  }],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [{
+      "id": "hp",
+      "name": "human phenotype ontology",
+      "url": "http://purl.obolibrary.org/obo/hp.owl",
+      "version": "2018-03-08",
+      "namespacePrefix": "HP",
+      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+    }, {
+      "id": "pato",
+      "name": "Phenotype And Trait Ontology",
+      "url": "http://purl.obolibrary.org/obo/pato.owl",
+      "version": "2018-03-28",
+      "namespacePrefix": "PATO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+    }, {
+      "id": "geno",
+      "name": "Genotype Ontology",
+      "url": "http://purl.obolibrary.org/obo/geno.owl",
+      "version": "19-03-2018",
+      "namespacePrefix": "GENO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+    }, {
+      "id": "ncbitaxon",
+      "name": "NCBI organismal classification",
+      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "version": "2018-03-02",
+      "namespacePrefix": "NCBITaxon"
+    }, {
+      "id": "eco",
+      "name": "Evidence and Conclusion Ontology",
+      "url": "http://purl.obolibrary.org/obo/eco.owl",
+      "version": "2018-11-10",
+      "namespacePrefix": "ECO",
+      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+    }, {
+      "id": "omim",
+      "name": "Online Mendelian Inheritance in Man",
+      "url": "https://www.omim.org",
+      "namespacePrefix": "OMIM"
+    }],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [{
+      "id": "PMID:27158814",
+      "description": "Identification of Intragenic Exon Deletions and Duplication of TCF12 by Whole Genome or Targeted Sequencing as a Cause of TCF12-Related Craniosynostosis."
+    }]
+  }
+}
