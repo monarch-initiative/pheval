@@ -186,7 +186,7 @@ class PhenopacketUtil:
 
     @staticmethod
     def _extract_diagnosed_gene(genomic_interpretation):
-        """Returns the proband causative gene from the variant descriptor field if not empty,
+        """Returns the disease causative gene from the variant descriptor field if not empty,
         otherwise, returns from the gene descriptor from a phenopacket."""
         if genomic_interpretation.variant_interpretation.ByteSize() != 0:
             return ProbandCausativeGene(
