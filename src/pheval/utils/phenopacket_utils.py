@@ -174,7 +174,7 @@ class PhenopacketUtil:
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
-            ".vcf.gz"
+                ".vcf.gz"
         ):
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
@@ -184,18 +184,27 @@ class PhenopacketUtil:
         vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
         return vcf_data
 
+    @staticmethod
+    def _extract_diagnosed_gene(genomic_interpretation):
+        """Returns the proband causative gene from the variant descriptor field if not empty,
+        otherwise, returns from the gene descriptor from a phenopacket."""
+        if genomic_interpretation.variant_interpretation.ByteSize() != 0:
+            return ProbandCausativeGene(
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.symbol,
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.value_id,
+            )
+
+        else:
+            return ProbandCausativeGene(gene_symbol=genomic_interpretation.gene.symbol,
+                                        gene_identifier=genomic_interpretation.gene.value_id)
+
     def diagnosed_genes(self) -> list[ProbandCausativeGene]:
         """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
         pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(
-                    ProbandCausativeGene(
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
-                        g.variant_interpretation.variation_descriptor.gene_context.value_id,
-                    )
-                )
+                genes.append(self._extract_diagnosed_gene(g))
                 genes = list({gene.gene_symbol: gene for gene in genes}.values())
         return genes
 
@@ -314,7 +323,7 @@ class GeneIdentifierUpdater:
                         ]
 
     def update_genomic_interpretations_gene_identifier(
-        self, interpretations: list[Interpretation]
+            self, interpretations: list[Interpretation]
     ) -> list[Interpretation]:
         """Updates the genomic interpretations of a phenopacket."""
         updated_interpretations = copy(list(interpretations))
