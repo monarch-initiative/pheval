@@ -467,9 +467,7 @@ class TestPhenopacketUtil(unittest.TestCase):
 
     def test_diagnosed_genes_no_variants(self):
         self.assertEqual(
-            (
-                [ProbandCausativeGene(gene_symbol='FGD1', gene_identifier='ENSG00000102302')]
-            ),
+            ([ProbandCausativeGene(gene_symbol="FGD1", gene_identifier="ENSG00000102302")]),
             self.phenopacket_no_variants.diagnosed_genes(),
         )
 
@@ -608,6 +606,3 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
             ),
             updated_interpretations,
         )
-
-
-

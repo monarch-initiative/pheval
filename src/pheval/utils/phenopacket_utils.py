@@ -174,7 +174,7 @@ class PhenopacketUtil:
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
-                ".vcf.gz"
+            ".vcf.gz"
         ):
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
@@ -195,8 +195,10 @@ class PhenopacketUtil:
             )
 
         else:
-            return ProbandCausativeGene(gene_symbol=genomic_interpretation.gene.symbol,
-                                        gene_identifier=genomic_interpretation.gene.value_id)
+            return ProbandCausativeGene(
+                gene_symbol=genomic_interpretation.gene.symbol,
+                gene_identifier=genomic_interpretation.gene.value_id,
+            )
 
     def diagnosed_genes(self) -> list[ProbandCausativeGene]:
         """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
@@ -323,7 +325,7 @@ class GeneIdentifierUpdater:
                         ]
 
     def update_genomic_interpretations_gene_identifier(
-            self, interpretations: list[Interpretation]
+        self, interpretations: list[Interpretation]
     ) -> list[Interpretation]:
         """Updates the genomic interpretations of a phenopacket."""
         updated_interpretations = copy(list(interpretations))
