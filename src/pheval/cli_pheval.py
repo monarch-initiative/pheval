@@ -6,6 +6,7 @@ from pathlib import Path
 import click
 
 from pheval.implementations import get_implementation_resolver
+from pheval.utils.file_utils import write_metadata
 
 
 @click.command()
@@ -88,3 +89,6 @@ def run(
     runner_instance.prepare()
     runner_instance.run()
     runner_instance.post_process()
+    run_metadata = runner_instance.construct_meta_data()
+    write_metadata(output_dir, run_metadata)
+
