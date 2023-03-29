@@ -9,6 +9,7 @@ from pheval.post_processing.post_processing import (
     ScoreRanker,
     SortOrder,
     _return_sort_order,
+    calculate_end_pos,
     create_pheval_result,
     rank_pheval_result,
 )
@@ -404,3 +405,11 @@ class TestReturnSortOrder(unittest.TestCase):
     def test_return_sort_order_incompatible(self):
         with self.assertRaises(ValueError):
             _return_sort_order("null")
+
+
+class TestCalculateEndPos(unittest.TestCase):
+    def test_calculate_end_pos_single_ref_length(self):
+        self.assertEqual(calculate_end_pos(variant_start=13007113, variant_ref="G"), 13007113)
+
+    def test_calculate_end_pos(self):
+        self.assertEqual(calculate_end_pos(variant_start=114269997, variant_ref="ACAG"), 114270000)

@@ -6,6 +6,11 @@ from pathlib import Path
 import pandas as pd
 
 
+def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
+    """Calculate the end position for a variant."""
+    return variant_start + len(variant_ref) - 1
+
+
 @dataclass
 class PhEvalGeneResult:
     """Minimal data required from tool-specific output for gene prioritisation."""

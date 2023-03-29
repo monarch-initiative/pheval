@@ -54,6 +54,7 @@ from pheval.implementations import get_implementation_resolver
     metavar="CONFIG",
     required=False,
     help="The path of the configuration file (optional e.g config.yaml)",
+    type=Path,
 )
 @click.option(
     "--version",
@@ -72,7 +73,6 @@ def run(
     version: str,
 ) -> None:
     """PhEval Runner Command Line Interface
-
     Args:
         input_dir (Path): The input directory (relative path: e.g exomiser-13.11)
         testdata_dir (Path): The input directory (relative path: e.g ./data
@@ -84,6 +84,7 @@ def run(
     """
     runner_class = get_implementation_resolver().lookup(runner)
     runner_instance = runner_class(input_dir, testdata_dir, tmp_dir, output_dir, config, version)
+    runner_instance.build_output_directory_structure()
     runner_instance.prepare()
     runner_instance.run()
     runner_instance.post_process()
