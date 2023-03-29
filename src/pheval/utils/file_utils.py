@@ -85,4 +85,3 @@ def write_metadata(output_dir: Path, meta_data: BasicOutputRunMetaData) -> None:
     with open(Path(output_dir).joinpath("results.yml"), "w") as metadata_file:
         yaml.dump(to_dict(meta_data), metadata_file, sort_keys=False, default_style="")
     metadata_file.close()
-

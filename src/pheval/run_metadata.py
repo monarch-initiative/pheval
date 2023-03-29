@@ -25,4 +25,3 @@ class BasicOutputRunMetaData:
     run_timestamp: int
     corpus: Path
     tool_specific_configuration_options: Any = None
-

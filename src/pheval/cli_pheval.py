@@ -91,4 +91,3 @@ def run(
     runner_instance.post_process()
     run_metadata = runner_instance.construct_meta_data()
     write_metadata(output_dir, run_metadata)
-
