@@ -106,6 +106,10 @@ class PhEvalRunner(ABC):
     def post_process(self):
         """post_process"""
 
+    def construct_meta_data(self):
+        """Construct run output meta data"""
+        return self.meta_data
+
 
 class DefaultPhEvalRunner(PhEvalRunner):
     """DefaultPhEvalRunner
