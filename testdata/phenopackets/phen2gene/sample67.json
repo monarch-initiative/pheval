@@ -1,0 +1,76 @@
+{
+  "id": "sample67",
+  "subject": {
+    "id": "sample67"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011398",
+        "label": "obsolete Central hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004804",
+        "label": "Congenital hemolytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001406",
+        "label": "Intrahepatic cholestasis"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample67-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample67",
+            "gene": {
+              "valueId": "ENSG00000104783",
+              "symbol": "KCNN4",
+              "alternateIds": [
+                "HGNC:6293",
+                "ncbigene:3783",
+                "ensembl:ENSG00000104783",
+                "symbol:KCNN4"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.558674Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}
