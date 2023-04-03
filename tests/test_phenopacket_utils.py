@@ -157,7 +157,47 @@ updated_interpretations = [
         ),
     )
 ]
-
+interpretations_no_variant_data = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(
+                                value_id="ENSG00000102302",
+                                symbol="FGD1",
+                                alternate_ids=[
+                                    "HGNC:3663",
+                                    "ncbigene:2245",
+                                    "ensembl:ENSG00000102302",
+                                    "symbol:FGD1",
+                                ],
+                            ),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="X",
+                                pos=54492285,
+                                ref="C",
+                                alt="T",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000134",
+                                label="hemizygous",
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
 phenotypic_features_none_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
@@ -251,6 +291,14 @@ phenopacket = Phenopacket(
     files=phenopacket_files,
     meta_data=phenopacket_metadata,
 )
+phenopacket_no_variant_data = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=interpretations_no_variant_data,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
 phenopacket_with_all_excluded_terms = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
@@ -320,6 +368,7 @@ class TestPhenopacketUtil(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.phenopacket = PhenopacketUtil(phenopacket)
+        cls.phenopacket_no_variants = PhenopacketUtil(phenopacket_no_variant_data)
         cls.phenopacket_excluded_pf = PhenopacketUtil(phenopacket_with_all_excluded_terms)
         cls.family = PhenopacketUtil(family)
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
@@ -414,6 +463,12 @@ class TestPhenopacketUtil(unittest.TestCase):
                 ]
             ),
             self.phenopacket.diagnosed_genes(),
+        )
+
+    def test_diagnosed_genes_no_variants(self):
+        self.assertEqual(
+            ([ProbandCausativeGene(gene_symbol="FGD1", gene_identifier="ENSG00000102302")]),
+            self.phenopacket_no_variants.diagnosed_genes(),
         )
 
     def test_diagnosed_variants(self):
