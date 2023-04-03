@@ -9,7 +9,14 @@ from pathlib import Path
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
-from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
+from phenopackets import (
+    Family,
+    File,
+    GenomicInterpretation,
+    Interpretation,
+    Phenopacket,
+    PhenotypicFeature,
+)
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
@@ -185,7 +192,9 @@ class PhenopacketUtil:
         return vcf_data
 
     @staticmethod
-    def _extract_diagnosed_gene(genomic_interpretation):
+    def _extract_diagnosed_gene(
+        genomic_interpretation: GenomicInterpretation,
+    ) -> ProbandCausativeGene:
         """Returns the disease causative gene from the variant descriptor field if not empty,
         otherwise, returns from the gene descriptor from a phenopacket."""
         if genomic_interpretation.variant_interpretation.ByteSize() != 0:
