@@ -1,9 +1,8 @@
 """Runners Module"""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
-
-from google.protobuf.timestamp_pb2 import Timestamp
 
 from pheval.config_parser import parse_input_dir_config
 from pheval.run_metadata import BasicOutputRunMetaData
@@ -79,13 +78,11 @@ class PhEvalRunner(ABC):
 
     @property
     def meta_data(self):
-        timestamp = Timestamp()
-        timestamp.GetCurrentTime()
         self._meta_data = BasicOutputRunMetaData(
             tool=self.input_dir_config.tool,
             tool_version=self.version,
             config=f"{Path(self.input_dir).parent.name}/{Path(self.input_dir).name}",
-            run_timestamp=timestamp.seconds,
+            run_timestamp=datetime.now().timestamp(),
             corpus=f"{Path(self.testdata_dir).parent.name}/{Path(self.testdata_dir).name}",
         )
         return self._meta_data
