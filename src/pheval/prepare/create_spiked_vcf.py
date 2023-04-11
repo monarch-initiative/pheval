@@ -297,7 +297,7 @@ def generate_spiked_vcf_file(
     )
     VcfWriter(spiked_vcf, spiked_vcf_path).write_vcf_file()
     return File(
-        uri=str(spiked_vcf_path.absolute()),
+        uri=f"file://{str(spiked_vcf_path)}",
         file_attributes={"fileFormat": "VCF", "genomeAssembly": vcf_assembly},
     )
 
