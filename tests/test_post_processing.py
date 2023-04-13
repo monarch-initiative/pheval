@@ -8,10 +8,10 @@ from pheval.post_processing.post_processing import (
     ResultSorter,
     ScoreRanker,
     SortOrder,
-    _return_sort_order,
-    calculate_end_pos,
     _create_pheval_result,
     _rank_pheval_result,
+    _return_sort_order,
+    calculate_end_pos,
 )
 
 pheval_gene_result = [
