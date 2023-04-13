@@ -10,8 +10,8 @@ from pheval.post_processing.post_processing import (
     SortOrder,
     _return_sort_order,
     calculate_end_pos,
-    create_pheval_result,
-    rank_pheval_result,
+    _create_pheval_result,
+    _rank_pheval_result,
 )
 
 pheval_gene_result = [
@@ -252,7 +252,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
-            rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING),
+            _rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -283,7 +283,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_variant(self):
         self.assertEqual(
-            rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING),
+            _rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
@@ -326,7 +326,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 class TestCreatePhEvalResult(unittest.TestCase):
     def test_create_pheval_result_gene(self):
         self.assertEqual(
-            create_pheval_result(pheval_gene_result, "descending"),
+            _create_pheval_result(pheval_gene_result, "descending"),
             [
                 RankedPhEvalGeneResult(
                     pheval_gene_result=PhEvalGeneResult(
@@ -357,7 +357,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
 
     def test_create_pheval_result_variant(self):
         self.assertEqual(
-            create_pheval_result(pheval_variant_result, "ascending"),
+            _create_pheval_result(pheval_variant_result, "ascending"),
             [
                 RankedPhEvalVariantResult(
                     pheval_variant_result=PhEvalVariantResult(
