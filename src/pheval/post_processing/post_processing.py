@@ -76,7 +76,7 @@ class SortOrder(Enum):
 
 class ResultSorter:
     def __init__(
-        self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
+            self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
     ):
         self.pheval_results = pheval_results
         self.sort_order = sort_order
@@ -109,11 +109,11 @@ class ScoreRanker:
     def _check_rank_order(self, round_score: float) -> None:
         """Check the results are correctly ordered."""
         if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
-            "inf"
+                "inf"
         ):
             raise ValueError("Results are not correctly sorted!")
         elif self.sort_order == SortOrder.DESCENDING and round_score > self.current_score != float(
-            "inf"
+                "inf"
         ):
             raise ValueError("Results are not correctly sorted!")
 
@@ -129,7 +129,7 @@ class ScoreRanker:
 
 
 def rank_pheval_result(
-    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
+        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
     Deals with ex aequo scores"""
@@ -157,7 +157,7 @@ def _return_sort_order(sort_order_str: str) -> SortOrder:
 
 
 def create_pheval_result(
-    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order_str: str
+        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order_str: str
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sort_order = _return_sort_order(sort_order_str)
@@ -166,7 +166,7 @@ def create_pheval_result(
 
 
 def write_pheval_gene_result(
-    ranked_pheval_result: [RankedPhEvalGeneResult], output_dir: Path, tool_result_path: Path
+        ranked_pheval_result: [RankedPhEvalGeneResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval gene result to tsv."""
     ranked_result = pd.DataFrame([x.as_dict() for x in ranked_pheval_result])
@@ -181,13 +181,13 @@ def write_pheval_gene_result(
 
 
 def write_pheval_variant_result(
-    ranked_pheval_result: [RankedPhEvalVariantResult], output_dir: Path, tool_result_path: Path
+        ranked_pheval_result: [RankedPhEvalVariantResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval variant result to tsv."""
     ranked_result = pd.DataFrame([x.as_dict() for x in ranked_pheval_result])
     pheval_variant_output = ranked_result.loc[
-        :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
-    ]
+                            :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
+                            ]
     pheval_variant_output.to_csv(
         output_dir.joinpath(
             "pheval_variant_results/" + tool_result_path.stem + "-pheval_variant_result.tsv"
@@ -195,3 +195,11 @@ def write_pheval_variant_result(
         sep="\t",
         index=False,
     )
+
+
+def generate_pheval_result(pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order_str: str,
+                           output_dir: Path, tool_result_path: Path):
+    """Generate either a PhEval variant or PhEval gene tsv result."""
+    ranked_pheval_result = create_pheval_result(pheval_result, sort_order_str)
+    write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path) if type(ranked_pheval_result) == [
+        PhEvalVariantResult] else write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
