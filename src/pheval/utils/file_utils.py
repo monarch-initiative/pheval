@@ -7,6 +7,10 @@ from pathlib import Path
 from typing import List
 
 import pandas as pd
+import yaml
+from serde import to_dict
+
+from pheval.run_metadata import BasicOutputRunMetaData
 
 
 def files_with_suffix(directory: Path, suffix: str):
@@ -75,3 +79,10 @@ def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_messag
     for dataframe in dataframes:
         if not all(x in dataframe.columns for x in flat_cols):
             raise ValueError(err_msg)
+
+
+def write_metadata(output_dir: Path, meta_data: BasicOutputRunMetaData) -> None:
+    """Write the metadata for a run."""
+    with open(Path(output_dir).joinpath("results.yml"), "w") as metadata_file:
+        yaml.dump(to_dict(meta_data), metadata_file, sort_keys=False, default_style="")
+    metadata_file.close()
