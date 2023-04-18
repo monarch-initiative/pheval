@@ -9,213 +9,242 @@
       }
     },
     "sex": "MALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0001324",
-      "label": "Muscle weakness"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001324",
+        "label": "Muscle weakness"
       },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001371",
-      "label": "Flexion contracture"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002500",
-      "label": "Abnormality of the cerebral white matter"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0011968",
-      "label": "Feeding difficulties"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001252",
-      "label": "Hypotonia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001270",
-      "label": "Motor delay"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002650",
-      "label": "Scoliosis"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:18700894",
-        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Oliveira-2008-18700894-LAMA2-Patient_1",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:607855",
-        "label": "MUSCULAR DYSTROPHY, CONGENITAL MEROSIN-DEFICIENT, 1A; MDC1A"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "Patient 1",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "2bc17238a2a7a8b2f5b739029c673e35",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "6",
-              "pos": "129484761",
-              "ref": "N",
-              "alt": "DEL"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:607855",
-      "label": "MUSCULAR DYSTROPHY, CONGENITAL MEROSIN-DEFICIENT, 1A; MDC1A"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0001371",
+        "label": "Flexion contracture"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002500",
+        "label": "Abnormality of the cerebral white matter"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001270",
+        "label": "Motor delay"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:18700894",
+            "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Oliveira-2008-18700894-LAMA2-Patient_1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:607855",
+          "label": "MUSCULAR DYSTROPHY, CONGENITAL MEROSIN-DEFICIENT, 1A; MDC1A"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Patient 1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "2bc17238a2a7a8b2f5b739029c673e35",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "129484761",
+                  "ref": "N",
+                  "alt": "DEL"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607855",
+        "label": "MUSCULAR DYSTROPHY, CONGENITAL MEROSIN-DEFICIENT, 1A; MDC1A"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:18700894",
-      "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:18700894",
+        "description": "LAMA2 gene analysis in a cohort of 26 congenital muscular dystrophy patients."
+      }
+    ]
   }
 }

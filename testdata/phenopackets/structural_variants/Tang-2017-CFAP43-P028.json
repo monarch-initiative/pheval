@@ -9,187 +9,209 @@
       }
     },
     "sex": "MALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0032560",
-      "label": "Coiled sperm flagella"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0032560",
+        "label": "Coiled sperm flagella"
       },
-      "reference": {
-        "id": "PMID:28552195",
-        "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0012207",
-      "label": "Reduced sperm motility"
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28552195",
+            "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+          }
+        }
+      ]
     },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+    {
+      "type": {
+        "id": "HP:0012207",
+        "label": "Reduced sperm motility"
       },
-      "reference": {
-        "id": "PMID:28552195",
-        "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0032559",
-      "label": "Short sperm flagella"
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28552195",
+            "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+          }
+        }
+      ]
     },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+    {
+      "type": {
+        "id": "HP:0032559",
+        "label": "Short sperm flagella"
       },
-      "reference": {
-        "id": "PMID:28552195",
-        "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0032558",
-      "label": "Absent sperm flagella"
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28552195",
+            "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+          }
+        }
+      ]
     },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+    {
+      "type": {
+        "id": "HP:0032558",
+        "label": "Absent sperm flagella"
       },
-      "reference": {
-        "id": "PMID:28552195",
-        "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28552195",
+            "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Tang-2017-28552195-CFAP43-P028",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:617592",
+          "label": "Spermatogenic failure 19"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "P028",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "8b888a415dd7869d13214911fe2d0876",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "10",
+                  "pos": "104230656",
+                  "ref": "G",
+                  "alt": "A"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "P028",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "57d5c458e5c42131dc891a3d04f755ed",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "10",
+                  "pos": "104140589",
+                  "ref": "TGAGCTCAGGAGTTTGAGAACAGCCTGGGCAACATATTAAGACTCTGTTTTTACAAAAAACTAATTTTAAAACAATTAGCTGGGTGTGGTGGTGTGAACCTGTACTCCCAGCTACTTGGGAGGTGAAGGTGGGAGGATCTATTGAGCCTAGCTAAGGGTTAAGGCTGCAGTGAGCCATGATTGTGCCACAAGACTCTAGCCTGAGTAACAAAGCAAGACCTTGAATTAAAATAAAAATAAAAAGTATAATTACCCGAATCACAGAATTCAAGTCTTCAATTATGTTCTTGTTGATGAGAATTGCATCAGAATACTCCAGTACTAGCTGGAAATTTTCCAGTTCTACTTGTCCTTGTTTAAGAAGAATTTGGATTGTCAAATTCAACTGGAATCTCACTTTCTCTTCCTGTAATCTGAATTGAAAAGTACTTCAAAGCAAGTAGTTGTAATATATTTCAAATTTCACCTATTATCTGAGAATATAAAAATCGAATCAGCTTAAGGAAAACATGCTGGAGATTAGTGTGGAGAATATTTTCCTGATGATGAGCTTTCCTAGAGGTCTCTCTGAAACCTCTTCCTATTGATGCAGAATTATACCTGGGTTGCTCAAAAAATGGTATGGACAGAAATACATTTATAGATTTTTACTTTAGGATTAAGAAAAGATTGTATAATTTTGACGGTAATAAAAGTAAAGTAAAAATGAAGAAAATAGAGACACTTTTAAATAACAAATCTGGCCAGGCGCAGTGGCTCATGCCTGTAATCCCAGCATTTTGGGATGCCGAGGTGGGTGGATCATCTGAGGTCAGGAGTTCGAGACTAGCCTGGCCAACATGGCGAAACCCCATCTCTACTAACAATACAAAAATTAGCCAGGGGTGGTGACAGGCACCTGTAATCCCAGCTGCTTGGGAGGCTGAGGCATGAGATCTCTTGAACCTGGGAGGTGGAGACTGCAGTGAGCCCAGATCGTGCCACTGCACTCCAGCTTGTGTGACAGAGTGAGGCTCCATTTCAAAATAAATAAATAAATAAATAAAATAACTCTATTAAAATTCTGAACTTATTTATTGATTTCTGATACTATACTAACAATATTTAATATGTAAGTTACTTAACAAATCTATTTCTGGGTAATTCATATCCTCGCTATAGCCTAGATCTAAAAATGATGTGTTCTCAATGAATTTGGGAACATCAGAGAAGTATTTATCGATGAGGCTATAAATATAGCCAAAAAATGAAGCAAGGACTTAAATATCTTAATCACTTAGTAAACAACAAGTTCCCCTAAAGAAAAATATATCAGTTGGCTGCGTGTCTACATGGAAAGTTCTTAGACATCTGCTTAATTTTCCACATGGTTAGCTTATATGCCTTGAGCCCCAAAGTACTGAAAAACAGGTTCTTTGTATTTTTATGTGGAAGGGGCCGACTTAAAACAATACTAAGATTTTTCTGAAACTTGCTTATTTGTAATAAGAGCAACAAAACGTGGGAAAGTTCCATCCTGAATCAAGGTCTATGTAACAAAGCAGGCTTTTTAAAATAGAAATTTTAAAGCACAGTGCTGGAAGGGAGATGGCTGTAAAGCAGTCAGTAGGCATTCTCCCCAGTGATAACACAACCTGATTTAGCCCTAATTAGACTTTGAATAGGTGAACATGAAAGAAAGCTTCAAATTACAGGATGAGTTCATGGAACACTCTCTCAATCTCCTGTTGCACCTTCTCTTCCTCCTCAACTCTCTTCTGGAGGAAAGTTGCCATTTCCAATAAGTCAGCTGCTTTCTGCTTTACCTAAAGAAACCAAGCCAGAAACATGTCAGAACATATGGAGCTTCAATTTTAGACAACATACATCTTTTAACTTTTTAAATTTAAAAACCTTAACAGGTCTATCTTTCGAAGAAAGTAATAAAACATTTAAATTTAAATGTCTAAAACTTACATGGTATGTAACAATTTGAACGATTTGAAAGTATCAAATTTGCTTCTTGGTGAAAATCAAGTATGCAGGCAACTATAAATTCTTTTATATCTTATTTTTAAAATTTGTTCTCATCACTTTAAGTGAAATTATAGAATCCTAGGTACTTTAACAAAAATATGCCAGCCTGATGCATGTGGGCATTAAATTTAGGGAATTTGGGGTAGTGGTCAAGAAGCAACAAGAGGAAGGATTCTCTTCCCAAATAAAGACCCTCTTAAATTTTTACTCGTTGCCACATTCTAGCAAAACTATAAAGTTGGTTCTGCTGAGCCAAATATAATTCTAATCTATGCAAAATGAGATAACCTACAACAGTGCTGTCCAAGAAAAATATAACGTGAGCCATAAATGTGAGTCACATATGTAATTTTAAATTCTGTAGTAGCCGCATTATAAAAAGTGAAATCAAAGAAATGAACTTAATTTTACTAATATATTTTAATTAAATGTATCCAGAATATTATCACTTCAACCTATAATCAATATAAAAATATTAATGAGACATATTTCTTTTTGTTCATACTAAGCCTTCTAATGTGTATGTTTTCCACTTACAGCACATCTCAGTTAGGACTGGCAATATTTATTTCAAATGCATAATAACCACTTGTGGCTAATGGACACTATTTTGAACGGCACCAGTCTAAAAGCAACAGGCCTACACTTAGCCTTCAATAGCACCAGGGTTAATATAGTATTTCATTATCTTATTACTATGACCAAATACTACCCTAGCAGGGAAACCTAAATAATTAGCTTTTTTGGTTACACTGACCAATGTAAACTATGTATTTGATATTAGTACACTAAAAATTAAATTAAGTTAAAATAGTATATACTTTCTGTTCATTTTCCACTTTTGCTCGTCTTGTCATGCAGAAATGATTCCAGACCAAAGGGTCCAAGCCTTCTGGCATGTTACTAATATTGTCCAACTCATCCATAGCTTTCATTAACTGGGCAAAGGCATCCTTATTCAACTTGCCAGATCCTGGTAGTTCTCCGAAAGGGACAACGCTGGTTGTTTCTGAGTGCGTTTTCTGTTTGGAAATCCTGGTATTACCAAGAAAAGCCCATCAACATTTCACATTCTCATAAAAACATCAATGTGAAACAATTAGGCCCTTAGCACAGGCATAACACATTGTATGGCTCTTCCCTTTGCCATGTGATGGCTGGTAGGTGGGTTATTCCACAGATAAAGGGATCCACTTTGCCCTTCTTCCATACTCTCCAGGTTCTCAGACGTGACCTTGGCTAGACTACAGATGTCTCCAACTATTGTCAGCACTGACAGACAATTGTGTCTGTGCTAG",
+                  "alt": "T"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
       }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Tang-2017-28552195-CFAP43-P028",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
         "id": "OMIM:617592",
         "label": "Spermatogenic failure 19"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "P028",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "8b888a415dd7869d13214911fe2d0876",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "10",
-              "pos": "104230656",
-              "ref": "G",
-              "alt": "A"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
-          }
-        }
-      }, {
-        "subjectOrBiosampleId": "P028",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "57d5c458e5c42131dc891a3d04f755ed",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "10",
-              "pos": "104140589",
-              "ref": "TGAGCTCAGGAGTTTGAGAACAGCCTGGGCAACATATTAAGACTCTGTTTTTACAAAAAACTAATTTTAAAACAATTAGCTGGGTGTGGTGGTGTGAACCTGTACTCCCAGCTACTTGGGAGGTGAAGGTGGGAGGATCTATTGAGCCTAGCTAAGGGTTAAGGCTGCAGTGAGCCATGATTGTGCCACAAGACTCTAGCCTGAGTAACAAAGCAAGACCTTGAATTAAAATAAAAATAAAAAGTATAATTACCCGAATCACAGAATTCAAGTCTTCAATTATGTTCTTGTTGATGAGAATTGCATCAGAATACTCCAGTACTAGCTGGAAATTTTCCAGTTCTACTTGTCCTTGTTTAAGAAGAATTTGGATTGTCAAATTCAACTGGAATCTCACTTTCTCTTCCTGTAATCTGAATTGAAAAGTACTTCAAAGCAAGTAGTTGTAATATATTTCAAATTTCACCTATTATCTGAGAATATAAAAATCGAATCAGCTTAAGGAAAACATGCTGGAGATTAGTGTGGAGAATATTTTCCTGATGATGAGCTTTCCTAGAGGTCTCTCTGAAACCTCTTCCTATTGATGCAGAATTATACCTGGGTTGCTCAAAAAATGGTATGGACAGAAATACATTTATAGATTTTTACTTTAGGATTAAGAAAAGATTGTATAATTTTGACGGTAATAAAAGTAAAGTAAAAATGAAGAAAATAGAGACACTTTTAAATAACAAATCTGGCCAGGCGCAGTGGCTCATGCCTGTAATCCCAGCATTTTGGGATGCCGAGGTGGGTGGATCATCTGAGGTCAGGAGTTCGAGACTAGCCTGGCCAACATGGCGAAACCCCATCTCTACTAACAATACAAAAATTAGCCAGGGGTGGTGACAGGCACCTGTAATCCCAGCTGCTTGGGAGGCTGAGGCATGAGATCTCTTGAACCTGGGAGGTGGAGACTGCAGTGAGCCCAGATCGTGCCACTGCACTCCAGCTTGTGTGACAGAGTGAGGCTCCATTTCAAAATAAATAAATAAATAAATAAAATAACTCTATTAAAATTCTGAACTTATTTATTGATTTCTGATACTATACTAACAATATTTAATATGTAAGTTACTTAACAAATCTATTTCTGGGTAATTCATATCCTCGCTATAGCCTAGATCTAAAAATGATGTGTTCTCAATGAATTTGGGAACATCAGAGAAGTATTTATCGATGAGGCTATAAATATAGCCAAAAAATGAAGCAAGGACTTAAATATCTTAATCACTTAGTAAACAACAAGTTCCCCTAAAGAAAAATATATCAGTTGGCTGCGTGTCTACATGGAAAGTTCTTAGACATCTGCTTAATTTTCCACATGGTTAGCTTATATGCCTTGAGCCCCAAAGTACTGAAAAACAGGTTCTTTGTATTTTTATGTGGAAGGGGCCGACTTAAAACAATACTAAGATTTTTCTGAAACTTGCTTATTTGTAATAAGAGCAACAAAACGTGGGAAAGTTCCATCCTGAATCAAGGTCTATGTAACAAAGCAGGCTTTTTAAAATAGAAATTTTAAAGCACAGTGCTGGAAGGGAGATGGCTGTAAAGCAGTCAGTAGGCATTCTCCCCAGTGATAACACAACCTGATTTAGCCCTAATTAGACTTTGAATAGGTGAACATGAAAGAAAGCTTCAAATTACAGGATGAGTTCATGGAACACTCTCTCAATCTCCTGTTGCACCTTCTCTTCCTCCTCAACTCTCTTCTGGAGGAAAGTTGCCATTTCCAATAAGTCAGCTGCTTTCTGCTTTACCTAAAGAAACCAAGCCAGAAACATGTCAGAACATATGGAGCTTCAATTTTAGACAACATACATCTTTTAACTTTTTAAATTTAAAAACCTTAACAGGTCTATCTTTCGAAGAAAGTAATAAAACATTTAAATTTAAATGTCTAAAACTTACATGGTATGTAACAATTTGAACGATTTGAAAGTATCAAATTTGCTTCTTGGTGAAAATCAAGTATGCAGGCAACTATAAATTCTTTTATATCTTATTTTTAAAATTTGTTCTCATCACTTTAAGTGAAATTATAGAATCCTAGGTACTTTAACAAAAATATGCCAGCCTGATGCATGTGGGCATTAAATTTAGGGAATTTGGGGTAGTGGTCAAGAAGCAACAAGAGGAAGGATTCTCTTCCCAAATAAAGACCCTCTTAAATTTTTACTCGTTGCCACATTCTAGCAAAACTATAAAGTTGGTTCTGCTGAGCCAAATATAATTCTAATCTATGCAAAATGAGATAACCTACAACAGTGCTGTCCAAGAAAAATATAACGTGAGCCATAAATGTGAGTCACATATGTAATTTTAAATTCTGTAGTAGCCGCATTATAAAAAGTGAAATCAAAGAAATGAACTTAATTTTACTAATATATTTTAATTAAATGTATCCAGAATATTATCACTTCAACCTATAATCAATATAAAAATATTAATGAGACATATTTCTTTTTGTTCATACTAAGCCTTCTAATGTGTATGTTTTCCACTTACAGCACATCTCAGTTAGGACTGGCAATATTTATTTCAAATGCATAATAACCACTTGTGGCTAATGGACACTATTTTGAACGGCACCAGTCTAAAAGCAACAGGCCTACACTTAGCCTTCAATAGCACCAGGGTTAATATAGTATTTCATTATCTTATTACTATGACCAAATACTACCCTAGCAGGGAAACCTAAATAATTAGCTTTTTTGGTTACACTGACCAATGTAAACTATGTATTTGATATTAGTACACTAAAAATTAAATTAAGTTAAAATAGTATATACTTTCTGTTCATTTTCCACTTTTGCTCGTCTTGTCATGCAGAAATGATTCCAGACCAAAGGGTCCAAGCCTTCTGGCATGTTACTAATATTGTCCAACTCATCCATAGCTTTCATTAACTGGGCAAAGGCATCCTTATTCAACTTGCCAGATCCTGGTAGTTCTCCGAAAGGGACAACGCTGGTTGTTTCTGAGTGCGTTTTCTGTTTGGAAATCCTGGTATTACCAAGAAAAGCCCATCAACATTTCACATTCTCATAAAAACATCAATGTGAAACAATTAGGCCCTTAGCACAGGCATAACACATTGTATGGCTCTTCCCTTTGCCATGTGATGGCTGGTAGGTGGGTTATTCCACAGATAAAGGGATCCACTTTGCCCTTCTTCCATACTCTCCAGGTTCTCAGACGTGACCTTGGCTAGACTACAGATGTCTCCAACTATTGTCAGCACTGACAGACAATTGTGTCTGTGCTAG",
-              "alt": "T"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
-          }
-        }
-      }]
+      }
     }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:617592",
-      "label": "Spermatogenic failure 19"
-    },
-    "excluded": false
-  }],
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:28552195",
-      "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:28552195",
+        "description": "Biallelic Mutations in CFAP43 and CFAP44 Cause Male Infertility with Multiple Morphological Abnormalities of the Sperm Flagella."
+      }
+    ]
   }
 }

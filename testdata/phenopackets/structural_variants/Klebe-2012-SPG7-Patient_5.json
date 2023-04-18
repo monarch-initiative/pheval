@@ -9,229 +9,260 @@
       }
     },
     "sex": "FEMALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0001138",
-      "label": "Optic neuropathy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001138",
+        "label": "Optic neuropathy"
       },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002064",
-      "label": "Spastic gait"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000543",
-      "label": "Optic disc pallor"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0007340",
-      "label": "Lower limb muscle weakness"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001260",
-      "label": "Dysarthria"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0008969",
-      "label": "Leg muscle stiffness"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0006938",
-      "label": "Impaired vibration sensation at ankles"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0003487",
-      "label": "Babinski sign"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23065789",
-        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Klebe-2012-23065789-SPG7-Patient_5",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:607259",
-        "label": "SPASTIC PARAPLEGIA 7, AUTOSOMAL RECESSIVE; SPG7"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "Patient 5",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "896893fab0b7ca3590a3e8c1c6adbdb6",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "16",
-              "pos": "89531960",
-              "ref": "CGGCCCCCCCGGCTGTGGGAAGACGCTGCT",
-              "alt": "C"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:607259",
-      "label": "SPASTIC PARAPLEGIA 7, AUTOSOMAL RECESSIVE; SPG7"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0002064",
+        "label": "Spastic gait"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000543",
+        "label": "Optic disc pallor"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0007340",
+        "label": "Lower limb muscle weakness"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008969",
+        "label": "Leg muscle stiffness"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0006938",
+        "label": "Impaired vibration sensation at ankles"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003487",
+        "label": "Babinski sign"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23065789",
+            "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Klebe-2012-23065789-SPG7-Patient_5",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:607259",
+          "label": "SPASTIC PARAPLEGIA 7, AUTOSOMAL RECESSIVE; SPG7"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Patient 5",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "896893fab0b7ca3590a3e8c1c6adbdb6",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "16",
+                  "pos": "89531960",
+                  "ref": "CGGCCCCCCCGGCTGTGGGAAGACGCTGCT",
+                  "alt": "C"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607259",
+        "label": "SPASTIC PARAPLEGIA 7, AUTOSOMAL RECESSIVE; SPG7"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:23065789",
-      "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:23065789",
+        "description": "Spastic paraplegia gene 7 in patients with spasticity and/or optic neuropathy."
+      }
+    ]
   }
 }

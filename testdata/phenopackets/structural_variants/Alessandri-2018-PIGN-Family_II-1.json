@@ -9,261 +9,296 @@
       }
     },
     "sex": "MALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0001629",
-      "label": "Ventricular septal defect"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
       },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000280",
-      "label": "Coarse facial features"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0008689",
-      "label": "Bilateral cryptorchidism"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001561",
-      "label": "Polyhydramnios"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000054",
-      "label": "Micropenis"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001798",
-      "label": "Anonychia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001320",
-      "label": "Cerebellar vermis hypoplasia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000518",
-      "label": "Cataract"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002198",
-      "label": "Dilated fourth ventricle"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0100333",
-      "label": "Unilateral cleft lip"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:29330547",
-        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Alessandri-2018-29330547-PIGN-Family_II_1",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:614080",
-        "label": "MULTIPLE CONGENITAL ANOMALIES-HYPOTONIA-SEIZURES SYNDROME 1; MCAHS1"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "Family II-1",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "304cd859f678c45a480b1d62a0bbdacd",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "18",
-              "pos": "62152637",
-              "ref": "GTGAGATAATAATTACAATCTCATGTAATTTTTGAATACTATACTGAAAGTAAAAAACAAAATGGTTGTATGGATACTCAATGTCCGGTTTATACTAAATATGTATTGCTTTTGCACTGGTGGAAAGTCAAAAGAATCGTAAGTTAAACCATTGTTAAGCTGGGGACTGTCTGCAAACACTTAAAATGCTTAAGACAGTAAATTCTGTATTTTGCATATATATATATATATATTTTTTTTTTTAACCACAGTTACAAAAAAACAGGTGAGTAGAAAACTGCATGGATCTGGAAACTGTTTGGCTTGAATTAAACATGAGTCTCTAGCCAGGACATGAAGTTCGAGTAAAACCCTTACCTCACTCTCTAGCCTCTTCTGAGACCTGGCTCCCAGGCAGTCCTCCTGCCACACTAACCTCCCTTCTTTCTCACTTCCTCAAATCCATTATGCTGGCTCTTGACCAAGATTTACATAATGCTGTTGGCCTGCAATACCTTTCCATACCAATCCATCCCTATCCATTTCTTTGTCTCCTGTACCTGCTCAGAGATTATCTCAAACCTCTTAGCCTTCCCCTAACTACCCAGCACAGATTAGAATTTTCTGAAGATATATTCTTGGTCTGTATTTTTCCTTCACATCACTTACCAATGCTGATGACTTCATATTTTCATTATAACTTGGTTAATATATATCTACCATATTTTATGAAGTCATGTGCAAATCTTTTTTTCTGTTCACTACCGTGTCAAGACTAGTAGTGTTGAAATAAAGAAAGGAAGAAAGACATGAAAATCAGGCCAGCTACCAGCTATGTATGTACATTCACAAGGAATCAATTCCATGATTTTGGAGGGATTTTAGCTACACATATGAAATTAGAAGCCAAAGGATTTCATGCAGATATTAATATTAGCACATTAAGTTAAGAAGTGATGATTAGCAAAATAATTTGCTAATCATTTTCTTACACAGATTTTATTTAAGTTGAAAGTTTTCCCTGTTGACAAAAGTATATATTAAAAGTAAAAAGAAAATTTCAAGGGAAAAACCCTTGGAAAAAAATAGGGTTTAGCAATGAATTTTAGAGCACTTAATTTCTGCTAAGCAAATACAAAGAAAAAGGCAGATATATACTAAGGAGTACATTTACAAACAAACAAAAATGGCTATATCATGGAGAAGTCCACAAAGTCAGTTCAAAAGACATTACTAGAAAAAAGAAGTATCAATCAAAGCTTCTTATAATGGATGAATTATGAGTTGTTATTTGGAGATGAGGAATAATGCACTGGTAAAAGAAGAGAGCCAATGTCCACAATTGAGATTTTCACACACTTTTTGAGAATATAAATTATATCGTATTCCTCATGAAACTATGATAATTGTCATTATAAAATGTTCAAAAAACTAGTACTTAAAGGAACCATAGATTTTTATTATGATCAATTTGCTAATTTGTTTTTGCCTATATAATCTGCTTATCTAATTTTTCTTTAAAGTATTTTTTAAAAAATCATCCACTTTGTTATTATAAATGTATTACATTTGAACAGCATTTTCCCAAAGGCTTTCCTACATCTCATATGGTCCATTACTACAAGAGTCTGATTCCATGGTCAATGAAAGATCAAAATTTACCCAGGATGAATCACAAACTAGAAACGAAAAACAGGTTTCCTAAATCCTAATCTAGGGCTCATTTTACTAATAGAAACAAAGGAGTTTAAAACTTCTCTTATTTATTTAGAATGTGTAATTTTTTAGAATTAAATCTTAGAATTCAGAACAGTGTGCTACAACATAGAACTTTCAAAGCTCATGAAAACAGAAAAAACGTGGGATACAGTCTCCAATACTTCAGGTAAAAATATGCTTTTTGTATATTAACCACTCAATAGCACAAACCTTAACATTATCAAAAACCCACGTATCCAGTTTTGTTGCATCTTGAGCACCAAAATCCTCTCTTTTAGCATCATAACTATATGTATAAACGTGGTCTCCACTAGCACCTGAAAAGAAAATTTGGAAAAAATAATCTTTTTACAAAATCTTTTAAACTATCATAAAATATGAGCTAGTCATTCACAGATTTTTGTGAGTAACCAGAATTTTCACAAAGCATTGTTCATTATGATGGGGAAGAGAAAAATGGGAGGAATAATTAACATTTATTTATGTTATGTGCTATGGACCATGCTACATACTTTAATGTATTCTATTGCTTTTTGTCCTCAAAAATAACATATTTTAATTTCGCAGATTCATTATATGTTAATTAACACACCAAAATCACAACTCTAATAAGCAATATAACAAAAATAAGCACAATATTTGTCTCCCTTTAAGGATTAAACTATTCAAAACATGTGTGCCCCTTAGAATGCTACAATCTAAAATAGATGATGTGTGTTGTACAAACCTTCTTAACATAAGAAGAAAATTCAGATATTTCACTTCTCTTATTCATAAACTATGAGTATTTTTCTCAACTTCTAAGAGAATAAATATTGCTTATTGCCAAAGAGTTTGAAGGGGTCAACAGATATGACAATCTCATATATTTGCAAGAGTGTATTAAGAATCTAAACAGTTTAGTGAATTTCTGAGTTTGATAGGCTCTTGCAGGTAATAAGAAAGAGATATGGCCAGTGTGGTGGCTCACACCTGTAATCCCTGTATTTTGGGAGGCCGAGGCAGGTGGATCACCGGAGGTCGGGAGATCGAGACCCCCCTGGCCAACATGATGAAACCCCGTCTCTACTAAAAAGAGAAAAAAATTAGCTGGGTGTGGTGGTGTGCGCTTGTAATCCCAGCTACTCAGGGGGCTGAGGCAGAAGAATCGCTTGAACCAAGGAGGCAGAGGTGGCAGTGAGCTGAGATCGTGCCACTGCACTCCAGCCTGGGCAACAAGGGCAAAACTCCGTCTCAAAAAAACAAAAACAAAAAGAGAGATATATAATAAAGTAATACAATCTTTATAGCACCAGTTCAGCTCTAATGACCCTATTCCACAGCTCAGCCATTCCTCTTCCCACATCCCAAATAAAAAGGTCTGACTGGGTTTGCTGTTTACTACAAGATATGGAACATTAGACTATCTCTAATTCAATTATTTGTCCTCTCCCATCCATTGTAGCCAGAAATAGGAATGTTAGTTTGATAAGCCATAGCAACTGAATCCACCCTTACCACCACCAGCTCCCAAAAAAACGAAACTGCTTTCCAAAGAAGGCAATATATAAATGGCAAACAGTTTGGGGCTTTTTGGTCCGCCCAGTATAATAATGTTCTATGACTATCATCTGTAAAATTCTCAATATATATTTTGCTTCCTGGACACATAATAATCTTCAATAGTTCCCATTATTTTAATTACACTCATGACTAAGTATGTTACAAATCCTTTCTGATAAGTGAAATGATCAATCTTTCTGCTCCCACTTAAAAGCATTTAATGACATGAAATTCATCCAACTGATTTTAGAAAATAATATAAATGAATTTTCTAATTAAGAGATGTCCCAATATTTGCAGAATCATGCATATAAACAATAAATCTAAATGCTACATTCAGTATATTAAATATCAATTTAAATAAATTATATGTTAAATGCCATATATATCAAATGCCAGAATATATGGCATCTTCGATGTATTAAAACAGGAATTATAACTATATATTTTAACACTTAAATATTTTTTTTGAGATAGGGTGTTGCTCTGTTGCCCAGGCTGGAGTGCAGTGGCATAATCATGGCTCACTGCAGCCTCAACATCCCAGGCTCTCAAGCACTCTTCCCACCTCAGCCACCTGAGTAGTTGGGACTACAGGCACATGCCACCACACTCAGCTAATTTTTTGTTTGTTGTAGAGATGTGGGTCTCACCTTGTTGCCCAGACTGGTCTCCAACTCCTGAGCTCAAGTGATCCACCTGCCTCAGCCTCCCAAAATGCTGAGATTACAGGTGTGAGCCACTGTGCCCAGCCAATGTTTAAATCTTTATATGAGTAGCTACTAACTTTTAAAATAATTTACCAAAGTATAATGAACCACACCTCAACATCATCATTTATAATCAAGTTATGTGAAAAGTGCTATGCTAAATATTTCACATGAATTACATAATTTAATTATAAAAATAAATCTATGAGACAGAAACTAATATTATCACATTTTATGAAAAGGAAATTGAAGCTCAGAGAGGTTATATAAATTGCTCAAGATTATATAGCTGTTAAGCGATAGTGCTATATACCACTTAATTGAATCCAAAATACTATCTAACTGTATGATGTGCCAATATCTCAAGTATAACTAAGAAGGAAAAAAAAATACTGTAATTAAACATCCCTATTTCAGAAATGTTAAAAATGTAAAAATATGTGTAAAAATCAACACATACATTACATACATAAAAATAGAAAACTACCATATTGACTTACTCCCTATTTACTATCTGAGGAAACATAATCAGTGACTCTTACCTTTGGCAAACATAGGCAGGATATCTGGGCTTCCCCAGCTCCATGTGTATTTACTTTCATTAAAAAGAGAATCAAACTCTACAGGATTTTCCTTCCATCCTTCAGAAAGCAAGCAAGCAGTAATAGTTATATACACATGGTACAATAAGCCCCTAAAGAACTATTCTTCAAATAATAACAATTACATTAGTCAGTGAATAAATGCAAAACTAATAGATTTTATATTATGCATATTATACCACTATTTAAAAAAAAACTAACAATAGATAATTTACTTCTTAATGAAATATAAAATTATTTTTGAACTTTCAAGAGTAATATCTAGGAAAATTATGCTTCCATCCAACCCAAATTCTTTCAATAACACAGGATAATGAAATACTAAAGTTTCAATTCTGGAGTCAGTACCAGTGGGTATTCATGTCAGCAAAGCATGCTAAAACATTTGTCCAAAATATCTCAAAACATACCTTCACTTTGTGACATGATTAAGTGGTAAAGGACTAATATTTACTTGACAAATTTTTCATTTCATAAGATTGTCCAAATAGACAATACCTTTGGCAACTGCAC",
-              "alt": "G"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:614080",
-      "label": "MULTIPLE CONGENITAL ANOMALIES-HYPOTONIA-SEIZURES SYNDROME 1; MCAHS1"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008689",
+        "label": "Bilateral cryptorchidism"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001798",
+        "label": "Anonychia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001320",
+        "label": "Cerebellar vermis hypoplasia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002198",
+        "label": "Dilated fourth ventricle"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0100333",
+        "label": "Unilateral cleft lip"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29330547",
+            "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Alessandri-2018-29330547-PIGN-Family_II_1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:614080",
+          "label": "MULTIPLE CONGENITAL ANOMALIES-HYPOTONIA-SEIZURES SYNDROME 1; MCAHS1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Family II-1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "304cd859f678c45a480b1d62a0bbdacd",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "18",
+                  "pos": "62152637",
+                  "ref": "GTGAGATAATAATTACAATCTCATGTAATTTTTGAATACTATACTGAAAGTAAAAAACAAAATGGTTGTATGGATACTCAATGTCCGGTTTATACTAAATATGTATTGCTTTTGCACTGGTGGAAAGTCAAAAGAATCGTAAGTTAAACCATTGTTAAGCTGGGGACTGTCTGCAAACACTTAAAATGCTTAAGACAGTAAATTCTGTATTTTGCATATATATATATATATATTTTTTTTTTTAACCACAGTTACAAAAAAACAGGTGAGTAGAAAACTGCATGGATCTGGAAACTGTTTGGCTTGAATTAAACATGAGTCTCTAGCCAGGACATGAAGTTCGAGTAAAACCCTTACCTCACTCTCTAGCCTCTTCTGAGACCTGGCTCCCAGGCAGTCCTCCTGCCACACTAACCTCCCTTCTTTCTCACTTCCTCAAATCCATTATGCTGGCTCTTGACCAAGATTTACATAATGCTGTTGGCCTGCAATACCTTTCCATACCAATCCATCCCTATCCATTTCTTTGTCTCCTGTACCTGCTCAGAGATTATCTCAAACCTCTTAGCCTTCCCCTAACTACCCAGCACAGATTAGAATTTTCTGAAGATATATTCTTGGTCTGTATTTTTCCTTCACATCACTTACCAATGCTGATGACTTCATATTTTCATTATAACTTGGTTAATATATATCTACCATATTTTATGAAGTCATGTGCAAATCTTTTTTTCTGTTCACTACCGTGTCAAGACTAGTAGTGTTGAAATAAAGAAAGGAAGAAAGACATGAAAATCAGGCCAGCTACCAGCTATGTATGTACATTCACAAGGAATCAATTCCATGATTTTGGAGGGATTTTAGCTACACATATGAAATTAGAAGCCAAAGGATTTCATGCAGATATTAATATTAGCACATTAAGTTAAGAAGTGATGATTAGCAAAATAATTTGCTAATCATTTTCTTACACAGATTTTATTTAAGTTGAAAGTTTTCCCTGTTGACAAAAGTATATATTAAAAGTAAAAAGAAAATTTCAAGGGAAAAACCCTTGGAAAAAAATAGGGTTTAGCAATGAATTTTAGAGCACTTAATTTCTGCTAAGCAAATACAAAGAAAAAGGCAGATATATACTAAGGAGTACATTTACAAACAAACAAAAATGGCTATATCATGGAGAAGTCCACAAAGTCAGTTCAAAAGACATTACTAGAAAAAAGAAGTATCAATCAAAGCTTCTTATAATGGATGAATTATGAGTTGTTATTTGGAGATGAGGAATAATGCACTGGTAAAAGAAGAGAGCCAATGTCCACAATTGAGATTTTCACACACTTTTTGAGAATATAAATTATATCGTATTCCTCATGAAACTATGATAATTGTCATTATAAAATGTTCAAAAAACTAGTACTTAAAGGAACCATAGATTTTTATTATGATCAATTTGCTAATTTGTTTTTGCCTATATAATCTGCTTATCTAATTTTTCTTTAAAGTATTTTTTAAAAAATCATCCACTTTGTTATTATAAATGTATTACATTTGAACAGCATTTTCCCAAAGGCTTTCCTACATCTCATATGGTCCATTACTACAAGAGTCTGATTCCATGGTCAATGAAAGATCAAAATTTACCCAGGATGAATCACAAACTAGAAACGAAAAACAGGTTTCCTAAATCCTAATCTAGGGCTCATTTTACTAATAGAAACAAAGGAGTTTAAAACTTCTCTTATTTATTTAGAATGTGTAATTTTTTAGAATTAAATCTTAGAATTCAGAACAGTGTGCTACAACATAGAACTTTCAAAGCTCATGAAAACAGAAAAAACGTGGGATACAGTCTCCAATACTTCAGGTAAAAATATGCTTTTTGTATATTAACCACTCAATAGCACAAACCTTAACATTATCAAAAACCCACGTATCCAGTTTTGTTGCATCTTGAGCACCAAAATCCTCTCTTTTAGCATCATAACTATATGTATAAACGTGGTCTCCACTAGCACCTGAAAAGAAAATTTGGAAAAAATAATCTTTTTACAAAATCTTTTAAACTATCATAAAATATGAGCTAGTCATTCACAGATTTTTGTGAGTAACCAGAATTTTCACAAAGCATTGTTCATTATGATGGGGAAGAGAAAAATGGGAGGAATAATTAACATTTATTTATGTTATGTGCTATGGACCATGCTACATACTTTAATGTATTCTATTGCTTTTTGTCCTCAAAAATAACATATTTTAATTTCGCAGATTCATTATATGTTAATTAACACACCAAAATCACAACTCTAATAAGCAATATAACAAAAATAAGCACAATATTTGTCTCCCTTTAAGGATTAAACTATTCAAAACATGTGTGCCCCTTAGAATGCTACAATCTAAAATAGATGATGTGTGTTGTACAAACCTTCTTAACATAAGAAGAAAATTCAGATATTTCACTTCTCTTATTCATAAACTATGAGTATTTTTCTCAACTTCTAAGAGAATAAATATTGCTTATTGCCAAAGAGTTTGAAGGGGTCAACAGATATGACAATCTCATATATTTGCAAGAGTGTATTAAGAATCTAAACAGTTTAGTGAATTTCTGAGTTTGATAGGCTCTTGCAGGTAATAAGAAAGAGATATGGCCAGTGTGGTGGCTCACACCTGTAATCCCTGTATTTTGGGAGGCCGAGGCAGGTGGATCACCGGAGGTCGGGAGATCGAGACCCCCCTGGCCAACATGATGAAACCCCGTCTCTACTAAAAAGAGAAAAAAATTAGCTGGGTGTGGTGGTGTGCGCTTGTAATCCCAGCTACTCAGGGGGCTGAGGCAGAAGAATCGCTTGAACCAAGGAGGCAGAGGTGGCAGTGAGCTGAGATCGTGCCACTGCACTCCAGCCTGGGCAACAAGGGCAAAACTCCGTCTCAAAAAAACAAAAACAAAAAGAGAGATATATAATAAAGTAATACAATCTTTATAGCACCAGTTCAGCTCTAATGACCCTATTCCACAGCTCAGCCATTCCTCTTCCCACATCCCAAATAAAAAGGTCTGACTGGGTTTGCTGTTTACTACAAGATATGGAACATTAGACTATCTCTAATTCAATTATTTGTCCTCTCCCATCCATTGTAGCCAGAAATAGGAATGTTAGTTTGATAAGCCATAGCAACTGAATCCACCCTTACCACCACCAGCTCCCAAAAAAACGAAACTGCTTTCCAAAGAAGGCAATATATAAATGGCAAACAGTTTGGGGCTTTTTGGTCCGCCCAGTATAATAATGTTCTATGACTATCATCTGTAAAATTCTCAATATATATTTTGCTTCCTGGACACATAATAATCTTCAATAGTTCCCATTATTTTAATTACACTCATGACTAAGTATGTTACAAATCCTTTCTGATAAGTGAAATGATCAATCTTTCTGCTCCCACTTAAAAGCATTTAATGACATGAAATTCATCCAACTGATTTTAGAAAATAATATAAATGAATTTTCTAATTAAGAGATGTCCCAATATTTGCAGAATCATGCATATAAACAATAAATCTAAATGCTACATTCAGTATATTAAATATCAATTTAAATAAATTATATGTTAAATGCCATATATATCAAATGCCAGAATATATGGCATCTTCGATGTATTAAAACAGGAATTATAACTATATATTTTAACACTTAAATATTTTTTTTGAGATAGGGTGTTGCTCTGTTGCCCAGGCTGGAGTGCAGTGGCATAATCATGGCTCACTGCAGCCTCAACATCCCAGGCTCTCAAGCACTCTTCCCACCTCAGCCACCTGAGTAGTTGGGACTACAGGCACATGCCACCACACTCAGCTAATTTTTTGTTTGTTGTAGAGATGTGGGTCTCACCTTGTTGCCCAGACTGGTCTCCAACTCCTGAGCTCAAGTGATCCACCTGCCTCAGCCTCCCAAAATGCTGAGATTACAGGTGTGAGCCACTGTGCCCAGCCAATGTTTAAATCTTTATATGAGTAGCTACTAACTTTTAAAATAATTTACCAAAGTATAATGAACCACACCTCAACATCATCATTTATAATCAAGTTATGTGAAAAGTGCTATGCTAAATATTTCACATGAATTACATAATTTAATTATAAAAATAAATCTATGAGACAGAAACTAATATTATCACATTTTATGAAAAGGAAATTGAAGCTCAGAGAGGTTATATAAATTGCTCAAGATTATATAGCTGTTAAGCGATAGTGCTATATACCACTTAATTGAATCCAAAATACTATCTAACTGTATGATGTGCCAATATCTCAAGTATAACTAAGAAGGAAAAAAAAATACTGTAATTAAACATCCCTATTTCAGAAATGTTAAAAATGTAAAAATATGTGTAAAAATCAACACATACATTACATACATAAAAATAGAAAACTACCATATTGACTTACTCCCTATTTACTATCTGAGGAAACATAATCAGTGACTCTTACCTTTGGCAAACATAGGCAGGATATCTGGGCTTCCCCAGCTCCATGTGTATTTACTTTCATTAAAAAGAGAATCAAACTCTACAGGATTTTCCTTCCATCCTTCAGAAAGCAAGCAAGCAGTAATAGTTATATACACATGGTACAATAAGCCCCTAAAGAACTATTCTTCAAATAATAACAATTACATTAGTCAGTGAATAAATGCAAAACTAATAGATTTTATATTATGCATATTATACCACTATTTAAAAAAAAACTAACAATAGATAATTTACTTCTTAATGAAATATAAAATTATTTTTGAACTTTCAAGAGTAATATCTAGGAAAATTATGCTTCCATCCAACCCAAATTCTTTCAATAACACAGGATAATGAAATACTAAAGTTTCAATTCTGGAGTCAGTACCAGTGGGTATTCATGTCAGCAAAGCATGCTAAAACATTTGTCCAAAATATCTCAAAACATACCTTCACTTTGTGACATGATTAAGTGGTAAAGGACTAATATTTACTTGACAAATTTTTCATTTCATAAGATTGTCCAAATAGACAATACCTTTGGCAACTGCAC",
+                  "alt": "G"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614080",
+        "label": "MULTIPLE CONGENITAL ANOMALIES-HYPOTONIA-SEIZURES SYNDROME 1; MCAHS1"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:29330547",
-      "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La Réunion Island, in patients with Fryns syndrome."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:29330547",
+        "description": "Recessive loss of function PIGN alleles, including an intragenic deletion with founder effect in La R\u00e9union Island, in patients with Fryns syndrome."
+      }
+    ]
   }
 }

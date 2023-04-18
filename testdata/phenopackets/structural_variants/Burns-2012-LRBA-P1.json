@@ -9,325 +9,368 @@
       }
     },
     "sex": "FEMALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0025615",
-      "label": "Abscess"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025615",
+        "label": "Abscess"
       },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002028",
-      "label": "Chronic diarrhea"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001873",
-      "label": "Thrombocytopenia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0011473",
-      "label": "Villous atrophy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0012219",
-      "label": "Erythema nodosum"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0008940",
-      "label": "Generalized lymphadenopathy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0410252",
-      "label": "Chronic neutropenia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001878",
-      "label": "Hemolytic anemia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001875",
-      "label": "Neutropenia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001510",
-      "label": "Growth delay"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0100806",
-      "label": "Sepsis"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002719",
-      "label": "Recurrent infections"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001744",
-      "label": "Splenomegaly"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0032140",
-      "label": "Decreased specific antibody response to vaccination"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:22981790",
-        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Burns-2012-22981790-LRBA-P1",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:614700",
-        "label": "IMMUNODEFICIENCY, COMMON VARIABLE, 8, WITH AUTOIMMUNITY; CVID8"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "P1",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "a62d0c3b5a51c85c8b49d8ad877e58c2",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "4",
-              "pos": "150827704",
-              "ref": "N",
-              "alt": "DEL"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:614700",
-      "label": "IMMUNODEFICIENCY, COMMON VARIABLE, 8, WITH AUTOIMMUNITY; CVID8"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0002028",
+        "label": "Chronic diarrhea"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011473",
+        "label": "Villous atrophy"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012219",
+        "label": "Erythema nodosum"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008940",
+        "label": "Generalized lymphadenopathy"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0410252",
+        "label": "Chronic neutropenia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001878",
+        "label": "Hemolytic anemia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001875",
+        "label": "Neutropenia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0100806",
+        "label": "Sepsis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002719",
+        "label": "Recurrent infections"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0032140",
+        "label": "Decreased specific antibody response to vaccination"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22981790",
+            "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Burns-2012-22981790-LRBA-P1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:614700",
+          "label": "IMMUNODEFICIENCY, COMMON VARIABLE, 8, WITH AUTOIMMUNITY; CVID8"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "P1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "a62d0c3b5a51c85c8b49d8ad877e58c2",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "4",
+                  "pos": "150827704",
+                  "ref": "N",
+                  "alt": "DEL"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614700",
+        "label": "IMMUNODEFICIENCY, COMMON VARIABLE, 8, WITH AUTOIMMUNITY; CVID8"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:22981790",
-      "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:22981790",
+        "description": "LRBA gene deletion in a patient presenting with autoimmunity without hypogammaglobulinemia"
+      }
+    ]
   }
 }

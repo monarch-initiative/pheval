@@ -8,118 +8,134 @@
         "iso8601duration": "P20Y"
       }
     },
-    "sex": "UNKNOWN_SEX",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0005227",
-      "label": "Adenomatous colonic polyposis"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005227",
+        "label": "Adenomatous colonic polyposis"
       },
-      "reference": {
-        "id": "PMID:28791770",
-        "description": "A novel APC promoter 1B deletion shows a founder effect in Italian patients with classical familial adenomatous polyposis phenotype."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Marabelli-2017-28791770-APC-F1",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:175100",
-        "label": "FAMILIAL ADENOMATOUS POLYPOSIS 1; FAP1"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "F1",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "b6ca8a2021632cdf816445bb2e291fb0",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "5",
-              "pos": "112703831",
-              "ref": "N",
-              "alt": "DEL"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28791770",
+            "description": "A novel APC promoter 1B deletion shows a founder effect in Italian patients with classical familial adenomatous polyposis phenotype."
           }
         }
-      }]
+      ]
     }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:175100",
-      "label": "FAMILIAL ADENOMATOUS POLYPOSIS 1; FAP1"
-    },
-    "excluded": false
-  }],
+  ],
+  "interpretations": [
+    {
+      "id": "Marabelli-2017-28791770-APC-F1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:175100",
+          "label": "FAMILIAL ADENOMATOUS POLYPOSIS 1; FAP1"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "F1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "b6ca8a2021632cdf816445bb2e291fb0",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "5",
+                  "pos": "112703831",
+                  "ref": "N",
+                  "alt": "DEL"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:175100",
+        "label": "FAMILIAL ADENOMATOUS POLYPOSIS 1; FAP1"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:28791770",
-      "description": "A novel APC promoter 1B deletion shows a founder effect in Italian patients with classical familial adenomatous polyposis phenotype."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:28791770",
+        "description": "A novel APC promoter 1B deletion shows a founder effect in Italian patients with classical familial adenomatous polyposis phenotype."
+      }
+    ]
   }
 }

@@ -9,165 +9,188 @@
       }
     },
     "sex": "FEMALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0004756",
-      "label": "Ventricular tachycardia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004756",
+        "label": "Ventricular tachycardia"
       },
-      "reference": {
-        "id": "PMID:16628197",
-        "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0011054",
-      "label": "Agenesis of molar"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:16628197",
-        "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000972",
-      "label": "Palmoplantar hyperkeratosis"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:16628197",
-        "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002224",
-      "label": "Woolly hair"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:16628197",
-        "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Norgett-2006-16628197-DSP-patient",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:615821",
-        "label": "CARDIOMYOPATHY, DILATED, WITH WOOLLY HAIR, KERATODERMA, AND TOOTHAGENESIS; DCWHKTA"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "patient",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "5bdce71d63cfd2983f405e028936e07a",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "6",
-              "pos": "7571496",
-              "ref": "N",
-              "alt": "DUP"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:16628197",
+            "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:615821",
-      "label": "CARDIOMYOPATHY, DILATED, WITH WOOLLY HAIR, KERATODERMA, AND TOOTHAGENESIS; DCWHKTA"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0011054",
+        "label": "Agenesis of molar"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:16628197",
+            "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000972",
+        "label": "Palmoplantar hyperkeratosis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:16628197",
+            "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002224",
+        "label": "Woolly hair"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:16628197",
+            "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Norgett-2006-16628197-DSP-patient",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:615821",
+          "label": "CARDIOMYOPATHY, DILATED, WITH WOOLLY HAIR, KERATODERMA, AND TOOTHAGENESIS; DCWHKTA"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "patient",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "5bdce71d63cfd2983f405e028936e07a",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "6",
+                  "pos": "7571496",
+                  "ref": "N",
+                  "alt": "DUP"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615821",
+        "label": "CARDIOMYOPATHY, DILATED, WITH WOOLLY HAIR, KERATODERMA, AND TOOTHAGENESIS; DCWHKTA"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:ddanis",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:16628197",
-      "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:16628197",
+        "description": "Early death from cardiomyopathy in a family with autosomal dominant striate palmoplantar keratoderma and woolly hair associated with a novel insertion mutation in desmoplakin."
+      }
+    ]
   }
 }

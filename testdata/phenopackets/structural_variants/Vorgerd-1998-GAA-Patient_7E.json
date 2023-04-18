@@ -9,117 +9,134 @@
       }
     },
     "sex": "MALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0003701",
-      "label": "Proximal muscle weakness"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003701",
+        "label": "Proximal muscle weakness"
       },
-      "reference": {
-        "id": "PMID:10737124",
-        "description": "Adult-onset glycogen storage disease type II: phenotypic and allelic heterogeneity in German patients."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Vorgerd-1998-10737124-GAA-Patient_7E",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:232300",
-        "label": "GLYCOGEN STORAGE DISEASE II; GSD2"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "Patient 7E",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "4199236f3a633766a9dbed637f0335f8",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "17",
-              "pos": "80118192",
-              "ref": "GGGCCCTGGCCTCACAACCACAGAGTCCCGCCAGCAGCCCATGGCCCTGGCTGTGGCCCTGACCAAGGGTGGGGAGGCCCGAGGGGAGCTGTTCTGGGACGATGGAGAGAGCCTGGAAGTGCTGGAGCGAGGGGCCTACACACAGGTCATCTTCCTGGCCAGGAAT",
-              "alt": "G"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:10737124",
+            "description": "Adult-onset glycogen storage disease type II: phenotypic and allelic heterogeneity in German patients."
           }
         }
-      }]
+      ]
     }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:232300",
-      "label": "GLYCOGEN STORAGE DISEASE II; GSD2"
-    },
-    "excluded": false
-  }],
+  ],
+  "interpretations": [
+    {
+      "id": "Vorgerd-1998-10737124-GAA-Patient_7E",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:232300",
+          "label": "GLYCOGEN STORAGE DISEASE II; GSD2"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Patient 7E",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "4199236f3a633766a9dbed637f0335f8",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "17",
+                  "pos": "80118192",
+                  "ref": "GGGCCCTGGCCTCACAACCACAGAGTCCCGCCAGCAGCCCATGGCCCTGGCTGTGGCCCTGACCAAGGGTGGGGAGGCCCGAGGGGAGCTGTTCTGGGACGATGGAGAGAGCCTGGAAGTGCTGGAGCGAGGGGCCTACACACAGGTCATCTTCCTGGCCAGGAAT",
+                  "alt": "G"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:232300",
+        "label": "GLYCOGEN STORAGE DISEASE II; GSD2"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:10737124",
-      "description": "Adult-onset glycogen storage disease type II: phenotypic and allelic heterogeneity in German patients."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:10737124",
+        "description": "Adult-onset glycogen storage disease type II: phenotypic and allelic heterogeneity in German patients."
+      }
+    ]
   }
 }

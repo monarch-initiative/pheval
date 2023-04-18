@@ -9,171 +9,191 @@
       }
     },
     "sex": "MALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0032284",
-      "label": "Ultra-low vision with retained motion projection"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0032284",
+        "label": "Ultra-low vision with retained motion projection"
       },
-      "reference": {
-        "id": "PMID:30576320",
-        "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000639",
-      "label": "Nystagmus"
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30576320",
+            "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
+          }
+        }
+      ]
     },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
       },
-      "reference": {
-        "id": "PMID:30576320",
-        "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000486",
-      "label": "Strabismus"
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30576320",
+            "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
+          }
+        }
+      ]
     },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
       },
-      "reference": {
-        "id": "PMID:30576320",
-        "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30576320",
+            "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Weisschuh-2018-30576320-RPGRIP1-P15",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:613826",
+          "label": "LEBER CONGENITAL AMAUROSIS 6; LCA6"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "P15",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "3c24f88387c2e4b696dc9a3fe03c57f6",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "14",
+                  "pos": "21307703",
+                  "ref": "CAGAATAATTTAGCGCCTTTCTCTGCAGAGCTTCCATTAAAGAGAAGGTAGAGCTGATTCGACTTAAGA",
+                  "alt": "C"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "P15",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "b2f0447f53056c57ea46b622a428f276",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "14",
+                  "pos": "21317847",
+                  "ref": "A",
+                  "alt": "T"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
       }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Weisschuh-2018-30576320-RPGRIP1-P15",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
         "id": "OMIM:613826",
         "label": "LEBER CONGENITAL AMAUROSIS 6; LCA6"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "P15",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "3c24f88387c2e4b696dc9a3fe03c57f6",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "14",
-              "pos": "21307703",
-              "ref": "CAGAATAATTTAGCGCCTTTCTCTGCAGAGCTTCCATTAAAGAGAAGGTAGAGCTGATTCGACTTAAGA",
-              "alt": "C"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
-          }
-        }
-      }, {
-        "subjectOrBiosampleId": "P15",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "b2f0447f53056c57ea46b622a428f276",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "14",
-              "pos": "21317847",
-              "ref": "A",
-              "alt": "T"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
-          }
-        }
-      }]
+      }
     }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:613826",
-      "label": "LEBER CONGENITAL AMAUROSIS 6; LCA6"
-    },
-    "excluded": false
-  }],
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:30576320",
-      "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:30576320",
+        "description": "Molecular and clinical analysis of 27 German patients with Leber congenital amaurosis."
+      }
+    ]
   }
 }

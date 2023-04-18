@@ -9,261 +9,296 @@
       }
     },
     "sex": "FEMALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0001272",
-      "label": "Cerebellar atrophy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001272",
+        "label": "Cerebellar atrophy"
       },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002079",
-      "label": "Hypoplasia of the corpus callosum"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002069",
-      "label": "Bilateral tonic-clonic seizure"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001251",
-      "label": "Ataxia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000505",
-      "label": "Visual impairment"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0000648",
-      "label": "Optic atrophy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001257",
-      "label": "Spasticity"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002120",
-      "label": "Cerebral cortical atrophy"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001336",
-      "label": "Myoclonus"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0002376",
-      "label": "Developmental regression"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:30760880",
-        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Mizuguchi-2019-30760880-CLN6-II_2",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:601780",
-        "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 6; CLN6"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "II-2",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "565ec711860f65b675a1d0bb9b4b9374",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "15",
-              "pos": "68225700",
-              "ref": "N",
-              "alt": "DEL"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000136",
-              "label": "homozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:601780",
-      "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 6; CLN6"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0002079",
+        "label": "Hypoplasia of the corpus callosum"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002069",
+        "label": "Bilateral tonic-clonic seizure"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001257",
+        "label": "Spasticity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002120",
+        "label": "Cerebral cortical atrophy"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001336",
+        "label": "Myoclonus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002376",
+        "label": "Developmental regression"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:30760880",
+            "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Mizuguchi-2019-30760880-CLN6-II_2",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:601780",
+          "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 6; CLN6"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "II-2",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "565ec711860f65b675a1d0bb9b4b9374",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "15",
+                  "pos": "68225700",
+                  "ref": "N",
+                  "alt": "DEL"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601780",
+        "label": "CEROID LIPOFUSCINOSIS, NEURONAL, 6; CLN6"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:30760880",
-      "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:30760880",
+        "description": "A 12-kb structural variation in progressive myoclonic epilepsy was newly identified by long-read whole-genome sequencing."
+      }
+    ]
   }
 }

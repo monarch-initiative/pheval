@@ -9,149 +9,170 @@
       }
     },
     "sex": "FEMALE",
-    "karyotypicSex": "UNKNOWN_KARYOTYPE",
     "taxonomy": {
       "id": "NCBITaxon:9606",
       "label": "Homo sapiens"
     }
   },
-  "phenotypicFeatures": [{
-    "type": {
-      "id": "HP:0001629",
-      "label": "Ventricular septal defect"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
       },
-      "reference": {
-        "id": "PMID:23812780",
-        "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0033074",
-      "label": "Steroid-responsive anemia"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23812780",
-        "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
-      }
-    }]
-  }, {
-    "type": {
-      "id": "HP:0001199",
-      "label": "Triphalangeal thumb"
-    },
-    "excluded": false,
-    "evidence": [{
-      "evidenceCode": {
-        "id": "ECO:0000033",
-        "label": "author statement supported by traceable reference"
-      },
-      "reference": {
-        "id": "PMID:23812780",
-        "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
-      }
-    }]
-  }],
-  "interpretations": [{
-    "id": "Landowski-2013-23812780-RPL15-P1",
-    "progressStatus": "SOLVED",
-    "diagnosis": {
-      "disease": {
-        "id": "OMIM:615550",
-        "label": "DIAMOND-BLACKFAN ANEMIA 12; DBA12"
-      },
-      "genomicInterpretations": [{
-        "subjectOrBiosampleId": "P1",
-        "interpretationStatus": "CAUSATIVE",
-        "variantInterpretation": {
-          "acmgPathogenicityClassification": "NOT_PROVIDED",
-          "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
-          "variationDescriptor": {
-            "id": "8331e3a364cc0c2a0f0eb9fe009f936b",
-            "vcfRecord": {
-              "genomeAssembly": "GRCh38",
-              "chrom": "3",
-              "pos": "23918664",
-              "ref": "GTGAGCTGTCTCGTATATAAAACAGGGTTTGTGATTTTTACTAATCTTGGTGAAGAGTAATTGCTTGAAAGACTTGTCTTTGTTACAAATGCGTGTGTATATACTGGAAGTACTTGTGGAACCTAAGCTTTAAAGCGGCAAGAATATGCAGAAGAGACCAAATGTGGCCTGCACAGCCTAAAATATATACTAAATATTTTTAAAGCTAAACGTTGCTGAGCTCTCAGTTGTATGGAAAAAGATAAGGTCCCCAAACCCTAAATTTTGTTACCCAGATATTAACATATTCCTGCCCTAGTCAGGAATGGAGTATTAAGAGGGAATGATGTGTTTCAGTCTATGTGTGTTGTTTTAGCAAGTCTACATTATCTCATTACACTTGTGATAGTCTAGGGAGAAATGCTTAGTAAATAACTTGAGTAGTAAAAGACTCTTGTCTGGTGGTGAACTAGAGTTGAGAATTAAAATTCTTTCTGACTTGCTGCTATAGGCAATGTGGGAGATTGACCTTGGGCCTTTTTTCCTATTCTAGGAGCGAGCTGGACGCCACTGTGGGGCTCTGAGAGTCCTGAATTCTTACTGGGTTGGTGAAGATTCCACATACAAATTTTTTGAGGTTATCCTCATTGATCCATTCCATAAAGCTATCAGAAGAAATCCTGACACCCAGTGGATCACCAAACCAGTCCACAAGCACAGGGAGATGCGTGGGCTGACATCTGCAGGCCGAAAGAGCCGTGGCCTTGGAAAGGGCCACAAGTTCCACCACACTATTGGTGGCTCTCGCCGGGCAGCTTGGAGAAGGCGCAATACTCTCCAGCTCCACCGTTACCGCTAATATAAGTAAAGTTTGTAAAATTCATACTTAATAAACAATTTAGGACAGTCATGTCTGCTTACAGGTGTTATTTGTCTGTTAAAACTAGTCTGCAGATGTTTCTTGAATGCTTTGTCAAATTAAGAAAGTTAAAGTGCAATAATGTTTGAAGACAATAAGTGGTGGTGTATCTTGTTTCTAATAAGATAAACTTTTTTGTCTTTGCTTTATCTTATTAGGGAGTTGTATGTCAGTGTATAAAACATACTGTGTGGTATAACAGGCTTAATAAATTCTTTAAAAGGAGAGAACTGAAACTAGCCCTGTAGATTTGTCTGGTGCATGTGATGAAACCTGCAGCTTTATCGGAGTGATGGCAATGCTCTGCTGGTTTATTTTCAAGTGGCTGCGTTTTTTTTAGTTTGGCAGGTGTAGACTTTTTAAGTTGGGCTTTAGAAAATCTGGGTTAGCCTGAAGAAAATTGCCTCAGCCTCCACAGTACCATTTTAAATTCACATAAAAGGTGAAAGCTCCTGGTTCAGTGCCATGGCTTCATGGCATTCAGTGATTAGTGGTAATGGTAAACACTGGTGTGTTTTGAAGTTGAATGTGCGATAAAATTATTAGCCTTAAGATTGGTAAGCTAGCAATGAATGCTAGGGTGGGAAGCTGGTGAGCCAGTGGCCATTAGATAAATACCTTTCAAGTGTGAGCTTAGACGTCAACCCTAAAATACTTAACCGTAATGCTAATTGTGATCATTATGAATCCCTTCAGTCACATTAGGGGGAAAGTAGTTGGCTATAAGTACGTCATTCTTAGTCCAGTCAGTCTTAAAAACATCTTGGGTTACCCACTCTGTCCACTCCCATAGGCTACAGAAAAAGTCACAAGCGCATGGTTTCCAACCATATGTGTTTTCTGCAGTTATTTCTCTTGTTCTGGCCAAACAACCCTAAAAATCCTTACCATTCCACAAAGTTGGACCATCACTTGTGCACCCACTTTGACTATGAGTATACCACCACATTGCATTTCTGTTTGCACCATGTCTTCCAGGAGACTAGACTACTGTTGTCCAGGGTCAATTTGAGTGTAAAGAAAATGTAGACAAGGAATTGCCCAATTTTAAATTCTGACTTTGCTGACTTAATTTAAATGCTCGTTCTGAACCAATTTTCTCCTATCTTCTCTAGGGGTTTCAAAAGACTCAGTTAATTGATTTCCAGGAAGTACTCATAGCAAGTTCATAAAAGTTCTTGAGACCTAAATTTCTTCACAAAAAAAGAAAAGATCTTAAGTCATACATTTTAATTGTGTAGAGGTTGTTCAACTGAAGGAATAAATGTCTATTAAACTAAAACAAATGGACCTTCTGTTATTTTTTGTCATCTTACAGTGCTAATGTACTTTAAAGCAAACCAAATGCCCTAACCAGCAAAAAGGCATCAAAATGTGATTATAGAAATAATATAATTTGAGATAGCATAAAATGTACTTATTCTCTCAGTTCTTTGATCATTGCATGAATTAGGTTTTTATCTAAAACTGTTCAGCTGGGTGTGGTGGCTCAGGCC",
-              "alt": "G"
-            },
-            "moleculeContext": "genomic",
-            "allelicState": {
-              "id": "GENO:0000135",
-              "label": "heterozygous"
-            }
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23812780",
+            "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
           }
         }
-      }]
-    }
-  }],
-  "diseases": [{
-    "term": {
-      "id": "OMIM:615550",
-      "label": "DIAMOND-BLACKFAN ANEMIA 12; DBA12"
+      ]
     },
-    "excluded": false
-  }],
+    {
+      "type": {
+        "id": "HP:0033074",
+        "label": "Steroid-responsive anemia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23812780",
+            "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001199",
+        "label": "Triphalangeal thumb"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:23812780",
+            "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Landowski-2013-23812780-RPL15-P1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:615550",
+          "label": "DIAMOND-BLACKFAN ANEMIA 12; DBA12"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "P1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "8331e3a364cc0c2a0f0eb9fe009f936b",
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "3",
+                  "pos": "23918664",
+                  "ref": "GTGAGCTGTCTCGTATATAAAACAGGGTTTGTGATTTTTACTAATCTTGGTGAAGAGTAATTGCTTGAAAGACTTGTCTTTGTTACAAATGCGTGTGTATATACTGGAAGTACTTGTGGAACCTAAGCTTTAAAGCGGCAAGAATATGCAGAAGAGACCAAATGTGGCCTGCACAGCCTAAAATATATACTAAATATTTTTAAAGCTAAACGTTGCTGAGCTCTCAGTTGTATGGAAAAAGATAAGGTCCCCAAACCCTAAATTTTGTTACCCAGATATTAACATATTCCTGCCCTAGTCAGGAATGGAGTATTAAGAGGGAATGATGTGTTTCAGTCTATGTGTGTTGTTTTAGCAAGTCTACATTATCTCATTACACTTGTGATAGTCTAGGGAGAAATGCTTAGTAAATAACTTGAGTAGTAAAAGACTCTTGTCTGGTGGTGAACTAGAGTTGAGAATTAAAATTCTTTCTGACTTGCTGCTATAGGCAATGTGGGAGATTGACCTTGGGCCTTTTTTCCTATTCTAGGAGCGAGCTGGACGCCACTGTGGGGCTCTGAGAGTCCTGAATTCTTACTGGGTTGGTGAAGATTCCACATACAAATTTTTTGAGGTTATCCTCATTGATCCATTCCATAAAGCTATCAGAAGAAATCCTGACACCCAGTGGATCACCAAACCAGTCCACAAGCACAGGGAGATGCGTGGGCTGACATCTGCAGGCCGAAAGAGCCGTGGCCTTGGAAAGGGCCACAAGTTCCACCACACTATTGGTGGCTCTCGCCGGGCAGCTTGGAGAAGGCGCAATACTCTCCAGCTCCACCGTTACCGCTAATATAAGTAAAGTTTGTAAAATTCATACTTAATAAACAATTTAGGACAGTCATGTCTGCTTACAGGTGTTATTTGTCTGTTAAAACTAGTCTGCAGATGTTTCTTGAATGCTTTGTCAAATTAAGAAAGTTAAAGTGCAATAATGTTTGAAGACAATAAGTGGTGGTGTATCTTGTTTCTAATAAGATAAACTTTTTTGTCTTTGCTTTATCTTATTAGGGAGTTGTATGTCAGTGTATAAAACATACTGTGTGGTATAACAGGCTTAATAAATTCTTTAAAAGGAGAGAACTGAAACTAGCCCTGTAGATTTGTCTGGTGCATGTGATGAAACCTGCAGCTTTATCGGAGTGATGGCAATGCTCTGCTGGTTTATTTTCAAGTGGCTGCGTTTTTTTTAGTTTGGCAGGTGTAGACTTTTTAAGTTGGGCTTTAGAAAATCTGGGTTAGCCTGAAGAAAATTGCCTCAGCCTCCACAGTACCATTTTAAATTCACATAAAAGGTGAAAGCTCCTGGTTCAGTGCCATGGCTTCATGGCATTCAGTGATTAGTGGTAATGGTAAACACTGGTGTGTTTTGAAGTTGAATGTGCGATAAAATTATTAGCCTTAAGATTGGTAAGCTAGCAATGAATGCTAGGGTGGGAAGCTGGTGAGCCAGTGGCCATTAGATAAATACCTTTCAAGTGTGAGCTTAGACGTCAACCCTAAAATACTTAACCGTAATGCTAATTGTGATCATTATGAATCCCTTCAGTCACATTAGGGGGAAAGTAGTTGGCTATAAGTACGTCATTCTTAGTCCAGTCAGTCTTAAAAACATCTTGGGTTACCCACTCTGTCCACTCCCATAGGCTACAGAAAAAGTCACAAGCGCATGGTTTCCAACCATATGTGTTTTCTGCAGTTATTTCTCTTGTTCTGGCCAAACAACCCTAAAAATCCTTACCATTCCACAAAGTTGGACCATCACTTGTGCACCCACTTTGACTATGAGTATACCACCACATTGCATTTCTGTTTGCACCATGTCTTCCAGGAGACTAGACTACTGTTGTCCAGGGTCAATTTGAGTGTAAAGAAAATGTAGACAAGGAATTGCCCAATTTTAAATTCTGACTTTGCTGACTTAATTTAAATGCTCGTTCTGAACCAATTTTCTCCTATCTTCTCTAGGGGTTTCAAAAGACTCAGTTAATTGATTTCCAGGAAGTACTCATAGCAAGTTCATAAAAGTTCTTGAGACCTAAATTTCTTCACAAAAAAAGAAAAGATCTTAAGTCATACATTTTAATTGTGTAGAGGTTGTTCAACTGAAGGAATAAATGTCTATTAAACTAAAACAAATGGACCTTCTGTTATTTTTTGTCATCTTACAGTGCTAATGTACTTTAAAGCAAACCAAATGCCCTAACCAGCAAAAAGGCATCAAAATGTGATTATAGAAATAATATAATTTGAGATAGCATAAAATGTACTTATTCTCTCAGTTCTTTGATCATTGCATGAATTAGGTTTTTATCTAAAACTGTTCAGCTGGGTGTGGTGGCTCAGGCC",
+                  "alt": "G"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615550",
+        "label": "DIAMOND-BLACKFAN ANEMIA 12; DBA12"
+      }
+    }
+  ],
   "metaData": {
     "created": "2021-06-24T16:13:18Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
-    "resources": [{
-      "id": "hp",
-      "name": "human phenotype ontology",
-      "url": "http://purl.obolibrary.org/obo/hp.owl",
-      "version": "2018-03-08",
-      "namespacePrefix": "HP",
-      "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
-    }, {
-      "id": "pato",
-      "name": "Phenotype And Trait Ontology",
-      "url": "http://purl.obolibrary.org/obo/pato.owl",
-      "version": "2018-03-28",
-      "namespacePrefix": "PATO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
-    }, {
-      "id": "geno",
-      "name": "Genotype Ontology",
-      "url": "http://purl.obolibrary.org/obo/geno.owl",
-      "version": "19-03-2018",
-      "namespacePrefix": "GENO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
-    }, {
-      "id": "ncbitaxon",
-      "name": "NCBI organismal classification",
-      "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2018-03-02",
-      "namespacePrefix": "NCBITaxon"
-    }, {
-      "id": "eco",
-      "name": "Evidence and Conclusion Ontology",
-      "url": "http://purl.obolibrary.org/obo/eco.owl",
-      "version": "2018-11-10",
-      "namespacePrefix": "ECO",
-      "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
-    }, {
-      "id": "omim",
-      "name": "Online Mendelian Inheritance in Man",
-      "url": "https://www.omim.org",
-      "namespacePrefix": "OMIM"
-    }],
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITAXON_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
     "phenopacketSchemaVersion": "2.0.0",
-    "externalReferences": [{
-      "id": "PMID:23812780",
-      "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
-    }]
+    "externalReferences": [
+      {
+        "id": "PMID:23812780",
+        "description": "Novel deletion of RPL15 identified by array-comparative genomic hybridization in Diamond-Blackfan anemia."
+      }
+    ]
   }
 }
