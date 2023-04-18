@@ -50,6 +50,7 @@ class TestCommandLineInterface(unittest.TestCase):
         self.assertTrue(Path(self.test_dir).joinpath("pheval_variant_results").exists())
         self.assertTrue(Path(self.test_dir).joinpath("raw_results").exists())
         self.assertTrue(Path(self.test_dir).joinpath("tool_input_commands").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("results.yml").exists())
 
     def test_semsim_heatmap(self):
         """test_semsim_heatmap"""

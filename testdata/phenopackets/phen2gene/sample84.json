@@ -1,0 +1,82 @@
+{
+  "id": "sample84",
+  "subject": {
+    "id": "sample84"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030140",
+        "label": "Oral cavity bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005261",
+        "label": "Joint hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030402",
+        "label": "Abnormal platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002718",
+        "label": "Recurrent bacterial infections"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample84-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample84",
+            "gene": {
+              "valueId": "ENSG00000185010",
+              "symbol": "F8",
+              "alternateIds": [
+                "HGNC:3546",
+                "ncbigene:2157",
+                "ensembl:ENSG00000185010",
+                "symbol:F8"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.504249Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}
