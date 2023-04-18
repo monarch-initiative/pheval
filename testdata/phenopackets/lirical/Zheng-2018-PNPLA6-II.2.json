@@ -175,6 +175,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:430847",
                 "geneContext": {
                   "valueId": "ENSG00000032444",
                   "symbol": "PNPLA6",
@@ -204,6 +205,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:430848",
                 "geneContext": {
                   "valueId": "ENSG00000032444",
                   "symbol": "PNPLA6",
@@ -265,8 +267,7 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon",
-        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+        "namespacePrefix": "NCBITaxon"
       },
       {
         "id": "eco",
@@ -280,9 +281,15 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "version": "2018-03-08",
-        "namespacePrefix": "OMIM",
-        "iriPrefix": "https://omim.org/entry/"
+        "namespacePrefix": "OMIM"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"
