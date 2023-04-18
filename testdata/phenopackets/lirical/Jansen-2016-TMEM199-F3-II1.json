@@ -235,6 +235,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:223000",
                 "geneContext": {
                   "valueId": "ENSG00000244045",
                   "symbol": "TMEM199",
@@ -260,15 +261,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Jansen-2016-TMEM199-F3-II1.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -321,6 +313,14 @@
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
         "namespacePrefix": "OMIM"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

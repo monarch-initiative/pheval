@@ -177,6 +177,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:429031",
                 "geneContext": {
                   "valueId": "ENSG00000184381",
                   "symbol": "PLA2G6",
@@ -202,15 +203,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Dastsooz-2017-PLA2G6-family_II_patient_II.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -263,6 +255,14 @@
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
         "namespacePrefix": "OMIM"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

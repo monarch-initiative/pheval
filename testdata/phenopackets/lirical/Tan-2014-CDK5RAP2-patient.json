@@ -139,6 +139,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "9-123298783-CTGCCT-C",
                 "geneContext": {
                   "valueId": "ENSG00000136861",
                   "symbol": "CDK5RAP2",
@@ -168,6 +169,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:158146",
                 "geneContext": {
                   "valueId": "ENSG00000136861",
                   "symbol": "CDK5RAP2",
@@ -193,15 +195,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Tan-2014-CDK5RAP2-patient.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -254,6 +247,14 @@
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
         "namespacePrefix": "OMIM"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

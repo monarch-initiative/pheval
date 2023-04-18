@@ -9,7 +9,14 @@ from pathlib import Path
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
-from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
+from phenopackets import (
+    Family,
+    File,
+    GenomicInterpretation,
+    Interpretation,
+    Phenopacket,
+    PhenotypicFeature,
+)
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
@@ -184,18 +191,31 @@ class PhenopacketUtil:
         vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
         return vcf_data
 
+    @staticmethod
+    def _extract_diagnosed_gene(
+        genomic_interpretation: GenomicInterpretation,
+    ) -> ProbandCausativeGene:
+        """Returns the disease causative gene from the variant descriptor field if not empty,
+        otherwise, returns from the gene descriptor from a phenopacket."""
+        if genomic_interpretation.variant_interpretation.ByteSize() != 0:
+            return ProbandCausativeGene(
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.symbol,
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.value_id,
+            )
+
+        else:
+            return ProbandCausativeGene(
+                gene_symbol=genomic_interpretation.gene.symbol,
+                gene_identifier=genomic_interpretation.gene.value_id,
+            )
+
     def diagnosed_genes(self) -> list[ProbandCausativeGene]:
         """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
         pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(
-                    ProbandCausativeGene(
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
-                        g.variant_interpretation.variation_descriptor.gene_context.value_id,
-                    )
-                )
+                genes.append(self._extract_diagnosed_gene(g))
                 genes = list({gene.gene_symbol: gene for gene in genes}.values())
         return genes
 

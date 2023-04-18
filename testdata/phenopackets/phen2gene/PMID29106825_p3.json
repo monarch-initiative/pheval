@@ -1,0 +1,82 @@
+{
+  "id": "PMID29106825_p3",
+  "subject": {
+    "id": "PMID29106825_p3"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025092",
+        "label": "Epidermal acanthosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000817",
+        "label": "Poor eye contact"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008689",
+        "label": "Bilateral cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200034",
+        "label": "Papule"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID29106825_p3-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID29106825_p3",
+            "gene": {
+              "valueId": "ENSG00000185236",
+              "symbol": "RAB11B",
+              "alternateIds": [
+                "HGNC:9761",
+                "ncbigene:9230",
+                "ensembl:ENSG00000185236",
+                "symbol:RAB11B"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.130395Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

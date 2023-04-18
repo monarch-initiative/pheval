@@ -1,0 +1,88 @@
+{
+  "id": "sample61",
+  "subject": {
+    "id": "sample61"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002677",
+        "label": "Small foramen magnum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011476",
+        "label": "Profound sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002974",
+        "label": "Radioulnar synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001698",
+        "label": "Pericardial effusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012795",
+        "label": "Abnormal optic disc morphology"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample61-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample61",
+            "gene": {
+              "valueId": "ENSG00000178573",
+              "symbol": "MAF",
+              "alternateIds": [
+                "HGNC:6776",
+                "ncbigene:4094",
+                "ensembl:ENSG00000178573",
+                "symbol:MAF"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.723763Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

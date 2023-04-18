@@ -1,0 +1,76 @@
+{
+  "id": "sample36",
+  "subject": {
+    "id": "sample36"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004389",
+        "label": "Intestinal pseudo-obstruction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002579",
+        "label": "Gastrointestinal dysmotility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000121",
+        "label": "Nephrocalcinosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004313",
+        "label": "Decreased circulating antibody level"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample36-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample36",
+            "gene": {
+              "valueId": "ENSG00000165731",
+              "symbol": "RET",
+              "alternateIds": [
+                "HGNC:9967",
+                "ncbigene:5979",
+                "ensembl:ENSG00000165731",
+                "symbol:RET"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.476497Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}
