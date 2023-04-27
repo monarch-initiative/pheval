@@ -267,7 +267,7 @@ class PhenopacketRebuilder:
         """Adds spiked vcf path to phenopacket."""
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
-            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
+            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
         ]
         phenopacket_files.append(spiked_vcf_file_data)
         del phenopacket.files[:]

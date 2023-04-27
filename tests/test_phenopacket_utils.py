@@ -537,13 +537,13 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         updated_phenopacket = self.phenopacket_rebuilder.add_spiked_vcf_path(
             File(
                 uri=str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()),
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             )
         )
         vcf_file = [
             file
             for file in updated_phenopacket.files
-            if file.file_attributes["fileFormat"] == "VCF"
+            if file.file_attributes["fileFormat"] == "vcf"
         ][0]
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
 
