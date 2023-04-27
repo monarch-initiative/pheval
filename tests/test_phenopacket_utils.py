@@ -241,7 +241,7 @@ proband = Phenopacket(
 phenopacket_files = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.ped",
@@ -251,7 +251,7 @@ phenopacket_files = [
 incorrect_genome_assembly = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "hg10"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "hg10"},
     ),
     File(
         uri="test_1.ped",
@@ -261,7 +261,7 @@ incorrect_genome_assembly = [
 incorrect_file_format = [
     File(
         uri="test/path/to/test_1.ped",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.vcf",
@@ -442,7 +442,7 @@ class TestPhenopacketUtil(unittest.TestCase):
             vcf_file_data,
             File(
                 uri="input_dir/test_1.vcf",
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             ),
         )
         with self.assertRaises(IncompatibleGenomeAssemblyError):
