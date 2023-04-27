@@ -205,8 +205,6 @@ def generate_pheval_result(
 ):
     """Generate either a PhEval variant or PhEval gene tsv result."""
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
-    _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path) if type(
-        ranked_pheval_result
-    ) == [PhEvalVariantResult] else _write_pheval_gene_result(
-        ranked_pheval_result, output_dir, tool_result_path
-    )
+    _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path) if all(
+        isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result
+    ) else _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
