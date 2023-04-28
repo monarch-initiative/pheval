@@ -66,7 +66,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
-                "id": "17-31188180-N-DEL",
+                "id": "clinvar:217054",
                 "geneContext": {
                   "valueId": "ENSG00000196712",
                   "symbol": "NF1",
@@ -82,7 +82,8 @@
                   "chrom": "17",
                   "pos": "31188180",
                   "ref": "N",
-                  "alt": "DEL"
+                  "alt": "DEL",
+                  "info": "SVTYPE=DEL;END=31204605"
                 },
                 "moleculeContext": "genomic",
                 "allelicState": {
@@ -156,6 +157,14 @@
         "version": "2018-03-08",
         "namespacePrefix": "OMIM",
         "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0",
