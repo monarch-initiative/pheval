@@ -124,11 +124,15 @@ class VcfHeaderParser:
         for line in self.vcf_contents:
             if line.startswith("##contig=<ID"):
                 line_split = line.split(",")
-                chromosome = line_split[0].split("=")[2]
+                chromosome = [line for line in line_split if "ID=" in line][0].split("ID=")[1]
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
-                contig_length = re.sub("[^0-9]+", "", line_split[1].split("=")[1])
+                contig_length = re.sub(
+                    "[^0-9]+",
+                    "",
+                    [line for line in line_split if "length=" in line][0].split("length=")[1],
+                )
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
         assembly = [k for k, v in genome_assemblies.items() if v == vcf_assembly][0]
