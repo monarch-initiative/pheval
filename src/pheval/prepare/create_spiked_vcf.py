@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import gzip
 import logging
+import re
 import secrets
 from copy import copy
 from dataclasses import dataclass
@@ -127,7 +128,7 @@ class VcfHeaderParser:
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
-                contig_length = line_split[1].split("=")[1]
+                contig_length = re.sub("[^0-9]+", "", line_split[1].split("=")[1])
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
         assembly = [k for k, v in genome_assemblies.items() if v == vcf_assembly][0]
