@@ -1,4 +1,3 @@
-import os
 import unittest
 from pathlib import Path
 
@@ -16,23 +15,15 @@ from pheval.utils.phenopacket_utils import (
     ProbandCausativeVariant,
 )
 
-hg19_vcf = read_vcf(
-    Path(os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf")
-)
-hg38_vcf = read_vcf(
-    Path(os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_2.vcf.gz")
-)
+hg19_vcf = read_vcf(Path("./tests/input_dir/test_vcf_dir/test_1.vcf"))
+hg38_vcf = read_vcf(Path("./tests/input_dir/test_vcf_dir/test_2.vcf.gz"))
 
 
 class TestVcfPicker(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.vcf_file = Path(
-            os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
-        )
-        cls.vcf_dir = Path(
-            os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_2.vcf.gz"
-        )
+        cls.vcf_file = Path("./tests/input_dir/test_vcf_dir/test_1.vcf")
+        cls.vcf_dir = Path("./tests/input_dir/test_vcf_dir/test_2.vcf.gz")
 
     def test_pick_file_from_dir(self):
         self.assertTrue(
@@ -46,12 +37,8 @@ class TestVcfPicker(unittest.TestCase):
 class TestReadVcf(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.vcf_file = Path(
-            os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_1.vcf"
-        )
-        cls.gzipped_vcf_file = Path(
-            os.path.dirname(os.path.realpath(__file__)) + "/input_dir/test_vcf_dir/test_2.vcf.gz"
-        )
+        cls.vcf_file = Path("./tests/input_dir/test_vcf_dir/test_1.vcf")
+        cls.gzipped_vcf_file = Path("./tests/input_dir/test_vcf_dir/test_2.vcf.gz")
 
     def test_read_vcf(self):
         self.assertTrue(type(read_vcf(self.vcf_file)), list[str])
