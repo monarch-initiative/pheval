@@ -178,11 +178,31 @@ class TestVcfSpiker(unittest.TestCase):
             ],
             VcfHeader("TEMPLATE", "GRCh37", True),
         )
+        cls.structural_variant_vcf_spiker = VcfSpiker(
+            hg38_vcf,
+            [
+                ProbandCausativeVariant(
+                    "TEST1",
+                    "GRCh38",
+                    GenomicVariant("5", 134858794, "N", "DEL"),
+                    "heterozygous",
+                    "SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                )
+            ],
+            VcfHeader("TEMPLATE", "GRCh38", True),
+        )
         cls.variant = ProbandCausativeVariant(
             "TEST1",
             "GRCh37",
             GenomicVariant("1", 886190, "G", "A"),
             "heterozygous",
+        )
+        cls.structural_variant = ProbandCausativeVariant(
+            proband_id="test-subject-1",
+            assembly="GRCh38",
+            variant=GenomicVariant(chrom="5", pos=134858794, ref="N", alt="DEL"),
+            genotype="heterozygous",
+            info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
         )
 
     def test_construct_variant(self):
@@ -197,6 +217,23 @@ class TestVcfSpiker(unittest.TestCase):
                 "100",
                 "PASS",
                 "SPIKED_VARIANT_HETEROZYGOUS",
+                "GT:AD:DP:GQ:PL",
+                "0/1:0,2:2:12:180,12,0\n",
+            ],
+        )
+
+    def test_construct_variant_structural_variant(self):
+        self.assertEqual(
+            self.structural_variant_vcf_spiker.construct_variant_entry(self.structural_variant),
+            [
+                "chr5",
+                "134858794",
+                ".",
+                "N",
+                "<DEL>",
+                "100",
+                "PASS",
+                "SVTYPE=DEL;END=135099433;SVLEN=-269958227",
                 "GT:AD:DP:GQ:PL",
                 "0/1:0,2:2:12:180,12,0\n",
             ],
