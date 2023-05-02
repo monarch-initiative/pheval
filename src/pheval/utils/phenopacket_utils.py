@@ -48,6 +48,7 @@ class ProbandCausativeVariant:
     assembly: str
     variant: GenomicVariant
     genotype: str
+    info: str = None
 
 
 @dataclass
@@ -168,6 +169,7 @@ class PhenopacketUtil:
                         vcf_record.alt,
                     ),
                     genotype.label,
+                    vcf_record.info,
                 )
                 all_variants.append(variant_data)
         return all_variants
