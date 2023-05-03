@@ -7,9 +7,10 @@ TMP_DATA				:=	data/tmp
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
 H2_JAR					:= /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
-PHEN2GENE_LIB			:= /home/vinicius/Documents/softwares/Phen2Gene/lib
+PHEN2GENE_LIB			:= /home/vinicius/Documents/softwares/Phen2Gene
 EXOMISER_DATA_FOLDER	:= /home/data/exomiser-data/
 EXOMISER_VERSION		:= 13.2.0
+PHENOTYPE_VERSION		:= 2302
 
 help: status
 	@echo ""
@@ -106,9 +107,9 @@ configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-m
 	 --subject-prefix HP \
 	 --object-prefix MP
 
-configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
-	test -d $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/ $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/$(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1/2209_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
+configurations/exomiser-$(EXOMISER_VERSION)/default/$(PHENOTYPE_VERSION)_phenotype/$(PHENOTYPE_VERSION)_phenotype.h2.db: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
+	test -d $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-$(EXOMISER_VERSION)/default/$(PHENOTYPE_VERSION)_phenotype/ $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/$(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1/$(PHENOTYPE_VERSION)_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
 
 results/phen2gene/default-corpus1-scrambled1/results.yml: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
 	pheval run \
@@ -167,7 +168,7 @@ semsim-scramble: configurations/semsim1/hp-mp.semsim.scrambled1.tsv configuratio
 semsim-convert: configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp.semsim.scrambled2.sql configurations/semsim1/hp-mp.semsim.scrambled3.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled2.sql configurations/semsim1/hp-mp2.semsim.scrambled3.sql
 
 .PHONY: semsim-ingest
-semsim-ingest: configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db
+semsim-ingest: configurations/exomiser-$(EXOMISER_VERSION)/default/$(PHENOTYPE_VERSION)_phenotype/$(PHENOTYPE_VERSION)_phenotype.h2.db
 
 .PHONY: prepare-inputs1
 prepare-inputs1: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
