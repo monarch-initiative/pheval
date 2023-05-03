@@ -2,7 +2,6 @@
   "id": "PMID:29078790-Fusco-2017-PMP22-Proband",
   "subject": {
     "id": "Proband",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P4Y"
@@ -160,6 +159,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "17-15162409-A-G",
                 "geneContext": {
                   "valueId": "ENSG00000109099",
                   "symbol": "PMP22",
@@ -185,15 +185,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Fusco-2017-PMP22-Proband.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -231,7 +222,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -245,7 +237,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

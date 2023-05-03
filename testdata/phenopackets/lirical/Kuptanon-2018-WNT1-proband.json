@@ -2,7 +2,6 @@
   "id": "PMID:30012084-Kuptanon-2018-WNT1-proband",
   "subject": {
     "id": "proband",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P14Y"
@@ -232,6 +231,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "12-49372435-TG-T",
                 "geneContext": {
                   "valueId": "ENSG00000125084",
                   "symbol": "WNT1",
@@ -257,15 +257,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Kuptanon-2018-WNT1-proband.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -303,7 +294,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -317,7 +309,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

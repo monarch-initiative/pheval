@@ -2,7 +2,6 @@
   "id": "PMID:27132592-Metodiev-2016-TRMT10C-Subject_2",
   "subject": {
     "id": "Subject 2",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P5Y"
@@ -301,6 +300,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:224316",
                 "geneContext": {
                   "valueId": "ENSG00000174173",
                   "symbol": "TRMT10C",
@@ -326,15 +326,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Metodiev-2016-TRMT10C-Subject_2.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -372,7 +363,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -386,7 +378,17 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

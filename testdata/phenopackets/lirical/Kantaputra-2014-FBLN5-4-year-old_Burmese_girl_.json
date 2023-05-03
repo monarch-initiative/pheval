@@ -2,7 +2,6 @@
   "id": "PMID:24962763-Kantaputra-2014-FBLN5-4-year-old_Burmese_girl_",
   "subject": {
     "id": "4-year-old Burmese girl ",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P4Y"
@@ -249,6 +248,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:1804877",
                 "geneContext": {
                   "valueId": "ENSG00000140092",
                   "symbol": "FBLN5",
@@ -274,15 +274,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Kantaputra-2014-FBLN5-4-year-old_Burmese_girl_.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -320,7 +311,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -334,7 +326,17 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

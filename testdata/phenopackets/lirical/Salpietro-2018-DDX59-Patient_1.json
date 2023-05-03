@@ -2,10 +2,10 @@
   "id": "PMID:29127725-Salpietro-2018-DDX59-Patient_1",
   "subject": {
     "id": "Patient 1",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
-      "age": {
-        "iso8601duration": "adult"
+      "ontologyClass": {
+        "id": "HP:0003581",
+        "label": "Adult onset"
       }
     },
     "sex": "MALE",
@@ -229,6 +229,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "1-200635683-GA-G",
                 "geneContext": {
                   "valueId": "ENSG00000118197",
                   "symbol": "DDX59",
@@ -254,15 +255,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Salpietro-2018-DDX59-Patient_1.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -300,7 +292,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -314,7 +307,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

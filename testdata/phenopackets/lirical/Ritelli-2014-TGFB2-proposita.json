@@ -2,7 +2,6 @@
   "id": "PMID:25163805-Ritelli-2014-TGFB2-proposita",
   "subject": {
     "id": "proposita",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P57Y"
@@ -302,6 +301,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "1-218609311-G-A",
                 "geneContext": {
                   "valueId": "ENSG00000092969",
                   "symbol": "TGFB2",
@@ -327,15 +327,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Ritelli-2014-TGFB2-proposita.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -373,7 +364,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -387,7 +379,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

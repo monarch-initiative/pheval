@@ -1,0 +1,88 @@
+{
+  "id": "sample48",
+  "subject": {
+    "id": "sample48"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001840",
+        "label": "Metatarsus adductus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005216",
+        "label": "Impaired mastication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002194",
+        "label": "Delayed gross motor development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000717",
+        "label": "Autism"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample48-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample48",
+            "gene": {
+              "valueId": "ENSG00000123066",
+              "symbol": "MED13L",
+              "alternateIds": [
+                "HGNC:22962",
+                "ncbigene:23389",
+                "ensembl:ENSG00000123066",
+                "symbol:MED13L"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.539107Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -1,10 +1,16 @@
 import difflib
 import itertools
+import re
+import unicodedata
 from os import path
 from pathlib import Path
 from typing import List
 
 import pandas as pd
+import yaml
+from serde import to_dict
+
+from pheval.run_metadata import BasicOutputRunMetaData
 
 
 def files_with_suffix(directory: Path, suffix: str):
@@ -26,19 +32,18 @@ def is_gzipped(path: Path) -> bool:
     return path.name.endswith(".gz")
 
 
+def normalise_file_name(file_path: Path) -> str:
+    normalised_file_name = unicodedata.normalize("NFD", str(file_path))
+    return re.sub("[\u0300-\u036f]", "", normalised_file_name)
+
+
 def obtain_closest_file_name(file_to_be_queried: Path, file_paths: list[Path]) -> Path:
     """Obtains the closest file name when given a template file name and a list of full path of files to be queried."""
-    closest_file_match = Path(
-        str(
-            difflib.get_close_matches(
-                str(file_to_be_queried.name),
-                [str(file_path.name) for file_path in file_paths],
-            )[0]
-        )
-    )
-    return [
-        file_path for file_path in file_paths if Path(closest_file_match) == Path(file_path.name)
-    ][0]
+    stems = [Path(file_path).stem for file_path in file_paths]
+    closest_file_match = difflib.get_close_matches(
+        str(Path(file_to_be_queried).stem), stems, cutoff=0.1, n=1
+    )[0]
+    return [file_path for file_path in file_paths if closest_file_match == str(file_path.stem)][0]
 
 
 def ensure_file_exists(*files: str):
@@ -74,3 +79,10 @@ def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_messag
     for dataframe in dataframes:
         if not all(x in dataframe.columns for x in flat_cols):
             raise ValueError(err_msg)
+
+
+def write_metadata(output_dir: Path, meta_data: BasicOutputRunMetaData) -> None:
+    """Write the metadata for a run."""
+    with open(Path(output_dir).joinpath("results.yml"), "w") as metadata_file:
+        yaml.dump(to_dict(meta_data), metadata_file, sort_keys=False, default_style="")
+    metadata_file.close()

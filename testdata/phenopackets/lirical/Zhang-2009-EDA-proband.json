@@ -2,7 +2,6 @@
   "id": "PMID:18702659-Zhang-2009-EDA-proband",
   "subject": {
     "id": "proband",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P23Y"
@@ -193,6 +192,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "X-69255234-TG-T",
                 "geneContext": {
                   "valueId": "ENSG00000158813",
                   "symbol": "EDA",
@@ -218,15 +218,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Zhang-2009-EDA-proband.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -264,7 +255,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -278,7 +270,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

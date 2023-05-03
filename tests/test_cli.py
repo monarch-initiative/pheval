@@ -1,6 +1,9 @@
 """CLI Test """
 import logging
+import shutil
+import tempfile
 import unittest
+from pathlib import Path
 
 from click.testing import CliRunner
 
@@ -16,17 +19,38 @@ class TestCommandLineInterface(unittest.TestCase):
     def setUp(self) -> None:
         runner = CliRunner(mix_stderr=False)
         self.runner = runner
+        self.test_dir = tempfile.mkdtemp()
 
-    def test_scramble_semsim(self):
-        """test_scramble_semsim"""
+    def tearDown(self):
+        shutil.rmtree(self.test_dir)
+
+    def test_cli_runner(self):
+        """test_cli_runner"""
         result = self.runner.invoke(
-            run, ["-i", "./", "-t", "./", "-r", "defaultphevalrunner", "-o", "./"]
+            run,
+            [
+                "-i",
+                "./tests/input_dir/configs/default",
+                "-t",
+                "./testdata/phenopackets/lirical",
+                "-r",
+                "defaultphevalrunner",
+                "-o",
+                self.test_dir,
+                "-v",
+                "1.0.0",
+            ],
         )
         err = result.stderr
         self.assertEqual(None, result.exception)
         logging.info("ERR=%s", err)
         exit_code = result.exit_code
         self.assertEqual(0, exit_code)
+        self.assertTrue(Path(self.test_dir).joinpath("pheval_gene_results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("pheval_variant_results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("raw_results").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("tool_input_commands").exists())
+        self.assertTrue(Path(self.test_dir).joinpath("results.yml").exists())
 
     def test_semsim_heatmap(self):
         """test_semsim_heatmap"""

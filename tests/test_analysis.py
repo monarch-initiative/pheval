@@ -8,12 +8,18 @@ import pandas as pd
 from pheval.analyse.analysis import (
     AssessGenePrioritisation,
     AssessVariantPrioritisation,
-    GenePrioritisationResultData,
+    GenePrioritisationResult,
     PrioritisationRankRecorder,
-    RankComparisonGenerator,
-    RankStats,
-    VariantPrioritisationResultData,
-    merge_results,
+    VariantPrioritisationResult,
+    parse_pheval_gene_result,
+    parse_pheval_variant_result,
+)
+from pheval.analyse.rank_stats import RankStats
+from pheval.post_processing.post_processing import (
+    PhEvalGeneResult,
+    PhEvalVariantResult,
+    RankedPhEvalGeneResult,
+    RankedPhEvalVariantResult,
 )
 from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene
 
@@ -23,7 +29,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
         self.add_new_phenopacket_variant_record = PrioritisationRankRecorder(
             1,
             Path("directory1"),
-            VariantPrioritisationResultData(
+            VariantPrioritisationResult(
                 Path("/path/to/phenopacket-2.json"), GenomicVariant("1", 4896347, "C", "T"), 9
             ),
             defaultdict(
@@ -40,7 +46,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
         self.add_new_directory_variant_record = PrioritisationRankRecorder(
             0,
             Path("directory2"),
-            VariantPrioritisationResultData(
+            VariantPrioritisationResult(
                 Path("/path/to/phenopacket-1.json"), GenomicVariant("12", 120434, "A", "G"), 9
             ),
             defaultdict(
@@ -57,7 +63,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
         self.add_new_phenopacket_gene_record = PrioritisationRankRecorder(
             1,
             Path("directory1"),
-            GenePrioritisationResultData(Path("/path/to/phenopacket-2.json"), "GENE", 7),
+            GenePrioritisationResult(Path("/path/to/phenopacket-2.json"), "GENE", 7),
             defaultdict(
                 dict,
                 {
@@ -72,7 +78,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
         self.add_new_directory_gene_record = PrioritisationRankRecorder(
             0,
             Path("directory2"),
-            GenePrioritisationResultData(Path("/path/to/phenopacket-1.json"), "LARGE1", 1),
+            GenePrioritisationResult(Path("/path/to/phenopacket-1.json"), "LARGE1", 1),
             defaultdict(
                 dict,
                 {
@@ -85,68 +91,157 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
             ),
         )
 
-    def test_record_rank(self):
-        self.assertEqual(len(self.add_new_phenopacket_variant_record.run_comparison), 1)
-        self.add_new_phenopacket_variant_record.record_rank()
-        self.assertEqual(len(self.add_new_phenopacket_variant_record.run_comparison), 2)
-        for i in list(self.add_new_directory_variant_record.run_comparison.values()):
-            self.assertFalse(Path("directory2") in i)
-        self.assertEqual(len(self.add_new_directory_variant_record.run_comparison), 1)
-        self.add_new_directory_variant_record.record_rank()
-        self.assertEqual(len(self.add_new_directory_variant_record.run_comparison), 1)
-        for i in list(self.add_new_directory_variant_record.run_comparison.values()):
-            self.assertTrue(Path("directory2") in i)
-        self.assertEqual(len(self.add_new_phenopacket_gene_record.run_comparison), 1)
-        self.add_new_phenopacket_gene_record.record_rank()
-        self.assertEqual(len(self.add_new_phenopacket_gene_record.run_comparison), 2)
-        for i in list(self.add_new_directory_gene_record.run_comparison.values()):
-            self.assertFalse(Path("directory2") in i)
+    def test__record_gene_rank_new_directory(self):
+        self.assertEqual(
+            self.add_new_directory_gene_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Gene": "LARGE1",
+                        PosixPath("directory1"): 4,
+                    }
+                },
+            ),
+        )
         self.add_new_directory_gene_record.record_rank()
-        self.assertEqual(len(self.add_new_directory_gene_record.run_comparison), 1)
-        for i in list(self.add_new_directory_gene_record.run_comparison.values()):
-            self.assertTrue(Path("directory2") in i)
-
-
-class TestRankStats(unittest.TestCase):
-    def setUp(self) -> None:
-        self.rank_stats = RankStats()
-
-    def test_add_rank(self):
-        self.rank_stats.add_rank(1)
-        self.rank_stats.add_rank(3)
-        self.rank_stats.add_rank(5)
-        self.rank_stats.add_rank(7)
-        self.rank_stats.add_rank(10)
-        self.assertTrue(
-            self.rank_stats.top == 1 and self.rank_stats.top3 == 2 and self.rank_stats.top5 == 3,
-            self.rank_stats.total == 5
-            and self.rank_stats.found == 5
-            and len(self.rank_stats.reciprocal_ranks) == 5,
+        self.assertEqual(
+            self.add_new_directory_gene_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Gene": "LARGE1",
+                        PosixPath("directory1"): 4,
+                        PosixPath("directory2"): 1,
+                    }
+                },
+            ),
         )
 
-    def test_percentage_rank(self):
-        self.rank_stats.found = 10
-        self.assertTrue(self.rank_stats.percentage_rank(3) == 30)
+    def test__record_gene_rank_new_phenopacket(self):
+        self.assertEqual(
+            self.add_new_phenopacket_gene_record.run_comparison,
+            defaultdict(
+                dict,
+                {0: {"Phenopacket": "phenopacket-1.json", "Gene": "LARGE1", Path("directory1"): 4}},
+            ),
+        )
+        self.add_new_phenopacket_gene_record.record_rank()
+        self.assertEqual(
+            self.add_new_phenopacket_gene_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Gene": "LARGE1",
+                        Path("directory1"): 4,
+                    },
+                    1: {"Phenopacket": "phenopacket-2.json", "Gene": "GENE", Path("directory1"): 7},
+                },
+            ),
+        )
 
-    def test_percentage_top(self):
-        self.rank_stats.top, self.rank_stats.found = 10, 20
-        self.assertEqual(self.rank_stats.percentage_top(), 50)
+    def test__variant_gene_rank_new_directory(self):
+        self.assertEqual(
+            self.add_new_directory_variant_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Variant": "12_120434_A_G",
+                        Path("directory1"): 3,
+                    }
+                },
+            ),
+        )
+        self.add_new_directory_variant_record.record_rank()
+        self.assertEqual(
+            self.add_new_directory_variant_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Variant": "12_120434_A_G",
+                        PosixPath("directory1"): 3,
+                        PosixPath("directory2"): 9,
+                    }
+                },
+            ),
+        )
 
-    def test_percentage_top3(self):
-        self.rank_stats.top3, self.rank_stats.found = 30, 50
-        self.assertEqual(self.rank_stats.percentage_top3(), 60)
+    def test__variant_gene_rank_new_phenopacket(self):
+        self.assertEqual(
+            self.add_new_phenopacket_variant_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Variant": "12_120434_A_G",
+                        Path("directory1"): 3,
+                    }
+                },
+            ),
+        )
+        self.add_new_phenopacket_variant_record.record_rank()
+        self.assertEqual(
+            self.add_new_phenopacket_variant_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Variant": "12_120434_A_G",
+                        PosixPath("directory1"): 3,
+                    },
+                    1: {
+                        "Phenopacket": "phenopacket-2.json",
+                        "Variant": "1_4896347_C_T",
+                        PosixPath("directory1"): 9,
+                    },
+                },
+            ),
+        )
 
-    def test_percentage_top5(self):
-        self.rank_stats.top5, self.rank_stats.found = 70, 160
-        self.assertEqual(self.rank_stats.percentage_top5(), 43.75)
+    def test_record_rank_gene(self):
+        self.add_new_directory_gene_record.record_rank()
+        self.assertEqual(
+            self.add_new_directory_gene_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Gene": "LARGE1",
+                        PosixPath("directory1"): 4,
+                        PosixPath("directory2"): 1,
+                    }
+                },
+            ),
+        )
 
-    def test_percentage_found(self):
-        self.rank_stats.found, self.rank_stats.total = 100, 125
-        self.assertEqual(self.rank_stats.percentage_found(), 80)
-
-    def test_mean_reciprocal_rank(self):
-        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
-        self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.5)
+    def test_record_rank_variant(self):
+        self.add_new_directory_variant_record.record_rank()
+        self.assertEqual(
+            self.add_new_directory_variant_record.run_comparison,
+            defaultdict(
+                dict,
+                {
+                    0: {
+                        "Phenopacket": "phenopacket-1.json",
+                        "Variant": "12_120434_A_G",
+                        PosixPath("directory1"): 3,
+                        PosixPath("directory2"): 9,
+                    }
+                },
+            ),
+        )
 
 
 class TestAssessGenePrioritisation(unittest.TestCase):
@@ -154,185 +249,181 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assess_gene_prioritisation = AssessGenePrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=pd.DataFrame(
-                [
-                    {
-                        "gene_symbol": "PLXNA1",
-                        "gene_identifier": "ENSG00000114554",
-                        "score": 0.8764,
-                        "rank": 1,
-                    },
-                    {
-                        "gene_symbol": "ZNF804B",
-                        "gene_identifier": "ENSG00000182348",
-                        "score": 0.5777,
-                        "rank": 2,
-                    },
-                    {
-                        "gene_symbol": "SMCO2",
-                        "gene_identifier": "ENSG00000165935",
-                        "score": 0.5777,
-                        "rank": 2,
-                    },
-                    {
-                        "gene_symbol": "SPNS1",
-                        "gene_identifier": "ENSG00000169682",
-                        "score": 0.3765,
-                        "rank": 4,
-                    },
-                ]
-            ),
+            standardised_gene_results=[
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
+                    ),
+                    rank=4,
+                ),
+            ],
             threshold=0.0,
-            ranking_method="combinedScore",
+            score_order="descending",
             proband_causative_genes=[
                 ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 ProbandCausativeGene(gene_symbol="LARGE1", gene_identifier="ENSG00000133424"),
             ],
         )
-        self.assess_gene_prioritisation_pvalue = AssessGenePrioritisation(
+        self.assess_gene_prioritisation_ascending_order = AssessGenePrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=pd.DataFrame(
-                [
-                    {
-                        "gene_symbol": "SPNS1",
-                        "gene_identifier": "ENSG00000169682",
-                        "score": 0.3765,
-                        "rank": 1,
-                    },
-                    {
-                        "gene_symbol": "ZNF804B",
-                        "gene_identifier": "ENSG00000182348",
-                        "score": 0.5777,
-                        "rank": 2,
-                    },
-                    {
-                        "gene_symbol": "SMCO2",
-                        "gene_identifier": "ENSG00000165935",
-                        "score": 0.5777,
-                        "rank": 2,
-                    },
-                    {
-                        "gene_symbol": "PLXNA1",
-                        "gene_identifier": "ENSG00000114554",
-                        "score": 0.8764,
-                        "rank": 4,
-                    },
-                ]
-            ),
+            standardised_gene_results=[
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=4,
+                ),
+            ],
             threshold=0.0,
-            ranking_method="pValue",
+            score_order="ascending",
             proband_causative_genes=[
                 ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 ProbandCausativeGene(gene_symbol="LARGE1", gene_identifier="ENSG00000133424"),
             ],
         )
-        self.gene_rank_stats = RankStats(0, 0, 0, 0)
+        self.gene_rank_stats = RankStats(0, 0, 0, 0, 0)
         self.gene_rank_records = defaultdict(dict)
 
     def test_record_gene_prioritisation_match(self):
         self.assertEqual(
-            self.assess_gene_prioritisation.record_gene_prioritisation_match(
+            self.assess_gene_prioritisation._record_gene_prioritisation_match(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry={
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
+                result_entry=RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
                 rank_stats=self.gene_rank_stats,
             ),
-            GenePrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+            GenePrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
 
-    def test_assess_gene_with_pvalue_threshold_fails_cutoff(self):
-        assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
-        assess_pvalue_threshold.threshold = 0.1
+    def test_assess_gene_with_ascending_order_threshold_fails_cutoff(self):
+        assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
+        assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
-            assess_pvalue_threshold.assess_gene_with_pvalue_threshold(
+            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry={
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
+                result_entry=RankedPhEvalGeneResult(
+                    PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
                 rank_stats=self.gene_rank_stats,
             ),
             None,
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=0, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
-    def test_assess_gene_with_pvalue_threshold_meets_cutoff(self):
-        assess_pvalue_threshold = copy(self.assess_gene_prioritisation_pvalue)
-        assess_pvalue_threshold.threshold = 0.9
+    def test_assess_gene_with_ascending_order_threshold_meets_cutoff(self):
+        assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
+        assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
-            assess_pvalue_threshold.assess_gene_with_pvalue_threshold(
+            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry={
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
+                result_entry=RankedPhEvalGeneResult(
+                    PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
                 rank_stats=self.gene_rank_stats,
             ),
-            GenePrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+            GenePrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
         )
 
     def test_assess_gene_with_threshold_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold.assess_gene_with_threshold(
+            assess_with_threshold._assess_gene_with_threshold(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry={
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
+                result_entry=RankedPhEvalGeneResult(
+                    PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
                 rank_stats=self.gene_rank_stats,
             ),
             None,
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=0, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
     def test_assess_gene_with_threshold_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.5
         self.assertEqual(
-            assess_with_threshold.assess_gene_with_threshold(
+            assess_with_threshold._assess_gene_with_threshold(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry={
-                    "gene_symbol": "PLXNA1",
-                    "gene_identifier": "ENSG00000114554",
-                    "score": 0.8764,
-                    "rank": 1,
-                },
+                result_entry=RankedPhEvalGeneResult(
+                    PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
                 rank_stats=self.gene_rank_stats,
             ),
-            GenePrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
+            GenePrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
             ),
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
         )
 
     def test_assess_gene_prioritisation_no_threshold(self):
@@ -341,7 +432,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -359,15 +450,15 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_gene_prioritisation_threshold_fails_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_pvalue)
+    def test_assess_gene_prioritisation_threshold_fails_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_gene_prioritisation(
             self.gene_rank_stats, self.gene_rank_records
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -385,15 +476,15 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_gene_prioritisation_threshold_meets_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_pvalue)
+    def test_assess_gene_prioritisation_threshold_meets_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_gene_prioritisation(
             self.gene_rank_stats, self.gene_rank_records
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=1, found=1, total=2, reciprocal_ranks=[0.25]),
+            RankStats(top=0, top3=0, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[0.25]),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -419,7 +510,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -445,7 +536,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -466,67 +557,43 @@ class TestAssessGenePrioritisation(unittest.TestCase):
 
 class TestAssessVariantPrioritisation(unittest.TestCase):
     def setUp(self) -> None:
-        variant_results = pd.DataFrame(
-            [
-                {
-                    "variant": {
-                        "chromosome": "3",
-                        "start": 126730873,
-                        "end": 126730873,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-                {
-                    "variant": {
-                        "chromosome": "3",
-                        "start": 126730873,
-                        "end": 126730873,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-                {
-                    "variant": {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                    },
-                    "score": 0.0484,
-                    "rank": 1,
-                },
-            ]
-        )
-        variant_result_format = variant_results.drop("variant", axis=1).join(
-            variant_results.variant.apply(pd.Series)
-        )
-
+        variant_results = [
+            RankedPhEvalVariantResult(
+                PhEvalVariantResult(
+                    chromosome="3", start=126730873, end=126730873, ref="G", alt="A", score=0.0484
+                ),
+                rank=1,
+            ),
+            RankedPhEvalVariantResult(
+                PhEvalVariantResult(
+                    chromosome="3", start=126730873, end=126730873, ref="G", alt="A", score=0.0484
+                ),
+                rank=1,
+            ),
+            RankedPhEvalVariantResult(
+                PhEvalVariantResult(
+                    chromosome="3", start=126741108, end=126741108, ref="G", alt="A", score=0.0484
+                ),
+                rank=1,
+            ),
+        ]
         self.assess_variant_prioritisation = AssessVariantPrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=variant_result_format,
+            standardised_variant_results=variant_results,
             threshold=0.0,
-            ranking_method="combinedScore",
+            score_order="descending",
             proband_causative_variants=[
                 GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
             ],
         )
-        self.assess_variant_prioritisation_pvalue = AssessVariantPrioritisation(
+        self.assess_variant_prioritisation_ascending_order = AssessVariantPrioritisation(
             phenopacket_path=Path("/path/to/phenopacket.json"),
             results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=variant_result_format,
+            standardised_variant_results=variant_results,
             threshold=0.0,
-            ranking_method="pValue",
+            score_order="ascending",
             proband_causative_variants=[
                 GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
@@ -537,44 +604,42 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
     def test_record_variant_prioritisation_match(self):
         self.assertEqual(
-            self.assess_variant_prioritisation.record_variant_prioritisation_match(
-                result_entry=pd.Series(
-                    {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                        "score": 0.0484,
-                        "rank": 1,
-                    }
+            self.assess_variant_prioritisation._record_variant_prioritisation_match(
+                result_entry=RankedPhEvalVariantResult(
+                    PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
             ),
-            VariantPrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"),
+            VariantPrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
 
-    def test_assess_variant_with_pvalue_threshold_fails_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_with_ascending_order_threshold_fails_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_pvalue_threshold(
-                result_entry=pd.Series(
-                    {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                        "score": 0.0484,
-                        "rank": 1,
-                    }
+            assess_with_threshold._assess_variant_with_threshold_ascending_order(
+                result_entry=RankedPhEvalVariantResult(
+                    PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
             ),
@@ -582,55 +647,53 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=0, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
-    def test_assess_variant_with_pvalue_threshold_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_with_ascending_order_threshold_meets_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_pvalue_threshold(
-                result_entry=pd.Series(
-                    {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                        "score": 0.0484,
-                        "rank": 1,
-                    }
+            assess_with_threshold._assess_variant_with_threshold_ascending_order(
+                result_entry=RankedPhEvalVariantResult(
+                    PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
             ),
-            VariantPrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"),
+            VariantPrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
         )
 
     def test_assess_variant_with_threshold_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_threshold(
-                result_entry=pd.Series(
-                    {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                        "score": 0.0484,
-                        "rank": 1,
-                    }
+            assess_with_threshold._assess_variant_with_threshold(
+                result_entry=RankedPhEvalVariantResult(
+                    PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
             ),
@@ -638,37 +701,36 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=0, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
         )
 
     def test_assess_variant_with_threshold_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold.assess_variant_with_threshold(
-                result_entry=pd.Series(
-                    {
-                        "chromosome": "3",
-                        "start": 126741108,
-                        "end": 126741108,
-                        "ref": "G",
-                        "alt": "A",
-                        "gene": "PLXNA1",
-                        "score": 0.0484,
-                        "rank": 1,
-                    }
+            assess_with_threshold._assess_variant_with_threshold(
+                result_entry=RankedPhEvalVariantResult(
+                    PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
             ),
-            VariantPrioritisationResultData(
-                phenopacket=Path("/path/to/phenopacket.json"),
+            VariantPrioritisationResult(
+                phenopacket_path=Path("/path/to/phenopacket.json"),
                 variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
                 rank=1,
             ),
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
         )
 
     def test_assess_variant_prioritisation_no_threshold(self):
@@ -678,7 +740,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -696,15 +758,15 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_variant_prioritisation_fails_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_prioritisation_fails_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -722,15 +784,15 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             },
         )
 
-    def test_assess_variant_prioritisation_meets_pvalue_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+    def test_assess_variant_prioritisation_meets_ascending_order_cutoff(self):
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -756,7 +818,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -775,14 +837,14 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
 
     def test_assess_variant_prioritisation_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_pvalue)
+        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.1
         assess_with_threshold.assess_variant_prioritisation(
             self.variant_rank_stats, self.variant_rank_records
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -801,120 +863,140 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
 
 
-class TestMergeResults(unittest.TestCase):
-    def setUp(self) -> None:
-        self.result_1 = {
-            1: {
-                "Phenopacket": "phenopacket1.json",
-                "Gene": "GCDH",
-                "/path/to/results_directory1": 1,
-            }
-        }
-        self.result_2 = {
-            1: {
-                "Phenopacket": "phenopacket1.json",
-                "Gene": "GCDH",
-                "/path/to/results_directory2": 5,
-            }
-        }
-
-    def test_merge_results(self):
+class TestParsePhEvalGeneResult(unittest.TestCase):
+    def test_parse_pheval_gene_result(self):
         self.assertEqual(
-            merge_results(self.result_1, self.result_2),
-            {
-                1: {
-                    "Phenopacket": "phenopacket1.json",
-                    "Gene": "GCDH",
-                    "/path/to/results_directory1": 1,
-                    "/path/to/results_directory2": 5,
-                }
-            },
-        )
-
-
-class TestRankComparisonGenerator(unittest.TestCase):
-    def setUp(self) -> None:
-        self.gene_rank_comparisons = RankComparisonGenerator(
-            defaultdict(
-                dict,
-                {
-                    1: {
-                        "Phenopacket": "phenopacket1.json",
-                        "Gene": "GCDH",
-                        "/path/to/results_directory1": 1,
-                        "/path/to/results_directory2": 5,
-                    }
-                },
-            )
-        )
-        self.variant_rank_comparisons = RankComparisonGenerator(
-            defaultdict(
-                dict,
-                {
-                    1: {
-                        "Phenopacket": "phenopacket1.json",
-                        "Variant": "3_12563453454_C_T",
-                        "/path/to/results_directory1": 9,
-                        "/path/to/results_directory2": 3,
-                    }
-                },
-            )
-        )
-
-    def test_generate_gene_dataframe(self):
-        result = pd.DataFrame(
+            parse_pheval_gene_result(
+                pd.DataFrame(
+                    [
+                        {
+                            "gene_symbol": "PLXNA1",
+                            "gene_identifier": "ENSG00000114554",
+                            "score": 0.8764,
+                            "rank": 1,
+                        },
+                        {
+                            "gene_symbol": "ZNF804B",
+                            "gene_identifier": "ENSG00000182348",
+                            "score": 0.5777,
+                            "rank": 2,
+                        },
+                        {
+                            "gene_symbol": "SMCO2",
+                            "gene_identifier": "ENSG00000165935",
+                            "score": 0.5777,
+                            "rank": 2,
+                        },
+                        {
+                            "gene_symbol": "SPNS1",
+                            "gene_identifier": "ENSG00000169682",
+                            "score": 0.3765,
+                            "rank": 4,
+                        },
+                    ]
+                )
+            ),
             [
-                {
-                    "Phenopacket": "phenopacket1.json",
-                    "Gene": "GCDH",
-                    "/path/to/results_directory1": 1,
-                    "/path/to/results_directory2": 5,
-                }
-            ]
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalGeneResult(
+                    pheval_gene_result=PhEvalGeneResult(
+                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
+                    ),
+                    rank=4,
+                ),
+            ],
         )
-        result.index += 1
-        self.assertTrue(result.equals(self.gene_rank_comparisons.generate_dataframe()))
 
-    def test_generate_variant_dataframe(self):
-        result = pd.DataFrame(
-            [
-                {
-                    "Phenopacket": "phenopacket1.json",
-                    "Variant": "3_12563453454_C_T",
-                    "/path/to/results_directory1": 9,
-                    "/path/to/results_directory2": 3,
-                }
-            ]
-        )
-        result.index += 1
-        self.assertTrue(result.equals(self.variant_rank_comparisons.generate_dataframe()))
 
-    def test_calculate_gene_rank_difference(self):
-        result = pd.DataFrame(
+class TestParsePhEvalVariantResult(unittest.TestCase):
+    def test_parse_pheval_variant_result(self):
+        self.assertEqual(
+            parse_pheval_variant_result(
+                pd.DataFrame(
+                    [
+                        {
+                            "chromosome": "3",
+                            "start": 126730873,
+                            "end": 126730873,
+                            "ref": "G",
+                            "alt": "A",
+                            "gene": "PLXNA1",
+                            "score": 0.0484,
+                            "rank": 1,
+                        },
+                        {
+                            "chromosome": "3",
+                            "start": 126730873,
+                            "end": 126730873,
+                            "ref": "G",
+                            "alt": "A",
+                            "gene": "PLXNA1",
+                            "score": 0.0484,
+                            "rank": 1,
+                        },
+                        {
+                            "chromosome": "3",
+                            "start": 126741108,
+                            "end": 126741108,
+                            "ref": "G",
+                            "alt": "A",
+                            "gene": "PLXNA1",
+                            "score": 0.0484,
+                            "rank": 1,
+                        },
+                    ]
+                )
+            ),
             [
-                {
-                    "Phenopacket": "phenopacket1.json",
-                    "Gene": "GCDH",
-                    "/path/to/results_directory1": 1,
-                    "/path/to/results_directory2": 5,
-                    "rank_decrease": 4,
-                }
-            ]
+                RankedPhEvalVariantResult(
+                    pheval_variant_result=PhEvalVariantResult(
+                        chromosome="3",
+                        start=126730873,
+                        end=126730873,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalVariantResult(
+                    pheval_variant_result=PhEvalVariantResult(
+                        chromosome="3",
+                        start=126730873,
+                        end=126730873,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalVariantResult(
+                    pheval_variant_result=PhEvalVariantResult(
+                        chromosome="3",
+                        start=126741108,
+                        end=126741108,
+                        ref="G",
+                        alt="A",
+                        score=0.0484,
+                    ),
+                    rank=1,
+                ),
+            ],
         )
-        result.index += 1
-        self.assertTrue(result.equals(self.gene_rank_comparisons.calculate_rank_difference()))
-
-    def test_calculate_variant_rank_difference(self):
-        result = pd.DataFrame(
-            [
-                {
-                    "Phenopacket": "phenopacket1.json",
-                    "Variant": "3_12563453454_C_T",
-                    "/path/to/results_directory1": 9,
-                    "/path/to/results_directory2": 3,
-                    "rank_decrease": -6,
-                }
-            ]
-        )
-        result.index += 1
-        self.assertTrue(result.equals(self.variant_rank_comparisons.calculate_rank_difference()))

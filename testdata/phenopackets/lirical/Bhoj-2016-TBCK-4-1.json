@@ -2,7 +2,6 @@
   "id": "PMID:27040691-Bhoj-2016-TBCK-4-1",
   "subject": {
     "id": "4-1",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P4Y"
@@ -214,6 +213,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:225239",
                 "geneContext": {
                   "valueId": "ENSG00000145348",
                   "symbol": "TBCK",
@@ -243,6 +243,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "4-107168420-CTTCA-C",
                 "geneContext": {
                   "valueId": "ENSG00000145348",
                   "symbol": "TBCK",
@@ -268,15 +269,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Bhoj-2016-TBCK-4-1.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -314,7 +306,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -328,7 +321,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

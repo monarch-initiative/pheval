@@ -2,7 +2,6 @@
   "id": "PMID:28482824-Javadiyan-2017-MAF-patient_CSA108.01",
   "subject": {
     "id": "patient CSA108.01",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P20Y"
@@ -49,6 +48,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "16-79633624-G-C",
                 "geneContext": {
                   "valueId": "ENSG00000178573",
                   "symbol": "MAF",
@@ -74,15 +74,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Javadiyan-2017-MAF-patient_CSA108.01.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -120,7 +111,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -134,7 +126,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

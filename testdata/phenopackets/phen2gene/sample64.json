@@ -1,0 +1,124 @@
+{
+  "id": "sample64",
+  "subject": {
+    "id": "sample64"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006136",
+        "label": "Bilateral postaxial polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100704",
+        "label": "Cerebral visual impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010445",
+        "label": "Primum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011569",
+        "label": "Cleft anterior mitral valve leaflet"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000508",
+        "label": "Ptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000110",
+        "label": "Renal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000238",
+        "label": "Hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001305",
+        "label": "Dandy-Walker malformation"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample64-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample64",
+            "gene": {
+              "valueId": "ENSG00000205084",
+              "symbol": "TMEM231",
+              "alternateIds": [
+                "HGNC:37234",
+                "ncbigene:79583",
+                "ensembl:ENSG00000205084",
+                "symbol:TMEM231"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.773768Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -2,7 +2,6 @@
   "id": "PMID:28757203-Habarou-2017-LIPT2-P1",
   "subject": {
     "id": "P1",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P7Y"
@@ -319,6 +318,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:438640",
                 "geneContext": {
                   "valueId": "ENSG00000175536",
                   "symbol": "LIPT2",
@@ -348,6 +348,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "11-74204372-A-C",
                 "geneContext": {
                   "valueId": "ENSG00000175536",
                   "symbol": "LIPT2",
@@ -373,15 +374,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Habarou-2017-LIPT2-P1.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -419,7 +411,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -433,7 +426,9 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

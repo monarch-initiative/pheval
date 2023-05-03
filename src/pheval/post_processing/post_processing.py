@@ -128,7 +128,7 @@ class ScoreRanker:
         return self.rank
 
 
-def rank_pheval_result(
+def _rank_pheval_result(
     pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
@@ -156,16 +156,16 @@ def _return_sort_order(sort_order_str: str) -> SortOrder:
         raise ValueError("Incompatible ordering method specified.")
 
 
-def create_pheval_result(
+def _create_pheval_result(
     pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order_str: str
 ) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sort_order = _return_sort_order(sort_order_str)
     sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
-    return rank_pheval_result(sorted_pheval_result, sort_order)
+    return _rank_pheval_result(sorted_pheval_result, sort_order)
 
 
-def write_pheval_gene_result(
+def _write_pheval_gene_result(
     ranked_pheval_result: [RankedPhEvalGeneResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval gene result to tsv."""
@@ -180,7 +180,7 @@ def write_pheval_gene_result(
     )
 
 
-def write_pheval_variant_result(
+def _write_pheval_variant_result(
     ranked_pheval_result: [RankedPhEvalVariantResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval variant result to tsv."""
@@ -195,3 +195,16 @@ def write_pheval_variant_result(
         sep="\t",
         index=False,
     )
+
+
+def generate_pheval_result(
+    pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
+    sort_order_str: str,
+    output_dir: Path,
+    tool_result_path: Path,
+):
+    """Generate either a PhEval variant or PhEval gene tsv result."""
+    ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
+    _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path) if all(
+        isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result
+    ) else _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)

@@ -1,0 +1,100 @@
+{
+  "id": "PMID29100085_p4",
+  "subject": {
+    "id": "PMID29100085_p4"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003763",
+        "label": "Bruxism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002072",
+        "label": "Chorea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012448",
+        "label": "Delayed myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001272",
+        "label": "Cerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000954",
+        "label": "Single transverse palmar crease"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID29100085_p4-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID29100085_p4",
+            "gene": {
+              "valueId": "ENSG00000132153",
+              "symbol": "DHX30",
+              "alternateIds": [
+                "HGNC:16716",
+                "ncbigene:22907",
+                "ensembl:ENSG00000132153",
+                "symbol:DHX30"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.006590Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

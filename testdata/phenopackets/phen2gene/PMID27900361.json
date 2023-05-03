@@ -1,0 +1,160 @@
+{
+  "id": "PMID27900361",
+  "subject": {
+    "id": "PMID27900361"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000707",
+        "label": "Abnormality of the nervous system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007598",
+        "label": "Bilateral single transverse palmar creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012446",
+        "label": "Decreased CSF 5-methyltetrahydrofolate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004209",
+        "label": "Clinodactyly of the 5th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000405",
+        "label": "Conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002750",
+        "label": "Delayed skeletal maturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003235",
+        "label": "Hypermethioninemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000239",
+        "label": "Large fontanelles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001572",
+        "label": "Macrodontia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002123",
+        "label": "Generalized myoclonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004482",
+        "label": "Relative macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002069",
+        "label": "Bilateral tonic-clonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012471",
+        "label": "Thick vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001566",
+        "label": "Widely-spaced maxillary central incisors"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID27900361-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID27900361",
+            "gene": {
+              "valueId": "ENSG00000167522",
+              "symbol": "ANKRD11",
+              "alternateIds": [
+                "HGNC:21316",
+                "ncbigene:29123",
+                "ensembl:ENSG00000167522",
+                "symbol:ANKRD11"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:37.820116Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

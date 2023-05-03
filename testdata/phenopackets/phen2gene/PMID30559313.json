@@ -1,0 +1,106 @@
+{
+  "id": "PMID30559313",
+  "subject": {
+    "id": "PMID30559313"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001904",
+        "label": "Neutropenia in presence of anti-neutropil antibodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000980",
+        "label": "Pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001047",
+        "label": "Atopic dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012133",
+        "label": "Erythroid hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001875",
+        "label": "Neutropenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012410",
+        "label": "Pure red cell aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002789",
+        "label": "Tachypnea"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID30559313-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID30559313",
+            "gene": {
+              "valueId": "ENSG00000093072",
+              "symbol": "ADA2",
+              "alternateIds": [
+                "HGNC:1839",
+                "ncbigene:51816",
+                "ensembl:ENSG00000093072",
+                "symbol:ADA2"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:37.936876Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

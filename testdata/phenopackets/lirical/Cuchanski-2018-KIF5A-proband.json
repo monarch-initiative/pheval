@@ -2,7 +2,6 @@
   "id": "PMID:30057544-Cuchanski-2018-KIF5A-proband",
   "subject": {
     "id": "proband",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
         "iso8601duration": "P31Y"
@@ -250,6 +249,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:424651",
                 "geneContext": {
                   "valueId": "ENSG00000155980",
                   "symbol": "KIF5A",
@@ -275,15 +275,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Cuchanski-2018-KIF5A-proband.vcf",
-      "fileAttributes": {
-        "fileFormat": "VCF",
-        "genomeAssembly": "GRCh37"
       }
     }
   ],
@@ -321,7 +312,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -335,7 +327,17 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"

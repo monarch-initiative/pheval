@@ -2,10 +2,9 @@
   "id": "PMID:23691375-Dias-2013-TRPS1-girl",
   "subject": {
     "id": "girl",
-    "dateOfBirth": "1970-01-01T00:00:00Z",
     "timeAtLastEncounter": {
       "age": {
-        "iso8601duration": "4PY"
+        "iso8601duration": "P4Y"
       }
     },
     "sex": "FEMALE",
@@ -104,6 +103,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "8-116616998-G-A",
                 "geneContext": {
                   "valueId": "ENSG00000104447",
                   "symbol": "TRPS1",
@@ -133,6 +133,7 @@
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
+                "id": "clinvar:574440",
                 "geneContext": {
                   "valueId": "ENSG00000104447",
                   "symbol": "TRPS1",
@@ -158,15 +159,6 @@
             }
           }
         ]
-      }
-    }
-  ],
-  "files": [
-    {
-      "uri": "Dias-2013-TRPS1-girl.vcf",
-      "fileAttributes": {
-        "genomeAssembly": "GRCh37",
-        "fileFormat": "VCF"
       }
     }
   ],
@@ -204,7 +196,8 @@
         "name": "NCBI organismal classification",
         "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
         "version": "2018-03-02",
-        "namespacePrefix": "NCBITaxon"
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
       },
       {
         "id": "eco",
@@ -218,7 +211,17 @@
         "id": "omim",
         "name": "Online Mendelian Inheritance in Man",
         "url": "https://www.omim.org",
-        "namespacePrefix": "OMIM"
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0"
