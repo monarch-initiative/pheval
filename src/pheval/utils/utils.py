@@ -110,7 +110,7 @@ def semsimconvert(input: Path, output: Path, subject_prefix: str, object_prefix:
         ]
     ]
     input_data.insert(0, "MAPPING_ID", None)
-    input_data['SCORE'].replace('None', 'NULL', inplace=True)
+    input_data["SCORE"].replace("None", "NULL", inplace=True)
     input_data.to_csv(output, index=False, sep="\t")
     semsim2h2(input_data, f"{output}", subject_prefix, object_prefix)
 
@@ -136,6 +136,6 @@ VALUES
             values = f"""
 ({idx}, '{data[f'{subject_prefix}_ID']}', '{data[f'{subject_prefix}_TERM']}', '{data[f'{object_prefix}_ID']}', '{data[f'{object_prefix}_TERM']}', {data['SIMJ']}, {data['IC']}, {data['SCORE']}, '{data['LCS_ID']}', '{data['LCS_TERM']}')"""
             if idx > (len(input) < 1):
-                file.write(',')                
+                file.write(",")
             file.write(values)
         file.write(";")

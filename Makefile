@@ -9,6 +9,7 @@ VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject
 H2_JAR					:= /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
 PHEN2GENE_LIB			:= /home/vinicius/Documents/softwares/Phen2Gene/lib
 EXOMISER_DATA_FOLDER	:= /home/data/exomiser-data/
+EXOMISER_VERSION		:= 13.2.0
 
 help: status
 	@echo ""
@@ -105,11 +106,11 @@ configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-m
 	 --subject-prefix HP \
 	 --object-prefix MP
 
-configurations/exomiser-13.01/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-13.01/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
-	test -d $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-13.01/default/2209_phenotype/ $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1
+configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
+	test -d $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/ $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1
 	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/$(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1/2209_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
 
-results/phen2gene/default-corpus1-scrambled1/results.yml: configurations/exomiser-13.01/default/config.yml
+results/phen2gene/default-corpus1-scrambled1/results.yml: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
 	pheval run \
 	 --input-dir $(PHEN2GENE_LIB) \
 	 --testdata-dir $(shell pwd)/corpora/corpus1/scrambled1 \
@@ -120,11 +121,11 @@ results/phen2gene/default-corpus1-scrambled1/results.yml: configurations/exomise
 	
 	touch $@
 
-results/exomiser-13.01/default-corpus1-scrambled1/results.yml: configurations/exomiser-13.01/default/config.yml corpora/corpus1/scrambled1/corpus.yml
+results/exomiser-$(EXOMISER_VERSION)/default-corpus1-scrambled1/results.yml: tests/input_dir/configs/default/config.yaml configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml corpora/corpus1/scrambled1/corpus.yml
 	mkdir -p $(shell dirname $@)
 	
 	pheval run \
-	 --input-dir $(shell pwd)/configurations/exomiser-13.01/default \
+	 --input-dir $(shell pwd)/configurations/exomiser-$(EXOMISER_VERSION)/default \
 	 --testdata-dir $(shell pwd)/corpora/corpus1/scrambled1 \
 	 --runner exomiserphevalrunner \
 	 --tmp-dir $(shell pwd)/$(TMP_DATA)/ \
@@ -149,8 +150,8 @@ corpora/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_
 	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single
 	touch $@
 
-configurations/exomiser-13.01/default/config.yml: $(EXOMISER_DATA_FOLDER)/config.yml
-	test -L $@ || mkdir -p configurations/exomiser-13.01/default/ ; ln -s $(EXOMISER_DATA_FOLDER)* $(shell dirname $@)/
+configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml: $(EXOMISER_DATA_FOLDER)/config.yml
+	test -L $@ || mkdir -p configurations/exomiser-$(EXOMISER_VERSION)/default/ ; ln -s $(EXOMISER_DATA_FOLDER)* $(shell dirname $@)/
 
 .PHONY: semsim
 semsim: configurations/semsim1/hp-mp.semsim.tsv configurations/semsim1/hp-mp2.semsim.tsv
@@ -165,10 +166,10 @@ semsim-scramble: configurations/semsim1/hp-mp.semsim.scrambled1.tsv configuratio
 semsim-convert: configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp.semsim.scrambled2.sql configurations/semsim1/hp-mp.semsim.scrambled3.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled2.sql configurations/semsim1/hp-mp2.semsim.scrambled3.sql
 
 .PHONY: semsim-ingest
-semsim-ingest: configurations/exomiser-13.01/default/2209_phenotype/2209_phenotype.h2.db
+semsim-ingest: configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db
 
 .PHONY: prepare-inputs1
-prepare-inputs1: configurations/exomiser-13.01/default/config.yml
+prepare-inputs1: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
 	echo prepare-inputs $*
 
 .PHONY: prepare-corpus1
@@ -176,12 +177,13 @@ prepare-corpus1: corpora/corpus1/scrambled1/corpus.yml
 
 .PHONY: run-corpus1
 run-corpus1:
-	$(MAKE) SCRAMBLE_FACTOR=1 results/exomiser-13.01/default-corpus1-scrambled1/results.yml
-	$(MAKE) SCRAMBLE_FACTOR=1 results/phen2gene/default-corpus1-scrambled1/results.yml
+	$(MAKE) SCRAMBLE_FACTOR=1 results/exomiser-$(EXOMISER_VERSION)/default-corpus1-scrambled1/results.yml
+	# $(MAKE) SCRAMBLE_FACTOR=1 results/phen2gene/default-corpus1-scrambled1/results.yml
 
 .PHONY: pheval
 pheval: prepare-inputs1 prepare-corpus1 run-corpus1
 
 .PHONY: clean
 clean:
-	rm -rf data/* corpora/* inputs/* configurations/* results/*
+	# rm -rf data/* corpora/* inputs/* configurations/* results/*
+	rm -rf data/* corpora/* inputs/* results/*

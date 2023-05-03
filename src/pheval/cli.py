@@ -9,9 +9,9 @@ from .cli_pheval import run
 from .cli_pheval_utils import (
     create_spiked_vcfs_command,
     scramble_phenopackets_command,
-    semsim_scramble,
-    semsim_convert,
     semsim_comparison,
+    semsim_convert,
+    semsim_scramble,
     update_phenopackets_command,
 )
 
