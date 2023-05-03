@@ -130,6 +130,7 @@ results/exomiser-$(EXOMISER_VERSION)/default-corpus1-scrambled1/results.yml: tes
 	 --runner exomiserphevalrunner \
 	 --tmp-dir $(shell pwd)/$(TMP_DATA)/ \
 	 --output-dir $(shell pwd)/$(shell dirname $@) \
+	 --version 13.2.0 \
 	 --config $(shell pwd)/$<
 	
 	touch $@
@@ -142,11 +143,11 @@ corpora/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
 	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single \
-	 --output-dir $(shell dirname $@)/vcf
+	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
 	
 	pheval-utils scramble-phenopackets \
 	 --scramble-factor 1 \
-	 --output-dir $(shell dirname $@)/phenopackets \
+	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
 	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single
 	touch $@
 
@@ -178,12 +179,11 @@ prepare-corpus1: corpora/corpus1/scrambled1/corpus.yml
 .PHONY: run-corpus1
 run-corpus1:
 	$(MAKE) SCRAMBLE_FACTOR=1 results/exomiser-$(EXOMISER_VERSION)/default-corpus1-scrambled1/results.yml
-	# $(MAKE) SCRAMBLE_FACTOR=1 results/phen2gene/default-corpus1-scrambled1/results.yml
+	$(MAKE) SCRAMBLE_FACTOR=1 results/phen2gene/default-corpus1-scrambled1/results.yml
 
 .PHONY: pheval
 pheval: prepare-inputs1 prepare-corpus1 run-corpus1
 
 .PHONY: clean
 clean:
-	# rm -rf data/* corpora/* inputs/* configurations/* results/*
 	rm -rf data/* corpora/* inputs/* results/*
