@@ -14,6 +14,8 @@ help: status
 	@echo ""
 	@echo "make semsim -- setup data required for semsim"
 	@echo "make shuffle-semsim -- generate new ontology terms to the semsim process"
+	@echo "make shuffle-semsim -- generate new ontology terms to the semsim process"
+	@echo "make semsim-rust -- Calculates semsim using the new rust method"
 	@echo "make help -- show this help"
 	@echo ""
 
@@ -65,6 +67,14 @@ $(RAW_DATA_FOLDER)/hp-mp2.semsim.tsv: $(RAW_DATA_FOLDER)/hp-mp-merged2.db $(RAW_
 	$(eval TERM=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-hp-terms.txt"))
 	$(eval TERM2=$(shell bash -c "cat $(RAW_DATA_FOLDER)/random-mp-terms.txt"))
 	runoak -i $< similarity -p i,p $(TERM) @ $(TERM2) -O csv -o $@
+
+
+results/pheno_rustsim1.semsim1.tsv:
+	test -d results/ || mkdir -p results
+	runoak -i rustsim:sqlite:obo:phenio similarity -p i,p hand @ finger -O csv -o $@
+
+.PHONY: semsim-rust
+semsim-rust: results/pheno_rustsim1.semsim1.tsv
 
 
 .PHONY: shuffle-semsim
