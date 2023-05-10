@@ -200,8 +200,8 @@ class VcfSpiker:
             proband_variant_data.info
             if proband_variant_data.info is not None
             else "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
-            "GT:AD:DP:GQ:PL",
-            genotype_codes[proband_variant_data.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
+            "GT",
+            genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
     def construct_vcf_records(self):
