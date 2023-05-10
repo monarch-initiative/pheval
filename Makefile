@@ -71,7 +71,7 @@ $(RAW_DATA_FOLDER)/hp-mp2.semsim.tsv: $(RAW_DATA_FOLDER)/hp-mp-merged2.db $(RAW_
 
 results/pheno_rustsim1.semsim1.tsv:
 	test -d results/ || mkdir -p results
-	runoak -i rustsim:sqlite:obo:phenio similarity -p i,p hand @ finger -O csv -o $@
+	runoak -i rustsim:sqlite:obo:phenio similarity -p i,p .all @ .all -O csv -o $@
 
 .PHONY: semsim-rust
 semsim-rust: results/pheno_rustsim1.semsim1.tsv
