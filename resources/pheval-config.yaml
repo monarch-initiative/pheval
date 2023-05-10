@@ -1,0 +1,16 @@
+directories:
+  tmp: data/tmp
+
+
+runs:
+  - tool: phen2gene
+    configuration: default
+    corpus: corpus1
+    corpusvariant: scrambled1
+    inputdir: /home/vinicius/Documents/softwares/Phen2Gene/lib
+  - tool: exomiser
+    configuration: default
+    corpus: corpus1
+    corpusvariant: scrambled1
+    inputdir: ./configurations/exomiser-13.2.0/default
+
