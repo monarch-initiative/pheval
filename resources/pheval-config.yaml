@@ -8,9 +8,12 @@ runs:
     corpus: corpus1
     corpusvariant: scrambled1
     inputdir: /home/vinicius/Documents/softwares/Phen2Gene/lib
+    version: 0.0.0
   - tool: exomiser
     configuration: default
     corpus: corpus1
     corpusvariant: scrambled1
+    datadir: /home/data/exomiser-data/
     inputdir: ./configurations/exomiser-13.2.0/default
+    version: 13.2.0
 

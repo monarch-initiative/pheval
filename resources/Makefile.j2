@@ -7,7 +7,6 @@ TMP_DATA				:=	{{ directories.tmp }}
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
 H2_JAR					:= /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
-EXOMISER_DATA_FOLDER	:= /home/data/exomiser-data/
 EXOMISER_VERSION		:= 13.2.0
 
 help: status
@@ -106,12 +105,8 @@ configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-m
 	 --subject-prefix HP \
 	 --object-prefix MP
 
-configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
-	test -d $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/ $(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/$(EXOMISER_DATA_FOLDER)/hp-mp-semsim.scrambled1/2209_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
-
 {% for run in runs %}
-results/{{ run.tool }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
+results/{{ run.tool }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}/default/config.yml
 	pheval run \
 	 --input-dir {{ run.inputdir }} \
 	 --testdata-dir $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
@@ -121,6 +116,12 @@ results/{{ run.tool }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvar
 	 --config $<
 	
 	touch $@
+
+{% if run.tool == 'exomiser' %}
+configurations/exomiser-{{ run.version }}/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-{{ run.version }}/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
+	test -d {{ run.datadir }}/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-{{ run.version }}/default/2209_phenotype/ {{ run.datadir }}/hp-mp-semsim.scrambled1
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/{{ run.datadir }}/hp-mp-semsim.scrambled1/2209_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
+{% endif %}
 {% endfor %}
 
 
@@ -177,3 +178,5 @@ pheval: prepare-inputs1 prepare-corpus1 run-corpus1
 .PHONY: clean
 clean:
 	rm -rf data/* corpora/* inputs/* configurations/* results/*
+
+include custom.Makefile
