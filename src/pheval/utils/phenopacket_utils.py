@@ -181,7 +181,7 @@ class PhenopacketUtil:
     def vcf_file_data(self, phenopacket_path: Path, vcf_dir: Path) -> File:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
+        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "vcf"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
             ".vcf.gz"
         ):
@@ -269,7 +269,7 @@ class PhenopacketRebuilder:
         """Adds spiked vcf path to phenopacket."""
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
-            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
+            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
         ]
         phenopacket_files.append(spiked_vcf_file_data)
         del phenopacket.files[:]
