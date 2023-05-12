@@ -124,15 +124,17 @@ class VcfHeaderParser:
         chr_status = False
         for line in self.vcf_contents:
             if line.startswith("##contig=<ID"):
-                line_split = line.split(",")
-                chromosome = [line for line in line_split if "ID=" in line][0].split("ID=")[1]
+                tokens = line.split(",")
+                chromosome = re.sub(
+                    r"^.*?ID=", "", [token for token in tokens if "ID=" in token][0]
+                )
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
                 contig_length = re.sub(
                     "[^0-9]+",
                     "",
-                    [line for line in line_split if "length=" in line][0].split("length=")[1],
+                    [token for token in tokens if "length=" in token][0],
                 )
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
