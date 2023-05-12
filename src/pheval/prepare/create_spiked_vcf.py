@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import gzip
 import logging
+import re
 import secrets
 import urllib.parse
 from copy import copy
@@ -123,12 +124,18 @@ class VcfHeaderParser:
         chr_status = False
         for line in self.vcf_contents:
             if line.startswith("##contig=<ID"):
-                line_split = line.split(",")
-                chromosome = line_split[0].split("=")[2]
+                tokens = line.split(",")
+                chromosome = re.sub(
+                    r"^.*?ID=", "", [token for token in tokens if "ID=" in token][0]
+                )
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
-                contig_length = line_split[1].split("=")[1]
+                contig_length = re.sub(
+                    "[^0-9]+",
+                    "",
+                    [token for token in tokens if "length=" in token][0],
+                )
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
         assembly = [k for k, v in genome_assemblies.items() if v == vcf_assembly][0]
