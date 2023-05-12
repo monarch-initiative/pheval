@@ -1,0 +1,160 @@
+{
+  "id": "Erickson-2001-11694548-FOXC2-Family_3,_Proband",
+  "subject": {
+    "id": "Family 3, Proband",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P82Y"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009743",
+        "label": "Distichiasis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:11694548",
+            "description": "Clinical heterogeneity in lymphoedema-distichiasis with FOXC2 truncating mutations."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Erickson-2001-11694548-FOXC2-Family_3,_Proband",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:153400",
+          "label": "LYMPHEDEMA-DISTICHIASIS SYNDROME"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Family 3, Proband",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:7259",
+                "geneContext": {
+                  "valueId": "ENSG00000176692",
+                  "symbol": "FOXC2",
+                  "alternateIds": [
+                    "HGNC:3801",
+                    "ncbigene:2303",
+                    "ensembl:ENSG00000176692",
+                    "symbol:FOXC2"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "16",
+                  "pos": "86567937",
+                  "ref": "CGGACGCCCCCAAGGAGGCCGAGAAGAAGGTGGTGATCAAGAGCGAGGCGGCGTCCCCGGCGCTGCCGGTCATCACCAAG",
+                  "alt": "ACAAA",
+                  "info": "SVTYPE=DEL;END=86568012;SVLEN=-75"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:153400",
+        "label": "LYMPHEDEMA-DISTICHIASIS SYNDROME"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:11694548",
+        "description": "Clinical heterogeneity in lymphoedema-distichiasis with FOXC2 truncating mutations."
+      }
+    ]
+  }
+}

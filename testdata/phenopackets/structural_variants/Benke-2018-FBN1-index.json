@@ -1,0 +1,314 @@
+{
+  "id": "Benke-2018-29850152-FBN1-index",
+  "subject": {
+    "id": "index",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P32Y"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002616",
+        "label": "Aortic root aneurysm"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001166",
+        "label": "Arachnodactyly"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001634",
+        "label": "Mitral valve prolapse"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001065",
+        "label": "Striae distensae"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001763",
+        "label": "Pes planus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000278",
+        "label": "Retrognathia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29850152",
+            "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Benke-2018-29850152-FBN1-index",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:154700",
+          "label": "MARFAN SYNDROME; MFS"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "index",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "15-48598805-N-DEL",
+                "geneContext": {
+                  "valueId": "ENSG00000166147",
+                  "symbol": "FBN1",
+                  "alternateIds": [
+                    "HGNC:3603",
+                    "ncbigene:2200",
+                    "ensembl:ENSG00000166147",
+                    "symbol:FBN1"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "15",
+                  "pos": "48598805",
+                  "ref": "N",
+                  "alt": "DEL",
+                  "info": "SVTYPE=DEL;CIPOS=-3,3;CIEND=-3,3;END=48630760;IMPRECISE;SVLEN=-97229565"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:154700",
+        "label": "MARFAN SYNDROME; MFS"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:29850152",
+        "description": "Hungarian Marfan family with large FBN1 deletion calls attention to copy number variation detection in the current NGS era"
+      }
+    ]
+  }
+}

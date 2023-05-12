@@ -1,0 +1,278 @@
+{
+  "id": "Suzuki-1997-9345094-HSD17B4-patient_1",
+  "subject": {
+    "id": "patient 1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y9M"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008207",
+        "label": "Primary adrenal insufficiency"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002069",
+        "label": "Bilateral tonic-clonic seizure"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002832",
+        "label": "Calcific stippling"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0030799",
+        "label": "Scaphocephaly"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:9345094",
+            "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Suzuki-1997-9345094-HSD17B4-patient_1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:261515",
+          "label": "D-BIFUNCTIONAL PROTEIN DEFICIENCY"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "patient 1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "5-119502038-TAGGTTCTTCATGGAGAGCAGTACTTAGAGTTATATAAACCACTTCCCAGAGC-T",
+                "geneContext": {
+                  "valueId": "ENSG00000133835",
+                  "symbol": "HSD17B4",
+                  "alternateIds": [
+                    "HGNC:5213",
+                    "ncbigene:3295",
+                    "ensembl:ENSG00000133835",
+                    "symbol:HSD17B4"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "5",
+                  "pos": "119502038",
+                  "ref": "TAGGTTCTTCATGGAGAGCAGTACTTAGAGTTATATAAACCACTTCCCAGAGC",
+                  "alt": "T",
+                  "info": "SVTYPE=DEL;END=119502090;SVLEN=-52"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:261515",
+        "label": "D-BIFUNCTIONAL PROTEIN DEFICIENCY"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:9345094",
+        "description": "D-3-hydroxyacyl-CoA dehydratase/D-3-hydroxyacyl-CoA dehydrogenase bifunctional protein deficiency: a newly identified peroxisomal disorder."
+      }
+    ]
+  }
+}

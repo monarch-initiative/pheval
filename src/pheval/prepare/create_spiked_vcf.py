@@ -3,6 +3,7 @@ import gzip
 import logging
 import re
 import secrets
+import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
@@ -197,12 +198,16 @@ class VcfSpiker:
             str(proband_variant_data.variant.pos),
             ".",
             proband_variant_data.variant.ref,
-            proband_variant_data.variant.alt,
+            f"<{proband_variant_data.variant.alt}>"
+            if proband_variant_data.variant.ref == "N"
+            else proband_variant_data.variant.alt,
             "100",
             "PASS",
-            "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
-            "GT:AD:DP:GQ:PL",
-            genotype_codes[proband_variant_data.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
+            proband_variant_data.info
+            if proband_variant_data.info is not None
+            else "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
+            "GT",
+            genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
     def construct_vcf_records(self):
@@ -302,7 +307,7 @@ def generate_spiked_vcf_file(
     )
     VcfWriter(spiked_vcf, spiked_vcf_path).write_vcf_file()
     return File(
-        uri=spiked_vcf_path.as_uri(),
+        uri=urllib.parse.unquote(spiked_vcf_path.as_uri()),
         file_attributes={"fileFormat": "vcf", "genomeAssembly": vcf_assembly},
     )
 

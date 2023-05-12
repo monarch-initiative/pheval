@@ -1,0 +1,255 @@
+{
+  "id": "Geley-1996-8768848-CYP11B1-SC",
+  "subject": {
+    "id": "SC",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y10M"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000771",
+        "label": "Gynecomastia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:8768848",
+            "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000826",
+        "label": "Precocious puberty"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:8768848",
+            "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0025436",
+        "label": "Elevated serum 11-deoxycortisol"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:8768848",
+            "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001061",
+        "label": "Acne"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:8768848",
+            "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005616",
+        "label": "Accelerated skeletal maturation"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:8768848",
+            "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Geley-1996-8768848-CYP11B1-SC",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:202010",
+          "label": "ADRENAL HYPERPLASIA, CONGENITAL, DUE TO STEROID 11-BETA-HYDROXYLASEDEFICIENCY"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "SC",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "8-142879042-C-T",
+                "geneContext": {
+                  "valueId": "ENSG00000160882",
+                  "symbol": "CYP11B1",
+                  "alternateIds": [
+                    "HGNC:2591",
+                    "ncbigene:1584",
+                    "ensembl:ENSG00000160882",
+                    "symbol:CYP11B1"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "8",
+                  "pos": "142879042",
+                  "ref": "C",
+                  "alt": "T"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "SC",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "8-142879082-GGGCTCCAGGCTCATCCTGTGGGGATGCA-G",
+                "geneContext": {
+                  "valueId": "ENSG00000160882",
+                  "symbol": "CYP11B1",
+                  "alternateIds": [
+                    "HGNC:2591",
+                    "ncbigene:1584",
+                    "ensembl:ENSG00000160882",
+                    "symbol:CYP11B1"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "8",
+                  "pos": "142879082",
+                  "ref": "GGGCTCCAGGCTCATCCTGTGGGGATGCA",
+                  "alt": "G",
+                  "info": "SVTYPE=DEL;END=142879110;SVLEN=-28"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:202010",
+        "label": "ADRENAL HYPERPLASIA, CONGENITAL, DUE TO STEROID 11-BETA-HYDROXYLASEDEFICIENCY"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:8768848",
+        "description": "CYP11B1 mutations causing congenital adrenal hyperplasia due to 11 beta-hydroxylase deficiency."
+      }
+    ]
+  }
+}
