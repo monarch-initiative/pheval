@@ -1,0 +1,250 @@
+{
+  "id": "Bayes-1995-7599633-PDE6B-B4_II:1",
+  "subject": {
+    "id": "B4 II:1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P39Y"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000662",
+        "label": "Nyctalopia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0007663",
+        "label": "Reduced visual acuity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001133",
+        "label": "Constriction of peripheral visual field"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0007737",
+        "label": "Bone spicule pigmentation of the retina"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0007843",
+        "label": "Attenuation of retinal blood vessels"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:7599633",
+            "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Bayes-1995-7599633-PDE6B-B4_II:1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:613801",
+          "label": "RETINITIS PIGMENTOSA 40; RP40"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "B4 II:1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:13108",
+                "geneContext": {
+                  "valueId": "ENSG00000133256",
+                  "symbol": "PDE6B",
+                  "alternateIds": [
+                    "HGNC:8786",
+                    "ncbigene:5158",
+                    "ensembl:ENSG00000133256",
+                    "symbol:PDE6B"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "4",
+                  "pos": "625794",
+                  "ref": "N",
+                  "alt": "DUP",
+                  "info": "SVTYPE=DUP;END=625865;SVLEN=71"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613801",
+        "label": "RETINITIS PIGMENTOSA 40; RP40"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:ddanis",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:7599633",
+        "description": "Homozygous tandem duplication within the gene encoding the beta-subunit of rod phosphodiesterase as a cause for autosomal recessive retinitis pigmentosa."
+      }
+    ]
+  }
+}

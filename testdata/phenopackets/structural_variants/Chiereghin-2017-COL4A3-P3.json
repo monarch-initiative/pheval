@@ -1,0 +1,242 @@
+{
+  "id": "Chiereghin-2017-28570636-COL4A3-P3",
+  "subject": {
+    "id": "P3",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P25Y"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002907",
+        "label": "Microscopic hematuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000093",
+        "label": "Proteinuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011507",
+        "label": "Macular flecks"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004722",
+        "label": "Thickened glomerular basement membrane"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012577",
+        "label": "Thin glomerular basement membrane"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28570636",
+            "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Chiereghin-2017-28570636-COL4A3-P3",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:203780",
+          "label": "Alport syndrome 2, autosomal recessive"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "P3",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "2-227164755-AGGTGCTCCTGCTGCCGCTCCTGCT-A",
+                "geneContext": {
+                  "valueId": "ENSG00000169031",
+                  "symbol": "COL4A3",
+                  "alternateIds": [
+                    "HGNC:2204",
+                    "ncbigene:1285",
+                    "ensembl:ENSG00000169031",
+                    "symbol:COL4A3"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "2",
+                  "pos": "227164755",
+                  "ref": "AGGTGCTCCTGCTGCCGCTCCTGCT",
+                  "alt": "A",
+                  "info": "SVTYPE=DEL;END=227164779;SVLEN=-24"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:203780",
+        "label": "Alport syndrome 2, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:28570636",
+        "description": "Alport syndrome cold cases: Missing mutations identified by exome sequencing and functional analysis."
+      }
+    ]
+  }
+}

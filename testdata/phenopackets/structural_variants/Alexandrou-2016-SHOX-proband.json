@@ -1,0 +1,242 @@
+{
+  "id": "Alexandrou-2016-27994182-SHOX-proband",
+  "subject": {
+    "id": "proband",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P43Y"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002174",
+        "label": "Postural tremor"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002829",
+        "label": "Arthralgia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002346",
+        "label": "Head tremor"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003027",
+        "label": "Mesomelia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005986",
+        "label": "Limitation of neck motion"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27994182",
+            "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Alexandrou-2016-27994182-SHOX-proband",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:127300",
+          "label": "LERI-WEILL DYSCHONDROSTEOSIS; LWD"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "proband",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "X-631608-N-DEL",
+                "geneContext": {
+                  "valueId": "ENSG00000185960",
+                  "symbol": "SHOX",
+                  "alternateIds": [
+                    "HGNC:10853",
+                    "ncbigene:6473",
+                    "ensembl:ENSG00000185960",
+                    "symbol:SHOX"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "X",
+                  "pos": "631608",
+                  "ref": "N",
+                  "alt": "DEL",
+                  "info": "SVTYPE=DEL;END=647131;SVLEN=-1278739"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000134",
+                  "label": "hemizygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:127300",
+        "label": "LERI-WEILL DYSCHONDROSTEOSIS; LWD"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:27994182",
+        "description": "Identification of a novel 15.5 kb SHOX deletion associated with marked intrafamilial phenotypic variability and analysis of its molecular origin."
+      }
+    ]
+  }
+}
