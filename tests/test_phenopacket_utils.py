@@ -86,6 +86,40 @@ interpretations = [
         ),
     )
 ]
+
+structural_variant_interpretations = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(value_id="ENSG00000069011", symbol="PITX1"),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh38",
+                                chrom="5",
+                                pos=134858794,
+                                ref="N",
+                                alt="DEL",
+                                info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000135",
+                                label="heterozygous",
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
 updated_interpretations = [
     Interpretation(
         id="test-subject-1-int",
@@ -291,6 +325,15 @@ phenopacket = Phenopacket(
     files=phenopacket_files,
     meta_data=phenopacket_metadata,
 )
+
+structural_variant_phenopacket = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=structural_variant_interpretations,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
 phenopacket_no_variant_data = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
@@ -370,6 +413,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         cls.phenopacket = PhenopacketUtil(phenopacket)
         cls.phenopacket_no_variants = PhenopacketUtil(phenopacket_no_variant_data)
         cls.phenopacket_excluded_pf = PhenopacketUtil(phenopacket_with_all_excluded_terms)
+        cls.structural_variant_phenopacket = PhenopacketUtil(structural_variant_phenopacket)
         cls.family = PhenopacketUtil(family)
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
@@ -424,9 +468,44 @@ class TestPhenopacketUtil(unittest.TestCase):
     def test_interpretations_family(self):
         self.assertEqual(list(self.family.interpretations()), interpretations)
 
-    def test_causative_variants(self):
+    def test_causative_variants_type(self):
         for causative_variant in self.phenopacket.causative_variants():
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
+
+    def test_causative_variants(self):
+        self.assertEqual(
+            self.phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="X", pos=54492285, ref="C", alt="T"),
+                    genotype="hemizygous",
+                    info="",
+                ),
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="18", pos=67691994, ref="G", alt="A"),
+                    genotype="compound heterozygous",
+                    info="",
+                ),
+            ],
+        )
+
+    def test_causative_variants_structural(self):
+        self.assertEqual(
+            self.structural_variant_phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh38",
+                    variant=GenomicVariant(chrom="5", pos=134858794, ref="N", alt="DEL"),
+                    genotype="heterozygous",
+                    info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                )
+            ],
+        )
 
     def test_files_phenopacket(self):
         self.assertEqual(list(self.phenopacket.files()), phenopacket_files)
