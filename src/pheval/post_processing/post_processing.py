@@ -2,7 +2,7 @@ import operator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-
+from typing import Type
 import pandas as pd
 
 
@@ -12,7 +12,12 @@ def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
 
 
 @dataclass
-class PhEvalGeneResult:
+class PhEvalResult:
+    """Base class for PhEval results."""
+
+
+@dataclass
+class PhEvalGeneResult(PhEvalResult):
     """Minimal data required from tool-specific output for gene prioritisation."""
 
     gene_symbol: str
@@ -21,7 +26,7 @@ class PhEvalGeneResult:
 
 
 @dataclass
-class RankedPhEvalGeneResult:
+class RankedPhEvalGeneResult(PhEvalResult):
     """PhEval gene result with corresponding rank."""
 
     pheval_gene_result: PhEvalGeneResult
@@ -38,7 +43,7 @@ class RankedPhEvalGeneResult:
 
 
 @dataclass
-class PhEvalVariantResult:
+class PhEvalVariantResult(PhEvalResult):
     """Minimal data required from tool-specific output for variant prioritisation."""
 
     chromosome: str
@@ -50,7 +55,7 @@ class PhEvalVariantResult:
 
 
 @dataclass
-class RankedPhEvalVariantResult:
+class RankedPhEvalVariantResult(PhEvalResult):
     """PhEval variant result with corresponding rank."""
 
     pheval_variant_result: PhEvalVariantResult
@@ -70,7 +75,7 @@ class RankedPhEvalVariantResult:
 
 
 @dataclass
-class PhEvalDiseaseResult:
+class PhEvalDiseaseResult(PhEvalResult):
     """Minimal data required from tool-specific output for disease prioritisation."""
 
     disease_name: str
@@ -79,7 +84,7 @@ class PhEvalDiseaseResult:
 
 
 @dataclass
-class RankedPhEvalDiseaseResult:
+class RankedPhEvalDiseaseResult(PhEvalResult):
     """PhEval disease result with corresponding rank."""
 
     pheval_disease_result: PhEvalDiseaseResult
@@ -102,20 +107,20 @@ class SortOrder(Enum):
 
 class ResultSorter:
     def __init__(
-            self, pheval_results: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
+            self, pheval_results: Type[PhEvalResult], sort_order: SortOrder
     ):
         self.pheval_results = pheval_results
         self.sort_order = sort_order
 
-    def _sort_by_decreasing_score(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
+    def _sort_by_decreasing_score(self) -> Type[PhEvalResult]:
         """Sort results in descending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
 
-    def _sort_by_increasing_score(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
+    def _sort_by_increasing_score(self) -> Type[PhEvalResult]:
         """Sort results in ascending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
 
-    def sort_pheval_results(self) -> [PhEvalGeneResult] or [PhEvalVariantResult]:
+    def sort_pheval_results(self) -> Type[PhEvalResult]:
         """Sort results with best score first."""
         return (
             self._sort_by_increasing_score()
@@ -155,8 +160,8 @@ class ScoreRanker:
 
 
 def _rank_pheval_result(
-        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order: SortOrder
-) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
+        pheval_result: Type[PhEvalResult], sort_order: SortOrder
+) -> Type[PhEvalResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
     Deals with ex aequo scores"""
     score_ranker = ScoreRanker(sort_order)
@@ -183,8 +188,8 @@ def _return_sort_order(sort_order_str: str) -> SortOrder:
 
 
 def _create_pheval_result(
-        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult], sort_order_str: str
-) -> [RankedPhEvalGeneResult] or [RankedPhEvalVariantResult]:
+        pheval_result: Type[PhEvalResult], sort_order_str: str
+) -> Type[PhEvalResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sort_order = _return_sort_order(sort_order_str)
     sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
@@ -224,7 +229,7 @@ def _write_pheval_variant_result(
 
 
 def generate_pheval_result(
-        pheval_result: [PhEvalGeneResult] or [PhEvalVariantResult],
+        pheval_result: Type[PhEvalResult],
         sort_order_str: str,
         output_dir: Path,
         tool_result_path: Path,
