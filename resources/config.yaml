@@ -1,0 +1,30 @@
+tool: exomiser
+run:
+  version: 123
+  path_to_phen2gene_executable: /home/vinicius/Documents/softwares/Phen2Gene
+  environment: local
+  # NOTE phenotype-only preset analysis should only be run with Exomiser versions >= 13.2.0
+  phenotype_only: True
+  tool: exomiser
+  path_to_exomiser_software_directory: /Users/yaseminbridges/exomiser/exomiser-cli-13.2.0
+  path_to_analysis_yaml: /home/data/exomiser-data/examples/preset-exome-analysis.yml
+  exomiser_configurations:
+    exomiser_version: 13.2.0
+    path_to_application_properties_config: /Users/yaseminbridges/exomiser/exomiser-cli-13.2.0/application.properties
+    application_properties_arguments:
+      exomiser_phenotype_version:
+      exomiser_hg19_version:
+      exomiser_hg38_version:
+  max_jobs: 0
+
+
+post_process:
+  score_order: DESCENDING
+  tool_input_commands_dir:
+  # For Exomiser, valid ranking methods include combinedScore, priorityScore, variantScore or pValue
+  score_name: combinedScore
+  # sort order should be specified to either ASCENDING or DESCENDING
+  # ASCENDING orders results with the lowest values ranked first
+  # DESCENDING orders results with the highest values ranked first
+  # NOTE when changing the score_name ensure the sort_order is also correct
+  sort_order: DESCENDING

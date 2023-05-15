@@ -1,5 +1,31 @@
+phenotype:
+  version: 2209
+  hg: hg19
+  url: https://data.monarchinitiative.org/exomiser/latest/
+
+
 directories:
   tmp: data/tmp
+  config: configurations
+  h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
+  phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
+  exomiser: /home/data/exomiser-data/
+
+
+#when we run the make preparation (not default) we should create symlink if they don't exists in default 
+
+configs:
+  - tool: phen2gene
+    version: 1.2.3
+    configuration: default
+  - tool: exomiser
+    version: 13.2.0
+    configuration: default
+  - tool: exomiser
+    version: 13.2.0
+    configuration: scrambled1
+    description: Exomiser Deafault Configuration with a Randomised Semantic Similarity Profile
+
 
 
 runs:
@@ -7,13 +33,15 @@ runs:
     configuration: default
     corpus: corpus1
     corpusvariant: scrambled1
-    inputdir: /home/vinicius/Documents/softwares/Phen2Gene/lib
-    version: 0.0.0
+    version: 1.2.3
   - tool: exomiser
     configuration: default
     corpus: corpus1
     corpusvariant: scrambled1
-    datadir: /home/data/exomiser-data/
-    inputdir: ./configurations/exomiser-13.2.0/default
+    version: 13.2.0
+  - tool: exomiser
+    configuration: default
+    corpus: corpus2
+    corpusvariant: scrambled2
     version: 13.2.0
 

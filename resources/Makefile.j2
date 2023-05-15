@@ -6,9 +6,7 @@ TEST_DATA				:=	testdata
 TMP_DATA				:=	{{ directories.tmp }}
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
-H2_JAR					:= /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
-EXOMISER_VERSION		:= 13.2.0
-
+H2_JAR					:= {{ directories.h2jar }}
 help: status
 	@echo ""
 	@echo "help"
@@ -27,88 +25,40 @@ status:
 	@echo "Project: $(NAME)"
 	@echo "Version: $(VERSION)"
 
-configurations/semsim1/%.owl:
-	test -d configurations/semsim1 || mkdir -p configurations/semsim1
-	wget $(URIBASE)/$*.owl -O $@
+.SECONDEXPANSION:
 
-configurations/semsim1/mp.owl:
-	test -d configurations/semsim1 || mkdir -p configurations/semsim1
-	wget $(URIBASE)/mp/mp-base.owl -O $@
+.PHONY: pheval
+pheval: prepare-inputs $$(prepare-corpus) $$(pheval-run)
 
-configurations/semsim1/hp-mp-merged.owl: configurations/semsim1/hp.owl configurations/semsim1/mp.owl
-	test -d configurations/semsim1 || mkdir -p configurations/semsim1
-	robot merge \
-	 --input configurations/semsim1/hp.owl \
-	 --input configurations/semsim1/mp.owl reason reduce \
-	 --output $@
 
-configurations/semsim1/hp-mp-merged2.owl: configurations/semsim1/hp-mp-merged.owl
-	test -d configurations/semsim1 || mkdir -p configurations/semsim1
-	$(eval TERM1=$(shell bash -c "cat configurations/semsim1/random-hp-terms.txt | cut -d ' ' -f1 "))
-	$(eval TERM2=$(shell bash -c "cat configurations/semsim1/random-mp-terms.txt | cut -d ' ' -f2 "))
+{% for config in configs %}
 
-	robot merge \
-	 --input $< remove \
-	 --term $(TERM1) \
-	 --term $(TERM2) \
-	 --axioms logical \
-	 --output $@
+configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
+	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
+	ln -s {{ directories[config.tool] }}/* $(shell dirname pwd)/$(shell dirname $@)
 
-configurations/semsim1/%.db: configurations/semsim1/%.owl
-	docker run -e ROBOT_JAVA_ARGS='-Xmx15G' -e JAVA_OPTS='-Xmx15G' -v $(shell pwd)/:/work -w /work \
-	 --rm -ti obolibrary/odkfull semsql make $@
 
-configurations/semsim1/random-hp-terms.txt: configurations/semsim1/hp-mp-merged.owl
-	$(eval TERM=$(shell bash -c "cat configurations/semsim1/hp-mp-merged.owl | grep '<!-- http://purl.obolibrary.org/obo/HP_'  | grep '_' |  shuf -n 100  | head -n 10 | rev | cut -d '/' -f 1 | cut -d ' ' -f 2 | rev | tr '_' ':'"))
-	echo $(TERM) > $@
+{% if config.tool == 'exomiser' %}
+configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml configurations/{{ config.configuration }}/hp-mp.semsim.{{ config.configuration }}.sql configurations/{{ config.configuration }}/hp-mp2.semsim.{{ config.configuration }}.sql
+	test -d {{ config.configuration }}/hp-mp-semsim.{{ config.configuration }} || cp -rf configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/hp-mp-semsim.{{ config.configuration }}
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/hp-mp-semsim.{{ config.configuration }}/{{ phenotype.version }}_phenotype -script configurations/{{ config.configuration }}/hp-mp.semsim.{{ config.configuration }}.sql
 
-configurations/semsim1/random-mp-terms.txt: configurations/semsim1/hp-mp-merged.owl
-	$(eval TERM=$(shell bash -c "cat configurations/semsim1/hp-mp-merged.owl | grep '<!-- http://purl.obolibrary.org/obo/MP_'  | grep '_' |  shuf -n 100  | head -n 10 | rev | cut -d '/' -f 1 | cut -d ' ' -f 2 | rev | tr '_' ':'"))
-	echo $(TERM) > $@
+.PHONY: semsim-ingest
+semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 
-configurations/semsim1/hp-mp.semsim.tsv: configurations/semsim1/hp-mp-merged.db configurations/semsim1/random-hp-terms.txt configurations/semsim1/random-mp-terms.txt
-	$(eval TERM=$(shell bash -c "cat configurations/semsim1/random-hp-terms.txt"))
-	$(eval TERM2=$(shell bash -c "cat configurations/semsim1/random-mp-terms.txt"))
-	runoak -i $< similarity -p i,p $(TERM) @ $(TERM2) \
-	 --autolabel -O csv -o $@
+{% endif %}
 
-configurations/semsim1/hp-mp2.semsim.tsv: configurations/semsim1/hp-mp-merged2.db configurations/semsim1/random-hp-terms.txt configurations/semsim1/random-mp-terms.txt
-	$(eval TERM=$(shell bash -c "cat configurations/semsim1/random-hp-terms.txt"))
-	$(eval TERM2=$(shell bash -c "cat configurations/semsim1/random-mp-terms.txt"))
-	runoak -i $< similarity -p i,p $(TERM) @ $(TERM2) \
-	 --autolabel -O csv -o $@
+.PHONY: prepare-inputs
+prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
+	echo prepare-inputs $*
 
-configurations/semsim1/hp-mp.semsim.scrambled1.tsv: configurations/semsim1/hp-mp.semsim.tsv
-	pheval-utils semsim-scramble \
-	 --input $< \
-	 --output $@ \
-	 --scramble-factor 0.5
-
-configurations/semsim1/hp-mp2.semsim.scrambled1.tsv: configurations/semsim1/hp-mp.semsim.tsv
-	pheval-utils semsim-scramble \
-	 --input $< \
-	 --output $@ \
-	 --scramble-factor 0.5
-
-#CONVERT SAMPLE
-configurations/semsim1/hp-mp.semsim.scrambled1.sql: configurations/semsim1/hp-mp.semsim.scrambled1.tsv
-	pheval-utils semsim-convert \
-	 --input $< \
-	 --output $@ \
-	 --subject-prefix HP \
-	 --object-prefix MP
-
-configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-mp2.semsim.scrambled1.tsv
-	pheval-utils semsim-convert \
-	 --input $< \
-	 --output $@ \
-	 --subject-prefix HP \
-	 --object-prefix MP
+{% endfor %}
 
 {% for run in runs %}
-results/{{ run.tool }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}/default/config.yml
+results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
+	
 	pheval run \
-	 --input-dir {{ run.inputdir }} \
+	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
 	 --testdata-dir $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
@@ -117,66 +67,28 @@ results/{{ run.tool }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvar
 	
 	touch $@
 
-{% if run.tool == 'exomiser' %}
-configurations/exomiser-{{ run.version }}/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-{{ run.version }}/default/config.yml configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql
-	test -d {{ run.datadir }}/hp-mp-semsim.scrambled1 || cp -rf configurations/exomiser-{{ run.version }}/default/2209_phenotype/ {{ run.datadir }}/hp-mp-semsim.scrambled1
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/{{ run.datadir }}/hp-mp-semsim.scrambled1/2209_phenotype -script configurations/semsim1/hp-mp.semsim.scrambled1.sql
-{% endif %}
-{% endfor %}
 
-
-
-corpora/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	test -L $(shell pwd)/corpora/corpus1/scrambled1/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
+	test -L $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
-	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single \
-	 --output-dir $(shell dirname $@)/vcf
-	
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 1 \
-	 --output-dir $(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single
-	touch $@
 
-configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml: $(EXOMISER_DATA_FOLDER)/config.yml
-	test -L $@ || mkdir -p configurations/exomiser-$(EXOMISER_VERSION)/default/ ; ln -s $(EXOMISER_DATA_FOLDER)* $(shell dirname $@)/
+.PHONY: prepare-corpus
+prepare-corpus +=  corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
 
-.PHONY: semsim
-semsim: configurations/semsim1/hp-mp.semsim.tsv configurations/semsim1/hp-mp2.semsim.tsv
 
-.PHONY: semsim-shuffle
-semsim-shuffle: configurations/semsim1/random-hp-terms.txt configurations/semsim1/random-mp-terms.txt
 
-.PHONY: semsim-scramble
-semsim-scramble: configurations/semsim1/hp-mp.semsim.scrambled1.tsv configurations/semsim1/hp-mp.semsim.scrambled2.tsv configurations/semsim1/hp-mp.semsim.scrambled3.tsv configurations/semsim1/hp-mp2.semsim.scrambled1.tsv configurations/semsim1/hp-mp2.semsim.scrambled2.tsv configurations/semsim1/hp-mp2.semsim.scrambled3.tsv
+run-{{ run.corpus }}-{{ run.tool }}:
+	$(MAKE) SCRAMBLE_FACTOR=1 results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml
 
-.PHONY: semsim-convert
-semsim-convert: configurations/semsim1/hp-mp.semsim.scrambled1.sql configurations/semsim1/hp-mp.semsim.scrambled2.sql configurations/semsim1/hp-mp.semsim.scrambled3.sql configurations/semsim1/hp-mp2.semsim.scrambled1.sql configurations/semsim1/hp-mp2.semsim.scrambled2.sql configurations/semsim1/hp-mp2.semsim.scrambled3.sql
+pheval-run += run-{{ run.corpus }}-{{ run.tool }}
 
-.PHONY: semsim-ingest
-semsim-ingest: configurations/exomiser-$(EXOMISER_VERSION)/default/2209_phenotype/2209_phenotype.h2.db
+{% endfor %}
 
-.PHONY: prepare-inputs1
-prepare-inputs1: configurations/exomiser-$(EXOMISER_VERSION)/default/config.yml
-	echo prepare-inputs $*
-
-.PHONY: prepare-corpus1
-prepare-corpus1: corpora/corpus1/scrambled1/corpus.yml
-
-.PHONY: run-corpus1
-run-corpus1:
-	$(MAKE) SCRAMBLE_FACTOR=1 results/exomiser-$(EXOMISER_VERSION)/default-corpus1-scrambled1/results.yml
-	# $(MAKE) SCRAMBLE_FACTOR=1 results/phen2gene/default-corpus1-scrambled1/results.yml
-
-.PHONY: pheval
-pheval: prepare-inputs1 prepare-corpus1 run-corpus1
 
 .PHONY: clean
 clean:
 	rm -rf data/* corpora/* inputs/* configurations/* results/*
 
-include custom.Makefile
+include ./resources/custom.Makefile
