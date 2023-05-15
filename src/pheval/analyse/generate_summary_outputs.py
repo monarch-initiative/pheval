@@ -142,29 +142,31 @@ def merge_results(result1: dict, result2: dict) -> dict:
 def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the gene rank comparison of two result directories."""
     for pair in comparison_ranks:
+        result1, result2 = pair
         merged_results = merge_results(
-            deepcopy(pair[0].gene_prioritisation.ranks), deepcopy(pair[1].gene_prioritisation.ranks)
+            deepcopy(result1.gene_prioritisation.ranks), deepcopy(result2.gene_prioritisation.ranks)
         )
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
-            f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[0].gene_prioritisation.results_dir.name}"
-            f"__v__{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].gene_prioritisation.results_dir.name}"
+            f"{result1.gene_prioritisation.results_dir.parents[0].name}_"
+            f"{result1.gene_prioritisation.results_dir.name}"
+            f"__v__{result2.gene_prioritisation.results_dir.parents[0].name}_"
+            f"{result2.gene_prioritisation.results_dir.name}"
         )
 
 
 def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
     """Generate the variant rank comparison of two result directories."""
     for pair in comparison_ranks:
+        result1, result2 = pair
         merged_results = merge_results(
-            deepcopy(pair[0].variant_prioritisation.ranks),
-            deepcopy(pair[1].variant_prioritisation.ranks),
+            deepcopy(result1.variant_prioritisation.ranks),
+            deepcopy(result2.variant_prioritisation.ranks),
         )
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
-            f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[0].variant_prioritisation.results_dir.name}"
-            f"__v__{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].variant_prioritisation.results_dir.name}"
+            f"{result1.variant_prioritisation.results_dir.parents[0].name}_"
+            f"{result1.variant_prioritisation.results_dir.name}"
+            f"__v__{result2.variant_prioritisation.results_dir.parents[0].name}_"
+            f"{result2.variant_prioritisation.results_dir.name}"
         )
 
 
