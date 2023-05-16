@@ -78,18 +78,6 @@ configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-m
 	 --subject-prefix HP \
 	 --object-prefix MP
 
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
-	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single \
-	 --output-dir $(shell dirname $@)/vcf
-	
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 1 \
-	 --output-dir $(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(TEST_DATA)/phenopackets/single
-	touch $@
-
-
 .PHONY: semsim
 semsim: configurations/semsim1/hp-mp.semsim.tsv configurations/semsim1/hp-mp2.semsim.tsv
 

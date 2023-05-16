@@ -71,10 +71,22 @@ results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }
 
 
 corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+	{% if run.tool == 'exomiser' %}
 	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	test -L $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
-	
+	pheval-utils create-spiked-vcfs \
+	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
+	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single \
+	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
+	{% endif %}
+
+	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
+	pheval-utils scramble-phenopackets \
+	 --scramble-factor 1 \
+	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
+	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
+	touch $@
+
 
 prepare-corpus +=  corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
 
