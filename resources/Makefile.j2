@@ -27,11 +27,15 @@ status:
 
 .SECONDEXPANSION:
 
-.PHONY: pheval
-pheval: prepare-inputs $$(prepare-corpus) $$(pheval-run)
 
+
+.PHONY: prepare-inputs
 
 {% for config in configs %}
+
+
+prepare-inputs += configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
+
 
 configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
@@ -48,18 +52,16 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 
 {% endif %}
 
-.PHONY: prepare-inputs
-prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
-	echo prepare-inputs $*
-
 {% endfor %}
+
+.PHONY: prepare-corpus
 
 {% for run in runs %}
 results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
 	
 	pheval run \
 	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
-	 --testdata-dir $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
+	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
 	 --output-dir $(shell dirname pwd)/$(shell dirname $@) \
@@ -68,14 +70,13 @@ results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }
 	touch $@
 
 
-corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	test -L $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
+	test -L $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	
 
-.PHONY: prepare-corpus
-prepare-corpus +=  corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+prepare-corpus +=  corpora/{{ run.tool }}/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
 
 
 
@@ -85,6 +86,10 @@ run-{{ run.corpus }}-{{ run.tool }}:
 pheval-run += run-{{ run.corpus }}-{{ run.tool }}
 
 {% endfor %}
+
+
+.PHONY: pheval
+pheval: $$(prepare-inputs) $$(prepare-corpus) $$(pheval-run)
 
 
 .PHONY: clean
