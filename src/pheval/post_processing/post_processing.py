@@ -2,7 +2,6 @@ import operator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Type
 
 import pandas as pd
 
@@ -107,19 +106,19 @@ class SortOrder(Enum):
 
 
 class ResultSorter:
-    def __init__(self, pheval_results: Type[PhEvalResult], sort_order: SortOrder):
+    def __init__(self, pheval_results: [PhEvalResult], sort_order: SortOrder):
         self.pheval_results = pheval_results
         self.sort_order = sort_order
 
-    def _sort_by_decreasing_score(self) -> Type[PhEvalResult]:
+    def _sort_by_decreasing_score(self) -> [PhEvalResult]:
         """Sort results in descending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
 
-    def _sort_by_increasing_score(self) -> Type[PhEvalResult]:
+    def _sort_by_increasing_score(self) -> [PhEvalResult]:
         """Sort results in ascending order."""
         return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
 
-    def sort_pheval_results(self) -> Type[PhEvalResult]:
+    def sort_pheval_results(self) -> [PhEvalResult]:
         """Sort results with best score first."""
         return (
             self._sort_by_increasing_score()
@@ -158,9 +157,7 @@ class ScoreRanker:
         return self.rank
 
 
-def _rank_pheval_result(
-    pheval_result: Type[PhEvalResult], sort_order: SortOrder
-) -> Type[PhEvalResult]:
+def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) -> [PhEvalResult]:
     """Ranks either a PhEval gene or variant result post-processed from a tool specific output.
     Deals with ex aequo scores"""
     score_ranker = ScoreRanker(sort_order)
@@ -186,9 +183,7 @@ def _return_sort_order(sort_order_str: str) -> SortOrder:
         raise ValueError("Incompatible ordering method specified.")
 
 
-def _create_pheval_result(
-    pheval_result: Type[PhEvalResult], sort_order_str: str
-) -> Type[PhEvalResult]:
+def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) -> [PhEvalResult]:
     """Create PhEval gene/variant result with corresponding ranks."""
     sort_order = _return_sort_order(sort_order_str)
     sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
@@ -228,7 +223,7 @@ def _write_pheval_variant_result(
 
 
 def generate_pheval_result(
-    pheval_result: Type[PhEvalResult],
+    pheval_result: [PhEvalResult],
     sort_order_str: str,
     output_dir: Path,
     tool_result_path: Path,
