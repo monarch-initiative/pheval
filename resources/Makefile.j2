@@ -41,9 +41,9 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 
 
 {% if config.tool == 'exomiser' %}
-configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml configurations/{{ config.configuration }}/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql configurations/{{ config.configuration }}/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}2.semsim.{{ config.configuration }}.sql
-	test -d {{ config.configuration }}/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }} || cp -rf configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}/{{ phenotype.version }}_phenotype -script configurations/{{ config.configuration }}/{{ semantic_similarity_profile.first_ontology }}-{{ semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql
+configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}2.semsim.{{ config.configuration }}.sql
+	test -d {{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }} || cp -rf configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}/{{ phenotype.version }}_phenotype -script configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql
 
 semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 
@@ -54,7 +54,7 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 .PHONY: prepare-corpora
 
 {% for run in runs %}
-results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
+results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
 	
 	pheval run \
 	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
@@ -79,18 +79,18 @@ corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.
 
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
-	 --scramble-factor $(SCRAMBLE_FACTOR) \
+	 --scramble-factor {{ run.corpusvariant }} \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
 	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
 	touch $@
 
 
-prepare-corpus:  corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.yml
+prepare-corpora: corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.yml
 
 
 
 run-{{ run.corpus }}-{{ run.tool }}:
-	$(MAKE) SCRAMBLE_FACTOR={{ run.corpusvariant }} results/{{ run.tool }}-{{ run.version }}/{{ run.configuration }}-{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml
+	$(MAKE) results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml
 
 pheval-run: run-{{ run.corpus }}-{{ run.tool }}
 

@@ -14,21 +14,28 @@ directories:
 
 
 #when we run the make preparation (not default) we should create symlink if they don't exists in default 
-semantic_similarity_profile:
-  first_ontology: hp
-  second_ontology: mp
+
 
 configs:
   - tool: phen2gene
     version: 1.2.3
     configuration: default
+    semantic_similarity_profile:
+      first_ontology: hp
+      second_ontology: mp
   - tool: exomiser
     version: 13.2.0
     configuration: default
+    semantic_similarity_profile:
+      first_ontology: hp
+      second_ontology: zp
   - tool: exomiser
     version: 13.2.0
     configuration: scrambled1
     description: Exomiser Deafault Configuration with a Randomised Semantic Similarity Profile
+    semantic_similarity_profile:
+      first_ontology: hp
+      second_ontology: hp
 
 
 
