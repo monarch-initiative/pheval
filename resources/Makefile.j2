@@ -25,8 +25,6 @@ info:
 	@echo "Project: $(NAME)"
 	@echo "Version: $(VERSION)"
 
-.SECONDEXPANSION:
-
 
 
 .PHONY: prepare-inputs
