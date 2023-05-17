@@ -6,6 +6,7 @@ phenotype:
 
 directories:
   tmp: data/tmp
+  testdata: testdata
   config: configurations
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
   phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
@@ -13,6 +14,9 @@ directories:
 
 
 #when we run the make preparation (not default) we should create symlink if they don't exists in default 
+semantic_similarity_profile:
+  first_ontology: hp
+  second_ontology: mp
 
 configs:
   - tool: phen2gene
@@ -32,16 +36,16 @@ runs:
   - tool: phen2gene
     configuration: default
     corpus: corpus1
-    corpusvariant: scrambled1
+    corpusvariant: 1
     version: 1.2.3
   - tool: exomiser
     configuration: default
     corpus: corpus1
-    corpusvariant: scrambled1
+    corpusvariant: 1
     version: 13.2.0
   - tool: exomiser
     configuration: default
     corpus: corpus2
-    corpusvariant: scrambled2
+    corpusvariant: 2
     version: 13.2.0
 
