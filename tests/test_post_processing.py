@@ -1,10 +1,12 @@
 import unittest
 
 from pheval.post_processing.post_processing import (
+    PhEvalDiseaseResult,
     PhEvalGeneResult,
-    PhEvalVariantResult, PhEvalDiseaseResult,
+    PhEvalVariantResult,
+    RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
-    RankedPhEvalVariantResult, RankedPhEvalDiseaseResult,
+    RankedPhEvalVariantResult,
     ResultSorter,
     ScoreRanker,
     SortOrder,
@@ -38,10 +40,17 @@ pheval_variant_result = [
     PhEvalVariantResult(chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578),
 ]
 pheval_disease_result = [
-    PhEvalDiseaseResult(disease_name="Glutaric acidemia I", disease_identifier="OMIM:231670", score=4.284),
-    PhEvalDiseaseResult(disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
-                        disease_identifier="OMIM:618646", score=-1.378),
-    PhEvalDiseaseResult(disease_name=" Brain small vessel disease 2", disease_identifier="OMIM:614483", score=-1.871)
+    PhEvalDiseaseResult(
+        disease_name="Glutaric acidemia I", disease_identifier="OMIM:231670", score=4.284
+    ),
+    PhEvalDiseaseResult(
+        disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+        disease_identifier="OMIM:618646",
+        score=-1.378,
+    ),
+    PhEvalDiseaseResult(
+        disease_name=" Brain small vessel disease 2", disease_identifier="OMIM:614483", score=-1.871
+    ),
 ]
 
 
@@ -93,8 +102,9 @@ class TestRankedPhEvalVariantResult(unittest.TestCase):
 class TestRankedPhEvalDiseaseResult(unittest.TestCase):
     def setUp(self) -> None:
         self.pheval_disease_result = RankedPhEvalDiseaseResult(
-            pheval_disease_result=PhEvalDiseaseResult(disease_name="Glutaric acidemia I",
-                                                      disease_identifier="OMIM:231670", score=4.284),
+            pheval_disease_result=PhEvalDiseaseResult(
+                disease_name="Glutaric acidemia I", disease_identifier="OMIM:231670", score=4.284
+            ),
             rank=1,
         )
 
@@ -350,22 +360,35 @@ class TestRankPhEvalResults(unittest.TestCase):
         )
 
     def test_rank_pheval_results_disease(self):
-        self.assertEqual(_rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING),
-                         [RankedPhEvalDiseaseResult(
-                             pheval_disease_result=PhEvalDiseaseResult(disease_name='Glutaric acidemia I',
-                                                                       disease_identifier='OMIM:231670', score=4.284),
-                             rank=1),
-                             RankedPhEvalDiseaseResult(
-                                 pheval_disease_result=PhEvalDiseaseResult(
-                                     disease_name='Diencephalic-mesencephalic junction dysplasia syndrome 2',
-                                     disease_identifier='OMIM:618646',
-                                     score=-1.378), rank=2),
-                             RankedPhEvalDiseaseResult(
-                                 pheval_disease_result=PhEvalDiseaseResult(
-                                     disease_name=' Brain small vessel disease 2',
-                                     disease_identifier='OMIM:614483',
-                                     score=-1.871), rank=3)]
-                         )
+        self.assertEqual(
+            _rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING),
+            [
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name="Glutaric acidemia I",
+                        disease_identifier="OMIM:231670",
+                        score=4.284,
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                        disease_identifier="OMIM:618646",
+                        score=-1.378,
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name=" Brain small vessel disease 2",
+                        disease_identifier="OMIM:614483",
+                        score=-1.871,
+                    ),
+                    rank=3,
+                ),
+            ],
+        )
 
 
 class TestCreatePhEvalResult(unittest.TestCase):
@@ -442,20 +465,35 @@ class TestCreatePhEvalResult(unittest.TestCase):
         )
 
     def test_create_pheval_result_disease(self):
-        self.assertEqual(_create_pheval_result(pheval_disease_result, "descending"), [RankedPhEvalDiseaseResult(
-            pheval_disease_result=PhEvalDiseaseResult(disease_name='Glutaric acidemia I',
-                                                      disease_identifier='OMIM:231670', score=4.284), rank=1),
-            RankedPhEvalDiseaseResult(
-                pheval_disease_result=PhEvalDiseaseResult(
-                    disease_name='Diencephalic-mesencephalic junction dysplasia syndrome 2',
-                    disease_identifier='OMIM:618646',
-                    score=-1.378), rank=2),
-            RankedPhEvalDiseaseResult(
-                pheval_disease_result=PhEvalDiseaseResult(
-                    disease_name=' Brain small vessel disease 2',
-                    disease_identifier='OMIM:614483',
-                    score=-1.871), rank=3)]
-                         )
+        self.assertEqual(
+            _create_pheval_result(pheval_disease_result, "descending"),
+            [
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name="Glutaric acidemia I",
+                        disease_identifier="OMIM:231670",
+                        score=4.284,
+                    ),
+                    rank=1,
+                ),
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                        disease_identifier="OMIM:618646",
+                        score=-1.378,
+                    ),
+                    rank=2,
+                ),
+                RankedPhEvalDiseaseResult(
+                    pheval_disease_result=PhEvalDiseaseResult(
+                        disease_name=" Brain small vessel disease 2",
+                        disease_identifier="OMIM:614483",
+                        score=-1.871,
+                    ),
+                    rank=3,
+                ),
+            ],
+        )
 
 
 class TestReturnSortOrder(unittest.TestCase):
