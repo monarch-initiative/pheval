@@ -70,7 +70,7 @@ class PhEvalRunner(ABC):
 
     def build_output_directory_structure(self):
         """build output directory structure"""
-        self.tool_input_commands_dir.mkdir(exist_ok=True, parents=True)
+        self.tool_input_commands_dir.mkdir(exist_ok=True)
         self.raw_results_dir.mkdir(exist_ok=True)
         self.pheval_gene_results_dir.mkdir(exist_ok=True)
         if not self._get_phenotype_only():
