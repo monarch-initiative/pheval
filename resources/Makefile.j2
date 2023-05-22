@@ -103,9 +103,4 @@ pheval:
 	$(MAKE) prepare-corpora
 	$(MAKE) pheval-run
 
-
-.PHONY: clean
-clean:
-	rm -rf data/* corpora/* inputs/* configurations/* results/*
-
 include ./resources/custom.Makefile
