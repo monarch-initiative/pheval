@@ -1,8 +1,13 @@
 # This includes all the preprocessing not directly related to the PhEval Running
 
-configurations/semsim1/%.owl:
+configurations/exomiser-13.2.0-semsim1/%.owl:
 	test -d configurations/semsim1 || mkdir -p configurations/semsim1
 	wget $(URIBASE)/$*.owl -O $@
+
+
+configurations/semsim1/hp.owl:
+	test -d configurations/semsim1 || mkdir -p configurations/semsim1
+	wget $(URIBASE)/hp/hp-base.owl -O $@
 
 configurations/semsim1/mp.owl:
 	test -d configurations/semsim1 || mkdir -p configurations/semsim1
@@ -11,7 +16,7 @@ configurations/semsim1/mp.owl:
 configurations/semsim1/hp-mp-merged.owl: configurations/semsim1/hp.owl configurations/semsim1/mp.owl
 	test -d configurations/semsim1 || mkdir -p configurations/semsim1
 	robot merge \
-	 --input configurations/semsim1/hp.owl \
+	 --input $< \
 	 --input configurations/semsim1/mp.owl reason reduce \
 	 --output $@
 
@@ -64,14 +69,16 @@ configurations/semsim1/hp-mp2.semsim.scrambled1.tsv: configurations/semsim1/hp-m
 	 --scramble-factor 0.5
 
 #CONVERT SAMPLE
-configurations/semsim1/hp-mp.semsim.scrambled1.sql: configurations/semsim1/hp-mp.semsim.scrambled1.tsv
+$(TMP_DATA)/semsim1.sql: configurations/semsim1/hp-mp.semsim.scrambled1.tsv
+	test -d $(TMP_DATA) || mkdir -p $(TMP_DATA)
 	pheval-utils semsim-convert \
 	 --input $< \
 	 --output $@ \
 	 --subject-prefix HP \
 	 --object-prefix MP
 
-configurations/semsim1/hp-mp2.semsim.scrambled1.sql: configurations/semsim1/hp-mp2.semsim.scrambled1.tsv
+$(TMP_DATA)/semsim2.sql: configurations/semsim1/hp-mp2.semsim.scrambled1.tsv
+	test -d $(TMP_DATA) || mkdir -p $(TMP_DATA)
 	pheval-utils semsim-convert \
 	 --input $< \
 	 --output $@ \

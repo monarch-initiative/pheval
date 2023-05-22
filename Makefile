@@ -30,12 +30,6 @@ info:
 .PHONY: prepare-inputs
 
 
-configurations/semsim1/%.owl:
-	test -d configurations/semsim1 || mkdir -p configurations/semsim1
-	wget $(URIBASE)/$*.owl -O $@
-
-
-
 
 
 prepare-inputs: configurations/phen2gene-1.2.3-default/config.yaml
@@ -60,31 +54,33 @@ configurations/exomiser-13.2.0-default/config.yaml:
 
 
 
-configurations/exomiser-13.2.0/default/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-13.2.0-default/config.yaml configurations/default/hp-zp.semsim.default.sql configurations/default/hp-zp2.semsim.default.sql
-	test -d default/hp-zp-semsim.default || cp -rf configurations/exomiser-13.2.0/default/2209_phenotype/hp-zp-semsim.default
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/exomiser-13.2.0/default/hp-zp-semsim.default/2209_phenotype -script configurations/default/hp-zp.semsim.default.sql
+configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
+	test -d configurations/exomiser-13.2.0/default/ || mkdir -p configurations/exomiser-13.2.0/default/
+	test -d configurations/exomiser-13.2.0/default/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/default/2302_phenotype/
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype  -script $<
 
-semsim-ingest: configurations/exomiser-13.2.0/default/2209_phenotype/2209_phenotype.h2.db
-
-
-
+semsim-ingest: configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db
 
 
 
-prepare-inputs: configurations/exomiser-13.2.0-scrambled1/config.yaml
 
 
-configurations/exomiser-13.2.0-scrambled1/config.yaml:
+
+prepare-inputs: configurations/exomiser-13.2.0-semsim1/config.yaml
+
+
+configurations/exomiser-13.2.0-semsim1/config.yaml:
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)
 
 
 
-configurations/exomiser-13.2.0/scrambled1/2209_phenotype/2209_phenotype.h2.db: configurations/exomiser-13.2.0-scrambled1/config.yaml configurations/scrambled1/hp-hp.semsim.scrambled1.sql configurations/scrambled1/hp-hp2.semsim.scrambled1.sql
-	test -d scrambled1/hp-hp-semsim.scrambled1 || cp -rf configurations/exomiser-13.2.0/scrambled1/2209_phenotype/hp-hp-semsim.scrambled1
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/exomiser-13.2.0/scrambled1/hp-hp-semsim.scrambled1/2209_phenotype -script configurations/scrambled1/hp-hp.semsim.scrambled1.sql
+configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
+	test -d configurations/exomiser-13.2.0/semsim1/ || mkdir -p configurations/exomiser-13.2.0/semsim1/
+	test -d configurations/exomiser-13.2.0/semsim1/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/semsim1/2302_phenotype/
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype  -script $<
 
-semsim-ingest: configurations/exomiser-13.2.0/scrambled1/2209_phenotype/2209_phenotype.h2.db
+semsim-ingest: configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db
 
 
 
@@ -93,36 +89,35 @@ semsim-ingest: configurations/exomiser-13.2.0/scrambled1/2209_phenotype/2209_phe
 .PHONY: prepare-corpora
 
 
-results/phen2gene-1.2.3-default/corpus1-scrambled1/results.yml: configurations/phen2gene-1.2.3-default/config.yaml
+results/phen2gene-1.2.3-default/corpus1-scrambled0.5/results.yml: configurations/phen2gene-1.2.3-default/config.yaml
 	
 	pheval run \
 	 --input-dir configurations/phen2gene-1.2.3-default \
-	 --testdata-dir $(shell pwd)/corpora/phen2gene/corpus1/scrambled1 \
+	 --testdata-dir $(shell pwd)/corpora/phen2gene/corpus1/scrambled0.5 \
 	 --runner phen2genephevalrunner \
 	 --tmp-dir data/tmp/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@) \
-	 --config $<
+	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
 	
 	touch $@
 
 
-corpora/phen2gene/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/phen2gene/corpus1/scrambled0.5/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 	
 
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
-	 --scramble-factor 1 \
+	 --scramble-factor 0.5 \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
 	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
 	touch $@
 
 
-prepare-corpora: corpora/phen2gene/corpus1/scrambled1/corpus.yml
+prepare-corpora: corpora/phen2gene/corpus1/scrambled0.5/corpus.yml
 
 
 
 run-corpus1-phen2gene:
-	$(MAKE) results/phen2gene-1.2.3-default/corpus1-scrambled1/results.yml
+	$(MAKE) results/phen2gene-1.2.3-default/corpus1-scrambled0.5/results.yml
 
 pheval-run: run-corpus1-phen2gene
 
@@ -134,8 +129,7 @@ results/exomiser-13.2.0-default/corpus1-scrambled1/results.yml: configurations/e
 	 --testdata-dir $(shell pwd)/corpora/exomiser/corpus1/scrambled1 \
 	 --runner exomiserphevalrunner \
 	 --tmp-dir data/tmp/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@) \
-	 --config $<
+	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
 	
 	touch $@
 
@@ -168,23 +162,22 @@ run-corpus1-exomiser:
 pheval-run: run-corpus1-exomiser
 
 
-results/exomiser-13.2.0-default/corpus2-scrambled2/results.yml: configurations/exomiser-13.2.0-default/config.yaml
+results/exomiser-13.2.0-default/corpus2-scrambled0.3/results.yml: configurations/exomiser-13.2.0-default/config.yaml
 	
 	pheval run \
 	 --input-dir configurations/exomiser-13.2.0-default \
-	 --testdata-dir $(shell pwd)/corpora/exomiser/corpus2/scrambled2 \
+	 --testdata-dir $(shell pwd)/corpora/exomiser/corpus2/scrambled0.3 \
 	 --runner exomiserphevalrunner \
 	 --tmp-dir data/tmp/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@) \
-	 --config $<
+	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
 	
 	touch $@
 
 
-corpora/exomiser/corpus2/scrambled2/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/exomiser/corpus2/scrambled0.3/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 	
 	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
-	test -L $(shell pwd)/corpora/exomiser/corpus2/scrambled2/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
+	test -L $(shell pwd)/corpora/exomiser/corpus2/scrambled0.3/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
 	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single \
@@ -193,18 +186,18 @@ corpora/exomiser/corpus2/scrambled2/corpus.yml: $(TEST_DATA)/template_vcf/templa
 
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
-	 --scramble-factor 2 \
+	 --scramble-factor 0.3 \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
 	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
 	touch $@
 
 
-prepare-corpora: corpora/exomiser/corpus2/scrambled2/corpus.yml
+prepare-corpora: corpora/exomiser/corpus2/scrambled0.3/corpus.yml
 
 
 
 run-corpus2-exomiser:
-	$(MAKE) results/exomiser-13.2.0-default/corpus2-scrambled2/results.yml
+	$(MAKE) results/exomiser-13.2.0-default/corpus2-scrambled0.3/results.yml
 
 pheval-run: run-corpus2-exomiser
 

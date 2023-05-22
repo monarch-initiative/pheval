@@ -41,9 +41,10 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 
 
 {% if config.tool == 'exomiser' %}
-configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}2.semsim.{{ config.configuration }}.sql
-	test -d {{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }} || cp -rf configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}-semsim.{{ config.configuration }}/{{ phenotype.version }}_phenotype -script configurations/{{ config.configuration }}/{{ config.semantic_similarity_profile.first_ontology }}-{{ config.semantic_similarity_profile.second_ontology }}.semsim.{{ config.configuration }}.sql
+configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
+	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
+	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/ || cp -rf {{ directories.phenotype }} configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
 
 semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 
@@ -61,8 +62,7 @@ results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }
 	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@) \
-	 --config $<
+	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
 	
 	touch $@
 
