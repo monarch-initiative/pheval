@@ -48,7 +48,7 @@ class ProbandCausativeVariant:
     assembly: str
     variant: GenomicVariant
     genotype: str
-    info: str = None
+    info: str = ""
 
 
 @dataclass
