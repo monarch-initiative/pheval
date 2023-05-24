@@ -206,7 +206,7 @@ class VcfSpiker:
             "100",
             "PASS",
             proband_variant_data.info
-            if not proband_variant_data.info
+            if proband_variant_data.info
             else "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
             "GT",
             genotype_codes[proband_variant_data.genotype.lower()] + "\n",
