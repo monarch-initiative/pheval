@@ -27,7 +27,6 @@ class RankComparisonGenerator:
     def _calculate_rank_difference(self) -> pd.DataFrame:
         """Calculate the rank decrease for runs - taking the first directory as a baseline."""
         comparison_df = self._generate_dataframe()
-        print(len(comparison_df.columns))
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
