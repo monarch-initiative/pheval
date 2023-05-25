@@ -9,8 +9,9 @@ from .cli_pheval import run
 from .cli_pheval_utils import (
     create_spiked_vcfs_command,
     scramble_phenopackets_command,
-    scramble_semsim,
     semsim_comparison,
+    semsim_convert,
+    semsim_scramble,
     update_phenopackets_command,
 )
 
@@ -50,7 +51,8 @@ def pheval_utils():
     """pheval_utils"""
 
 
-pheval_utils.add_command(scramble_semsim)
+pheval_utils.add_command(semsim_scramble)
+pheval_utils.add_command(semsim_convert)
 pheval_utils.add_command(semsim_comparison)
 pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(update_phenopackets_command)

@@ -9,6 +9,7 @@ from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
 from pheval.prepare.update_phenopacket import update_phenopackets
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
+from pheval.utils.utils import semsim_randomisation, semsimconvert
 
 
 @click.command()
@@ -19,9 +20,28 @@ from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
     metavar="FILE",
     help="Path to the semantic similarity profile to be scrambled.",
 )
-def scramble_semsim(input: Path):
-    """scramble_semsim"""
-    print("running pheval_utils::scramble_semsim command")
+@click.option(
+    "--output",
+    "-O",
+    metavar="FILE",
+    required=True,
+    help="",
+)
+@click.option(
+    "--scramble-factor",
+    "-S",
+    metavar=float,
+    default=0.5,
+    help="",
+)
+def semsim_scramble(input: Path, output: Path, scramble_factor: float):
+    """Scrambles semsim profile multiplying score value by scramble factor
+    Args:
+        input (Path): Path file that points out to the semsim profile
+        output (Path): Path file that points out to the output file
+        scramble_factor (float): Scramble Magnitude
+    """
+    semsim_randomisation(input, output, scramble_factor)
 
 
 @click.command("scramble-phenopackets")
@@ -244,3 +264,37 @@ def create_spiked_vcfs_command(
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
     spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, template_vcf_path, vcf_dir)
+
+
+@click.command()
+@click.option(
+    "--input",
+    "-i",
+    required=True,
+    metavar="FILE",
+    help="Path to the semsim file.",
+)
+@click.option(
+    "--output",
+    "-o",
+    required=True,
+    metavar="FILE",
+    help="Path to the semsim.h2.db converted file.",
+)
+@click.option(
+    "--subject-prefix",
+    "-s",
+    required=True,
+    metavar="FILE",
+    help="Subject Prefix that will be mapped to the database",
+)
+@click.option(
+    "--object-prefix",
+    "-b",
+    required=True,
+    metavar="FILE",
+    help="Object Prefix that will be mapped to the database.",
+)
+def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+    """convert semsim profile to an exomiser database file"""
+    semsimconvert(input, output, subject_prefix, object_prefix)
