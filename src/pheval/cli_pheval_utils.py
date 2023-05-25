@@ -19,20 +19,24 @@ from pheval.utils.utils import semsim_randomisation, semsimconvert
     required=True,
     metavar="FILE",
     help="Path to the semantic similarity profile to be scrambled.",
+    type=Path,
 )
 @click.option(
     "--output",
     "-O",
     metavar="FILE",
     required=True,
-    help="",
+    help="Path where the SQL generated file will be written.",
+    type=Path,
 )
 @click.option(
     "--scramble-factor",
     "-S",
     metavar=float,
     default=0.5,
-    help="",
+    show_default=True,
+    type=float,
+    help="Scramble Magnitude (noise) that will be applied to semantic similarity score column (e.g. jaccard similarity).",
 )
 def semsim_scramble(input: Path, output: Path, scramble_factor: float):
     """Scrambles semsim profile multiplying score value by scramble factor
@@ -273,6 +277,7 @@ def create_spiked_vcfs_command(
     required=True,
     metavar="FILE",
     help="Path to the semsim file.",
+    type=Path,
 )
 @click.option(
     "--output",
@@ -280,6 +285,7 @@ def create_spiked_vcfs_command(
     required=True,
     metavar="FILE",
     help="Path to the semsim.h2.db converted file.",
+    type=Path,
 )
 @click.option(
     "--subject-prefix",
@@ -287,6 +293,7 @@ def create_spiked_vcfs_command(
     required=True,
     metavar="FILE",
     help="Subject Prefix that will be mapped to the database",
+    type=str,
 )
 @click.option(
     "--object-prefix",
@@ -294,6 +301,7 @@ def create_spiked_vcfs_command(
     required=True,
     metavar="FILE",
     help="Object Prefix that will be mapped to the database.",
+    type=str,
 )
 def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str):
     """convert semsim profile to an exomiser database file"""
