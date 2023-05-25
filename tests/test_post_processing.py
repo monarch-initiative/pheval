@@ -41,24 +41,44 @@ pheval_variant_result = [
 
 class TestRankedPhEvalGeneResult(unittest.TestCase):
     def setUp(self) -> None:
-        self.pheval_gene_result = RankedPhEvalGeneResult(
+        self.pheval_gene_result = PhEvalGeneResult(
             gene_symbol="A4GNT",
             gene_identifier="ENSG00000118017",
             score=0.6529,
-            rank=1,
+        )
+
+    def test_from_gene_result(self):
+        self.assertEqual(
+            RankedPhEvalGeneResult.from_gene_result(self.pheval_gene_result, 1),
+            RankedPhEvalGeneResult(
+                gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529, rank=1
+            ),
         )
 
 
 class TestRankedPhEvalVariantResult(unittest.TestCase):
     def setUp(self) -> None:
-        self.pheval_variant_result = RankedPhEvalVariantResult(
+        self.pheval_variant_result = PhEvalVariantResult(
             chromosome="12",
             start=12754332,
             end=12754333,
             ref="T",
             alt="G",
             score=0.9999,
-            rank=3,
+        )
+
+    def test_from_variant_result(self):
+        self.assertEqual(
+            RankedPhEvalVariantResult.from_variant_result(self.pheval_variant_result, 3),
+            RankedPhEvalVariantResult(
+                chromosome="12",
+                start=12754332,
+                end=12754333,
+                ref="T",
+                alt="G",
+                score=0.9999,
+                rank=3,
+            ),
         )
 
 
