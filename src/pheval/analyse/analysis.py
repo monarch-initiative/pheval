@@ -19,12 +19,7 @@ from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_variant_output,
 )
 from pheval.analyse.rank_stats import RankStats
-from pheval.post_processing.post_processing import (
-    PhEvalGeneResult,
-    PhEvalVariantResult,
-    RankedPhEvalGeneResult,
-    RankedPhEvalVariantResult,
-)
+from pheval.post_processing.post_processing import RankedPhEvalGeneResult, RankedPhEvalVariantResult
 from pheval.prepare.custom_exceptions import InputError
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import (
@@ -44,16 +39,7 @@ def parse_pheval_gene_result(pheval_gene_result: pd.DataFrame) -> [RankedPhEvalG
     """Parse PhEval gene result into RankedPhEvalGeneResult dataclass."""
     ranked_gene_results = []
     for _index, result in pheval_gene_result.iterrows():
-        ranked_gene_results.append(
-            RankedPhEvalGeneResult(
-                pheval_gene_result=PhEvalGeneResult(
-                    gene_symbol=result["gene_symbol"],
-                    gene_identifier=result["gene_identifier"],
-                    score=result["score"],
-                ),
-                rank=result["rank"],
-            )
-        )
+        ranked_gene_results.append((RankedPhEvalGeneResult(*result)))
     return ranked_gene_results
 
 
@@ -61,19 +47,7 @@ def parse_pheval_variant_result(pheval_variant_result: pd.DataFrame) -> [RankedP
     """Parse PhEval variant result into RankedPhEvalVariantResult dataclass."""
     ranked_variant_results = []
     for _index, result in pheval_variant_result.iterrows():
-        ranked_variant_results.append(
-            RankedPhEvalVariantResult(
-                pheval_variant_result=PhEvalVariantResult(
-                    chromosome=result["chromosome"],
-                    start=result["start"],
-                    end=result["end"],
-                    ref=result["ref"],
-                    alt=result["alt"],
-                    score=result["score"],
-                ),
-                rank=result["rank"],
-            )
-        )
+        ranked_variant_results.append(RankedPhEvalVariantResult(*result))
     return ranked_variant_results
 
 
@@ -182,7 +156,7 @@ class AssessGenePrioritisation:
         rank_stats: RankStats,
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the ascending order threshold."""
-        if float(self.threshold) > float(result_entry.pheval_gene_result.score):
+        if float(self.threshold) > float(result_entry.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _assess_gene_with_threshold(
@@ -192,7 +166,7 @@ class AssessGenePrioritisation:
         rank_stats: RankStats,
     ) -> GenePrioritisationResult:
         """Record the gene prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry.pheval_gene_result.score):
+        if float(self.threshold) < float(result_entry.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _record_matched_gene(
@@ -219,10 +193,8 @@ class AssessGenePrioritisation:
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
             for standardised_gene_result in self.standardised_gene_results:
                 if (
-                    gene.gene_identifier
-                    == standardised_gene_result.pheval_gene_result.gene_identifier
-                    or gene.gene_symbol
-                    == standardised_gene_result.pheval_gene_result.gene_identifier
+                    gene.gene_identifier == standardised_gene_result.gene_identifier
+                    or gene.gene_symbol == standardised_gene_result.gene_identifier
                 ):
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
@@ -268,10 +240,10 @@ class AssessVariantPrioritisation:
         return VariantPrioritisationResult(
             self.phenopacket_path,
             GenomicVariant(
-                chrom=result_entry.pheval_variant_result.chromosome,
-                pos=result_entry.pheval_variant_result.start,
-                ref=result_entry.pheval_variant_result.ref,
-                alt=result_entry.pheval_variant_result.alt,
+                chrom=result_entry.chromosome,
+                pos=result_entry.start,
+                ref=result_entry.ref,
+                alt=result_entry.alt,
             ),
             rank,
         )
@@ -280,14 +252,14 @@ class AssessVariantPrioritisation:
         self, result_entry: RankedPhEvalVariantResult, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the ascending order threshold."""
-        if float(self.threshold) > float(result_entry.pheval_variant_result.score):
+        if float(self.threshold) > float(result_entry.score):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _assess_variant_with_threshold(
         self, result_entry: pd.Series, rank_stats: RankStats
     ) -> VariantPrioritisationResult:
         """Record the variant prioritisation rank if it meets the score threshold."""
-        if float(self.threshold) < float(result_entry.pheval_variant_result.score):
+        if float(self.threshold) < float(result_entry.score):
             return self._record_variant_prioritisation_match(result_entry, rank_stats)
 
     def _record_matched_variant(
@@ -316,10 +288,10 @@ class AssessVariantPrioritisation:
             variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
             for result in self.standardised_variant_results:
                 result_variant = GenomicVariant(
-                    chrom=result.pheval_variant_result.chromosome,
-                    pos=result.pheval_variant_result.start,
-                    ref=result.pheval_variant_result.ref,
-                    alt=result.pheval_variant_result.alt,
+                    chrom=result.chromosome,
+                    pos=result.start,
+                    ref=result.ref,
+                    alt=result.alt,
                 )
                 if variant == result_variant:
                     variant_match = self._record_matched_variant(rank_stats, result)
