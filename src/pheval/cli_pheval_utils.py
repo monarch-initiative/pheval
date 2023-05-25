@@ -36,7 +36,8 @@ from pheval.utils.utils import semsim_randomisation, semsimconvert
     default=0.5,
     show_default=True,
     type=float,
-    help="Scramble Magnitude (noise) that will be applied to semantic similarity score column (e.g. jaccard similarity).",
+    help="""Scramble Magnitude (noise)
+    that will be applied to semantic similarity score column (e.g. jaccard similarity).""",
 )
 def semsim_scramble(input: Path, output: Path, scramble_factor: float):
     """Scrambles semsim profile multiplying score value by scramble factor
