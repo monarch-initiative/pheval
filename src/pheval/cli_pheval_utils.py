@@ -9,7 +9,7 @@ from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
 from pheval.prepare.update_phenopacket import update_phenopackets
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
-from pheval.utils.utils import semsim_randomisation, semsimconvert
+from pheval.utils.utils import semsim_convert, semsim_scramble
 
 
 @click.command()
@@ -26,8 +26,18 @@ from pheval.utils.utils import semsim_randomisation, semsimconvert
     "-O",
     metavar="FILE",
     required=True,
-    help="Path where the SQL generated file will be written.",
+    help="Path where the scrambled semsim file will be written.",
     type=Path,
+)
+@click.option(
+    "--score-column",
+    "-s",
+    required=True,
+    multiple=True,
+    type=click.Choice(
+        ["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False
+    ),
+    help="Score column that will be used in comparison",
 )
 @click.option(
     "--scramble-factor",
@@ -39,14 +49,14 @@ from pheval.utils.utils import semsim_randomisation, semsimconvert
     help="""Scramble Magnitude (noise)
     that will be applied to semantic similarity score column (e.g. jaccard similarity).""",
 )
-def semsim_scramble(input: Path, output: Path, scramble_factor: float):
+def semsim_scramble_command(input: Path, output: Path, scramble_factor: float):
     """Scrambles semsim profile multiplying score value by scramble factor
     Args:
         input (Path): Path file that points out to the semsim profile
         output (Path): Path file that points out to the output file
         scramble_factor (float): Scramble Magnitude
     """
-    semsim_randomisation(input, output, scramble_factor)
+    semsim_scramble(input, output, scramble_factor)
 
 
 @click.command("scramble-phenopackets")
@@ -304,6 +314,14 @@ def create_spiked_vcfs_command(
     help="Object Prefix that will be mapped to the database.",
     type=str,
 )
-def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+@click.option(
+    "--output-format",
+    "-O",
+    required=True,
+    metavar=str,
+    help="Output file format. Available formats: (h2.db)",
+    type=click.Choice(["h2.db"], case_sensitive=False),
+)
+def semsim_convert_command(input: Path, output: Path, subject_prefix: str, object_prefix: str):
     """convert semsim profile to an exomiser database file"""
-    semsimconvert(input, output, subject_prefix, object_prefix)
+    semsim_convert(input, output, subject_prefix, object_prefix)

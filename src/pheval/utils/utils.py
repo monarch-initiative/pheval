@@ -9,11 +9,11 @@ import pandas as pd
 info_log = logging.getLogger("info")
 
 
-def rand(self: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -> float:
+def rand(df: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -> float:
     """
     Numeric scrambling
     Args:
-        self (pd.DataFrame): dataframe records
+        df (pd.DataFrame): dataframe records
         min_num (int): min value from this records
         max_num (int): max value from this records
         scramble_factor (float): scramble factor scalar
@@ -21,17 +21,17 @@ def rand(self: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float)
         float: randomized number
     """
     try:
-        return self + (random.uniform(min_num, max_num) * scramble_factor)  # noqa
+        return df + (random.uniform(min_num, max_num) * scramble_factor)  # noqa
     except TypeError as err:
-        info_log.error(self, exc_info=err)
-        return self
+        info_log.error(df, exc_info=err)
+        return df
 
 
-def semsim_randomisation(
+def semsim_scramble(
     input: Path,
     output: Path,
+    columns_to_be_scrambled: List[str],
     scramble_factor: float = 0.5,
-    columns_to_be_scrambled: List[str] = tuple(["jaccard_similarity"]),
 ) -> pd.DataFrame:
     """
     Scrambles semantic similarity profile with a magnitude between 0 and 1 (scramble_factor:
@@ -41,29 +41,29 @@ def semsim_randomisation(
         Args:
               input (Path):
               scramble_factor (float) scalar scramble factor
-              columns_to_be_scrambled (List[str], optional): [description].
-              Defaults to ['jaccard_similarity'].
+              columns_to_be_scrambled (List[str]):
+              columns that will be scrambled in semsim file (e.g. jaccard_similarity).
               output (Path)
         Returns:
             pd.Dataframe: scrambled dataframe
     """
     semsim = pd.read_csv(input, sep="\t")
-    dataframe = scramble_semsim_df(semsim, scramble_factor, columns_to_be_scrambled)
+    dataframe = semsim_scramble_df(semsim, columns_to_be_scrambled, scramble_factor)
     dataframe.to_csv(output, sep="\t", index=False)
 
 
-def scramble_semsim_df(
+def semsim_scramble_df(
     dataframe: pd.DataFrame,
-    scramble_factor: float,
     columns_to_be_scrambled: List[str],
+    scramble_factor: float,
 ) -> pd.DataFrame:
     """scramble_semsim_df
     Args:
-        dataframe (pd.DataFrame): [description]
-        scramble_factor (float): [description]
-        columns_to_be_scrambled (List[str]): [description]
+        dataframe (pd.DataFrame): dataframe that contains semsim profile
+        scramble_factor (float) scalar scramble factor
+        columns_to_be_scrambled (List[str]):
     Returns:
-        pd.DataFrame: [description]
+        pd.Dataframe: scrambled dataframe
     """
     for col in columns_to_be_scrambled:
         min_num = dataframe[col].min()
@@ -72,7 +72,15 @@ def scramble_semsim_df(
     return dataframe
 
 
-def semsimconvert(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str, format: str):
+    match format:
+        case "exomiserdb":
+            return semsimconvert_exomiserdb(input, output, subject_prefix, object_prefix)
+        case _:
+            raise ValueError("Invalid format")
+
+
+def semsimconvert_exomiserdb(input: Path, output: Path, subject_prefix: str, object_prefix: str):
     """convert semsim profile to an exomiser specie mapping schema
     Example of a mapping schema:
 
