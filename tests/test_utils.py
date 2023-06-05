@@ -27,7 +27,7 @@ class TestSemsimUtils(unittest.TestCase):
         with open(output_file, "r") as f:
             lines = f.readlines()
             input = pd.read_csv(semsim_file, sep="\t")
-            assert len(lines) == len(input) + 6
+            self.assertEqual(len(lines), len(input) + 6)
 
     def test_semsim_convert_invalid_format(self):
         semsim_file = "./testdata/semsim/hp-mp.semsim.tsv"
@@ -72,5 +72,5 @@ class TestSemsimUtils(unittest.TestCase):
         with open(output_file, "r") as f:
             lines = f.readlines()
             input = pd.read_csv(semsim_file, sep="\t")
-            assert len(lines) == len(input) + 1
-            assert list(input.columns.values) == exomiser_columns
+            self.assertEqual(len(lines), len(input) + 1)
+            self.assertEqual(list(input.columns.values), exomiser_columns)
