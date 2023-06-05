@@ -73,11 +73,9 @@ def semsim_scramble_df(
 
 
 def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str, format: str):
-    match format:
-        case "exomiserdb":
-            return semsimconvert_exomiserdb(input, output, subject_prefix, object_prefix)
-        case _:
-            raise ValueError("Invalid format")
+    if format == "exomiserdb":
+        return semsimconvert_exomiserdb(input, output, subject_prefix, object_prefix)
+    raise ValueError("Invalid format")
 
 
 def semsimconvert_exomiserdb(input: Path, output: Path, subject_prefix: str, object_prefix: str):
