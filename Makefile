@@ -32,11 +32,15 @@ configurations/phen2gene-1.2.3-default/config.yaml:
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	ln -s /home/vinicius/Documents/softwares/Phen2Gene/* $(shell dirname pwd)/$(shell dirname $@)
 
+
+
 prepare-inputs: configurations/exomiser-13.2.0-default/config.yaml
 
 configurations/exomiser-13.2.0-default/config.yaml:
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
+	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)
+
+configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/default/ || mkdir -p configurations/exomiser-13.2.0/default/
 	test -d configurations/exomiser-13.2.0/default/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/default/2302_phenotype/
 	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype  -script $<
@@ -48,7 +52,9 @@ prepare-inputs: configurations/exomiser-13.2.0-semsim1/config.yaml
 
 configurations/exomiser-13.2.0-semsim1/config.yaml:
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
+	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)
+
+configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/semsim1/ || mkdir -p configurations/exomiser-13.2.0/semsim1/
 	test -d configurations/exomiser-13.2.0/semsim1/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/semsim1/2302_phenotype/
 	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype  -script $<
@@ -60,6 +66,7 @@ semsim-ingest: configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenot
 
 
 results/phen2gene-1.2.3-default/corpus1-scrambled0.5/results.yml: configurations/phen2gene-1.2.3-default/config.yaml
+	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir configurations/phen2gene-1.2.3-default \
 	 --testdata-dir $(shell pwd)/corpora/phen2gene/corpus1/scrambled0.5 \
@@ -86,6 +93,7 @@ run-corpus1-phen2gene:
 pheval-run: run-corpus1-phen2gene
 
 results/exomiser-13.2.0-default/corpus1-scrambled1/results.yml: configurations/exomiser-13.2.0-default/config.yaml
+	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir configurations/exomiser-13.2.0-default \
 	 --testdata-dir $(shell pwd)/corpora/exomiser/corpus1/scrambled1 \
@@ -95,7 +103,8 @@ results/exomiser-13.2.0-default/corpus1-scrambled1/results.yml: configurations/e
 
 	touch $@
 
-corpora/exomiser/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gztest -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
+corpora/exomiser/corpus1/scrambled1/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
 	test -L $(shell pwd)/corpora/exomiser/corpus1/scrambled1/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
@@ -118,6 +127,7 @@ run-corpus1-exomiser:
 pheval-run: run-corpus1-exomiser
 
 results/exomiser-13.2.0-default/corpus2-scrambled0.3/results.yml: configurations/exomiser-13.2.0-default/config.yaml
+	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir configurations/exomiser-13.2.0-default \
 	 --testdata-dir $(shell pwd)/corpora/exomiser/corpus2/scrambled0.3 \
@@ -127,7 +137,8 @@ results/exomiser-13.2.0-default/corpus2-scrambled0.3/results.yml: configurations
 
 	touch $@
 
-corpora/exomiser/corpus2/scrambled0.3/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gztest -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
+corpora/exomiser/corpus2/scrambled0.3/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
 	test -L $(shell pwd)/corpora/exomiser/corpus2/scrambled0.3/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
