@@ -21,7 +21,7 @@ def rand(df: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -
         float: randomized number
     """
     try:
-        return df + (random.uniform(min_num, max_num) * scramble_factor)  # noqa
+        return df + (random.uniform(min_num, max_num) * scramble_factor)
     except TypeError as err:
         info_log.error(df, exc_info=err)
         return df
