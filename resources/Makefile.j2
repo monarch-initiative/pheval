@@ -34,7 +34,7 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	ln -s {{ directories[config.tool] }}/* $(shell dirname pwd)/$(shell dirname $@)
 
-{%- if config.tool == 'exomiser' -%}
+{% if config.tool == 'exomiser' -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/ || cp -rf {{ directories.phenotype }} configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/
@@ -47,6 +47,7 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 
 {% for run in runs %}
 results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
+	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
 	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }} \
@@ -57,7 +58,7 @@ results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }
 	touch $@
 
 corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-{%- if run.tool == 'exomiser' -%}
+{%- if run.tool == 'exomiser' %}
 	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
 	test -L $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	pheval-utils create-spiked-vcfs \
