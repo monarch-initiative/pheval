@@ -23,7 +23,7 @@ from pheval.utils.utils import semsim_convert, semsim_scramble
 )
 @click.option(
     "--output",
-    "-O",
+    "-o",
     metavar="FILE",
     required=True,
     help="Path where the scrambled semsim file will be written.",
@@ -31,7 +31,7 @@ from pheval.utils.utils import semsim_convert, semsim_scramble
 )
 @click.option(
     "--score-column",
-    "-s",
+    "-c",
     required=True,
     multiple=True,
     type=click.Choice(
@@ -41,7 +41,7 @@ from pheval.utils.utils import semsim_convert, semsim_scramble
 )
 @click.option(
     "--scramble-factor",
-    "-S",
+    "-s",
     metavar=float,
     default=0.5,
     show_default=True,
@@ -127,7 +127,7 @@ def scramble_phenopackets_command(
 )
 @click.option(
     "--score-column",
-    "-s",
+    "-c",
     required=True,
     type=click.Choice(
         ["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False
@@ -295,7 +295,7 @@ def create_spiked_vcfs_command(
     "-o",
     required=True,
     metavar="FILE",
-    help="Path to the semsim.h2.db converted file.",
+    help="Path where converted semsim will be written.",
     type=Path,
 )
 @click.option(
@@ -319,8 +319,8 @@ def create_spiked_vcfs_command(
     "-O",
     required=True,
     metavar=str,
-    help="Output file format. Available formats: (h2.db)",
-    type=click.Choice(["h2.db"], case_sensitive=False),
+    help="Output file format. Available formats: (exomiserdb)",
+    type=click.Choice(["exomiserdb"], case_sensitive=False),
 )
 def semsim_convert_command(input: Path, output: Path, subject_prefix: str, object_prefix: str):
     """convert semsim profile to an exomiser database file"""

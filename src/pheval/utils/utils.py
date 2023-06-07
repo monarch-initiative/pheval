@@ -78,7 +78,9 @@ def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix
     raise ValueError("Invalid format")
 
 
-def semsimconvert_exomiserdb(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+def semsimconvert_exomiserdb(
+    input: Path, output: Path, subject_prefix: str, object_prefix: str
+) -> None:
     """convert semsim profile to an exomiser specie mapping schema
     Example of a mapping schema:
 
@@ -121,13 +123,15 @@ def semsimconvert_exomiserdb(input: Path, output: Path, subject_prefix: str, obj
     input_data.insert(0, "MAPPING_ID", None)
     input_data["SCORE"].replace("None", "NULL", inplace=True)
     input_data.to_csv(output, index=False, sep="\t")
-    semsim2h2(input_data, f"{output}", subject_prefix, object_prefix)
+    semsim2h2(input_data, output, subject_prefix, object_prefix)
 
 
-def semsim2h2(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+def semsim2h2(
+    input_data: pd.DataFrame, output: Path, subject_prefix: str, object_prefix: str
+) -> None:
     """This function converts the exomiser mapping table to sql format.
     Args:
-        input (Path): Path to the semsim profile
+        input_data (pd.DataFrame): Semsim dataframe
         output (Path): Path where sql file will be written
         subject_prefix: (str): mapping subject prefix (e.g. HP)
         object_prefx (str): mapping object prefix (e.g. MP)
@@ -140,10 +144,10 @@ INSERT INTO EXOMISER.{subject_prefix}_{object_prefix}_MAPPINGS
 VALUES
 """  # noqa
         file.write(insert)
-        for idx, data in input.iterrows():
+        for idx, data in input_data.iterrows():
             values = f"""
 ({idx}, '{data[f'{subject_prefix}_ID']}', '{data[f'{subject_prefix}_TERM']}', '{data[f'{object_prefix}_ID']}', '{data[f'{object_prefix}_TERM']}', {data['SIMJ']}, {data['IC']}, {data['SCORE']}, '{data['LCS_ID']}', '{data['LCS_TERM']}')"""  # noqa
-            if idx > (len(input) < 1):
+            if idx > (len(input_data) < 1):
                 file.write(",")
             file.write(values)
         file.write(";")
