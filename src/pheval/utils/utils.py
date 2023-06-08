@@ -72,8 +72,8 @@ def semsim_scramble_df(
     return dataframe
 
 
-def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str, format: str):
-    if format == "exomiserdb":
+def semsim_convert(input: Path, output: Path, subject_prefix: str, object_prefix: str, output_format: str):
+    if output_format == "exomiserdb":
         return semsimconvert_exomiserdb(input, output, subject_prefix, object_prefix)
     raise ValueError("Invalid format")
 

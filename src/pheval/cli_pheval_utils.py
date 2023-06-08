@@ -1,6 +1,7 @@
 """PhEval utils Command Line Interface"""
 
 from pathlib import Path
+from typing import List
 
 import click
 
@@ -12,7 +13,7 @@ from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 from pheval.utils.utils import semsim_convert, semsim_scramble
 
 
-@click.command()
+@click.command("semsim-scramble")
 @click.option(
     "--input",
     "-i",
@@ -37,7 +38,7 @@ from pheval.utils.utils import semsim_convert, semsim_scramble
     type=click.Choice(
         ["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False
     ),
-    help="Score column that will be used in comparison",
+    help="Score column that will be scrambled",
 )
 @click.option(
     "--scramble-factor",
@@ -49,14 +50,17 @@ from pheval.utils.utils import semsim_convert, semsim_scramble
     help="""Scramble Magnitude (noise)
     that will be applied to semantic similarity score column (e.g. jaccard similarity).""",
 )
-def semsim_scramble_command(input: Path, output: Path, scramble_factor: float):
+def semsim_scramble_command(
+    input: Path, output: Path, score_column: List[str], scramble_factor: float
+):
     """Scrambles semsim profile multiplying score value by scramble factor
     Args:
         input (Path): Path file that points out to the semsim profile
         output (Path): Path file that points out to the output file
+        score_column (List[str]): Score column(s) that will be scrambled
         scramble_factor (float): Scramble Magnitude
     """
-    semsim_scramble(input, output, scramble_factor)
+    semsim_scramble(input, output, score_column, scramble_factor)
 
 
 @click.command("scramble-phenopackets")
@@ -281,7 +285,7 @@ def create_spiked_vcfs_command(
     spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, template_vcf_path, vcf_dir)
 
 
-@click.command()
+@click.command("semsim-convert")
 @click.option(
     "--input",
     "-i",
@@ -322,6 +326,6 @@ def create_spiked_vcfs_command(
     help="Output file format. Available formats: (exomiserdb)",
     type=click.Choice(["exomiserdb"], case_sensitive=False),
 )
-def semsim_convert_command(input: Path, output: Path, subject_prefix: str, object_prefix: str):
+def semsim_convert_command(input: Path, output: Path, subject_prefix: str, object_prefix: str, output_format: str):
     """convert semsim profile to an exomiser database file"""
-    semsim_convert(input, output, subject_prefix, object_prefix)
+    semsim_convert(input, output, subject_prefix, object_prefix, output_format)
