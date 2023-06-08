@@ -49,11 +49,12 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
 	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
 	pheval run \
-	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --input-dir $(shell pwd)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
 	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
+	 --version {{ run.version }} \
+	 --output-dir $(shell pwd)/$(shell dirname $@)
 
 	touch $@
 
@@ -63,14 +64,14 @@ corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.
 	test -L $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
-	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single \
+	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/lirical \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
 {% endif %}
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
 	 --scramble-factor {{ run.corpusvariant }} \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
+	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/lirical
 
 	touch $@
 
