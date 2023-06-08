@@ -60,13 +60,15 @@ configurations/semsim1/hp-mp.semsim.scrambled1.tsv: configurations/semsim1/hp-mp
 	pheval-utils semsim-scramble \
 	 --input $< \
 	 --output $@ \
-	 --scramble-factor 0.5
+	 --scramble-factor 0.5 \
+	 --score-column jaccard_similarity
 
 configurations/semsim1/hp-mp2.semsim.scrambled1.tsv: configurations/semsim1/hp-mp.semsim.tsv
 	pheval-utils semsim-scramble \
 	 --input $< \
 	 --output $@ \
-	 --scramble-factor 0.5
+	 --scramble-factor 0.5 \
+	 --score-column jaccard_similarity
 
 #CONVERT SAMPLE
 $(TMP_DATA)/semsim1.sql: configurations/semsim1/hp-mp.semsim.scrambled1.tsv
@@ -75,7 +77,8 @@ $(TMP_DATA)/semsim1.sql: configurations/semsim1/hp-mp.semsim.scrambled1.tsv
 	 --input $< \
 	 --output $@ \
 	 --subject-prefix HP \
-	 --object-prefix MP
+	 --object-prefix MP \
+	 --output-format exomiserdb
 
 $(TMP_DATA)/semsim2.sql: configurations/semsim1/hp-mp2.semsim.scrambled1.tsv
 	test -d $(TMP_DATA) || mkdir -p $(TMP_DATA)
@@ -83,7 +86,8 @@ $(TMP_DATA)/semsim2.sql: configurations/semsim1/hp-mp2.semsim.scrambled1.tsv
 	 --input $< \
 	 --output $@ \
 	 --subject-prefix HP \
-	 --object-prefix MP
+	 --object-prefix MP \
+	 --output-format exomiserdb
 
 .PHONY: semsim
 semsim: configurations/semsim1/hp-mp.semsim.tsv configurations/semsim1/hp-mp2.semsim.tsv
