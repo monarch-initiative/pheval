@@ -47,13 +47,14 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 
 {% for run in runs %}
 results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
 	pheval run \
-	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --input-dir $(shell pwd)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
 	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
+	 --version {{ run.version }} \
+	 --output-dir $(shell pwd)/$(shell dirname $@)
 
 	touch $@
 
