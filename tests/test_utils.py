@@ -22,7 +22,7 @@ class TestSemsimUtils(unittest.TestCase):
             output=output_file,
             object_prefix="HP",
             subject_prefix="MP",
-            format="exomiserdb",
+            output_format="exomiserdb",
         )
         with open(output_file, "r") as f:
             lines = f.readlines()
@@ -39,7 +39,7 @@ class TestSemsimUtils(unittest.TestCase):
                 output=output_file,
                 object_prefix="HP",
                 subject_prefix="MP",
-                format="invalid_format",
+                output_format="invalid_format",
             )
 
     def test_semsim_scramble(self):

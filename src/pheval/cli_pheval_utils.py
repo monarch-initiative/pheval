@@ -326,6 +326,8 @@ def create_spiked_vcfs_command(
     help="Output file format. Available formats: (exomiserdb)",
     type=click.Choice(["exomiserdb"], case_sensitive=False),
 )
-def semsim_convert_command(input: Path, output: Path, subject_prefix: str, object_prefix: str, output_format: str):
+def semsim_convert_command(
+    input: Path, output: Path, subject_prefix: str, object_prefix: str, output_format: str
+):
     """convert semsim profile to an exomiser database file"""
     semsim_convert(input, output, subject_prefix, object_prefix, output_format)
