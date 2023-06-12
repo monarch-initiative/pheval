@@ -29,18 +29,18 @@ info:
 prepare-inputs: configurations/phen2gene-1.2.3-default/config.yaml
 
 configurations/phen2gene-1.2.3-default/config.yaml:
-	rm -rf $(shell dirname pwd)/$(shell dirname $@)
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s /home/vinicius/Documents/softwares/Phen2Gene/* $(shell dirname pwd)/$(shell dirname $@)
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
+	ln -s /home/vinicius/Documents/softwares/Phen2Gene/* $(shell pwd)/$(shell dirname $@)
 
 
 
 prepare-inputs: configurations/exomiser-13.2.0-default/config.yaml
 
 configurations/exomiser-13.2.0-default/config.yaml:
-	rm -rf $(shell dirname pwd)/$(shell dirname $@)
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
+	ln -s /home/data/exomiser-data//* $(shell pwd)/$(shell dirname $@)
 
 configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/default/ || mkdir -p configurations/exomiser-13.2.0/default/
@@ -53,9 +53,9 @@ semsim-ingest: configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenot
 prepare-inputs: configurations/exomiser-13.2.0-semsim1/config.yaml
 
 configurations/exomiser-13.2.0-semsim1/config.yaml:
-	rm -rf $(shell dirname pwd)/$(shell dirname $@)
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(shell dirname pwd)/$(shell dirname $@)
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
+	ln -s /home/data/exomiser-data//* $(shell pwd)/$(shell dirname $@)
 
 configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/semsim1/ || mkdir -p configurations/exomiser-13.2.0/semsim1/
@@ -68,7 +68,8 @@ semsim-ingest: configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenot
 .PHONY: prepare-corpora
 
 
-results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml: configurations/exomiser-13.2.0-default/config.yaml
+results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml: configurations/exomiser-13.2.0-default/config.yaml corpora/small_test/scrambled-0.5/corpus.yml
+	rm -rf $(shell pwd)/$(shell dirname $@)
 	mkdir -p $(shell pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir $(shell pwd)/configurations/exomiser-13.2.0-default \
@@ -80,14 +81,17 @@ results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml: configurat
 
 	touch $@
 
-run-small_test-exomiser:
+.PHONY: run-exomiser-13.2.0-default-small_test-scrambled-0.5
+
+run-exomiser-13.2.0-default-small_test-scrambled-0.5:
 	$(MAKE) results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml
 
 
-pheval-run: run-small_test-exomiser
+pheval-run: run-exomiser-13.2.0-default-small_test-scrambled-0.5
 
 
-results/exomiser-13.2.0-default/lirical-scrambled-0.5/results.yml: configurations/exomiser-13.2.0-default/config.yaml
+results/exomiser-13.2.0-default/lirical-scrambled-0.5/results.yml: configurations/exomiser-13.2.0-default/config.yaml corpora/lirical/scrambled-0.5/corpus.yml
+	rm -rf $(shell pwd)/$(shell dirname $@)
 	mkdir -p $(shell pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir $(shell pwd)/configurations/exomiser-13.2.0-default \
@@ -99,115 +103,15 @@ results/exomiser-13.2.0-default/lirical-scrambled-0.5/results.yml: configuration
 
 	touch $@
 
-run-lirical-exomiser:
+.PHONY: run-exomiser-13.2.0-default-lirical-scrambled-0.5
+
+run-exomiser-13.2.0-default-lirical-scrambled-0.5:
 	$(MAKE) results/exomiser-13.2.0-default/lirical-scrambled-0.5/results.yml
 
 
-pheval-run: run-lirical-exomiser
+pheval-run: run-exomiser-13.2.0-default-lirical-scrambled-0.5
 
 
-
-
-
-
-# corpora/lirical/default/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-
-
-corpora/lirical/scrambled-0.5/corpus.yml: corpora/lirical/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/lirical/scrambled-0.5/ || mkdir -p $(shell pwd)/corpora/lirical/scrambled-0.5/
-	test -L $(shell pwd)/corpora/lirical/scrambled-0.5/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/lirical/scrambled-0.5/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/lirical/scrambled-0.5/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.5 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/lirical/scrambled-0.5/corpus.yml
-
-
-corpora/lirical/scrambled-0.7/corpus.yml: corpora/lirical/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/lirical/scrambled-0.7/ || mkdir -p $(shell pwd)/corpora/lirical/scrambled-0.7/
-	test -L $(shell pwd)/corpora/lirical/scrambled-0.7/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/lirical/scrambled-0.7/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/lirical/scrambled-0.7/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.7 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/lirical/scrambled-0.7/corpus.yml
-
-
-
-
-corpora/lirical/no_phenotype/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	echo "error $@ needs to be configured manually" && false
-
-
-
-
-# corpora/phen2gene/default/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-
-
-corpora/phen2gene/scrambled-0.5/corpus.yml: corpora/phen2gene/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/phen2gene/scrambled-0.5/ || mkdir -p $(shell pwd)/corpora/phen2gene/scrambled-0.5/
-	test -L $(shell pwd)/corpora/phen2gene/scrambled-0.5/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/phen2gene/scrambled-0.5/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/phen2gene/scrambled-0.5/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.5 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/phen2gene/scrambled-0.5/corpus.yml
-
-
-corpora/phen2gene/scrambled-0.7/corpus.yml: corpora/phen2gene/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/phen2gene/scrambled-0.7/ || mkdir -p $(shell pwd)/corpora/phen2gene/scrambled-0.7/
-	test -L $(shell pwd)/corpora/phen2gene/scrambled-0.7/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/phen2gene/scrambled-0.7/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/phen2gene/scrambled-0.7/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.7 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/phen2gene/scrambled-0.7/corpus.yml
-
-
-
-
-corpora/phen2gene/no_phenotype/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	echo "error $@ needs to be configured manually" && false
 
 
 
@@ -258,57 +162,6 @@ prepare-corpora: corpora/small_test/scrambled-0.7/corpus.yml
 
 
 corpora/small_test/no_phenotype/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	echo "error $@ needs to be configured manually" && false
-
-
-
-
-# corpora/structural_variants/default/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-
-
-corpora/structural_variants/scrambled-0.5/corpus.yml: corpora/structural_variants/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/structural_variants/scrambled-0.5/ || mkdir -p $(shell pwd)/corpora/structural_variants/scrambled-0.5/
-	test -L $(shell pwd)/corpora/structural_variants/scrambled-0.5/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/structural_variants/scrambled-0.5/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/structural_variants/scrambled-0.5/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.5 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/structural_variants/scrambled-0.5/corpus.yml
-
-
-corpora/structural_variants/scrambled-0.7/corpus.yml: corpora/structural_variants/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/structural_variants/scrambled-0.7/ || mkdir -p $(shell pwd)/corpora/structural_variants/scrambled-0.7/
-	test -L $(shell pwd)/corpora/structural_variants/scrambled-0.7/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/structural_variants/scrambled-0.7/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/structural_variants/scrambled-0.7/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.7 \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/structural_variants/scrambled-0.7/corpus.yml
-
-
-
-
-corpora/structural_variants/no_phenotype/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 	echo "error $@ needs to be configured manually" && false
 
 

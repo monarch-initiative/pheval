@@ -31,9 +31,9 @@ info:
 prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
 
 configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
-	rm -rf $(shell dirname pwd)/$(shell dirname $@)
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s {{ directories[config.tool] }}/* $(shell dirname pwd)/$(shell dirname $@)
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
+	ln -s {{ directories[config.tool] }}/* $(shell pwd)/$(shell dirname $@)
 
 {% if config.tool == 'exomiser' -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
@@ -47,7 +47,8 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 .PHONY: prepare-corpora
 
 {% for run in runs %}
-results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
+results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+	rm -rf $(shell pwd)/$(shell dirname $@)
 	mkdir -p $(shell pwd)/$(shell dirname $@)
 	pheval run \
 	 --input-dir $(shell pwd)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
@@ -59,11 +60,13 @@ results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }
 
 	touch $@
 
-run-{{ run.corpus }}-{{ run.tool }}:
+.PHONY: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
+
+run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}:
 	$(MAKE) results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml
 
 
-pheval-run: run-{{ run.corpus }}-{{ run.tool }}
+pheval-run: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
 
 {% endfor %}
 
