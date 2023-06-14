@@ -31,15 +31,15 @@ info:
 prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
 
 configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
-	rm -rf $(shell pwd)/$(shell dirname $@)
-	mkdir -p $(shell pwd)/$(shell dirname $@)
-	ln -s {{ directories[config.tool] }}/* $(shell pwd)/$(shell dirname $@)
+	rm -rf {{ directories.workspace }}/$(shell dirname $@)
+	mkdir -p {{ directories.workspace }}/$(shell dirname $@)
+	ln -s {{ directories[config.tool] }}/* {{ directories.workspace }}/$(shell dirname $@)
 
 {% if config.tool == 'exomiser' -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/ || cp -rf {{ directories.phenotype }} configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(shell pwd)/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
+	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:{{ directories.workspace }}/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
 
 semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 {% endif %}
@@ -48,15 +48,15 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 
 {% for run in runs %}
 results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
-	rm -rf $(shell pwd)/$(shell dirname $@)
-	mkdir -p $(shell pwd)/$(shell dirname $@)
+	rm -rf {{ directories.workspace }}/$(shell dirname $@)
+	mkdir -p {{ directories.workspace }}/$(shell dirname $@)
 	pheval run \
-	 --input-dir $(shell pwd)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
-	 --testdata-dir $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
+	 --input-dir {{ directories.workspace }}/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --testdata-dir {{ directories.workspace }}/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
 	 --version {{ run.version }} \
-	 --output-dir $(shell pwd)/$(shell dirname $@)
+	 --output-dir {{ directories.workspace }}/$(shell dirname $@)
 
 	touch $@
 
@@ -77,18 +77,18 @@ pheval-run: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.
 
 {% for scrambled in corpus.scrambled %}
 corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ corpus.id }}/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/ || mkdir -p $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/
-	test -L $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
+	test -d {{ directories.workspace }}/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/ || mkdir -p {{ directories.workspace }}/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/
+	test -L {{ directories.workspace }}/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s {{ directories.workspace }}/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz {{ directories.workspace }}/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
 
 	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz  \
+	 --template-vcf-path {{ directories.workspace }}/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz  \
 	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
+	 --output-dir {{ directories.workspace }}/$(shell dirname $@)/vcf
 
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
 	 --scramble-factor {{ scrambled.factor }} \
-	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
+	 --output-dir {{ directories.workspace }}/$(shell dirname $@)/phenopackets \
 	 --phenopacket-dir=$(shell dirname $<)/phenopackets
 
 	touch $@
