@@ -31,8 +31,9 @@ info:
 prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
 
 configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
-	ln -s {{ directories[config.tool] }}/* $(shell dirname pwd)/$(shell dirname $@)
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
+	ln -s {{ directories[config.tool] }}/* $(shell pwd)/$(shell dirname $@)
 
 {% if config.tool == 'exomiser' -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
@@ -46,40 +47,61 @@ semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.c
 .PHONY: prepare-corpora
 
 {% for run in runs %}
-results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml
-	mkdir -p $(shell dirname pwd)/$(shell dirname $@)
+results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+	rm -rf $(shell pwd)/$(shell dirname $@)
+	mkdir -p $(shell pwd)/$(shell dirname $@)
 	pheval run \
-	 --input-dir {{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
-	 --testdata-dir $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }} \
+	 --input-dir $(shell pwd)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --testdata-dir $(shell pwd)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
-	 --output-dir $(shell dirname pwd)/$(shell dirname $@)
+	 --version {{ run.version }} \
+	 --output-dir $(shell pwd)/$(shell dirname $@)
 
 	touch $@
 
-corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
-{%- if run.tool == 'exomiser' %}
-	test -d $(shell dirname $@)/vcf || mkdir -p $(shell dirname $@)/vcf
-	test -L $(shell pwd)/corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$< $(shell dirname $@)/vcf/
+.PHONY: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
+
+run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}:
+	$(MAKE) results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml
+
+
+pheval-run: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
+
+{% endfor %}
+
+
+{% for corpus in corpora %}
+
+# corpora/{{ corpus.id }}/default/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+
+{% for scrambled in corpus.scrambled %}
+corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ corpus.id }}/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+	test -d $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/ || mkdir -p $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/
+	test -L $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s $(shell pwd)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
+
 	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(shell pwd)/$(shell dirname $@)/vcf/template_exome_hg19.vcf.gz \
-	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single \
+	 --template-vcf-path $(shell pwd)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz  \
+	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/vcf
-{% endif %}
+
 	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
 	pheval-utils scramble-phenopackets \
-	 --scramble-factor {{ run.corpusvariant }} \
+	 --scramble-factor {{ scrambled.factor }} \
 	 --output-dir $(shell pwd)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell pwd)/$(TEST_DATA)/phenopackets/single
+	 --phenopacket-dir=$(shell dirname $<)/phenopackets
 
 	touch $@
 
-prepare-corpora: corpora/{{ run.tool }}/{{ run.corpus }}/scrambled{{ run.corpusvariant }}/corpus.yml
+prepare-corpora: corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml
 
-run-{{ run.corpus }}-{{ run.tool }}:
-	$(MAKE) results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-scrambled{{ run.corpusvariant }}/results.yml
+{% endfor %}
 
-pheval-run: run-{{ run.corpus }}-{{ run.tool }}
+{% for custom_corpus in corpus.custom_variants %}
+corpora/{{ corpus.id }}/{{ custom_corpus.id }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+	echo "error $@ needs to be configured manually" && false
+{% endfor %}
+
 {% endfor %}
 
 .PHONY: pheval
