@@ -1,0 +1,270 @@
+{
+  "id": "PMID:28148688-Volpi-2017-EXTL3-Patient_2",
+  "subject": {
+    "id": "Patient 2",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P7M"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007281",
+        "label": "Developmental stagnation"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002169",
+        "label": "Clonus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002676",
+        "label": "Cloverleaf skull"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0025116",
+        "label": "Fetal distress"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002266",
+        "label": "Focal clonic seizures"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004430",
+        "label": "Severe combined immunodeficiency"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28148688",
+            "description": "NM_001440.3:c.1015C>T,NP_001431.1:p.(Arg339Trp)"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:28148688-Volpi-2017-EXTL3-Patient_2",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:617425",
+          "label": "Immunoskeletal dysplasia with neurodevelopmental abnormalities"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Patient 2",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:417796",
+                "geneContext": {
+                  "valueId": "ENSG00000012232",
+                  "symbol": "EXTL3",
+                  "alternateIds": [
+                    "HGNC:3518",
+                    "entrez:2137",
+                    "ensembl:ENSG00000012232",
+                    "symbol:EXTL3"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "8",
+                  "pos": "28574591",
+                  "ref": "C",
+                  "alt": "T"
+                },
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "1970-01-01T00:00:00Z",
+    "createdBy": "Hpo Case Annotator : 1.0.14-SNAPSHOT",
+    "submittedBy": "UNC:biocuration",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0"
+  }
+}

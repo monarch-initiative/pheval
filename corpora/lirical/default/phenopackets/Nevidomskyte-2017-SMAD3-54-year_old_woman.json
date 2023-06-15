@@ -1,0 +1,153 @@
+{
+  "id": "PMID:28286188-Nevidomskyte-2017-SMAD3-54-year_old_woman",
+  "subject": {
+    "id": "54-year old woman",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P54Y"
+      }
+    },
+    "sex": "FEMALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002616",
+        "label": "Aortic root aneurysm"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28286188",
+            "description": "NM_005902.3:c.733G>C, NP_005893.1:p.(Gly245Arg)."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005302",
+        "label": "Carotid artery tortuosity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28286188",
+            "description": "NM_005902.3:c.733G>C, NP_005893.1:p.(Gly245Arg)."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:28286188-Nevidomskyte-2017-SMAD3-54-year_old_woman",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:613795",
+          "label": "LOEYS-DIETZ SYNDROME 3; LDS3"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "54-year old woman",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "15-67473653-G-C",
+                "geneContext": {
+                  "valueId": "ENSG00000166949",
+                  "symbol": "SMAD3",
+                  "alternateIds": [
+                    "HGNC:6769",
+                    "entrez:4088",
+                    "ensembl:ENSG00000166949",
+                    "symbol:SMAD3"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "15",
+                  "pos": "67473653",
+                  "ref": "G",
+                  "alt": "C"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "1970-01-01T00:00:00Z",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0"
+  }
+}

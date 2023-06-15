@@ -1,0 +1,155 @@
+{
+  "id": "PMID:96481-Curtis-1978-FLCN-253",
+  "subject": {
+    "id": "253",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030436",
+        "label": "Fibrofolliculoma"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:96481",
+            "description": "Phenotypes derived from individual in family 253. Mutation is described as IVS4-2A>G. It corresponds to ClinVar variation id 96481 and NM_144997.6:c.250-2A>G."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002108",
+        "label": "Spontaneous pneumothorax"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:96481",
+            "description": "Phenotypes derived from individual in family 253. Mutation is described as IVS4-2A>G. It corresponds to ClinVar variation id 96481 and NM_144997.6:c.250-2A>G."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:96481-Curtis-1978-FLCN-253",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:135150",
+          "label": "BIRT-HOGG-DUBE SYNDROME; BHD"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "253",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:96481",
+                "geneContext": {
+                  "valueId": "ENSG00000154803",
+                  "symbol": "FLCN",
+                  "alternateIds": [
+                    "HGNC:27310",
+                    "entrez:201163",
+                    "ensembl:ENSG00000154803",
+                    "symbol:FLCN"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "17",
+                  "pos": "17129638",
+                  "ref": "T",
+                  "alt": "C"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "1970-01-01T00:00:00Z",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0"
+  }
+}

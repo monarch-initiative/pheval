@@ -9,7 +9,14 @@ from pathlib import Path
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
-from phenopackets import Family, File, Interpretation, Phenopacket, PhenotypicFeature
+from phenopackets import (
+    Family,
+    File,
+    GenomicInterpretation,
+    Interpretation,
+    Phenopacket,
+    PhenotypicFeature,
+)
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
 
@@ -41,6 +48,7 @@ class ProbandCausativeVariant:
     assembly: str
     variant: GenomicVariant
     genotype: str
+    info: str = ""
 
 
 @dataclass
@@ -73,6 +81,17 @@ def create_hgnc_dict() -> defaultdict:
         hgnc_data[row["symbol"]]["previous_symbol"] = previous_names
 
     return hgnc_data
+
+
+def create_gene_identifier_map() -> dict:
+    hgnc_df = read_hgnc_data()
+    identifier_map = {}
+    for _index, row in hgnc_df.iterrows():
+        identifier_map[row["ensembl_gene_id"]] = row["symbol"]
+        identifier_map[row["hgnc_id"]] = row["symbol"]
+        identifier_map[row["entrez_id"]] = row["symbol"]
+        identifier_map[row["refseq_accession"]] = row["symbol"]
+    return identifier_map
 
 
 def phenopacket_reader(file: Path):
@@ -150,6 +169,7 @@ class PhenopacketUtil:
                         vcf_record.alt,
                     ),
                     genotype.label,
+                    vcf_record.info,
                 )
                 all_variants.append(variant_data)
         return all_variants
@@ -161,7 +181,7 @@ class PhenopacketUtil:
     def vcf_file_data(self, phenopacket_path: Path, vcf_dir: Path) -> File:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
+        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "vcf"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
             ".vcf.gz"
         ):
@@ -173,18 +193,31 @@ class PhenopacketUtil:
         vcf_data.uri = str(vcf_dir.joinpath(Path(vcf_data.uri).name))
         return vcf_data
 
+    @staticmethod
+    def _extract_diagnosed_gene(
+        genomic_interpretation: GenomicInterpretation,
+    ) -> ProbandCausativeGene:
+        """Returns the disease causative gene from the variant descriptor field if not empty,
+        otherwise, returns from the gene descriptor from a phenopacket."""
+        if genomic_interpretation.variant_interpretation.ByteSize() != 0:
+            return ProbandCausativeGene(
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.symbol,
+                genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.value_id,
+            )
+
+        else:
+            return ProbandCausativeGene(
+                gene_symbol=genomic_interpretation.gene.symbol,
+                gene_identifier=genomic_interpretation.gene.value_id,
+            )
+
     def diagnosed_genes(self) -> list[ProbandCausativeGene]:
         """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
         pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
-                genes.append(
-                    ProbandCausativeGene(
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol,
-                        g.variant_interpretation.variation_descriptor.gene_context.value_id,
-                    )
-                )
+                genes.append(self._extract_diagnosed_gene(g))
                 genes = list({gene.gene_symbol: gene for gene in genes}.values())
         return genes
 
@@ -236,7 +269,7 @@ class PhenopacketRebuilder:
         """Adds spiked vcf path to phenopacket."""
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
-            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
+            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
         ]
         phenopacket_files.append(spiked_vcf_file_data)
         del phenopacket.files[:]
@@ -258,13 +291,10 @@ def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path) -> 
 
 
 class GeneIdentifierUpdater:
-    def __init__(
-        self,
-        hgnc_data: defaultdict,
-        gene_identifier: str,
-    ):
+    def __init__(self, gene_identifier: str, hgnc_data: dict = None, identifier_map: dict = None):
         self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
+        self.identifier_map = identifier_map
 
     def find_identifier(self, gene_symbol: str) -> str:
         """Finds the specified gene identifier for a gene symbol."""
@@ -276,7 +306,16 @@ class GeneIdentifierUpdater:
                     if prev_symbol == gene_symbol:
                         return data[self.gene_identifier]
 
-    def find_alternate_ids(self, gene_symbol: str) -> list[str]:
+    def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
+        """
+        Obtain gene symbol from a gene identifier. (e.g.)
+        "
+        obtain_gene_symbol_from_identifier(query_gene_identifier="HGNC:5")
+        "
+        """
+        return self.identifier_map[query_gene_identifier]
+
+    def _find_alternate_ids(self, gene_symbol: str) -> list[str]:
         """Finds the alternate IDs for a gene symbol."""
         if gene_symbol in self.hgnc_data.keys():
             return [
@@ -310,7 +349,7 @@ class GeneIdentifierUpdater:
                 )
                 del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
                 g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(
-                    self.find_alternate_ids(
+                    self._find_alternate_ids(
                         g.variant_interpretation.variation_descriptor.gene_context.symbol
                     )
                 )

@@ -1,0 +1,228 @@
+{
+  "id": "PMID:28566166-Travaglini-2017-CAPN1-index",
+  "subject": {
+    "id": "index",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P16Y"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003487",
+        "label": "Babinski sign"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28566166",
+            "description": "NM_001198868.1:c.221G>A, \tNP_001185797.1:p.(Gly74Asp) and NM_001198868.1:c.911C>T,NP_001185797.1:p.(Thr304Met)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0040083",
+        "label": "Toe walking"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28566166",
+            "description": "NM_001198868.1:c.221G>A, \tNP_001185797.1:p.(Gly74Asp) and NM_001198868.1:c.911C>T,NP_001185797.1:p.(Thr304Met)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0006895",
+        "label": "Lower limb hypertonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28566166",
+            "description": "NM_001198868.1:c.221G>A, \tNP_001185797.1:p.(Gly74Asp) and NM_001198868.1:c.911C>T,NP_001185797.1:p.(Thr304Met)"
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001347",
+        "label": "Hyperreflexia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:28566166",
+            "description": "NM_001198868.1:c.221G>A, \tNP_001185797.1:p.(Gly74Asp) and NM_001198868.1:c.911C>T,NP_001185797.1:p.(Thr304Met)"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:28566166-Travaglini-2017-CAPN1-index",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:616907",
+          "label": "Spastic paraplegia 76, autosomal recessive"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "index",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:1510947",
+                "geneContext": {
+                  "valueId": "ENSG00000014216",
+                  "symbol": "CAPN1",
+                  "alternateIds": [
+                    "HGNC:1476",
+                    "entrez:823",
+                    "ensembl:ENSG00000014216",
+                    "symbol:CAPN1"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "11",
+                  "pos": "64950393",
+                  "ref": "G",
+                  "alt": "A"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          },
+          {
+            "subjectOrBiosampleId": "index",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "clinvar:2060731",
+                "geneContext": {
+                  "valueId": "ENSG00000014216",
+                  "symbol": "CAPN1",
+                  "alternateIds": [
+                    "HGNC:1476",
+                    "entrez:823",
+                    "ensembl:ENSG00000014216",
+                    "symbol:CAPN1"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "11",
+                  "pos": "64955493",
+                  "ref": "C",
+                  "alt": "T"
+                },
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "1970-01-01T00:00:00Z",
+    "createdBy": "Hpo Case Annotator : 1.0.14-SNAPSHOT",
+    "submittedBy": "UNC:biocuration",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      },
+      {
+        "id": "clinvar",
+        "name": "Clinical Variation",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "version": "2023-04-06",
+        "namespacePrefix": "clinvar",
+        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0"
+  }
+}

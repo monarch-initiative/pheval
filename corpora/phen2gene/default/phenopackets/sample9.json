@@ -1,0 +1,76 @@
+{
+  "id": "sample9",
+  "subject": {
+    "id": "sample9"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002566",
+        "label": "Intestinal malrotation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002580",
+        "label": "Volvulus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004389",
+        "label": "Intestinal pseudo-obstruction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001396",
+        "label": "Cholestasis"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample9-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample9",
+            "gene": {
+              "valueId": "ENSG00000163017",
+              "symbol": "ACTG2",
+              "alternateIds": [
+                "HGNC:145",
+                "ncbigene:72",
+                "ensembl:ENSG00000163017",
+                "symbol:ACTG2"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.791959Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

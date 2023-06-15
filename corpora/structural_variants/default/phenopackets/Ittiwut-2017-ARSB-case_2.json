@@ -1,0 +1,169 @@
+{
+  "id": "Ittiwut-2017-27797586-ARSB-case_2",
+  "subject": {
+    "id": "case 2",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P6Y9M"
+      }
+    },
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000943",
+        "label": "Dysostosis multiplex"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27797586",
+            "description": "Novel Mutations, Including a Large Deletion in the ARSB Gene, Causing Mucopolysaccharidosis Type VI."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001387",
+        "label": "Joint stiffness"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:27797586",
+            "description": "Novel Mutations, Including a Large Deletion in the ARSB Gene, Causing Mucopolysaccharidosis Type VI."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Ittiwut-2017-27797586-ARSB-case_2",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:253200",
+          "label": "MUCOPOLYSACCHARIDOSIS TYPE VI; MPS6"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "case 2",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "5-78962816-N-DEL",
+                "geneContext": {
+                  "valueId": "ENSG00000113273",
+                  "symbol": "ARSB",
+                  "alternateIds": [
+                    "HGNC:714",
+                    "ncbigene:411",
+                    "ensembl:ENSG00000113273",
+                    "symbol:ARSB"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "5",
+                  "pos": "78962816",
+                  "ref": "N",
+                  "alt": "DEL",
+                  "info": "SVTYPE=DEL;END=78976603;SVLEN=-157939419"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:253200",
+        "label": "MUCOPOLYSACCHARIDOSIS TYPE VI; MPS6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:27797586",
+        "description": "Novel Mutations, Including a Large Deletion in the ARSB Gene, Causing Mucopolysaccharidosis Type VI."
+      }
+    ]
+  }
+}

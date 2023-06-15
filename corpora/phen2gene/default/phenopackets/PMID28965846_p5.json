@@ -1,0 +1,64 @@
+{
+  "id": "PMID28965846_p5",
+  "subject": {
+    "id": "PMID28965846_p5"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009830",
+        "label": "Peripheral neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007641",
+        "label": "Dyschromatopsia"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID28965846_p5-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID28965846_p5",
+            "gene": {
+              "valueId": "ENSG00000161513",
+              "symbol": "FDXR",
+              "alternateIds": [
+                "HGNC:3642",
+                "ncbigene:2232",
+                "ensembl:ENSG00000161513",
+                "symbol:FDXR"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.025202Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

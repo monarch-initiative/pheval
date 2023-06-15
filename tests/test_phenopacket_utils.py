@@ -21,7 +21,7 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
-from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_hgnc_dict,
+from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
     GenomicVariant,
     IncompatibleGenomeAssemblyError,
@@ -29,6 +29,7 @@ from pheval.utils.phenopacket_utils import (  # GeneIdentifierUpdater,; create_h
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
+    create_gene_identifier_map,
     create_hgnc_dict,
 )
 
@@ -77,6 +78,40 @@ interpretations = [
                             ),
                             allelic_state=OntologyClass(
                                 id="GENO:0000402", label="compound heterozygous"
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
+
+structural_variant_interpretations = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(value_id="ENSG00000069011", symbol="PITX1"),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh38",
+                                chrom="5",
+                                pos=134858794,
+                                ref="N",
+                                alt="DEL",
+                                info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000135",
+                                label="heterozygous",
                             ),
                         ),
                     ),
@@ -156,7 +191,47 @@ updated_interpretations = [
         ),
     )
 ]
-
+interpretations_no_variant_data = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(
+                                value_id="ENSG00000102302",
+                                symbol="FGD1",
+                                alternate_ids=[
+                                    "HGNC:3663",
+                                    "ncbigene:2245",
+                                    "ensembl:ENSG00000102302",
+                                    "symbol:FGD1",
+                                ],
+                            ),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh37",
+                                chrom="X",
+                                pos=54492285,
+                                ref="C",
+                                alt="T",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000134",
+                                label="hemizygous",
+                            ),
+                        ),
+                    ),
+                ),
+            ]
+        ),
+    )
+]
 phenotypic_features_none_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
@@ -200,7 +275,7 @@ proband = Phenopacket(
 phenopacket_files = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.ped",
@@ -210,7 +285,7 @@ phenopacket_files = [
 incorrect_genome_assembly = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "hg10"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "hg10"},
     ),
     File(
         uri="test_1.ped",
@@ -220,7 +295,7 @@ incorrect_genome_assembly = [
 incorrect_file_format = [
     File(
         uri="test/path/to/test_1.ped",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.vcf",
@@ -247,6 +322,23 @@ phenopacket = Phenopacket(
     subject=Individual(id="test-subject-1", sex=1),
     phenotypic_features=phenotypic_features_with_excluded,
     interpretations=interpretations,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
+
+structural_variant_phenopacket = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=structural_variant_interpretations,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
+phenopacket_no_variant_data = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=interpretations_no_variant_data,
     files=phenopacket_files,
     meta_data=phenopacket_metadata,
 )
@@ -319,7 +411,9 @@ class TestPhenopacketUtil(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.phenopacket = PhenopacketUtil(phenopacket)
+        cls.phenopacket_no_variants = PhenopacketUtil(phenopacket_no_variant_data)
         cls.phenopacket_excluded_pf = PhenopacketUtil(phenopacket_with_all_excluded_terms)
+        cls.structural_variant_phenopacket = PhenopacketUtil(structural_variant_phenopacket)
         cls.family = PhenopacketUtil(family)
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
@@ -374,9 +468,44 @@ class TestPhenopacketUtil(unittest.TestCase):
     def test_interpretations_family(self):
         self.assertEqual(list(self.family.interpretations()), interpretations)
 
-    def test_causative_variants(self):
+    def test_causative_variants_type(self):
         for causative_variant in self.phenopacket.causative_variants():
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
+
+    def test_causative_variants(self):
+        self.assertEqual(
+            self.phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="X", pos=54492285, ref="C", alt="T"),
+                    genotype="hemizygous",
+                    info="",
+                ),
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="18", pos=67691994, ref="G", alt="A"),
+                    genotype="compound heterozygous",
+                    info="",
+                ),
+            ],
+        )
+
+    def test_causative_variants_structural(self):
+        self.assertEqual(
+            self.structural_variant_phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh38",
+                    variant=GenomicVariant(chrom="5", pos=134858794, ref="N", alt="DEL"),
+                    genotype="heterozygous",
+                    info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                )
+            ],
+        )
 
     def test_files_phenopacket(self):
         self.assertEqual(list(self.phenopacket.files()), phenopacket_files)
@@ -392,7 +521,7 @@ class TestPhenopacketUtil(unittest.TestCase):
             vcf_file_data,
             File(
                 uri="input_dir/test_1.vcf",
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             ),
         )
         with self.assertRaises(IncompatibleGenomeAssemblyError):
@@ -413,6 +542,12 @@ class TestPhenopacketUtil(unittest.TestCase):
                 ]
             ),
             self.phenopacket.diagnosed_genes(),
+        )
+
+    def test_diagnosed_genes_no_variants(self):
+        self.assertEqual(
+            ([ProbandCausativeGene(gene_symbol="FGD1", gene_identifier="ENSG00000102302")]),
+            self.phenopacket_no_variants.diagnosed_genes(),
         )
 
     def test_diagnosed_variants(self):
@@ -481,24 +616,33 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         updated_phenopacket = self.phenopacket_rebuilder.add_spiked_vcf_path(
             File(
                 uri=str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()),
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             )
         )
         vcf_file = [
             file
             for file in updated_phenopacket.files
-            if file.file_attributes["fileFormat"] == "VCF"
+            if file.file_attributes["fileFormat"] == "vcf"
         ][0]
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
 
 
 class TestGeneIdentifierUpdater(unittest.TestCase):
     @classmethod
-    def setUpClass(cls, hgnc_dict=None) -> None:
+    def setUpClass(cls, hgnc_dict=None, identifier_map=None) -> None:
         if hgnc_dict is None:
             hgnc_dict = create_hgnc_dict()
-        cls.gene_identifier_updater_ens = GeneIdentifierUpdater(hgnc_dict, "ensembl_id")
-        cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(hgnc_dict, "entrez_id")
+        if identifier_map is None:
+            identifier_map = create_gene_identifier_map()
+        cls.gene_identifier_updater_ens = GeneIdentifierUpdater(
+            hgnc_data=hgnc_dict, gene_identifier="ensembl_id"
+        )
+        cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(
+            hgnc_data=hgnc_dict, gene_identifier="entrez_id"
+        )
+        cls.find_symbol = GeneIdentifierUpdater(
+            gene_identifier="hgnc_id", identifier_map=identifier_map
+        )
 
     def test_find_identifier(self):
         self.assertEqual(self.gene_identifier_updater_ens.find_identifier("A2M"), "ENSG00000175899")
@@ -506,14 +650,30 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA"), "2629")
 
+    def test_obtain_gene_symbol_from_identifier_hgnc(self):
+        self.assertEqual(
+            self.find_symbol.obtain_gene_symbol_from_identifier(
+                "HGNC:5",
+            ),
+            "A1BG",
+        )
+
+    def test_obtain_gene_symbol_from_identifier_entrez(self):
+        self.assertEqual(
+            self.find_symbol.obtain_gene_symbol_from_identifier(
+                "65985",
+            ),
+            "AACS",
+        )
+
     def test_find_alternate_ids(self):
         self.assertEqual(
             ["HGNC:4177", "ncbigene:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
-            self.gene_identifier_updater_ens.find_alternate_ids("GBA"),
+            self.gene_identifier_updater_ens._find_alternate_ids("GBA"),
         )
         self.assertEqual(
             ["HGNC:7", "ncbigene:2", "ensembl:ENSG00000175899", "symbol:A2M"],
-            self.gene_identifier_updater_entrez.find_alternate_ids("A2M"),
+            self.gene_identifier_updater_entrez._find_alternate_ids("A2M"),
         )
 
     def test_update_genomic_interpretations_gene_identifier(self):

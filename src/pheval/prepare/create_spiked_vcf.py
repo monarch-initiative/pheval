@@ -1,7 +1,9 @@
 #!/usr/bin/python
 import gzip
 import logging
+import re
 import secrets
+import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
@@ -122,12 +124,18 @@ class VcfHeaderParser:
         chr_status = False
         for line in self.vcf_contents:
             if line.startswith("##contig=<ID"):
-                line_split = line.split(",")
-                chromosome = line_split[0].split("=")[2]
+                tokens = line.split(",")
+                chromosome = re.sub(
+                    r"^.*?ID=", "", [token for token in tokens if "ID=" in token][0]
+                )
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
-                contig_length = line_split[1].split("=")[1]
+                contig_length = re.sub(
+                    "[^0-9]+",
+                    "",
+                    [token for token in tokens if "length=" in token][0],
+                )
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
         assembly = [k for k, v in genome_assemblies.items() if v == vcf_assembly][0]
@@ -192,12 +200,14 @@ class VcfSpiker:
             str(proband_variant_data.variant.pos),
             ".",
             proband_variant_data.variant.ref,
-            proband_variant_data.variant.alt,
+            f"<{proband_variant_data.variant.alt}>"
+            if proband_variant_data.variant.ref == "N"
+            else proband_variant_data.variant.alt,
             "100",
             "PASS",
-            "SPIKED_VARIANT_" + proband_variant_data.genotype.upper(),
-            "GT:AD:DP:GQ:PL",
-            genotype_codes[proband_variant_data.genotype.lower()] + ":0,2:2:12:180,12,0" + "\n",
+            proband_variant_data.info if proband_variant_data.info else ".",
+            "GT",
+            genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
     def construct_vcf_records(self):
@@ -297,8 +307,8 @@ def generate_spiked_vcf_file(
     )
     VcfWriter(spiked_vcf, spiked_vcf_path).write_vcf_file()
     return File(
-        uri=str(spiked_vcf_path.absolute()),
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": vcf_assembly},
+        uri=urllib.parse.unquote(spiked_vcf_path.as_uri()),
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": vcf_assembly},
     )
 
 
