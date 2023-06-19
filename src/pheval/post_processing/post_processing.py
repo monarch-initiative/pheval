@@ -84,20 +84,20 @@ class PhEvalDiseaseResult(PhEvalResult):
 
 
 @dataclass
-class RankedPhEvalDiseaseResult(PhEvalResult):
+class RankedPhEvalDiseaseResult(PhEvalDiseaseResult):
     """PhEval disease result with corresponding rank."""
 
-    pheval_disease_result: PhEvalDiseaseResult
     rank: int
 
-    def as_dict(self):
-        """Return PhEval disease result as dictionary."""
-        return {
-            "disease_name": self.pheval_disease_result.disease_name,
-            "disease_identifier": self.pheval_disease_result.disease_identifier,
-            "score": self.pheval_disease_result.score,
-            "rank": self.rank,
-        }
+    @staticmethod
+    def from_disease_result(pheval_disease_result: PhEvalDiseaseResult, rank: int):
+        """Return RankedPhEvalDiseaseResult from a PhEvalDiseaseResult and rank"""
+        return RankedPhEvalDiseaseResult(
+            disease_name=pheval_disease_result.disease_name,
+            disease_identifier=pheval_disease_result.disease_identifier,
+            score=pheval_disease_result.score,
+            rank=rank,
+        )
 
 
 class SortOrder(Enum):
