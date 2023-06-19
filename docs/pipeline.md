@@ -3,16 +3,46 @@
 
 ## Jinja Template PhEval Makefile Generator Requirements
 
-To generate a PhEval Makefile we use the Jinja template engine.
+To generate a PhEval Makefile we use the [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template engine.
+
+### Installing Jinja Template
+
+- Linux (Ubuntu): `sudo snap install j2`
+
+- Mac OS:
+
+---
+## PhEval Makefile Template (.j2 file)
+
+📦resources  
+ ┣ 📜**Makefile.j2**  
+
+
+*custom.Makefile* is the template that will be generated on the fly based on the *pheval-config.yaml*. Each of these configurations is filled using a syntax like this: ```{{ config.tool }}```. The value between the curly brackets is replaced by the corresponding configuration in the configuration file.
+
+---
+
+## PhEval custom.Makefile
+
+📦resources  
+ ┣ 📜**custom.Makefile**  
+
+---
+## PhEval generatemakefile.sh
+
+📦resources  
+ ┣ **📜generatemakefile.sh**  
+
+
+*generatemakefile.sh* is only a shortcut for Makefile rendering using the configuration file e.g.
+
+    bash ./resources/generatemakefile.sh
 
 ## PhEval Configuration File
 
 In resources folder, there is a file named *pheval-config.yaml*, this file is responsible for storing the PhEval Makefile generation.
 
 📦resources  
- ┣ 📜Makefile.j2  
- ┣ 📜custom.Makefile  
- ┣ 📜generatemakefile.sh  
  ┗ **📜pheval-config.yaml**  
 
 ### Phenotype Section
@@ -32,10 +62,10 @@ directories:
   testdata: testdata
   config: configurations
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
-  phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
-  exomiser: /home/data/exomiser-data/
-  phenotype: /home/data/exomiser-data/2302_phenotype
-  workspace: /home/vinicius/workspace/pheval
+  phen2gene: /pathtoPhen2Gene/Phen2Gene
+  exomiser: /pathto/exomiser
+  phenotype: /pathto/exomiser-data/2302_phenotype
+  workspace: /pathto/workspace
 ```
 
 ---
