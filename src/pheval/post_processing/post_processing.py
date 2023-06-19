@@ -26,20 +26,20 @@ class PhEvalGeneResult(PhEvalResult):
 
 
 @dataclass
-class RankedPhEvalGeneResult(PhEvalResult):
+class RankedPhEvalGeneResult(PhEvalGeneResult):
     """PhEval gene result with corresponding rank."""
 
-    pheval_gene_result: PhEvalGeneResult
     rank: int
 
-    def as_dict(self):
-        """Return PhEval gene result as dictionary."""
-        return {
-            "gene_symbol": self.pheval_gene_result.gene_symbol,
-            "gene_identifier": self.pheval_gene_result.gene_identifier,
-            "score": self.pheval_gene_result.score,
-            "rank": self.rank,
-        }
+    @staticmethod
+    def from_gene_result(pheval_gene_result: PhEvalGeneResult, rank: int):
+        """Return RankedPhEvalGeneResult from a PhEvalGeneResult and rank"""
+        return RankedPhEvalGeneResult(
+            gene_symbol=pheval_gene_result.gene_symbol,
+            gene_identifier=pheval_gene_result.gene_identifier,
+            score=pheval_gene_result.score,
+            rank=rank,
+        )
 
 
 @dataclass
@@ -55,23 +55,23 @@ class PhEvalVariantResult(PhEvalResult):
 
 
 @dataclass
-class RankedPhEvalVariantResult(PhEvalResult):
+class RankedPhEvalVariantResult(PhEvalVariantResult):
     """PhEval variant result with corresponding rank."""
 
-    pheval_variant_result: PhEvalVariantResult
     rank: int
 
-    def as_dict(self):
-        """Return PhEval variant result as dictionary."""
-        return {
-            "chromosome": self.pheval_variant_result.chromosome,
-            "start": self.pheval_variant_result.start,
-            "end": self.pheval_variant_result.end,
-            "ref": self.pheval_variant_result.ref,
-            "alt": self.pheval_variant_result.alt,
-            "score": self.pheval_variant_result.score,
-            "rank": self.rank,
-        }
+    @staticmethod
+    def from_variant_result(pheval_variant_result: PhEvalVariantResult, rank: int):
+        """Return RankedPhEvalVariantResult from a PhEvalVariantResult and rank"""
+        return RankedPhEvalVariantResult(
+            chromosome=pheval_variant_result.chromosome,
+            start=pheval_variant_result.start,
+            end=pheval_variant_result.end,
+            ref=pheval_variant_result.ref,
+            alt=pheval_variant_result.alt,
+            score=pheval_variant_result.score,
+            rank=rank,
+        )
 
 
 @dataclass
@@ -158,29 +158,25 @@ class ScoreRanker:
 
 
 def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) -> [PhEvalResult]:
-    """Ranks a PhEval result post-processed from a tool specific output.
+    """Rank a PhEval result post-processed from a tool specific output.
     Deals with ex aequo scores"""
     score_ranker = ScoreRanker(sort_order)
     ranked_result = []
     for result in pheval_result:
         if type(result) == PhEvalGeneResult:
             ranked_result.append(
-                RankedPhEvalGeneResult(
-                    pheval_gene_result=result, rank=score_ranker.rank_scores(result.score)
+                RankedPhEvalGeneResult.from_gene_result(
+                    result, score_ranker.rank_scores(result.score)
                 )
             )
         elif type(result) == PhEvalVariantResult:
             ranked_result.append(
-                RankedPhEvalVariantResult(
-                    pheval_variant_result=result, rank=score_ranker.rank_scores(result.score)
+                RankedPhEvalVariantResult.from_variant_result(
+                    result, score_ranker.rank_scores(result.score)
                 )
             )
-        elif type(result) == PhEvalDiseaseResult:
-            ranked_result.append(
-                RankedPhEvalDiseaseResult(
-                    pheval_disease_result=result, rank=score_ranker.rank_scores(result.score)
-                )
-            )
+        else:
+            raise ValueError("Incompatible PhEval result type.")
     return ranked_result
 
 
@@ -200,10 +196,10 @@ def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) ->
 
 
 def _write_pheval_gene_result(
-    ranked_pheval_result: [RankedPhEvalGeneResult], output_dir: Path, tool_result_path: Path
+    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval gene result to tsv."""
-    ranked_result = pd.DataFrame([x.as_dict() for x in ranked_pheval_result])
+    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
     pheval_gene_output = ranked_result.loc[:, ["rank", "score", "gene_symbol", "gene_identifier"]]
     pheval_gene_output.to_csv(
         output_dir.joinpath(
@@ -215,10 +211,10 @@ def _write_pheval_gene_result(
 
 
 def _write_pheval_variant_result(
-    ranked_pheval_result: [RankedPhEvalVariantResult], output_dir: Path, tool_result_path: Path
+    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval variant result to tsv."""
-    ranked_result = pd.DataFrame([x.as_dict() for x in ranked_pheval_result])
+    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
     pheval_variant_output = ranked_result.loc[
         :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
     ]
@@ -256,9 +252,9 @@ def generate_pheval_result(
 ):
     """Generate either a PhEval variant or PhEval gene tsv result."""
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
-    if all(isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result):
-        _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
+    if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, RankedPhEvalDiseaseResult) for result in ranked_pheval_result):
-        _write_pheval_disease_result(ranked_pheval_result, output_dir, tool_result_path)
+    elif all(isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result):
+        _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
+    else:
+        raise ValueError("Results are not all of the same type.")

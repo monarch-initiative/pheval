@@ -1,10 +1,10 @@
 {
-  "id": "Erickson-2001-11694548-FOXC2-Family_3,_Proband",
+  "id": "PMID:19327734-Dathe-2009-BMP2-family_2",
   "subject": {
-    "id": "Family 3, Proband",
+    "id": "family 2",
     "timeAtLastEncounter": {
       "age": {
-        "iso8601duration": "P82Y"
+        "iso8601duration": "P20Y"
       }
     },
     "sex": "FEMALE",
@@ -16,8 +16,8 @@
   "phenotypicFeatures": [
     {
       "type": {
-        "id": "HP:0009743",
-        "label": "Distichiasis"
+        "id": "HP:0004220",
+        "label": "Short middle phalanx of the 5th finger"
       },
       "evidence": [
         {
@@ -26,8 +26,44 @@
             "label": "author statement supported by traceable reference"
           },
           "reference": {
-            "id": "PMID:11694548",
-            "description": "Clinical heterogeneity in lymphoedema-distichiasis with FOXC2 truncating mutations."
+            "id": "PMID:19327734",
+            "description": "Duplications involving a conserved regulatory element downstream of BMP2 are associated with brachydactyly type A2."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0009372",
+        "label": "Type A2 brachydactyly"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:19327734",
+            "description": "Duplications involving a conserved regulatory element downstream of BMP2 are associated with brachydactyly type A2."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0009577",
+        "label": "Short middle phalanx of the 2nd finger"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:19327734",
+            "description": "Duplications involving a conserved regulatory element downstream of BMP2 are associated with brachydactyly type A2."
           }
         }
       ]
@@ -35,37 +71,37 @@
   ],
   "interpretations": [
     {
-      "id": "Erickson-2001-11694548-FOXC2-Family_3,_Proband",
+      "id": "PMID:19327734-Dathe-2009-BMP2-family_2",
       "progressStatus": "SOLVED",
       "diagnosis": {
         "disease": {
-          "id": "OMIM:153400",
-          "label": "LYMPHEDEMA-DISTICHIASIS SYNDROME"
+          "id": "OMIM:112600",
+          "label": "BRACHYDACTYLY, TYPE A2; BDA2"
         },
         "genomicInterpretations": [
           {
-            "subjectOrBiosampleId": "Family 3, Proband",
+            "subjectOrBiosampleId": "family 2",
             "interpretationStatus": "CAUSATIVE",
             "variantInterpretation": {
               "variationDescriptor": {
-                "id": "clinvar:7259",
+                "id": "20-6879830-N-DUP",
                 "geneContext": {
-                  "valueId": "ENSG00000176692",
-                  "symbol": "FOXC2",
+                  "valueId": "ENSG00000125845",
+                  "symbol": "BMP2",
                   "alternateIds": [
-                    "HGNC:3801",
-                    "ncbigene:2303",
-                    "ensembl:ENSG00000176692",
-                    "symbol:FOXC2"
+                    "HGNC:1069",
+                    "ncbigene:650",
+                    "ensembl:ENSG00000125845",
+                    "symbol:BMP2"
                   ]
                 },
                 "vcfRecord": {
                   "genomeAssembly": "GRCh38",
-                  "chrom": "16",
-                  "pos": "86567937",
-                  "ref": "CGGACGCCCCCAAGGAGGCCGAGAAGAAGGTGGTGATCAAGAGCGAGGCGGCGTCCCCGGCGCTGCCGGTCATCACCAAG",
-                  "alt": "ACAAA",
-                  "info": "SVTYPE=DEL;END=86568012;SVLEN=-75"
+                  "chrom": "20",
+                  "pos": "6879830",
+                  "ref": "N",
+                  "alt": "DUP",
+                  "info": "SVTYPE=DUP;END=6885377;SVLEN=5547"
                 },
                 "moleculeContext": "genomic",
                 "allelicState": {
@@ -82,13 +118,13 @@
   "diseases": [
     {
       "term": {
-        "id": "OMIM:153400",
-        "label": "LYMPHEDEMA-DISTICHIASIS SYNDROME"
+        "id": "OMIM:112600",
+        "label": "BRACHYDACTYLY, TYPE A2; BDA2"
       }
     }
   ],
   "metaData": {
-    "created": "2021-06-24T16:13:18Z",
+    "created": "2021-06-03T20:53:10Z",
     "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
     "submittedBy": "HPO:probinson",
     "resources": [
@@ -139,21 +175,13 @@
         "version": "2018-03-08",
         "namespacePrefix": "OMIM",
         "iriPrefix": "https://omim.org/entry/"
-      },
-      {
-        "id": "clinvar",
-        "name": "Clinical Variation",
-        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
-        "version": "2023-04-06",
-        "namespacePrefix": "clinvar",
-        "iriPrefix": "https://www.ncbi.nlm.nih.gov/clinvar/variation/"
       }
     ],
     "phenopacketSchemaVersion": "2.0.0",
     "externalReferences": [
       {
-        "id": "PMID:11694548",
-        "description": "Clinical heterogeneity in lymphoedema-distichiasis with FOXC2 truncating mutations."
+        "id": "PMID:19327734",
+        "description": "Duplications involving a conserved regulatory element downstream of BMP2 are associated with brachydactyly type A2."
       }
     ]
   }

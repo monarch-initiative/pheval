@@ -1,0 +1,170 @@
+{
+  "id": "PMID:22791839-Benito-Sanz-2012-SHOX-Family_10_II.1",
+  "subject": {
+    "id": "Family 10 II.1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P10Y"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008845",
+        "label": "Mesomelic short stature"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22791839",
+            "description": "Identification of the first recurrent PAR1 deletion in L\u00e9ri-Weill dyschondrosteosis and idiopathic short stature reveals the presence of a novel SHOX \nenhancer."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003067",
+        "label": "Madelung deformity"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:22791839",
+            "description": "Identification of the first recurrent PAR1 deletion in L\u00e9ri-Weill dyschondrosteosis and idiopathic short stature reveals the presence of a novel SHOX \nenhancer."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:22791839-Benito-Sanz-2012-SHOX-Family_10_II.1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:127300",
+          "label": "LERI-WEILL DYSCHONDROSTEOSIS; LWD"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Family 10 II.1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "X-739814-N-DEL",
+                "geneContext": {
+                  "valueId": "ENSG00000185960",
+                  "symbol": "SHOX",
+                  "alternateIds": [
+                    "HGNC:10853",
+                    "ncbigene:6473",
+                    "ensembl:ENSG00000185960",
+                    "symbol:SHOX"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "X",
+                  "pos": "739814",
+                  "ref": "N",
+                  "alt": "DEL",
+                  "info": "SVTYPE=DEL;END=787358;SVLEN=-47544"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000135",
+                  "label": "heterozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:127300",
+        "label": "LERI-WEILL DYSCHONDROSTEOSIS; LWD"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-03T20:53:10Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:22791839",
+        "description": "Identification of the first recurrent PAR1 deletion in L\u00e9ri-Weill dyschondrosteosis and idiopathic short stature reveals the presence of a novel SHOX \nenhancer."
+      }
+    ]
+  }
+}
