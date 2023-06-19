@@ -1,8 +1,10 @@
 import unittest
 
 from pheval.post_processing.post_processing import (
+    PhEvalDiseaseResult,
     PhEvalGeneResult,
     PhEvalVariantResult,
+    RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
     ResultSorter,
@@ -78,6 +80,26 @@ class TestRankedPhEvalVariantResult(unittest.TestCase):
                 alt="G",
                 score=0.9999,
                 rank=3,
+            ),
+        )
+
+
+class TestRankedPhEvalDiseaseResult(unittest.TestCase):
+    def setUp(self) -> None:
+        self.pheval_disease_result = PhEvalDiseaseResult(
+            disease_name="Bardet-Biedl Syndrome",
+            disease_identifier="OMIM:209900",
+            score=0.9999,
+        )
+
+    def test_from_disease_result(self):
+        self.assertEqual(
+            RankedPhEvalDiseaseResult.from_disease_result(self.pheval_disease_result, 1),
+            RankedPhEvalDiseaseResult(
+                disease_name="Bardet-Biedl Syndrome",
+                disease_identifier="OMIM:209900",
+                score=0.9999,
+                rank=1,
             ),
         )
 
