@@ -27,7 +27,6 @@ class RankComparisonGenerator:
     def _calculate_rank_difference(self) -> pd.DataFrame:
         """Calculate the rank decrease for runs - taking the first directory as a baseline."""
         comparison_df = self._generate_dataframe()
-        print(len(comparison_df.columns))
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
@@ -148,7 +147,7 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
         RankComparisonGenerator(merged_results).generate_gene_comparison_output(
             f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].gene_prioritisation.results_dir.name}"
-            f"__v__{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
+            f"_vs_{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
             f"{pair[1].gene_prioritisation.results_dir.name}"
         )
 
@@ -161,9 +160,9 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
             deepcopy(pair[1].variant_prioritisation.ranks),
         )
         RankComparisonGenerator(merged_results).generate_variant_comparison_output(
-            f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[0].variant_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].variant_prioritisation.results_dir.name}"
-            f"__v__{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
+            f"_vs_{pair[1].variant_prioritisation.results_dir.parents[0].name}_"
             f"{pair[1].variant_prioritisation.results_dir.name}"
         )
 
