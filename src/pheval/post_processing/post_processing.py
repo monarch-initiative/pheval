@@ -74,6 +74,32 @@ class RankedPhEvalVariantResult(PhEvalVariantResult):
         )
 
 
+@dataclass
+class PhEvalDiseaseResult(PhEvalResult):
+    """Minimal data required from tool-specific output for disease prioritisation."""
+
+    disease_name: str
+    disease_identifier: str
+    score: float
+
+
+@dataclass
+class RankedPhEvalDiseaseResult(PhEvalDiseaseResult):
+    """PhEval disease result with corresponding rank."""
+
+    rank: int
+
+    @staticmethod
+    def from_disease_result(pheval_disease_result: PhEvalDiseaseResult, rank: int):
+        """Return RankedPhEvalDiseaseResult from a PhEvalDiseaseResult and rank"""
+        return RankedPhEvalDiseaseResult(
+            disease_name=pheval_disease_result.disease_name,
+            disease_identifier=pheval_disease_result.disease_identifier,
+            score=pheval_disease_result.score,
+            rank=rank,
+        )
+
+
 class SortOrder(Enum):
     ASCENDING = 1
     DESCENDING = 2
