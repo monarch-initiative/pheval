@@ -1,5 +1,71 @@
 # PhEval Pipeline
 
+```mermaid
+flowchart TD
+    inputs["prepare-inputs"]
+    sr1["Setting up Runner1"]
+    sr2["Setting up Runner2"]
+    sr3["Setting up Runner3"]
+    corpora["prepare-corpora"]
+    run["run"]
+    scrambling["scrambling"]
+    sf1["Scramble Factor 0.5"]
+    sf2["Scramble Factor 0.7"]
+    sf3["Scramble Factor 0.9"]
+    r1["Runner1"]
+    r2["Runner2"]
+    r3["Runner3"]
+    r105["Result
+    Runner1
+    Scramble 0.5"]
+    r107["Result
+    Runner1
+    Scramble 0.7"]
+    r109["Result
+    Runner1
+    Scramble 0.9"]
+    r205["Result
+    Runner2
+    Scramble 0.5"]
+    r207["Result
+    Runner2
+    Scramble 0.7"]
+    r209["Result
+    Runner2
+    Scramble 0.9"]
+    r305["Result
+    Runner3
+    Scramble 0.5"]
+    r307["Result
+    Runner3
+    Scramble 0.7"]
+    r309["Result
+    Runner3
+    Scramble 0.9"]
+    inputs --> sr1
+    inputs --> sr2
+    inputs --> sr3
+    sr1 --> corpora
+    sr2 --> corpora
+    sr3 --> corpora
+    corpora --> scrambling
+    scrambling --> sf1
+    scrambling --> sf2
+    scrambling --> sf3
+    sf1 --> run
+    sf2 --> run
+    sf3 --> run
+    run --> r1 --> r105
+    run --> r1 --> r107
+    run --> r1 --> r109
+    run --> r2 --> r205
+    run --> r2 --> r207
+    run --> r2 --> r209
+    run --> r3 --> r305
+    run --> r3 --> r307
+    run --> r3 --> r309
+```
+
 
 ## Jinja Template PhEval Makefile Generator Requirements
 
