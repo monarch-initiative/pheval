@@ -17,6 +17,7 @@ class InputDirConfig:
         tool (str): Name of the tool implementation (e.g. exomiser/phen2gene)
         tool_version (str): Version of the tool implementation
         phenotype_only (bool): Whether the tool is run with HPO terms only (True) or with variant data (False)
+        disease_analysis (bool): Whether to extract prioritised diseases from results.
         tool_specific_configuration_options (Any): Tool specific configurations
 
 
@@ -25,6 +26,7 @@ class InputDirConfig:
     tool: str
     tool_version: str
     phenotype_only: bool
+    disease_analysis: bool
     tool_specific_configuration_options: Any
 
 
