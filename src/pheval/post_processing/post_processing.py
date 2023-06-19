@@ -175,6 +175,12 @@ def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) ->
                     result, score_ranker.rank_scores(result.score)
                 )
             )
+        elif type(result) == PhEvalDiseaseResult:
+            ranked_result.append(
+                RankedPhEvalDiseaseResult.from_disease_result(
+                    result, score_ranker.rank_scores(result.score)
+                )
+            )
         else:
             raise ValueError("Incompatible PhEval result type.")
     return ranked_result
@@ -227,6 +233,23 @@ def _write_pheval_variant_result(
     )
 
 
+def _write_pheval_disease_result(
+    ranked_pheval_result: [RankedPhEvalDiseaseResult], output_dir: Path, tool_result_path: Path
+) -> None:
+    """Write ranked PhEval disease result to tsv."""
+    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
+    pheval_variant_output = ranked_result.loc[
+        :, ["rank", "score", "disease_name", "disease_identifier"]
+    ]
+    pheval_variant_output.to_csv(
+        output_dir.joinpath(
+            "pheval_disease_results/" + tool_result_path.stem + "-pheval_disease_result.tsv"
+        ),
+        sep="\t",
+        index=False,
+    )
+
+
 def generate_pheval_result(
     pheval_result: [PhEvalResult],
     sort_order_str: str,
@@ -239,5 +262,7 @@ def generate_pheval_result(
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
     elif all(isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result):
         _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
+    elif all(isinstance(result, RankedPhEvalDiseaseResult) for result in ranked_pheval_result):
+        _write_pheval_disease_result(ranked_pheval_result, output_dir, tool_result_path)
     else:
         raise ValueError("Results are not all of the same type.")
