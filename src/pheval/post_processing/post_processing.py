@@ -84,20 +84,20 @@ class PhEvalDiseaseResult(PhEvalResult):
 
 
 @dataclass
-class RankedPhEvalDiseaseResult(PhEvalResult):
+class RankedPhEvalDiseaseResult(PhEvalDiseaseResult):
     """PhEval disease result with corresponding rank."""
 
-    pheval_disease_result: PhEvalDiseaseResult
     rank: int
 
-    def as_dict(self):
-        """Return PhEval disease result as dictionary."""
-        return {
-            "disease_name": self.pheval_disease_result.disease_name,
-            "disease_identifier": self.pheval_disease_result.disease_identifier,
-            "score": self.pheval_disease_result.score,
-            "rank": self.rank,
-        }
+    @staticmethod
+    def from_disease_result(pheval_disease_result: PhEvalDiseaseResult, rank: int):
+        """Return RankedPhEvalDiseaseResult from a PhEvalDiseaseResult and rank"""
+        return RankedPhEvalDiseaseResult(
+            disease_name=pheval_disease_result.disease_name,
+            disease_identifier=pheval_disease_result.disease_identifier,
+            score=pheval_disease_result.score,
+            rank=rank,
+        )
 
 
 class SortOrder(Enum):
@@ -172,6 +172,12 @@ def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) ->
         elif type(result) == PhEvalVariantResult:
             ranked_result.append(
                 RankedPhEvalVariantResult.from_variant_result(
+                    result, score_ranker.rank_scores(result.score)
+                )
+            )
+        elif type(result) == PhEvalDiseaseResult:
+            ranked_result.append(
+                RankedPhEvalDiseaseResult.from_disease_result(
                     result, score_ranker.rank_scores(result.score)
                 )
             )
@@ -256,5 +262,7 @@ def generate_pheval_result(
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
     elif all(isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result):
         _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
+    elif all(isinstance(result, RankedPhEvalDiseaseResult) for result in ranked_pheval_result):
+        _write_pheval_disease_result(ranked_pheval_result, output_dir, tool_result_path)
     else:
         raise ValueError("Results are not all of the same type.")
