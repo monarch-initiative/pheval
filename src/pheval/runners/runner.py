@@ -24,6 +24,7 @@ class PhEvalRunner(ABC):
     __raw_results_dir = "raw_results/"
     __pheval_gene_results_dir = "pheval_gene_results/"
     __pheval_variant_results_dir = "pheval_variant_results/"
+    __pheval_disease_results_dir = "pheval_disease_results/"
     __tool_input_commands_dir = "tool_input_commands/"
     __run_meta_data_file = "results.yml"
 
@@ -35,6 +36,9 @@ class PhEvalRunner(ABC):
 
     def _get_phenotype_only(self):
         return self.input_dir_config.phenotype_only
+
+    def _get_disease_analysis(self):
+        return self.input_dir_config.disease_analysis
 
     @property
     def tool_input_commands_dir(self):
@@ -68,6 +72,14 @@ class PhEvalRunner(ABC):
     def pheval_variant_results_dir(self, directory_path):
         self.directory_path = Path(directory_path)
 
+    @property
+    def pheval_disease_results_dir(self):
+        return Path(self.output_dir).joinpath(self.__pheval_disease_results_dir)
+
+    @pheval_disease_results_dir.setter
+    def pheval_disease_results_dir(self, directory_path):
+        self.directory_path = Path(directory_path)
+
     def build_output_directory_structure(self):
         """build output directory structure"""
         self.tool_input_commands_dir.mkdir(exist_ok=True)
@@ -75,6 +87,8 @@ class PhEvalRunner(ABC):
         self.pheval_gene_results_dir.mkdir(exist_ok=True)
         if not self._get_phenotype_only():
             self.pheval_variant_results_dir.mkdir(exist_ok=True)
+        if self._get_disease_analysis():
+            self.pheval_disease_results_dir.mkdir(exist_ok=True)
 
     @property
     def meta_data(self):
