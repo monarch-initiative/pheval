@@ -237,7 +237,7 @@ def _write_pheval_disease_result(
     ranked_pheval_result: [RankedPhEvalDiseaseResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """Write ranked PhEval disease result to tsv."""
-    ranked_result = pd.DataFrame([x.as_dict() for x in ranked_pheval_result])
+    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
     pheval_variant_output = ranked_result.loc[
         :, ["rank", "score", "disease_name", "disease_identifier"]
     ]
