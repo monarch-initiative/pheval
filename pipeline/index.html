@@ -1216,6 +1216,69 @@
 
 
 <h1 id="pheval-pipeline">PhEval Pipeline</h1>
+<div class="mermaid">flowchart TD
+    inputs["prepare-inputs"]
+    sr1["Setting up Runner1"]
+    sr2["Setting up Runner2"]
+    sr3["Setting up Runner3"]
+    corpora["prepare-corpora"]
+    run["run"]
+    scrambling["scrambling"]
+    sf1["Scramble Factor 0.5"]
+    sf2["Scramble Factor 0.7"]
+    sf3["Scramble Factor 0.9"]
+    r1["Runner1"]
+    r2["Runner2"]
+    r3["Runner3"]
+    r105["Result
+    Runner1
+    Scramble 0.5"]
+    r107["Result
+    Runner1
+    Scramble 0.7"]
+    r109["Result
+    Runner1
+    Scramble 0.9"]
+    r205["Result
+    Runner2
+    Scramble 0.5"]
+    r207["Result
+    Runner2
+    Scramble 0.7"]
+    r209["Result
+    Runner2
+    Scramble 0.9"]
+    r305["Result
+    Runner3
+    Scramble 0.5"]
+    r307["Result
+    Runner3
+    Scramble 0.7"]
+    r309["Result
+    Runner3
+    Scramble 0.9"]
+    inputs --&gt; sr1
+    inputs --&gt; sr2
+    inputs --&gt; sr3
+    sr1 --&gt; corpora
+    sr2 --&gt; corpora
+    sr3 --&gt; corpora
+    corpora --&gt; scrambling
+    scrambling --&gt; sf1
+    scrambling --&gt; sf2
+    scrambling --&gt; sf3
+    sf1 --&gt; run
+    sf2 --&gt; run
+    sf3 --&gt; run
+    run --&gt; r1 --&gt; r105
+    run --&gt; r1 --&gt; r107
+    run --&gt; r1 --&gt; r109
+    run --&gt; r2 --&gt; r205
+    run --&gt; r2 --&gt; r207
+    run --&gt; r2 --&gt; r209
+    run --&gt; r3 --&gt; r305
+    run --&gt; r3 --&gt; r307
+    run --&gt; r3 --&gt; r309</div>
 <h2 id="jinja-template-pheval-makefile-generator-requirements">Jinja Template PhEval Makefile Generator Requirements</h2>
 <p>To generate a PhEval Makefile we use the <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> template engine.</p>
 <h3 id="installing-jinja-template">Installing Jinja Template</h3>
