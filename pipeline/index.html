@@ -292,6 +292,40 @@
     Jinja Template PhEval Makefile Generator Requirements
   </a>
   
+    <nav class="md-nav" aria-label="Jinja Template PhEval Makefile Generator Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-jinja-template" class="md-nav__link">
+    Installing Jinja Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-makefile-template-j2-file" class="md-nav__link">
+    PhEval Makefile Template (.j2 file)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-custommakefile" class="md-nav__link">
+    PhEval custom.Makefile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-generatemakefilesh" class="md-nav__link">
+    PhEval generatemakefile.sh
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1022,6 +1056,40 @@
     Jinja Template PhEval Makefile Generator Requirements
   </a>
   
+    <nav class="md-nav" aria-label="Jinja Template PhEval Makefile Generator Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-jinja-template" class="md-nav__link">
+    Installing Jinja Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-makefile-template-j2-file" class="md-nav__link">
+    PhEval Makefile Template (.j2 file)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-custommakefile" class="md-nav__link">
+    PhEval custom.Makefile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pheval-generatemakefilesh" class="md-nav__link">
+    PhEval generatemakefile.sh
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1149,13 +1217,35 @@
 
 <h1 id="pheval-pipeline">PhEval Pipeline</h1>
 <h2 id="jinja-template-pheval-makefile-generator-requirements">Jinja Template PhEval Makefile Generator Requirements</h2>
-<p>To generate a PhEval Makefile we use the Jinja template engine.</p>
+<p>To generate a PhEval Makefile we use the <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> template engine.</p>
+<h3 id="installing-jinja-template">Installing Jinja Template</h3>
+<ul>
+<li>
+<p>Linux (Ubuntu): <code>sudo snap install j2</code></p>
+</li>
+<li>
+<p>Mac OS:</p>
+</li>
+</ul>
+<hr />
+<h2 id="pheval-makefile-template-j2-file">PhEval Makefile Template (.j2 file)</h2>
+<p>📦resources<br />
+ ┣ 📜<strong>Makefile.j2</strong>  </p>
+<p><em>custom.Makefile</em> is the template that will be generated on the fly based on the <em>pheval-config.yaml</em>. Each of these configurations is filled using a syntax like this: <code>{{ config.tool }}</code>. The value between the curly brackets is replaced by the corresponding configuration in the configuration file.</p>
+<hr />
+<h2 id="pheval-custommakefile">PhEval custom.Makefile</h2>
+<p>📦resources<br />
+ ┣ 📜<strong>custom.Makefile</strong>  </p>
+<hr />
+<h2 id="pheval-generatemakefilesh">PhEval generatemakefile.sh</h2>
+<p>📦resources<br />
+ ┣ <strong>📜generatemakefile.sh</strong>  </p>
+<p><em>generatemakefile.sh</em> is only a shortcut for Makefile rendering using the configuration file e.g.</p>
+<div class="highlight"><pre><span></span><code>bash ./resources/generatemakefile.sh
+</code></pre></div>
 <h2 id="pheval-configuration-file">PhEval Configuration File</h2>
 <p>In resources folder, there is a file named <em>pheval-config.yaml</em>, this file is responsible for storing the PhEval Makefile generation.</p>
 <p>📦resources<br />
- ┣ 📜Makefile.j2<br />
- ┣ 📜custom.Makefile<br />
- ┣ 📜generatemakefile.sh<br />
  ┗ <strong>📜pheval-config.yaml</strong>  </p>
 <h3 id="phenotype-section">Phenotype Section</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">phenotype</span><span class="p">:</span>
@@ -1170,10 +1260,10 @@
 <span class="w">  </span><span class="nt">testdata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testdata</span>
 <span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configurations</span>
 <span class="w">  </span><span class="nt">h2jar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar</span>
-<span class="w">  </span><span class="nt">phen2gene</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/vinicius/Documents/softwares/Phen2Gene</span>
-<span class="w">  </span><span class="nt">exomiser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/data/exomiser-data/</span>
-<span class="w">  </span><span class="nt">phenotype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/data/exomiser-data/2302_phenotype</span>
-<span class="w">  </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/vinicius/workspace/pheval</span>
+<span class="w">  </span><span class="nt">phen2gene</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pathtoPhen2Gene/Phen2Gene</span>
+<span class="w">  </span><span class="nt">exomiser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pathto/exomiser</span>
+<span class="w">  </span><span class="nt">phenotype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pathto/exomiser-data/2302_phenotype</span>
+<span class="w">  </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pathto/workspace</span>
 </code></pre></div>
 <hr />
 <h3 id="configs-section">Configs Section</h3>
