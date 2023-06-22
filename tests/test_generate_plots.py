@@ -37,18 +37,20 @@ class TestPlotGenerator(unittest.TestCase):
                     reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
                 ),
             ),
-            disease_prioritisation=TrackPrioritisation(results_dir=Path("/path/to/tool/corpus_results"),
-                                                       ranks={},
-                                                       rank_stats=RankStats(
-                                                           top=1,
-                                                           top3=2,
-                                                           top5=3,
-                                                           top10=4,
-                                                           found=5,
-                                                           total=5,
-                                                           reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
-                                                       ),
-                                                       ))
+            disease_prioritisation=TrackPrioritisation(
+                results_dir=Path("/path/to/tool/corpus_results"),
+                ranks={},
+                rank_stats=RankStats(
+                    top=1,
+                    top3=2,
+                    top5=3,
+                    top10=4,
+                    found=5,
+                    total=5,
+                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
+                ),
+            ),
+        )
 
     def test__retrieve_prioritisation_data_gene(self):
         self.assertEqual(
@@ -103,6 +105,7 @@ class TestPlotGenerator(unittest.TestCase):
                 ),
             ),
         )
+
     def test__generate_stacked_bar_plot_data(self):
         self.gene_plot_generator._generate_stacked_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
