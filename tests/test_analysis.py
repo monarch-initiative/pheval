@@ -15,12 +15,7 @@ from pheval.analyse.analysis import (
     parse_pheval_variant_result,
 )
 from pheval.analyse.rank_stats import RankStats
-from pheval.post_processing.post_processing import (
-    PhEvalGeneResult,
-    PhEvalVariantResult,
-    RankedPhEvalGeneResult,
-    RankedPhEvalVariantResult,
-)
+from pheval.post_processing.post_processing import RankedPhEvalGeneResult, RankedPhEvalVariantResult
 from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene
 
 
@@ -251,27 +246,27 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             results_dir=Path("/path/to/results_dir"),
             standardised_gene_results=[
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
-                    ),
+                    gene_symbol="ZNF804B",
+                    gene_identifier="ENSG00000182348",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
-                    ),
+                    gene_symbol="SMCO2",
+                    gene_identifier="ENSG00000165935",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
-                    ),
+                    gene_symbol="SPNS1",
+                    gene_identifier="ENSG00000169682",
+                    score=0.3765,
                     rank=4,
                 ),
             ],
@@ -287,27 +282,27 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             results_dir=Path("/path/to/results_dir"),
             standardised_gene_results=[
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
-                    ),
+                    gene_symbol="SPNS1",
+                    gene_identifier="ENSG00000169682",
+                    score=0.3765,
                     rank=1,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
-                    ),
+                    gene_symbol="ZNF804B",
+                    gene_identifier="ENSG00000182348",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
-                    ),
+                    gene_symbol="SMCO2",
+                    gene_identifier="ENSG00000165935",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=4,
                 ),
             ],
@@ -326,9 +321,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             self.assess_gene_prioritisation._record_gene_prioritisation_match(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 rank_stats=self.gene_rank_stats,
@@ -345,9 +340,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
-                    PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 rank_stats=self.gene_rank_stats,
@@ -366,9 +361,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
-                    PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 rank_stats=self.gene_rank_stats,
@@ -389,9 +384,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             assess_with_threshold._assess_gene_with_threshold(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
-                    PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 rank_stats=self.gene_rank_stats,
@@ -410,9 +405,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             assess_with_threshold._assess_gene_with_threshold(
                 gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
-                    PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 rank_stats=self.gene_rank_stats,
@@ -559,21 +554,30 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
     def setUp(self) -> None:
         variant_results = [
             RankedPhEvalVariantResult(
-                PhEvalVariantResult(
-                    chromosome="3", start=126730873, end=126730873, ref="G", alt="A", score=0.0484
-                ),
+                chromosome="3",
+                start=126730873,
+                end=126730873,
+                ref="G",
+                alt="A",
+                score=0.0484,
                 rank=1,
             ),
             RankedPhEvalVariantResult(
-                PhEvalVariantResult(
-                    chromosome="3", start=126730873, end=126730873, ref="G", alt="A", score=0.0484
-                ),
+                chromosome="3",
+                start=126730873,
+                end=126730873,
+                ref="G",
+                alt="A",
+                score=0.0484,
                 rank=1,
             ),
             RankedPhEvalVariantResult(
-                PhEvalVariantResult(
-                    chromosome="3", start=126741108, end=126741108, ref="G", alt="A", score=0.0484
-                ),
+                chromosome="3",
+                start=126741108,
+                end=126741108,
+                ref="G",
+                alt="A",
+                score=0.0484,
                 rank=1,
             ),
         ]
@@ -606,14 +610,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.assess_variant_prioritisation._record_variant_prioritisation_match(
                 result_entry=RankedPhEvalVariantResult(
-                    PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
@@ -631,14 +633,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold_ascending_order(
                 result_entry=RankedPhEvalVariantResult(
-                    PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
@@ -656,14 +656,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold_ascending_order(
                 result_entry=RankedPhEvalVariantResult(
-                    PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
@@ -685,14 +683,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold(
                 result_entry=RankedPhEvalVariantResult(
-                    PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
@@ -710,14 +706,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             assess_with_threshold._assess_variant_with_threshold(
                 result_entry=RankedPhEvalVariantResult(
-                    PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 rank_stats=self.variant_rank_stats,
@@ -898,27 +892,27 @@ class TestParsePhEvalGeneResult(unittest.TestCase):
             ),
             [
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PLXNA1", gene_identifier="ENSG00000114554", score=0.8764
-                    ),
+                    gene_symbol="PLXNA1",
+                    gene_identifier="ENSG00000114554",
+                    score=0.8764,
                     rank=1,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="ZNF804B", gene_identifier="ENSG00000182348", score=0.5777
-                    ),
+                    gene_symbol="ZNF804B",
+                    gene_identifier="ENSG00000182348",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SMCO2", gene_identifier="ENSG00000165935", score=0.5777
-                    ),
+                    gene_symbol="SMCO2",
+                    gene_identifier="ENSG00000165935",
+                    score=0.5777,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="SPNS1", gene_identifier="ENSG00000169682", score=0.3765
-                    ),
+                    gene_symbol="SPNS1",
+                    gene_identifier="ENSG00000169682",
+                    score=0.3765,
                     rank=4,
                 ),
             ],
@@ -937,7 +931,6 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
                             "end": 126730873,
                             "ref": "G",
                             "alt": "A",
-                            "gene": "PLXNA1",
                             "score": 0.0484,
                             "rank": 1,
                         },
@@ -947,7 +940,6 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
                             "end": 126730873,
                             "ref": "G",
                             "alt": "A",
-                            "gene": "PLXNA1",
                             "score": 0.0484,
                             "rank": 1,
                         },
@@ -957,7 +949,6 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
                             "end": 126741108,
                             "ref": "G",
                             "alt": "A",
-                            "gene": "PLXNA1",
                             "score": 0.0484,
                             "rank": 1,
                         },
@@ -966,36 +957,30 @@ class TestParsePhEvalVariantResult(unittest.TestCase):
             ),
             [
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="3",
-                        start=126730873,
-                        end=126730873,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126730873,
+                    end=126730873,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="3",
-                        start=126730873,
-                        end=126730873,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126730873,
+                    end=126730873,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="3",
-                        start=126741108,
-                        end=126741108,
-                        ref="G",
-                        alt="A",
-                        score=0.0484,
-                    ),
+                    chromosome="3",
+                    start=126741108,
+                    end=126741108,
+                    ref="G",
+                    alt="A",
+                    score=0.0484,
                     rank=1,
                 ),
             ],

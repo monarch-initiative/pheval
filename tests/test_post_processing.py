@@ -1,8 +1,10 @@
 import unittest
 
 from pheval.post_processing.post_processing import (
+    PhEvalDiseaseResult,
     PhEvalGeneResult,
     PhEvalVariantResult,
+    RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
     ResultSorter,
@@ -37,50 +39,81 @@ pheval_variant_result = [
     ),
     PhEvalVariantResult(chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578),
 ]
+pheval_disease_result = [
+    PhEvalDiseaseResult(
+        disease_name="Glutaric acidemia I", disease_identifier="OMIM:231670", score=4.284
+    ),
+    PhEvalDiseaseResult(
+        disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+        disease_identifier="OMIM:618646",
+        score=-1.378,
+    ),
+    PhEvalDiseaseResult(
+        disease_name=" Brain small vessel disease 2", disease_identifier="OMIM:614483", score=-1.871
+    ),
+]
 
 
 class TestRankedPhEvalGeneResult(unittest.TestCase):
     def setUp(self) -> None:
-        self.pheval_gene_result = RankedPhEvalGeneResult(
-            pheval_gene_result=PhEvalGeneResult(
-                gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
-            ),
-            rank=1,
+        self.pheval_gene_result = PhEvalGeneResult(
+            gene_symbol="A4GNT",
+            gene_identifier="ENSG00000118017",
+            score=0.6529,
         )
 
-    def test_as_dict(self):
+    def test_from_gene_result(self):
         self.assertEqual(
-            self.pheval_gene_result.as_dict(),
-            {
-                "gene_symbol": "A4GNT",
-                "gene_identifier": "ENSG00000118017",
-                "score": 0.6529,
-                "rank": 1,
-            },
+            RankedPhEvalGeneResult.from_gene_result(self.pheval_gene_result, 1),
+            RankedPhEvalGeneResult(
+                gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529, rank=1
+            ),
         )
 
 
 class TestRankedPhEvalVariantResult(unittest.TestCase):
     def setUp(self) -> None:
-        self.pheval_variant_result = RankedPhEvalVariantResult(
-            pheval_variant_result=PhEvalVariantResult(
-                chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
-            ),
-            rank=3,
+        self.pheval_variant_result = PhEvalVariantResult(
+            chromosome="12",
+            start=12754332,
+            end=12754333,
+            ref="T",
+            alt="G",
+            score=0.9999,
         )
 
-    def test_as_dict(self):
+    def test_from_variant_result(self):
         self.assertEqual(
-            self.pheval_variant_result.as_dict(),
-            {
-                "chromosome": "12",
-                "start": 12754332,
-                "end": 12754333,
-                "ref": "T",
-                "alt": "G",
-                "score": 0.9999,
-                "rank": 3,
-            },
+            RankedPhEvalVariantResult.from_variant_result(self.pheval_variant_result, 3),
+            RankedPhEvalVariantResult(
+                chromosome="12",
+                start=12754332,
+                end=12754333,
+                ref="T",
+                alt="G",
+                score=0.9999,
+                rank=3,
+            ),
+        )
+
+
+class TestRankedPhEvalDiseaseResult(unittest.TestCase):
+    def setUp(self) -> None:
+        self.pheval_disease_result = PhEvalDiseaseResult(
+            disease_name="Bardet-Biedl Syndrome",
+            disease_identifier="OMIM:209900",
+            score=0.9999,
+        )
+
+    def test_from_disease_result(self):
+        self.assertEqual(
+            RankedPhEvalDiseaseResult.from_disease_result(self.pheval_disease_result, 1),
+            RankedPhEvalDiseaseResult(
+                disease_name="Bardet-Biedl Syndrome",
+                disease_identifier="OMIM:209900",
+                score=0.9999,
+                rank=1,
+            ),
         )
 
 
@@ -249,33 +282,34 @@ class TestRankPhEvalResults(unittest.TestCase):
                 chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
             ),
         ]
+        cls.sorted_disease_result = pheval_disease_result
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
             _rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING),
             [
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
-                    ),
+                    gene_symbol="MAP3K14",
+                    gene_identifier="ENSG00000006062",
+                    score=0.9234,
                     rank=1,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
-                    ),
+                    gene_symbol="A4GNT",
+                    gene_identifier="ENSG00000118017",
+                    score=0.6529,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
-                    ),
+                    gene_symbol="OR14J1",
+                    gene_identifier="ENSG00000204695",
+                    score=0.6529,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
-                    ),
+                    gene_symbol="PAGE1",
+                    gene_identifier="ENSG00000068985",
+                    score=0.5235,
                     rank=4,
                 ),
             ],
@@ -286,38 +320,65 @@ class TestRankPhEvalResults(unittest.TestCase):
             _rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING),
             [
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
-                    ),
+                    chromosome="X",
+                    start=93473023,
+                    end=93473024,
+                    ref="A",
+                    alt="G",
+                    score=0.1245,
                     rank=1,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
-                    ),
+                    chromosome="8",
+                    start=532356,
+                    end=532357,
+                    ref="A",
+                    alt="C",
+                    score=0.4578,
                     rank=2,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="5",
-                        start=23457444233,
-                        end=23457444234,
-                        ref="A",
-                        alt="C",
-                        score=0.9348,
-                    ),
+                    chromosome="5",
+                    start=23457444233,
+                    end=23457444234,
+                    ref="A",
+                    alt="C",
+                    score=0.9348,
                     rank=3,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="12",
-                        start=12754332,
-                        end=12754333,
-                        ref="T",
-                        alt="G",
-                        score=0.9999,
-                    ),
+                    chromosome="12",
+                    start=12754332,
+                    end=12754333,
+                    ref="T",
+                    alt="G",
+                    score=0.9999,
                     rank=4,
+                ),
+            ],
+        )
+
+    def test_rank_pheval_results_disease(self):
+        self.assertEqual(
+            _rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING),
+            [
+                RankedPhEvalDiseaseResult(
+                    disease_name="Glutaric acidemia I",
+                    disease_identifier="OMIM:231670",
+                    score=4.284,
+                    rank=1,
+                ),
+                RankedPhEvalDiseaseResult(
+                    disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                    disease_identifier="OMIM:618646",
+                    score=-1.378,
+                    rank=2,
+                ),
+                RankedPhEvalDiseaseResult(
+                    disease_name=" Brain small vessel disease 2",
+                    disease_identifier="OMIM:614483",
+                    score=-1.871,
+                    rank=3,
                 ),
             ],
         )
@@ -329,27 +390,27 @@ class TestCreatePhEvalResult(unittest.TestCase):
             _create_pheval_result(pheval_gene_result, "descending"),
             [
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
-                    ),
+                    gene_symbol="MAP3K14",
+                    gene_identifier="ENSG00000006062",
+                    score=0.9234,
                     rank=1,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
-                    ),
+                    gene_symbol="A4GNT",
+                    gene_identifier="ENSG00000118017",
+                    score=0.6529,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
-                    ),
+                    gene_symbol="OR14J1",
+                    gene_identifier="ENSG00000204695",
+                    score=0.6529,
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    pheval_gene_result=PhEvalGeneResult(
-                        gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
-                    ),
+                    gene_symbol="PAGE1",
+                    gene_identifier="ENSG00000068985",
+                    score=0.5235,
                     rank=4,
                 ),
             ],
@@ -360,38 +421,65 @@ class TestCreatePhEvalResult(unittest.TestCase):
             _create_pheval_result(pheval_variant_result, "ascending"),
             [
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
-                    ),
+                    chromosome="X",
+                    start=93473023,
+                    end=93473024,
+                    ref="A",
+                    alt="G",
+                    score=0.1245,
                     rank=1,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
-                    ),
+                    chromosome="8",
+                    start=532356,
+                    end=532357,
+                    ref="A",
+                    alt="C",
+                    score=0.4578,
                     rank=2,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="5",
-                        start=23457444233,
-                        end=23457444234,
-                        ref="A",
-                        alt="C",
-                        score=0.9348,
-                    ),
+                    chromosome="5",
+                    start=23457444233,
+                    end=23457444234,
+                    ref="A",
+                    alt="C",
+                    score=0.9348,
                     rank=3,
                 ),
                 RankedPhEvalVariantResult(
-                    pheval_variant_result=PhEvalVariantResult(
-                        chromosome="12",
-                        start=12754332,
-                        end=12754333,
-                        ref="T",
-                        alt="G",
-                        score=0.9999,
-                    ),
+                    chromosome="12",
+                    start=12754332,
+                    end=12754333,
+                    ref="T",
+                    alt="G",
+                    score=0.9999,
                     rank=4,
+                ),
+            ],
+        )
+
+    def test_create_pheval_result_disease(self):
+        self.assertEqual(
+            _create_pheval_result(pheval_disease_result, "descending"),
+            [
+                RankedPhEvalDiseaseResult(
+                    disease_name="Glutaric acidemia I",
+                    disease_identifier="OMIM:231670",
+                    score=4.284,
+                    rank=1,
+                ),
+                RankedPhEvalDiseaseResult(
+                    disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                    disease_identifier="OMIM:618646",
+                    score=-1.378,
+                    rank=2,
+                ),
+                RankedPhEvalDiseaseResult(
+                    disease_name=" Brain small vessel disease 2",
+                    disease_identifier="OMIM:614483",
+                    score=-1.871,
+                    rank=3,
                 ),
             ],
         )
