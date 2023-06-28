@@ -18,30 +18,30 @@ directories:
 #when we run the make preparation (not default) we should create symlink if they don't exists in default
 
 corpora:
-  - id: lirical
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
-  - id: phen2gene
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
+  # - id: lirical
+  #   scrambled:
+  #     - factor: 0.5
+  #     - factor: 0.7
+  #   custom_variants:
+  #     - id: no_phenotype
+  # - id: phen2gene
+  #   scrambled:
+  #     - factor: 0.5
+  #     - factor: 0.7
+  #   custom_variants:
+  #     - id: no_phenotype
   - id: small_test
     scrambled:
       - factor: 0.5
       - factor: 0.7
     custom_variants:
       - id: no_phenotype
-  - id: structural_variants
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
+  # - id: structural_variants
+  #   scrambled:
+  #     - factor: 0.5
+  #     - factor: 0.7
+  #   custom_variants:
+  #     - id: no_phenotype
 
 
 configs:
@@ -68,9 +68,9 @@ runs:
     corpus: small_test
     corpusvariant: scrambled-0.5
     version: 13.2.0
-  - tool: exomiser
-    configuration: default
-    corpus: lirical
-    corpusvariant: scrambled-0.5
-    version: 13.2.0
+  # - tool: exomiser
+  #   configuration: default
+  #   corpus: lirical
+  #   corpusvariant: scrambled-0.5
+  #   version: 13.2.0
 
