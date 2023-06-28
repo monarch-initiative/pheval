@@ -43,6 +43,8 @@
     
       <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
     
+      <link rel="stylesheet" href="../mermaid.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1239,7 +1241,21 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalRunner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhEvalRunner Class&quot;&quot;&quot;</span>
 
@@ -1255,6 +1271,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
     <span class="n">__raw_results_dir</span> <span class="o">=</span> <span class="s2">&quot;raw_results/&quot;</span>
     <span class="n">__pheval_gene_results_dir</span> <span class="o">=</span> <span class="s2">&quot;pheval_gene_results/&quot;</span>
     <span class="n">__pheval_variant_results_dir</span> <span class="o">=</span> <span class="s2">&quot;pheval_variant_results/&quot;</span>
+    <span class="n">__pheval_disease_results_dir</span> <span class="o">=</span> <span class="s2">&quot;pheval_disease_results/&quot;</span>
     <span class="n">__tool_input_commands_dir</span> <span class="o">=</span> <span class="s2">&quot;tool_input_commands/&quot;</span>
     <span class="n">__run_meta_data_file</span> <span class="o">=</span> <span class="s2">&quot;results.yml&quot;</span>
 
@@ -1266,6 +1283,9 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
     <span class="k">def</span> <span class="nf">_get_phenotype_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">phenotype_only</span>
+
+    <span class="k">def</span> <span class="nf">_get_disease_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">disease_analysis</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tool_input_commands_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1299,6 +1319,14 @@ The plugin goal is to be flexible through custom runner implementations. This pl
     <span class="k">def</span> <span class="nf">pheval_variant_results_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">directory_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pheval_disease_results_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pheval_disease_results_dir</span><span class="p">)</span>
+
+    <span class="nd">@pheval_disease_results_dir</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">pheval_disease_results_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directory_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">build_output_directory_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;build output directory structure&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tool_input_commands_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1306,6 +1334,8 @@ The plugin goal is to be flexible through custom runner implementations. This pl
         <span class="bp">self</span><span class="o">.</span><span class="n">pheval_gene_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_phenotype_only</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pheval_variant_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_disease_analysis</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pheval_disease_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
