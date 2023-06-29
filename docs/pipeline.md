@@ -1,5 +1,57 @@
 # PhEval Pipeline
 
+
+
+## Step by Step to PhEval Run Pipeline (with PhEvalRunner)
+
+### 1. Download [Exomiser Software](https://github.com/exomiser/Exomiser/releases)
+```bash
+wget https://github.com/exomiser/Exomiser/releases/download/13.2.0/exomiser-cli-13.2.0-distribution.zip
+```
+### 2. Download Phenotype Data
+```bash
+wget https://data.monarchinitiative.org/exomiser/latest/2302_hg19.zip
+wget https://data.monarchinitiative.org/exomiser/latest/2302_hg38.zip
+wget https://data.monarchinitiative.org/exomiser/latest/2302_phenotype.zip
+```
+
+### 3. Unzip data
+
+  ```bash
+  # unzip the distribution and data files - this will create a directory called 'exomiser-cli-13.1.0' in the current working directory
+  unzip exomiser-cli-13.2.0-distribution.zip
+  unzip 2302_*.zip -d exomiser-cli-13.2.0/data
+  ```
+
+### 4. Clone [PhEval](https://github.com/monarch-initiative/pheval)
+  ```bash
+  git clone https://github.com/monarch-initiative/pheval.git
+  ```
+
+### 5. Installing PhEval dependencies
+   Enter in the cloned folder and enter the following commands:
+
+```bash
+poetry shell
+poetry install
+```
+
+### 6. Generate custom Makefile
+You must have Jinja2 installed, if you don't follow the steps [here](#installing-jinja-template)
+
+In resources folder are the following files responsible for makefile generation:
+
+📦resources  
+ ┣ 📜Makefile.j2  
+ ┣ 📜custom.Makefile  
+ ┣ 📜generatemakefile.sh  
+ ┗ 📜pheval-config.yaml  
+
+You must edit the `pheval-config.yaml` file setting the directory where you extracted exomiser and phenotype data. An example could be found [here](#pheval-configuration-file).
+After setting the pheval-config.yaml file
+
+---
+
 ```mermaid
 flowchart TD
     inputs["prepare-inputs"]
@@ -179,6 +231,52 @@ runs:
     version: 1.2.3
 ```
 
+## Exomiser Specific Configuration
+
+### Exomiser Runner requires the following configuration
+
+Configuring the application.properties:
+
+The input directory `config.yaml` should be formatted like the example below and must be placed in `exomiser: /pathto/exomiser` declared in `pheval-config.yaml` file.
+
+```yaml
+tool: exomiser
+tool_version: 13.2.0
+phenotype_only: False # NOTE phenotype-only preset analysis should only be run with Exomiser versions >= 13.2.0
+tool_specific_configuration_options:
+  environment: local
+  exomiser_software_directory: exomiser-cli-13.2.0
+  analysis_configuration_file: preset-exome-analysis.yml
+  max_jobs: 0
+  application_properties:
+    remm_version:
+    cadd_version:
+    hg19_data_version: 2302
+    hg19_local_frequency_path:
+    hg38_data_version: 2302
+    phenotype_data_version: 2302
+    cache_type:
+    cache_caffeine_spec:
+  post_process:
+    score_name: combinedScore
+    sort_order: DESCENDING
+```
+
+## Phen2Gen Specific Configuration
+
+
+The input directory `config.yaml` should be formatted like the example below and must be placed in `phen2gene: /pathtoPhen2Gene/Phen2Gene` declared in `pheval-config.yaml` file.
+
+```yaml
+tool: phen2gene
+tool_version: 1.2.3
+phenotype_only: True
+tool_specific_configuration_options:
+  environment: local
+  phen2gene_python_executable: phen2gene.py
+  post_process:
+    score_order: descending
+```
 
 ## Makefile Goals
 
