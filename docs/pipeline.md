@@ -2,7 +2,7 @@
 
 
 
-## Step by Step to PhEval Run Pipeline (with PhEvalRunner)
+## Step by Step to PhEval Run Pipeline (with ExomiserRunner)
 
 ### 1. Download [Exomiser Software](https://github.com/exomiser/Exomiser/releases)
 ```bash
