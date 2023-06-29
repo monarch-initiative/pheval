@@ -290,6 +290,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#step-by-step-to-pheval-run-pipeline-with-phevalrunner" class="md-nav__link">
+    Step by Step to PhEval Run Pipeline (with PhEvalRunner)
+  </a>
+  
+    <nav class="md-nav" aria-label="Step by Step to PhEval Run Pipeline (with PhEvalRunner)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-exomiser-software" class="md-nav__link">
+    1. Download Exomiser Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-phenotype-data" class="md-nav__link">
+    2. Download Phenotype Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unzip-data" class="md-nav__link">
+    3. Unzip data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-clone-pheval" class="md-nav__link">
+    4. Clone PhEval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-installing-pheval-dependencies" class="md-nav__link">
+    5. Installing PhEval dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-generate-custom-makefile" class="md-nav__link">
+    6. Generate custom Makefile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#data-flow" class="md-nav__link">
     Data Flow
   </a>
@@ -382,6 +437,33 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exomiser-specific-configuration" class="md-nav__link">
+    Exomiser Specific Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Exomiser Specific Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exomiser-runner-requires-the-following-configuration" class="md-nav__link">
+    Exomiser Runner requires the following configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phen2gen-specific-configuration" class="md-nav__link">
+    Phen2Gen Specific Configuration
+  </a>
   
 </li>
       
@@ -1061,6 +1143,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#step-by-step-to-pheval-run-pipeline-with-phevalrunner" class="md-nav__link">
+    Step by Step to PhEval Run Pipeline (with PhEvalRunner)
+  </a>
+  
+    <nav class="md-nav" aria-label="Step by Step to PhEval Run Pipeline (with PhEvalRunner)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-exomiser-software" class="md-nav__link">
+    1. Download Exomiser Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-phenotype-data" class="md-nav__link">
+    2. Download Phenotype Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unzip-data" class="md-nav__link">
+    3. Unzip data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-clone-pheval" class="md-nav__link">
+    4. Clone PhEval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-installing-pheval-dependencies" class="md-nav__link">
+    5. Installing PhEval dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-generate-custom-makefile" class="md-nav__link">
+    6. Generate custom Makefile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#data-flow" class="md-nav__link">
     Data Flow
   </a>
@@ -1157,6 +1294,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exomiser-specific-configuration" class="md-nav__link">
+    Exomiser Specific Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Exomiser Specific Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exomiser-runner-requires-the-following-configuration" class="md-nav__link">
+    Exomiser Runner requires the following configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phen2gen-specific-configuration" class="md-nav__link">
+    Phen2Gen Specific Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#makefile-goals" class="md-nav__link">
     Makefile Goals
   </a>
@@ -1232,6 +1396,39 @@
 
 
 <h1 id="pheval-pipeline">PhEval Pipeline</h1>
+<h2 id="step-by-step-to-pheval-run-pipeline-with-phevalrunner">Step by Step to PhEval Run Pipeline (with PhEvalRunner)</h2>
+<h3 id="1-download-exomiser-software">1. Download <a href="https://github.com/exomiser/Exomiser/releases">Exomiser Software</a></h3>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://github.com/exomiser/Exomiser/releases/download/13.2.0/exomiser-cli-13.2.0-distribution.zip
+</code></pre></div>
+<h3 id="2-download-phenotype-data">2. Download Phenotype Data</h3>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_hg19.zip
+wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_hg38.zip
+wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_phenotype.zip
+</code></pre></div>
+<h3 id="3-unzip-data">3. Unzip data</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># unzip the distribution and data files - this will create a directory called &#39;exomiser-cli-13.1.0&#39; in the current working directory</span>
+unzip<span class="w"> </span>exomiser-cli-13.2.0-distribution.zip
+unzip<span class="w"> </span>2302_*.zip<span class="w"> </span>-d<span class="w"> </span>exomiser-cli-13.2.0/data
+</code></pre></div>
+<h3 id="4-clone-pheval">4. Clone <a href="https://github.com/monarch-initiative/pheval">PhEval</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/monarch-initiative/pheval.git
+</code></pre></div>
+<h3 id="5-installing-pheval-dependencies">5. Installing PhEval dependencies</h3>
+<p>Enter in the cloned folder and enter the following commands:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>shell
+poetry<span class="w"> </span>install
+</code></pre></div>
+<h3 id="6-generate-custom-makefile">6. Generate custom Makefile</h3>
+<p>You must have Jinja2 installed, if you don't follow the steps <a href="#installing-jinja-template">here</a></p>
+<p>In resources folder are the following files responsible for makefile generation:</p>
+<p>📦resources<br />
+ ┣ 📜Makefile.j2<br />
+ ┣ 📜custom.Makefile<br />
+ ┣ 📜generatemakefile.sh<br />
+ ┗ 📜pheval-config.yaml  </p>
+<p>You must edit the <code>pheval-config.yaml</code> file setting the directory where you extracted exomiser and phenotype data. An example could be found <a href="#pheval-configuration-file">here</a>.
+After setting the pheval-config.yaml file</p>
+<hr />
 <div class="mermaid">flowchart TD
     inputs["prepare-inputs"]
     sr1["Setting up Runners"]
@@ -1363,6 +1560,42 @@ PhEval pipeline invokes the <em>prepare-inputs</em> goal, and in the preceding e
 <span class="w">    </span><span class="nt">corpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
 <span class="w">    </span><span class="nt">corpusvariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scrambled-0.2</span>
 <span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3</span>
+</code></pre></div>
+<h2 id="exomiser-specific-configuration">Exomiser Specific Configuration</h2>
+<h3 id="exomiser-runner-requires-the-following-configuration">Exomiser Runner requires the following configuration</h3>
+<p>Configuring the application.properties:</p>
+<p>The input directory <code>config.yaml</code> should be formatted like the example below and must be placed in <code>exomiser: /pathto/exomiser</code> declared in <code>pheval-config.yaml</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="nt">tool_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
+<span class="nt">phenotype_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1"># NOTE phenotype-only preset analysis should only be run with Exomiser versions &gt;= 13.2.0</span>
+<span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">exomiser_software_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser-cli-13.2.0</span>
+<span class="w">  </span><span class="nt">analysis_configuration_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preset-exome-analysis.yml</span>
+<span class="w">  </span><span class="nt">max_jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">application_properties</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">remm_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cadd_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hg19_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">hg19_local_frequency_path</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hg38_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">phenotype_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">cache_type</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cache_caffeine_spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">post_process</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">score_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">combinedScore</span>
+<span class="w">    </span><span class="nt">sort_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DESCENDING</span>
+</code></pre></div>
+<h2 id="phen2gen-specific-configuration">Phen2Gen Specific Configuration</h2>
+<p>The input directory <code>config.yaml</code> should be formatted like the example below and must be placed in <code>phen2gene: /pathtoPhen2Gene/Phen2Gene</code> declared in <code>pheval-config.yaml</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
+<span class="nt">tool_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3</span>
+<span class="nt">phenotype_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">phen2gene_python_executable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene.py</span>
+<span class="w">  </span><span class="nt">post_process</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">score_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descending</span>
 </code></pre></div>
 <h2 id="makefile-goals">Makefile Goals</h2>
 <h3 id="make-pheval">make pheval</h3>
