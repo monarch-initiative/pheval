@@ -33,6 +33,7 @@ configurations/phen2gene-1.2.3-default/config.yaml:
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
 	ln -s /home/vinicius/Documents/softwares/Phen2Gene/* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s /home/data/phenotype/* $(ROOT_DIR)/$(shell dirname $@)
 
 
 
@@ -41,11 +42,12 @@ prepare-inputs: configurations/exomiser-13.2.0-default/config.yaml
 configurations/exomiser-13.2.0-default/config.yaml:
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0/* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s /home/data/phenotype/* $(ROOT_DIR)/$(shell dirname $@)
 
 configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/default/ || mkdir -p configurations/exomiser-13.2.0/default/
-	test -d configurations/exomiser-13.2.0/default/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/default/2302_phenotype/
+	test -d configurations/exomiser-13.2.0/default/2302_phenotype/ || cp -rf /home/data/phenotype configurations/exomiser-13.2.0/default/2302_phenotype/
 	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(ROOT_DIR)/configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype  -script $<
 
 semsim-ingest: configurations/exomiser-13.2.0/default/2302_phenotype/2302_phenotype.h2.db
@@ -56,11 +58,12 @@ prepare-inputs: configurations/exomiser-13.2.0-semsim1/config.yaml
 configurations/exomiser-13.2.0-semsim1/config.yaml:
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
-	ln -s /home/data/exomiser-data//* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0/* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s /home/data/phenotype/* $(ROOT_DIR)/$(shell dirname $@)
 
 configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db: $(TMP_DATA)/semsim1.sql
 	test -d configurations/exomiser-13.2.0/semsim1/ || mkdir -p configurations/exomiser-13.2.0/semsim1/
-	test -d configurations/exomiser-13.2.0/semsim1/2302_phenotype/ || cp -rf /home/data/exomiser-data/2302_phenotype configurations/exomiser-13.2.0/semsim1/2302_phenotype/
+	test -d configurations/exomiser-13.2.0/semsim1/2302_phenotype/ || cp -rf /home/data/phenotype configurations/exomiser-13.2.0/semsim1/2302_phenotype/
 	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(ROOT_DIR)/configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype  -script $<
 
 semsim-ingest: configurations/exomiser-13.2.0/semsim1/2302_phenotype/2302_phenotype.h2.db

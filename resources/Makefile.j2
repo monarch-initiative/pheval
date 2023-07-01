@@ -35,6 +35,7 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
 	ln -s {{ directories[config.tool] }}/* $(ROOT_DIR)/$(shell dirname $@)
+	ln -s {{ directories.phenotype }}/* $(ROOT_DIR)/$(shell dirname $@)
 
 {% if config.tool == 'exomiser' -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
