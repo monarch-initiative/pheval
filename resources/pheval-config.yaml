@@ -10,12 +10,9 @@ directories:
   config: configurations
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
   phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
-  exomiser: /home/data/exomiser-data/
-  phenotype: /home/data/exomiser-data/2302_phenotype
+  exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
+  phenotype: /home/data/phenotype
   workspace: /home/vinicius/workspace/pheval
-
-
-#when we run the make preparation (not default) we should create symlink if they don't exists in default
 
 corpora:
   - id: lirical
