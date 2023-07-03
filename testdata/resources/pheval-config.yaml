@@ -1,0 +1,37 @@
+phenotype:
+  version: 2302
+  hg: hg19
+  url: https://data.monarchinitiative.org/exomiser/latest/
+
+directories:
+  tmp: data/tmp
+  testdata: testdata
+  config: configurations
+  h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
+  phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
+  exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
+  phenotype: /home/data/phenotype
+  workspace: /tmp/pheval
+
+corpora:
+  - id: small_test
+    scrambled:
+      - factor: 0.5
+      - factor: 0.7
+    custom_variants:
+      - id: no_phenotype
+
+configs:
+  - tool: exomiser
+    version: 13.2.0
+    configuration: default
+    exomiser_db: semsim1
+
+
+runs:
+  - tool: exomiser
+    configuration: default
+    corpus: small_test
+    corpusvariant: scrambled-0.5
+    version: 13.2.0
+

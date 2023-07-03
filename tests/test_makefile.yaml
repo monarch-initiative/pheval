@@ -1,8 +1,7 @@
 - name: pheval
   command: make pheval
   files:
-    - path: ./results/exomiser-13.2.0-default/corpus1-scrambled1/pheval_gene_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser-pheval_gene_result.tsv
-    - path: ./results/exomiser-13.2.0-default/corpus1-scrambled1/pheval_variant_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser-pheval_variant_result.tsv
-    - path: ./results/exomiser-13.2.0-default/corpus1-scrambled1/raw_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser.html
-    - path: ./results/exomiser-13.2.0-default/corpus1-scrambled1/raw_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser.json
-    - path: ./results/exomiser-13.2.0-default/corpus1-scrambled1/results.yml
+    - path: /tmp/pheval/results/exomiser-13.2.0-default/small_test-scrambled-0.5/pheval_variant_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser-pheval_variant_result.tsv
+    - path: /tmp/pheval/results/exomiser-13.2.0-default/small_test-scrambled-0.5/raw_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser.html
+    - path: /tmp/pheval/results/exomiser-13.2.0-default/small_test-scrambled-0.5/raw_results/Abdul_Wahab-2016-GCDH-Patient_5-exomiser.json
+    - path: /tmp/pheval/results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml
