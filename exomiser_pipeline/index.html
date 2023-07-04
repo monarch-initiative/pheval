@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/prepare/update_phenopacket/">
+        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/exomiser_pipeline/">
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Update phenopacket - PhEval</title>
+        <title>PhEval Pipeline Exomiser Runner - PhEval</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -39,13 +39,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
     
-      <link rel="stylesheet" href="../../../../mermaid.css">
+      <link rel="stylesheet" href="../mermaid.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.pheval.prepare.update_phenopacket" class="md-skip">
+        <a href="#pheval-pipeline-exomiser-runner" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="PhEval" class="md-header__button md-logo" aria-label="PhEval" data-md-component="logo">
+    <a href=".." title="PhEval" class="md-header__button md-logo" aria-label="PhEval" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Update phenopacket
+              PhEval Pipeline Exomiser Runner
             
           </span>
         </div>
@@ -210,7 +210,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="PhEval" class="md-nav__button md-logo" aria-label="PhEval" data-md-component="logo">
+    <a href=".." title="PhEval" class="md-nav__button md-logo" aria-label="PhEval" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -241,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Home
       </a>
     </li>
@@ -254,12 +254,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -280,11 +282,114 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../exomiser_pipeline/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PhEval Pipeline Exomiser Runner
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         PhEval Pipeline Exomiser Runner
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-to-pheval-run-pipeline-with-exomiserrunner" class="md-nav__link">
+    Step by Step to PhEval Run Pipeline (with ExomiserRunner)
+  </a>
+  
+    <nav class="md-nav" aria-label="Step by Step to PhEval Run Pipeline (with ExomiserRunner)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-exomiser-software" class="md-nav__link">
+    1. Download Exomiser Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-phenotype-data" class="md-nav__link">
+    2. Download Phenotype Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unzip-data" class="md-nav__link">
+    3. Unzip data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-clone-pheval-repo-and-follow-steps-described-in-pipeline-documentation" class="md-nav__link">
+    4. Clone PhEval repo and follow steps described in Pipeline Documentation:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-set-pheval-config-yaml-file" class="md-nav__link">
+    5. Set PhEval Config YAML File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-generate-makefile-based-on-configuration" class="md-nav__link">
+    6. Generate Makefile based on configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-exomiser-runner-requires-the-following-configuration" class="md-nav__link">
+    7. Exomiser Runner requires the following configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-pheval-run" class="md-nav__link">
+    7. PhEval Run
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -296,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/" class="md-nav__link">
+      <a href="../pipeline/" class="md-nav__link">
         PhEval Pipeline
       </a>
     </li>
@@ -318,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         About
       </a>
     </li>
@@ -333,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../contact/" class="md-nav__link">
+      <a href="../contact/" class="md-nav__link">
         Contact Us
       </a>
     </li>
@@ -346,14 +451,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
@@ -376,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/" class="md-nav__link">
+      <a href="../api/pheval/cli/" class="md-nav__link">
         Cli
       </a>
     </li>
@@ -390,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../config_parser/" class="md-nav__link">
+      <a href="../api/pheval/config_parser/" class="md-nav__link">
         Config parser
       </a>
     </li>
@@ -404,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../constants/" class="md-nav__link">
+      <a href="../api/pheval/constants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -418,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../run_metadata/" class="md-nav__link">
+      <a href="../api/pheval/run_metadata/" class="md-nav__link">
         Run metadata
       </a>
     </li>
@@ -458,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/analysis/" class="md-nav__link">
+      <a href="../api/pheval/analyse/analysis/" class="md-nav__link">
         Analysis
       </a>
     </li>
@@ -472,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/generate_plots/" class="md-nav__link">
+      <a href="../api/pheval/analyse/generate_plots/" class="md-nav__link">
         Generate plots
       </a>
     </li>
@@ -486,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/generate_summary_outputs/" class="md-nav__link">
+      <a href="../api/pheval/analyse/generate_summary_outputs/" class="md-nav__link">
         Generate summary outputs
       </a>
     </li>
@@ -500,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/rank_stats/" class="md-nav__link">
+      <a href="../api/pheval/analyse/rank_stats/" class="md-nav__link">
         Rank stats
       </a>
     </li>
@@ -547,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../post_processing/post_processing/" class="md-nav__link">
+      <a href="../api/pheval/post_processing/post_processing/" class="md-nav__link">
         Post processing
       </a>
     </li>
@@ -566,14 +669,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
       
       
       
@@ -596,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_noisy_phenopackets/" class="md-nav__link">
+      <a href="../api/pheval/prepare/create_noisy_phenopackets/" class="md-nav__link">
         Create noisy phenopackets
       </a>
     </li>
@@ -610,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_spiked_vcf/" class="md-nav__link">
+      <a href="../api/pheval/prepare/create_spiked_vcf/" class="md-nav__link">
         Create spiked vcf
       </a>
     </li>
@@ -624,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_exceptions/" class="md-nav__link">
+      <a href="../api/pheval/prepare/custom_exceptions/" class="md-nav__link">
         Custom exceptions
       </a>
     </li>
@@ -636,76 +737,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Update phenopacket
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api/pheval/prepare/update_phenopacket/" class="md-nav__link">
         Update phenopacket
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket" class="md-nav__link">
-    src.pheval.prepare.update_phenopacket
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="md-nav__link">
-    create_updated_phenopacket()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="md-nav__link">
-    create_updated_phenopackets()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="md-nav__link">
-    update_outdated_gene_context()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.update_phenopackets" class="md-nav__link">
-    update_phenopackets()
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -750,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runners/runner/" class="md-nav__link">
+      <a href="../api/pheval/runners/runner/" class="md-nav__link">
         Runner
       </a>
     </li>
@@ -797,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/file_utils/" class="md-nav__link">
+      <a href="../api/pheval/utils/file_utils/" class="md-nav__link">
         File utils
       </a>
     </li>
@@ -811,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/phenopacket_utils/" class="md-nav__link">
+      <a href="../api/pheval/utils/phenopacket_utils/" class="md-nav__link">
         Phenopacket utils
       </a>
     </li>
@@ -825,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/semsim_utils/" class="md-nav__link">
+      <a href="../api/pheval/utils/semsim_utils/" class="md-nav__link">
         Semsim utils
       </a>
     </li>
@@ -839,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/utils/" class="md-nav__link">
+      <a href="../api/pheval/utils/utils/" class="md-nav__link">
         Utils
       </a>
     </li>
@@ -894,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../developing_a_pheval_plugin/" class="md-nav__link">
+      <a href="../developing_a_pheval_plugin/" class="md-nav__link">
         Developing a PhEval Plugin
       </a>
     </li>
@@ -908,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../contributing/" class="md-nav__link">
+      <a href="../contributing/" class="md-nav__link">
         Contributions
       </a>
     </li>
@@ -922,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../styleguide/" class="md-nav__link">
+      <a href="../styleguide/" class="md-nav__link">
         Monarch Style Guide for PhEval
       </a>
     </li>
@@ -936,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CODE_OF_CONDUCT/" class="md-nav__link">
+      <a href="../CODE_OF_CONDUCT/" class="md-nav__link">
         Contributor Covenant Code of Conduct
       </a>
     </li>
@@ -958,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../roadmap/" class="md-nav__link">
+      <a href="../roadmap/" class="md-nav__link">
         Roadmap
       </a>
     </li>
@@ -982,6 +1018,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -990,37 +1028,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket" class="md-nav__link">
-    src.pheval.prepare.update_phenopacket
+  <a href="#step-by-step-to-pheval-run-pipeline-with-exomiserrunner" class="md-nav__link">
+    Step by Step to PhEval Run Pipeline (with ExomiserRunner)
+  </a>
+  
+    <nav class="md-nav" aria-label="Step by Step to PhEval Run Pipeline (with ExomiserRunner)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-exomiser-software" class="md-nav__link">
+    1. Download Exomiser Software
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="md-nav__link">
-    create_updated_phenopacket()
+        
+          <li class="md-nav__item">
+  <a href="#2-download-phenotype-data" class="md-nav__link">
+    2. Download Phenotype Data
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="md-nav__link">
-    create_updated_phenopackets()
+        
+          <li class="md-nav__item">
+  <a href="#3-unzip-data" class="md-nav__link">
+    3. Unzip data
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="md-nav__link">
-    update_outdated_gene_context()
+        
+          <li class="md-nav__item">
+  <a href="#4-clone-pheval-repo-and-follow-steps-described-in-pipeline-documentation" class="md-nav__link">
+    4. Clone PhEval repo and follow steps described in Pipeline Documentation:
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.update_phenopacket.update_phenopackets" class="md-nav__link">
-    update_phenopackets()
+        
+          <li class="md-nav__item">
+  <a href="#5-set-pheval-config-yaml-file" class="md-nav__link">
+    5. Set PhEval Config YAML File
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-generate-makefile-based-on-configuration" class="md-nav__link">
+    6. Generate Makefile based on configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-exomiser-runner-requires-the-following-configuration" class="md-nav__link">
+    7. Exomiser Runner requires the following configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-pheval-run" class="md-nav__link">
+    7. PhEval Run
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1038,189 +1110,91 @@
                 
                   
 
-  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/prepare/update_phenopacket.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/exomiser_pipeline.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Update phenopacket</h1>
+<h1 id="pheval-pipeline-exomiser-runner">PhEval Pipeline Exomiser Runner</h1>
+<h2 id="step-by-step-to-pheval-run-pipeline-with-exomiserrunner">Step by Step to PhEval Run Pipeline (with ExomiserRunner)</h2>
+<h3 id="1-download-exomiser-software">1. Download <a href="https://github.com/exomiser/Exomiser/releases">Exomiser Software</a></h3>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://github.com/exomiser/Exomiser/releases/download/13.2.0/exomiser-cli-13.2.0-distribution.zip
+</code></pre></div>
+<h3 id="2-download-phenotype-data">2. Download Phenotype Data</h3>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_hg19.zip
+wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_hg38.zip
+wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2302_phenotype.zip
+</code></pre></div>
+<h3 id="3-unzip-data">3. Unzip data</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># unzip the distribution and data files - this will create a directory called &#39;exomiser-cli-13.1.0&#39; in the current working directory</span>
+unzip<span class="w"> </span>exomiser-cli-13.2.0-distribution.zip
+unzip<span class="w"> </span>2302_*.zip<span class="w"> </span>-d<span class="w"> </span>exomiser-cli-13.2.0/data
+</code></pre></div>
+<h3 id="4-clone-pheval-repo-and-follow-steps-described-in-pipeline-documentation">4. Clone PhEval repo and follow steps described in Pipeline Documentation:</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/monarch-initiative/pheval.git
+<span class="nb">cd</span><span class="w"> </span>pheval
+poetry<span class="w"> </span>shell
+poetry<span class="w"> </span>install
+</code></pre></div>
+<h3 id="5-set-pheval-config-yaml-file">5. Set PhEval Config YAML File</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">directories</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tmp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/tmp</span>
+<span class="w">  </span><span class="nt">exomiser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path_where_exomiser_was_extracted</span>
+<span class="w">  </span><span class="nt">phenotype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path_where_phenotype_was_extracted</span>
+<span class="w">  </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/pheval</span>
 
-<div class="doc doc-object doc-module">
+<span class="nt">corpora</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small_test</span>
+<span class="w">    </span><span class="nt">scrambled</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7</span>
+<span class="w">    </span><span class="nt">custom_variants</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_phenotype</span>
 
-
-<a id="src.pheval.prepare.update_phenopacket"></a>
-  <div class="doc doc-contents first">
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_updated_phenopacket</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Updates the gene context within the interpretations for a phenopacket.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopacket</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the gene context within the interpretations for a phenopacket.&quot;&quot;&quot;</span>
-    <span class="n">hgnc_data</span> <span class="o">=</span> <span class="n">create_hgnc_dict</span><span class="p">()</span>
-    <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span>
-    <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
+<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">    </span><span class="nt">exomiser_db</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">semsim1</span>
 
 
-
-<h2 id="src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Updates the gene context within the interpretations for phenopackets.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the gene context within the interpretations for phenopackets.&quot;&quot;&quot;</span>
-    <span class="n">hgnc_data</span> <span class="o">=</span> <span class="n">create_hgnc_dict</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
-        <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span>
-            <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span>
-        <span class="p">)</span>
-        <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Updates the gene context of the phenopacket.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_outdated_gene_context</span><span class="p">(</span>
-    <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">:</span> <span class="n">defaultdict</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the gene context of the phenopacket.&quot;&quot;&quot;</span>
-    <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
-    <span class="n">interpretations</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">interpretations</span><span class="p">()</span>
-    <span class="n">updated_interpretations</span> <span class="o">=</span> <span class="n">GeneIdentifierUpdater</span><span class="p">(</span>
-        <span class="n">hgnc_data</span><span class="o">=</span><span class="n">hgnc_data</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="o">=</span><span class="n">gene_identifier</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">update_interpretations</span><span class="p">(</span><span class="n">updated_interpretations</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.prepare.update_phenopacket.update_phenopackets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">update_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Update the gene identifiers in either a single phenopacket or a directory of phenopackets.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_phenopackets</span><span class="p">(</span>
-    <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update the gene identifiers in either a single phenopacket or a directory of phenopackets.&quot;&quot;&quot;</span>
-    <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">phenopacket_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">create_updated_phenopacket</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">phenopacket_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
+<span class="nt">runs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">    </span><span class="nt">corpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small_test</span>
+<span class="w">    </span><span class="nt">corpusvariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scrambled-0.5</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
+</code></pre></div>
+<h3 id="6-generate-makefile-based-on-configuration">6. Generate Makefile based on configuration</h3>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>./resources/generatemakefile.sh
+</code></pre></div>
+<h3 id="7-exomiser-runner-requires-the-following-configuration">7. Exomiser Runner requires the following configuration</h3>
+<p>The <code>config.yaml</code> file should be formatted like the example below and must be placed in <code>exomiser: /path_where_exomiser_was_extracted</code> declared in <code>pheval-config.yaml</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="nt">tool_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
+<span class="nt">phenotype_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1"># NOTE phenotype-only preset analysis should only be run with Exomiser versions &gt;= 13.2.0</span>
+<span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">exomiser_software_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">  </span><span class="nt">analysis_configuration_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preset-exome-analysis.yml</span>
+<span class="w">  </span><span class="nt">max_jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">application_properties</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">remm_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cadd_version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hg19_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">hg19_local_frequency_path</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hg38_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">phenotype_data_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2302</span>
+<span class="w">    </span><span class="nt">cache_type</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cache_caffeine_spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">post_process</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">score_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">combinedScore</span>
+<span class="w">    </span><span class="nt">sort_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DESCENDING</span>
+</code></pre></div>
+<h3 id="7-pheval-run">7. PhEval Run</h3>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>pheval<span class="w"> </span>run
+</code></pre></div>
 
 
 
@@ -1241,7 +1215,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../custom_exceptions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom exceptions" rel="prev">
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1250,20 +1224,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Custom exceptions
+              Home
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../runners/runner/" class="md-footer__link md-footer__link--next" aria-label="Next: Runner" rel="next">
+        <a href="../pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: PhEval Pipeline" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Runner
+              PhEval Pipeline
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1294,10 +1268,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
