@@ -778,7 +778,7 @@ def benchmark_runs(
 )
 @click.option(
     "--plot-type",
-    "-pt",
+    "-y",
     default="bar_stacked",
     show_default=True,
     type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
@@ -872,7 +872,7 @@ def benchmark(
 )
 @click.option(
     "--plot-type",
-    "-pt",
+    "-y",
     default="bar_stacked",
     show_default=True,
     type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
