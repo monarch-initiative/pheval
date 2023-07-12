@@ -40,7 +40,7 @@ directories:
   tmp: data/tmp
   exomiser: /path_where_exomiser_was_extracted
   phenotype: /path_where_phenotype_was_extracted
-  workspace: /tmp/pheval
+  workspace: /pheval's_path # path where pheval was cloned
 
 corpora:
   - id: small_test
@@ -63,7 +63,6 @@ runs:
     corpus: small_test
     corpusvariant: scrambled-0.5
     version: 13.2.0
-
 
 ```
 
