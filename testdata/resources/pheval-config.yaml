@@ -1,17 +1,8 @@
-phenotype:
-  version: 2302
-  hg: hg19
-  url: https://data.monarchinitiative.org/exomiser/latest/
-
 directories:
   tmp: data/tmp
-  testdata: testdata
-  config: configurations
-  h2jar: ./h2-1.4.199.jar
-  phen2gene: ./Phen2Gene
-  exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
-  phenotype: /home/data/phenotype
-  workspace: /tmp/pheval
+  exomiser: /path_where_exomiser_was_extracted
+  phenotype: /path_where_phenotype_was_extracted
+  workspace: /home/vinicius/workspace/pheval
 
 corpora:
   - id: small_test
@@ -34,4 +25,3 @@ runs:
     corpus: small_test
     corpusvariant: scrambled-0.5
     version: 13.2.0
-

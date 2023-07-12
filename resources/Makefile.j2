@@ -2,12 +2,11 @@ MAKEFLAGS 				+= --warn-undefined-variables
 SHELL 					:= bash
 .DEFAULT_GOAL			:= help
 URIBASE					:=	http://purl.obolibrary.org/obo
-TEST_DATA				:=	{{ directories.testdata }}
 TMP_DATA				:=	{{ directories.tmp }}
 ROOT_DIR				:=	{{ directories.workspace }}
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
-H2_JAR					:= {{ directories.h2jar }}
+
 help: info
 	@echo ""
 	@echo "help"
@@ -37,11 +36,11 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 	ln -s {{ directories[config.tool] }}/* $(ROOT_DIR)/$(shell dirname $@)
 	ln -s {{ directories.phenotype }}/* $(ROOT_DIR)/$(shell dirname $@)
 
-{% if config.tool == 'exomiser' -%}
+{% if config.tool == 'exomiser' and directories.h2jar is defined -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/ || cp -rf {{ directories.phenotype }} configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/
-	java -cp $(H2_JAR) org.h2.tools.RunScript -user sa -url jdbc:h2:$(ROOT_DIR)/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
+	java -cp {{ directories.h2jar }} org.h2.tools.RunScript -user sa -url jdbc:h2:$(ROOT_DIR)/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
 
 semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 {% endif %}
@@ -53,7 +52,7 @@ results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
 	pheval run \
-	 --input-dir $(ROOT_DIR)/{{ directories.config }}/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --input-dir $(ROOT_DIR)/configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
 	 --testdata-dir $(ROOT_DIR)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
@@ -75,12 +74,11 @@ pheval-run: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.
 
 {% for corpus in corpora %}
 
-# corpora/{{ corpus.id }}/default/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
 
 {% for scrambled in corpus.scrambled %}
-corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ corpus.id }}/default/corpus.yml $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ corpus.id }}/default/corpus.yml $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
 	test -d $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/ || mkdir -p $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/
-	test -L $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/$(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
+	test -L $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
 
 	pheval-utils create-spiked-vcfs \
 	 --template-vcf-path $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz  \
@@ -100,7 +98,7 @@ prepare-corpora: corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus
 {% endfor %}
 
 {% for custom_corpus in corpus.custom_variants %}
-corpora/{{ corpus.id }}/{{ custom_corpus.id }}/corpus.yml: $(TEST_DATA)/template_vcf/template_exome_hg19.vcf.gz
+corpora/{{ corpus.id }}/{{ custom_corpus.id }}/corpus.yml: $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
 	echo "error $@ needs to be configured manually" && false
 {% endfor %}
 
