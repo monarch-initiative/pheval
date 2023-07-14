@@ -59,7 +59,7 @@ class ProbandCausativeGene:
 
 def read_hgnc_data() -> pd.DataFrame:
     return pd.read_csv(
-        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
+        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
         delimiter="\t",
         dtype=str,
     )
