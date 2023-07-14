@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 
 from pheval.analyse.generate_plots import (
-    TrackPrioritisation,
+    AnalysisResults,
     TrackRunPrioritisation,
     generate_disease_plots,
     generate_gene_plots,
@@ -203,7 +203,7 @@ def generate_disease_rank_comparisons(comparison_ranks: [tuple]) -> None:
 
 
 def generate_benchmark_comparison_gene_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [AnalysisResults], plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
@@ -211,7 +211,7 @@ def generate_benchmark_comparison_gene_output(
 
 
 def generate_benchmark_comparison_variant_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [AnalysisResults], plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking multiple runs."""
     generate_variant_rank_comparisons(
@@ -221,7 +221,7 @@ def generate_benchmark_comparison_variant_output(
 
 
 def generate_benchmark_comparison_disease_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [AnalysisResults], plot_type: str
 ) -> None:
     """Generate disease prioritisation outputs for benchmarking multiple runs."""
     generate_disease_rank_comparisons(
