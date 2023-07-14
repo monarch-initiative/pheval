@@ -6,7 +6,7 @@ from pathlib import Path
 import click
 import pandas as pd
 
-from pheval.analyse.generate_plots import TrackPrioritisation, TrackRunPrioritisation
+from pheval.analyse.generate_plots import AnalysisResults, TrackRunPrioritisation
 from pheval.analyse.generate_summary_outputs import (
     RankStatsWriter,
     generate_benchmark_comparison_disease_output,
@@ -537,7 +537,7 @@ def _assess_prioritisation_for_results_directory(
     gene_analysis: bool,
     variant_analysis: bool,
     disease_analysis: bool,
-) -> TrackPrioritisation:
+) -> TrackRunPrioritisation:
     """Assess prioritisation for a single results directory."""
     gene_rank_stats, variant_rank_stats, disease_rank_stats = RankStats(), RankStats(), RankStats()
     if gene_analysis:
@@ -552,6 +552,7 @@ def _assess_prioritisation_for_results_directory(
                 gene_rank_stats,
                 gene_rank_comparison,
             )
+        gene_stats_writer.write_row(results_directory_and_input.results_dir, gene_rank_stats)
     if variant_analysis:
         for standardised_result in files_with_suffix(
             results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
@@ -565,6 +566,7 @@ def _assess_prioritisation_for_results_directory(
                 variant_rank_stats,
                 variant_rank_comparison,
             )
+        variants_stats_writer.write_row(results_directory_and_input.results_dir, variant_rank_stats)
     if disease_analysis:
         for standardised_result in files_with_suffix(
             results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
@@ -578,27 +580,19 @@ def _assess_prioritisation_for_results_directory(
                 disease_rank_stats,
                 disease_rank_comparison,
             )
-    gene_stats_writer.write_row(
-        results_directory_and_input.results_dir, gene_rank_stats
-    ) if gene_analysis else None
-    variants_stats_writer.write_row(
-        results_directory_and_input.results_dir, variant_rank_stats
-    ) if variant_analysis else None
-    disease_stats_writer.write_row(
-        results_directory_and_input.results_dir, disease_rank_stats
-    ) if disease_analysis else None
+        disease_stats_writer.write_row(results_directory_and_input.results_dir, disease_rank_stats)
     return TrackRunPrioritisation(
-        gene_prioritisation=TrackPrioritisation(
+        gene_prioritisation=AnalysisResults(
             results_dir=results_directory_and_input.results_dir,
             ranks=gene_rank_comparison,
             rank_stats=gene_rank_stats,
         ),
-        variant_prioritisation=TrackPrioritisation(
+        variant_prioritisation=AnalysisResults(
             results_dir=results_directory_and_input.results_dir,
             ranks=variant_rank_comparison,
             rank_stats=variant_rank_stats,
         ),
-        disease_prioritisation=TrackPrioritisation(
+        disease_prioritisation=AnalysisResults(
             results_dir=results_directory_and_input.results_dir,
             ranks=disease_rank_comparison,
             rank_stats=disease_rank_stats,
