@@ -7,7 +7,6 @@ from pathlib import Path
 import pandas as pd
 
 from pheval.analyse.generate_plots import (
-    AnalysisResults,
     TrackRunPrioritisation,
     generate_disease_plots,
     generate_gene_plots,
