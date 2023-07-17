@@ -30,6 +30,7 @@ git clone https://github.com/monarch-initiative/pheval.git
 cd pheval
 poetry shell
 poetry install
+pip install pheval.exomiser
 ```
 
 ### 5. Set PhEval Config YAML File
@@ -81,9 +82,9 @@ The `config.yaml` file should be formatted like the example below and must be pl
 tool: exomiser
 tool_version: 13.2.0
 phenotype_only: False # NOTE phenotype-only preset analysis should only be run with Exomiser versions >= 13.2.0
+disease_analysis: False
 tool_specific_configuration_options:
   environment: local
-  exomiser_software_directory: .
   analysis_configuration_file: preset-exome-analysis.yml
   max_jobs: 0
   application_properties:
