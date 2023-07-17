@@ -36,6 +36,19 @@ configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}
 	ln -s {{ directories[config.tool] }}/* $(ROOT_DIR)/$(shell dirname $@)
 	ln -s {{ directories.phenotype }}/* $(ROOT_DIR)/$(shell dirname $@)
 
+
+
+
+{% if directories.h2jar is not defined -%}
+configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/%phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
+	@echo ------------------------------------------------WARNING------------------------------------------------
+	@echo -------------------------------------------------------------------------------------------------------
+	@echo ------h2jar variable needs to be configured in pheval-config.yaml file in directories the section------
+	@echo -------------------------------------------------------------------------------------------------------
+	@echo ------------------------------------------------WARNING------------------------------------------------
+{% endif %}
+
+
 {% if config.tool == 'exomiser' and directories.h2jar is defined -%}
 configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
 	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
