@@ -3,11 +3,8 @@ phenotype:
   hg: hg19
   url: https://data.monarchinitiative.org/exomiser/latest/
 
-
 directories:
   tmp: data/tmp
-  testdata: testdata
-  config: configurations
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
   phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
   exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
@@ -54,10 +51,6 @@ configs:
     configuration: semsim1
     description: Exomiser Deafault Configuration with a Randomised Semantic Similarity Profile
     exomiser_db: semsim1
-
-
-
-
 
 runs:
   - tool: exomiser
