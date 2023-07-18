@@ -1,21 +1,17 @@
 import unittest
-from pathlib import Path, PosixPath
+from pathlib import Path
 
-from pheval.analyse.generate_plots import (
-    PlotGenerator,
-    TrackGenePrioritisation,
-    TrackPrioritisation,
-    TrackVariantPrioritisation,
-)
+from pheval.analyse.generate_plots import AnalysisResults, PlotGenerator, TrackRunPrioritisation
 from pheval.analyse.rank_stats import RankStats
 
 
 class TestPlotGenerator(unittest.TestCase):
     def setUp(self) -> None:
-        self.gene_plot_generator = PlotGenerator(gene_analysis=True)
-        self.variant_plot_generator = PlotGenerator(gene_analysis=False)
-        self.track_prioritisation = TrackPrioritisation(
-            gene_prioritisation=TrackGenePrioritisation(
+        self.gene_plot_generator = PlotGenerator()
+        self.variant_plot_generator = PlotGenerator()
+        self.disease_plot_generator = PlotGenerator()
+        self.track_prioritisation = TrackRunPrioritisation(
+            gene_prioritisation=AnalysisResults(
                 results_dir=Path("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
@@ -28,7 +24,7 @@ class TestPlotGenerator(unittest.TestCase):
                     reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
                 ),
             ),
-            variant_prioritisation=TrackVariantPrioritisation(
+            variant_prioritisation=AnalysisResults(
                 results_dir=Path("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
@@ -41,31 +37,8 @@ class TestPlotGenerator(unittest.TestCase):
                     reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
                 ),
             ),
-        )
-
-    def test__retrieve_prioritisation_data_gene(self):
-        self.assertEqual(
-            self.gene_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
-            TrackGenePrioritisation(
+            disease_prioritisation=AnalysisResults(
                 results_dir=Path("/path/to/tool/corpus_results"),
-                ranks={},
-                rank_stats=RankStats(
-                    top=1,
-                    top3=2,
-                    top5=3,
-                    top10=9,
-                    found=20,
-                    total=30,
-                    reciprocal_ranks=[1, 0.3333333333333333, 0.2, 0.1, 0.02],
-                ),
-            ),
-        )
-
-    def test__retrieve_prioritisation_data_variant(self):
-        self.assertEqual(
-            self.variant_plot_generator._retrieve_prioritisation_data(self.track_prioritisation),
-            TrackVariantPrioritisation(
-                results_dir=PosixPath("/path/to/tool/corpus_results"),
                 ranks={},
                 rank_stats=RankStats(
                     top=1,
@@ -73,14 +46,16 @@ class TestPlotGenerator(unittest.TestCase):
                     top5=3,
                     top10=4,
                     found=5,
-                    total=2,
-                    reciprocal_ranks=[1, 0.3333333333333333, 0.2, 0.1, 0.08333333333333333],
+                    total=5,
+                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
                 ),
             ),
         )
 
     def test__generate_stacked_bar_plot_data(self):
-        self.gene_plot_generator._generate_stacked_bar_plot_data(self.track_prioritisation)
+        self.gene_plot_generator._generate_stacked_bar_plot_data(
+            self.track_prioritisation.gene_prioritisation
+        )
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
@@ -97,14 +72,18 @@ class TestPlotGenerator(unittest.TestCase):
         )
 
     def test__generate_stats_mrr_bar_plot_data(self):
-        self.gene_plot_generator._generate_stats_mrr_bar_plot_data(self.track_prioritisation)
+        self.gene_plot_generator._generate_stats_mrr_bar_plot_data(
+            self.track_prioritisation.gene_prioritisation
+        )
         self.assertEqual(
             self.gene_plot_generator.mrr,
             [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus"}],
         )
 
     def test__generate_cumulative_bar_plot_data(self):
-        self.gene_plot_generator._generate_cumulative_bar_plot_data(self.track_prioritisation)
+        self.gene_plot_generator._generate_cumulative_bar_plot_data(
+            self.track_prioritisation.gene_prioritisation
+        )
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
@@ -119,7 +98,9 @@ class TestPlotGenerator(unittest.TestCase):
         )
 
     def test__generate_non_cumulative_bar_plot_data(self):
-        self.gene_plot_generator._generate_non_cumulative_bar_plot_data(self.track_prioritisation)
+        self.gene_plot_generator._generate_non_cumulative_bar_plot_data(
+            self.track_prioritisation.gene_prioritisation
+        )
         self.assertEqual(
             self.gene_plot_generator.stats,
             [

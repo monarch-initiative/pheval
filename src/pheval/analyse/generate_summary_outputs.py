@@ -7,7 +7,8 @@ from pathlib import Path
 import pandas as pd
 
 from pheval.analyse.generate_plots import (
-    TrackPrioritisation,
+    TrackRunPrioritisation,
+    generate_disease_plots,
     generate_gene_plots,
     generate_variant_plots,
 )
@@ -38,6 +39,10 @@ class RankComparisonGenerator:
         """Generate the output for variant prioritisation ranks."""
         self._generate_dataframe().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
 
+    def generate_disease_output(self, prefix: str) -> None:
+        """Generate the output for disease prioritisation ranks."""
+        self._generate_dataframe().to_csv(prefix + "-disease_rank_comparison.tsv", sep="\t")
+
     def generate_gene_comparison_output(self, prefix: str) -> None:
         """Generate the output for gene prioritisation rank comparison."""
         self._calculate_rank_difference().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
@@ -45,6 +50,10 @@ class RankComparisonGenerator:
     def generate_variant_comparison_output(self, prefix: str) -> None:
         """Generate the output for variant prioritisation rank comparison."""
         self._calculate_rank_difference().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
+
+    def generate_disease_comparison_output(self, prefix: str) -> None:
+        """Generate the output for disease prioritisation rank comparison."""
+        self._calculate_rank_difference().to_csv(prefix + "-disease_rank_comparison.tsv", sep="\t")
 
 
 class RankStatsWriter:
@@ -103,7 +112,7 @@ class RankStatsWriter:
 
 
 def generate_benchmark_gene_output(
-    prioritisation_data: TrackPrioritisation, plot_type: str
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking single run."""
     RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_gene_output(
@@ -113,13 +122,23 @@ def generate_benchmark_gene_output(
 
 
 def generate_benchmark_variant_output(
-    prioritisation_data: TrackPrioritisation, plot_type: str
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking single run."""
     RankComparisonGenerator(
         prioritisation_data.variant_prioritisation.ranks
-    ).generate_variant_output(f"{prioritisation_data.gene_prioritisation.results_dir.name}")
+    ).generate_variant_output(f"{prioritisation_data.variant_prioritisation.results_dir.name}")
     generate_variant_plots([prioritisation_data], plot_type)
+
+
+def generate_benchmark_disease_output(
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
+) -> None:
+    """Generate disease prioritisation outputs for benchmarking single run."""
+    RankComparisonGenerator(
+        prioritisation_data.disease_prioritisation.ranks
+    ).generate_disease_output(f"{prioritisation_data.disease_prioritisation.results_dir.name}")
+    generate_disease_plots([prioritisation_data], plot_type)
 
 
 def merge_results(result1: dict, result2: dict) -> dict:
@@ -167,8 +186,23 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
         )
 
 
+def generate_disease_rank_comparisons(comparison_ranks: [tuple]) -> None:
+    """Generate the disease rank comparison of two result directories."""
+    for pair in comparison_ranks:
+        merged_results = merge_results(
+            deepcopy(pair[0].disease_prioritisation.ranks),
+            deepcopy(pair[1].disease_prioritisation.ranks),
+        )
+        RankComparisonGenerator(merged_results).generate_disease_comparison_output(
+            f"{pair[0].disease_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[0].disease_prioritisation.results_dir.name}"
+            f"_vs_{pair[1].disease_prioritisation.results_dir.parents[0].name}_"
+            f"{pair[1].disease_prioritisation.results_dir.name}"
+        )
+
+
 def generate_benchmark_comparison_gene_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
@@ -176,10 +210,20 @@ def generate_benchmark_comparison_gene_output(
 
 
 def generate_benchmark_comparison_variant_output(
-    prioritisation_stats_for_runs: [TrackPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking multiple runs."""
     generate_variant_rank_comparisons(
         list(itertools.combinations(prioritisation_stats_for_runs, 2))
     )
     generate_variant_plots(prioritisation_stats_for_runs, plot_type)
+
+
+def generate_benchmark_comparison_disease_output(
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
+) -> None:
+    """Generate disease prioritisation outputs for benchmarking multiple runs."""
+    generate_disease_rank_comparisons(
+        list(itertools.combinations(prioritisation_stats_for_runs, 2))
+    )
+    generate_disease_plots(prioritisation_stats_for_runs, plot_type)

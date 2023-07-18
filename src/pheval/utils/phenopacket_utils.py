@@ -10,6 +10,7 @@ from pathlib import Path
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import (
+    Disease,
     Family,
     File,
     GenomicInterpretation,
@@ -55,6 +56,12 @@ class ProbandCausativeVariant:
 class ProbandCausativeGene:
     gene_symbol: str
     gene_identifier: str
+
+
+@dataclass(frozen=True, eq=True)
+class ProbandDisease:
+    disease_name: str
+    disease_identifier: str
 
 
 def read_hgnc_data() -> pd.DataFrame:
@@ -143,6 +150,39 @@ class PhenopacketUtil:
             if p.excluded:
                 negated_phenotypic_features.append(p)
         return negated_phenotypic_features
+
+    def diseases(self) -> [Disease]:
+        """Retrieve diseases object from a Phenopacket or Family."""
+        if hasattr(self.phenopacket_contents, "proband"):
+            return self.phenopacket_contents.proband.diseases
+        else:
+            return self.phenopacket_contents.diseases
+
+    def diagnosis_from_interpretations(self) -> [ProbandDisease]:
+        """Retrieve the proband diagnosis from interpretations."""
+        diagnoses = []
+        interpretation = self.interpretations()
+        for i in interpretation:
+            diagnoses.append(
+                ProbandDisease(
+                    disease_name=i.diagnosis.disease.label,
+                    disease_identifier=i.diagnosis.disease.id,
+                )
+            ) if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != "" else None
+        return diagnoses
+
+    def diagnosis_from_disease(self) -> [ProbandDisease]:
+        """Retrieve the proband diagnosis from disease object."""
+        diagnoses = []
+        for disease in self.diseases():
+            diagnoses.append(
+                ProbandDisease(disease_name=disease.term.label, disease_identifier=disease.term.id)
+            )
+        return diagnoses
+
+    def diagnoses(self) -> [ProbandDisease]:
+        """Retrieve diagnoses from a phenopacket."""
+        return list(set(self.diagnosis_from_interpretations() + self.diagnosis_from_disease()))
 
     def interpretations(self) -> list[Interpretation]:
         """Returns all interpretations of a phenopacket."""
