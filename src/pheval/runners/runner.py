@@ -87,7 +87,6 @@ class PhEvalRunner(ABC):
         """build output directory structure"""
         self.tool_input_commands_dir.mkdir(exist_ok=True)
         self.raw_results_dir.mkdir(exist_ok=True)
-        self.pheval_gene_results_dir.mkdir(exist_ok=True)
         if self._get_variant_analysis():
             self.pheval_variant_results_dir.mkdir(exist_ok=True)
         if self._get_gene_analysis():
