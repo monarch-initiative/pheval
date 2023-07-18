@@ -19,8 +19,11 @@ class TestDefaultPhEvalRunner(unittest.TestCase):
     def test__get_tool(self):
         self.assertEqual(self.pheval_runner._get_tool(), "defaultrunner")
 
-    def test__get_phenotype_only(self):
-        self.assertEqual(self.pheval_runner._get_phenotype_only(), False)
+    def test__get_variant_analysis(self):
+        self.assertEqual(self.pheval_runner._get_variant_analysis(), True)
+
+    def test__get_gene_analysis(self):
+        self.assertEqual(self.pheval_runner._get_gene_analysis(), True)
 
     def test__get_disease_analysis(self):
         self.assertEqual(self.pheval_runner._get_disease_analysis(), True)
