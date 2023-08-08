@@ -15,7 +15,7 @@ from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_gene_output,
     generate_benchmark_variant_output,
 )
-from pheval.analyse.parse_pheval_result import _read_standardised_result, parse_pheval_result
+from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.rank_stats import RankStats
 from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
@@ -435,7 +435,7 @@ def _assess_phenopacket_gene_prioritisation(
     phenopacket_path = obtain_closest_file_name(
         standardised_gene_result, all_files(results_dir_and_input.phenopacket_dir)
     )
-    pheval_gene_result = _read_standardised_result(standardised_gene_result)
+    pheval_gene_result = read_standardised_result(standardised_gene_result)
     proband_causative_genes = _obtain_causative_genes(phenopacket_path)
     AssessGenePrioritisation(
         phenopacket_path,
@@ -460,7 +460,7 @@ def _assess_phenopacket_variant_prioritisation(
         standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
     )
     proband_causative_variants = _obtain_causative_variants(phenopacket_path)
-    pheval_variant_result = _read_standardised_result(standardised_variant_result)
+    pheval_variant_result = read_standardised_result(standardised_variant_result)
     AssessVariantPrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_variant_results/"),
@@ -483,7 +483,7 @@ def _assess_phenopacket_disease_prioritisation(
     phenopacket_path = obtain_closest_file_name(
         standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
     )
-    pheval_disease_result = _read_standardised_result(standardised_disease_result)
+    pheval_disease_result = read_standardised_result(standardised_disease_result)
     proband_diseases = _obtain_causative_diseases(phenopacket_path)
     AssessDiseasePrioritisation(
         phenopacket_path,
