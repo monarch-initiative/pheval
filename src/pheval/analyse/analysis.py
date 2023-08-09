@@ -1,4 +1,3 @@
-# #!/usr/bin/python
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -16,6 +15,7 @@ from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_gene_output,
     generate_benchmark_variant_output,
 )
+from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.rank_stats import RankStats
 from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
@@ -31,35 +31,6 @@ from pheval.utils.phenopacket_utils import (
     ProbandDisease,
     phenopacket_reader,
 )
-
-
-def _read_standardised_result(standardised_result_path: Path) -> dict:
-    """Read the standardised result output and return a dictionary."""
-    return pd.read_csv(standardised_result_path, delimiter="\t")
-
-
-def parse_pheval_gene_result(pheval_gene_result: pd.DataFrame) -> [RankedPhEvalGeneResult]:
-    """Parse PhEval gene result into RankedPhEvalGeneResult dataclass."""
-    return [
-        RankedPhEvalGeneResult(**row._asdict())
-        for row in pheval_gene_result.itertuples(index=False)
-    ]
-
-
-def parse_pheval_variant_result(pheval_variant_result: pd.DataFrame) -> [RankedPhEvalVariantResult]:
-    """Parse PhEval variant result into RankedPhEvalVariantResult dataclass."""
-    return [
-        RankedPhEvalVariantResult(**row._asdict())
-        for row in pheval_variant_result.itertuples(index=False)
-    ]
-
-
-def parse_pheval_disease_result(pheval_disease_result: pd.DataFrame) -> [RankedPhEvalDiseaseResult]:
-    """Parse PhEval disease result into RankedPhEvalDiseaseResult dataclass."""
-    return [
-        RankedPhEvalDiseaseResult(**row._asdict())
-        for row in pheval_disease_result.itertuples(index=False)
-    ]
 
 
 @dataclass
@@ -464,12 +435,12 @@ def _assess_phenopacket_gene_prioritisation(
     phenopacket_path = obtain_closest_file_name(
         standardised_gene_result, all_files(results_dir_and_input.phenopacket_dir)
     )
-    pheval_gene_result = _read_standardised_result(standardised_gene_result)
+    pheval_gene_result = read_standardised_result(standardised_gene_result)
     proband_causative_genes = _obtain_causative_genes(phenopacket_path)
     AssessGenePrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_gene_results/"),
-        parse_pheval_gene_result(pheval_gene_result),
+        parse_pheval_result(RankedPhEvalGeneResult, pheval_gene_result),
         threshold,
         score_order,
         proband_causative_genes,
@@ -489,11 +460,11 @@ def _assess_phenopacket_variant_prioritisation(
         standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
     )
     proband_causative_variants = _obtain_causative_variants(phenopacket_path)
-    pheval_variant_result = _read_standardised_result(standardised_variant_result)
+    pheval_variant_result = read_standardised_result(standardised_variant_result)
     AssessVariantPrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_variant_results/"),
-        parse_pheval_variant_result(pheval_variant_result),
+        parse_pheval_result(RankedPhEvalVariantResult, pheval_variant_result),
         threshold,
         score_order,
         proband_causative_variants,
@@ -512,12 +483,12 @@ def _assess_phenopacket_disease_prioritisation(
     phenopacket_path = obtain_closest_file_name(
         standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
     )
-    pheval_disease_result = _read_standardised_result(standardised_disease_result)
+    pheval_disease_result = read_standardised_result(standardised_disease_result)
     proband_diseases = _obtain_causative_diseases(phenopacket_path)
     AssessDiseasePrioritisation(
         phenopacket_path,
         results_dir_and_input.results_dir.joinpath("pheval_disease_results/"),
-        parse_pheval_disease_result(pheval_disease_result),
+        parse_pheval_result(RankedPhEvalDiseaseResult, pheval_disease_result),
         threshold,
         score_order,
         proband_diseases,
