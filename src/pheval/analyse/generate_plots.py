@@ -33,15 +33,15 @@ class TrackRunPrioritisation:
     variant_prioritisation: AnalysisResults = None
     disease_prioritisation: AnalysisResults = None
 
-    def return_gene(self):
+    def return_gene(self) -> AnalysisResults:
         """Return gene prioritisation analysis results."""
         return self.gene_prioritisation
 
-    def return_variant(self):
+    def return_variant(self) -> AnalysisResults:
         """Return variant prioritisation analysis results."""
         return self.variant_prioritisation
 
-    def return_disease(self):
+    def return_disease(self) -> AnalysisResults:
         """Return disease prioritisation analysis results."""
         return self.disease_prioritisation
 
