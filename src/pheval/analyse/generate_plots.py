@@ -300,4 +300,3 @@ def generate_plots(
         plot_generator.generate_non_cumulative_bar(
             prioritisation_data, data_returner, file_prefix, y_label
         )
-

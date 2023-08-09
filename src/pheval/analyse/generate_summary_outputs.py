@@ -266,4 +266,3 @@ def generate_benchmark_comparison_disease_output(
         DISEASE_PLOT_FILE_PREFIX,
         DISEASE_PLOT_Y_LABEL,
     )
-
