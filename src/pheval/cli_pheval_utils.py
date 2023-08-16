@@ -9,7 +9,7 @@ from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
 from pheval.prepare.update_phenopacket import update_phenopackets
-from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
+from pheval.utils.semsim_utils import semsim_comparison
 from pheval.utils.utils import semsim_convert, semsim_scramble
 
 
@@ -116,18 +116,11 @@ def scramble_phenopackets_command(
 
 @click.command("semsim-comparison")
 @click.option(
-    "--semsim-left",
-    "-L",
+    "--input",
+    "-i",
+    multiple=True,
     required=True,
-    metavar="FILE",
-    help="Path to the first semantic similarity profile.",
-)
-@click.option(
-    "--semsim-right",
-    "-R",
-    required=True,
-    metavar="FILE",
-    help="Path to the second semantic similarity profile.",
+    help="Semsim inputs file",
 )
 @click.option(
     "--score-column",
@@ -142,42 +135,38 @@ def scramble_phenopackets_command(
     "--analysis",
     "-a",
     required=True,
-    type=click.Choice(["heatmap", "percentage_diff"], case_sensitive=False),
+    type=click.Choice(["heatmap", "percentage_diff", "distribution"], case_sensitive=False),
     help="""There are two types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
         percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles""",
 )
 @click.option(
-    "--output",
-    "-o",
-    metavar="FILE",
-    default="percentage_diff.semsim.tsv",
-    help="Output path for the difference tsv. Defaults to percentage_diff.semsim.tsv",
+    "--output-folder",
+    "-O",
+    metavar="output_folder",
+    default=".",
+    help="Output path folder for the comparisons",
 )
-def semsim_comparison(
-    semsim_left: Path,
-    semsim_right: Path,
+def semsim_comparison_command(
+    input: List[Path],
     score_column: str,
     analysis: str,
-    output: Path = "percentage_diff.semsim.tsv",
+    output_folder: Path,
 ):
-    """Compares two semantic similarity profiles
+    """Compares semantic similarity profiles
 
     Args:
-        semsim-left (Path): File path of the first semantic similarity profile
-        semsim-right (Path): File path of the second semantic similarity profile
-        output (Path): Output path for the difference tsv. Defaults to "percentage_diff.semsim.tsv".
+        input (List[Path]): File paths semantic similarity profiles
+        output-folder (Path): Output folder path for the comparisons.
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
         analysis (str): There are two types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
         percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.
+        distribution - Generate plots comparing semsim score distribution.
     """
-    if analysis == "heatmap":
-        return semsim_heatmap_plot(semsim_left, semsim_right, score_column)
-    if analysis == "percentage_diff":
-        percentage_diff(semsim_left, semsim_right, score_column, output)
+    semsim_comparison(input, score_column, analysis, output_folder)
 
 
 @click.command("update-phenopackets")

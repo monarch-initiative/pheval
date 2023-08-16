@@ -8,7 +8,7 @@ from pathlib import Path
 from click.testing import CliRunner
 
 from pheval.cli_pheval import run
-from pheval.cli_pheval_utils import semsim_comparison
+from pheval.cli_pheval_utils import semsim_comparison_command
 
 
 class TestCommandLineInterface(unittest.TestCase):
@@ -54,15 +54,18 @@ class TestCommandLineInterface(unittest.TestCase):
 
     def test_semsim_heatmap(self):
         """test_semsim_heatmap"""
-        semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
-        semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_1 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_3 = "./testdata/semsim/hp-mp3.semsim.tsv"
         result = self.runner.invoke(
-            semsim_comparison,
+            semsim_comparison_command,
             [
-                "--semsim-left",
-                semsim_left,
-                "--semsim-right",
-                semsim_right,
+                "--input",
+                semsim_1,
+                "--input",
+                semsim_2,
+                "--input",
+                semsim_3,
                 "-c",
                 "jaccard_similarity",
                 "-a",
@@ -79,11 +82,11 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_comparison,
+            semsim_comparison_command,
             [
-                "--semsim-left",
+                "--input",
                 semsim_left,
-                "--semsim-right",
+                "--input",
                 semsim_right,
                 "-c",
                 "invalid_col",
@@ -100,11 +103,11 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mpx.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp2.semsim.tsv"
         result = self.runner.invoke(
-            semsim_comparison,
+            semsim_comparison_command,
             [
-                "--semsim-left",
+                "--input",
                 semsim_left,
-                "--semsim-right",
+                "--input",
                 semsim_right,
                 "-c",
                 "jaccard_similarity",
@@ -121,11 +124,11 @@ class TestCommandLineInterface(unittest.TestCase):
         semsim_left = "./testdata/semsim/hp-mp.semsim.tsv"
         semsim_right = "./testdata/semsim/hp-mp.semsim.tsv"
         result = self.runner.invoke(
-            semsim_comparison,
+            semsim_comparison_command,
             [
-                "--semsim-left",
+                "--input",
                 semsim_left,
-                "--semsim-right",
+                "--input",
                 semsim_right,
                 "-c",
                 "jaccard_similarity",
@@ -137,3 +140,31 @@ class TestCommandLineInterface(unittest.TestCase):
         self.assertEqual(errmsg, str(result.exception))
         logging.info("ERR=%s", result.exception)
         self.assertEqual(1, result.exit_code)
+
+    def test_semsim_distribution_plot(self):
+        """test_semsim_distribution_plot"""
+        semsim_1 = "./testdata/semsim/hp-mp.semsim.tsv"
+        semsim_2 = "./testdata/semsim/hp-mp2.semsim.tsv"
+        semsim_3 = "./testdata/semsim/hp-mp3.semsim.tsv"
+        Path("./results").mkdir(parents=True, exist_ok=True)
+        result = self.runner.invoke(
+            semsim_comparison_command,
+            [
+                "--input",
+                semsim_1,
+                "--input",
+                semsim_2,
+                "--input",
+                semsim_3,
+                "-c",
+                "jaccard_similarity",
+                "-a",
+                "distribution",
+                "-O",
+                "./results",
+            ],
+        )
+        err = result.stderr
+        self.assertEqual(None, result.exception)
+        logging.info("ERR=%s", err)
+        self.assertEqual(0, result.exit_code)
