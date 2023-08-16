@@ -99,7 +99,7 @@ def semsim_score_distribution_plot(input: List[Path], score_column: str, output:
     _, axes = plt.subplots(len(input), 1)
     for idx, i in enumerate(input):
         info_log.info(f"Reading {Path(i).stem}")
-        info_log.log(f"Reading {Path(i).stem}")
+        info_log.info(f"Reading {Path(i).stem}")
         df = pl.read_csv(i, separator="\t")
         df = df[["subject_id", "object_id", f"{score_column}"]]
         df = df.with_columns(semsim=pl.lit(Path(i).stem))
@@ -107,9 +107,9 @@ def semsim_score_distribution_plot(input: List[Path], score_column: str, output:
         sns.histplot(df[score_column], bins=20, ax=axes[idx]).set_title(Path(i).stem)
         axes[idx].set_xlabel(score_column)
     plt.setp(axes, ylim=axes[0].get_ylim())
-    info_log.log("Concatenating data")
+    info_log.info("Concatenating data")
     df_concat = pl.concat(df_list)
-    info_log.log(f"Saving plot in {output}/bars.png")
+    info_log.info(f"Saving plot in {output}/bars.png")
     plt.savefig(f"{output}/bars.png")
     plt.clf()
     sns.histplot(
@@ -122,7 +122,7 @@ def semsim_score_distribution_plot(input: List[Path], score_column: str, output:
         alpha=0.5,
         hue="semsim",
     )
-    info_log.log(f"Saving plot in {output}/dist.png")
+    info_log.info(f"Saving plot in {output}/dist.png")
     plt.savefig(f"{output}/dist.png")
 
 
