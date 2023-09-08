@@ -6,13 +6,16 @@ from pathlib import Path
 
 import pandas as pd
 
-from pheval.analyse.generate_plots import (
-    TrackRunPrioritisation,
-    generate_disease_plots,
-    generate_gene_plots,
-    generate_variant_plots,
-)
+from pheval.analyse.generate_plots import TrackRunPrioritisation, generate_plots
 from pheval.analyse.rank_stats import RankStats
+from pheval.constants import (
+    DISEASE_PLOT_FILE_PREFIX,
+    DISEASE_PLOT_Y_LABEL,
+    GENE_PLOT_FILE_PREFIX,
+    GENE_PLOT_Y_LABEL,
+    VARIANT_PLOT_FILE_PREFIX,
+    VARIANT_PLOT_Y_LABEL,
+)
 
 
 class RankComparisonGenerator:
@@ -118,7 +121,13 @@ def generate_benchmark_gene_output(
     RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_gene_output(
         f"{prioritisation_data.gene_prioritisation.results_dir.name}"
     )
-    generate_gene_plots([prioritisation_data], plot_type)
+    generate_plots(
+        [prioritisation_data],
+        TrackRunPrioritisation.return_gene,
+        plot_type,
+        GENE_PLOT_FILE_PREFIX,
+        GENE_PLOT_Y_LABEL,
+    )
 
 
 def generate_benchmark_variant_output(
@@ -128,7 +137,13 @@ def generate_benchmark_variant_output(
     RankComparisonGenerator(
         prioritisation_data.variant_prioritisation.ranks
     ).generate_variant_output(f"{prioritisation_data.variant_prioritisation.results_dir.name}")
-    generate_variant_plots([prioritisation_data], plot_type)
+    generate_plots(
+        [prioritisation_data],
+        TrackRunPrioritisation.return_variant,
+        plot_type,
+        VARIANT_PLOT_FILE_PREFIX,
+        VARIANT_PLOT_Y_LABEL,
+    )
 
 
 def generate_benchmark_disease_output(
@@ -138,7 +153,13 @@ def generate_benchmark_disease_output(
     RankComparisonGenerator(
         prioritisation_data.disease_prioritisation.ranks
     ).generate_disease_output(f"{prioritisation_data.disease_prioritisation.results_dir.name}")
-    generate_disease_plots([prioritisation_data], plot_type)
+    generate_plots(
+        [prioritisation_data],
+        TrackRunPrioritisation.return_disease,
+        plot_type,
+        DISEASE_PLOT_FILE_PREFIX,
+        DISEASE_PLOT_Y_LABEL,
+    )
 
 
 def merge_results(result1: dict, result2: dict) -> dict:
@@ -206,7 +227,13 @@ def generate_benchmark_comparison_gene_output(
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
-    generate_gene_plots(prioritisation_stats_for_runs, plot_type)
+    generate_plots(
+        prioritisation_stats_for_runs,
+        TrackRunPrioritisation.return_gene,
+        plot_type,
+        GENE_PLOT_FILE_PREFIX,
+        GENE_PLOT_Y_LABEL,
+    )
 
 
 def generate_benchmark_comparison_variant_output(
@@ -216,7 +243,13 @@ def generate_benchmark_comparison_variant_output(
     generate_variant_rank_comparisons(
         list(itertools.combinations(prioritisation_stats_for_runs, 2))
     )
-    generate_variant_plots(prioritisation_stats_for_runs, plot_type)
+    generate_plots(
+        prioritisation_stats_for_runs,
+        TrackRunPrioritisation.return_variant,
+        plot_type,
+        VARIANT_PLOT_FILE_PREFIX,
+        VARIANT_PLOT_Y_LABEL,
+    )
 
 
 def generate_benchmark_comparison_disease_output(
@@ -226,4 +259,10 @@ def generate_benchmark_comparison_disease_output(
     generate_disease_rank_comparisons(
         list(itertools.combinations(prioritisation_stats_for_runs, 2))
     )
-    generate_disease_plots(prioritisation_stats_for_runs, plot_type)
+    generate_plots(
+        prioritisation_stats_for_runs,
+        TrackRunPrioritisation.return_disease,
+        plot_type,
+        DISEASE_PLOT_FILE_PREFIX,
+        DISEASE_PLOT_Y_LABEL,
+    )

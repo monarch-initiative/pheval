@@ -1,1 +1,7 @@
 PHEVAL_RESULTS_DIRECTORY_SUFFIX = "_results"
+GENE_PLOT_FILE_PREFIX = "gene"
+GENE_PLOT_Y_LABEL = "Disease-causing genes (%)"
+VARIANT_PLOT_FILE_PREFIX = "variant"
+VARIANT_PLOT_Y_LABEL = "Disease-causing variants (%)"
+DISEASE_PLOT_FILE_PREFIX = "disease"
+DISEASE_PLOT_Y_LABEL = "Known diseases (%)"
