@@ -97,7 +97,7 @@ class RankStatsWriter:
 
 
 def generate_benchmark_gene_output(
-        prioritisation_data: TrackRunPrioritisation, plot_type: str
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking single run."""
     RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_output(
@@ -113,12 +113,13 @@ def generate_benchmark_gene_output(
 
 
 def generate_benchmark_variant_output(
-        prioritisation_data: TrackRunPrioritisation, plot_type: str
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking single run."""
-    RankComparisonGenerator(
-        prioritisation_data.variant_prioritisation.ranks
-    ).generate_output(f"{prioritisation_data.variant_prioritisation.results_dir.name}", "-variant_rank_comparison.tsv")
+    RankComparisonGenerator(prioritisation_data.variant_prioritisation.ranks).generate_output(
+        f"{prioritisation_data.variant_prioritisation.results_dir.name}",
+        "-variant_rank_comparison.tsv",
+    )
     generate_plots(
         [prioritisation_data],
         TrackRunPrioritisation.return_variant,
@@ -129,13 +130,13 @@ def generate_benchmark_variant_output(
 
 
 def generate_benchmark_disease_output(
-        prioritisation_data: TrackRunPrioritisation, plot_type: str
+    prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate disease prioritisation outputs for benchmarking single run."""
-    RankComparisonGenerator(
-        prioritisation_data.disease_prioritisation.ranks
-    ).generate_output(f"{prioritisation_data.disease_prioritisation.results_dir.name}",
-                      "-disease_rank_comparison.tsv")
+    RankComparisonGenerator(prioritisation_data.disease_prioritisation.ranks).generate_output(
+        f"{prioritisation_data.disease_prioritisation.results_dir.name}",
+        "-disease_rank_comparison.tsv",
+    )
     generate_plots(
         [prioritisation_data],
         TrackRunPrioritisation.return_disease,
@@ -171,7 +172,8 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
             f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].gene_prioritisation.results_dir.name}"
             f"_vs_{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].gene_prioritisation.results_dir.name}", "-gene_rank_comparison.tsv"
+            f"{pair[1].gene_prioritisation.results_dir.name}",
+            "-gene_rank_comparison.tsv",
         )
 
 
@@ -186,7 +188,8 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
             f"{pair[0].variant_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].variant_prioritisation.results_dir.name}"
             f"_vs_{pair[1].variant_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].variant_prioritisation.results_dir.name}", "-variant_rank_comparison.tsv"
+            f"{pair[1].variant_prioritisation.results_dir.name}",
+            "-variant_rank_comparison.tsv",
         )
 
 
@@ -201,12 +204,13 @@ def generate_disease_rank_comparisons(comparison_ranks: [tuple]) -> None:
             f"{pair[0].disease_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].disease_prioritisation.results_dir.name}"
             f"_vs_{pair[1].disease_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].disease_prioritisation.results_dir.name}", "-disease_rank_comparison.tsv"
+            f"{pair[1].disease_prioritisation.results_dir.name}",
+            "-disease_rank_comparison.tsv",
         )
 
 
 def generate_benchmark_comparison_gene_output(
-        prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking multiple runs."""
     generate_gene_rank_comparisons(list(itertools.combinations(prioritisation_stats_for_runs, 2)))
@@ -220,7 +224,7 @@ def generate_benchmark_comparison_gene_output(
 
 
 def generate_benchmark_comparison_variant_output(
-        prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking multiple runs."""
     generate_variant_rank_comparisons(
@@ -236,7 +240,7 @@ def generate_benchmark_comparison_variant_output(
 
 
 def generate_benchmark_comparison_disease_output(
-        prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
+    prioritisation_stats_for_runs: [TrackRunPrioritisation], plot_type: str
 ) -> None:
     """Generate disease prioritisation outputs for benchmarking multiple runs."""
     generate_disease_rank_comparisons(
