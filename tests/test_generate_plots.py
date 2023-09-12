@@ -17,10 +17,10 @@ class TestPlotGenerator(unittest.TestCase):
                 rank_stats=RankStats(
                     top=1,
                     top3=2,
-                    top5=3,
-                    top10=9,
-                    found=20,
-                    total=30,
+                    top5=4,
+                    top10=8,
+                    found=10,
+                    total=20,
                     reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
                 ),
             ),
@@ -33,7 +33,7 @@ class TestPlotGenerator(unittest.TestCase):
                     top5=3,
                     top10=4,
                     found=5,
-                    total=2,
+                    total=10,
                     reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
                 ),
             ),
@@ -61,10 +61,10 @@ class TestPlotGenerator(unittest.TestCase):
             [
                 {
                     "2-3": 5.0,
-                    "4-5": 5.0,
-                    "6-10": 30.0,
-                    ">10": 21.66666666666667,
-                    "FO/NP": 33.33333333333333,
+                    "4-5": 10.0,
+                    "6-10": 20.0,
+                    ">10": 10.0,
+                    "FO/NP": 50.0,
                     "Run": "tool_corpus",
                     "Top": 5.0,
                 }
@@ -87,13 +87,13 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
-                {"Rank": "Top", "Percentage": 0.05, "Run": "tool_corpus"},
-                {"Rank": "Top3", "Percentage": 0.1, "Run": "tool_corpus"},
-                {"Rank": "Top5", "Percentage": 0.15, "Run": "tool_corpus"},
-                {"Rank": "Top10", "Percentage": 0.45, "Run": "tool_corpus"},
-                {"Rank": "Found", "Percentage": 0.6666666666666667, "Run": "tool_corpus"},
-                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "tool_corpus"},
-                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus"},
+                {"Percentage": 0.05, "Rank": "Top", "Run": "tool_corpus"},
+                {"Percentage": 0.1, "Rank": "Top3", "Run": "tool_corpus"},
+                {"Percentage": 0.2, "Rank": "Top5", "Run": "tool_corpus"},
+                {"Percentage": 0.4, "Rank": "Top10", "Run": "tool_corpus"},
+                {"Percentage": 0.5, "Rank": "Found", "Run": "tool_corpus"},
+                {"Percentage": 0.5, "Rank": "FO/NP", "Run": "tool_corpus"},
+                {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
 
@@ -104,12 +104,12 @@ class TestPlotGenerator(unittest.TestCase):
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
-                {"Rank": "Top", "Percentage": 0.05, "Run": "tool_corpus"},
-                {"Rank": "2-3", "Percentage": 0.05, "Run": "tool_corpus"},
-                {"Rank": "4-5", "Percentage": 0.05, "Run": "tool_corpus"},
-                {"Rank": "6-10", "Percentage": 0.3, "Run": "tool_corpus"},
-                {"Rank": ">10", "Percentage": 0.2166666666666667, "Run": "tool_corpus"},
-                {"Rank": "FO/NP", "Percentage": 0.33333333333333326, "Run": "tool_corpus"},
-                {"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus"},
+                {"Percentage": 0.05, "Rank": "Top", "Run": "tool_corpus"},
+                {"Percentage": 0.05, "Rank": "2-3", "Run": "tool_corpus"},
+                {"Percentage": 0.1, "Rank": "4-5", "Run": "tool_corpus"},
+                {"Percentage": 0.2, "Rank": "6-10", "Run": "tool_corpus"},
+                {"Percentage": 0.1, "Rank": ">10", "Run": "tool_corpus"},
+                {"Percentage": 0.5, "Rank": "FO/NP", "Run": "tool_corpus"},
+                {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
