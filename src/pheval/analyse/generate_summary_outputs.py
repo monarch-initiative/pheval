@@ -34,10 +34,10 @@ class RankComparisonGenerator:
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
-    def generate_output(self, prefix: str, suffix: str):
+    def generate_output(self, prefix: str, suffix: str) -> None:
         self._generate_dataframe().to_csv(prefix + suffix, sep="\t")
 
-    def generate_comparison_output(self, prefix: str, suffix: str):
+    def generate_comparison_output(self, prefix: str, suffix: str) -> None:
         self._calculate_rank_difference().to_csv(prefix + suffix, sep="\t")
 
 
