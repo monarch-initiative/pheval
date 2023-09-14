@@ -5,6 +5,12 @@ from typing import List
 
 import click
 
+from pheval.analyse.analysis import (
+    TrackInputOutputDirectories,
+    _parse_run_data_text_file,
+    benchmark_directory,
+    benchmark_runs,
+)
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -331,3 +337,198 @@ def semsim_convert_command(
 ):
     """convert semsim profile to an exomiser database file"""
     semsim_convert(input, output, subject_prefix, object_prefix, output_format)
+
+
+@click.command()
+@click.option(
+    "--directory",
+    "-d",
+    required=True,
+    metavar="PATH",
+    help="General results directory to be benchmarked, assumes contains subdirectories of pheval_gene_results/,"
+    "pheval_variant_results/ or pheval_disease_results/. ",
+    type=Path,
+)
+@click.option(
+    "--phenopacket-dir",
+    "-p",
+    required=True,
+    metavar="PATH",
+    help="Full path to directory containing input phenopackets.",
+    type=Path,
+)
+@click.option(
+    "--output-prefix",
+    "-o",
+    metavar="<str>",
+    required=True,
+    help=" Output file prefix. ",
+)
+@click.option(
+    "--score-order",
+    "-so",
+    required=True,
+    help="Ordering of results for ranking.",
+    type=click.Choice(["ascending", "descending"]),
+    default="descending",
+    show_default=True,
+)
+@click.option(
+    "--threshold",
+    "-t",
+    metavar="<float>",
+    default=float(0.0),
+    required=False,
+    help="Score threshold.",
+    type=float,
+)
+@click.option(
+    "--gene-analysis/--no-gene-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for gene prioritisation",
+)
+@click.option(
+    "--variant-analysis/--no-variant-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for variant prioritisation",
+)
+@click.option(
+    "--disease-analysis/--no-disease-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for disease prioritisation",
+)
+@click.option(
+    "--plot-type",
+    "-y",
+    default="bar_stacked",
+    show_default=True,
+    type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
+    help="Bar chart type to output.",
+)
+def benchmark(
+    directory: Path,
+    phenopacket_dir: Path,
+    score_order: str,
+    output_prefix: str,
+    threshold: float,
+    gene_analysis: bool,
+    variant_analysis: bool,
+    disease_analysis: bool,
+    plot_type: str,
+):
+    """Benchmark the gene/variant/disease prioritisation performance for a single run."""
+    if not gene_analysis and not variant_analysis and not disease_analysis:
+        raise InputError("Need to specify at least one of gene/variant/disease analysis.")
+    benchmark_directory(
+        TrackInputOutputDirectories(results_dir=directory, phenopacket_dir=phenopacket_dir),
+        score_order,
+        output_prefix,
+        threshold,
+        gene_analysis,
+        variant_analysis,
+        disease_analysis,
+        plot_type,
+    )
+
+
+@click.command()
+@click.option(
+    "--run-data",
+    "-r",
+    required=True,
+    metavar="PATH",
+    help="Path to .txt file containing testdata phenopacket directory "
+    "and corresponding results directory separated by tab."
+    "Each run contained to a new line with the input testdata listed first and on the same line separated by a tab"
+    "the results directory.",
+    type=Path,
+)
+@click.option(
+    "--output-prefix",
+    "-o",
+    metavar="<str>",
+    required=True,
+    help=" Output file prefix. ",
+)
+@click.option(
+    "--score-order",
+    "-so",
+    required=True,
+    help="Ordering of results for ranking.",
+    type=click.Choice(["ascending", "descending"]),
+    default="descending",
+    show_default=True,
+)
+@click.option(
+    "--threshold",
+    "-t",
+    metavar="<float>",
+    default=float(0.0),
+    required=False,
+    help="Score threshold.",
+    type=float,
+)
+@click.option(
+    "--gene-analysis/--no-gene-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for gene prioritisation",
+)
+@click.option(
+    "--variant-analysis/--no-variant-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for variant prioritisation",
+)
+@click.option(
+    "--disease-analysis/--no-disease-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify analysis for disease prioritisation",
+)
+@click.option(
+    "--plot-type",
+    "-y",
+    default="bar_stacked",
+    show_default=True,
+    type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
+    help="Bar chart type to output.",
+)
+def benchmark_comparison(
+    run_data: Path,
+    score_order: str,
+    output_prefix: str,
+    threshold: float,
+    gene_analysis: bool,
+    variant_analysis: bool,
+    disease_analysis: bool,
+    plot_type: str,
+):
+    """Benchmark the gene/variant/disease prioritisation performance for two runs."""
+    if not gene_analysis and not variant_analysis and not disease_analysis:
+        raise InputError("Need to specify at least one of gene/variant/disease analysis.")
+    benchmark_runs(
+        _parse_run_data_text_file(run_data),
+        score_order,
+        output_prefix,
+        threshold,
+        gene_analysis,
+        variant_analysis,
+        disease_analysis,
+        plot_type,
+    )
