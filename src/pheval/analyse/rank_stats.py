@@ -29,7 +29,7 @@ class RankStats:
 
     def percentage_rank(self, value: int) -> float:
         """Return a percentage rank."""
-        return 100 * value / self.found
+        return 100 * value / self.total
 
     def percentage_top(self) -> float:
         """Return percentage of top matches."""
@@ -49,7 +49,7 @@ class RankStats:
 
     def percentage_found(self) -> float:
         """Return percentage of matches found."""
-        return 100 * self.found / self.total
+        return self.percentage_rank(self.found)
 
     @staticmethod
     def percentage_difference(percentage_value_1: float, percentage_value_2: float) -> float:
