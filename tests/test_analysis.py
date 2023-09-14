@@ -3,16 +3,16 @@ from collections import defaultdict
 from copy import copy
 from pathlib import Path, PosixPath
 
-from pheval.analyse.analysis import (
-    AssessDiseasePrioritisation,
-    AssessGenePrioritisation,
-    AssessVariantPrioritisation,
+from pheval.analyse.disease_prioritisation_analysis import AssessDiseasePrioritisation
+from pheval.analyse.gene_prioritisation_analysis import AssessGenePrioritisation
+from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
+from pheval.analyse.prioritisation_result_types import (
     DiseasePrioritisationResult,
     GenePrioritisationResult,
-    PrioritisationRankRecorder,
     VariantPrioritisationResult,
 )
 from pheval.analyse.rank_stats import RankStats
+from pheval.analyse.variant_prioritisation_analysis import AssessVariantPrioritisation
 from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
