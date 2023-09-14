@@ -34,29 +34,11 @@ class RankComparisonGenerator:
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
-    def generate_gene_output(self, prefix: str) -> None:
-        """Generate the output for gene prioritisation ranks."""
-        self._generate_dataframe().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
+    def generate_output(self, prefix: str, suffix: str) -> None:
+        self._generate_dataframe().to_csv(prefix + suffix, sep="\t")
 
-    def generate_variant_output(self, prefix: str) -> None:
-        """Generate the output for variant prioritisation ranks."""
-        self._generate_dataframe().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
-
-    def generate_disease_output(self, prefix: str) -> None:
-        """Generate the output for disease prioritisation ranks."""
-        self._generate_dataframe().to_csv(prefix + "-disease_rank_comparison.tsv", sep="\t")
-
-    def generate_gene_comparison_output(self, prefix: str) -> None:
-        """Generate the output for gene prioritisation rank comparison."""
-        self._calculate_rank_difference().to_csv(prefix + "-gene_rank_comparison.tsv", sep="\t")
-
-    def generate_variant_comparison_output(self, prefix: str) -> None:
-        """Generate the output for variant prioritisation rank comparison."""
-        self._calculate_rank_difference().to_csv(prefix + "-variant_rank_comparison.tsv", sep="\t")
-
-    def generate_disease_comparison_output(self, prefix: str) -> None:
-        """Generate the output for disease prioritisation rank comparison."""
-        self._calculate_rank_difference().to_csv(prefix + "-disease_rank_comparison.tsv", sep="\t")
+    def generate_comparison_output(self, prefix: str, suffix: str) -> None:
+        self._calculate_rank_difference().to_csv(prefix + suffix, sep="\t")
 
 
 class RankStatsWriter:
@@ -118,8 +100,8 @@ def generate_benchmark_gene_output(
     prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate gene prioritisation outputs for benchmarking single run."""
-    RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_gene_output(
-        f"{prioritisation_data.gene_prioritisation.results_dir.name}"
+    RankComparisonGenerator(prioritisation_data.gene_prioritisation.ranks).generate_output(
+        f"{prioritisation_data.gene_prioritisation.results_dir.name}", "-gene_rank_comparison.tsv"
     )
     generate_plots(
         [prioritisation_data],
@@ -134,9 +116,10 @@ def generate_benchmark_variant_output(
     prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate variant prioritisation outputs for benchmarking single run."""
-    RankComparisonGenerator(
-        prioritisation_data.variant_prioritisation.ranks
-    ).generate_variant_output(f"{prioritisation_data.variant_prioritisation.results_dir.name}")
+    RankComparisonGenerator(prioritisation_data.variant_prioritisation.ranks).generate_output(
+        f"{prioritisation_data.variant_prioritisation.results_dir.name}",
+        "-variant_rank_comparison.tsv",
+    )
     generate_plots(
         [prioritisation_data],
         TrackRunPrioritisation.return_variant,
@@ -150,9 +133,10 @@ def generate_benchmark_disease_output(
     prioritisation_data: TrackRunPrioritisation, plot_type: str
 ) -> None:
     """Generate disease prioritisation outputs for benchmarking single run."""
-    RankComparisonGenerator(
-        prioritisation_data.disease_prioritisation.ranks
-    ).generate_disease_output(f"{prioritisation_data.disease_prioritisation.results_dir.name}")
+    RankComparisonGenerator(prioritisation_data.disease_prioritisation.ranks).generate_output(
+        f"{prioritisation_data.disease_prioritisation.results_dir.name}",
+        "-disease_rank_comparison.tsv",
+    )
     generate_plots(
         [prioritisation_data],
         TrackRunPrioritisation.return_disease,
@@ -184,11 +168,12 @@ def generate_gene_rank_comparisons(comparison_ranks: [tuple]) -> None:
         merged_results = merge_results(
             deepcopy(pair[0].gene_prioritisation.ranks), deepcopy(pair[1].gene_prioritisation.ranks)
         )
-        RankComparisonGenerator(merged_results).generate_gene_comparison_output(
+        RankComparisonGenerator(merged_results).generate_comparison_output(
             f"{pair[0].gene_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].gene_prioritisation.results_dir.name}"
             f"_vs_{pair[1].gene_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].gene_prioritisation.results_dir.name}"
+            f"{pair[1].gene_prioritisation.results_dir.name}",
+            "-gene_rank_comparison.tsv",
         )
 
 
@@ -199,11 +184,12 @@ def generate_variant_rank_comparisons(comparison_ranks: [tuple]) -> None:
             deepcopy(pair[0].variant_prioritisation.ranks),
             deepcopy(pair[1].variant_prioritisation.ranks),
         )
-        RankComparisonGenerator(merged_results).generate_variant_comparison_output(
+        RankComparisonGenerator(merged_results).generate_comparison_output(
             f"{pair[0].variant_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].variant_prioritisation.results_dir.name}"
             f"_vs_{pair[1].variant_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].variant_prioritisation.results_dir.name}"
+            f"{pair[1].variant_prioritisation.results_dir.name}",
+            "-variant_rank_comparison.tsv",
         )
 
 
@@ -214,11 +200,12 @@ def generate_disease_rank_comparisons(comparison_ranks: [tuple]) -> None:
             deepcopy(pair[0].disease_prioritisation.ranks),
             deepcopy(pair[1].disease_prioritisation.ranks),
         )
-        RankComparisonGenerator(merged_results).generate_disease_comparison_output(
+        RankComparisonGenerator(merged_results).generate_comparison_output(
             f"{pair[0].disease_prioritisation.results_dir.parents[0].name}_"
             f"{pair[0].disease_prioritisation.results_dir.name}"
             f"_vs_{pair[1].disease_prioritisation.results_dir.parents[0].name}_"
-            f"{pair[1].disease_prioritisation.results_dir.name}"
+            f"{pair[1].disease_prioritisation.results_dir.name}",
+            "-disease_rank_comparison.tsv",
         )
 
 
