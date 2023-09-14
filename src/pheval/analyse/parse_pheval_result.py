@@ -7,10 +7,7 @@ from pheval.post_processing.post_processing import PhEvalResult
 
 def read_standardised_result(standardised_result_path: Path) -> dict:
     """Read the standardised result output and return a list of dictionaries."""
-    try:
-        return pd.read_csv(standardised_result_path, delimiter="\t").to_dict("records")
-    except pd.errors.EmptyDataError:
-        return pd.DataFrame()
+    return pd.read_csv(standardised_result_path, delimiter="\t").to_dict("records")
 
 
 def parse_pheval_result(data_class_type: PhEvalResult, pheval_result: [dict]) -> [PhEvalResult]:
