@@ -280,12 +280,12 @@ def generate_plots(
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_plot(
             prioritisation_data,
-            benchmark_generator.return_function,
+            benchmark_generator,
         )
     elif plot_type == "bar_cumulative":
         plot_generator.generate_cumulative_bar(
             prioritisation_data,
-            benchmark_generator.return_function,
+            benchmark_generator,
         )
     elif plot_type == "bar_non_cumulative":
         plot_generator.generate_non_cumulative_bar(
