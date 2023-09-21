@@ -1,17 +1,18 @@
 from collections import defaultdict
 from pathlib import Path
 
+from pheval.analyse.benchmark_generator import (
+    DiseaseBenchmarkPrioritisationOutputGenerator,
+    GeneBenchmarkPrioritisationOutputGenerator,
+    VariantBenchmarkPrioritisationOutputGenerator,
+)
+from pheval.analyse.benchmarking_data import AnalysisResults, TrackRunPrioritisation
 from pheval.analyse.disease_prioritisation_analysis import assess_phenopacket_disease_prioritisation
 from pheval.analyse.gene_prioritisation_analysis import assess_phenopacket_gene_prioritisation
-from pheval.analyse.generate_plots import AnalysisResults, TrackRunPrioritisation
 from pheval.analyse.generate_summary_outputs import (
     RankStatsWriter,
-    generate_benchmark_comparison_disease_output,
-    generate_benchmark_comparison_gene_output,
-    generate_benchmark_comparison_variant_output,
-    generate_benchmark_disease_output,
-    generate_benchmark_gene_output,
-    generate_benchmark_variant_output,
+    generate_benchmark_comparison_output,
+    generate_benchmark_output,
 )
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
@@ -134,9 +135,15 @@ def benchmark_directory(
         variant_analysis,
         disease_analysis,
     )
-    generate_benchmark_gene_output(prioritisation_data, plot_type) if gene_analysis else None
-    generate_benchmark_variant_output(prioritisation_data, plot_type) if variant_analysis else None
-    generate_benchmark_disease_output(prioritisation_data, plot_type) if disease_analysis else None
+    generate_benchmark_output(
+        prioritisation_data, plot_type, GeneBenchmarkPrioritisationOutputGenerator()
+    ) if gene_analysis else None
+    generate_benchmark_output(
+        prioritisation_data, plot_type, VariantBenchmarkPrioritisationOutputGenerator()
+    ) if variant_analysis else None
+    generate_benchmark_output(
+        prioritisation_data, plot_type, DiseaseBenchmarkPrioritisationOutputGenerator()
+    ) if disease_analysis else None
     gene_stats_writer.close() if gene_analysis else None
     variants_stats_writer.close() if variant_analysis else None
     disease_stats_writer.close() if disease_analysis else None
@@ -184,14 +191,14 @@ def benchmark_runs(
             disease_analysis,
         )
         prioritisation_stats_for_runs.append(prioritisation_stats)
-    generate_benchmark_comparison_gene_output(
-        prioritisation_stats_for_runs, plot_type
+    generate_benchmark_comparison_output(
+        prioritisation_stats_for_runs, plot_type, GeneBenchmarkPrioritisationOutputGenerator()
     ) if gene_analysis else None
-    generate_benchmark_comparison_variant_output(
-        prioritisation_stats_for_runs, plot_type
+    generate_benchmark_comparison_output(
+        prioritisation_stats_for_runs, plot_type, VariantBenchmarkPrioritisationOutputGenerator()
     ) if variant_analysis else None
-    generate_benchmark_comparison_disease_output(
-        prioritisation_stats_for_runs, plot_type
+    generate_benchmark_comparison_output(
+        prioritisation_stats_for_runs, plot_type, DiseaseBenchmarkPrioritisationOutputGenerator()
     ) if disease_analysis else None
     gene_stats_writer.close() if gene_analysis else None
     variants_stats_writer.close() if variant_analysis else None
