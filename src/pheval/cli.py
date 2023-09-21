@@ -3,10 +3,10 @@ import logging
 
 import click
 
-from pheval.analyse.analysis import benchmark, benchmark_comparison
-
 from .cli_pheval import run
 from .cli_pheval_utils import (
+    benchmark,
+    benchmark_comparison,
     create_spiked_vcfs_command,
     scramble_phenopackets_command,
     semsim_convert_command,
