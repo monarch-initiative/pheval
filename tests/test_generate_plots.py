@@ -64,7 +64,7 @@ class TestPlotGenerator(unittest.TestCase):
                     "4-5": 10.0,
                     "6-10": 20.0,
                     ">10": 10.0,
-                    "FO/NP": 50.0,
+                    "Missed": 50.0,
                     "Run": "tool_corpus",
                     "Top": 5.0,
                 }
@@ -92,7 +92,7 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Percentage": 0.2, "Rank": "Top5", "Run": "tool_corpus"},
                 {"Percentage": 0.4, "Rank": "Top10", "Run": "tool_corpus"},
                 {"Percentage": 0.5, "Rank": "Found", "Run": "tool_corpus"},
-                {"Percentage": 0.5, "Rank": "FO/NP", "Run": "tool_corpus"},
+                {"Percentage": 0.5, "Rank": "Missed", "Run": "tool_corpus"},
                 {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
@@ -109,7 +109,7 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Percentage": 0.1, "Rank": "4-5", "Run": "tool_corpus"},
                 {"Percentage": 0.2, "Rank": "6-10", "Run": "tool_corpus"},
                 {"Percentage": 0.1, "Rank": ">10", "Run": "tool_corpus"},
-                {"Percentage": 0.5, "Rank": "FO/NP", "Run": "tool_corpus"},
+                {"Percentage": 0.5, "Rank": "Missed", "Run": "tool_corpus"},
                 {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
