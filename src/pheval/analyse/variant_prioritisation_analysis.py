@@ -3,13 +3,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from pheval.analyse.benchmarking_data import BenchmarkRun
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import VariantPrioritisationResult
 from pheval.analyse.rank_stats import RankStats
+from pheval.analyse.rank_stats_writer import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalVariantResult
-from pheval.utils.file_utils import all_files, obtain_closest_file_name
+from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import GenomicVariant, PhenopacketUtil, phenopacket_reader
 
 
@@ -138,3 +140,32 @@ def assess_phenopacket_variant_prioritisation(
         score_order,
         proband_causative_variants,
     ).assess_variant_prioritisation(variant_rank_stats, variant_rank_comparison)
+
+
+def benchmark_variant_prioritisation(
+    results_directory_and_input: TrackInputOutputDirectories,
+    score_order: str,
+    threshold: float,
+    variant_rank_comparison: defaultdict,
+    variants_stats_writer: RankStatsWriter,
+):
+    """Benchmark a directory based on variant prioritisation results."""
+    variant_rank_stats = RankStats()
+    for standardised_result in files_with_suffix(
+        results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
+        ".tsv",
+    ):
+        assess_phenopacket_variant_prioritisation(
+            standardised_result,
+            score_order,
+            results_directory_and_input,
+            threshold,
+            variant_rank_stats,
+            variant_rank_comparison,
+        )
+    variants_stats_writer.write_row(results_directory_and_input.results_dir, variant_rank_stats)
+    return BenchmarkRun(
+        results_dir=results_directory_and_input.results_dir,
+        ranks=variant_rank_comparison,
+        rank_stats=variant_rank_stats,
+    )
