@@ -5,8 +5,8 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-from pheval.analyse.benchmark_generator import BenchmarkPrioritisationOutputGenerator
-from pheval.analyse.benchmarking_data import AnalysisResults, TrackRunPrioritisation
+from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
+from pheval.analyse.benchmarking_data import BenchmarkRun
 from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
@@ -23,14 +23,14 @@ class PlotGenerator:
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
 
-    def _generate_stacked_bar_plot_data(self, prioritisation_result: AnalysisResults) -> None:
+    def _generate_stacked_bar_plot_data(self, benchmark_result: BenchmarkRun) -> None:
         """Generate data in correct format for dataframe creation for stacked bar plot."""
-        rank_stats = prioritisation_result.rank_stats
+        rank_stats = benchmark_result.rank_stats
         self.stats.append(
             {
-                "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
-                f"{trim_corpus_results_directory_suffix(prioritisation_result.results_dir.name)}",
-                "Top": prioritisation_result.rank_stats.percentage_top(),
+                "Run": f"{benchmark_result.results_dir.parents[0].name}_"
+                f"{trim_corpus_results_directory_suffix(benchmark_result.results_dir.name)}",
+                "Top": benchmark_result.rank_stats.percentage_top(),
                 "2-3": rank_stats.percentage_difference(
                     rank_stats.percentage_top3(), rank_stats.percentage_top()
                 ),
@@ -47,32 +47,28 @@ class PlotGenerator:
             }
         )
 
-    def _generate_stats_mrr_bar_plot_data(self, prioritisation_result: AnalysisResults) -> None:
+    def _generate_stats_mrr_bar_plot_data(self, benchmark_result: BenchmarkRun) -> None:
         """Generate data in correct format for dataframe creation for MRR bar plot."""
         self.mrr.extend(
             [
                 {
                     "Rank": "MRR",
-                    "Percentage": prioritisation_result.rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
-                    f"{trim_corpus_results_directory_suffix(prioritisation_result.results_dir.name)}",
+                    "Percentage": benchmark_result.rank_stats.mean_reciprocal_rank(),
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
+                    f"{trim_corpus_results_directory_suffix(benchmark_result.results_dir.name)}",
                 }
             ]
         )
 
     def generate_stacked_bar_plot(
         self,
-        prioritisation_data: [TrackRunPrioritisation],
-        benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+        benchmarking_results: [BenchmarkRun],
+        benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate stacked bar plot."""
-        for prioritisation_result in prioritisation_data:
-            self._generate_stacked_bar_plot_data(
-                benchmark_generator.return_function(prioritisation_result)
-            )
-            self._generate_stats_mrr_bar_plot_data(
-                benchmark_generator.return_function(prioritisation_result)
-            )
+        for benchmark_result in benchmarking_results:
+            self._generate_stacked_bar_plot_data(benchmark_result)
+            self._generate_stats_mrr_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
         stats_df.set_index("Run").plot(
             kind="bar", stacked=True, colormap="tab10", ylabel=benchmark_generator.y_label
@@ -96,42 +92,42 @@ class PlotGenerator:
             bbox_inches="tight",
         )
 
-    def _generate_cumulative_bar_plot_data(self, prioritisation_result: AnalysisResults):
+    def _generate_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRun):
         """Generate data in correct format for dataframe creation for cumulative bar plot."""
-        rank_stats = prioritisation_result.rank_stats
+        rank_stats = benchmark_result.rank_stats
         trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(
-            prioritisation_result.results_dir.name
+            benchmark_result.results_dir.name
         )
         self.stats.extend(
             [
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top3",
                     "Percentage": rank_stats.percentage_top3() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top5",
                     "Percentage": rank_stats.percentage_top5() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Top10",
                     "Percentage": rank_stats.percentage_top10() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "Found",
                     "Percentage": rank_stats.percentage_found() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -140,13 +136,13 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
             ]
@@ -154,14 +150,12 @@ class PlotGenerator:
 
     def generate_cumulative_bar(
         self,
-        prioritisation_data: [TrackRunPrioritisation],
-        benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+        benchmarking_results: [BenchmarkRun],
+        benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate cumulative bar plot."""
-        for prioritisation_result in prioritisation_data:
-            self._generate_cumulative_bar_plot_data(
-                benchmark_generator.return_function(prioritisation_result)
-            )
+        for benchmark_result in benchmarking_results:
+            self._generate_cumulative_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
         sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
             xlabel="Rank", ylabel=benchmark_generator.y_label
@@ -175,20 +169,18 @@ class PlotGenerator:
             bbox_inches="tight",
         )
 
-    def _generate_non_cumulative_bar_plot_data(
-        self, prioritisation_result: AnalysisResults
-    ) -> [dict]:
+    def _generate_non_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRun) -> [dict]:
         """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
-        rank_stats = prioritisation_result.rank_stats
+        rank_stats = benchmark_result.rank_stats
         trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(
-            prioritisation_result.results_dir.name
+            benchmark_result.results_dir.name
         )
         self.stats.extend(
             [
                 {
                     "Rank": "Top",
                     "Percentage": rank_stats.percentage_top() / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -197,7 +189,7 @@ class PlotGenerator:
                         rank_stats.percentage_top3(), rank_stats.percentage_top()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -206,7 +198,7 @@ class PlotGenerator:
                         rank_stats.percentage_top5(), rank_stats.percentage_top3()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -215,7 +207,7 @@ class PlotGenerator:
                         rank_stats.percentage_top10(), rank_stats.percentage_top5()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -224,7 +216,7 @@ class PlotGenerator:
                         rank_stats.percentage_found(), rank_stats.percentage_top10()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
@@ -233,13 +225,13 @@ class PlotGenerator:
                         100, rank_stats.percentage_found()
                     )
                     / 100,
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
                 {
                     "Rank": "MRR",
                     "Percentage": rank_stats.mean_reciprocal_rank(),
-                    "Run": f"{prioritisation_result.results_dir.parents[0].name}_"
+                    "Run": f"{benchmark_result.results_dir.parents[0].name}_"
                     f"{trimmed_corpus_results_dir}",
                 },
             ]
@@ -247,14 +239,12 @@ class PlotGenerator:
 
     def generate_non_cumulative_bar(
         self,
-        prioritisation_data: [TrackRunPrioritisation],
-        benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+        benchmarking_results: [BenchmarkRun],
+        benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate non-cumulative bar plot."""
-        for prioritisation_result in prioritisation_data:
-            self._generate_non_cumulative_bar_plot_data(
-                benchmark_generator.return_function(prioritisation_result)
-            )
+        for benchmark_result in benchmarking_results:
+            self._generate_non_cumulative_bar_plot_data(benchmark_result)
 
         stats_df = pd.DataFrame(self.stats)
         sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
@@ -271,24 +261,24 @@ class PlotGenerator:
 
 
 def generate_plots(
-    prioritisation_data: [TrackRunPrioritisation],
-    benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+    benchmarking_results: [BenchmarkRun],
+    benchmark_generator: BenchmarkRunOutputGenerator,
     plot_type: str,
 ) -> None:
     """Generate summary stats bar plots for prioritisation."""
     plot_generator = PlotGenerator()
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_plot(
-            prioritisation_data,
+            benchmarking_results,
             benchmark_generator,
         )
     elif plot_type == "bar_cumulative":
         plot_generator.generate_cumulative_bar(
-            prioritisation_data,
+            benchmarking_results,
             benchmark_generator,
         )
     elif plot_type == "bar_non_cumulative":
         plot_generator.generate_non_cumulative_bar(
-            prioritisation_data,
+            benchmarking_results,
             benchmark_generator,
         )
