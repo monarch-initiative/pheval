@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-from pheval.analyse.generate_plots import AnalysisResults, PlotGenerator, TrackRunPrioritisation
+from pheval.analyse.generate_plots import BenchmarkRun, PlotGenerator
 from pheval.analyse.rank_stats import RankStats
 
 
@@ -10,52 +10,22 @@ class TestPlotGenerator(unittest.TestCase):
         self.gene_plot_generator = PlotGenerator()
         self.variant_plot_generator = PlotGenerator()
         self.disease_plot_generator = PlotGenerator()
-        self.track_prioritisation = TrackRunPrioritisation(
-            gene_prioritisation=AnalysisResults(
-                results_dir=Path("/path/to/tool/corpus_results"),
-                ranks={},
-                rank_stats=RankStats(
-                    top=1,
-                    top3=2,
-                    top5=4,
-                    top10=8,
-                    found=10,
-                    total=20,
-                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
-                ),
-            ),
-            variant_prioritisation=AnalysisResults(
-                results_dir=Path("/path/to/tool/corpus_results"),
-                ranks={},
-                rank_stats=RankStats(
-                    top=1,
-                    top3=2,
-                    top5=3,
-                    top10=4,
-                    found=5,
-                    total=10,
-                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
-                ),
-            ),
-            disease_prioritisation=AnalysisResults(
-                results_dir=Path("/path/to/tool/corpus_results"),
-                ranks={},
-                rank_stats=RankStats(
-                    top=1,
-                    top3=2,
-                    top5=3,
-                    top10=4,
-                    found=5,
-                    total=5,
-                    reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 12],
-                ),
+        self.track_prioritisation = BenchmarkRun(
+            results_dir=Path("/path/to/tool/corpus_results"),
+            ranks={},
+            rank_stats=RankStats(
+                top=1,
+                top3=2,
+                top5=4,
+                top10=8,
+                found=10,
+                total=20,
+                reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
             ),
         )
 
     def test__generate_stacked_bar_plot_data(self):
-        self.gene_plot_generator._generate_stacked_bar_plot_data(
-            self.track_prioritisation.gene_prioritisation
-        )
+        self.gene_plot_generator._generate_stacked_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
@@ -72,18 +42,14 @@ class TestPlotGenerator(unittest.TestCase):
         )
 
     def test__generate_stats_mrr_bar_plot_data(self):
-        self.gene_plot_generator._generate_stats_mrr_bar_plot_data(
-            self.track_prioritisation.gene_prioritisation
-        )
+        self.gene_plot_generator._generate_stats_mrr_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.mrr,
             [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus"}],
         )
 
     def test__generate_cumulative_bar_plot_data(self):
-        self.gene_plot_generator._generate_cumulative_bar_plot_data(
-            self.track_prioritisation.gene_prioritisation
-        )
+        self.gene_plot_generator._generate_cumulative_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
@@ -98,9 +64,7 @@ class TestPlotGenerator(unittest.TestCase):
         )
 
     def test__generate_non_cumulative_bar_plot_data(self):
-        self.gene_plot_generator._generate_non_cumulative_bar_plot_data(
-            self.track_prioritisation.gene_prioritisation
-        )
+        self.gene_plot_generator._generate_non_cumulative_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.stats,
             [
