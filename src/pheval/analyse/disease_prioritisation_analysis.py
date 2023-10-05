@@ -6,7 +6,6 @@ from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standar
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResult
 from pheval.analyse.rank_stats import RankStats
-
 from pheval.analyse.rank_stats_writer import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
