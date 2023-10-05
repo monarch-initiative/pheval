@@ -1,13 +1,16 @@
 from collections import defaultdict
 from pathlib import Path
 
+from pheval.analyse.benchmarking_data import BenchmarkRun
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResult
 from pheval.analyse.rank_stats import RankStats
+
+from pheval.analyse.rank_stats_writer import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
-from pheval.utils.file_utils import all_files, obtain_closest_file_name
+from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandDisease, phenopacket_reader
 
 
@@ -136,3 +139,32 @@ def assess_phenopacket_disease_prioritisation(
         score_order,
         proband_diseases,
     ).assess_disease_prioritisation(disease_rank_stats, disease_rank_comparison)
+
+
+def benchmark_disease_prioritisation(
+    results_directory_and_input: TrackInputOutputDirectories,
+    score_order: str,
+    threshold: float,
+    disease_rank_comparison: defaultdict,
+    disease_stats_writer: RankStatsWriter,
+):
+    """Benchmark a directory based on disease prioritisation results."""
+    disease_rank_stats = RankStats()
+    for standardised_result in files_with_suffix(
+        results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
+        ".tsv",
+    ):
+        assess_phenopacket_disease_prioritisation(
+            standardised_result,
+            score_order,
+            results_directory_and_input,
+            threshold,
+            disease_rank_stats,
+            disease_rank_comparison,
+        )
+    disease_stats_writer.write_row(results_directory_and_input.results_dir, disease_rank_stats)
+    return BenchmarkRun(
+        results_dir=results_directory_and_input.results_dir,
+        ranks=disease_rank_comparison,
+        rank_stats=disease_rank_stats,
+    )
