@@ -1,15 +1,12 @@
-import csv
 import itertools
 from collections import defaultdict
 from copy import deepcopy
-from pathlib import Path
 
 import pandas as pd
 
-from pheval.analyse.benchmark_generator import BenchmarkPrioritisationOutputGenerator
-from pheval.analyse.benchmarking_data import TrackRunPrioritisation
+from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
+from pheval.analyse.benchmarking_data import BenchmarkRun
 from pheval.analyse.generate_plots import generate_plots
-from pheval.analyse.rank_stats import RankStats
 from pheval.constants import RANK_COMPARISON_FILE_SUFFIX
 
 
@@ -36,75 +33,20 @@ class RankComparisonGenerator:
         self._calculate_rank_difference().to_csv(prefix + suffix, sep="\t")
 
 
-class RankStatsWriter:
-    """Write the rank stats for each run."""
-
-    def __init__(self, file: Path):
-        self.file = open(file, "w")
-        self.writer = csv.writer(self.file, delimiter="\t")
-        self.writer.writerow(
-            [
-                "results_directory_path",
-                "top",
-                "top3",
-                "top5",
-                "top10",
-                "found",
-                "total",
-                "mean_reciprocal_rank",
-                "percentage_top",
-                "percentage_top3",
-                "percentage_top5",
-                "percentage_top10",
-                "percentage_found",
-            ]
-        )
-
-    def write_row(self, directory: Path, rank_stats: RankStats) -> None:
-        """Write summary rank stats row for run."""
-        try:
-            self.writer.writerow(
-                [
-                    directory,
-                    rank_stats.top,
-                    rank_stats.top3,
-                    rank_stats.top5,
-                    rank_stats.top10,
-                    rank_stats.found,
-                    rank_stats.total,
-                    rank_stats.mean_reciprocal_rank(),
-                    rank_stats.percentage_top(),
-                    rank_stats.percentage_top3(),
-                    rank_stats.percentage_top5(),
-                    rank_stats.percentage_top10(),
-                    rank_stats.percentage_found(),
-                ]
-            )
-        except IOError:
-            print("Error writing ", self.file)
-
-    def close(self) -> None:
-        """Close file."""
-        try:
-            self.file.close()
-        except IOError:
-            print("Error closing ", self.file)
-
-
 def generate_benchmark_output(
-    prioritisation_data: TrackRunPrioritisation,
+    benchmarking_results: BenchmarkRun,
     plot_type: str,
-    benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+    benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """Generate prioritisation outputs for benchmarking single run."""
-    rank_comparison_data = benchmark_generator.return_function(prioritisation_data).ranks
-    results_dir_name = benchmark_generator.return_function(prioritisation_data).results_dir.name
+    rank_comparison_data = benchmarking_results.ranks
+    results_dir_name = benchmarking_results.results_dir.name
     RankComparisonGenerator(rank_comparison_data).generate_output(
         f"{results_dir_name}",
         f"-{benchmark_generator.prioritisation_type_file_prefix}{RANK_COMPARISON_FILE_SUFFIX}",
     )
     generate_plots(
-        [prioritisation_data],
+        [benchmarking_results],
         benchmark_generator,
         plot_type,
     )
@@ -127,15 +69,15 @@ def merge_results(result1: dict, result2: dict) -> dict:
 
 
 def generate_benchmark_comparison_output(
-    prioritisation_stats_for_runs: [TrackRunPrioritisation],
+    benchmarking_results: [BenchmarkRun],
     plot_type: str,
-    benchmark_generator: BenchmarkPrioritisationOutputGenerator,
+    benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """Generate prioritisation outputs for benchmarking multiple runs."""
     output_prefix = benchmark_generator.prioritisation_type_file_prefix
-    for pair in itertools.combinations(prioritisation_stats_for_runs, 2):
-        result1 = benchmark_generator.return_function(pair[0])
-        result2 = benchmark_generator.return_function(pair[1])
+    for pair in itertools.combinations(benchmarking_results, 2):
+        result1 = pair[0]
+        result2 = pair[1]
         merged_results = merge_results(
             deepcopy(result1.ranks),
             deepcopy(result2.ranks),
@@ -149,7 +91,7 @@ def generate_benchmark_comparison_output(
         )
 
     generate_plots(
-        prioritisation_stats_for_runs,
+        benchmarking_results,
         benchmark_generator,
         plot_type,
     )
