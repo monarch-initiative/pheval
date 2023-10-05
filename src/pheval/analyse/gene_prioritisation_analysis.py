@@ -3,13 +3,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from pheval.analyse.benchmarking_data import BenchmarkRun
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import GenePrioritisationResult
 from pheval.analyse.rank_stats import RankStats
+from pheval.analyse.rank_stats_writer import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalGeneResult
-from pheval.utils.file_utils import all_files, obtain_closest_file_name
+from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
 from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandCausativeGene, phenopacket_reader
 
 
@@ -133,3 +135,31 @@ def assess_phenopacket_gene_prioritisation(
         score_order,
         proband_causative_genes,
     ).assess_gene_prioritisation(gene_rank_stats, gene_rank_comparison)
+
+
+def benchmark_gene_prioritisation(
+    results_directory_and_input: TrackInputOutputDirectories,
+    score_order: str,
+    threshold: float,
+    gene_rank_comparison: defaultdict,
+    gene_stats_writer: RankStatsWriter,
+) -> BenchmarkRun:
+    """Benchmark a directory based on gene prioritisation results."""
+    gene_rank_stats = RankStats()
+    for standardised_result in files_with_suffix(
+        results_directory_and_input.results_dir.joinpath("pheval_gene_results/"), ".tsv"
+    ):
+        assess_phenopacket_gene_prioritisation(
+            standardised_result,
+            score_order,
+            results_directory_and_input,
+            threshold,
+            gene_rank_stats,
+            gene_rank_comparison,
+        )
+    gene_stats_writer.write_row(results_directory_and_input.results_dir, gene_rank_stats)
+    return BenchmarkRun(
+        results_dir=results_directory_and_input.results_dir,
+        ranks=gene_rank_comparison,
+        rank_stats=gene_rank_stats,
+    )
