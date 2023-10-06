@@ -5,7 +5,7 @@ from typing import Callable
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.disease_prioritisation_analysis import benchmark_disease_prioritisation
 from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritisation
-from pheval.analyse.rank_stats_writer import RankStatsWriter
+from pheval.analyse.rank_stats import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
 from pheval.constants import (

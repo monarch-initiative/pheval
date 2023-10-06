@@ -7,8 +7,7 @@ from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import GenePrioritisationResult
-from pheval.analyse.rank_stats import RankStats
-from pheval.analyse.rank_stats_writer import RankStatsWriter
+from pheval.analyse.rank_stats import RankStats, RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalGeneResult
 from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name

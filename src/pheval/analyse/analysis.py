@@ -11,7 +11,7 @@ from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_comparison_output,
     generate_benchmark_output,
 )
-from pheval.analyse.rank_stats_writer import RankStatsWriter
+from pheval.analyse.rank_stats import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 
 
