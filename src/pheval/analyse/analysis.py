@@ -28,7 +28,7 @@ def run_benchmark(
         Path(output_prefix + benchmark_generator.rank_comparison_file_suffix)
     )
     rank_comparison = defaultdict(dict)
-    benchmark_result = benchmark_generator.benchmark_function(
+    benchmark_result = benchmark_generator.generate_benchmark_run_results(
         results_dir_and_input, score_order, threshold, rank_comparison, stats_writer
     )
     generate_benchmark_output(benchmark_result, plot_type, benchmark_generator)
@@ -90,7 +90,7 @@ def run_benchmark_comparison(
     benchmarking_results = []
     for results_dir_and_input in results_directories:
         rank_comparison = defaultdict(dict)
-        benchmark_result = benchmark_generator.benchmark_function(
+        benchmark_result = benchmark_generator.generate_benchmark_run_results(
             results_dir_and_input, score_order, threshold, rank_comparison, stats_writer
         )
         benchmarking_results.append(benchmark_result)
