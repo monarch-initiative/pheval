@@ -25,7 +25,7 @@ class BenchmarkRunOutputGenerator:
     prioritisation_type_file_prefix: str
     y_label: str
     generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
+        [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ]
     rank_comparison_file_suffix: str
 
@@ -38,7 +38,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = GENE_PLOT_FILE_PREFIX
     y_label: str = GENE_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
+        [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_gene_prioritisation
     rank_comparison_file_suffix: str = "-gene_summary.tsv"
 
@@ -51,7 +51,7 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = VARIANT_PLOT_FILE_PREFIX
     y_label: str = VARIANT_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
+        [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_variant_prioritisation
     rank_comparison_file_suffix: str = "-variant_summary.tsv"
 
@@ -64,6 +64,6 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = DISEASE_PLOT_FILE_PREFIX
     y_label: str = DISEASE_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
+        [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_disease_prioritisation
     rank_comparison_file_suffix: str = "-disease_summary.tsv"
