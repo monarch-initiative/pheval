@@ -15,7 +15,7 @@ from pheval.analyse.rank_stats_writer import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 
 
-def run_benchmark(
+def _run_benchmark(
     results_dir_and_input: TrackInputOutputDirectories,
     score_order: str,
     output_prefix: str,
@@ -47,7 +47,7 @@ def benchmark_directory(
 ) -> None:
     """Benchmark prioritisation performance for a result directory."""
     if gene_analysis:
-        run_benchmark(
+        _run_benchmark(
             results_dir_and_input=results_dir_and_input,
             score_order=score_order,
             output_prefix=output_prefix,
@@ -56,7 +56,7 @@ def benchmark_directory(
             benchmark_generator=GeneBenchmarkRunOutputGenerator(),
         )
     if variant_analysis:
-        run_benchmark(
+        _run_benchmark(
             results_dir_and_input=results_dir_and_input,
             score_order=score_order,
             output_prefix=output_prefix,
@@ -65,7 +65,7 @@ def benchmark_directory(
             benchmark_generator=VariantBenchmarkRunOutputGenerator(),
         )
     if disease_analysis:
-        run_benchmark(
+        _run_benchmark(
             results_dir_and_input=results_dir_and_input,
             score_order=score_order,
             output_prefix=output_prefix,
@@ -75,7 +75,7 @@ def benchmark_directory(
         )
 
 
-def run_benchmark_comparison(
+def _run_benchmark_comparison(
     results_directories: [TrackInputOutputDirectories],
     score_order: str,
     output_prefix: str,
@@ -110,7 +110,7 @@ def benchmark_run_comparisons(
 ) -> None:
     """Benchmark several result directories."""
     if gene_analysis:
-        run_benchmark_comparison(
+        _run_benchmark_comparison(
             results_directories=results_directories,
             score_order=score_order,
             output_prefix=output_prefix,
@@ -119,7 +119,7 @@ def benchmark_run_comparisons(
             benchmark_generator=GeneBenchmarkRunOutputGenerator(),
         )
     if variant_analysis:
-        run_benchmark_comparison(
+        _run_benchmark_comparison(
             results_directories=results_directories,
             score_order=score_order,
             output_prefix=output_prefix,
@@ -128,7 +128,7 @@ def benchmark_run_comparisons(
             benchmark_generator=VariantBenchmarkRunOutputGenerator(),
         )
     if disease_analysis:
-        run_benchmark_comparison(
+        _run_benchmark_comparison(
             results_directories=results_directories,
             score_order=score_order,
             output_prefix=output_prefix,
