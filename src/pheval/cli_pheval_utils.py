@@ -5,7 +5,11 @@ from typing import List
 
 import click
 
-from pheval.analyse.analysis import TrackInputOutputDirectories, benchmark_directory, benchmark_runs
+from pheval.analyse.analysis import (
+    TrackInputOutputDirectories,
+    benchmark_directory,
+    benchmark_run_comparisons,
+)
 from pheval.analyse.run_data_parser import parse_run_data_text_file
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
@@ -518,7 +522,7 @@ def benchmark_comparison(
     """Benchmark the gene/variant/disease prioritisation performance for two runs."""
     if not gene_analysis and not variant_analysis and not disease_analysis:
         raise InputError("Need to specify at least one of gene/variant/disease analysis.")
-    benchmark_runs(
+    benchmark_run_comparisons(
         parse_run_data_text_file(run_data),
         score_order,
         output_prefix,
