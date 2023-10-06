@@ -169,7 +169,9 @@ class PlotGenerator:
             bbox_inches="tight",
         )
 
-    def _generate_non_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> [dict]:
+    def _generate_non_cumulative_bar_plot_data(
+        self, benchmark_result: BenchmarkRunResults
+    ) -> [dict]:
         """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
         rank_stats = benchmark_result.rank_stats
         trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(
