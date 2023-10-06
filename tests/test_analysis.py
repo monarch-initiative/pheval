@@ -210,7 +210,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
             ),
         )
 
-    def test__varianr_rank_new_phenopacket(self):
+    def test__variant_rank_new_phenopacket(self):
         self.assertEqual(
             self.add_new_phenopacket_variant_record.run_comparison,
             defaultdict(
