@@ -6,7 +6,7 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
@@ -23,7 +23,7 @@ class PlotGenerator:
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
 
-    def _generate_stacked_bar_plot_data(self, benchmark_result: BenchmarkRun) -> None:
+    def _generate_stacked_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> None:
         """Generate data in correct format for dataframe creation for stacked bar plot."""
         rank_stats = benchmark_result.rank_stats
         self.stats.append(
@@ -47,7 +47,7 @@ class PlotGenerator:
             }
         )
 
-    def _generate_stats_mrr_bar_plot_data(self, benchmark_result: BenchmarkRun) -> None:
+    def _generate_stats_mrr_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> None:
         """Generate data in correct format for dataframe creation for MRR bar plot."""
         self.mrr.extend(
             [
@@ -62,7 +62,7 @@ class PlotGenerator:
 
     def generate_stacked_bar_plot(
         self,
-        benchmarking_results: [BenchmarkRun],
+        benchmarking_results: [BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate stacked bar plot."""
@@ -92,7 +92,7 @@ class PlotGenerator:
             bbox_inches="tight",
         )
 
-    def _generate_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRun):
+    def _generate_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRunResults):
         """Generate data in correct format for dataframe creation for cumulative bar plot."""
         rank_stats = benchmark_result.rank_stats
         trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(
@@ -150,7 +150,7 @@ class PlotGenerator:
 
     def generate_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRun],
+        benchmarking_results: [BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate cumulative bar plot."""
@@ -169,7 +169,7 @@ class PlotGenerator:
             bbox_inches="tight",
         )
 
-    def _generate_non_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRun) -> [dict]:
+    def _generate_non_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> [dict]:
         """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
         rank_stats = benchmark_result.rank_stats
         trimmed_corpus_results_dir = trim_corpus_results_directory_suffix(
@@ -239,7 +239,7 @@ class PlotGenerator:
 
     def generate_non_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRun],
+        benchmarking_results: [BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
     ) -> None:
         """Generate non-cumulative bar plot."""
@@ -261,7 +261,7 @@ class PlotGenerator:
 
 
 def generate_plots(
-    benchmarking_results: [BenchmarkRun],
+    benchmarking_results: [BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
     plot_type: str,
 ) -> None:

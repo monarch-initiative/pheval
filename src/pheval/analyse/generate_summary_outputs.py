@@ -5,7 +5,7 @@ from copy import deepcopy
 import pandas as pd
 
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.generate_plots import generate_plots
 from pheval.constants import RANK_COMPARISON_FILE_SUFFIX
 
@@ -34,7 +34,7 @@ class RankComparisonGenerator:
 
 
 def generate_benchmark_output(
-    benchmarking_results: BenchmarkRun,
+    benchmarking_results: BenchmarkRunResults,
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
@@ -69,7 +69,7 @@ def merge_results(result1: dict, result2: dict) -> dict:
 
 
 def generate_benchmark_comparison_output(
-    benchmarking_results: [BenchmarkRun],
+    benchmarking_results: [BenchmarkRunResults],
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:

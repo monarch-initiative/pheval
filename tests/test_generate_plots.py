@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-from pheval.analyse.generate_plots import BenchmarkRun, PlotGenerator
+from pheval.analyse.generate_plots import BenchmarkRunResults, PlotGenerator
 from pheval.analyse.rank_stats import RankStats
 
 
@@ -10,7 +10,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.gene_plot_generator = PlotGenerator()
         self.variant_plot_generator = PlotGenerator()
         self.disease_plot_generator = PlotGenerator()
-        self.track_prioritisation = BenchmarkRun(
+        self.track_prioritisation = BenchmarkRunResults(
             results_dir=Path("/path/to/tool/corpus_results"),
             ranks={},
             rank_stats=RankStats(

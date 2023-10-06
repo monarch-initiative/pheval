@@ -1,7 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResult
@@ -162,7 +162,7 @@ def benchmark_disease_prioritisation(
             disease_rank_comparison,
         )
     disease_stats_writer.write_row(results_directory_and_input.results_dir, disease_rank_stats)
-    return BenchmarkRun(
+    return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=disease_rank_comparison,
         rank_stats=disease_rank_stats,

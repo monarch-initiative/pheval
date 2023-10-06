@@ -5,7 +5,7 @@ from pheval.analyse.rank_stats import RankStats
 
 
 @dataclass
-class BenchmarkRun:
+class BenchmarkRunResults:
     """Analysis results for a run."""
 
     results_dir: Path

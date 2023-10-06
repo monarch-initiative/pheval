@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import GenePrioritisationResult
@@ -143,7 +143,7 @@ def benchmark_gene_prioritisation(
     threshold: float,
     gene_rank_comparison: defaultdict,
     gene_stats_writer: RankStatsWriter,
-) -> BenchmarkRun:
+) -> BenchmarkRunResults:
     """Benchmark a directory based on gene prioritisation results."""
     gene_rank_stats = RankStats()
     for standardised_result in files_with_suffix(
@@ -158,7 +158,7 @@ def benchmark_gene_prioritisation(
             gene_rank_comparison,
         )
     gene_stats_writer.write_row(results_directory_and_input.results_dir, gene_rank_stats)
-    return BenchmarkRun(
+    return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=gene_rank_comparison,
         rank_stats=gene_rank_stats,

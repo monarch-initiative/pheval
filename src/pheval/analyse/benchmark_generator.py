@@ -2,7 +2,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Callable
 
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.disease_prioritisation_analysis import benchmark_disease_prioritisation
 from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritisation
 from pheval.analyse.rank_stats_writer import RankStatsWriter
@@ -25,7 +25,7 @@ class BenchmarkRunOutputGenerator:
     prioritisation_type_file_prefix: str
     y_label: str
     benchmark_function: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRun
+        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
     ]
     rank_comparison_file_suffix: str
 
@@ -38,7 +38,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = GENE_PLOT_FILE_PREFIX
     y_label: str = GENE_PLOT_Y_LABEL
     benchmark_function: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRun
+        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
     ] = benchmark_gene_prioritisation
     rank_comparison_file_suffix: str = "-gene_summary.tsv"
 
@@ -51,7 +51,7 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = VARIANT_PLOT_FILE_PREFIX
     y_label: str = VARIANT_PLOT_Y_LABEL
     benchmark_function: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRun
+        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
     ] = benchmark_variant_prioritisation
     rank_comparison_file_suffix: str = "-variant_summary.tsv"
 
@@ -64,6 +64,6 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     prioritisation_type_file_prefix: str = DISEASE_PLOT_FILE_PREFIX
     y_label: str = DISEASE_PLOT_Y_LABEL
     benchmark_function: Callable[
-        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRun
+        [TrackInputOutputDirectories, str, float, defaultdict, RankStatsWriter], BenchmarkRunResults
     ] = benchmark_disease_prioritisation
     rank_comparison_file_suffix: str = "-disease_summary.tsv"

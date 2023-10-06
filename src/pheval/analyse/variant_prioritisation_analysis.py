@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from pheval.analyse.benchmarking_data import BenchmarkRun
+from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import VariantPrioritisationResult
@@ -164,7 +164,7 @@ def benchmark_variant_prioritisation(
             variant_rank_comparison,
         )
     variants_stats_writer.write_row(results_directory_and_input.results_dir, variant_rank_stats)
-    return BenchmarkRun(
+    return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=variant_rank_comparison,
         rank_stats=variant_rank_stats,
