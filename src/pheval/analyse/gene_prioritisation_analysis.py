@@ -141,7 +141,6 @@ def benchmark_gene_prioritisation(
     score_order: str,
     threshold: float,
     gene_rank_comparison: defaultdict,
-    gene_stats_writer: RankStatsWriter,
 ) -> BenchmarkRunResults:
     """Benchmark a directory based on gene prioritisation results."""
     gene_rank_stats = RankStats()
@@ -156,7 +155,6 @@ def benchmark_gene_prioritisation(
             gene_rank_stats,
             gene_rank_comparison,
         )
-    gene_stats_writer.write_row(results_directory_and_input.results_dir, gene_rank_stats)
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=gene_rank_comparison,

@@ -146,7 +146,6 @@ def benchmark_variant_prioritisation(
     score_order: str,
     threshold: float,
     variant_rank_comparison: defaultdict,
-    variants_stats_writer: RankStatsWriter,
 ):
     """Benchmark a directory based on variant prioritisation results."""
     variant_rank_stats = RankStats()
@@ -162,7 +161,6 @@ def benchmark_variant_prioritisation(
             variant_rank_stats,
             variant_rank_comparison,
         )
-    variants_stats_writer.write_row(results_directory_and_input.results_dir, variant_rank_stats)
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=variant_rank_comparison,

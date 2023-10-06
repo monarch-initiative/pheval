@@ -144,7 +144,6 @@ def benchmark_disease_prioritisation(
     score_order: str,
     threshold: float,
     disease_rank_comparison: defaultdict,
-    disease_stats_writer: RankStatsWriter,
 ):
     """Benchmark a directory based on disease prioritisation results."""
     disease_rank_stats = RankStats()
@@ -160,7 +159,6 @@ def benchmark_disease_prioritisation(
             disease_rank_stats,
             disease_rank_comparison,
         )
-    disease_stats_writer.write_row(results_directory_and_input.results_dir, disease_rank_stats)
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=disease_rank_comparison,
