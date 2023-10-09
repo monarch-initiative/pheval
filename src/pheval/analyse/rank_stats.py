@@ -60,7 +60,7 @@ class RankStats:
         return percentage_value_1 - percentage_value_2
 
     def mean_reciprocal_rank(self) -> float:
-        """Return the mean reciprocal rank."""
+        """Calculate the mean reciprocal rank."""
         if len(self.reciprocal_ranks) != self.total:
             missing_cases = self.total - self.found
             self.reciprocal_ranks.extend([0] * missing_cases)
@@ -68,6 +68,7 @@ class RankStats:
         return mean(self.reciprocal_ranks)
 
     def return_mean_reciprocal_rank(self) -> float:
+        """Return the mean reciprocal rank."""
         if self.mrr is not None:
             return self.mrr
         else:
