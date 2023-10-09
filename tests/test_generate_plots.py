@@ -33,8 +33,10 @@ class TestPlotGenerator(unittest.TestCase):
         shutil.rmtree(self.test_dir)
 
     def test_create_run_identifier(self):
-        self.assertEqual(self.gene_plot_generator.create_run_identifier(self.results_dir),
-                         "tool1-default_corpus1-default")
+        self.assertEqual(
+            self.gene_plot_generator.create_run_identifier(self.results_dir),
+            "tool1-default_corpus1-default",
+        )
 
     def test__generate_stacked_bar_plot_data(self):
         self.gene_plot_generator._generate_stacked_bar_plot_data(self.benchmarking_result)

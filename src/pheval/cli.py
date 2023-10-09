@@ -8,10 +8,11 @@ from .cli_pheval_utils import (
     benchmark,
     benchmark_comparison,
     create_spiked_vcfs_command,
+    generate_stats_plot,
     scramble_phenopackets_command,
     semsim_convert_command,
     semsim_scramble_command,
-    update_phenopackets_command, generate_stats_plot,
+    update_phenopackets_command,
 )
 
 info_log = logging.getLogger("info")
