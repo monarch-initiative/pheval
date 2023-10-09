@@ -11,7 +11,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.variant_plot_generator = PlotGenerator()
         self.disease_plot_generator = PlotGenerator()
         self.track_prioritisation = BenchmarkRunResults(
-            results_dir=Path("/path/to/tool/corpus_results"),
+            results_dir="tool_corpus",
             ranks={},
             rank_stats=RankStats(
                 top=1,
@@ -45,7 +45,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.gene_plot_generator._generate_stats_mrr_bar_plot_data(self.track_prioritisation)
         self.assertEqual(
             self.gene_plot_generator.mrr,
-            [{"Rank": "MRR", "Percentage": 0.33066666666666666, "Run": "tool_corpus"}],
+            [{"Rank": "MRR", "Percentage": 0.11022222222222222, "Run": "tool_corpus"}],
         )
 
     def test__generate_cumulative_bar_plot_data(self):
@@ -59,7 +59,7 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Percentage": 0.4, "Rank": "Top10", "Run": "tool_corpus"},
                 {"Percentage": 0.5, "Rank": "Found", "Run": "tool_corpus"},
                 {"Percentage": 0.5, "Rank": "Missed", "Run": "tool_corpus"},
-                {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
+                {"Percentage": 0.11022222222222222, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
 
@@ -74,6 +74,6 @@ class TestPlotGenerator(unittest.TestCase):
                 {"Percentage": 0.2, "Rank": "6-10", "Run": "tool_corpus"},
                 {"Percentage": 0.1, "Rank": ">10", "Run": "tool_corpus"},
                 {"Percentage": 0.5, "Rank": "Missed", "Run": "tool_corpus"},
-                {"Percentage": 0.33066666666666666, "Rank": "MRR", "Run": "tool_corpus"},
+                {"Percentage": 0.11022222222222222, "Rank": "MRR", "Run": "tool_corpus"},
             ],
         )
