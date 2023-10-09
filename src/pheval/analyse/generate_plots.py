@@ -63,7 +63,7 @@ class PlotGenerator:
             [
                 {
                     "Rank": "MRR",
-                    "Percentage": benchmark_result.rank_stats.mean_reciprocal_rank(),
+                    "Percentage": benchmark_result.rank_stats.return_mean_reciprocal_rank(),
                     "Run": self.create_run_identifier(benchmark_result.results_dir),
 
                 }
@@ -159,7 +159,7 @@ class PlotGenerator:
                 },
                 {
                     "Rank": "MRR",
-                    "Percentage": rank_stats.mean_reciprocal_rank(),
+                    "Percentage": rank_stats.return_mean_reciprocal_rank(),
                     "Run": run_identifier,
 
                 },
@@ -252,7 +252,7 @@ class PlotGenerator:
                 },
                 {
                     "Rank": "MRR",
-                    "Percentage": rank_stats.mean_reciprocal_rank(),
+                    "Percentage": rank_stats.return_mean_reciprocal_rank(),
                     "Run": run_identifier,
 
                 },
