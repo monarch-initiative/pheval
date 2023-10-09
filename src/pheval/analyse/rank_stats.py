@@ -15,6 +15,7 @@ class RankStats:
     found: int = 0
     total: int = 0
     reciprocal_ranks: list = field(default_factory=list)
+    mrr: float = None
 
     def add_rank(self, rank: int) -> None:
         """Add rank for phenopacket."""
@@ -60,6 +61,10 @@ class RankStats:
 
     def mean_reciprocal_rank(self) -> float:
         """Return the mean reciprocal rank."""
+        if len(self.reciprocal_ranks) != self.total:
+            missing_cases = self.total - self.found
+            self.reciprocal_ranks.extend([0] * missing_cases)
+            return mean(self.reciprocal_ranks)
         return mean(self.reciprocal_ranks)
 
 
