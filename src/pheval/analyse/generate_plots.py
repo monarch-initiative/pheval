@@ -5,8 +5,12 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
+from pheval.analyse.benchmark_generator import (
+    BenchmarkRunOutputGenerator, GeneBenchmarkRunOutputGenerator,
+    VariantBenchmarkRunOutputGenerator, DiseaseBenchmarkRunOutputGenerator
+)
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
+from pheval.analyse.parse_benchmark_summary import read_benchmark_tsv_result_summary, parse_benchmark_result_summary
 from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
@@ -70,6 +74,7 @@ class PlotGenerator:
             self,
             benchmarking_results: [BenchmarkRunResults],
             benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None
     ) -> None:
         """Generate stacked bar plot."""
         for benchmark_result in benchmarking_results:
@@ -79,6 +84,12 @@ class PlotGenerator:
         stats_df.set_index("Run").plot(
             kind="bar", stacked=True, colormap="tab10", ylabel=benchmark_generator.y_label
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+        if title is None:
+            plt.title(
+                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Rank Stats"
+            )
+        else:
+            plt.title(title, loc="center", fontsize=15)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
@@ -91,6 +102,9 @@ class PlotGenerator:
             colormap="tab10",
             ylabel=f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} mean reciprocal rank",
             legend=False,
+        )
+        plt.title(
+            f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} results - mean reciprocal rank"
         )
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_mrr.svg",
@@ -156,6 +170,7 @@ class PlotGenerator:
             self,
             benchmarking_results: [BenchmarkRunResults],
             benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None
     ) -> None:
         """Generate cumulative bar plot."""
         for benchmark_result in benchmarking_results:
@@ -164,9 +179,12 @@ class PlotGenerator:
         sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
             xlabel="Rank", ylabel=benchmark_generator.y_label
         )
-        plt.title(
-            f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
-        )
+        if title is None:
+            plt.title(
+                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
+            )
+        else:
+            plt.title(title, loc="center", fontsize=15)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
@@ -245,6 +263,7 @@ class PlotGenerator:
             self,
             benchmarking_results: [BenchmarkRunResults],
             benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None
     ) -> None:
         """Generate non-cumulative bar plot."""
         for benchmark_result in benchmarking_results:
@@ -254,9 +273,12 @@ class PlotGenerator:
         sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
             xlabel="Rank", ylabel=benchmark_generator.y_label
         )
-        plt.title(
-            f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
-        )
+        if title is None:
+            plt.title(
+                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
+            )
+        else:
+            plt.title(title, loc="center", fontsize=15)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
@@ -268,6 +290,7 @@ def generate_plots(
         benchmarking_results: [BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         plot_type: str,
+        title: str = None
 ) -> None:
     """Generate summary stats bar plots for prioritisation."""
     plot_generator = PlotGenerator()
@@ -275,14 +298,41 @@ def generate_plots(
         plot_generator.generate_stacked_bar_plot(
             benchmarking_results,
             benchmark_generator,
+            title
         )
     elif plot_type == "bar_cumulative":
         plot_generator.generate_cumulative_bar(
             benchmarking_results,
             benchmark_generator,
+            title
         )
     elif plot_type == "bar_non_cumulative":
         plot_generator.generate_non_cumulative_bar(
             benchmarking_results,
             benchmark_generator,
+            title
         )
+
+
+def generate_plots_from_benchmark_summary_tsv(
+        benchmark_summary_tsv: Path,
+        gene_analysis: bool,
+        variant_analysis: bool,
+        disease_analysis: bool,
+        plot_type: str,
+        title: str,
+):
+    """Generate bar plot from summary benchmark results."""
+    benchmark_stats_summary = read_benchmark_tsv_result_summary(benchmark_summary_tsv)
+    benchmarking_results = parse_benchmark_result_summary(benchmark_stats_summary)
+    if gene_analysis:
+        benchmark_generator = GeneBenchmarkRunOutputGenerator()
+    elif variant_analysis:
+        benchmark_generator = VariantBenchmarkRunOutputGenerator()
+    elif disease_analysis:
+        benchmark_generator = DiseaseBenchmarkRunOutputGenerator()
+    else:
+        raise ValueError(
+            "Specify one analysis type (gene_analysis, variant_analysis, or disease_analysis)"
+        )
+    generate_plots(benchmarking_results, benchmark_generator, plot_type, title)
