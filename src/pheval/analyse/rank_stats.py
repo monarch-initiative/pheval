@@ -67,6 +67,12 @@ class RankStats:
             return mean(self.reciprocal_ranks)
         return mean(self.reciprocal_ranks)
 
+    def return_mean_reciprocal_rank(self) -> float:
+        if self.mrr is not None:
+            return self.mrr
+        else:
+            return self.mean_reciprocal_rank()
+
 
 class RankStatsWriter:
     """Write the rank stats for each run."""
