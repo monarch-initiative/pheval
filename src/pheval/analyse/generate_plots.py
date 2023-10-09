@@ -90,6 +90,7 @@ class PlotGenerator:
             )
         else:
             plt.title(title, loc="center", fontsize=15)
+        plt.ylim(0, 100)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
@@ -106,6 +107,7 @@ class PlotGenerator:
         plt.title(
             f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} results - mean reciprocal rank"
         )
+        plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_mrr.svg",
             format="svg",
@@ -185,6 +187,7 @@ class PlotGenerator:
             )
         else:
             plt.title(title, loc="center", fontsize=15)
+        plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
@@ -279,6 +282,7 @@ class PlotGenerator:
             )
         else:
             plt.title(title, loc="center", fontsize=15)
+        plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
             format="svg",
