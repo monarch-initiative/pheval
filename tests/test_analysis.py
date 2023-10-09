@@ -34,7 +34,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         Path("directory1"): 3,
                     }
                 },
@@ -51,7 +51,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         Path("directory1"): 3,
                     }
                 },
@@ -188,7 +188,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         Path("directory1"): 3,
                     }
                 },
@@ -202,7 +202,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         PosixPath("directory1"): 3,
                         PosixPath("directory2"): 9,
                     }
@@ -218,7 +218,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         Path("directory1"): 3,
                     }
                 },
@@ -232,12 +232,12 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         PosixPath("directory1"): 3,
                     },
                     1: {
                         "Phenopacket": "phenopacket-2.json",
-                        "Variant": "1_4896347_C_T",
+                        "Variant": "1-4896347-C-T",
                         PosixPath("directory1"): 9,
                     },
                 },
@@ -334,7 +334,7 @@ class TestPrioritisationRankRecorder(unittest.TestCase):
                 {
                     0: {
                         "Phenopacket": "phenopacket-1.json",
-                        "Variant": "12_120434_A_G",
+                        "Variant": "12-120434-A-G",
                         PosixPath("directory1"): 3,
                         PosixPath("directory2"): 9,
                     }
@@ -862,12 +862,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             {
                 1: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "3_126741108_G_A",
+                    "Variant": "3-126741108-G-A",
                     Path("/path/to/results_dir"): 1,
                 },
                 2: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "16_133564345_C_T",
+                    "Variant": "16-133564345-C-T",
                     Path("/path/to/results_dir"): 0,
                 },
             },
@@ -888,12 +888,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             {
                 1: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "3_126741108_G_A",
+                    "Variant": "3-126741108-G-A",
                     Path("/path/to/results_dir"): 0,
                 },
                 2: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "16_133564345_C_T",
+                    "Variant": "16-133564345-C-T",
                     Path("/path/to/results_dir"): 0,
                 },
             },
@@ -914,12 +914,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             {
                 1: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "3_126741108_G_A",
+                    "Variant": "3-126741108-G-A",
                     Path("/path/to/results_dir"): 1,
                 },
                 2: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "16_133564345_C_T",
+                    "Variant": "16-133564345-C-T",
                     Path("/path/to/results_dir"): 0,
                 },
             },
@@ -940,12 +940,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             {
                 1: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "3_126741108_G_A",
+                    "Variant": "3-126741108-G-A",
                     Path("/path/to/results_dir"): 0,
                 },
                 2: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "16_133564345_C_T",
+                    "Variant": "16-133564345-C-T",
                     Path("/path/to/results_dir"): 0,
                 },
             },
@@ -966,12 +966,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             {
                 1: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "3_126741108_G_A",
+                    "Variant": "3-126741108-G-A",
                     Path("/path/to/results_dir"): 1,
                 },
                 2: {
                     "Phenopacket": "phenopacket.json",
-                    "Variant": "16_133564345_C_T",
+                    "Variant": "16-133564345-C-T",
                     Path("/path/to/results_dir"): 0,
                 },
             },
