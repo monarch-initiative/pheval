@@ -28,7 +28,7 @@ class PrioritisationRankRecorder:
     def _record_variant_rank(self) -> None:
         """Record variant prioritisation rank."""
         variant = self.prioritisation_result.variant
-        self.run_comparison[self.index]["Variant"] = "_".join(
+        self.run_comparison[self.index]["Variant"] = "-".join(
             [variant.chrom, str(variant.pos), variant.ref, variant.alt]
         )
 
