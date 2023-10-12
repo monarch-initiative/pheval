@@ -81,10 +81,12 @@ The `config.yaml` file should be formatted like the example below and must be pl
 ```yaml
 tool: exomiser
 tool_version: 13.2.0
-phenotype_only: False # NOTE phenotype-only preset analysis should only be run with Exomiser versions >= 13.2.0
-disease_analysis: False
+variant_analysis: True
+gene_analysis: True
+disease_analysis: True
 tool_specific_configuration_options:
   environment: local
+  exomiser_software_directory: .
   analysis_configuration_file: preset-exome-analysis.yml
   max_jobs: 0
   application_properties:
