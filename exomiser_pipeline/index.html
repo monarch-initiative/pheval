@@ -375,8 +375,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-pheval-run" class="md-nav__link">
-    7. PhEval Run
+  <a href="#8-preset-exome-analysis-file" class="md-nav__link">
+    8. Preset Exome Analysis File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-pheval-run" class="md-nav__link">
+    9. PhEval Run
   </a>
   
 </li>
@@ -1085,8 +1092,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-pheval-run" class="md-nav__link">
-    7. PhEval Run
+  <a href="#8-preset-exome-analysis-file" class="md-nav__link">
+    8. Preset Exome Analysis File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-pheval-run" class="md-nav__link">
+    9. PhEval Run
   </a>
   
 </li>
@@ -1129,7 +1143,8 @@ wget<span class="w"> </span>https://data.monarchinitiative.org/exomiser/latest/2
 <h3 id="3-unzip-data">3. Unzip data</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># unzip the distribution and data files - this will create a directory called &#39;exomiser-cli-13.1.0&#39; in the current working directory</span>
 unzip<span class="w"> </span>exomiser-cli-13.2.0-distribution.zip
-unzip<span class="w"> </span>2302_*.zip<span class="w"> </span>-d<span class="w"> </span>exomiser-cli-13.2.0/data
+unzip<span class="w"> </span>2302_hg19.zip<span class="w"> </span>-d<span class="w"> </span>exomiser-cli-13.2.0/data
+unzip<span class="w"> </span>2302_hg38.zip<span class="w"> </span>-d<span class="w"> </span>exomiser-cli-13.2.0/data
 </code></pre></div>
 <h3 id="4-clone-pheval-repo-and-follow-steps-described-in-pipeline-documentation">4. Clone PhEval repo and follow steps described in Pipeline Documentation:</h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/monarch-initiative/pheval.git
@@ -1195,7 +1210,84 @@ pip<span class="w"> </span>install<span class="w"> </span>pheval.exomiser
 <span class="w">    </span><span class="nt">score_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">combinedScore</span>
 <span class="w">    </span><span class="nt">sort_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DESCENDING</span>
 </code></pre></div>
-<h3 id="7-pheval-run">7. PhEval Run</h3>
+<h3 id="8-preset-exome-analysis-file">8. Preset Exome Analysis File</h3>
+<p>Exomiser requires a <em>preset-exome-analysis.yml</em> file saved at <strong>/path_where_exomiser_was_extracted/preset-exome-analysis.yml</strong></p>
+<p>This is an example of preset-exome-analysis.yml file</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Exomiser Analysis Template.</span>
+<span class="c1"># These are all the possible options for running exomiser. Use this as a template for</span>
+<span class="c1"># your own set-up.</span>
+<span class="nn">---</span>
+<span class="nt">analysisMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PASS_ONLY</span>
+<span class="nt">inheritanceModes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="nt">  AUTOSOMAL_DOMINANT</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">,</span>
+<span class="nt">  AUTOSOMAL_RECESSIVE_HOM_ALT</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">,</span>
+<span class="nt">  AUTOSOMAL_RECESSIVE_COMP_HET</span><span class="p">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span>
+<span class="nt">  X_DOMINANT</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">,</span>
+<span class="nt">  X_RECESSIVE_HOM_ALT</span><span class="p">:</span><span class="w"> </span><span class="nv">0.1</span><span class="p p-Indicator">,</span>
+<span class="nt">  X_RECESSIVE_COMP_HET</span><span class="p">:</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">,</span>
+<span class="nt">  MITOCHONDRIAL</span><span class="p">:</span><span class="w"> </span><span class="nv">0.2</span>
+<span class="p p-Indicator">}</span>
+<span class="nt">frequencySources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="nv">THOUSAND_GENOMES</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">TOPMED</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">UK10K</span><span class="p p-Indicator">,</span>
+
+<span class="w">    </span><span class="nv">ESP_AFRICAN_AMERICAN</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ESP_EUROPEAN_AMERICAN</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ESP_ALL</span><span class="p p-Indicator">,</span>
+
+<span class="w">    </span><span class="nv">EXAC_AFRICAN_INC_AFRICAN_AMERICAN</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">EXAC_AMERICAN</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">EXAC_SOUTH_ASIAN</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">EXAC_EAST_ASIAN</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">EXAC_FINNISH</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">EXAC_NON_FINNISH_EUROPEAN</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">EXAC_OTHER</span><span class="p p-Indicator">,</span>
+
+<span class="w">    </span><span class="nv">GNOMAD_E_AFR</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_AMR</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1">#        GNOMAD_E_ASJ,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_EAS</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_FIN</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_NFE</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_OTH</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_E_SAS</span><span class="p p-Indicator">,</span>
+
+<span class="w">    </span><span class="nv">GNOMAD_G_AFR</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_AMR</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1">#        GNOMAD_G_ASJ,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_EAS</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_FIN</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_NFE</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_OTH</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="nv">GNOMAD_G_SAS</span>
+<span class="p p-Indicator">]</span>
+<span class="c1"># Possible pathogenicitySources: (POLYPHEN, MUTATION_TASTER, SIFT), (REVEL, MVP), CADD, REMM</span>
+<span class="c1"># REMM is trained on non-coding regulatory regions</span>
+<span class="c1"># *WARNING* if you enable CADD or REMM ensure that you have downloaded and installed the CADD/REMM tabix files</span>
+<span class="c1"># and updated their location in the application.properties. Exomiser will not run without this.</span>
+<span class="nt">pathogenicitySources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">REVEL</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">MVP</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="c1">#this is the standard exomiser order.</span>
+<span class="nt">steps</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="nv">failedVariantFilter</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">variantEffectFilter</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="nt">      remove</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="nv">FIVE_PRIME_UTR_EXON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">FIVE_PRIME_UTR_INTRON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">THREE_PRIME_UTR_EXON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">THREE_PRIME_UTR_INTRON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">NON_CODING_TRANSCRIPT_EXON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">NON_CODING_TRANSCRIPT_INTRON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">CODING_TRANSCRIPT_INTRON_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">UPSTREAM_GENE_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">DOWNSTREAM_GENE_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">INTERGENIC_VARIANT</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="nv">REGULATORY_REGION_VARIANT</span>
+<span class="w">      </span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">frequencyFilter</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> maxFrequency</span><span class="p">:</span><span class="w"> </span><span class="nv">2.0</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">pathogenicityFilter</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> keepNonPathogenic</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">inheritanceFilter</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">omimPrioritiser</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="nv">hiPhivePrioritiser</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">]</span>
+</code></pre></div>
+<h3 id="9-pheval-run">9. PhEval Run</h3>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>pheval<span class="w"> </span>run
 </code></pre></div>
 
