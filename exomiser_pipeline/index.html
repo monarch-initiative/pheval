@@ -1174,10 +1174,12 @@ pip<span class="w"> </span>install<span class="w"> </span>pheval.exomiser
 <p>The <code>config.yaml</code> file should be formatted like the example below and must be placed in <code>exomiser: /path_where_exomiser_was_extracted</code> declared in <code>pheval-config.yaml</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
 <span class="nt">tool_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
-<span class="nt">phenotype_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1"># NOTE phenotype-only preset analysis should only be run with Exomiser versions &gt;= 13.2.0</span>
-<span class="nt">disease_analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="nt">variant_analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">gene_analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">disease_analysis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">exomiser_software_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="w">  </span><span class="nt">analysis_configuration_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preset-exome-analysis.yml</span>
 <span class="w">  </span><span class="nt">max_jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">  </span><span class="nt">application_properties</span><span class="p">:</span>
