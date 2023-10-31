@@ -7,7 +7,8 @@ directories:
   tmp: data/tmp
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
   phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
-  exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
+  exomiser-13.2.0: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
+  exomiser-13.2.1: /home/data/exomiser/exomiser-cli-13.2.1-distribution/exomiser-cli-13.2.0
   phenotype: /home/data/phenotype
   workspace: /home/vinicius/workspace/pheval
 
@@ -37,7 +38,6 @@ corpora:
     custom_variants:
       - id: no_phenotype
 
-
 configs:
   - tool: phen2gene
     version: 1.2.3
@@ -63,4 +63,3 @@ runs:
     corpus: lirical
     corpusvariant: scrambled-0.5
     version: 13.2.0
-

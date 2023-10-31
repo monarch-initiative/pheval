@@ -33,7 +33,9 @@ prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.
 configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
-	ln -s {{ directories[config.tool] }}/* $(ROOT_DIR)/$(shell dirname $@)
+	{% set toolversion = config.tool ~ "-" ~ config.version %}
+
+	ln -s {{ directories[toolversion] }}//* $(ROOT_DIR)/$(shell dirname $@)
 	ln -s {{ directories.phenotype }}/* $(ROOT_DIR)/$(shell dirname $@)
 
 
