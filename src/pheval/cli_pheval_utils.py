@@ -139,34 +139,35 @@ def scramble_phenopackets_command(
     help="""There are two types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
-        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles""",
+        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles
+        distribution - Plot showing the semsim score's distributions""",
 )
 @click.option(
-    "--output-folder",
+    "--output-dir",
     "-O",
-    metavar="output_folder",
+    metavar="output_dir",
     default=".",
-    help="Output path folder for the comparisons",
+    help="Output path directory for the comparisons",
 )
 def semsim_comparison_command(
     input: List[Path],
     score_column: str,
     analysis: str,
-    output_folder: Path,
+    output_dir: Path,
 ):
     """Compares semantic similarity profiles
 
     Args:
         input (List[Path]): File paths semantic similarity profiles
-        output-folder (Path): Output folder path for the comparisons.
+        output-dir (Path): Output directory path for the comparisons.
         score_column (str): Score column that will be computed (e.g. jaccard_similarity)
-        analysis (str): There are two types of analysis:
+        analysis (str): There are three types of analysis:
         heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
         score column for this purpose. Defaults to "heatmap".
         percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.
-        distribution - Generate plots comparing semsim score distribution.
+        distribution - Plot showing the semsim score's distributions
     """
-    semsim_comparison(input, score_column, analysis, output_folder)
+    semsim_comparison(input, score_column, analysis, output_dir)
 
 
 @click.command("update-phenopackets")

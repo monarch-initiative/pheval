@@ -2,6 +2,7 @@
 Contains all pheval utility methods
 """
 import logging
+import subprocess
 from itertools import combinations
 from pathlib import Path
 from typing import List
@@ -12,12 +13,26 @@ import polars as pl
 import seaborn as sns
 from matplotlib import pyplot as plt
 
+from tqdm import tqdm
+
 import pheval.utils.file_utils as file_utils
 
 info_log = logging.getLogger("info")
 
 
 def semsim_comparison(input: List[Path], score_column: str, analysis: str, output: Path):
+    """Makes a paired semantic similarity profiles comparison based on a chosen score column
+
+    Args:
+        input (List[Path]): semsim profiles path's
+        score_column (str): Score column that will be computed (e.g. jaccard_similarity)
+        analysis (str): There are three types of analysis:
+        heatmap - Generates a heatmap plot that shows the differences between the semantic similarity profiles using the
+        score column for this purpose. Defaults to "heatmap".
+        percentage_diff - Calculates the score column percentage difference between the semantic similarity profiles.
+        distribution - Plot showing the semsim score's distributions
+
+    """
     for s in set(combinations(input, 2)):
         semsim_left = s[0]
         semsim_right = s[1]
@@ -26,7 +41,7 @@ def semsim_comparison(input: List[Path], score_column: str, analysis: str, outpu
         if analysis == "percentage_diff":
             percentage_diff(semsim_left, semsim_right, score_column, output)
     if analysis == "distribution":
-        semsim_score_distribution_plot(input, score_column, output)
+        distribution(input, score_column, output)
 
 
 def filter_non_0_score(data: pl.DataFrame, col: str) -> pd.DataFrame:
@@ -54,6 +69,8 @@ def parse_semsim(df: pl.DataFrame, cols: list) -> pd.DataFrame:
     """
     df.with_columns(pl.col(cols[-1]).cast(pl.Float64))
     df[cols[-1]].set(df[cols[-1]].is_null(), None)
+
+    df.drop_nulls(cols[-1])
     return df
 
 
@@ -73,6 +90,8 @@ def diff_semsim(
         pl.DataFrame: A dataframe with terms and its scores differences
     """
     df = semsim_left.join(semsim_right, on=["subject_id", "object_id"], how="outer")
+    df.drop_nulls(score_column)
+    df.drop_nulls(f"{score_column}_right")
     if absolute_diff:
         df = df.with_columns((pl.col(score_column) - pl.col(f"{score_column}_right")).alias("diff"))
         return df[["subject_id", "object_id", f"{score_column}", f"{score_column}_right", "diff"]]
@@ -85,31 +104,24 @@ def diff_semsim(
     return df[["subject_id", "object_id", f"{score_column}", f"{score_column}_right", "diff"]]
 
 
-def semsim_score_distribution_plot(input: List[Path], score_column: str, output: Path):
-    """Generates Semsim score distribution plots
-
-    Args:
-        input (List[Path]): List of semsim input files
-        score_column (str): Score column that will be plotted on the graphs (e.g. jaccard_similarity)
-        output (Path): Output folder where plots will be saved
-    """
+def distribution(input: List[Path], score_column: str, output: Path):
     df_list = []
     plt.rcParams["figure.autolayout"] = True
     plt.rcParams["figure.figsize"] = [20, 3.50 * len(input)]
     _, axes = plt.subplots(len(input), 1)
     for idx, i in enumerate(input):
-        info_log.info(f"Reading {Path(i).stem}")
-        info_log.info(f"Reading {Path(i).stem}")
+        print(f"Reading {Path(i).stem}")
         df = pl.read_csv(i, separator="\t")
         df = df[["subject_id", "object_id", f"{score_column}"]]
         df = df.with_columns(semsim=pl.lit(Path(i).stem))
         df_list.append(df)
-        sns.histplot(df[score_column], bins=20, ax=axes[idx]).set_title(Path(i).stem)
+        axes[idx].ticklabel_format(style="plain", axis="both")
         axes[idx].set_xlabel(score_column)
+        sns.histplot(df[score_column], bins=20, ax=axes[idx]).set_title(Path(i).stem)
     plt.setp(axes, ylim=axes[0].get_ylim())
-    info_log.info("Concatenating data")
+    print("Concatenating data")
     df_concat = pl.concat(df_list)
-    info_log.info(f"Saving plot in {output}/bars.png")
+    print(f"Saving plot in {output}/bars.png")
     plt.savefig(f"{output}/bars.png")
     plt.clf()
     sns.histplot(
@@ -122,7 +134,7 @@ def semsim_score_distribution_plot(input: List[Path], score_column: str, output:
         alpha=0.5,
         hue="semsim",
     )
-    info_log.info(f"Saving plot in {output}/dist.png")
+    print(f"Saving plot in {output}/dist.png")
     plt.savefig(f"{output}/dist.png")
 
 
@@ -137,18 +149,22 @@ def percentage_diff(semsim_left: Path, semsim_right: Path, score_column: str, ou
     """
     fname_left = Path(semsim_left).stem
     fname_right = Path(semsim_right).stem
-    clean_df = semsim_analysis(semsim_left, semsim_right, score_column, absolute_diff=False)
-    (
-        clean_df.drop_nulls("diff")
-        .sort("diff", descending=True)
-        .rename(
-            {
-                score_column: f"{fname_left}_{score_column}",
-                f"{score_column}_right": f"{fname_right}_{score_column}",
-            }
+    fname = f"{output}/{fname_left}-{fname_right}.diff.tsv"
+    Path(fname).unlink(missing_ok=True)
+    for idx, clean_df in enumerate(
+        semsim_analysis(semsim_left, semsim_right, score_column, absolute_diff=False)
+    ):
+        (
+            clean_df.drop_nulls("diff")
+            .sort("diff", descending=True)
+            .rename(
+                {
+                    score_column: f"{fname_left}_{score_column}",
+                    f"{score_column}_right": f"{fname_right}_{score_column}",
+                }
+            )
+            .write_csv(fname, has_header=idx == 0, separator="\t")
         )
-        .write_csv(f"{output}/{fname_left}-{fname_right}.diff.tsv", separator="\t")
-    )
 
 
 def semsim_heatmap_plot(semsim_left: Path, semsim_right: Path, score_column: str):
@@ -168,9 +184,7 @@ def semsim_heatmap_plot(semsim_left: Path, semsim_right: Path, score_column: str
     fig.show()
 
 
-def semsim_analysis(
-    semsim_left: Path, semsim_right: Path, score_column: str, absolute_diff=True
-) -> pd.DataFrame:
+def semsim_analysis(semsim_left: Path, semsim_right: Path, score_column: str, absolute_diff=True):
     """semsim_analysis
 
     Args:
@@ -180,24 +194,35 @@ def semsim_analysis(
         absolute_diff (bool, optional): Whether the difference is absolute (True) or percentage (False).
         Defaults to True.
 
-    Returns:
-        [pd.DataFrame]: DataFrame with the differences between two semantic similarity profiles
+    Yields:
+        pd.DataFrame: DataFrame with the differences between two semantic similarity profiles
     """
     validate_semsim_file_comparison(semsim_left, semsim_right)
     cols = ["subject_id", "object_id", score_column]
-    semsim_left = pl.read_csv(semsim_left, separator="\t")
-    semsim_right = pl.read_csv(semsim_right, separator="\t")
-    file_utils.ensure_columns_exists(
-        cols=cols,
-        err_message="must exist in semsim dataframes",
-        dataframes=[semsim_left, semsim_right],
-    )
-    semsim_left = parse_semsim(semsim_left, cols)
-    semsim_right = parse_semsim(semsim_right, cols)
-    diff_df = diff_semsim(semsim_left, semsim_right, score_column, absolute_diff)
-    if not absolute_diff:
-        return diff_df
-    return filter_non_0_score(diff_df, "diff")
+    batch_size = 100000
+    count = int(subprocess.check_output(["wc", "-l", semsim_left]).split()[0])
+    reader_left = pl.read_csv_batched(semsim_left, separator="\t", batch_size=batch_size)
+    reader_right = pl.read_csv_batched(semsim_right, separator="\t", batch_size=batch_size)
+    # file_utils.ensure_columns_exists(
+    #     cols=cols,
+    #     err_message="must exist in semsim dataframes",
+    #     dataframes=[reader_left, reader_right],
+    # )
+    batches_left = reader_left.next_batches(5)
+    batches_right = reader_right.next_batches(5)
+    with tqdm(total=count - 1) as bar:
+        while batches_left or batches_right:
+            for input_data in zip(batches_left, batches_right):
+                semsim_left = parse_semsim(input_data[0], cols)
+                semsim_right = parse_semsim(input_data[1], cols)
+                diff_df = diff_semsim(semsim_left, semsim_right, score_column, absolute_diff)
+                bar.update(input_data[0].shape[0])
+                if not absolute_diff:
+                    yield diff_df
+                else:
+                    yield filter_non_0_score(diff_df, "diff")
+            batches_left = reader_left.next_batches(5)
+            batches_right = reader_right.next_batches(5)
 
 
 def validate_semsim_file_comparison(semsim_left: Path, semsim_right: Path):
