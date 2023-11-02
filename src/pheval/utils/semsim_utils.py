@@ -124,7 +124,7 @@ def distribution(input: List[Path], score_column: str, output: Path):
     print(f"Saving plot in {output}/bars.png")
     plt.savefig(f"{output}/bars.png")
     plt.clf()
-    sns.histplot(
+    graph = sns.histplot(
         df_concat,
         x=score_column,
         bins=10,
@@ -134,6 +134,7 @@ def distribution(input: List[Path], score_column: str, output: Path):
         alpha=0.5,
         hue="semsim",
     )
+    graph.ticklabel_format(style="plain", axis="both")
     print(f"Saving plot in {output}/dist.png")
     plt.savefig(f"{output}/dist.png")
 
