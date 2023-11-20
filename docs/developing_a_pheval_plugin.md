@@ -74,8 +74,7 @@ Create a runner file inside the plugin project, e.g:
 ```python
 """Custom Pheval Runner."""
 from dataclasses import dataclass
-
-import click
+from pathlib import Path
 from pheval.runners.runner import PhEvalRunner
 
 
@@ -83,11 +82,12 @@ from pheval.runners.runner import PhEvalRunner
 class CustomPhevalRunner(PhEvalRunner):
     """CustomPhevalRunner Class."""
 
-    inputdir: click.Path
-    testdatadir: click.Path
-    tmpdir: click.Path
-    outputdir: click.Path
-    config: click.Path
+    input_dir: Path
+    testdata_dir: Path
+    tmp_dir: Path
+    output_dir: Path
+    config_file: Path
+    version: str
 
     def prepare(self):
         """prepare method."""
@@ -95,7 +95,7 @@ class CustomPhevalRunner(PhEvalRunner):
 
     def run(self):
         """run method."""
-        print("running with custom pheval Runner")
+        print("running with custom pheval runner")
 
     def post_process(self):
         """post_process method."""
