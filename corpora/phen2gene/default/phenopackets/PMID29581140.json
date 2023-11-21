@@ -1,0 +1,106 @@
+{
+  "id": "PMID29581140",
+  "subject": {
+    "id": "PMID29581140"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009733",
+        "label": "Glioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012174",
+        "label": "Glioblastoma multiforme"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002321",
+        "label": "Vertigo"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002018",
+        "label": "Nausea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030731",
+        "label": "Carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009592",
+        "label": "Astrocytoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002013",
+        "label": "Vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030692",
+        "label": "Brain neoplasm"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID29581140-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID29581140",
+            "gene": {
+              "valueId": "ENSG00000141510",
+              "symbol": "TP53",
+              "alternateIds": [
+                "HGNC:11998",
+                "ncbigene:7157",
+                "ensembl:ENSG00000141510",
+                "symbol:TP53"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:37.891763Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "PMID30404926",
+  "subject": {
+    "id": "PMID30404926"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005268",
+        "label": "Miscarriage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003470",
+        "label": "Paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID30404926-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID30404926",
+            "gene": {
+              "valueId": "ENSG00000124491",
+              "symbol": "F13A1",
+              "alternateIds": [
+                "HGNC:3531",
+                "ncbigene:2162",
+                "ensembl:ENSG00000124491",
+                "symbol:F13A1"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:37.929806Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

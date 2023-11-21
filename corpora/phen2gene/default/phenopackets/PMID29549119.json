@@ -1,0 +1,148 @@
+{
+  "id": "PMID29549119",
+  "subject": {
+    "id": "PMID29549119"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005214",
+        "label": "Intestinal obstruction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000776",
+        "label": "Congenital diaphragmatic hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001678",
+        "label": "Atrioventricular block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012304",
+        "label": "Hypoplastic aortic arch"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001518",
+        "label": "Small for gestational age"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031273",
+        "label": "Shock"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002878",
+        "label": "Respiratory failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006528",
+        "label": "Chronic lung disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200114",
+        "label": "Metabolic alkalosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002615",
+        "label": "Hypotension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011947",
+        "label": "Respiratory tract infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000358",
+        "label": "Posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004749",
+        "label": "Atrial flutter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID29549119-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "PMID29549119",
+            "gene": {
+              "valueId": "ENSG00000049618",
+              "symbol": "ARID1B",
+              "alternateIds": [
+                "HGNC:18040",
+                "ncbigene:57492",
+                "ensembl:ENSG00000049618",
+                "symbol:ARID1B"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:37.889803Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

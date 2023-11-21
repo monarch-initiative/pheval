@@ -10,6 +10,7 @@ from pathlib import Path
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import (
+    Disease,
     Family,
     File,
     GenomicInterpretation,
@@ -48,6 +49,7 @@ class ProbandCausativeVariant:
     assembly: str
     variant: GenomicVariant
     genotype: str
+    info: str = ""
 
 
 @dataclass
@@ -56,9 +58,15 @@ class ProbandCausativeGene:
     gene_identifier: str
 
 
+@dataclass(frozen=True, eq=True)
+class ProbandDisease:
+    disease_name: str
+    disease_identifier: str
+
+
 def read_hgnc_data() -> pd.DataFrame:
     return pd.read_csv(
-        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set_2022-10-01.txt"),
+        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
         delimiter="\t",
         dtype=str,
     )
@@ -143,6 +151,39 @@ class PhenopacketUtil:
                 negated_phenotypic_features.append(p)
         return negated_phenotypic_features
 
+    def diseases(self) -> [Disease]:
+        """Retrieve diseases object from a Phenopacket or Family."""
+        if hasattr(self.phenopacket_contents, "proband"):
+            return self.phenopacket_contents.proband.diseases
+        else:
+            return self.phenopacket_contents.diseases
+
+    def diagnosis_from_interpretations(self) -> [ProbandDisease]:
+        """Retrieve the proband diagnosis from interpretations."""
+        diagnoses = []
+        interpretation = self.interpretations()
+        for i in interpretation:
+            diagnoses.append(
+                ProbandDisease(
+                    disease_name=i.diagnosis.disease.label,
+                    disease_identifier=i.diagnosis.disease.id,
+                )
+            ) if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != "" else None
+        return diagnoses
+
+    def diagnosis_from_disease(self) -> [ProbandDisease]:
+        """Retrieve the proband diagnosis from disease object."""
+        diagnoses = []
+        for disease in self.diseases():
+            diagnoses.append(
+                ProbandDisease(disease_name=disease.term.label, disease_identifier=disease.term.id)
+            )
+        return diagnoses
+
+    def diagnoses(self) -> [ProbandDisease]:
+        """Retrieve diagnoses from a phenopacket."""
+        return list(set(self.diagnosis_from_interpretations() + self.diagnosis_from_disease()))
+
     def interpretations(self) -> list[Interpretation]:
         """Returns all interpretations of a phenopacket."""
         if hasattr(self.phenopacket_contents, "proband"):
@@ -168,6 +209,7 @@ class PhenopacketUtil:
                         vcf_record.alt,
                     ),
                     genotype.label,
+                    vcf_record.info,
                 )
                 all_variants.append(variant_data)
         return all_variants
@@ -179,7 +221,7 @@ class PhenopacketUtil:
     def vcf_file_data(self, phenopacket_path: Path, vcf_dir: Path) -> File:
         """Retrieves the genome assembly and vcf name from a phenopacket."""
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "VCF"][0]
+        vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "vcf"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
             ".vcf.gz"
         ):
@@ -267,7 +309,7 @@ class PhenopacketRebuilder:
         """Adds spiked vcf path to phenopacket."""
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
-            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "VCF"
+            file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
         ]
         phenopacket_files.append(spiked_vcf_file_data)
         del phenopacket.files[:]

@@ -1,0 +1,278 @@
+{
+  "id": "Perruzza-2008-25983915-APRT-patient",
+  "subject": {
+    "id": "patient",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P51Y"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008672",
+        "label": "Calcium oxalate nephrolithiasis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002907",
+        "label": "Microscopic hematuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000791",
+        "label": "Uric acid nephrolithiasis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000093",
+        "label": "Proteinuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001970",
+        "label": "Tubulointerstitial nephritis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000787",
+        "label": "Nephrolithiasis"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000092",
+        "label": "Renal tubular atrophy"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000083",
+        "label": "Renal insufficiency"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:25983915",
+            "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "Perruzza-2008-25983915-APRT-patient",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:614723",
+          "label": "ADENINE PHOSPHORIBOSYLTRANSFERASE DEFICIENCY; APRTD"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "patient",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "16-88810447-GGCCCACAGAGTGGGGCCTGGCAGCTTCCCCCGCTTTCGGATGAGCACGCAGCCCAGTCCAAGCTCCTGGGCCAGGGAGGGGCCAAAGAGGAAGCCTCGGGAGTCTAGGCCTGTCAGGGTAAGTGACAGGAGTGACTCGGCAGCATGGGAATCCCCAGGGGCCAGGGTTGGCCGGTGGCAAGGGGTACCTGGTTGGCTCCCAGCTGAAAGGCCAGTGACATGCACCATTTAAGGAATGTTACCCATCACCTACCC-G",
+                "geneContext": {
+                  "valueId": "ENSG00000198931",
+                  "symbol": "APRT",
+                  "alternateIds": [
+                    "HGNC:626",
+                    "ncbigene:353",
+                    "ensembl:ENSG00000198931",
+                    "symbol:APRT"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh38",
+                  "chrom": "16",
+                  "pos": "88810447",
+                  "ref": "GGCCCACAGAGTGGGGCCTGGCAGCTTCCCCCGCTTTCGGATGAGCACGCAGCCCAGTCCAAGCTCCTGGGCCAGGGAGGGGCCAAAGAGGAAGCCTCGGGAGTCTAGGCCTGTCAGGGTAAGTGACAGGAGTGACTCGGCAGCATGGGAATCCCCAGGGGCCAGGGTTGGCCGGTGGCAAGGGGTACCTGGTTGGCTCCCAGCTGAAAGGCCAGTGACATGCACCATTTAAGGAATGTTACCCATCACCTACCC",
+                  "alt": "G",
+                  "info": "SVTYPE=DEL;END=88810701;SVLEN=-254"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614723",
+        "label": "ADENINE PHOSPHORIBOSYLTRANSFERASE DEFICIENCY; APRTD"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2021-06-24T16:13:18Z",
+    "createdBy": "Hpo Case Annotator : 1.0.15-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0",
+    "externalReferences": [
+      {
+        "id": "PMID:25983915",
+        "description": "Is adenine phophorybosiltransferase deficiency a still underdiagnosed cause of urolithiasis and chronic renal failure? A report of two cases in a family with an uncommon novel mutation."
+      }
+    ]
+  }
+}

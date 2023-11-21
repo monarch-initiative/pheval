@@ -1,0 +1,263 @@
+{
+  "id": "PMID:29300302-Suarez-Artiles-2018-OCRL-Patient_1",
+  "subject": {
+    "id": "Patient 1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P27Y"
+      }
+    },
+    "sex": "MALE",
+    "taxonomy": {
+      "id": "NCBITaxon:9606",
+      "label": "Homo sapiens"
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000501",
+        "label": "Glaucoma"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003126",
+        "label": "Low-molecular-weight proteinuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003076",
+        "label": "Glycosuria"
+      },
+      "excluded": true,
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012592",
+        "label": "Albuminuria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Muscular hypotonia"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003355",
+        "label": "Aminoaciduria"
+      },
+      "evidence": [
+        {
+          "evidenceCode": {
+            "id": "ECO:0000033",
+            "label": "author statement supported by traceable reference"
+          },
+          "reference": {
+            "id": "PMID:29300302",
+            "description": "NM_000276.3:c.2581G>A,NP_000267.2:p.(Ala861Thr). Minigene analysis showed skipping of exon 23. Phenotype data taken from PMID: 18480301 , Patient 1. "
+          }
+        }
+      ]
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "PMID:29300302-Suarez-Artiles-2018-OCRL-Patient_1",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:309000",
+          "label": "LOWE OCULOCEREBRORENAL SYNDROME; OCRL"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Patient 1",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "variationDescriptor": {
+                "id": "X-128723933-G-A",
+                "geneContext": {
+                  "valueId": "ENSG00000122126",
+                  "symbol": "OCRL",
+                  "alternateIds": [
+                    "HGNC:8108",
+                    "entrez:4952",
+                    "ensembl:ENSG00000122126",
+                    "symbol:OCRL"
+                  ]
+                },
+                "vcfRecord": {
+                  "genomeAssembly": "GRCh37",
+                  "chrom": "X",
+                  "pos": "128723933",
+                  "ref": "G",
+                  "alt": "A"
+                },
+                "allelicState": {
+                  "id": "GENO:0000134",
+                  "label": "hemizygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "1970-01-01T00:00:00Z",
+    "createdBy": "Hpo Case Annotator : 1.0.13-SNAPSHOT",
+    "submittedBy": "HPO:probinson",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2018-03-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "pato",
+        "name": "Phenotype And Trait Ontology",
+        "url": "http://purl.obolibrary.org/obo/pato.owl",
+        "version": "2018-03-28",
+        "namespacePrefix": "PATO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/PATO_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "19-03-2018",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "ncbitaxon",
+        "name": "NCBI organismal classification",
+        "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+        "version": "2018-03-02",
+        "namespacePrefix": "NCBITaxon",
+        "iriPrefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+      },
+      {
+        "id": "eco",
+        "name": "Evidence and Conclusion Ontology",
+        "url": "http://purl.obolibrary.org/obo/eco.owl",
+        "version": "2018-11-10",
+        "namespacePrefix": "ECO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/ECO_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "2018-03-08",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.0"
+  }
+}

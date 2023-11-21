@@ -1,0 +1,106 @@
+{
+  "id": "sample56",
+  "subject": {
+    "id": "sample56"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005696",
+        "label": "Postaxial polydactyly type A"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011342",
+        "label": "Mild global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001531",
+        "label": "Failure to thrive in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000851",
+        "label": "Congenital hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012506",
+        "label": "Small pituitary gland"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002141",
+        "label": "Gait imbalance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000510",
+        "label": "Rod-cone dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011569",
+        "label": "Cleft anterior mitral valve leaflet"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002716",
+        "label": "Lymphadenopathy"
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "sample56-interpretation",
+      "diagnosis": {
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "sample56",
+            "gene": {
+              "valueId": "ENSG00000242866",
+              "symbol": "STRC",
+              "alternateIds": [
+                "HGNC:16035",
+                "ncbigene:161497",
+                "ensembl:ENSG00000242866",
+                "symbol:STRC"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2023-03-24T13:44:38.465657Z",
+    "createdBy": "pheval-converter",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2019-11-08",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0",
+    "externalReferences": [
+      {
+        "id": "PMID:32500119",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7252576/",
+        "description": "Phen2Gene: rapid phenotype-driven gene prioritization for rare diseases"
+      }
+    ]
+  }
+}

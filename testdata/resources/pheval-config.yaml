@@ -1,0 +1,27 @@
+directories:
+  tmp: data/tmp
+  exomiser: /path_where_exomiser_was_extracted
+  phenotype: /path_where_phenotype_was_extracted
+  workspace: /pheval's_path # path where pheval was cloned
+
+corpora:
+  - id: small_test
+    scrambled:
+      - factor: 0.5
+      - factor: 0.7
+    custom_variants:
+      - id: no_phenotype
+
+configs:
+  - tool: exomiser
+    version: 13.2.0
+    configuration: default
+    exomiser_db: semsim1
+
+
+runs:
+  - tool: exomiser
+    configuration: default
+    corpus: small_test
+    corpusvariant: scrambled-0.5
+    version: 13.2.0

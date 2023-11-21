@@ -3,6 +3,7 @@ from pathlib import Path
 
 from phenopackets import (
     Diagnosis,
+    Disease,
     Family,
     File,
     GeneDescriptor,
@@ -29,6 +30,7 @@ from pheval.utils.phenopacket_utils import (
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
+    ProbandDisease,
     create_gene_identifier_map,
     create_hgnc_dict,
 )
@@ -38,6 +40,7 @@ interpretations = [
         id="test-subject-1-int",
         progress_status="SOLVED",
         diagnosis=Diagnosis(
+            disease=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"),
             genomic_interpretations=[
                 GenomicInterpretation(
                     subject_or_biosample_id="test-subject-1",
@@ -82,7 +85,41 @@ interpretations = [
                         ),
                     ),
                 ),
-            ]
+            ],
+        ),
+    )
+]
+
+structural_variant_interpretations = [
+    Interpretation(
+        id="test-subject-1-int",
+        progress_status="SOLVED",
+        diagnosis=Diagnosis(
+            genomic_interpretations=[
+                GenomicInterpretation(
+                    subject_or_biosample_id="test-subject-1",
+                    interpretation_status=4,
+                    variant_interpretation=VariantInterpretation(
+                        acmg_pathogenicity_classification="NOT_PROVIDED",
+                        therapeutic_actionability="UNKNOWN_ACTIONABILITY",
+                        variation_descriptor=VariationDescriptor(
+                            gene_context=GeneDescriptor(value_id="ENSG00000069011", symbol="PITX1"),
+                            vcf_record=VcfRecord(
+                                genome_assembly="GRCh38",
+                                chrom="5",
+                                pos=134858794,
+                                ref="N",
+                                alt="DEL",
+                                info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                            ),
+                            allelic_state=OntologyClass(
+                                id="GENO:0000135",
+                                label="heterozygous",
+                            ),
+                        ),
+                    ),
+                ),
+            ],
         ),
     )
 ]
@@ -91,6 +128,7 @@ updated_interpretations = [
         id="test-subject-1-int",
         progress_status="SOLVED",
         diagnosis=Diagnosis(
+            disease=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"),
             genomic_interpretations=[
                 GenomicInterpretation(
                     subject_or_biosample_id="test-subject-1",
@@ -153,7 +191,7 @@ updated_interpretations = [
                         ),
                     ),
                 ),
-            ]
+            ],
         ),
     )
 ]
@@ -230,18 +268,20 @@ phenotypic_features_all_excluded = [
         type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
     ),
 ]
+diseases = [Disease(term=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"))]
 
 proband = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
     phenotypic_features=phenotypic_features_none_excluded,
     interpretations=interpretations,
+    diseases=diseases,
 )
 
 phenopacket_files = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.ped",
@@ -251,7 +291,7 @@ phenopacket_files = [
 incorrect_genome_assembly = [
     File(
         uri="test/path/to/test_1.vcf",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "hg10"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "hg10"},
     ),
     File(
         uri="test_1.ped",
@@ -261,7 +301,7 @@ incorrect_genome_assembly = [
 incorrect_file_format = [
     File(
         uri="test/path/to/test_1.ped",
-        file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+        file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
     ),
     File(
         uri="test_1.vcf",
@@ -288,6 +328,16 @@ phenopacket = Phenopacket(
     subject=Individual(id="test-subject-1", sex=1),
     phenotypic_features=phenotypic_features_with_excluded,
     interpretations=interpretations,
+    diseases=diseases,
+    files=phenopacket_files,
+    meta_data=phenopacket_metadata,
+)
+
+structural_variant_phenopacket = Phenopacket(
+    id="test-subject",
+    subject=Individual(id="test-subject-1", sex=1),
+    phenotypic_features=phenotypic_features_with_excluded,
+    interpretations=structural_variant_interpretations,
     files=phenopacket_files,
     meta_data=phenopacket_metadata,
 )
@@ -370,6 +420,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         cls.phenopacket = PhenopacketUtil(phenopacket)
         cls.phenopacket_no_variants = PhenopacketUtil(phenopacket_no_variant_data)
         cls.phenopacket_excluded_pf = PhenopacketUtil(phenopacket_with_all_excluded_terms)
+        cls.structural_variant_phenopacket = PhenopacketUtil(structural_variant_phenopacket)
         cls.family = PhenopacketUtil(family)
         cls.family_incorrect_files = PhenopacketUtil(family_incorrect_files)
         cls.family_incorrect_file_format = PhenopacketUtil(family_incorrect_file_format)
@@ -418,15 +469,80 @@ class TestPhenopacketUtil(unittest.TestCase):
     def test_negated_phenotypic_features_none_excluded(self):
         self.assertEqual(self.family.negated_phenotypic_features(), [])
 
+    def test_diseases_phenopacket(self):
+        self.assertEqual(list(self.phenopacket.diseases()), list(diseases))
+
+    def test_diseases_family(self):
+        self.assertEqual(list(self.family.diseases()), list(diseases))
+
+    def test_diagnosis_from_interpretations(self):
+        self.assertEqual(
+            self.phenopacket.diagnosis_from_interpretations(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
+
+    def test_diagnosis_from_interpretations_none(self):
+        self.assertEqual(self.structural_variant_phenopacket.diagnosis_from_interpretations(), [])
+
+    def test_diagnosis_from_disease(self):
+        self.assertEqual(
+            self.family.diagnosis_from_disease(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
+
+    def test_diagnosis_from_disease_none(self):
+        self.assertEqual(self.structural_variant_phenopacket.diagnosis_from_disease(), [])
+
+    def test_diagnoses(self):
+        self.assertEqual(
+            self.phenopacket.diagnoses(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
+
     def test_interpretations_phenopacket(self):
         self.assertEqual(list(self.phenopacket.interpretations()), interpretations)
 
     def test_interpretations_family(self):
         self.assertEqual(list(self.family.interpretations()), interpretations)
 
-    def test_causative_variants(self):
+    def test_causative_variants_type(self):
         for causative_variant in self.phenopacket.causative_variants():
             self.assertEqual(type(causative_variant), ProbandCausativeVariant)
+
+    def test_causative_variants(self):
+        self.assertEqual(
+            self.phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="X", pos=54492285, ref="C", alt="T"),
+                    genotype="hemizygous",
+                    info="",
+                ),
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh37",
+                    variant=GenomicVariant(chrom="18", pos=67691994, ref="G", alt="A"),
+                    genotype="compound heterozygous",
+                    info="",
+                ),
+            ],
+        )
+
+    def test_causative_variants_structural(self):
+        self.assertEqual(
+            self.structural_variant_phenopacket.causative_variants(),
+            [
+                ProbandCausativeVariant(
+                    proband_id="test-subject-1",
+                    assembly="GRCh38",
+                    variant=GenomicVariant(chrom="5", pos=134858794, ref="N", alt="DEL"),
+                    genotype="heterozygous",
+                    info="SVTYPE=DEL;END=135099433;SVLEN=-269958227",
+                )
+            ],
+        )
 
     def test_files_phenopacket(self):
         self.assertEqual(list(self.phenopacket.files()), phenopacket_files)
@@ -442,7 +558,7 @@ class TestPhenopacketUtil(unittest.TestCase):
             vcf_file_data,
             File(
                 uri="input_dir/test_1.vcf",
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             ),
         )
         with self.assertRaises(IncompatibleGenomeAssemblyError):
@@ -537,13 +653,13 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         updated_phenopacket = self.phenopacket_rebuilder.add_spiked_vcf_path(
             File(
                 uri=str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()),
-                file_attributes={"fileFormat": "VCF", "genomeAssembly": "GRCh37"},
+                file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             )
         )
         vcf_file = [
             file
             for file in updated_phenopacket.files
-            if file.file_attributes["fileFormat"] == "VCF"
+            if file.file_attributes["fileFormat"] == "vcf"
         ][0]
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
 
