@@ -103,7 +103,7 @@ class CustomPhevalRunner(PhEvalRunner):
 
 ```
 
-### 4. Add PhEval Plugins section into the pyproject.toml file
+### 4. Add PhEval Plugins section to the pyproject.toml file
 
 ```toml
 [tool.poetry.plugins."pheval.plugins"]
@@ -120,7 +120,7 @@ Within PhEval, numerous public methods have been designed to assist in your runn
 
 #### Utility methods
 
-The PhenopacketUtil class is designed to aid in the collection of specific data from a Phenopacket.
+The `PhenopacketUtil` class is designed to aid in the collection of specific data from a Phenopacket.
 
 ::: src.pheval.utils.phenopacket_utils.PhenopacketUtil
     handler: python
@@ -131,7 +131,7 @@ The PhenopacketUtil class is designed to aid in the collection of specific data 
       show_source: true
 ---
 
-PhenopacketUtil proves particularly beneficial in scenarios where the tool for which you're crafting a runner implementation does not directly accept Phenopackets as inputs. Instead, it might require elements—such as HPO IDs— via the command-line interface (CLI). In this context, leveraging PhenopacketUtil within the runner's preparation phase enables the extraction of observed phenotypic features from the Phenopacket input, facilitating seamless processing.
+`PhenopacketUtil` proves particularly beneficial in scenarios where the tool for which you're crafting a runner implementation does not directly accept Phenopackets as inputs. Instead, it might require elements—such as HPO IDs— via the command-line interface (CLI). In this context, leveraging PhenopacketUtil within the runner's preparation phase enables the extraction of observed phenotypic features from the Phenopacket input, facilitating seamless processing.
 
 An example of how this could be implemented is outlined here:
 
@@ -144,7 +144,9 @@ phenopacket_util = PhenopacketUtil(phenopacket)
 # To return a list of all observed phenotypes for a phenopacket
 observed_phenotypes = phenopacket_util.observed_phenotypic_features()
 # To extract just the HPO ID as a list
-observed_phenotypes_hpo_ids = [observed_phenotype.id for observed_phenotype in observed_phenotypes]
+observed_phenotypes_hpo_ids = [
+    observed_phenotype.id for observed_phenotype in observed_phenotypes
+]
 ```
 #### Additional tool-specific configurations
 
@@ -167,7 +169,7 @@ To populate the `tool_specific_configurations_options` with customised data, we 
 
 e.g.,
 
-_Define a `pydantic` `BaseModel` with fields that you will populate the `tool_specific_configuration_options`_
+_Define a `BaseModel` class with the fields that will populate the `tool_specific_configuration_options`_
 
 ```python
 from pydantic import BaseModel, Field
@@ -256,7 +258,7 @@ The dataclasses representing essential information extracted from tool-specific 
       show_source: true
 ---
 
-The `generate_pheval_result()` can write out results dealing with either a list of PhEvalGeneResult, PhEvalVariantResult, or PhEvalDiseaseResult.
+The `generate_pheval_result()` can be implemented in your runner to write out the PhEval TSV results.
 
 An example of how the method can be called is outlined here:
 
@@ -277,7 +279,7 @@ By default, PhEval will write a `results.yml` to the output directory supplied o
 
 The `results.yml` contains basic metadata regarding the run configuration, however, there is also the option to add customised run metadata to the `results.yml` in the `tool_specific_configuration_options` field.
 
-To do this, you will need to implement a `construct_meta_data()` method in your runner implementation, which should add the customised metadata to the metadata object as a defined dataclass, returning the whole metadata object.
+To achieve this, you'll need to create a `construct_meta_data()` method within your runner implementation. This method is responsible for appending customised metadata to the metadata object in the form of a defined dataclass. It should return the entire metadata object once the addition is completed.
 
 e.g.,
 
