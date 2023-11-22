@@ -1,0 +1,36 @@
+2023-11-22 13:03:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HP_MP_MAPPINGS" not found; SQL statement:
+DROP TABLE EXOMISER.HP_MP_MAPPINGS [42102-199]
+2023-11-22 13:03:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HP_MP_MAPPINGS" already exists; SQL statement:
+CREATE TABLE EXOMISER.HP_MP_MAPPINGS (
+	MAPPING_ID INTEGER,
+	HP_ID VARCHAR(10),
+	HP_TERM VARCHAR(200),
+	MP_ID VARCHAR(10),
+	MP_TERM VARCHAR(200),
+	SIMJ DOUBLE,
+	IC DOUBLE,
+	SCORE DOUBLE,
+	LCS_ID VARCHAR(20),
+	LCS_TERM VARCHAR(150)
+) [42101-199]
+2023-11-22 13:03:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Index "HP_ID" already exists; SQL statement:
+CREATE INDEX HP_ID ON EXOMISER.HP_MP_MAPPINGS (HP_ID) [42111-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:76)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:233)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:833)
