@@ -89,7 +89,7 @@ class ExomiserDB:
             # # TODO: Refactor this
             with open(input, "r") as f:
                 total = sum(1 for line in f)
-            pbar = tqdm(total=total)
+            pbar = tqdm(total=total-1)
             mapping_id = 1
             while batches:
                 input_data = pl.concat(batches)
