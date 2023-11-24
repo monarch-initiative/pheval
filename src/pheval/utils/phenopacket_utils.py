@@ -6,6 +6,7 @@ from collections import defaultdict
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Union
 
 import pandas as pd
 from google.protobuf.json_format import MessageToJson, Parse
@@ -26,6 +27,14 @@ class IncompatibleGenomeAssemblyError(Exception):
     """Exception raised for incompatible genome assembly."""
 
     def __init__(self, assembly, phenopacket, message="Incompatible Genome Assembly"):
+        """
+        Initialise IncompatibleGenomeAssemblyError.
+
+        Args:
+           assembly (str): Incompatible genome assembly encountered.
+           phenopacket (Path): Path to the Phenopacket associated with the error.
+           message (str, optional): Custom error message (default is "Incompatible Genome Assembly").
+        """
         self.assembly: str = assembly
         self.phenopacket: Path = phenopacket
         self.message: str = message
@@ -37,6 +46,15 @@ class IncompatibleGenomeAssemblyError(Exception):
 
 @dataclass
 class GenomicVariant:
+    """
+    Represents a genomic variant.
+
+    Args:
+        chrom (str): Chromosome where the variant is located
+        pos (int): Position of the variant
+        ref (str): Reference allele
+        alt (str): Alternate allele
+    """
     chrom: str
     pos: int
     ref: str
@@ -45,6 +63,16 @@ class GenomicVariant:
 
 @dataclass
 class ProbandCausativeVariant:
+    """
+    Represents a causative variant associated with a proband
+
+    Args:
+        proband_id (str): ID of the proband
+        assembly (str): Genome assembly
+        variant (GenomicVariant): Genomic variant associated with the proband
+        genotype (str): Genotype information for the variant
+        info (str, optional): Additional information about the variant (default is an empty string)
+    """
     proband_id: str
     assembly: str
     variant: GenomicVariant
@@ -54,17 +82,37 @@ class ProbandCausativeVariant:
 
 @dataclass
 class ProbandCausativeGene:
+    """
+    Represents a causative gene associated with a proband
+
+    Args:
+        gene_symbol (str): Symbol representing the gene
+        gene_identifier (str): Identifier for the gene
+    """
     gene_symbol: str
     gene_identifier: str
 
 
 @dataclass(frozen=True, eq=True)
 class ProbandDisease:
+    """
+    Represents a disease associated with a proband
+
+    Args:
+        disease_name (str): Name of the disease
+        disease_identifier (str): Identifier for the disease
+    """
     disease_name: str
     disease_identifier: str
 
 
 def read_hgnc_data() -> pd.DataFrame:
+    """
+    Read HGNC data from a file and return it as a Pandas DataFrame.
+
+    Returns:
+        pd.DataFrame: DataFrame containing the HGNC data.
+    """
     return pd.read_csv(
         os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
         delimiter="\t",
@@ -73,7 +121,26 @@ def read_hgnc_data() -> pd.DataFrame:
 
 
 def create_hgnc_dict() -> defaultdict:
-    """Creates reference for updating gene symbols and identifiers."""
+    """
+    Create a dictionary as a reference for updating gene symbols and identifiers based on HGNC data.
+
+
+    Returns:
+        defaultdict: A dictionary containing gene symbols as keys and their associated gene information.
+
+    Notes:
+        The dictionary structure:
+        {
+            'gene_symbol': {
+                'ensembl_id': str,
+                'hgnc_id': str,
+                'entrez_id': str,
+                'refseq_accession': str,
+                'previous_symbol': [str, ...]
+            },
+            ...
+        }
+    """
     hgnc_df = read_hgnc_data()
     hgnc_data = defaultdict(dict)
     for _index, row in hgnc_df.iterrows():
@@ -91,6 +158,19 @@ def create_hgnc_dict() -> defaultdict:
 
 
 def create_gene_identifier_map() -> dict:
+    """
+    Create a mapping of gene identifiers to gene symbols using HGNC data.
+
+    Returns:
+        dict: A mapping of gene identifiers to gene symbols.
+
+    Notes:
+        The dictionary structure:
+        {
+            'identifier': 'gene_symbol',
+            ...
+        }
+    """
     hgnc_df = read_hgnc_data()
     identifier_map = {}
     for _index, row in hgnc_df.iterrows():
@@ -101,8 +181,16 @@ def create_gene_identifier_map() -> dict:
     return identifier_map
 
 
-def phenopacket_reader(file: Path):
-    """Reads a phenopacket file, returning its contents."""
+def phenopacket_reader(file: Path) -> Union[Phenopacket, Family]:
+    """
+    Reads a Phenopacket file and returns its contents as a Phenopacket or Family object
+
+    Args:
+        file (Path): Path to the Phenopacket file
+
+    Returns:
+        Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object
+    """
     file = open(file, "r")
     phenopacket = json.load(file)
     file.close()
@@ -113,27 +201,47 @@ def phenopacket_reader(file: Path):
 
 
 class PhenopacketUtil:
-    """Retrieves relevant data from a phenopacket."""
+    """Class for retrieving data from a Phenopacket or Family object"""
 
-    def __init__(self, phenopacket_contents: Phenopacket):
+    def __init__(self, phenopacket_contents: Union[Phenopacket, Family]):
+        """Initialises PhenopacketUtil
+
+        Args:
+            phenopacket_contents (Union[Phenopacket, Family]): Phenopacket or Family object
+        """
         self.phenopacket_contents = phenopacket_contents
 
     def sample_id(self) -> str:
-        """Retrieve the sample ID from a phenopacket or proband of a family."""
+        """
+        Retrieves the sample ID from a Phenopacket or proband of a Family
+
+        Returns:
+            str: Sample ID
+        """
         if hasattr(self.phenopacket_contents, "proband"):
             return self.phenopacket_contents.proband.subject.id
         else:
             return self.phenopacket_contents.subject.id
 
     def phenotypic_features(self) -> list[PhenotypicFeature]:
-        """Retrieves a list of all HPO terms."""
+        """
+        Retrieves a list of all HPO terms
+
+        Returns:
+            List[PhenotypicFeature]: List of HPO terms
+        """
         if hasattr(self.phenopacket_contents, "proband"):
             return self.phenopacket_contents.proband.phenotypic_features
         else:
             return self.phenopacket_contents.phenotypic_features
 
     def observed_phenotypic_features(self) -> list[PhenotypicFeature]:
-        """Removes any HPO terms labelled as excluded."""
+        """
+        Retrieves a list of all observed HPO terms
+
+        Returns:
+            List[PhenotypicFeature]: List of observed HPO terms
+        """
         phenotypic_features = []
         all_phenotypic_features = self.phenotypic_features()
         for p in all_phenotypic_features:
@@ -143,7 +251,12 @@ class PhenopacketUtil:
         return phenotypic_features
 
     def negated_phenotypic_features(self) -> [PhenotypicFeature]:
-        """Retrieve negated phenotypic features."""
+        """
+        Retrieves a list of all negated HPO terms
+
+        Returns:
+            List[PhenotypicFeature]: List of negated HPO terms
+        """
         negated_phenotypic_features = []
         all_phenotypic_features = self.phenotypic_features()
         for p in all_phenotypic_features:
@@ -152,7 +265,12 @@ class PhenopacketUtil:
         return negated_phenotypic_features
 
     def diseases(self) -> [Disease]:
-        """Retrieve diseases object from a Phenopacket or Family."""
+        """
+        Retrieves a list of Diseases
+
+        Returns:
+            List[Disease]: List of diseases
+        """
         if hasattr(self.phenopacket_contents, "proband"):
             return self.phenopacket_contents.proband.diseases
         else:
