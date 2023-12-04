@@ -28,8 +28,12 @@ class PhEvalGeneResult(PhEvalResult):
     """Minimal data required from tool-specific output for gene prioritisation result
     Args:
         gene_symbol (str): The gene symbol for the result entry
-        gene_identifier (str): The gene identifier for the result entry
+        gene_identifier (str): The ENSEMBL gene identifier for the result entry
         score (float): The score for the gene result entry
+    Notes:
+        While we recommend providing the gene identifier in the ENSEMBL namespace,
+        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+        in the analysis.
     """
 
     gene_symbol: str
@@ -68,12 +72,18 @@ class RankedPhEvalGeneResult(PhEvalGeneResult):
 class PhEvalVariantResult(PhEvalResult):
     """Minimal data required from tool-specific output for variant prioritisation
     Args:
-        chromosome (str): The chromosome position of the variant
+        chromosome (str): The chromosome position of the variant recommended to be provided in INSDC format.
+        This includes numerical designations from 1 to 22 representing autosomal chromosomes,
+        as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
         start (int): The start position of the variant
         end (int): The end position of the variant
         ref (str): The reference allele of the variant
         alt (str): The alternate allele of the variant
         score (float): The score for the variant result entry
+    Notes:
+        While we recommend providing the variant's chromosome in INSDC format,
+        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+        in the analysis.
     """
 
     chromosome: str
@@ -119,8 +129,12 @@ class PhEvalDiseaseResult(PhEvalResult):
     """Minimal data required from tool-specific output for disease prioritisation
     Args:
         disease_name (str): Disease name for the result entry
-        disease_identifier (str): Disease identifier for the result entry
+        disease_identifier (str): Identifier for the disease result entry in the OMIM namespace
         score (str): Score for the disease result entry
+    Notes:
+        While we recommend providing the disease identifier in the OMIM namespace,
+        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+        in the analysis.
     """
 
     disease_name: str
@@ -174,7 +188,7 @@ class ResultSorter:
 
         Args:
             pheval_results ([PhEvalResult]): List of PhEvalResult instances to be sorted
-            sort_order (SortOrder): Sorting order to applied
+            sort_order (SortOrder): Sorting order to be applied
         """
         self.pheval_results = pheval_results
         self.sort_order = sort_order
@@ -433,7 +447,7 @@ def generate_pheval_result(
         tool_result_path (Path): Path to the tool-specific result file.
 
     Raises:
-        ValueError: If the results are not all of the same type or an error occurs during file writing.
+        ValueError: If the results are not all the same type or an error occurs during file writing.
     """
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
     if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
