@@ -13,23 +13,23 @@ from serde import to_dict
 from pheval.run_metadata import BasicOutputRunMetaData
 
 
-def files_with_suffix(directory: Path, suffix: str):
+def files_with_suffix(directory: Path, suffix: str) -> list[Path]:
     """Obtains all files ending in a specified suffix from a given directory."""
-    files = [path for path in directory.iterdir() if path.suffix == suffix]
+    files = [file_path for file_path in directory.iterdir() if file_path.suffix == suffix]
     files.sort()
     return files
 
 
 def all_files(directory: Path) -> list[Path]:
     """Obtains all files from a given directory."""
-    files = [path for path in directory.iterdir()]
+    files = [file_path for file_path in directory.iterdir()]
     files.sort()
     return files
 
 
-def is_gzipped(path: Path) -> bool:
+def is_gzipped(file_path: Path) -> bool:
     """Confirms whether a file is gzipped."""
-    return path.name.endswith(".gz")
+    return file_path.name.endswith(".gz")
 
 
 def normalise_file_name(file_path: Path) -> str:
