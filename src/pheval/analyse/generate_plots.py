@@ -26,25 +26,28 @@ def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path
 
 class PlotGenerator:
     def __init__(
-        self,
+            self,
     ):
         self.stats, self.mrr = [], []
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
 
     @staticmethod
-    def create_run_identifier(results_dir: Path) -> str:
+    def _create_run_identifier(results_dir: Path) -> str:
         """Create a run identifier from a path."""
-        if Path(results_dir).exists():
-            return f"{Path(results_dir).parents[0].name}_{trim_corpus_results_directory_suffix(Path(results_dir).name)}"
-        return results_dir
+        return f"{Path(results_dir).parents[0].name}_{trim_corpus_results_directory_suffix(Path(results_dir).name)}"
+
+    def return_benchmark_name(self, benchmark_result: BenchmarkRunResults) -> str:
+        """Return the benchmark name for a run."""
+        return benchmark_result.benchmark_name if benchmark_result.results_dir is None else self._create_run_identifier(
+            benchmark_result.results_dir)
 
     def _generate_stacked_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> None:
         """Generate data in correct format for dataframe creation for stacked bar plot."""
         rank_stats = benchmark_result.rank_stats
         self.stats.append(
             {
-                "Run": self.create_run_identifier(benchmark_result.results_dir),
+                "Run": self.return_benchmark_name(benchmark_result),
                 "Top": benchmark_result.rank_stats.percentage_top(),
                 "2-3": rank_stats.percentage_difference(
                     rank_stats.percentage_top3(), rank_stats.percentage_top()
@@ -69,16 +72,16 @@ class PlotGenerator:
                 {
                     "Rank": "MRR",
                     "Percentage": benchmark_result.rank_stats.return_mean_reciprocal_rank(),
-                    "Run": self.create_run_identifier(benchmark_result.results_dir),
+                    "Run": self.return_benchmark_name(benchmark_result),
                 }
             ]
         )
 
     def generate_stacked_bar_plot(
-        self,
-        benchmarking_results: [BenchmarkRunResults],
-        benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
+            self,
+            benchmarking_results: [BenchmarkRunResults],
+            benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None,
     ) -> None:
         """Generate stacked bar plot."""
         for benchmark_result in benchmarking_results:
@@ -121,7 +124,7 @@ class PlotGenerator:
     def _generate_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRunResults):
         """Generate data in correct format for dataframe creation for cumulative bar plot."""
         rank_stats = benchmark_result.rank_stats
-        run_identifier = self.create_run_identifier(benchmark_result.results_dir)
+        run_identifier = self.return_benchmark_name(benchmark_result)
         self.stats.extend(
             [
                 {
@@ -154,7 +157,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         100, rank_stats.percentage_found()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -166,10 +169,10 @@ class PlotGenerator:
         )
 
     def generate_cumulative_bar(
-        self,
-        benchmarking_results: [BenchmarkRunResults],
-        benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
+            self,
+            benchmarking_results: [BenchmarkRunResults],
+            benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None,
     ) -> None:
         """Generate cumulative bar plot."""
         for benchmark_result in benchmarking_results:
@@ -192,11 +195,11 @@ class PlotGenerator:
         )
 
     def _generate_non_cumulative_bar_plot_data(
-        self, benchmark_result: BenchmarkRunResults
+            self, benchmark_result: BenchmarkRunResults
     ) -> [dict]:
         """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
         rank_stats = benchmark_result.rank_stats
-        run_identifier = self.create_run_identifier(benchmark_result.results_dir)
+        run_identifier = self.return_benchmark_name(benchmark_result)
         self.stats.extend(
             [
                 {
@@ -209,7 +212,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         rank_stats.percentage_top3(), rank_stats.percentage_top()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -217,7 +220,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         rank_stats.percentage_top5(), rank_stats.percentage_top3()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -225,7 +228,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         rank_stats.percentage_top10(), rank_stats.percentage_top5()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -233,7 +236,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         rank_stats.percentage_found(), rank_stats.percentage_top10()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -241,7 +244,7 @@ class PlotGenerator:
                     "Percentage": rank_stats.percentage_difference(
                         100, rank_stats.percentage_found()
                     )
-                    / 100,
+                                  / 100,
                     "Run": run_identifier,
                 },
                 {
@@ -253,10 +256,10 @@ class PlotGenerator:
         )
 
     def generate_non_cumulative_bar(
-        self,
-        benchmarking_results: [BenchmarkRunResults],
-        benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
+            self,
+            benchmarking_results: [BenchmarkRunResults],
+            benchmark_generator: BenchmarkRunOutputGenerator,
+            title: str = None,
     ) -> None:
         """Generate non-cumulative bar plot."""
         for benchmark_result in benchmarking_results:
@@ -281,10 +284,10 @@ class PlotGenerator:
 
 
 def generate_plots(
-    benchmarking_results: [BenchmarkRunResults],
-    benchmark_generator: BenchmarkRunOutputGenerator,
-    plot_type: str,
-    title: str = None,
+        benchmarking_results: [BenchmarkRunResults],
+        benchmark_generator: BenchmarkRunOutputGenerator,
+        plot_type: str,
+        title: str = None,
 ) -> None:
     """Generate summary stats bar plots for prioritisation."""
     plot_generator = PlotGenerator()
@@ -297,12 +300,12 @@ def generate_plots(
 
 
 def generate_plots_from_benchmark_summary_tsv(
-    benchmark_summary_tsv: Path,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
-    plot_type: str,
-    title: str,
+        benchmark_summary_tsv: Path,
+        gene_analysis: bool,
+        variant_analysis: bool,
+        disease_analysis: bool,
+        plot_type: str,
+        title: str,
 ):
     """Generate bar plot from summary benchmark results."""
     benchmark_stats_summary = read_benchmark_tsv_result_summary(benchmark_summary_tsv)
