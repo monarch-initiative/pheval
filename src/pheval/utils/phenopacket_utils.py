@@ -30,7 +30,7 @@ class IncompatibleGenomeAssemblyError(Exception):
         """
         Initialise IncompatibleGenomeAssemblyError.
 
-        Args:
+        Attributes:
            assembly (str): Incompatible genome assembly encountered.
            phenopacket (Path): Path to the Phenopacket associated with the error.
            message (str, optional): Custom error message (default is "Incompatible Genome Assembly").
@@ -50,11 +50,14 @@ class GenomicVariant:
     Represents a genomic variant.
 
     Args:
-        chrom (str): Chromosome where the variant is located
+        chrom (str): The chromosome position of the variant recommended to be provided in INSDC format.
+        This includes numerical designations from 1 to 22 representing autosomal chromosomes,
+        as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
         pos (int): Position of the variant
         ref (str): Reference allele
         alt (str): Alternate allele
     """
+
     chrom: str
     pos: int
     ref: str
@@ -73,6 +76,7 @@ class ProbandCausativeVariant:
         genotype (str): Genotype information for the variant
         info (str, optional): Additional information about the variant (default is an empty string)
     """
+
     proband_id: str
     assembly: str
     variant: GenomicVariant
@@ -87,8 +91,13 @@ class ProbandCausativeGene:
 
     Args:
         gene_symbol (str): Symbol representing the gene
-        gene_identifier (str): Identifier for the gene
+        gene_identifier (str): The ENSEMBL gene identifier for the result entry
+    Notes:
+         While we recommend providing the gene identifier in the ENSEMBL namespace,
+         any matching format used in Phenopacket interpretations and result output is acceptable
+         for result matching purposes in the analysis.
     """
+
     gene_symbol: str
     gene_identifier: str
 
@@ -100,8 +109,14 @@ class ProbandDisease:
 
     Args:
         disease_name (str): Name of the disease
-        disease_identifier (str): Identifier for the disease
+        disease_identifier (str): Identifier for the disease result entry in the OMIM namespace
+
+    Notes:
+         While we recommend providing the disease identifier in the OMIM namespace,
+         any matching format used in Phenopacket interpretations and result output is acceptable
+         for result matching purposes in the analysis.
     """
+
     disease_name: str
     disease_identifier: str
 
@@ -266,7 +281,7 @@ class PhenopacketUtil:
 
     def diseases(self) -> [Disease]:
         """
-        Retrieves a list of Diseases
+        Retrieves a list of Diseases associated with the proband
 
         Returns:
             List[Disease]: List of diseases
@@ -276,8 +291,13 @@ class PhenopacketUtil:
         else:
             return self.phenopacket_contents.diseases
 
-    def diagnosis_from_interpretations(self) -> [ProbandDisease]:
-        """Retrieve the proband diagnosis from interpretations."""
+    def _diagnosis_from_interpretations(self) -> [ProbandDisease]:
+        """
+        Retrieves a list of disease diagnoses associated with the proband from the interpretations object
+
+        Returns:
+            List[ProbandDisease]: List of diagnosed diseases
+        """
         diagnoses = []
         interpretation = self.interpretations()
         for i in interpretation:
@@ -289,8 +309,13 @@ class PhenopacketUtil:
             ) if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != "" else None
         return diagnoses
 
-    def diagnosis_from_disease(self) -> [ProbandDisease]:
-        """Retrieve the proband diagnosis from disease object."""
+    def _diagnosis_from_disease(self) -> [ProbandDisease]:
+        """
+        Retrieves a list of disease diagnoses associated with the proband from the diseases object
+
+        Returns:
+            List[ProbandDisease]: List of diagnosed diseases
+        """
         diagnoses = []
         for disease in self.diseases():
             diagnoses.append(
@@ -299,18 +324,33 @@ class PhenopacketUtil:
         return diagnoses
 
     def diagnoses(self) -> [ProbandDisease]:
-        """Retrieve diagnoses from a phenopacket."""
-        return list(set(self.diagnosis_from_interpretations() + self.diagnosis_from_disease()))
+        """
+        Retrieves a unique list of disease diagnoses associated with the proband from a Phenopacket
+
+        Returns:
+            List[ProbandDisease]: List of diagnosed diseases
+        """
+        return list(set(self._diagnosis_from_interpretations() + self._diagnosis_from_disease()))
 
     def interpretations(self) -> list[Interpretation]:
-        """Returns all interpretations of a phenopacket."""
+        """
+        Retrieves a list of interpretations from a Phenopacket
+
+        Returns:
+            List[Interpretation]: List of interpretations
+        """
         if hasattr(self.phenopacket_contents, "proband"):
             return self.phenopacket_contents.proband.interpretations
         else:
             return self.phenopacket_contents.interpretations
 
     def causative_variants(self) -> list[ProbandCausativeVariant]:
-        """Returns a list of all causative variants listed in a phenopacket."""
+        """
+        Retrieves a list of causative variants listed in a Phenopacket
+
+        Returns:
+            List[ProbandCausativeVariant]: List of proband causative variants
+        """
         all_variants = []
         interpretation = self.interpretations()
         for i in interpretation:
@@ -332,12 +372,35 @@ class PhenopacketUtil:
                 all_variants.append(variant_data)
         return all_variants
 
-    def files(self) -> list:
-        """Returns all files associated with a phenopacket."""
+    def files(self) -> [File]:
+        """
+        Retrieves a list of files associated with a phenopacket
+
+        Returns:
+            List[File]: List of files associated with a phenopacket
+        """
         return self.phenopacket_contents.files
 
     def vcf_file_data(self, phenopacket_path: Path, vcf_dir: Path) -> File:
-        """Retrieves the genome assembly and vcf name from a phenopacket."""
+        """
+        Retrieves the genome assembly and VCF file name from a phenopacket.
+
+        Args:
+            phenopacket_path (Path): The path to the phenopacket file.
+            vcf_dir (Path): The directory path where the VCF file is stored.
+
+        Returns:
+            File: The VCF file with updated URI pointing to the specified directory.
+
+        Raises:
+            IncorrectFileFormatError: If the provided file is not in .vcf or .vcf.gz format.
+            IncompatibleGenomeAssemblyError: If the genome assembly of the VCF file is not compatible.
+
+        Note:
+            This function searches for a VCF file within the provided list of files, validates its format,
+            and checks if the genome assembly is compatible. If the conditions are met, it updates the
+            URI of the VCF file to the specified directory and returns the modified file object.
+        """
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
         vcf_data = [file for file in self.files() if file.file_attributes["fileFormat"] == "vcf"][0]
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(
@@ -355,8 +418,14 @@ class PhenopacketUtil:
     def _extract_diagnosed_gene(
         genomic_interpretation: GenomicInterpretation,
     ) -> ProbandCausativeGene:
-        """Returns the disease causative gene from the variant descriptor field if not empty,
-        otherwise, returns from the gene descriptor from a phenopacket."""
+        """
+        Retrieves the disease causing genes from the variant descriptor field if not empty,
+        otherwise, retrieves from the gene descriptor from a phenopacket.
+        Args:
+            genomic_interpretation (GenomicInterpretation): A genomic interpretation from a Phenopacket
+        Returns:
+            ProbandCausativeGene: The disease causing gene
+        """
         if genomic_interpretation.variant_interpretation.ByteSize() != 0:
             return ProbandCausativeGene(
                 genomic_interpretation.variant_interpretation.variation_descriptor.gene_context.symbol,
@@ -370,7 +439,11 @@ class PhenopacketUtil:
             )
 
     def diagnosed_genes(self) -> list[ProbandCausativeGene]:
-        """Returns a unique list of all causative genes and the corresponding gene identifiers from a phenopacket."""
+        """
+        Retrieves the disease causing genes from a phenopacket.
+        Returns:
+            List[ProbandCausativeGene]: List of causative genes
+        """
         pheno_interpretation = self.interpretations()
         genes = []
         for i in pheno_interpretation:
@@ -380,7 +453,11 @@ class PhenopacketUtil:
         return genes
 
     def diagnosed_variants(self) -> list[GenomicVariant]:
-        """Returns a list of all variants from a phenopacket - for use in assess-prioritisation."""
+        """
+        Retrieves a list of all known causative variants from a phenopacket.
+        Returns:
+            List[GenomicVariant]: List of causative variants
+        """
         variants = []
         pheno_interpretation = self.interpretations()
         for i in pheno_interpretation:
@@ -396,13 +473,28 @@ class PhenopacketUtil:
 
 
 class PhenopacketRebuilder:
-    """Rebuilds a Phenopacket."""
+    """Class for rebuilding a Phenopacket"""
 
-    def __init__(self, phenopacket: Phenopacket or Family):
+    def __init__(self, phenopacket: Union[Phenopacket, Family]):
+        """Initialises PhenopacketUtil
+
+        Attributes:
+            phenopacket (Union[Phenopacket, Family]): Phenopacket or Family object
+        """
         self.phenopacket = phenopacket
 
-    def update_interpretations(self, interpretations) -> Phenopacket or Family:
-        """Adds the updated interpretations to a phenopacket."""
+    def update_interpretations(
+        self, interpretations: [Interpretation]
+    ) -> Union[Phenopacket, Family]:
+        """
+        Adds the updated interpretations to a Phenopacket or Family.
+
+        Args:
+            interpretations (List[Interpretation]): The updated interpretations to be added.
+
+        Returns:
+            Union[Phenopacket, Family]: The Phenopacket or Family object with updated interpretations.
+        """
         phenopacket = copy(self.phenopacket)
         if hasattr(phenopacket, "proband"):
             del phenopacket.proband.interpretations[:]
@@ -412,8 +504,16 @@ class PhenopacketRebuilder:
             phenopacket.interpretations.extend(interpretations)
         return phenopacket
 
-    def add_randomised_hpo(self, randomised_hpo) -> Phenopacket or Family:
-        """Adds randomised phenotypic profile to phenopacket."""
+    def add_randomised_hpo(self, randomised_hpo: [PhenotypicFeature]) -> Union[Phenopacket, Family]:
+        """
+        Adds randomised phenotypic profiles to a Phenopacket or Family.
+
+        Args:
+            randomised_hpo: The randomised phenotypic profiles to be added.
+
+        Returns:
+            Union[Phenopacket, Family] The Phenopacket or Family object with added randomised profiles.
+        """
         phenopacket = copy(self.phenopacket)
         if hasattr(phenopacket, "proband"):
             del phenopacket.proband.phenotypic_features[:]
@@ -423,8 +523,16 @@ class PhenopacketRebuilder:
             phenopacket.phenotypic_features.extend(randomised_hpo)
         return phenopacket
 
-    def add_spiked_vcf_path(self, spiked_vcf_file_data: File) -> Phenopacket or Family:
-        """Adds spiked vcf path to phenopacket."""
+    def add_spiked_vcf_path(self, spiked_vcf_file_data: File) -> Union[Phenopacket, Family]:
+        """
+        Adds a spiked VCF path to a Phenopacket or Family.
+
+        Args:
+        - spiked_vcf_file_data (File): The VCF file data to be added.
+
+        Returns:
+        - Phenopacket or Family: The Phenopacket or Family object with the added spiked VCF path.
+        """
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
             file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
@@ -435,13 +543,30 @@ class PhenopacketRebuilder:
         return phenopacket
 
 
-def create_json_message(phenopacket: Phenopacket or Family) -> str:
-    """Creates json message for writing to file."""
+def create_json_message(phenopacket: Union[Phenopacket, Family]) -> str:
+    """
+    Creates a JSON message for writing to a file.
+
+    Args:
+    - phenopacket (Union[Phenopacket, Family]): The Phenopacket or Family object to convert to JSON.
+
+    Returns:
+    - str: A JSON-formatted string representation of the Phenopacket or Family object.
+    """
     return MessageToJson(phenopacket)
 
 
-def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path) -> None:
-    """Writes a phenopacket."""
+def write_phenopacket(phenopacket: Union[Phenopacket, Family], output_file: Path) -> None:
+    """
+    Writes a Phenopacket or Family object to a file in JSON format.
+
+    Args:
+        phenopacket (Phenopacket or Family): The Phenopacket or Family object to be written.
+        output_file (Path): The Path object representing the file to write the Phenopacket data.
+
+    Returns:
+        None
+    """
     phenopacket_json = create_json_message(phenopacket)
     with open(output_file, "w") as outfile:
         outfile.write(phenopacket_json)
@@ -449,13 +574,39 @@ def write_phenopacket(phenopacket: Phenopacket or Family, output_file: Path) -> 
 
 
 class GeneIdentifierUpdater:
+    """
+    Updates gene identifiers within genomic interpretations.
+
+    Attributes:
+        gene_identifier (str): The gene identifier to update.
+        hgnc_data (dict): A dictionary containing HGNC data.
+        identifier_map (dict): A dictionary mapping gene identifiers.
+    """
+
     def __init__(self, gene_identifier: str, hgnc_data: dict = None, identifier_map: dict = None):
+        """
+        Initialises the GeneIdentifierUpdater.
+
+        Args:
+        - gene_identifier (str): The gene identifier to update.
+        - hgnc_data (dict): A dictionary containing HGNC data (default: None).
+        - identifier_map (dict): A dictionary mapping gene identifiers (default: None).
+        """
+
         self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
         self.identifier_map = identifier_map
 
     def find_identifier(self, gene_symbol: str) -> str:
-        """Finds the specified gene identifier for a gene symbol."""
+        """
+        Finds the specified gene identifier for a gene symbol.
+
+        Args:
+            gene_symbol (str): The gene symbol to find the identifier for.
+
+        Returns:
+            str: The identified gene identifier.
+        """
         if gene_symbol in self.hgnc_data.keys():
             return self.hgnc_data[gene_symbol][self.gene_identifier]
         else:
@@ -466,15 +617,26 @@ class GeneIdentifierUpdater:
 
     def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
         """
-        Obtain gene symbol from a gene identifier. (e.g.)
-        "
-        obtain_gene_symbol_from_identifier(query_gene_identifier="HGNC:5")
-        "
+        Obtain gene symbol from a gene identifier.
+
+        Args:
+        - query_gene_identifier (str): The gene identifier.
+
+        Returns:
+        - str: The gene symbol corresponding to the identifier.
         """
         return self.identifier_map[query_gene_identifier]
 
     def _find_alternate_ids(self, gene_symbol: str) -> list[str]:
-        """Finds the alternate IDs for a gene symbol."""
+        """
+        Finds the alternate IDs for a gene symbol.
+
+        Args:
+        - gene_symbol (str): The gene symbol to find alternate IDs for.
+
+        Returns:
+        - list[str]: List of alternate IDs for the gene symbol.
+        """
         if gene_symbol in self.hgnc_data.keys():
             return [
                 self.hgnc_data[gene_symbol]["hgnc_id"],
@@ -496,7 +658,15 @@ class GeneIdentifierUpdater:
     def update_genomic_interpretations_gene_identifier(
         self, interpretations: list[Interpretation]
     ) -> list[Interpretation]:
-        """Updates the genomic interpretations of a phenopacket."""
+        """
+        Updates the genomic interpretations of a Phenopacket.
+
+        Args:
+        - interpretations (list[Interpretation]): List of Interpretation objects.
+
+        Returns:
+        - list[Interpretation]: Updated list of Interpretation objects.
+        """
         updated_interpretations = copy(list(interpretations))
         for updated_interpretation in updated_interpretations:
             for g in updated_interpretation.diagnosis.genomic_interpretations:
