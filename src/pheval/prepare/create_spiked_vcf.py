@@ -98,6 +98,7 @@ class VcfPicker:
         template_vcf (Path or None): The path to a template VCF file, or None if not provided.
         vcf_dir (Path or None): The directory containing VCF files, or None if not provided.
     """
+
     def __init__(self, template_vcf: Path or None, vcf_dir: Path or None):
         """
         Initialises the VcfPicker.
@@ -342,11 +343,11 @@ class VcfSpiker:
 
     def construct_vcf(self) -> list[str]:
         """
-       Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
+        Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
 
-       Returns:
-       List[str]: The complete spiked VCF file content as a list of strings.
-       """
+        Returns:
+        List[str]: The complete spiked VCF file content as a list of strings.
+        """
         return self.construct_header(self.construct_vcf_records())
 
 
@@ -385,8 +386,8 @@ class VcfWriter:
 
     def write_uncompressed(self) -> None:
         """
-       Write the VCF contents to an uncompressed VCF file.
-       """
+        Write the VCF contents to an uncompressed VCF file.
+        """
         with open(self.spiked_vcf_file_path, "w") as file:
             file.writelines(self.vcf_contents)
         file.close()
