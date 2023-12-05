@@ -6,6 +6,7 @@ import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Union
 
 from phenopackets import Family, File, Phenopacket
 
@@ -403,7 +404,7 @@ class VcfWriter:
 
 
 def spike_vcf_contents(
-    phenopacket: Phenopacket or Family,
+    phenopacket: Union[Phenopacket, Family],
     phenopacket_path: Path,
     chosen_template_vcf: Path,
 ) -> tuple[str, list[str]]:
@@ -411,7 +412,7 @@ def spike_vcf_contents(
     Spike VCF records with variants obtained from a Phenopacket or Family.
 
     Args:
-        phenopacket (Phenopacket or Family): Phenopacket or Family containing causative variants.
+        phenopacket (Union[Phenopacket, Family]): Phenopacket or Family containing causative variants.
         phenopacket_path (Path): Path to the Phenopacket file.
         chosen_template_vcf (Path): Path to the chosen template VCF file.
 
@@ -434,7 +435,7 @@ def spike_vcf_contents(
 
 def generate_spiked_vcf_file(
     output_dir: Path,
-    phenopacket: Phenopacket or Family,
+    phenopacket: Union[Phenopacket, Family],
     phenopacket_path: Path,
     chosen_template_vcf: Path,
 ) -> File:
@@ -443,7 +444,7 @@ def generate_spiked_vcf_file(
 
     Args:
         output_dir (Path): Path to the directory to store the generated file.
-        phenopacket (Phenopacket or Family): Phenopacket or Family containing causative variants.
+        phenopacket (Union[Phenopacket, Family]): Phenopacket or Family containing causative variants.
         phenopacket_path (Path): Path to the Phenopacket file.
         chosen_template_vcf (Path): Path to the chosen template VCF file.
 
