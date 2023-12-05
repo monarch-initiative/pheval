@@ -6,8 +6,9 @@ from pheval.analyse.rank_stats import RankStats
 
 @dataclass
 class BenchmarkRunResults:
-    """Analysis results for a run."""
+    """Benchmarking results for a run."""
 
-    results_dir: Path
     ranks: dict
     rank_stats: RankStats
+    results_dir: Path = None
+    benchmark_name: str = None
