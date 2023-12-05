@@ -40,7 +40,6 @@ def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> [BenchmarkR
             ),
             ranks={},
             benchmark_name=row["results_directory_path"],
-
         )
         benchmarking_results.append(benchmarking_result)
     return benchmarking_results
