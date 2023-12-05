@@ -29,7 +29,6 @@ def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> [BenchmarkR
     benchmarking_results = []
     for _, row in benchmarking_df.iterrows():
         benchmarking_result = BenchmarkRunResults(
-            row["results_directory_path"],
             rank_stats=RankStats(
                 top=row["top"],
                 top3=row["top3"],
@@ -40,6 +39,8 @@ def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> [BenchmarkR
                 mrr=row["mean_reciprocal_rank"],
             ),
             ranks={},
+            benchmark_name=row["results_directory_path"],
+
         )
         benchmarking_results.append(benchmarking_result)
     return benchmarking_results
