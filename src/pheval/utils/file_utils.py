@@ -82,7 +82,7 @@ def obtain_closest_file_name(file_to_be_queried: Path, file_paths: list[Path]) -
 
     Returns:
         Path: The closest matching file path from the provided list.
-   """
+    """
     stems = [Path(file_path).stem for file_path in file_paths]
     closest_file_match = difflib.get_close_matches(
         str(Path(file_to_be_queried).stem), stems, cutoff=0.1, n=1
