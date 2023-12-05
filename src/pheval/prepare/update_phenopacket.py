@@ -2,6 +2,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+from phenopackets import Family, Phenopacket
+
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
@@ -11,11 +13,10 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
     write_phenopacket,
 )
-from phenopackets import Phenopacket, Family
 
 
 def update_outdated_gene_context(
-        phenopacket_path: Path, gene_identifier: str, hgnc_data: defaultdict
+    phenopacket_path: Path, gene_identifier: str, hgnc_data: defaultdict
 ) -> Union[Phenopacket, Family]:
     """
     Update the gene context of the Phenopacket.
@@ -37,7 +38,9 @@ def update_outdated_gene_context(
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
 
-def create_updated_phenopacket(gene_identifier: str, phenopacket_path: Path, output_dir: Path) -> None:
+def create_updated_phenopacket(
+    gene_identifier: str, phenopacket_path: Path, output_dir: Path
+) -> None:
     """
     Update the gene context within the interpretations for a Phenopacket and writes the updated Phenopacket.
 
@@ -51,7 +54,9 @@ def create_updated_phenopacket(gene_identifier: str, phenopacket_path: Path, out
     write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
-def create_updated_phenopackets(gene_identifier: str, phenopacket_dir: Path, output_dir: Path) -> None:
+def create_updated_phenopackets(
+    gene_identifier: str, phenopacket_dir: Path, output_dir: Path
+) -> None:
     """
     Update the gene context within the interpretations for a directory of Phenopackets
     and writes the updated Phenopackets.
@@ -70,7 +75,7 @@ def create_updated_phenopackets(gene_identifier: str, phenopacket_dir: Path, out
 
 
 def update_phenopackets(
-        gene_identifier: str, phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path
+    gene_identifier: str, phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path
 ) -> None:
     """
     Update the gene identifiers in either a single phenopacket or a directory of phenopackets.
