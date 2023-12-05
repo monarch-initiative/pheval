@@ -13,7 +13,7 @@ class TestPlotGenerator(unittest.TestCase):
         self.variant_plot_generator = PlotGenerator()
         self.disease_plot_generator = PlotGenerator()
         self.benchmarking_result = BenchmarkRunResults(
-            results_dir="tool_corpus",
+            benchmark_name="tool_corpus",
             ranks={},
             rank_stats=RankStats(
                 top=1,
@@ -34,7 +34,7 @@ class TestPlotGenerator(unittest.TestCase):
 
     def test_create_run_identifier(self):
         self.assertEqual(
-            self.gene_plot_generator.create_run_identifier(self.results_dir),
+            self.gene_plot_generator._create_run_identifier(self.results_dir),
             "tool1-default_corpus1-default",
         )
 
