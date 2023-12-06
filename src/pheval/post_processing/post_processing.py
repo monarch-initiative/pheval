@@ -72,7 +72,7 @@ class RankedPhEvalGeneResult(PhEvalGeneResult):
 class PhEvalVariantResult(PhEvalResult):
     """Minimal data required from tool-specific output for variant prioritisation
     Args:
-        chromosome (str): The chromosome position of the variant recommended to be provided in INSDC format.
+        chromosome (str): The chromosome position of the variant recommended to be provided in the following format.
         This includes numerical designations from 1 to 22 representing autosomal chromosomes,
         as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
         start (int): The start position of the variant
@@ -81,7 +81,7 @@ class PhEvalVariantResult(PhEvalResult):
         alt (str): The alternate allele of the variant
         score (float): The score for the variant result entry
     Notes:
-        While we recommend providing the variant's chromosome in INSDC format,
+        While we recommend providing the variant's chromosome in the specified format,
         any matching format used in Phenopacket interpretations is acceptable for result matching purposes
         in the analysis.
     """
@@ -436,7 +436,7 @@ def generate_pheval_result(
     sort_order_str: str,
     output_dir: Path,
     tool_result_path: Path,
-):
+) -> None:
     """
     Generate PhEval variant, gene or disease TSV result based on input results.
 
