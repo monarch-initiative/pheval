@@ -28,6 +28,11 @@ def update_outdated_gene_context(
 
     Returns:
         Union[Phenopacket, Family]: The updated Phenopacket or Family.
+    Notes:
+        This function updates the gene context within the Phenopacket or Family instance.
+        The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+        to describe the gene identifiers.
     """
     phenopacket = phenopacket_reader(phenopacket_path)
     interpretations = PhenopacketUtil(phenopacket).interpretations()
@@ -48,6 +53,10 @@ def create_updated_phenopacket(
         gene_identifier (str): Identifier used to update the gene context.
         phenopacket_path (Path): The path to the input Phenopacket file.
         output_dir (Path): The directory where the updated Phenopacket will be written.
+    Notes:
+        The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+        to describe the gene identifiers.
     """
     hgnc_data = create_hgnc_dict()
     updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
@@ -65,6 +74,10 @@ def create_updated_phenopackets(
         gene_identifier (str): Identifier used to update the gene context.
         phenopacket_dir (Path): The path to the input Phenopacket directory.
         output_dir (Path): The directory where the updated Phenopackets will be written.
+    Notes:
+        The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+        to describe the gene identifiers.
     """
     hgnc_data = create_hgnc_dict()
     for phenopacket_path in all_files(phenopacket_dir):
@@ -85,6 +98,10 @@ def update_phenopackets(
         phenopacket_path (Path): The path to a single Phenopacket file.
         phenopacket_dir (Path): The directory containing multiple Phenopacket files.
         output_dir (Path): The output directory to save the updated Phenopacket files.
+    Notes:
+        The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+        to describe the gene identifiers.
     """
     output_dir.mkdir(exist_ok=True)
     if phenopacket_path is not None:
