@@ -2,8 +2,10 @@ import operator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-
+import logging
 import pandas as pd
+
+info_log = logging.getLogger("info")
 
 
 def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
@@ -179,7 +181,6 @@ class SortOrder(Enum):
 
 
 class ResultSorter:
-
     """Class for sorting PhEvalResult instances based on a given sort order."""
 
     def __init__(self, pheval_results: [PhEvalResult], sort_order: SortOrder):
@@ -259,11 +260,11 @@ class ScoreRanker:
             ValueError: If results are not correctly sorted.
         """
         if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
-            "inf"
+                "inf"
         ):
             raise ValueError("Results are not correctly sorted!")
         elif self.sort_order == SortOrder.DESCENDING and round_score > self.current_score != float(
-            "inf"
+                "inf"
         ):
             raise ValueError("Results are not correctly sorted!")
 
@@ -362,7 +363,7 @@ def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) ->
 
 
 def _write_pheval_gene_result(
-    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
+        ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval gene results to a TSV file
@@ -384,7 +385,7 @@ def _write_pheval_gene_result(
 
 
 def _write_pheval_variant_result(
-    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
+        ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval variant results to a TSV file
@@ -396,8 +397,8 @@ def _write_pheval_variant_result(
     """
     ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
     pheval_variant_output = ranked_result.loc[
-        :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
-    ]
+                            :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
+                            ]
     pheval_variant_output.to_csv(
         output_dir.joinpath(
             "pheval_variant_results/" + tool_result_path.stem + "-pheval_variant_result.tsv"
@@ -408,7 +409,7 @@ def _write_pheval_variant_result(
 
 
 def _write_pheval_disease_result(
-    ranked_pheval_result: [RankedPhEvalDiseaseResult], output_dir: Path, tool_result_path: Path
+        ranked_pheval_result: [RankedPhEvalDiseaseResult], output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval disease results to a TSV file
@@ -420,8 +421,8 @@ def _write_pheval_disease_result(
     """
     ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
     pheval_disease_output = ranked_result.loc[
-        :, ["rank", "score", "disease_name", "disease_identifier"]
-    ]
+                            :, ["rank", "score", "disease_name", "disease_identifier"]
+                            ]
     pheval_disease_output.to_csv(
         output_dir.joinpath(
             "pheval_disease_results/" + tool_result_path.stem + "-pheval_disease_result.tsv"
@@ -432,10 +433,10 @@ def _write_pheval_disease_result(
 
 
 def generate_pheval_result(
-    pheval_result: [PhEvalResult],
-    sort_order_str: str,
-    output_dir: Path,
-    tool_result_path: Path,
+        pheval_result: [PhEvalResult],
+        sort_order_str: str,
+        output_dir: Path,
+        tool_result_path: Path,
 ) -> None:
     """
     Generate PhEval variant, gene or disease TSV result based on input results.
@@ -450,7 +451,7 @@ def generate_pheval_result(
         ValueError: If the results are not all the same type or an error occurs during file writing.
     """
     if not pheval_result:
-        print(f"Warning: No results found for {tool_result_path.name}")
+        info_log.warning(f"No results found for {tool_result_path.name}")
         pass
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
     if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
