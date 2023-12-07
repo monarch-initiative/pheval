@@ -256,7 +256,10 @@ def generate_pheval_result(
     output_dir: Path,
     tool_result_path: Path,
 ):
-    """Generate either a PhEval variant or PhEval gene tsv result."""
+    """Generate either a PhEval variant, gene, or disease tsv result."""
+    if not pheval_result:
+        print(f"Warning: No results found for {tool_result_path.name}")
+        pass
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
     if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
