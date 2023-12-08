@@ -1,9 +1,12 @@
+import logging
 import operator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 
 import pandas as pd
+
+info_log = logging.getLogger("info")
 
 
 def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
@@ -179,7 +182,6 @@ class SortOrder(Enum):
 
 
 class ResultSorter:
-
     """Class for sorting PhEvalResult instances based on a given sort order."""
 
     def __init__(self, pheval_results: [PhEvalResult], sort_order: SortOrder):
@@ -449,6 +451,9 @@ def generate_pheval_result(
     Raises:
         ValueError: If the results are not all the same type or an error occurs during file writing.
     """
+    if not pheval_result:
+        info_log.warning(f"No results found for {tool_result_path.name}")
+        pass
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
     if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
