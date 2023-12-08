@@ -6,7 +6,7 @@ import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Union
+from typing import List, Union
 
 from phenopackets import Family, File, Phenopacket
 
@@ -92,17 +92,11 @@ class VcfHeader:
 
 
 class VcfPicker:
-    """
-    Choose a VCF file randomly from a directory if provided, otherwise selects the single template.
-
-    Attributes:
-        template_vcf (Path or None): The path to a template VCF file, or None if not provided.
-        vcf_dir (Path or None): The directory containing VCF files, or None if not provided.
-    """
+    """Choose a VCF file randomly from a directory if provided, otherwise selects the single template."""
 
     def __init__(self, template_vcf: Path or None, vcf_dir: Path or None):
         """
-        Initialises the VcfPicker.
+        Initialise the VcfPicker.
 
         Args:
             template_vcf (Path or None): The path to a template VCF file, or None if not provided.
@@ -116,29 +110,29 @@ class VcfPicker:
         Selects a VCF file from a directory at random.
 
         Returns:
-        - Path: The randomly selected VCF file path from the directory.
+            Path: The randomly selected VCF file path from the directory.
         """
         return secrets.choice(all_files(self.vcf_dir))
 
     def pick_file(self) -> Path:
         """
-        Selects a VCF file randomly when given a directory; if not, the template VCF is assigned.
+        Select a VCF file randomly when given a directory; if not, the template VCF is assigned.
 
         Returns:
-        - Path: The selected VCF file path.
+            Path: The selected VCF file path.
         """
         return self.pick_file_from_dir() if self.vcf_dir is not None else self.template_vcf
 
 
-def read_vcf(vcf_file: Path) -> list[str]:
+def read_vcf(vcf_file: Path) -> List[str]:
     """
-    Reads the contents of a VCF file into memory, handling both uncompressed and gzipped files.
+    Read the contents of a VCF file into memory, handling both uncompressed and gzipped files.
 
     Args:
         vcf_file (Path): The path to the VCF file to be read.
 
     Returns:
-        list[str]: A list containing the lines of the VCF file.
+        List[str]: A list containing the lines of the VCF file.
     """
     open_fn = gzip.open if is_gzipped(vcf_file) else open
     vcf = open_fn(vcf_file)
@@ -150,11 +144,7 @@ def read_vcf(vcf_file: Path) -> list[str]:
 
 
 class VcfHeaderParser:
-    """
-    Class for parsing the header of a VCF file.
-    Attributes:
-        vcf_contents (list[str]): The contents of the VCF file as a list of strings.
-    """
+    """Class for parsing the header of a VCF file."""
 
     def __init__(self, vcf_contents: list[str]):
         """
@@ -246,13 +236,7 @@ def check_variant_assembly(
 
 
 class VcfSpiker:
-    """
-    Class for spiking proband variants into template VCF file contents.
-    Attributes:
-        vcf_contents (List[str]): Contents of the template VCF file.
-        proband_causative_variants (List[ProbandCausativeVariant]): List of proband causative variants.
-        vcf_header (VcfHeader): The VCF header information.
-    """
+    """Class for spiking proband variants into template VCF file contents."""
 
     def __init__(
         self,
@@ -272,7 +256,7 @@ class VcfSpiker:
         self.proband_causative_variants = proband_causative_variants
         self.vcf_header = vcf_header
 
-    def construct_variant_entry(self, proband_variant_data: ProbandCausativeVariant) -> list[str]:
+    def construct_variant_entry(self, proband_variant_data: ProbandCausativeVariant) -> List[str]:
         """
         Construct variant entries.
 
@@ -305,7 +289,7 @@ class VcfSpiker:
             genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
-    def construct_vcf_records(self):
+    def construct_vcf_records(self) -> List[str]:
         """
         Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.
 
@@ -323,7 +307,7 @@ class VcfSpiker:
             updated_vcf_records.insert(variant_entry_position, "\t".join(variant))
         return updated_vcf_records
 
-    def construct_header(self, updated_vcf_records) -> list[str]:
+    def construct_header(self, updated_vcf_records: List[str]) -> List[str]:
         """
         Construct the header of the VCF.
 
@@ -342,34 +326,29 @@ class VcfSpiker:
             updated_vcf_file.append(text)
         return updated_vcf_file
 
-    def construct_vcf(self) -> list[str]:
+    def construct_vcf(self) -> List[str]:
         """
         Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
 
         Returns:
-        List[str]: The complete spiked VCF file content as a list of strings.
+            List[str]: The complete spiked VCF file content as a list of strings.
         """
         return self.construct_header(self.construct_vcf_records())
 
 
 class VcfWriter:
-    """
-    Class for writing VCF file.
-    Attributes:
-        vcf_contents (list[str]): Contents of the VCF file to be written.
-        spiked_vcf_file_path (Path): Path to the spiked VCF file to be created.
-    """
+    """Class for writing VCF file."""
 
     def __init__(
         self,
-        vcf_contents: list[str],
+        vcf_contents: List[str],
         spiked_vcf_file_path: Path,
     ):
         """
         Initialise the VcfWriter class.
 
         Args:
-            vcf_contents (list[str]): Contents of the VCF file to be written.
+            vcf_contents (List[str]): Contents of the VCF file to be written.
             spiked_vcf_file_path (Path): Path to the spiked VCF file to be created.
         """
         self.vcf_contents = vcf_contents
@@ -395,7 +374,7 @@ class VcfWriter:
 
     def write_vcf_file(self) -> None:
         """
-        Writes the VCF file based on compression type.
+        Write the VCF file based on compression type.
 
         Determines the file writing method based on the compression type of the spiked VCF file path.
         Writes the VCF contents to the corresponding file format (gzip or uncompressed).
@@ -407,7 +386,7 @@ def spike_vcf_contents(
     phenopacket: Union[Phenopacket, Family],
     phenopacket_path: Path,
     chosen_template_vcf: Path,
-) -> tuple[str, list[str]]:
+) -> tuple[str, List[str]]:
     """
     Spike VCF records with variants obtained from a Phenopacket or Family.
 
@@ -417,9 +396,9 @@ def spike_vcf_contents(
         chosen_template_vcf (Path): Path to the chosen template VCF file.
 
     Returns:
-    A tuple containing:
-        assembly (str): The genome assembly information extracted from VCF header.
-        modified_vcf_contents (list[str]): Modified VCF records with spiked variants.
+        A tuple containing:
+            assembly (str): The genome assembly information extracted from VCF header.
+            modified_vcf_contents (List[str]): Modified VCF records with spiked variants.
     """
     # this is a separate function to a click command as it will fail if annotated with click annotations
     # and referenced from another click command
