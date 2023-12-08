@@ -53,9 +53,9 @@ class GenomicVariant:
         chrom (str): The chromosome position of the variant recommended to be provided in the following format.
         This includes numerical designations from 1 to 22 representing autosomal chromosomes,
         as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
-        pos (int): Position of the variant
-        ref (str): Reference allele
-        alt (str): Alternate allele
+        pos (int): Position of the variant following VCF convention.
+        ref (str): Reference allele following VCF convention.
+        alt (str): Alternate allele following VCF convention.
     """
 
     chrom: str
