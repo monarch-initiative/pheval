@@ -1,6 +1,6 @@
 import random
 from pathlib import Path
-from typing import Union
+from typing import List, Union
 
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
@@ -17,7 +17,7 @@ from pheval.utils.phenopacket_utils import (
 
 def load_ontology():
     """
-    Loads the Human Phenotype Ontology (HPO).
+    Load the Human Phenotype Ontology (HPO).
 
     Returns:
         ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.
@@ -27,17 +27,11 @@ def load_ontology():
 
 
 class HpoRandomiser:
-    """
-    Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO).
-
-    Attributes:
-        hpo_ontology (ProntoImplementation): The instance of the HPO ontology.
-        scramble_factor (float): A factor for scrambling phenotypic features.
-    """
+    """Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO)."""
 
     def __init__(self, hpo_ontology: ProntoImplementation, scramble_factor: float):
         """
-        Initialises the HpoRandomiser.
+        Initialise the HpoRandomiser.
 
         Args:
             hpo_ontology (ProntoImplementation): The instance of the HPO ontology.
@@ -64,7 +58,7 @@ class HpoRandomiser:
 
     def retrieve_hpo_term(self, hpo_id: str) -> PhenotypicFeature:
         """
-        Retrieves an HPO term based on the provided HPO ID.
+        Retrieve an HPO term based on the provided HPO ID.
 
         Args:
             hpo_id (str): The HPO ID of the term to retrieve.
@@ -78,18 +72,18 @@ class HpoRandomiser:
 
     @staticmethod
     def retain_real_patient_terms(
-        phenotypic_features: list[PhenotypicFeature],
+        phenotypic_features: List[PhenotypicFeature],
         number_of_scrambled_terms: int,
-    ) -> list[PhenotypicFeature]:
+    ) -> List[PhenotypicFeature]:
         """
-        Returns a list of real patient HPO terms, retaining a specific number of non-scrambled terms.
+        Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.
 
         Args:
-            phenotypic_features (list[PhenotypicFeature]): List of phenotypic features.
+            phenotypic_features (List[PhenotypicFeature]): List of phenotypic features.
             number_of_scrambled_terms (int): The count of scrambled HPO terms.
 
         Returns:
-            list[PhenotypicFeature]: A list of non-scrambled (real patient) HPO terms.
+            List[PhenotypicFeature]: A list of non-scrambled (real patient) HPO terms.
         """
         if len(phenotypic_features) > 1:
             number_of_real_id = len(phenotypic_features) - number_of_scrambled_terms
@@ -99,26 +93,26 @@ class HpoRandomiser:
 
     def convert_patient_terms_to_parent(
         self,
-        phenotypic_features: list[PhenotypicFeature],
-        retained_phenotypic_features: list[PhenotypicFeature],
+        phenotypic_features: List[PhenotypicFeature],
+        retained_phenotypic_features: List[PhenotypicFeature],
         number_of_scrambled_terms: int,
-    ) -> list[PhenotypicFeature]:
+    ) -> List[PhenotypicFeature]:
         """
-        Converts a subset of patient HPO terms to their respective parent terms.
+        Convert a subset of patient HPO terms to their respective parent terms.
 
         Args:
-            phenotypic_features (list[PhenotypicFeature]): List of all phenotypic features.
-            retained_phenotypic_features (list[PhenotypicFeature]): List of retained non-scrambled phenotypic features.
+            phenotypic_features (List[PhenotypicFeature]): List of all phenotypic features.
+            retained_phenotypic_features (List[PhenotypicFeature]): List of retained non-scrambled phenotypic features.
             number_of_scrambled_terms (int): The count of scrambled HPO terms.
 
         Returns:
-            list[PhenotypicFeature]: A list of HPO terms converted to their parent terms.
+            List[PhenotypicFeature]: A list of HPO terms converted to their parent terms.
 
         Note:
-        This method identifies a subset of patient HPO terms that are not retained among the
-        non-scrambled phenotypic features and converts them to their respective parent terms.
-        It then returns a list of parent HPO terms based on the provided scrambled terms count.
-        If no remaining HPO terms are available for conversion, no parent terms are returned.
+            This method identifies a subset of patient HPO terms that are not retained among the
+            non-scrambled phenotypic features and converts them to their respective parent terms.
+            It then returns a list of parent HPO terms based on the provided scrambled terms count.
+            If no remaining HPO terms are available for conversion, no parent terms are returned.
         """
         remaining_hpo = [i for i in phenotypic_features if i not in retained_phenotypic_features]
         if len(remaining_hpo) == 0:
@@ -138,15 +132,15 @@ class HpoRandomiser:
                 )
         return parent_terms
 
-    def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> list[PhenotypicFeature]:
+    def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> List[PhenotypicFeature]:
         """
-        Generates a list of random HPO terms.
+        Generate a list of random HPO terms.
 
         Args:
             number_of_scrambled_terms (int): The count of random HPO terms to be generated.
 
         Returns:
-            list[PhenotypicFeature]: A list of randomly selected HPO terms.
+            List[PhenotypicFeature]: A list of randomly selected HPO terms.
         """
         random_ids = list(
             random.sample(sorted(self.phenotypic_abnormalities), number_of_scrambled_terms)
@@ -155,25 +149,25 @@ class HpoRandomiser:
 
     def randomise_hpo_terms(
         self,
-        phenotypic_features: list[PhenotypicFeature],
-    ) -> list[PhenotypicFeature]:
+        phenotypic_features: List[PhenotypicFeature],
+    ) -> List[PhenotypicFeature]:
         """
-        Randomises the provided phenotypic features by combining retained, parent-converted, and random HPO terms.
+        Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.
 
         Args:
-            phenotypic_features (list[PhenotypicFeature]): List of phenotypic features to be randomised.
+            phenotypic_features (List[PhenotypicFeature]): List of phenotypic features to be randomised.
 
         Returns:
-            list[PhenotypicFeature]: A list of randomised HPO terms.
+            List[PhenotypicFeature]: A list of randomised HPO terms.
 
         Note:
-        This method randomises the provided phenotypic features by incorporating three types of HPO terms:
-        1. Retained Patient Terms: Non-scrambled (real patient) HPO terms retained based on the scramble factor.
-        2. Converted to Parent Terms: Subset of HPO terms converted to their respective parent terms.
-        3. Random HPO Terms: Newly generated random HPO terms based on the scramble factor.
+            This method randomises the provided phenotypic features by incorporating three types of HPO terms:
+            1. Retained Patient Terms: Non-scrambled (real patient) HPO terms retained based on the scramble factor.
+            2. Converted to Parent Terms: Subset of HPO terms converted to their respective parent terms.
+            3. Random HPO Terms: Newly generated random HPO terms based on the scramble factor.
 
-        The method determines the count of terms for each category and combines them to form a final list
-        of randomised HPO terms to be used in the phenotypic features.
+            The method determines the count of terms for each category and combines them to form a final list
+            of randomised HPO terms to be used in the phenotypic features.
         """
         number_of_scrambled_terms = self.scramble_factor_proportions(phenotypic_features)
         retained_patient_terms = self.retain_real_patient_terms(
@@ -193,7 +187,7 @@ def add_noise_to_phenotypic_profile(
     phenopacket: Union[Phenopacket, Family],
 ) -> Union[Phenopacket, Family]:
     """
-    Randomises the phenotypic profile of a Phenopacket or Family.
+    Randomise the phenotypic profile of a Phenopacket or Family.
 
     Args:
         hpo_randomiser (HpoRandomiser): An instance of HpoRandomiser used for randomisation.
@@ -212,7 +206,7 @@ def create_scrambled_phenopacket(
     output_dir: Path, phenopacket_path: Path, scramble_factor: float
 ) -> None:
     """
-    Creates a scrambled version of a Phenopacket.
+    Create a scrambled version of a Phenopacket.
 
     Args:
         output_dir (Path): The directory to store the output scrambled Phenopacket.
@@ -264,10 +258,10 @@ def scramble_phenopackets(
     Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.
 
     Args:
-    - output_dir (Path): The directory to store the output scrambled Phenopackets.
-    - phenopacket_path (Path): The path to a single Phenopacket file (if applicable).
-    - phenopacket_dir (Path): The directory containing multiple Phenopacket files (if applicable).
-    - scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
+        output_dir (Path): The directory to store the output scrambled Phenopackets.
+        phenopacket_path (Path): The path to a single Phenopacket file (if applicable).
+        phenopacket_dir (Path): The directory containing multiple Phenopacket files (if applicable).
+        scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
     """
     output_dir.mkdir(exist_ok=True)
     if phenopacket_path is not None:
