@@ -477,21 +477,21 @@ class TestPhenopacketUtil(unittest.TestCase):
 
     def test_diagnosis_from_interpretations(self):
         self.assertEqual(
-            self.phenopacket.diagnosis_from_interpretations(),
+            self.phenopacket._diagnosis_from_interpretations(),
             [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
         )
 
     def test_diagnosis_from_interpretations_none(self):
-        self.assertEqual(self.structural_variant_phenopacket.diagnosis_from_interpretations(), [])
+        self.assertEqual(self.structural_variant_phenopacket._diagnosis_from_interpretations(), [])
 
     def test_diagnosis_from_disease(self):
         self.assertEqual(
-            self.family.diagnosis_from_disease(),
+            self.family._diagnosis_from_disease(),
             [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
         )
 
     def test_diagnosis_from_disease_none(self):
-        self.assertEqual(self.structural_variant_phenopacket.diagnosis_from_disease(), [])
+        self.assertEqual(self.structural_variant_phenopacket._diagnosis_from_disease(), [])
 
     def test_diagnoses(self):
         self.assertEqual(
