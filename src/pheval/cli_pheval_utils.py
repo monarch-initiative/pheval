@@ -505,7 +505,7 @@ def benchmark(
 @click.option(
     "--plot-type",
     "-y",
-    default="bar_stacked",
+    default="bar_cumulative",
     show_default=True,
     type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
     help="Bar chart type to output.",
@@ -577,7 +577,7 @@ def benchmark_comparison(
 @click.option(
     "--plot-type",
     "-y",
-    default="bar_stacked",
+    default="bar_cumulative",
     show_default=True,
     type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
     help="Bar chart type to output.",
