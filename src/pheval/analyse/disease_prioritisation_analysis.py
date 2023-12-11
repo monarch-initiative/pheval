@@ -1,5 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
+from typing import List
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
@@ -13,15 +14,29 @@ from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandDisease, phen
 
 
 class AssessDiseasePrioritisation:
+    """Class for assessing disease prioritisation based on thresholds and scoring orders."""
+
     def __init__(
         self,
         phenopacket_path: Path,
         results_dir: Path,
-        standardised_disease_results: [RankedPhEvalDiseaseResult],
+        standardised_disease_results: List[RankedPhEvalDiseaseResult],
         threshold: float,
         score_order: str,
-        proband_diseases: [ProbandDisease],
+        proband_diseases: List[ProbandDisease],
     ):
+        """
+        Initialise AssessDiseasePrioritisation class
+
+        Args:
+            phenopacket_path (Path): Path to the phenopacket file
+            results_dir (Path): Path to the results directory
+            standardised_disease_results (List[RankedPhEvalDiseaseResult]): List of ranked PhEval disease results
+            threshold (float): Threshold for scores
+            score_order (str): Score order for results, either ascending or descending
+            proband_diseases (List[ProbandDisease]): List of proband diseases
+
+        """
         self.phenopacket_path = phenopacket_path
         self.results_dir = results_dir
         self.standardised_disease_results = standardised_disease_results
@@ -35,7 +50,15 @@ class AssessDiseasePrioritisation:
         result_entry: RankedPhEvalDiseaseResult,
         rank_stats: RankStats,
     ) -> DiseasePrioritisationResult:
-        """Record the disease prioritisation rank if found within results."""
+        """
+        Record the disease prioritisation rank if found within the results
+        Args:
+            disease (ProbandDisease): Diagnosed proband disease
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
+            rank_stats (RankStats): RankStats class instance
+        Returns:
+            DiseasePrioritisationResult: Recorded correct disease prioritisation rank result
+        """
         rank = result_entry.rank
         rank_stats.add_rank(rank)
         return DiseasePrioritisationResult(self.phenopacket_path, disease, rank)
@@ -46,7 +69,20 @@ class AssessDiseasePrioritisation:
         disease: ProbandDisease,
         rank_stats: RankStats,
     ) -> DiseasePrioritisationResult:
-        """Record the disease prioritisation rank if it meets the ascending order threshold."""
+        """
+        Record the disease prioritisation rank if it meets the ascending order threshold.
+
+        This method checks if the disease prioritisation rank meets the ascending order threshold.
+        If the score of the result entry is less than the threshold, it records the disease rank.
+
+        Args:
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
+            disease (ProbandDisease): Diagnosed proband disease
+            rank_stats (RankStats): RankStats class instance
+
+        Returns:
+            DiseasePrioritisationResult: Recorded correct disease prioritisation rank result
+        """
         if float(self.threshold) > float(result_entry.score):
             return self._record_disease_prioritisation_match(disease, result_entry, rank_stats)
 
@@ -56,7 +92,20 @@ class AssessDiseasePrioritisation:
         disease: ProbandDisease,
         rank_stats: RankStats,
     ) -> DiseasePrioritisationResult:
-        """Record the disease prioritisation rank if it meets the score threshold."""
+        """
+        Record the disease prioritisation rank if it meets the score threshold.
+
+        This method checks if the disease prioritisation rank meets the score threshold.
+        If the score of the result entry is greater than the threshold, it records the disease rank.
+
+        Args:
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
+            disease (ProbandDisease): Diagnosed proband disease
+            rank_stats (RankStats): RankStats class instance
+
+        Returns:
+            DiseasePrioritisationResult: Recorded correct disease prioritisation rank result
+        """
         if float(self.threshold) < float(result_entry.score):
             return self._record_disease_prioritisation_match(disease, result_entry, rank_stats)
 
@@ -66,7 +115,21 @@ class AssessDiseasePrioritisation:
         rank_stats: RankStats,
         standardised_disease_result: RankedPhEvalDiseaseResult,
     ) -> DiseasePrioritisationResult:
-        """Return the disease rank result - dealing with the specification of a threshold."""
+        """
+        Return the disease rank result - handling the specification of a threshold.
+
+        This method determines and returns the disease rank result based on the specified threshold
+        and score order. If the threshold is 0.0, it records the disease rank directly.
+        Otherwise, it assesses the disease with the threshold based on the score order.
+
+        Args:
+            disease (ProbandDisease): Diagnosed proband disease
+            rank_stats (RankStats): RankStats class instance
+            standardised_disease_result (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
+
+        Returns:
+            DiseasePrioritisationResult: Recorded correct disease prioritisation rank result
+        """
         if float(self.threshold) == 0.0:
             return self._record_disease_prioritisation_match(
                 disease, standardised_disease_result, rank_stats
@@ -85,7 +148,16 @@ class AssessDiseasePrioritisation:
     def assess_disease_prioritisation(
         self, rank_stats: RankStats, rank_records: defaultdict
     ) -> None:
-        """Assess disease prioritisation."""
+        """
+        Assess disease prioritisation.
+
+        This method assesses the prioritisation of diseases based on the provided criteria
+        and records ranks using a PrioritisationRankRecorder.
+
+        Args:
+            rank_stats (RankStats): RankStats class instance
+            rank_records (defaultdict): A defaultdict to store the correct ranked results.
+        """
         for disease in self.proband_diseases:
             rank_stats.total += 1
             disease_match = DiseasePrioritisationResult(self.phenopacket_path, disease)
@@ -108,8 +180,16 @@ class AssessDiseasePrioritisation:
             ).record_rank()
 
 
-def _obtain_causative_diseases(phenopacket_path: Path) -> [ProbandDisease]:
-    """Obtain known diseases from a phenopacket."""
+def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
+    """
+    Obtain known diseases from a Phenopacket.
+    Args:
+       phenopacket_path (Path): Path to the Phenopacket file.
+
+    Returns:
+       List[ProbandDisease]: A list of known diseases associated with the proband,
+       extracted from the Phenopacket.
+    """
     phenopacket = phenopacket_reader(phenopacket_path)
     phenopacket_util = PhenopacketUtil(phenopacket)
     return phenopacket_util.diagnoses()
@@ -123,7 +203,18 @@ def assess_phenopacket_disease_prioritisation(
     disease_rank_stats: RankStats,
     disease_rank_comparison: defaultdict,
 ) -> None:
-    """Assess disease prioritisation for a phenopacket."""
+    """
+    Assess disease prioritisation for a Phenopacket by comparing PhEval standardised disease results
+    against the recorded causative diseases for a proband in the Phenopacket.
+
+    Args:
+        standardised_disease_result (Path): Path to the PhEval standardised disease result file.
+        score_order (str): The order in which scores are arranged, either ascending or descending.
+        results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
+        threshold (float): Threshold for assessment.
+        disease_rank_stats (RankStats): RankStats class instance.
+        disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.
+    """
     phenopacket_path = obtain_closest_file_name(
         standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
     )
@@ -145,7 +236,19 @@ def benchmark_disease_prioritisation(
     threshold: float,
     disease_rank_comparison: defaultdict,
 ):
-    """Benchmark a directory based on disease prioritisation results."""
+    """
+    Benchmark a directory based on disease prioritisation results.
+
+    Args:
+        results_directory_and_input (TrackInputOutputDirectories): Input and output directories.
+        score_order (str): The order in which scores are arranged.
+        threshold (float): Threshold for assessment.
+        disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.
+
+    Returns:
+        BenchmarkRunResults: An object containing benchmarking results for disease prioritisation,
+        including ranks and rank statistics for the benchmarked directory.
+    """
     disease_rank_stats = RankStats()
     for standardised_result in files_with_suffix(
         results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
