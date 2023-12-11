@@ -1,5 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
+from typing import List
 
 from pheval.analyse.benchmark_generator import (
     BenchmarkRunOutputGenerator,
@@ -23,7 +24,16 @@ def _run_benchmark(
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
-    """Run a benchmark on a result directory."""
+    """Run a benchmark on a result directory.
+
+    Args:
+        results_dir_and_input (TrackInputOutputDirectories): Input and output directories for tracking results.
+        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
+        output_prefix (str): Prefix for the benchmark output file names.
+        threshold (float): The threshold for benchmark evaluation.
+        plot_type (str): Type of plot for benchmark visualisation.
+        benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
+    """
     stats_writer = RankStatsWriter(
         Path(output_prefix + benchmark_generator.rank_comparison_file_suffix)
     )
@@ -46,7 +56,19 @@ def benchmark_directory(
     disease_analysis: bool,
     plot_type: str,
 ) -> None:
-    """Benchmark prioritisation performance for a result directory."""
+    """
+    Benchmark prioritisation performance for a single run.
+
+    Args:
+        results_dir_and_input (TrackInputOutputDirectories): Input and output directories for tracking results.
+        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
+        output_prefix (str): Prefix for the benchmark output file names.
+        threshold (float): The threshold for benchmark evaluation.
+        gene_analysis (bool): Boolean flag indicating whether to benchmark gene results.
+        variant_analysis (bool): Boolean flag indicating whether to benchmark variant results.
+        disease_analysis (bool): Boolean flag indicating whether to benchmark disease results.
+        plot_type (str): Type of plot for benchmark visualisation.
+    """
     if gene_analysis:
         _run_benchmark(
             results_dir_and_input=results_dir_and_input,
@@ -77,14 +99,25 @@ def benchmark_directory(
 
 
 def _run_benchmark_comparison(
-    results_directories: [TrackInputOutputDirectories],
+    results_directories: List[TrackInputOutputDirectories],
     score_order: str,
     output_prefix: str,
     threshold: float,
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
-    """Run a benchmark on several result directories."""
+    """
+    Run a benchmark on several result directories.
+
+    Args:
+        results_directories (List[TrackInputOutputDirectories]): List of input and output directories
+            for tracking results across multiple directories.
+        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
+        output_prefix (str): Prefix for the benchmark output file names.
+        threshold (float): The threshold for benchmark evaluation.
+        plot_type (str): Type of plot for benchmark visualisation.
+        benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
+    """
     stats_writer = RankStatsWriter(
         Path(output_prefix + benchmark_generator.rank_comparison_file_suffix)
     )
@@ -101,7 +134,7 @@ def _run_benchmark_comparison(
 
 
 def benchmark_run_comparisons(
-    results_directories: [TrackInputOutputDirectories],
+    results_directories: List[TrackInputOutputDirectories],
     score_order: str,
     output_prefix: str,
     threshold: float,
@@ -110,7 +143,19 @@ def benchmark_run_comparisons(
     disease_analysis: bool,
     plot_type: str,
 ) -> None:
-    """Benchmark several result directories."""
+    """
+    Benchmark prioritisation performance for several runs.
+
+    Args:
+        results_directories (List[TrackInputOutputDirectories]): Input and output directories for tracking results.
+        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
+        output_prefix (str): Prefix for the benchmark output file names.
+        threshold (float): The threshold for benchmark evaluation.
+        gene_analysis (bool): Boolean flag indicating whether to benchmark gene results.
+        variant_analysis (bool): Boolean flag indicating whether to benchmark variant results.
+        disease_analysis (bool): Boolean flag indicating whether to benchmark disease results.
+        plot_type (str): Type of plot for benchmark visualisation.
+    """
     if gene_analysis:
         _run_benchmark_comparison(
             results_directories=results_directories,
