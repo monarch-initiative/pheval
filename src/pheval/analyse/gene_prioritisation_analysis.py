@@ -14,7 +14,7 @@ from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandCausativeGene
 
 
 class AssessGenePrioritisation:
-    """Class for assessing gene prioritisation."""
+    """Class for assessing gene prioritisation based on thresholds and scoring orders."""
 
     def __init__(
         self,
