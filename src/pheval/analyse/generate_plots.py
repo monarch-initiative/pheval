@@ -233,7 +233,7 @@ class PlotGenerator:
 
     def generate_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRunResults],
+        benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         title: str = None,
     ) -> None:
@@ -333,7 +333,7 @@ class PlotGenerator:
 
     def generate_non_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRunResults],
+        benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         title: str = None,
     ) -> None:
@@ -367,7 +367,7 @@ class PlotGenerator:
 
 
 def generate_plots(
-    benchmarking_results: [BenchmarkRunResults],
+    benchmarking_results: List[BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
     plot_type: str,
     title: str = None,
