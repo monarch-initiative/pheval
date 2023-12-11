@@ -413,6 +413,8 @@ def generate_plots_from_benchmark_summary_tsv(
         disease_analysis (bool): Flag indicating whether to analyse disease prioritisation.
         plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
         title (str): Title for the generated plot.
+    Raises:
+         ValueError: If an unsupported plot type is specified.
     """
     benchmark_stats_summary = read_benchmark_tsv_result_summary(benchmark_summary_tsv)
     benchmarking_results = parse_benchmark_result_summary(benchmark_stats_summary)
