@@ -1,6 +1,7 @@
 import itertools
 from collections import defaultdict
 from copy import deepcopy
+from typing import List
 
 import pandas as pd
 
@@ -11,25 +12,55 @@ from pheval.constants import RANK_COMPARISON_FILE_SUFFIX
 
 
 class RankComparisonGenerator:
-    """Write the run comparison of rank assignment for prioritisation."""
+    """Class for writing the run comparison of rank assignment for prioritisation."""
 
     def __init__(self, run_comparison: defaultdict):
+        """
+        Initialise the RankComparisonGenerator class.
+
+        Args:
+            run_comparison (defaultdict): A nested dictionary containing the run comparison data.
+        """
         self.run_comparison = run_comparison
 
     def _generate_dataframe(self) -> pd.DataFrame:
-        """Generate pandas dataframe."""
+        """
+        Generate a Pandas DataFrame based on the run comparison data.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the run comparison data.
+        """
         return pd.DataFrame.from_dict(self.run_comparison, orient="index")
 
     def _calculate_rank_difference(self) -> pd.DataFrame:
-        """Calculate the rank decrease for runs - taking the first directory as a baseline."""
+        """
+        Calculate the rank decrease for runs, taking the first directory as a baseline.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the calculated rank differences.
+        """
         comparison_df = self._generate_dataframe()
         comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
     def generate_output(self, prefix: str, suffix: str) -> None:
+        """
+        Generate output file from the run comparison data.
+
+        Args:
+            prefix (str): Prefix for the output file name.
+            suffix (str): Suffix for the output file name.
+        """
         self._generate_dataframe().to_csv(prefix + suffix, sep="\t")
 
     def generate_comparison_output(self, prefix: str, suffix: str) -> None:
+        """
+        Generate output file with calculated rank differences.
+
+        Args:
+            prefix (str): Prefix for the output file name.
+            suffix (str): Suffix for the output file name.
+        """
         self._calculate_rank_difference().to_csv(prefix + suffix, sep="\t")
 
 
@@ -38,7 +69,14 @@ def generate_benchmark_output(
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
-    """Generate prioritisation outputs for benchmarking single run."""
+    """
+    Generate prioritisation outputs for a single benchmarking run.
+
+    Args:
+        benchmarking_results (BenchmarkRunResults): Results of a benchmarking run.
+        plot_type (str): Type of plot to generate.
+        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+    """
     rank_comparison_data = benchmarking_results.ranks
     results_dir_name = benchmarking_results.results_dir.name
     RankComparisonGenerator(rank_comparison_data).generate_output(
@@ -52,8 +90,23 @@ def generate_benchmark_output(
     )
 
 
-def merge_results(result1: dict, result2: dict) -> dict:
-    """Merge two nested dictionaries containing results on commonalities."""
+def merge_results(result1: dict, result2: dict) -> defaultdict:
+    """
+    Merge two nested dictionaries containing results on commonalities.
+
+    This function merges two dictionaries, `result1` and `result2`, containing nested structures.
+    It traverses the dictionaries recursively and merges their contents based on common keys.
+    If a key is present in both dictionaries and points to another dictionary, the function
+    will further merge their nested contents. If a key exists in `result2` but not in `result1`,
+    it will be added to `result1`.
+
+    Args:
+        result1 (dict): The first dictionary to be merged.
+        result2 (dict): The second dictionary to be merged.
+
+    Returns:
+        defaultdict: The merged dictionary containing the combined contents of `result1` and `result2`.
+    """
     for key, val in result1.items():
         if type(val) == dict:
             if key in result2 and type(result2[key] == dict):
@@ -69,11 +122,23 @@ def merge_results(result1: dict, result2: dict) -> dict:
 
 
 def generate_benchmark_comparison_output(
-    benchmarking_results: [BenchmarkRunResults],
+    benchmarking_results: List[BenchmarkRunResults],
     plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
-    """Generate prioritisation outputs for benchmarking multiple runs."""
+    """
+    Generate prioritisation outputs for benchmarking multiple runs.
+
+    This function generates comparison outputs for benchmarking multiple runs. It compares the results
+    between pairs of `BenchmarkRunResults` instances in `benchmarking_results` and generates rank
+    comparison outputs using `RankComparisonGenerator` for each pair.
+
+    Args:
+        benchmarking_results (List[BenchmarkRunResults]): A list containing BenchmarkRunResults instances
+            representing the benchmarking results of multiple runs.
+        plot_type (str): The type of plot to be generated.
+        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+    """
     output_prefix = benchmark_generator.prioritisation_type_file_prefix
     for pair in itertools.combinations(benchmarking_results, 2):
         result1 = pair[0]
