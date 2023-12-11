@@ -50,16 +50,16 @@ class AssessGenePrioritisation:
         rank_stats: RankStats,
     ) -> GenePrioritisationResult:
         """
-         Record the gene prioritisation rank if found within the results
+        Record the gene prioritisation rank if found within the results
 
-         Args:
-             gene (ProbandCausativeGene): Diagnosed proband gene
-             result_entry (RankedPhEvalGeneResult): Ranked PhEval gene result entry
-             rank_stats (RankStats): RankStats class instance
+        Args:
+            gene (ProbandCausativeGene): Diagnosed proband gene
+            result_entry (RankedPhEvalGeneResult): Ranked PhEval gene result entry
+            rank_stats (RankStats): RankStats class instance
 
-         Returns:
-             GenePrioritisationResult: Recorded correct gene prioritisation rank result
-         """
+        Returns:
+            GenePrioritisationResult: Recorded correct gene prioritisation rank result
+        """
         rank = result_entry.rank
         rank_stats.add_rank(rank)
         return GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol, rank)
@@ -71,18 +71,18 @@ class AssessGenePrioritisation:
         rank_stats: RankStats,
     ) -> GenePrioritisationResult:
         """
-         Record the gene prioritisation rank if it meets the ascending order threshold.
+        Record the gene prioritisation rank if it meets the ascending order threshold.
 
-         This method checks if the gene prioritisation rank meets the ascending order threshold.
-         If the score of the result entry is less than the threshold, it records the gene rank.
+        This method checks if the gene prioritisation rank meets the ascending order threshold.
+        If the score of the result entry is less than the threshold, it records the gene rank.
 
-         Args:
-             result_entry (RankedPhEvalGeneResult): Ranked PhEval gene result entry
-             gene (ProbandCausativeGene): Diagnosed proband gene
-             rank_stats (RankStats): RankStats class instance
-         Returns:
-             GenePrioritisationResult: Recorded correct gene prioritisation rank result
-         """
+        Args:
+            result_entry (RankedPhEvalGeneResult): Ranked PhEval gene result entry
+            gene (ProbandCausativeGene): Diagnosed proband gene
+            rank_stats (RankStats): RankStats class instance
+        Returns:
+            GenePrioritisationResult: Recorded correct gene prioritisation rank result
+        """
         if float(self.threshold) > float(result_entry.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
@@ -93,36 +93,39 @@ class AssessGenePrioritisation:
         rank_stats: RankStats,
     ) -> GenePrioritisationResult:
         """
-         Record the gene prioritisation rank if it meets the score threshold.
-         This method checks if the gene prioritisation rank meets the score threshold.
-         If the score of the result entry is greater than the threshold, it records the gene rank.
+        Record the gene prioritisation rank if it meets the score threshold.
+        This method checks if the gene prioritisation rank meets the score threshold.
+        If the score of the result entry is greater than the threshold, it records the gene rank.
 
-         Args:
-             result_entry (RankedPhEvalResult): Ranked PhEval gene result entry
-             gene (ProbandCausativeGene): Diagnosed proband gene
-             rank_stats (RankStats): RankStats class instance
+        Args:
+            result_entry (RankedPhEvalResult): Ranked PhEval gene result entry
+            gene (ProbandCausativeGene): Diagnosed proband gene
+            rank_stats (RankStats): RankStats class instance
 
-         Returns:
-             GenePrioritisationResult: Recorded correct gene prioritisation rank result
-         """
+        Returns:
+            GenePrioritisationResult: Recorded correct gene prioritisation rank result
+        """
         if float(self.threshold) < float(result_entry.score):
             return self._record_gene_prioritisation_match(gene, result_entry, rank_stats)
 
     def _record_matched_gene(
-        self, gene: ProbandCausativeGene, rank_stats: RankStats, standardised_gene_result: RankedPhEvalGeneResult
+        self,
+        gene: ProbandCausativeGene,
+        rank_stats: RankStats,
+        standardised_gene_result: RankedPhEvalGeneResult,
     ) -> GenePrioritisationResult:
         """
-         Return the gene rank result - handling the specification of a threshold.
-         This method determines and returns the gene rank result based on the specified threshold
-         and score order. If the threshold is 0.0, it records the gene rank directly.
-         Otherwise, it assesses the gene with the threshold based on the score order.
-         Args:
-             gene (ProbandCausativeGene): Diagnosed proband gene
-             rank_stats (RankStats): RankStats class instance
-             standardised_gene_result (RankedPhEvalGeneResult): Ranked PhEval gene result entry
-         Returns:
-             GenePrioritisationResult: Recorded correct gene prioritisation rank result
-         """
+        Return the gene rank result - handling the specification of a threshold.
+        This method determines and returns the gene rank result based on the specified threshold
+        and score order. If the threshold is 0.0, it records the gene rank directly.
+        Otherwise, it assesses the gene with the threshold based on the score order.
+        Args:
+            gene (ProbandCausativeGene): Diagnosed proband gene
+            rank_stats (RankStats): RankStats class instance
+            standardised_gene_result (RankedPhEvalGeneResult): Ranked PhEval gene result entry
+        Returns:
+            GenePrioritisationResult: Recorded correct gene prioritisation rank result
+        """
         if float(self.threshold) == 0.0:
             return self._record_gene_prioritisation_match(
                 gene, standardised_gene_result, rank_stats
@@ -138,14 +141,14 @@ class AssessGenePrioritisation:
 
     def assess_gene_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict) -> None:
         """
-         Assess gene prioritisation.
-         This method assesses the prioritisation of genes based on the provided criteria
-         and records ranks using a PrioritisationRankRecorder.
+        Assess gene prioritisation.
+        This method assesses the prioritisation of genes based on the provided criteria
+        and records ranks using a PrioritisationRankRecorder.
 
-         Args:
-             rank_stats (RankStats): RankStats class instance
-             rank_records (defaultdict): A defaultdict to store the correct ranked results.
-         """
+        Args:
+            rank_stats (RankStats): RankStats class instance
+            rank_records (defaultdict): A defaultdict to store the correct ranked results.
+        """
         for gene in self.proband_causative_genes:
             rank_stats.total += 1
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
@@ -170,13 +173,13 @@ class AssessGenePrioritisation:
 
 def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene]:
     """
-     Obtain known genes from a Phenopacket.
-     Args:
-        phenopacket_path (Path): Path to the Phenopacket file.
-     Returns:
-        List[ProbandCausativeGene]: A list of known genes associated with the proband,
-        extracted from the Phenopacket.
-     """
+    Obtain known genes from a Phenopacket.
+    Args:
+       phenopacket_path (Path): Path to the Phenopacket file.
+    Returns:
+       List[ProbandCausativeGene]: A list of known genes associated with the proband,
+       extracted from the Phenopacket.
+    """
     phenopacket = phenopacket_reader(phenopacket_path)
     phenopacket_util = PhenopacketUtil(phenopacket)
     return phenopacket_util.diagnosed_genes()
@@ -191,17 +194,17 @@ def assess_phenopacket_gene_prioritisation(
     gene_rank_comparison: defaultdict,
 ) -> None:
     """
-     Assess gene prioritisation for a Phenopacket by comparing PhEval standardised gene results
-     against the recorded causative genes for a proband in the Phenopacket.
+    Assess gene prioritisation for a Phenopacket by comparing PhEval standardised gene results
+    against the recorded causative genes for a proband in the Phenopacket.
 
-     Args:
-         standardised_gene_result (Path): Path to the PhEval standardised gene result file.
-         score_order (str): The order in which scores are arranged, either ascending or descending.
-         results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
-         threshold (float): Threshold for assessment.
-         gene_rank_stats (RankStats): RankStats class instance.
-         gene_rank_comparison (defaultdict): Default dictionary for gene rank comparisons.
-     """
+    Args:
+        standardised_gene_result (Path): Path to the PhEval standardised gene result file.
+        score_order (str): The order in which scores are arranged, either ascending or descending.
+        results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
+        threshold (float): Threshold for assessment.
+        gene_rank_stats (RankStats): RankStats class instance.
+        gene_rank_comparison (defaultdict): Default dictionary for gene rank comparisons.
+    """
     phenopacket_path = obtain_closest_file_name(
         standardised_gene_result, all_files(results_dir_and_input.phenopacket_dir)
     )
