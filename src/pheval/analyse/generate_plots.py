@@ -35,6 +35,7 @@ def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path
 
 class PlotGenerator:
     """Class to generate plots."""
+
     def __init__(
         self,
     ):
