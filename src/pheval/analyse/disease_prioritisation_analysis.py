@@ -54,7 +54,7 @@ class AssessDiseasePrioritisation:
         Record the disease prioritisation rank if found within the results
         Args:
             disease (ProbandDisease): Diagnosed proband disease
-            result_entry (RankedPhEvalResult): Ranked PhEval disease result entry
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
             rank_stats (RankStats): RankStats class instance
         Returns:
             DiseasePrioritisationResult: Recorded correct disease prioritisation rank result
@@ -76,7 +76,7 @@ class AssessDiseasePrioritisation:
         If the score of the result entry is less than the threshold, it records the disease rank.
 
         Args:
-            result_entry (RankedPhEvalResult): Ranked PhEval disease result entry
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
             disease (ProbandDisease): Diagnosed proband disease
             rank_stats (RankStats): RankStats class instance
 
@@ -99,7 +99,7 @@ class AssessDiseasePrioritisation:
         If the score of the result entry is greater than the threshold, it records the disease rank.
 
         Args:
-            result_entry (RankedPhEvalResult): Ranked PhEval disease result entry
+            result_entry (RankedPhEvalDiseaseResult): Ranked PhEval disease result entry
             disease (ProbandDisease): Diagnosed proband disease
             rank_stats (RankStats): RankStats class instance
 
