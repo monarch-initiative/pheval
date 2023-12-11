@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import List
 
 import matplotlib
 import pandas as pd
@@ -20,25 +21,59 @@ from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
 def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path:
-    """Trim the end of the corpus results directory name."""
+    """
+    Trim the suffix from the corpus results directory name.
+
+    Args:
+        corpus_results_directory (Path): The directory path containing corpus results.
+
+    Returns:
+        Path: The Path object with the suffix removed from the directory name.
+    """
     return Path(str(corpus_results_directory).replace(PHEVAL_RESULTS_DIRECTORY_SUFFIX, ""))
 
 
 class PlotGenerator:
+    """Class to generate plots."""
+
     def __init__(
         self,
     ):
+        """
+        Initialise the PlotGenerator class.
+        Note:
+            `self.stats` will be used to store statistics data.
+            `self.mrr` will store Mean Reciprocal Rank (MRR) values.
+            Matplotlib settings are configured to remove the right and top axes spines
+            for generated plots.
+        """
         self.stats, self.mrr = [], []
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
 
     @staticmethod
     def _create_run_identifier(results_dir: Path) -> str:
-        """Create a run identifier from a path."""
+        """
+        Create a run identifier from a path.
+
+        Args:
+            results_dir (Path): The directory path for results.
+
+        Returns:
+            str: A string representing the run identifier created from the given path.
+        """
         return f"{Path(results_dir).parents[0].name}_{trim_corpus_results_directory_suffix(Path(results_dir).name)}"
 
     def return_benchmark_name(self, benchmark_result: BenchmarkRunResults) -> str:
-        """Return the benchmark name for a run."""
+        """
+        Return the benchmark name for a run.
+
+        Args:
+            benchmark_result (BenchmarkRunResults): The benchmarking results for a run.
+
+        Returns:
+            str: The benchmark name obtained from the given BenchmarkRunResults instance.
+        """
         return (
             benchmark_result.benchmark_name
             if benchmark_result.results_dir is None
@@ -46,7 +81,13 @@ class PlotGenerator:
         )
 
     def _generate_stacked_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> None:
-        """Generate data in correct format for dataframe creation for stacked bar plot."""
+        """
+        Generate data in the correct format for dataframe creation for a stacked bar plot,
+        appending to the self.stats attribute of the class.
+
+        Args:
+            benchmark_result (BenchmarkRunResults): The benchmarking results for a run.
+        """
         rank_stats = benchmark_result.rank_stats
         self.stats.append(
             {
@@ -69,7 +110,13 @@ class PlotGenerator:
         )
 
     def _generate_stats_mrr_bar_plot_data(self, benchmark_result: BenchmarkRunResults) -> None:
-        """Generate data in correct format for dataframe creation for MRR bar plot."""
+        """
+        Generate data in the correct format for dataframe creation for MRR (Mean Reciprocal Rank) bar plot,
+        appending to the self.mrr attribute of the class.
+
+        Args:
+            benchmark_result (BenchmarkRunResults): The benchmarking results for a run.
+        """
         self.mrr.extend(
             [
                 {
@@ -82,11 +129,18 @@ class PlotGenerator:
 
     def generate_stacked_bar_plot(
         self,
-        benchmarking_results: [BenchmarkRunResults],
+        benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         title: str = None,
     ) -> None:
-        """Generate stacked bar plot."""
+        """
+        Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
+
+        Args:
+            benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+            benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+            title (str, optional): Title for the generated plot. Defaults to None.
+        """
         for benchmark_result in benchmarking_results:
             self._generate_stacked_bar_plot_data(benchmark_result)
             self._generate_stats_mrr_bar_plot_data(benchmark_result)
@@ -125,7 +179,13 @@ class PlotGenerator:
         )
 
     def _generate_cumulative_bar_plot_data(self, benchmark_result: BenchmarkRunResults):
-        """Generate data in correct format for dataframe creation for cumulative bar plot."""
+        """
+        Generate data in the correct format for dataframe creation for a cumulative bar plot,
+        appending to the self.stats attribute of the class.
+
+        Args:
+            benchmark_result (BenchmarkRunResults): The benchmarking results for a run.
+        """
         rank_stats = benchmark_result.rank_stats
         run_identifier = self.return_benchmark_name(benchmark_result)
         self.stats.extend(
@@ -173,11 +233,18 @@ class PlotGenerator:
 
     def generate_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRunResults],
+        benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         title: str = None,
     ) -> None:
-        """Generate cumulative bar plot."""
+        """
+        Generate a cumulative bar plot.
+
+        Args:
+            benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+            benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+            title (str, optional): Title for the generated plot. Defaults to None.
+        """
         for benchmark_result in benchmarking_results:
             self._generate_cumulative_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
@@ -200,7 +267,13 @@ class PlotGenerator:
     def _generate_non_cumulative_bar_plot_data(
         self, benchmark_result: BenchmarkRunResults
     ) -> [dict]:
-        """Generate data in correct format for dataframe creation for non-cumulative bar plot."""
+        """
+        Generate data in the correct format for dataframe creation for a non-cumulative bar plot,
+        appending to the self.stats attribute of the class.
+
+        Args:
+            benchmark_result (BenchmarkRunResults): The benchmarking results for a run.
+        """
         rank_stats = benchmark_result.rank_stats
         run_identifier = self.return_benchmark_name(benchmark_result)
         self.stats.extend(
@@ -260,11 +333,18 @@ class PlotGenerator:
 
     def generate_non_cumulative_bar(
         self,
-        benchmarking_results: [BenchmarkRunResults],
+        benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
         title: str = None,
     ) -> None:
-        """Generate non-cumulative bar plot."""
+        """
+        Generate a non-cumulative bar plot.
+
+        Args:
+            benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+            benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+            title (str, optional): Title for the generated plot. Defaults to None.
+        """
         for benchmark_result in benchmarking_results:
             self._generate_non_cumulative_bar_plot_data(benchmark_result)
 
@@ -287,12 +367,22 @@ class PlotGenerator:
 
 
 def generate_plots(
-    benchmarking_results: [BenchmarkRunResults],
+    benchmarking_results: List[BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
     plot_type: str,
     title: str = None,
 ) -> None:
-    """Generate summary stats bar plots for prioritisation."""
+    """
+    Generate summary statistics bar plots for prioritisation.
+
+    This method generates summary statistics bar plots based on the provided benchmarking results and plot type.
+
+    Args:
+        benchmarking_results (list[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+        plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
+        title (str, optional): Title for the generated plot. Defaults to None.
+    """
     plot_generator = PlotGenerator()
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_plot(benchmarking_results, benchmark_generator, title)
@@ -310,7 +400,22 @@ def generate_plots_from_benchmark_summary_tsv(
     plot_type: str,
     title: str,
 ):
-    """Generate bar plot from summary benchmark results."""
+    """
+    Generate bar plot from summary benchmark results.
+
+    Reads a summary of benchmark results from a TSV file and generates a bar plot
+    based on the analysis type and plot type.
+
+    Args:
+        benchmark_summary_tsv (Path): Path to the summary TSV file containing benchmark results.
+        gene_analysis (bool): Flag indicating whether to analyse gene prioritisation.
+        variant_analysis (bool): Flag indicating whether to analyse variant prioritisation.
+        disease_analysis (bool): Flag indicating whether to analyse disease prioritisation.
+        plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
+        title (str): Title for the generated plot.
+    Raises:
+         ValueError: If an unsupported plot type is specified.
+    """
     benchmark_stats_summary = read_benchmark_tsv_result_summary(benchmark_summary_tsv)
     benchmarking_results = parse_benchmark_result_summary(benchmark_stats_summary)
     if gene_analysis:
