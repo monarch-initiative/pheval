@@ -12,7 +12,16 @@ from pheval.analyse.prioritisation_result_types import (
 
 @dataclass
 class PrioritisationRankRecorder:
-    """Compare the ranks of different runs."""
+    """
+    Record ranks for different types of prioritisation results.
+
+    Attributes:
+        index (int): The index representing the run.
+        directory (Path): The result directory path.
+        prioritisation_result (Union[GenePrioritisationResult, VariantPrioritisationResult,
+            DiseasePrioritisationResult]): The prioritisation result object.
+        run_comparison (defaultdict): The comparison dictionary to record ranks.
+    """
 
     index: int
     directory: Path
@@ -22,24 +31,46 @@ class PrioritisationRankRecorder:
     run_comparison: defaultdict
 
     def _record_gene_rank(self) -> None:
-        """Record gene prioritisation rank."""
+        """
+        Record gene prioritisation rank.
+
+        This method updates the 'Gene' key in the run comparison dictionary with the gene
+        information extracted from the correct prioritisation result.
+        """
         self.run_comparison[self.index]["Gene"] = self.prioritisation_result.gene
 
     def _record_variant_rank(self) -> None:
-        """Record variant prioritisation rank."""
+        """
+        Record variant prioritisation rank.
+
+        This method updates the 'Variant' key in the run comparison dictionary with the variant
+        information extracted from the correct prioritisation result.
+        """
         variant = self.prioritisation_result.variant
         self.run_comparison[self.index]["Variant"] = "-".join(
             [variant.chrom, str(variant.pos), variant.ref, variant.alt]
         )
 
     def _record_disease_rank(self) -> None:
-        """Record disease prioritisation rank."""
+        """
+        Record disease prioritisation rank.
+
+        This method updates the 'Disease' key in the run comparison dictionary with the disease
+        information extracted from the correct prioritisation result.
+        """
         self.run_comparison[self.index][
             "Disease"
         ] = self.prioritisation_result.disease.disease_identifier
 
     def record_rank(self) -> None:
-        """Records the rank for different runs."""
+        """
+        Record the prioritisation ranks for different runs.
+
+        It assigns the prioritisation rank and associated details such as phenopacket name
+        and prioritisation result type ('Gene', 'Variant', or 'Disease') to the run comparison
+        dictionary for each respective run, allowing comparison and analysis of the ranks of correct results
+        across different runs.
+        """
         self.run_comparison[self.index][
             "Phenopacket"
         ] = self.prioritisation_result.phenopacket_path.name
