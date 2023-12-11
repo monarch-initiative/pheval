@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import List
 
 import pandas as pd
 
@@ -7,7 +8,17 @@ from pheval.analyse.rank_stats import RankStats
 
 
 def read_benchmark_tsv_result_summary(benchmarking_tsv: Path) -> pd.DataFrame:
-    """Read the summary benchmark tsv output from the benchmark-comparison command."""
+    """
+    Read the summary benchmark TSV output generated from the benchmark-comparison command.
+
+    Args:
+        benchmarking_tsv (Path): Path to the summary benchmark TSV output file.
+
+    Returns:
+        pd.DataFrame: A pandas DataFrame containing specific columns from the TSV file, including:
+                      'results_directory_path', 'top', 'top3', 'top5', 'top10', 'found',
+                      'total', 'mean_reciprocal_rank'.
+    """
     return pd.read_csv(
         benchmarking_tsv,
         delimiter="\t",
@@ -24,8 +35,18 @@ def read_benchmark_tsv_result_summary(benchmarking_tsv: Path) -> pd.DataFrame:
     )
 
 
-def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> [BenchmarkRunResults]:
-    """Parse the summary benchmark dataframe into BenchmarkRunResults."""
+def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> List[BenchmarkRunResults]:
+    """
+    Parse the summary benchmark DataFrame into a list of BenchmarkRunResults.
+
+    Args:
+        benchmarking_df (pd.DataFrame): Summary benchmark DataFrame containing columns such as
+                                        'results_directory_path', 'top', 'top3', 'top5', 'top10',
+                                        'found', 'total', 'mean_reciprocal_rank'.
+
+    Returns:
+        List[BenchmarkRunResults]: A list of BenchmarkRunResults instances generated from the DataFrame.
+    """
     benchmarking_results = []
     for _, row in benchmarking_df.iterrows():
         benchmarking_result = BenchmarkRunResults(
