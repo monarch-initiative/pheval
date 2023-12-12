@@ -8,7 +8,7 @@ import pandas as pd
 @dataclass
 class TrackInputOutputDirectories:
     """
-    Track the input test data for a corresponding pheval output directory.
+    Track the input phenopacket test data for a corresponding pheval output directory.
 
     Attributes:
         phenopacket_dir (Path): The directory containing input phenopackets.
