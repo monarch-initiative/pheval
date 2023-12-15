@@ -462,6 +462,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#generate-stats-plot" class="md-nav__link">
+    generate-stats-plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scramble-phenopackets" class="md-nav__link">
     scramble-phenopackets
   </a>
@@ -591,6 +598,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../analyse/benchmark_generator/" class="md-nav__link">
+        Benchmark generator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/benchmarking_data/" class="md-nav__link">
+        Benchmarking data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/disease_prioritisation_analysis/" class="md-nav__link">
+        Disease prioritisation analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/gene_prioritisation_analysis/" class="md-nav__link">
+        Gene prioritisation analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../analyse/generate_plots/" class="md-nav__link">
         Generate plots
       </a>
@@ -619,8 +682,92 @@
   
   
     <li class="md-nav__item">
+      <a href="../analyse/parse_benchmark_summary/" class="md-nav__link">
+        Parse benchmark summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/parse_pheval_result/" class="md-nav__link">
+        Parse pheval result
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/prioritisation_rank_recorder/" class="md-nav__link">
+        Prioritisation rank recorder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/prioritisation_result_types/" class="md-nav__link">
+        Prioritisation result types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../analyse/rank_stats/" class="md-nav__link">
         Rank stats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/run_data_parser/" class="md-nav__link">
+        Run data parser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyse/variant_prioritisation_analysis/" class="md-nav__link">
+        Variant prioritisation analysis
       </a>
     </li>
   
@@ -1098,6 +1245,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#generate-stats-plot" class="md-nav__link">
+    generate-stats-plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scramble-phenopackets" class="md-nav__link">
     scramble-phenopackets
   </a>
@@ -1319,16 +1473,17 @@ Args:
 </table>
 <p><strong>Subcommands</strong></p>
 <ul>
-<li><em>benchmark</em>: Benchmark the gene/variant prioritisation performance for a single run.</li>
-<li><em>benchmark-comparison</em>: Benchmark the gene/variant prioritisation performance for two runs.</li>
+<li><em>benchmark</em>: Benchmark the gene/variant/disease prioritisation performance for a single run.</li>
+<li><em>benchmark-comparison</em>: Benchmark the gene/variant/disease prioritisation performance for two runs.</li>
 <li><em>create-spiked-vcfs</em>: Spikes variants into a template VCF file for a directory of phenopackets.</li>
+<li><em>generate-stats-plot</em>: Generate bar plot from benchmark stats summary tsv.</li>
 <li><em>scramble-phenopackets</em>: Generate noisy phenopackets from existing ones.</li>
 <li><em>semsim-convert</em>: convert semsim profile to an exomiser database file</li>
 <li><em>semsim-scramble</em>: Scrambles semsim profile multiplying score value by scramble factor</li>
 <li><em>update-phenopackets</em>: Update gene symbols and identifiers for phenopackets.</li>
 </ul>
 <h6 id="benchmark">benchmark</h6>
-<p>Benchmark the gene/variant prioritisation performance for a single run.</p>
+<p>Benchmark the gene/variant/disease prioritisation performance for a single run.</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils benchmark [OPTIONS]
 </code></pre></div>
@@ -1346,7 +1501,7 @@ Args:
 <tr>
 <td><code>--directory</code>, <code>-d</code></td>
 <td>Path</td>
-<td>General results directory to be benchmarked, assumes contains subdirectories of pheval_gene_results/pheval_variant_results and the tool specific results directory.</td>
+<td>General results directory to be benchmarked, assumes contains subdirectories of pheval_gene_results/,pheval_variant_results/ or pheval_disease_results/.</td>
 <td>_required</td>
 </tr>
 <tr>
@@ -1386,7 +1541,13 @@ Args:
 <td><code>False</code></td>
 </tr>
 <tr>
-<td><code>--plot-type</code>, <code>-p</code></td>
+<td><code>--disease-analysis</code> / <code>--no-disease-analysis</code></td>
+<td>boolean</td>
+<td>Specify analysis for disease prioritisation</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--plot-type</code>, <code>-y</code></td>
 <td>choice (<code>bar_stacked</code> &#x7C; <code>bar_cumulative</code> &#x7C; <code>bar_non_cumulative</code>)</td>
 <td>Bar chart type to output.</td>
 <td><code>bar_stacked</code></td>
@@ -1400,7 +1561,7 @@ Args:
 </tbody>
 </table>
 <h6 id="benchmark-comparison">benchmark-comparison</h6>
-<p>Benchmark the gene/variant prioritisation performance for two runs.</p>
+<p>Benchmark the gene/variant/disease prioritisation performance for two runs.</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils benchmark-comparison [OPTIONS]
 </code></pre></div>
@@ -1418,7 +1579,7 @@ Args:
 <tr>
 <td><code>--run-data</code>, <code>-r</code></td>
 <td>Path</td>
-<td>Path to .txt file containing testdata directory and corresponding results directory separated by tab.Each run contained to a new line with the input testdata listed first and on the same line separated by a tabthe results directory.</td>
+<td>Path to .txt file containing testdata phenopacket directory and corresponding results directory separated by tab.Each run contained to a new line with the input testdata listed first and on the same line separated by a tabthe results directory.</td>
 <td>_required</td>
 </tr>
 <tr>
@@ -1452,10 +1613,16 @@ Args:
 <td><code>False</code></td>
 </tr>
 <tr>
-<td><code>--plot-type</code>, <code>-p</code></td>
+<td><code>--disease-analysis</code> / <code>--no-disease-analysis</code></td>
+<td>boolean</td>
+<td>Specify analysis for disease prioritisation</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--plot-type</code>, <code>-y</code></td>
 <td>choice (<code>bar_stacked</code> &#x7C; <code>bar_cumulative</code> &#x7C; <code>bar_non_cumulative</code>)</td>
 <td>Bar chart type to output.</td>
-<td><code>bar_stacked</code></td>
+<td><code>bar_cumulative</code></td>
 </tr>
 <tr>
 <td><code>--help</code></td>
@@ -1510,6 +1677,66 @@ Args:
 <td>Path</td>
 <td>Path for creation of output directory</td>
 <td><code>vcf</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h6 id="generate-stats-plot">generate-stats-plot</h6>
+<p>Generate bar plot from benchmark stats summary tsv.</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight"><pre><span></span><code>pheval-utils generate-stats-plot [OPTIONS]
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--benchmarking-tsv</code>, <code>-b</code></td>
+<td>Path</td>
+<td>Path to benchmark summary tsv output by PhEval benchmark commands.</td>
+<td>_required</td>
+</tr>
+<tr>
+<td><code>--gene-analysis</code> / <code>--no-gene-analysis</code></td>
+<td>boolean</td>
+<td>Specify analysis for gene prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, variant_analysis].</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--variant-analysis</code> / <code>--no-variant-analysis</code></td>
+<td>boolean</td>
+<td>Specify analysis for variant prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, gene_analysis].</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--disease-analysis</code> / <code>--no-disease-analysis</code></td>
+<td>boolean</td>
+<td>Specify analysis for disease prioritisation NOTE: This argument is mutually exclusive with  arguments: [variant_analysis, gene_analysis].</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--plot-type</code>, <code>-y</code></td>
+<td>choice (<code>bar_stacked</code> &#x7C; <code>bar_cumulative</code> &#x7C; <code>bar_non_cumulative</code>)</td>
+<td>Bar chart type to output.</td>
+<td><code>bar_cumulative</code></td>
+</tr>
+<tr>
+<td><code>--title</code>, <code>-t</code></td>
+<td>text</td>
+<td>Title for plot, specify the title on the CLI enclosed with ""</td>
+<td>None</td>
 </tr>
 <tr>
 <td><code>--help</code></td>

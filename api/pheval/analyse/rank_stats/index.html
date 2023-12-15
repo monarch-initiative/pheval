@@ -474,6 +474,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../benchmark_generator/" class="md-nav__link">
+        Benchmark generator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmarking_data/" class="md-nav__link">
+        Benchmarking data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disease_prioritisation_analysis/" class="md-nav__link">
+        Disease prioritisation analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gene_prioritisation_analysis/" class="md-nav__link">
+        Gene prioritisation analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../generate_plots/" class="md-nav__link">
         Generate plots
       </a>
@@ -490,6 +546,62 @@
     <li class="md-nav__item">
       <a href="../generate_summary_outputs/" class="md-nav__link">
         Generate summary outputs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse_benchmark_summary/" class="md-nav__link">
+        Parse benchmark summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse_pheval_result/" class="md-nav__link">
+        Parse pheval result
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prioritisation_rank_recorder/" class="md-nav__link">
+        Prioritisation rank recorder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prioritisation_result_types/" class="md-nav__link">
+        Prioritisation result types
       </a>
     </li>
   
@@ -609,6 +721,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStats.return_mean_reciprocal_rank" class="md-nav__link">
+    return_mean_reciprocal_rank()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter" class="md-nav__link">
+    RankStatsWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="RankStatsWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.close" class="md-nav__link">
+    close()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.write_row" class="md-nav__link">
+    write_row()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -618,6 +771,34 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run_data_parser/" class="md-nav__link">
+        Run data parser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variant_prioritisation_analysis/" class="md-nav__link">
+        Variant prioritisation analysis
+      </a>
     </li>
   
 
@@ -1115,6 +1296,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStats.return_mean_reciprocal_rank" class="md-nav__link">
+    return_mean_reciprocal_rank()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter" class="md-nav__link">
+    RankStatsWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="RankStatsWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.close" class="md-nav__link">
+    close()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.rank_stats.RankStatsWriter.write_row" class="md-nav__link">
+    write_row()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1177,70 +1399,245 @@
   <div class="doc doc-contents ">
 
   
-      <p>Class for keeping track of the rank stats.</p>
+      <p>Store statistics related to ranking.</p>
+
+  <p><strong>Attributes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>top</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Count of top-ranked matches.</p></td>
+        </tr>
+        <tr>
+          <td><code>top3</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Count of matches within the top 3 ranks.</p></td>
+        </tr>
+        <tr>
+          <td><code>top5</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Count of matches within the top 5 ranks.</p></td>
+        </tr>
+        <tr>
+          <td><code>top10</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Count of matches within the top 10 ranks.</p></td>
+        </tr>
+        <tr>
+          <td><code>found</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Count of found matches.</p></td>
+        </tr>
+        <tr>
+          <td><code>total</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Total count of matches.</p></td>
+        </tr>
+        <tr>
+          <td><code>reciprocal_ranks</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[float]</code>
+          </td>
+          <td><p>List of reciprocal ranks.</p></td>
+        </tr>
+        <tr>
+          <td><code>mrr</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>Mean Reciprocal Rank (MRR). Defaults to None.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RankStats</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for keeping track of the rank stats.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Store statistics related to ranking.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        top (int): Count of top-ranked matches.</span>
+<span class="sd">        top3 (int): Count of matches within the top 3 ranks.</span>
+<span class="sd">        top5 (int): Count of matches within the top 5 ranks.</span>
+<span class="sd">        top10 (int): Count of matches within the top 10 ranks.</span>
+<span class="sd">        found (int): Count of found matches.</span>
+<span class="sd">        total (int): Total count of matches.</span>
+<span class="sd">        reciprocal_ranks (List[float]): List of reciprocal ranks.</span>
+<span class="sd">        mrr (float): Mean Reciprocal Rank (MRR). Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">top</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">top3</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1248,10 +1645,22 @@
     <span class="n">top10</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">found</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">reciprocal_ranks</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">reciprocal_ranks</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">mrr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">add_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add rank for phenopacket.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add rank for matched result.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rank (int): The rank value to be added.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            This method updates the internal attributes of the RankStats object based on the provided rank value.</span>
+<span class="sd">            It calculates various statistics such as the count of top ranks (1, 3, 5, and 10),</span>
+<span class="sd">            the total number of ranks found,and the reciprocal rank.</span>
+<span class="sd">            This function modifies the object&#39;s state by updating the internal attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">rank</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1264,37 +1673,109 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">top10</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a percentage rank.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage rank.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (int): The value for which the percentage rank needs to be calculated.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The calculated percentage rank based on the provided value and the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span>
 
     <span class="k">def</span> <span class="nf">percentage_top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage of top matches.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage of top matches.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The percentage of top matches compared to the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">percentage_top3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top3.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage of matches within the top 3.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The percentage of matches within the top 3 compared to the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top3</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">percentage_top5</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top5.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage of matches within the top 5.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The percentage of matches within the top 5 compared to the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top5</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">percentage_top10</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top10.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage of matches within the top 10.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The percentage of matches within the top 10 compared to the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top10</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">percentage_found</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage of matches found.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage of matches found.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The percentage of matches found compared to the total count.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">found</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">percentage_difference</span><span class="p">(</span><span class="n">percentage_value_1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">percentage_value_2</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return percentage difference between two percentage values&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the percentage difference between two percentage values.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            percentage_value_1 (float): The first percentage value.</span>
+<span class="sd">            percentage_value_2 (float): The second percentage value.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The difference between the two percentage values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">percentage_value_1</span> <span class="o">-</span> <span class="n">percentage_value_2</span>
 
     <span class="k">def</span> <span class="nf">mean_reciprocal_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the mean reciprocal rank.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the Mean Reciprocal Rank (MRR) for the stored ranks.</span>
+
+<span class="sd">        The Mean Reciprocal Rank is computed as the mean of the reciprocal ranks</span>
+<span class="sd">        for the found cases.</span>
+
+<span class="sd">        If the total number of cases differs from the number of found cases,</span>
+<span class="sd">        this method extends the reciprocal ranks list with zeroes for missing cases.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The calculated Mean Reciprocal Rank.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">:</span>
+            <span class="n">missing_cases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">missing_cases</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">return_mean_reciprocal_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve or calculate the Mean Reciprocal Rank (MRR).</span>
+
+<span class="sd">        If a pre-calculated MRR value exists (stored in the &#39;mrr&#39; attribute), this method returns that value.</span>
+<span class="sd">        Otherwise, it computes the Mean Reciprocal Rank using the &#39;mean_reciprocal_rank&#39; method.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The Mean Reciprocal Rank value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrr</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_reciprocal_rank</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1322,23 +1803,76 @@
 
   <div class="doc doc-contents ">
   
-      <p>Add rank for phenopacket.</p>
+      <p>Add rank for matched result.</p>
 
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>rank</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>The rank value to be added.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<details class="notes">
+  <summary>Notes</summary>
+  <p>This method updates the internal attributes of the RankStats object based on the provided rank value.
+It calculates various statistics such as the count of top ranks (1, 3, 5, and 10),
+the total number of ranks found,and the reciprocal rank.
+This function modifies the object's state by updating the internal attributes.</p>
+</details>
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add rank for phenopacket.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add rank for matched result.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rank (int): The rank value to be added.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        This method updates the internal attributes of the RankStats object based on the provided rank value.</span>
+<span class="sd">        It calculates various statistics such as the count of top ranks (1, 3, 5, and 10),</span>
+<span class="sd">        the total number of ranks found,and the reciprocal rank.</span>
+<span class="sd">        This function modifies the object&#39;s state by updating the internal attributes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">rank</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1367,14 +1901,66 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return the mean reciprocal rank.</p>
+      <p>Calculate the Mean Reciprocal Rank (MRR) for the stored ranks.</p>
+<p>The Mean Reciprocal Rank is computed as the mean of the reciprocal ranks
+for the found cases.</p>
+<p>If the total number of cases differs from the number of found cases,
+this method extends the reciprocal ranks list with zeroes for missing cases.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The calculated Mean Reciprocal Rank.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mean_reciprocal_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the mean reciprocal rank.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mean_reciprocal_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Mean Reciprocal Rank (MRR) for the stored ranks.</span>
+
+<span class="sd">    The Mean Reciprocal Rank is computed as the mean of the reciprocal ranks</span>
+<span class="sd">    for the found cases.</span>
+
+<span class="sd">    If the total number of cases differs from the number of found cases,</span>
+<span class="sd">    this method extends the reciprocal ranks list with zeroes for missing cases.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The calculated Mean Reciprocal Rank.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">:</span>
+        <span class="n">missing_cases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">missing_cases</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reciprocal_ranks</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1398,16 +1984,86 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage difference between two percentage values</p>
+      <p>Calculate the percentage difference between two percentage values.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>percentage_value_1</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>The first percentage value.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>percentage_value_2</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>The second percentage value.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The difference between the two percentage values.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">percentage_difference</span><span class="p">(</span><span class="n">percentage_value_1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">percentage_value_2</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage difference between two percentage values&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage difference between two percentage values.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        percentage_value_1 (float): The first percentage value.</span>
+<span class="sd">        percentage_value_2 (float): The second percentage value.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The difference between the two percentage values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">percentage_value_1</span> <span class="o">-</span> <span class="n">percentage_value_2</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1427,15 +2083,43 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage of matches found.</p>
+      <p>Calculate the percentage of matches found.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The percentage of matches found compared to the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_found</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage of matches found.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_found</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage of matches found.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The percentage of matches found compared to the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">found</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1454,15 +2138,73 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return a percentage rank.</p>
+      <p>Calculate the percentage rank.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>value</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>The value for which the percentage rank needs to be calculated.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The calculated percentage rank based on the provided value and the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a percentage rank.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">found</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage rank.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (int): The value for which the percentage rank needs to be calculated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The calculated percentage rank based on the provided value and the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1481,14 +2223,42 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage of top matches.</p>
+      <p>Calculate the percentage of top matches.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The percentage of top matches compared to the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage of top matches.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage of top matches.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The percentage of top matches compared to the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1508,14 +2278,42 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage of matches in the top10.</p>
+      <p>Calculate the percentage of matches within the top 10.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The percentage of matches within the top 10 compared to the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top10</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top10.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top10</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage of matches within the top 10.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The percentage of matches within the top 10 compared to the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top10</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1535,14 +2333,42 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage of matches in the top3.</p>
+      <p>Calculate the percentage of matches within the top 3.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The percentage of matches within the top 3 compared to the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top3.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage of matches within the top 3.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The percentage of matches within the top 3 compared to the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top3</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1562,15 +2388,588 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return percentage of matches in the top5.</p>
+      <p>Calculate the percentage of matches within the top 5.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The percentage of matches within the top 5 compared to the total count.</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top5</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return percentage of matches in the top5.&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">percentage_top5</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the percentage of matches within the top 5.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The percentage of matches within the top 5 compared to the total count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_rank</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top5</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.analyse.rank_stats.RankStats.return_mean_reciprocal_rank" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">return_mean_reciprocal_rank</span><span class="p">()</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Retrieve or calculate the Mean Reciprocal Rank (MRR).</p>
+<p>If a pre-calculated MRR value exists (stored in the 'mrr' attribute), this method returns that value.
+Otherwise, it computes the Mean Reciprocal Rank using the 'mean_reciprocal_rank' method.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>float</code></td>          <td>
+                <code>float</code>
+          </td>
+          <td><p>The Mean Reciprocal Rank value.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">return_mean_reciprocal_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve or calculate the Mean Reciprocal Rank (MRR).</span>
+
+<span class="sd">    If a pre-calculated MRR value exists (stored in the &#39;mrr&#39; attribute), this method returns that value.</span>
+<span class="sd">    Otherwise, it computes the Mean Reciprocal Rank using the &#39;mean_reciprocal_rank&#39; method.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The Mean Reciprocal Rank value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrr</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_reciprocal_rank</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="src.pheval.analyse.rank_stats.RankStatsWriter" class="doc doc-heading">
+        <code>RankStatsWriter</code>
+
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>Class for writing the rank stats to a file.</p>
+
+
+        <details class="quote">
+          <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">RankStatsWriter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for writing the rank stats to a file.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialise the RankStatsWriter class</span>
+<span class="sd">        Args:</span>
+<span class="sd">            file (Path): Path to the file where rank stats will be written</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;results_directory_path&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;top&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;top3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;top5&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;top10&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;found&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;total&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mean_reciprocal_rank&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;percentage_top&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;percentage_top3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;percentage_top5&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;percentage_top10&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;percentage_found&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write summary rank statistics row for a run to the file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            directory (Path): Path to the results directory corresponding to the run</span>
+<span class="sd">            rank_stats (RankStats): RankStats instance containing rank statistics corresponding to the run</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If there is an error writing to the file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">directory</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">top3</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">top5</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">top10</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">found</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">mean_reciprocal_rank</span><span class="p">(),</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top</span><span class="p">(),</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top3</span><span class="p">(),</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top5</span><span class="p">(),</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top10</span><span class="p">(),</span>
+                    <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_found</span><span class="p">(),</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error writing &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the file used for writing rank statistics.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If there&#39;s an error while closing the file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error closing &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.analyse.rank_stats.RankStatsWriter.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Initialise the RankStatsWriter class</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>file</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td><p>Path to the file where rank stats will be written</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialise the RankStatsWriter class</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file (Path): Path to the file where rank stats will be written</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;results_directory_path&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;top&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;top3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;top5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;top10&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;found&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;total&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mean_reciprocal_rank&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;percentage_top&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;percentage_top3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;percentage_top5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;percentage_top10&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;percentage_found&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.analyse.rank_stats.RankStatsWriter.close" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">close</span><span class="p">()</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Close the file used for writing rank statistics.</p>
+
+  <p><strong>Raises:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>IOError</code>
+          </td>
+          <td><p>If there's an error while closing the file.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Close the file used for writing rank statistics.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        IOError: If there&#39;s an error while closing the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error closing &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.analyse.rank_stats.RankStatsWriter.write_row" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">write_row</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Write summary rank statistics row for a run to the file.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>directory</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td><p>Path to the results directory corresponding to the run</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>rank_stats</code></td>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.rank_stats.RankStats" href="#src.pheval.analyse.rank_stats.RankStats">RankStats</a></code>
+          </td>
+          <td><p>RankStats instance containing rank statistics corresponding to the run</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Raises:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>IOError</code>
+          </td>
+          <td><p>If there is an error writing to the file.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">write_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write summary rank statistics row for a run to the file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        directory (Path): Path to the results directory corresponding to the run</span>
+<span class="sd">        rank_stats (RankStats): RankStats instance containing rank statistics corresponding to the run</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        IOError: If there is an error writing to the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">directory</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">top3</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">top5</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">top10</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">found</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">mean_reciprocal_rank</span><span class="p">(),</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top</span><span class="p">(),</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top3</span><span class="p">(),</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top5</span><span class="p">(),</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_top10</span><span class="p">(),</span>
+                <span class="n">rank_stats</span><span class="o">.</span><span class="n">percentage_found</span><span class="p">(),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error writing &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1613,7 +3012,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../generate_summary_outputs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Generate summary outputs" rel="prev">
+        <a href="../prioritisation_result_types/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Prioritisation result types" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1622,20 +3021,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Generate summary outputs
+              Prioritisation result types
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../post_processing/post_processing/" class="md-footer__link md-footer__link--next" aria-label="Next: Post processing" rel="next">
+        <a href="../run_data_parser/" class="md-footer__link md-footer__link--next" aria-label="Next: Run data parser" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Post processing
+              Run data parser
             </div>
           </div>
           <div class="md-footer__button md-icon">
