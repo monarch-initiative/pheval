@@ -13,32 +13,76 @@ from serde import to_dict
 from pheval.run_metadata import BasicOutputRunMetaData
 
 
-def files_with_suffix(directory: Path, suffix: str):
-    """Obtains all files ending in a specified suffix from a given directory."""
-    files = [path for path in directory.iterdir() if path.suffix == suffix]
+def files_with_suffix(directory: Path, suffix: str) -> list[Path]:
+    """
+    Obtains all files ending in a specified suffix from a given directory.
+
+    Args:
+        directory (Path): The directory path.
+        suffix (str): The specified suffix to filter files.
+
+    Returns:
+        list[Path]: A list of Path objects representing files with the specified suffix.
+    """
+    files = [file_path for file_path in directory.iterdir() if file_path.suffix == suffix]
     files.sort()
     return files
 
 
 def all_files(directory: Path) -> list[Path]:
-    """Obtains all files from a given directory."""
-    files = [path for path in directory.iterdir()]
+    """
+    Obtains all files from a given directory.
+
+    Args:
+        directory (Path): The directory path.
+
+    Returns:
+        list[Path]: A list of Path objects representing all files in the directory.
+    """
+    files = [file_path for file_path in directory.iterdir()]
     files.sort()
     return files
 
 
-def is_gzipped(path: Path) -> bool:
-    """Confirms whether a file is gzipped."""
-    return path.name.endswith(".gz")
+def is_gzipped(file_path: Path) -> bool:
+    """
+    Confirms whether a file is gzipped.
+
+    Args:
+        file_path (Path): The path to the file.
+
+    Returns:
+        bool: True if the file is gzipped, False otherwise.
+    """
+    return file_path.name.endswith(".gz")
 
 
 def normalise_file_name(file_path: Path) -> str:
+    """
+    Normalises the file name by removing diacritical marks (accents) from Unicode characters.
+
+    Args:
+        file_path (Path): The path to the file.
+
+    Returns:
+        str: The normalised file name without diacritical marks.
+    """
     normalised_file_name = unicodedata.normalize("NFD", str(file_path))
     return re.sub("[\u0300-\u036f]", "", normalised_file_name)
 
 
 def obtain_closest_file_name(file_to_be_queried: Path, file_paths: list[Path]) -> Path:
-    """Obtains the closest file name when given a template file name and a list of full path of files to be queried."""
+    """
+    Obtains the closest file name when given a template file name
+    and a list of full paths of files to be queried.
+
+    Args:
+        file_to_be_queried (Path): The template file name to find the closest match.
+        file_paths (list[Path]): List of full paths of files to be queried.
+
+    Returns:
+        Path: The closest matching file path from the provided list.
+    """
     stems = [Path(file_path).stem for file_path in file_paths]
     closest_file_match = difflib.get_close_matches(
         str(Path(file_to_be_queried).stem), stems, cutoff=0.1, n=1
@@ -82,7 +126,13 @@ def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_messag
 
 
 def write_metadata(output_dir: Path, meta_data: BasicOutputRunMetaData) -> None:
-    """Write the metadata for a run."""
+    """
+    Write the metadata for a run to a YAML file.
+
+    Args:
+        output_dir (Path): The directory where the metadata file will be saved.
+        meta_data (BasicOutputRunMetaData): The metadata to be written.
+    """
     with open(Path(output_dir).joinpath("results.yml"), "w") as metadata_file:
         yaml.dump(to_dict(meta_data), metadata_file, sort_keys=False, default_style="")
     metadata_file.close()

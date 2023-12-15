@@ -58,7 +58,7 @@ class TestRankComparisonGenerator(unittest.TestCase):
                 {
                     1: {
                         "Phenopacket": "phenopacket1.json",
-                        "Variant": "3_12563453454_C_T",
+                        "Variant": "3-12563453454-C-T",
                         "/path/to/results_directory1": 9,
                         "/path/to/results_directory2": 3,
                     }
@@ -85,7 +85,7 @@ class TestRankComparisonGenerator(unittest.TestCase):
             [
                 {
                     "Phenopacket": "phenopacket1.json",
-                    "Variant": "3_12563453454_C_T",
+                    "Variant": "3-12563453454-C-T",
                     "/path/to/results_directory1": 9,
                     "/path/to/results_directory2": 3,
                 }
@@ -114,7 +114,7 @@ class TestRankComparisonGenerator(unittest.TestCase):
             [
                 {
                     "Phenopacket": "phenopacket1.json",
-                    "Variant": "3_12563453454_C_T",
+                    "Variant": "3-12563453454-C-T",
                     "/path/to/results_directory1": 9,
                     "/path/to/results_directory2": 3,
                     "rank_decrease": -6,

@@ -3,11 +3,12 @@ import logging
 
 import click
 
-from pheval.analyse.analysis import benchmark, benchmark_comparison
-
 from .cli_pheval import run
 from .cli_pheval_utils import (
+    benchmark,
+    benchmark_comparison,
     create_spiked_vcfs_command,
+    generate_stats_plot,
     scramble_phenopackets_command,
     semsim_convert_command,
     semsim_scramble_command,
@@ -57,7 +58,7 @@ pheval_utils.add_command(update_phenopackets_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
 pheval_utils.add_command(benchmark)
 pheval_utils.add_command(benchmark_comparison)
-
+pheval_utils.add_command(generate_stats_plot)
 
 if __name__ == "__main__":
     main()

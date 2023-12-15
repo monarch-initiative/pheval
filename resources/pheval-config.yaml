@@ -3,46 +3,40 @@ phenotype:
   hg: hg19
   url: https://data.monarchinitiative.org/exomiser/latest/
 
-
 directories:
   tmp: data/tmp
-  testdata: testdata
-  config: configurations
   h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
   phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
-  exomiser: /home/data/exomiser-data/
-  phenotype: /home/data/exomiser-data/2302_phenotype
+  exomiser-13.2.0: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
+  exomiser-13.2.1: /home/data/exomiser/exomiser-cli-13.2.1-distribution/exomiser-cli-13.2.0
+  phenotype: /home/data/phenotype
   workspace: /home/vinicius/workspace/pheval
 
-
-#when we run the make preparation (not default) we should create symlink if they don't exists in default
-
 corpora:
-  # - id: lirical
-  #   scrambled:
-  #     - factor: 0.5
-  #     - factor: 0.7
-  #   custom_variants:
-  #     - id: no_phenotype
-  # - id: phen2gene
-  #   scrambled:
-  #     - factor: 0.5
-  #     - factor: 0.7
-  #   custom_variants:
-  #     - id: no_phenotype
+  - id: lirical
+    scrambled:
+      - factor: 0.5
+      - factor: 0.7
+    custom_variants:
+      - id: no_phenotype
+  - id: phen2gene
+    scrambled:
+      - factor: 0.5
+      - factor: 0.7
+    custom_variants:
+      - id: no_phenotype
   - id: small_test
     scrambled:
       - factor: 0.5
       - factor: 0.7
     custom_variants:
       - id: no_phenotype
-  # - id: structural_variants
-  #   scrambled:
-  #     - factor: 0.5
-  #     - factor: 0.7
-  #   custom_variants:
-  #     - id: no_phenotype
-
+  - id: structural_variants
+    scrambled:
+      - factor: 0.5
+      - factor: 0.7
+    custom_variants:
+      - id: no_phenotype
 
 configs:
   - tool: phen2gene
@@ -58,19 +52,15 @@ configs:
     description: Exomiser Deafault Configuration with a Randomised Semantic Similarity Profile
     exomiser_db: semsim1
 
-
-
-
-
 runs:
   - tool: exomiser
     configuration: default
     corpus: small_test
     corpusvariant: scrambled-0.5
     version: 13.2.0
-  # - tool: exomiser
-  #   configuration: default
-  #   corpus: lirical
-  #   corpusvariant: scrambled-0.5
-  #   version: 13.2.0
+  - tool: exomiser
+    configuration: default
+    corpus: lirical
+    corpusvariant: scrambled-0.5
+    version: 13.2.0
 

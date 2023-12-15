@@ -3,6 +3,7 @@ from pathlib import Path
 
 from phenopackets import (
     Diagnosis,
+    Disease,
     Family,
     File,
     GeneDescriptor,
@@ -29,6 +30,7 @@ from pheval.utils.phenopacket_utils import (
     PhenopacketUtil,
     ProbandCausativeGene,
     ProbandCausativeVariant,
+    ProbandDisease,
     create_gene_identifier_map,
     create_hgnc_dict,
 )
@@ -38,6 +40,7 @@ interpretations = [
         id="test-subject-1-int",
         progress_status="SOLVED",
         diagnosis=Diagnosis(
+            disease=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"),
             genomic_interpretations=[
                 GenomicInterpretation(
                     subject_or_biosample_id="test-subject-1",
@@ -82,7 +85,7 @@ interpretations = [
                         ),
                     ),
                 ),
-            ]
+            ],
         ),
     )
 ]
@@ -116,7 +119,7 @@ structural_variant_interpretations = [
                         ),
                     ),
                 ),
-            ]
+            ],
         ),
     )
 ]
@@ -125,6 +128,7 @@ updated_interpretations = [
         id="test-subject-1-int",
         progress_status="SOLVED",
         diagnosis=Diagnosis(
+            disease=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"),
             genomic_interpretations=[
                 GenomicInterpretation(
                     subject_or_biosample_id="test-subject-1",
@@ -187,7 +191,7 @@ updated_interpretations = [
                         ),
                     ),
                 ),
-            ]
+            ],
         ),
     )
 ]
@@ -264,12 +268,14 @@ phenotypic_features_all_excluded = [
         type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
     ),
 ]
+diseases = [Disease(term=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"))]
 
 proband = Phenopacket(
     id="test-subject",
     subject=Individual(id="test-subject-1", sex=1),
     phenotypic_features=phenotypic_features_none_excluded,
     interpretations=interpretations,
+    diseases=diseases,
 )
 
 phenopacket_files = [
@@ -322,6 +328,7 @@ phenopacket = Phenopacket(
     subject=Individual(id="test-subject-1", sex=1),
     phenotypic_features=phenotypic_features_with_excluded,
     interpretations=interpretations,
+    diseases=diseases,
     files=phenopacket_files,
     meta_data=phenopacket_metadata,
 )
@@ -461,6 +468,36 @@ class TestPhenopacketUtil(unittest.TestCase):
 
     def test_negated_phenotypic_features_none_excluded(self):
         self.assertEqual(self.family.negated_phenotypic_features(), [])
+
+    def test_diseases_phenopacket(self):
+        self.assertEqual(list(self.phenopacket.diseases()), list(diseases))
+
+    def test_diseases_family(self):
+        self.assertEqual(list(self.family.diseases()), list(diseases))
+
+    def test_diagnosis_from_interpretations(self):
+        self.assertEqual(
+            self.phenopacket._diagnosis_from_interpretations(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
+
+    def test_diagnosis_from_interpretations_none(self):
+        self.assertEqual(self.structural_variant_phenopacket._diagnosis_from_interpretations(), [])
+
+    def test_diagnosis_from_disease(self):
+        self.assertEqual(
+            self.family._diagnosis_from_disease(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
+
+    def test_diagnosis_from_disease_none(self):
+        self.assertEqual(self.structural_variant_phenopacket._diagnosis_from_disease(), [])
+
+    def test_diagnoses(self):
+        self.assertEqual(
+            self.phenopacket.diagnoses(),
+            [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")],
+        )
 
     def test_interpretations_phenopacket(self):
         self.assertEqual(list(self.phenopacket.interpretations()), interpretations)

@@ -27,23 +27,23 @@ class TestRankStats(unittest.TestCase):
         )
 
     def test_percentage_rank(self):
-        self.rank_stats.found = 10
+        self.rank_stats.total = 10
         self.assertTrue(self.rank_stats.percentage_rank(3) == 30)
 
     def test_percentage_top(self):
-        self.rank_stats.top, self.rank_stats.found = 10, 20
+        self.rank_stats.top, self.rank_stats.total = 10, 20
         self.assertEqual(self.rank_stats.percentage_top(), 50)
 
     def test_percentage_top3(self):
-        self.rank_stats.top3, self.rank_stats.found = 30, 50
+        self.rank_stats.top3, self.rank_stats.total = 30, 50
         self.assertEqual(self.rank_stats.percentage_top3(), 60)
 
     def test_percentage_top5(self):
-        self.rank_stats.top5, self.rank_stats.found = 70, 160
+        self.rank_stats.top5, self.rank_stats.total = 70, 160
         self.assertEqual(self.rank_stats.percentage_top5(), 43.75)
 
     def test_percentage_top10(self):
-        self.rank_stats.top10, self.rank_stats.found = 100, 160
+        self.rank_stats.top10, self.rank_stats.total = 100, 160
         self.assertEqual(self.rank_stats.percentage_top10(), 62.5)
 
     def test_percentage_found(self):
@@ -55,4 +55,18 @@ class TestRankStats(unittest.TestCase):
 
     def test_mean_reciprocal_rank(self):
         self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.rank_stats.total = 5
         self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.5)
+
+    def test_mean_reciprocal_rank_missing_cases(self):
+        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.rank_stats.total = 20
+        self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.1)
+
+    def test_return_mean_reciprocal_rank(self):
+        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.5)
+
+    def test_return_mean_reciprocal_rank_from_mrr_variable(self):
+        self.rank_stats.mrr = 0.1
+        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)
