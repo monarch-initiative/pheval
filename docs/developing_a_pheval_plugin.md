@@ -34,7 +34,7 @@ pip install cruft
 Next, create a project using the sphintoxetry-cookiecutter template.
 
 ```
-cruft create https://github.com/hrshdhgd/sphintoxetry-cookiecutter
+cruft create https://github.com/monarch-initiative/monarch-project-template
 ```
 
 ### 2. Further setup
