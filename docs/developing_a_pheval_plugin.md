@@ -341,7 +341,7 @@ poetry install
 Now you have to be able to run PhEval passing your custom runner as parameter. e.g.,
 
 ```
-pheval run -i input.txt -t './test' -r 'customphevalrunner' -o out.txt
+pheval run -i ./input_dir -t ./test_data_dir -r 'customphevalrunner' -o output_dir
 ```
 
 The `-r` parameter stands for your plugin runner class name, and it must be entirely lowercase.
