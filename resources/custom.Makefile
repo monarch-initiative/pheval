@@ -32,7 +32,7 @@ configurations/semsim1/hp-mp-merged2.owl: configurations/semsim1/hp-mp-merged.ow
 	 --axioms logical \
 	 --output $@
 
-configurations/semsim1/	.db: configurations/semsim1/%.owl
+configurations/semsim1/%.db: configurations/semsim1/%.owl
 	docker run -e ROBOT_JAVA_ARGS='-Xmx15G' -e JAVA_OPTS='-Xmx15G' -v $(shell pwd)/:/work -w /work \
 	 --rm -ti obolibrary/odkfull semsql make $@
 
