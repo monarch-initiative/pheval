@@ -163,6 +163,7 @@ class PlotGenerator:
             stacked=True,
             color=self.palette_hex_codes,
             ylabel=benchmark_generator.y_label,
+            edgecolor="white",
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         if title is None:
             plt.title(
@@ -183,6 +184,7 @@ class PlotGenerator:
             color=self.palette_hex_codes,
             ylabel=f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} mean reciprocal rank",
             legend=False,
+            edgecolor="white",
         )
         plt.title(
             f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} results - mean reciprocal rank"
@@ -271,6 +273,7 @@ class PlotGenerator:
             y="Percentage",
             hue="Run",
             palette=self.palette_hex_codes,
+            edgecolor="white",
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         if title is None:
             plt.title(
@@ -377,6 +380,7 @@ class PlotGenerator:
             y="Percentage",
             hue="Run",
             palette=self.palette_hex_codes,
+            edgecolor="white",
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         if title is None:
             plt.title(
