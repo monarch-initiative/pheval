@@ -36,6 +36,19 @@ def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path
 class PlotGenerator:
     """Class to generate plots."""
 
+    palette_hex_codes = [
+        "#f4ae3d",
+        "#ee5825",
+        "#2b7288",
+        "#9a84b2",
+        "#0c604c",
+        "#c94c4c",
+        "#3d8e83",
+        "#725ac1",
+        "#e7ba52",
+        "#1b9e77",
+    ]
+
     def __init__(
         self,
     ):
@@ -146,7 +159,10 @@ class PlotGenerator:
             self._generate_stats_mrr_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
         stats_df.set_index("Run").plot(
-            kind="bar", stacked=True, colormap="tab10", ylabel=benchmark_generator.y_label
+            kind="bar",
+            stacked=True,
+            color=self.palette_hex_codes,
+            ylabel=benchmark_generator.y_label,
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         if title is None:
             plt.title(
@@ -164,7 +180,7 @@ class PlotGenerator:
         mrr_df = pd.DataFrame(self.mrr)
         mrr_df.set_index("Run").plot(
             kind="bar",
-            colormap="tab10",
+            color=self.palette_hex_codes,
             ylabel=f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} mean reciprocal rank",
             legend=False,
         )
@@ -248,9 +264,14 @@ class PlotGenerator:
         for benchmark_result in benchmarking_results:
             self._generate_cumulative_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
-        sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
-            xlabel="Rank", ylabel=benchmark_generator.y_label
-        )
+        sns.catplot(
+            data=stats_df,
+            kind="bar",
+            x="Rank",
+            y="Percentage",
+            hue="Run",
+            palette=self.palette_hex_codes,
+        ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         if title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
@@ -349,9 +370,14 @@ class PlotGenerator:
             self._generate_non_cumulative_bar_plot_data(benchmark_result)
 
         stats_df = pd.DataFrame(self.stats)
-        sns.catplot(data=stats_df, kind="bar", x="Rank", y="Percentage", hue="Run").set(
-            xlabel="Rank", ylabel=benchmark_generator.y_label
-        )
+        sns.catplot(
+            data=stats_df,
+            kind="bar",
+            x="Rank",
+            y="Percentage",
+            hue="Run",
+            palette=self.palette_hex_codes,
+        ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         if title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
