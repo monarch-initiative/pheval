@@ -10,6 +10,7 @@ from .cli_pheval_utils import (
     create_spiked_vcfs_command,
     generate_stats_plot,
     scramble_phenopackets_command,
+    semsim_comparison_command,
     semsim_convert_command,
     semsim_scramble_command,
     update_phenopackets_command,
@@ -55,6 +56,7 @@ pheval_utils.add_command(semsim_scramble_command)
 pheval_utils.add_command(semsim_convert_command)
 pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(update_phenopackets_command)
+pheval_utils.add_command(semsim_comparison_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
 pheval_utils.add_command(benchmark)
 pheval_utils.add_command(benchmark_comparison)
