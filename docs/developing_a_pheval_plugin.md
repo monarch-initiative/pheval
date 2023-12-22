@@ -54,7 +54,7 @@ poetry install
 #### Add PhEval dependency
 
 ```
-poetry add pheval
+poetry add git+https://github.com/monarch-initiative/pheval.git
 ```
 
 #### Run tox to see if the setup works
