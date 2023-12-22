@@ -25,11 +25,13 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 
 First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.
 
-Install cruft from pip
+Install the latest release of cruft from pip
 
 ```bash
 pip install cruft
 ```
+
+> **_NOTE:_**  You may encounter an error with the naming of the project layout if using an older release of cruft. To avoid this, make sure you have installed the latest release version.
 
 Next, create a project using the sphintoxetry-cookiecutter template.
 
