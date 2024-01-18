@@ -151,6 +151,7 @@ class AssessVariantPrioritisation:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
         """
+        relevant_ranks = []
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
             variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
@@ -163,6 +164,9 @@ class AssessVariantPrioritisation:
                 )
                 if variant == result_variant:
                     variant_match = self._record_matched_variant(rank_stats, result)
+                    relevant_ranks.append(
+                        variant_match.rank
+                    ) if variant_match else relevant_ranks.append(0)
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
@@ -172,6 +176,7 @@ class AssessVariantPrioritisation:
                 else variant_match,
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
 
 
 def _obtain_causative_variants(phenopacket_path: Path) -> List[GenomicVariant]:

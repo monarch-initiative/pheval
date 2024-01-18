@@ -158,6 +158,7 @@ class AssessDiseasePrioritisation:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
         """
+        relevant_ranks = []
         for disease in self.proband_diseases:
             rank_stats.total += 1
             disease_match = DiseasePrioritisationResult(self.phenopacket_path, disease)
@@ -169,6 +170,9 @@ class AssessDiseasePrioritisation:
                     disease_match = self._record_matched_disease(
                         disease, rank_stats, standardised_disease_result
                     )
+                    relevant_ranks.append(
+                        disease_match.rank
+                    ) if disease_match else relevant_ranks.append(0)
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
@@ -178,6 +182,7 @@ class AssessDiseasePrioritisation:
                 else disease_match,
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
 
 
 def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
