@@ -161,8 +161,9 @@ class RankStats:
             return self.mean_reciprocal_rank()
 
     @staticmethod
-    def _calculate_average_precision(number_of_relevant_entities_at_k: int,
-                                     precision_at_k: float) -> float:
+    def _calculate_average_precision(
+        number_of_relevant_entities_at_k: int, precision_at_k: float
+    ) -> float:
         """
         Calculate the Average Precision at k.
 
@@ -178,9 +179,7 @@ class RankStats:
                    A higher value indicates better precision in the top-k predictions.
         """
         try:
-            return (
-                    1 / number_of_relevant_entities_at_k
-            ) * precision_at_k
+            return (1 / number_of_relevant_entities_at_k) * precision_at_k
         except ZeroDivisionError:
             return 0
 
@@ -206,7 +205,8 @@ class RankStats:
                     number_of_relevant_entities_at_k += 1
                     precision_at_k += number_of_relevant_entities_at_k / rank
                 cumulative_average_precision_scores += self._calculate_average_precision(
-                    number_of_relevant_entities_at_k, precision_at_k)
+                    number_of_relevant_entities_at_k, precision_at_k
+                )
         return (1 / self.total) * cumulative_average_precision_scores
 
 
