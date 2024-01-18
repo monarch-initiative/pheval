@@ -3628,7 +3628,7 @@ in the analysis.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">pheval_result</span><span class="p">:</span>
         <span class="n">info_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No results found for </span><span class="si">{</span><span class="n">tool_result_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">pass</span>
+        <span class="k">return</span>
     <span class="n">ranked_pheval_result</span> <span class="o">=</span> <span class="n">_create_pheval_result</span><span class="p">(</span><span class="n">pheval_result</span><span class="p">,</span> <span class="n">sort_order_str</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">RankedPhEvalGeneResult</span><span class="p">)</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">ranked_pheval_result</span><span class="p">):</span>
         <span class="n">_write_pheval_gene_result</span><span class="p">(</span><span class="n">ranked_pheval_result</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">tool_result_path</span><span class="p">)</span>
