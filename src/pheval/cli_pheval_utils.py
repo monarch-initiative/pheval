@@ -515,18 +515,18 @@ def benchmark_comparison(
     "-d",
     required=True,
     metavar="db-path",
-    help="Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)",
+    help="Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/). This is the path where the phenotypic database folder will be written out",
     type=Path,
 )
 def semsim_to_exomiserdb_command(
-    input: Path, object_prefix: str, subject_prefix: str, db_path: Path
+    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
 ):
     """ingests semsim file into exomiser phenotypic database
 
     Args:
-        input (Path): semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv
+        input_file (Path): semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv
         object_prefix (str): object prefix. e.g. MP
         subject_prefix (str): subject prefix e.g HP
         db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)
     """
-    semsim_to_exomiserdb(input, object_prefix, subject_prefix, db_path)
+    semsim_to_exomiserdb(input_file, object_prefix, subject_prefix, db_path)

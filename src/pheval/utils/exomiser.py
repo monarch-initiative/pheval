@@ -1,4 +1,3 @@
-"""_summary_"""
 from pathlib import Path
 
 from pheval.infra.exomiserdb import ExomiserDB

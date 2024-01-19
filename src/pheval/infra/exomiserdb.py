@@ -12,7 +12,9 @@ info_debug = log.getLogger("debug")
 
 
 class DBConnector:
-    def __init__(self, jar, driver, server, database, user, password):
+    def __init__(
+        self, jar: Path, driver: str, server: str, database: str, user: str, password: str
+    ):
         self.jar = jar
         self.driver = driver
         self.server = server
@@ -21,7 +23,7 @@ class DBConnector:
         self.password = password
         self.dbconn = None
 
-    def create_connection(self):
+    def create_connection(self) -> jaydebeapi.Connection:
         """creates h2 database connection"""
         return jaydebeapi.connect(
             self.driver,
@@ -30,7 +32,7 @@ class DBConnector:
             self.jar,
         )
 
-    def __enter__(self):
+    def __enter__(self) -> jaydebeapi.Connection:
         self.dbconn = self.create_connection()
         return self.dbconn
 
@@ -45,7 +47,7 @@ class DBConnection:
         DBConnection.connection = connection
 
     @classmethod
-    def get_connection(cls):
+    def get_connection(cls) -> jaydebeapi.Connection:
         """Creates return new Singleton database connection"""
         return DBConnection.connection
 
@@ -53,7 +55,7 @@ class DBConnection:
         return self.connection.close()
 
     @classmethod
-    def get_cursor(cls):
+    def get_cursor(cls) -> jaydebeapi.Cursor:
         connection = cls.get_connection()
         return connection.cursor()
 
@@ -62,7 +64,7 @@ class ExomiserDB:
     def __init__(self, db_path: Path):
         try:
             self.connector = DBConnector(  # noqa
-                jar=os.path.abspath("./lib/h2-1.4.199.jar"),
+                jar=os.path.join(os.path.dirname(__file__), "../../../lib/h2-1.4.199.jar"),
                 driver="org.h2.Driver",
                 server=f"jdbc:h2:{db_path}",
                 user="sa",
@@ -72,22 +74,22 @@ class ExomiserDB:
         except Exception as e:
             print("An exception occurred", e)
 
-    def import_from_semsim_file(self, input: Path, subject_prefix: str, object_prefix: str):
+    def import_from_semsim_file(self, input_file: Path, subject_prefix: str, object_prefix: str):
         """imports semsim tsv profile into exomiser phenotype database
 
         Args:
-            input (Path): semsim profile
+            input_file (Path): semsim profile
             subject_prefix (str): Subject Prefix. e.g HP
             object_prefix (str): Object Prefix. e.g MP
         """
         with self.connector as cnn:
             conn = DBConnection(cnn)
-            reader = pl.read_csv_batched(input, separator="\t")
+            reader = pl.read_csv_batched(input_file, separator="\t")
             batch_length = 5
             batches = reader.next_batches(batch_length)
             cursor = conn.get_cursor()
             # # TODO: Refactor this
-            with open(input, "r") as f:
+            with open(input_file, "r") as f:
                 total = sum(1 for line in f)
             pbar = tqdm(total=total - 1)
             mapping_id = 1
@@ -121,7 +123,7 @@ def _semsim2h2(
     Args:
         input_data (pl.DataFrame): input data. (e.g. semantic similarity profile file)
         subject_prefix (str): subject prefix. (e.g HP)
-        object_prefix (str): subject prefix. (e.g MP)
+        object_prefix (str): object prefix. (e.g MP)
         mapping_id (int, optional): MAPPING_ID.
     """
     sql = ""
