@@ -174,6 +174,30 @@ class RankStats:
         k_attr = getattr(self, f"top{k}") if k > 1 else self.top
         return k_attr / (self.total * k)
 
+    def f_beta_score_at_k(self, percentage_at_k: float, k: int) -> float:
+        """
+        Calculate the F-beta score at k.
+
+        The F-beta score is a metric that combines precision and recall,
+        with beta controlling the emphasis on precision.
+        This method computes the F-beta score at a specific percentage threshold within the top-k predictions.
+
+        Args:
+            percentage_at_k (float): The percentage of true positive predictions within the top-k.
+            k (int): The number of top predictions to consider.
+
+        Returns:
+            float: The F-beta score at k, ranging from 0.0 to 1.0.
+                   A higher score indicates better trade-off between precision and recall.
+        """
+        precision = self.precision_at_k(k)
+        recall_at_k = percentage_at_k / 100
+        return (
+            (2 * precision * recall_at_k) / (precision + recall_at_k)
+            if (precision + recall_at_k) > 0
+            else 0
+        )
+
 
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
@@ -205,6 +229,10 @@ class RankStatsWriter:
                 "precision@3",
                 "precision@5",
                 "precision@10",
+                "f_beta_score@1",
+                "f_beta_score@3",
+                "f_beta_score@5",
+                "f_beta_score@10",
             ]
         )
 
@@ -239,6 +267,10 @@ class RankStatsWriter:
                     rank_stats.precision_at_k(3),
                     rank_stats.precision_at_k(5),
                     rank_stats.precision_at_k(10),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top3(), 3),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top5(), 5),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top10(), 10),
                 ]
             )
         except IOError:
