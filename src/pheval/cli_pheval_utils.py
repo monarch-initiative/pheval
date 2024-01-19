@@ -515,7 +515,9 @@ def benchmark_comparison(
     "-d",
     required=True,
     metavar="db-path",
-    help="Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/). This is the path where the phenotypic database folder will be written out",
+    help="""Exomiser Phenotypic Database Folder Path.
+    (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/).
+    This is the path where the phenotypic database folder will be written out.""",
     type=Path,
 )
 def semsim_to_exomiserdb_command(

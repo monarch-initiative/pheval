@@ -3,8 +3,8 @@ import shutil
 import unittest
 from pathlib import Path
 
+from pheval.infra.exomiserdb import DBConnection, ExomiserDB, _format_row
 from pheval.utils.exomiser import semsim_to_exomiserdb
-from pheval.infra.exomiserdb import _format_row, ExomiserDB, DBConnection
 
 PHENO_FOLDER = os.path.abspath("./testdata/phenotype/2302_phenotype")
 
@@ -53,7 +53,7 @@ class TestExomiserDBIngestion(unittest.TestCase):
             "ancestor_id": "ancestor1,ancestor2",
             "ancestor_label": "ancestor_label1",
         }
-        expected_output = "(1, 'subject1', 'label1', 'object1', 'label2', 0.5, 0.6, 0.7, 'ancestor1', 'ancestor_label1')"
+        expected_output = "(1, 'subject1', 'label1', 'object1', 'label2', 0.5, 0.6, 0.7, 'ancestor1', 'ancestor_label1')"  # noqa
         self.assertEqual(_format_row(mapping_id, data), expected_output)
 
 
