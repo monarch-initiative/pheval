@@ -83,3 +83,15 @@ class TestRankStats(unittest.TestCase):
 
     def test_precision_at_k_10(self):
         self.assertEqual(self.complete_rank_stats.precision_at_k(10), 0.0375)
+
+    def test_f_beta_score_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(0, 1), 0)
+
+    def test_f_beta_score_at_k_3(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(20, 3), 0.1)
+
+    def test_f_beta_score_at_k_5(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(25, 5), 0.08333333333333334)
+
+    def test_f_beta_score_at_k_10(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(37.5, 10), 0.06818181818181818)
