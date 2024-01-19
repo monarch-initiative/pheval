@@ -55,4 +55,18 @@ class TestRankStats(unittest.TestCase):
 
     def test_mean_reciprocal_rank(self):
         self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.rank_stats.total = 5
         self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.5)
+
+    def test_mean_reciprocal_rank_missing_cases(self):
+        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.rank_stats.total = 20
+        self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.1)
+
+    def test_return_mean_reciprocal_rank(self):
+        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
+        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.5)
+
+    def test_return_mean_reciprocal_rank_from_mrr_variable(self):
+        self.rank_stats.mrr = 0.1
+        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)

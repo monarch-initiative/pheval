@@ -28,6 +28,7 @@ markdown_extensions:
 
 extra_css:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.css
+  - mermaid.css
 extra_javascript:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
 
@@ -43,6 +44,9 @@ watch:
 
 nav:
   - "index.md"
+  - Pipeline:
+    - "exomiser_pipeline.md"
+    - "pipeline.md"
   - About: "about.md"
   - Contact Us: "contact.md"
   - API Documentation: api/pheval/
