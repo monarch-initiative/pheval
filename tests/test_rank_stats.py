@@ -103,3 +103,21 @@ class TestRankStats(unittest.TestCase):
         self.assertEqual(
             self.complete_rank_stats.mean_average_precision_at_k(10), 0.03968253968253968
         )
+
+    def test_mean_normalised_discounted_cumulative_gain_3(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(3),
+            0.09424414613095478,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_5(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(5),
+            0.243557389859924,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_10(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(10),
+            0.3368971541167727,
+        )
