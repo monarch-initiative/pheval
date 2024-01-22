@@ -4,6 +4,9 @@ from pathlib import Path
 from statistics import mean
 from typing import List
 
+import numpy as np
+from sklearn.metrics import ndcg_score
+
 
 @dataclass
 class RankStats:
@@ -209,6 +212,26 @@ class RankStats:
                 )
         return (1 / self.total) * cumulative_average_precision_scores
 
+    def mean_normalised_discounted_cumulative_gain(self, k: int) -> float:
+        """
+        Calculate the mean Normalised Discounted Cumulative Gain (NDCG) for a given rank cutoff.
+
+        NDCG measures the effectiveness of a ranking by considering both the relevance and the order of items.
+
+        Args:
+            k (int): The rank cutoff for calculating NDCG.
+
+        Returns:
+            float: The mean NDCG score across all query results.
+        """
+        ndcg_scores = []
+        for result_ranks in self.relevant_result_ranks:
+            result_ranks = [rank for rank in result_ranks if rank <= k]
+            result_ranks = [3 if i in result_ranks else 0 for i in range(k)]
+            ideal_ranking = sorted(result_ranks, reverse=True)
+            ndcg_scores.append(ndcg_score(np.asarray([ideal_ranking]), np.asarray([result_ranks])))
+        return np.mean(ndcg_scores)
+
 
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
@@ -240,6 +263,9 @@ class RankStatsWriter:
                 "MAP@3",
                 "MAP@5",
                 "MAP@10",
+                "NDCG@3",
+                "NDCG@5",
+                "NDCG@10",
             ]
         )
 
@@ -274,6 +300,9 @@ class RankStatsWriter:
                     rank_stats.mean_average_precision_at_k(3),
                     rank_stats.mean_average_precision_at_k(5),
                     rank_stats.mean_average_precision_at_k(10),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(3),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(5),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(10),
                 ]
             )
         except IOError:
