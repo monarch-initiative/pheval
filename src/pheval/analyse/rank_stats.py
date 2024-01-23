@@ -181,10 +181,11 @@ class RankStats:
             float: The Average Precision at k, ranging from 0.0 to 1.0.
                    A higher value indicates better precision in the top-k predictions.
         """
-        try:
-            return (1 / number_of_relevant_entities_at_k) * precision_at_k
-        except ZeroDivisionError:
-            return 0
+        return (
+            (1 / number_of_relevant_entities_at_k) * precision_at_k
+            if number_of_relevant_entities_at_k > 0
+            else 0.0
+        )
 
     def mean_average_precision_at_k(self, k: int) -> float:
         """
