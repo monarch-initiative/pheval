@@ -81,10 +81,10 @@ class TestRankStats(unittest.TestCase):
         self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)
 
     def test__calculate_average_precision(self):
-        self.assertEqual(self.rank_stats._calculate_average_precision(3, 0.5), 0.16666666666666666)
+        self.assertEqual(self.rank_stats._average_precision_at_k(3, 0.5), 0.16666666666666666)
 
     def test__calculate_average_precision_0(self):
-        self.assertEqual(self.rank_stats._calculate_average_precision(0, 0), 0)
+        self.assertEqual(self.rank_stats._average_precision_at_k(0, 0), 0)
 
     def test_mean_average_precision_at_k_1(self):
         self.assertEqual(self.complete_rank_stats.mean_average_precision_at_k(1), 0.0)
