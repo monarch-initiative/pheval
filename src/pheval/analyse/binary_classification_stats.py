@@ -145,3 +145,15 @@ class BinaryClassificationStats:
             and false positives. Returns 0.0 if both true positives and false positives are zero.
         """
         return self.true_positives / (self.true_positives + self.false_positives) if (self.true_positives + self.false_positives) > 0 else 0.0
+
+    def negative_predictive_value(self):
+        """
+        Calculate Negative Predictive Value (NPV).
+
+        NPV measures the proportion of correctly predicted negative instances out of all instances predicted negative.
+
+        Returns:
+            float: The Negative Predictive Value of the model, calculated as true negatives divided by the sum of
+            true negatives and false negatives. Returns 0.0 if both true negatives and false negatives are zero.
+        """
+        return self.true_negatives / (self.true_negatives + self.false_negatives) if (self.true_negatives + self.false_negatives) > 0 else 0.0
