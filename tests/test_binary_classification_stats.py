@@ -129,3 +129,12 @@ class TestBinaryClassificationStats(unittest.TestCase):
 
     def test_negative_predictive_value(self):
         self.assertEqual(self.complete_binary_classification_stats.negative_predictive_value(), 0.75)
+
+    def test_false_positive_rate_0(self):
+        self.assertEqual(self.binary_classification_stats.false_positive_rate(), 0)
+
+    def test_false_positive_rate(self):
+        self.assertEqual(self.complete_binary_classification_stats.false_positive_rate(), 0.7272727272727273)
+
+
+
