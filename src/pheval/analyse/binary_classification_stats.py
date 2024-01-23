@@ -157,3 +157,19 @@ class BinaryClassificationStats:
             true negatives and false negatives. Returns 0.0 if both true negatives and false negatives are zero.
         """
         return self.true_negatives / (self.true_negatives + self.false_negatives) if (self.true_negatives + self.false_negatives) > 0 else 0.0
+
+    def false_positive_rate(self):
+        """
+        Calculate False Positive Rate (FPR).
+
+        FPR measures the proportion of instances predicted as positive that are actually negative.
+
+        Returns:
+            float: The False Positive Rate of the model, calculated as false positives divided by the sum of
+            false positives and true negatives. Returns 0.0 if both false positives and true negatives are zero.
+        """
+        return self.false_positives / (self.false_positives + self.true_negatives) if (self.false_positives + self.true_negatives) > 0 else 0.0
+
+
+
+
