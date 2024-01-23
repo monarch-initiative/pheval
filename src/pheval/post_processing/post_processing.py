@@ -453,7 +453,7 @@ def generate_pheval_result(
     """
     if not pheval_result:
         info_log.warning(f"No results found for {tool_result_path.name}")
-        pass
+        return
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
     if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
