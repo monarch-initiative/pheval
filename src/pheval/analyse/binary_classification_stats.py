@@ -182,5 +182,16 @@ class BinaryClassificationStats:
         """
         return self.false_positives / (self.false_positives + self.true_positives) if (self.false_positives + self.true_positives) > 0 else 0.0
 
+    def false_negative_rate(self):
+        """
+        Calculate False Negative Rate (FNR).
+
+        FNR measures the proportion of instances that are actually positive but predicted as negative.
+
+        Returns:
+            float: The False Negative Rate of the model, calculated as false negatives divided by the sum of
+            false negatives and true positives. Returns 0.0 if both false negatives and true positives are zero.
+        """
+        return self.false_negatives / (self.false_negatives + self.true_positives) if (self.false_negatives + self.true_positives) > 0 else 0.0
 
 
