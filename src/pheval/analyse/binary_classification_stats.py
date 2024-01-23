@@ -248,6 +248,24 @@ class BinaryClassificationStats:
             else 0.0
         )
 
+    def f1_score(self) -> float:
+        """
+        Calculate F1 Score.
+
+        F1 Score is the harmonic mean of precision and recall, providing a balance between false positives
+        and false negatives.
+
+        Returns:
+            float: The F1 Score of the model, calculated as 2 * TP / (2 * TP + FP + FN).
+            Returns 0.0 if the denominator is zero.
+        """
+        return (
+            (2 * self.true_positives)
+            / ((2 * self.true_positives) + self.false_positives + self.false_negatives)
+            if (self.true_positives + self.false_positives + self.false_negatives) > 0
+            else 0.0
+        )
+
     def matthews_correlation_coefficient(self) -> float:
         """
         Calculate Matthews Correlation Coefficient (MCC).
