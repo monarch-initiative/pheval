@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from math import sqrt
 from typing import List, Union
 
 from pheval.post_processing.post_processing import (
@@ -208,3 +209,17 @@ class BinaryClassificationStats:
         return (self.true_positives + self.true_negatives) / (
                 self.true_positives + self.false_positives + self.true_negatives + self.false_negatives) if (self.true_positives + self.false_negatives + self.true_negatives + self.false_negatives) > 0 else 0.0
 
+    def matthews_correlation_coefficient(self):
+        """
+        Calculate Matthews Correlation Coefficient (MCC).
+
+        MCC is a measure of the quality of binary classifications, accounting for imbalances in the data.
+
+        Returns:
+            float: The Matthews Correlation Coefficient of the model, calculated as
+            ((TP * TN) - (FP * FN)) / sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN)).
+            Returns 0.0 if the denominator is zero.
+        """
+        return ((self.true_positives * self.true_negatives) - (self.false_positives * self.false_negatives)) / (sqrt(
+            (self.true_positives + self.false_positives) * (self.true_positives + self.false_negatives) * (
+                    self.true_negatives + self.false_positives) * (self.true_negatives + self.false_negatives))) if (self.true_positives + self.false_negatives + self.true_negatives + self.false_negatives) > 0 else 0.0
