@@ -111,3 +111,9 @@ class TestBinaryClassificationStats(unittest.TestCase):
         self.assertEqual(
             self.complete_binary_classification_stats.sensitivity(), 0.6666666666666666
         )
+
+    def test_specificity_0(self):
+        self.assertEqual(self.binary_classification_stats.specificity(), 0)
+
+    def test_specificity(self):
+        self.assertEqual(self.complete_binary_classification_stats.specificity(), 0.2727272727272727)
