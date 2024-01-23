@@ -194,4 +194,17 @@ class BinaryClassificationStats:
         """
         return self.false_negatives / (self.false_negatives + self.true_positives) if (self.false_negatives + self.true_positives) > 0 else 0.0
 
+    def accuracy(self):
+        """
+        Calculate Accuracy.
+
+        Accuracy measures the proportion of correctly predicted instances out of all instances.
+
+        Returns:
+            float: The Accuracy of the model, calculated as the sum of true positives and true negatives divided by
+            the sum of true positives, false positives, true negatives, and false negatives.
+            Returns 0.0 if the total sum of counts is zero.
+        """
+        return (self.true_positives + self.true_negatives) / (
+                self.true_positives + self.false_positives + self.true_negatives + self.false_negatives) if (self.true_positives + self.false_negatives + self.true_negatives + self.false_negatives) > 0 else 0.0
 
