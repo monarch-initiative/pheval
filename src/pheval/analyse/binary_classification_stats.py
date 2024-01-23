@@ -132,3 +132,16 @@ class BinaryClassificationStats:
             and false positives. Returns 0.0 if both true negatives and false positives are zero.
         """
         return self.true_negatives / (self.true_negatives + self.false_positives) if (self.true_negatives + self.false_positives) > 0 else 0.0
+
+    def precision(self) -> float:
+        """
+        Calculate precision.
+
+        Precision measures the proportion of correctly predicted positive instances out of all instances
+        predicted as positive.
+
+        Returns:
+            float: The precision of the model, calculated as true positives divided by the sum of true positives
+            and false positives. Returns 0.0 if both true positives and false positives are zero.
+        """
+        return self.true_positives / (self.true_positives + self.false_positives) if (self.true_positives + self.false_positives) > 0 else 0.0
