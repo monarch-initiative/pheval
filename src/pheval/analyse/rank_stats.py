@@ -180,6 +180,7 @@ class RankStats:
 
         The F-beta score is a metric that combines precision and recall,
         with beta controlling the emphasis on precision.
+        The Beta value is set to the value of 1 to allow for equal weighting for both precision and recall.
         This method computes the F-beta score at a specific percentage threshold within the top-k predictions.
 
         Args:
