@@ -205,7 +205,7 @@ class RankStats:
                 if 0 < rank <= k:
                     number_of_relevant_entities_at_k += 1
                     precision_at_k += number_of_relevant_entities_at_k / rank
-                cumulative_average_precision_scores += self._calculate_average_precision(
+                cumulative_average_precision_scores += self._average_precision_at_k(
                     number_of_relevant_entities_at_k, precision_at_k
                 )
         return (1 / self.total) * cumulative_average_precision_scores
