@@ -162,6 +162,12 @@ class TestBinaryClassificationStats(unittest.TestCase):
     def test_accuracy(self):
         self.assertEqual(self.complete_binary_classification_stats.accuracy(), 0.35714285714285715)
 
+    def test_f1_score_0(self):
+        self.assertEqual(self.binary_classification_stats.f1_score(), 0)
+
+    def test_f1_score(self):
+        self.assertEqual(self.complete_binary_classification_stats.f1_score(), 0.3076923076923077)
+
     def test_matthews_correlation_coefficient_0(self):
         self.assertEqual(self.binary_classification_stats.matthews_correlation_coefficient(), 0)
 
