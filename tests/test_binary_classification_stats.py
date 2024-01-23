@@ -116,25 +116,31 @@ class TestBinaryClassificationStats(unittest.TestCase):
         self.assertEqual(self.binary_classification_stats.specificity(), 0)
 
     def test_specificity(self):
-        self.assertEqual(self.complete_binary_classification_stats.specificity(), 0.2727272727272727)
+        self.assertEqual(
+            self.complete_binary_classification_stats.specificity(), 0.2727272727272727
+        )
 
     def test_precision_0(self):
         self.assertEqual(self.binary_classification_stats.precision(), 0)
 
     def test_precision(self):
-        self.assertEqual(self.complete_binary_classification_stats.precision(),0.2)
+        self.assertEqual(self.complete_binary_classification_stats.precision(), 0.2)
 
     def test_negative_predictive_value_0(self):
         self.assertEqual(self.binary_classification_stats.negative_predictive_value(), 0)
 
     def test_negative_predictive_value(self):
-        self.assertEqual(self.complete_binary_classification_stats.negative_predictive_value(), 0.75)
+        self.assertEqual(
+            self.complete_binary_classification_stats.negative_predictive_value(), 0.75
+        )
 
     def test_false_positive_rate_0(self):
         self.assertEqual(self.binary_classification_stats.false_positive_rate(), 0)
 
     def test_false_positive_rate(self):
-        self.assertEqual(self.complete_binary_classification_stats.false_positive_rate(), 0.7272727272727273)
+        self.assertEqual(
+            self.complete_binary_classification_stats.false_positive_rate(), 0.7272727272727273
+        )
 
     def test_false_discovery_rate_0(self):
         self.assertEqual(self.binary_classification_stats.false_discovery_rate(), 0)
@@ -146,7 +152,9 @@ class TestBinaryClassificationStats(unittest.TestCase):
         self.assertEqual(self.binary_classification_stats.false_negative_rate(), 0)
 
     def test_false_negative_rate(self):
-        self.assertEqual(self.complete_binary_classification_stats.false_negative_rate(), 0.3333333333333333)
+        self.assertEqual(
+            self.complete_binary_classification_stats.false_negative_rate(), 0.3333333333333333
+        )
 
     def test_accuracy_0(self):
         self.assertEqual(self.binary_classification_stats.accuracy(), 0)
@@ -158,4 +166,7 @@ class TestBinaryClassificationStats(unittest.TestCase):
         self.assertEqual(self.binary_classification_stats.matthews_correlation_coefficient(), 0)
 
     def test_matthews_correlation_coefficient(self):
-        self.assertEqual(self.complete_binary_classification_stats.matthews_correlation_coefficient(), -0.05504818825631803)
+        self.assertEqual(
+            self.complete_binary_classification_stats.matthews_correlation_coefficient(),
+            -0.05504818825631803,
+        )

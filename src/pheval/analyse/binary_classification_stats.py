@@ -132,7 +132,11 @@ class BinaryClassificationStats:
             float: The specificity of the model, calculated as true negatives divided by the sum of true negatives
             and false positives. Returns 0.0 if both true negatives and false positives are zero.
         """
-        return self.true_negatives / (self.true_negatives + self.false_positives) if (self.true_negatives + self.false_positives) > 0 else 0.0
+        return (
+            self.true_negatives / (self.true_negatives + self.false_positives)
+            if (self.true_negatives + self.false_positives) > 0
+            else 0.0
+        )
 
     def precision(self) -> float:
         """
@@ -145,7 +149,11 @@ class BinaryClassificationStats:
             float: The precision of the model, calculated as true positives divided by the sum of true positives
             and false positives. Returns 0.0 if both true positives and false positives are zero.
         """
-        return self.true_positives / (self.true_positives + self.false_positives) if (self.true_positives + self.false_positives) > 0 else 0.0
+        return (
+            self.true_positives / (self.true_positives + self.false_positives)
+            if (self.true_positives + self.false_positives) > 0
+            else 0.0
+        )
 
     def negative_predictive_value(self) -> float:
         """
@@ -157,7 +165,11 @@ class BinaryClassificationStats:
             float: The Negative Predictive Value of the model, calculated as true negatives divided by the sum of
             true negatives and false negatives. Returns 0.0 if both true negatives and false negatives are zero.
         """
-        return self.true_negatives / (self.true_negatives + self.false_negatives) if (self.true_negatives + self.false_negatives) > 0 else 0.0
+        return (
+            self.true_negatives / (self.true_negatives + self.false_negatives)
+            if (self.true_negatives + self.false_negatives) > 0
+            else 0.0
+        )
 
     def false_positive_rate(self) -> float:
         """
@@ -169,7 +181,11 @@ class BinaryClassificationStats:
             float: The False Positive Rate of the model, calculated as false positives divided by the sum of
             false positives and true negatives. Returns 0.0 if both false positives and true negatives are zero.
         """
-        return self.false_positives / (self.false_positives + self.true_negatives) if (self.false_positives + self.true_negatives) > 0 else 0.0
+        return (
+            self.false_positives / (self.false_positives + self.true_negatives)
+            if (self.false_positives + self.true_negatives) > 0
+            else 0.0
+        )
 
     def false_discovery_rate(self) -> float:
         """
@@ -181,9 +197,13 @@ class BinaryClassificationStats:
             float: The False Discovery Rate of the model, calculated as false positives divided by the sum of
             false positives and true positives. Returns 0.0 if both false positives and true positives are zero.
         """
-        return self.false_positives / (self.false_positives + self.true_positives) if (self.false_positives + self.true_positives) > 0 else 0.0
+        return (
+            self.false_positives / (self.false_positives + self.true_positives)
+            if (self.false_positives + self.true_positives) > 0
+            else 0.0
+        )
 
-    def false_negative_rate(self):
+    def false_negative_rate(self) -> float:
         """
         Calculate False Negative Rate (FNR).
 
@@ -193,9 +213,13 @@ class BinaryClassificationStats:
             float: The False Negative Rate of the model, calculated as false negatives divided by the sum of
             false negatives and true positives. Returns 0.0 if both false negatives and true positives are zero.
         """
-        return self.false_negatives / (self.false_negatives + self.true_positives) if (self.false_negatives + self.true_positives) > 0 else 0.0
+        return (
+            self.false_negatives / (self.false_negatives + self.true_positives)
+            if (self.false_negatives + self.true_positives) > 0
+            else 0.0
+        )
 
-    def accuracy(self):
+    def accuracy(self) -> float:
         """
         Calculate Accuracy.
 
@@ -206,10 +230,25 @@ class BinaryClassificationStats:
             the sum of true positives, false positives, true negatives, and false negatives.
             Returns 0.0 if the total sum of counts is zero.
         """
-        return (self.true_positives + self.true_negatives) / (
-                self.true_positives + self.false_positives + self.true_negatives + self.false_negatives) if (self.true_positives + self.false_negatives + self.true_negatives + self.false_negatives) > 0 else 0.0
+        return (
+            (self.true_positives + self.true_negatives)
+            / (
+                self.true_positives
+                + self.false_positives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            if (
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
+            else 0.0
+        )
 
-    def matthews_correlation_coefficient(self):
+    def matthews_correlation_coefficient(self) -> float:
         """
         Calculate Matthews Correlation Coefficient (MCC).
 
@@ -220,6 +259,25 @@ class BinaryClassificationStats:
             ((TP * TN) - (FP * FN)) / sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN)).
             Returns 0.0 if the denominator is zero.
         """
-        return ((self.true_positives * self.true_negatives) - (self.false_positives * self.false_negatives)) / (sqrt(
-            (self.true_positives + self.false_positives) * (self.true_positives + self.false_negatives) * (
-                    self.true_negatives + self.false_positives) * (self.true_negatives + self.false_negatives))) if (self.true_positives + self.false_negatives + self.true_negatives + self.false_negatives) > 0 else 0.0
+        return (
+            (
+                (self.true_positives * self.true_negatives)
+                - (self.false_positives * self.false_negatives)
+            )
+            / (
+                sqrt(
+                    (self.true_positives + self.false_positives)
+                    * (self.true_positives + self.false_negatives)
+                    * (self.true_negatives + self.false_positives)
+                    * (self.true_negatives + self.false_negatives)
+                )
+            )
+            if (
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
+            else 0.0
+        )
