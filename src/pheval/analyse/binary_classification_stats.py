@@ -34,12 +34,12 @@ class BinaryClassificationStats:
 
     @staticmethod
     def remove_relevant_ranks(
-            pheval_results: Union[
-                List[RankedPhEvalGeneResult],
-                List[RankedPhEvalVariantResult],
-                List[RankedPhEvalDiseaseResult],
-            ],
-            relevant_ranks: List[int],
+        pheval_results: Union[
+            List[RankedPhEvalGeneResult],
+            List[RankedPhEvalVariantResult],
+            List[RankedPhEvalDiseaseResult],
+        ],
+        relevant_ranks: List[int],
     ) -> List[int]:
         """
         Remove the relevant entity ranks from all result ranks
@@ -87,13 +87,13 @@ class BinaryClassificationStats:
                 self.true_negatives += 1
 
     def add_classification(
-            self,
-            pheval_results: Union[
-                List[RankedPhEvalGeneResult],
-                List[RankedPhEvalVariantResult],
-                List[RankedPhEvalDiseaseResult],
-            ],
-            relevant_ranks: List[int],
+        self,
+        pheval_results: Union[
+            List[RankedPhEvalGeneResult],
+            List[RankedPhEvalVariantResult],
+            List[RankedPhEvalDiseaseResult],
+        ],
+        relevant_ranks: List[int],
     ) -> None:
         """
         Update binary classification metrics for known and unknown entities based on their ranks.
@@ -235,18 +235,18 @@ class BinaryClassificationStats:
         return (
             (self.true_positives + self.true_negatives)
             / (
-                    self.true_positives
-                    + self.false_positives
-                    + self.true_negatives
-                    + self.false_negatives
+                self.true_positives
+                + self.false_positives
+                + self.true_negatives
+                + self.false_negatives
             )
             if (
-                       self.true_positives
-                       + self.false_negatives
-                       + self.true_negatives
-                       + self.false_negatives
-               )
-               > 0
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
             else 0.0
         )
 
@@ -281,8 +281,8 @@ class BinaryClassificationStats:
         """
         return (
             (
-                    (self.true_positives * self.true_negatives)
-                    - (self.false_positives * self.false_negatives)
+                (self.true_positives * self.true_negatives)
+                - (self.false_positives * self.false_negatives)
             )
             / (
                 sqrt(
@@ -293,18 +293,17 @@ class BinaryClassificationStats:
                 )
             )
             if (
-                       self.true_positives
-                       + self.false_negatives
-                       + self.true_negatives
-                       + self.false_negatives
-               )
-               > 0
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
             else 0.0
         )
 
 
 class BinaryClassificationWriter:
-
     def __init__(self, file: Path):
         """
         Initialise the BinaryClassificationWriter class
@@ -329,7 +328,7 @@ class BinaryClassificationWriter:
                 "false_negative_rate",
                 "accuracy",
                 "f1_score",
-                "matthews_correlation_coefficient"
+                "matthews_correlation_coefficient",
             ]
         )
 
@@ -362,7 +361,7 @@ class BinaryClassificationWriter:
                     binary_classification.false_negative_rate(),
                     binary_classification.accuracy(),
                     binary_classification.f1_score(),
-                    binary_classification.matthews_correlation_coefficient()
+                    binary_classification.matthews_correlation_coefficient(),
                 ]
             )
         except IOError:

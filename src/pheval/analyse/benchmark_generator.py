@@ -71,7 +71,9 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_gene_prioritisation
     rank_stats_comparison_file_suffix: str = "-gene_summary.tsv"
-    binary_classification_stats_comparison_file_suffix: str = "-gene_binary_classification_stats.tsv"
+    binary_classification_stats_comparison_file_suffix: str = (
+        "-gene_binary_classification_stats.tsv"
+    )
 
 
 @dataclass
@@ -105,8 +107,9 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_variant_prioritisation
     rank_stats_comparison_file_suffix: str = "-variant_summary.tsv"
-    binary_classification_stats_comparison_file_suffix: str = "-variant_binary_classification_stats.tsv"
-
+    binary_classification_stats_comparison_file_suffix: str = (
+        "-variant_binary_classification_stats.tsv"
+    )
 
 
 @dataclass
@@ -139,5 +142,6 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_disease_prioritisation
     rank_stats_comparison_file_suffix: str = "-disease_summary.tsv"
-    binary_classification_stats_comparison_file_suffix: str = "-disease_binary_classification_stats.tsv"
-
+    binary_classification_stats_comparison_file_suffix: str = (
+        "-disease_binary_classification_stats.tsv"
+    )
