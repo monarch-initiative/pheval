@@ -147,3 +147,9 @@ class TestBinaryClassificationStats(unittest.TestCase):
 
     def test_false_negative_rate(self):
         self.assertEqual(self.complete_binary_classification_stats.false_negative_rate(), 0.3333333333333333)
+
+    def test_accuracy_0(self):
+        self.assertEqual(self.binary_classification_stats.accuracy(), 0)
+
+    def test_accuracy(self):
+        self.assertEqual(self.complete_binary_classification_stats.accuracy(), 0.35714285714285715)
