@@ -6,6 +6,7 @@ from pheval.analyse.rank_stats import RankStats
 class TestRankStats(unittest.TestCase):
     def setUp(self) -> None:
         self.rank_stats = RankStats()
+        self.complete_rank_stats = RankStats(top=0, top3=8, top5=10, top10=15, found=20, total=40)
 
     def test_add_rank(self):
         self.rank_stats.add_rank(1)
@@ -70,3 +71,15 @@ class TestRankStats(unittest.TestCase):
     def test_return_mean_reciprocal_rank_from_mrr_variable(self):
         self.rank_stats.mrr = 0.1
         self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)
+
+    def test_precision_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(1), 0)
+
+    def test_precision_at_k_3(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(3), 0.06666666666666667)
+
+    def test_precision_at_k_5(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(5), 0.05)
+
+    def test_precision_at_k_10(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(10), 0.0375)

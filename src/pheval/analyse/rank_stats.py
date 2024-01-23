@@ -158,6 +158,22 @@ class RankStats:
         else:
             return self.mean_reciprocal_rank()
 
+    def precision_at_k(self, k: int) -> float:
+        """
+        Calculate the precision at k.
+        Precision at k is the ratio of relevant items in the top-k predictions to the total number of predictions.
+        It measures the accuracy of the top-k predictions made by a model.
+
+        Args:
+            k (int): The number of top predictions to consider.
+
+        Returns:
+            float: The precision at k, ranging from 0.0 to 1.0.
+            A higher precision indicates a better performance in identifying relevant items in the top-k predictions.
+        """
+        k_attr = getattr(self, f"top{k}") if k > 1 else self.top
+        return k_attr / (self.total * k)
+
 
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
@@ -185,6 +201,10 @@ class RankStatsWriter:
                 "percentage_top5",
                 "percentage_top10",
                 "percentage_found",
+                "precision@1",
+                "precision@3",
+                "precision@5",
+                "precision@10",
             ]
         )
 
@@ -215,6 +235,10 @@ class RankStatsWriter:
                     rank_stats.percentage_top5(),
                     rank_stats.percentage_top10(),
                     rank_stats.percentage_found(),
+                    rank_stats.precision_at_k(1),
+                    rank_stats.precision_at_k(3),
+                    rank_stats.precision_at_k(5),
+                    rank_stats.precision_at_k(10),
                 ]
             )
         except IOError:
