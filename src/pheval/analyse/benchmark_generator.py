@@ -27,7 +27,7 @@ class BenchmarkRunOutputGenerator:
         generate_benchmark_run_results (Callable): Callable to generate benchmark run results.
             Takes parameters: input and results directory, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
-        rank_comparison_file_suffix (str): Suffix for the rank comparison file.
+        rank_stats_comparison_file_suffix (str): Suffix for the rank comparison file.
     """
 
     prioritisation_type_file_prefix: str
@@ -35,7 +35,7 @@ class BenchmarkRunOutputGenerator:
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ]
-    rank_comparison_file_suffix: str
+    rank_stats_comparison_file_suffix: str
 
 
 @dataclass
@@ -65,7 +65,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_gene_prioritisation
-    rank_comparison_file_suffix: str = "-gene_summary.tsv"
+    rank_stats_comparison_file_suffix: str = "-gene_summary.tsv"
 
 
 @dataclass
@@ -95,7 +95,7 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_variant_prioritisation
-    rank_comparison_file_suffix: str = "-variant_summary.tsv"
+    rank_stats_comparison_file_suffix: str = "-variant_summary.tsv"
 
 
 @dataclass
@@ -125,4 +125,4 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_disease_prioritisation
-    rank_comparison_file_suffix: str = "-disease_summary.tsv"
+    rank_stats_comparison_file_suffix: str = "-disease_summary.tsv"
