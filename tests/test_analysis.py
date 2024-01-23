@@ -3,6 +3,7 @@ from collections import defaultdict
 from copy import copy
 from pathlib import Path, PosixPath
 
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.disease_prioritisation_analysis import AssessDiseasePrioritisation
 from pheval.analyse.gene_prioritisation_analysis import AssessGenePrioritisation
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
@@ -436,6 +437,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.gene_rank_stats = RankStats(0, 0, 0, 0, 0)
         self.gene_rank_records = defaultdict(dict)
+        self.binary_classification_stats = BinaryClassificationStats()
 
     def test_record_gene_prioritisation_match(self):
         self.assertEqual(
@@ -544,7 +546,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
 
     def test_assess_gene_prioritisation_no_threshold(self):
         self.assess_gene_prioritisation.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records
+            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.gene_rank_stats,
@@ -565,12 +567,18 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0
+            ),
+        )
 
     def test_assess_gene_prioritisation_threshold_fails_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records
+            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.gene_rank_stats,
@@ -591,12 +599,18 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_gene_prioritisation_threshold_meets_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records
+            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.gene_rank_stats,
@@ -617,12 +631,18 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=2, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_gene_prioritisation_threshold_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records
+            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.gene_rank_stats,
@@ -643,12 +663,18 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_gene_prioritisation_threshold_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.1
         assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records
+            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.gene_rank_stats,
@@ -668,6 +694,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                     Path("/path/to/results_dir"): 0,
                 },
             },
+        )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0
+            ),
         )
 
 
@@ -726,6 +758,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.variant_rank_stats = RankStats()
         self.variant_rank_records = defaultdict(dict)
+        self.binary_classification_stats = BinaryClassificationStats()
 
     def test_record_variant_prioritisation_match(self):
         self.assertEqual(
@@ -850,7 +883,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
     def test_assess_variant_prioritisation_no_threshold(self):
         self.assess_variant_prioritisation.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records
+            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
         )
 
         self.assertEqual(
@@ -871,13 +904,19 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     Path("/path/to/results_dir"): 0,
                 },
             },
+        )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0
+            ),
         )
 
     def test_assess_variant_prioritisation_fails_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records
+            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.variant_rank_stats,
@@ -897,13 +936,19 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     Path("/path/to/results_dir"): 0,
                 },
             },
+        )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=0, false_positives=3, false_negatives=1
+            ),
         )
 
     def test_assess_variant_prioritisation_meets_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records
+            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.variant_rank_stats,
@@ -924,12 +969,18 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0
+            ),
+        )
 
     def test_assess_variant_prioritisation_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records
+            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.variant_rank_stats,
@@ -950,12 +1001,18 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=0, false_positives=3, false_negatives=1
+            ),
+        )
 
     def test_assess_variant_prioritisation_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.1
         assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records
+            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.variant_rank_stats,
@@ -975,6 +1032,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     Path("/path/to/results_dir"): 0,
                 },
             },
+        )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0
+            ),
         )
 
 
@@ -1056,6 +1119,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.disease_rank_stats = RankStats(0, 0, 0, 0, 0)
         self.disease_rank_records = defaultdict(dict)
+        self.binary_classification_stats = BinaryClassificationStats()
 
     def test_record_disease_prioritisation_match(self):
         self.assertEqual(
@@ -1140,9 +1204,9 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 disease=ProbandDisease(
                     disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
                 ),
-                result_entry=RankedPhEvalGeneResult(
-                    gene_symbol="PLXNA1",
-                    gene_identifier="ENSG00000114554",
+                result_entry=RankedPhEvalDiseaseResult(
+                    disease_identifier="OMIM:231670",
+                    disease_name="Glutaric aciduria type 1",
                     score=0.8764,
                     rank=1,
                 ),
@@ -1163,9 +1227,9 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 disease=ProbandDisease(
                     disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
                 ),
-                result_entry=RankedPhEvalGeneResult(
-                    gene_symbol="PLXNA1",
-                    gene_identifier="ENSG00000114554",
+                result_entry=RankedPhEvalDiseaseResult(
+                    disease_identifier="OMIM:231670",
+                    disease_name="Glutaric aciduria type 1",
                     score=0.8764,
                     rank=1,
                 ),
@@ -1186,7 +1250,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
 
     def test_assess_disease_prioritisation_no_threshold(self):
         self.assess_disease_prioritisation.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records
+            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.disease_rank_stats,
@@ -1202,12 +1266,18 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 }
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0
+            ),
+        )
 
     def test_assess_disease_prioritisation_threshold_fails_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_disease_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records
+            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.disease_rank_stats,
@@ -1223,12 +1293,18 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 }
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_disease_prioritisation_threshold_meets_ascending_order_cutoff(self):
         assess_with_threshold = copy(self.assess_disease_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records
+            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.disease_rank_stats,
@@ -1244,12 +1320,18 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 },
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=2, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_disease_prioritisation_threshold_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_disease_prioritisation)
         assess_with_threshold.threshold = 1.0
         assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records
+            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.disease_rank_stats,
@@ -1265,12 +1347,18 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                 }
             },
         )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1
+            ),
+        )
 
     def test_assess_disease_prioritisation_threshold_meets_cutoff(self):
         assess_with_threshold = copy(self.assess_disease_prioritisation)
         assess_with_threshold.threshold = 0.1
         assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records
+            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
         )
         self.assertEqual(
             self.disease_rank_stats,
@@ -1285,4 +1373,10 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
                     "Phenopacket": "phenopacket.json",
                 }
             },
+        )
+        self.assertEqual(
+            self.binary_classification_stats,
+            BinaryClassificationStats(
+                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0
+            ),
         )

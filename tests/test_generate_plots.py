@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.generate_plots import BenchmarkRunResults, PlotGenerator
 from pheval.analyse.rank_stats import RankStats
 
@@ -24,6 +25,7 @@ class TestPlotGenerator(unittest.TestCase):
                 total=20,
                 reciprocal_ranks=[1, 1 / 3, 1 / 5, 1 / 10, 1 / 50],
             ),
+            binary_classification_stats=BinaryClassificationStats(),
         )
         self.test_dir = tempfile.mkdtemp()
         self.results_dir = Path(self.test_dir).joinpath("tool1-default/corpus1-default")
