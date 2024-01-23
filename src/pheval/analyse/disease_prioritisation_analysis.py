@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import List
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResult
@@ -146,7 +147,10 @@ class AssessDiseasePrioritisation:
             )
 
     def assess_disease_prioritisation(
-        self, rank_stats: RankStats, rank_records: defaultdict
+        self,
+        rank_stats: RankStats,
+        rank_records: defaultdict,
+        binary_classification_stats: BinaryClassificationStats,
     ) -> None:
         """
         Assess disease prioritisation.
@@ -157,7 +161,9 @@ class AssessDiseasePrioritisation:
         Args:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
+            binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         """
+        relevant_ranks = []
         for disease in self.proband_diseases:
             rank_stats.total += 1
             disease_match = DiseasePrioritisationResult(self.phenopacket_path, disease)
@@ -169,6 +175,9 @@ class AssessDiseasePrioritisation:
                     disease_match = self._record_matched_disease(
                         disease, rank_stats, standardised_disease_result
                     )
+                    relevant_ranks.append(
+                        disease_match.rank
+                    ) if disease_match else relevant_ranks.append(0)
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
@@ -178,6 +187,9 @@ class AssessDiseasePrioritisation:
                 else disease_match,
                 rank_records,
             ).record_rank()
+        binary_classification_stats.add_classification(
+            self.standardised_disease_results, relevant_ranks
+        )
 
 
 def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
@@ -202,6 +214,7 @@ def assess_phenopacket_disease_prioritisation(
     threshold: float,
     disease_rank_stats: RankStats,
     disease_rank_comparison: defaultdict,
+    disease_binary_classification_stats: BinaryClassificationStats,
 ) -> None:
     """
     Assess disease prioritisation for a Phenopacket by comparing PhEval standardised disease results
@@ -214,6 +227,7 @@ def assess_phenopacket_disease_prioritisation(
         threshold (float): Threshold for assessment.
         disease_rank_stats (RankStats): RankStats class instance.
         disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.
+        disease_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
     phenopacket_path = obtain_closest_file_name(
         standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
@@ -227,7 +241,9 @@ def assess_phenopacket_disease_prioritisation(
         threshold,
         score_order,
         proband_diseases,
-    ).assess_disease_prioritisation(disease_rank_stats, disease_rank_comparison)
+    ).assess_disease_prioritisation(
+        disease_rank_stats, disease_rank_comparison, disease_binary_classification_stats
+    )
 
 
 def benchmark_disease_prioritisation(
@@ -250,6 +266,7 @@ def benchmark_disease_prioritisation(
         including ranks and rank statistics for the benchmarked directory.
     """
     disease_rank_stats = RankStats()
+    disease_binary_classification_stats = BinaryClassificationStats()
     for standardised_result in files_with_suffix(
         results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
         ".tsv",
@@ -261,9 +278,11 @@ def benchmark_disease_prioritisation(
             threshold,
             disease_rank_stats,
             disease_rank_comparison,
+            disease_binary_classification_stats,
         )
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=disease_rank_comparison,
         rank_stats=disease_rank_stats,
+        binary_classification_stats=disease_binary_classification_stats,
     )

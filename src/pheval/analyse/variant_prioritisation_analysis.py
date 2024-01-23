@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import List
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import VariantPrioritisationResult
@@ -139,7 +140,10 @@ class AssessVariantPrioritisation:
             )
 
     def assess_variant_prioritisation(
-        self, rank_stats: RankStats, rank_records: defaultdict
+        self,
+        rank_stats: RankStats,
+        rank_records: defaultdict,
+        binary_classification_stats: BinaryClassificationStats,
     ) -> None:
         """
         Assess variant prioritisation.
@@ -150,7 +154,9 @@ class AssessVariantPrioritisation:
         Args:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
+            binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         """
+        relevant_ranks = []
         for variant in self.proband_causative_variants:
             rank_stats.total += 1
             variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
@@ -163,6 +169,9 @@ class AssessVariantPrioritisation:
                 )
                 if variant == result_variant:
                     variant_match = self._record_matched_variant(rank_stats, result)
+                    relevant_ranks.append(
+                        variant_match.rank
+                    ) if variant_match else relevant_ranks.append(0)
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
@@ -172,6 +181,9 @@ class AssessVariantPrioritisation:
                 else variant_match,
                 rank_records,
             ).record_rank()
+        binary_classification_stats.add_classification(
+            self.standardised_variant_results, relevant_ranks
+        )
 
 
 def _obtain_causative_variants(phenopacket_path: Path) -> List[GenomicVariant]:
@@ -196,6 +208,7 @@ def assess_phenopacket_variant_prioritisation(
     threshold: float,
     variant_rank_stats: RankStats,
     variant_rank_comparison: defaultdict,
+    variant_binary_classification_stats: BinaryClassificationStats,
 ) -> None:
     """
     Assess variant prioritisation for a Phenopacket by comparing PhEval standardised variant results
@@ -208,6 +221,7 @@ def assess_phenopacket_variant_prioritisation(
         threshold (float): Threshold for assessment.
         variant_rank_stats (RankStats): RankStats class instance.
         variant_rank_comparison (defaultdict): Default dictionary for variant rank comparisons.
+        variant_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
     phenopacket_path = obtain_closest_file_name(
         standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
@@ -221,7 +235,9 @@ def assess_phenopacket_variant_prioritisation(
         threshold,
         score_order,
         proband_causative_variants,
-    ).assess_variant_prioritisation(variant_rank_stats, variant_rank_comparison)
+    ).assess_variant_prioritisation(
+        variant_rank_stats, variant_rank_comparison, variant_binary_classification_stats
+    )
 
 
 def benchmark_variant_prioritisation(
@@ -244,6 +260,7 @@ def benchmark_variant_prioritisation(
         including ranks and rank statistics for the benchmarked directory.
     """
     variant_rank_stats = RankStats()
+    variant_binary_classification_stats = BinaryClassificationStats()
     for standardised_result in files_with_suffix(
         results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
         ".tsv",
@@ -255,9 +272,11 @@ def benchmark_variant_prioritisation(
             threshold,
             variant_rank_stats,
             variant_rank_comparison,
+            variant_binary_classification_stats,
         )
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=variant_rank_comparison,
         rank_stats=variant_rank_stats,
+        binary_classification_stats=variant_binary_classification_stats,
     )
