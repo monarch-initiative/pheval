@@ -146,7 +146,7 @@ class BinaryClassificationStats:
         """
         return self.true_positives / (self.true_positives + self.false_positives) if (self.true_positives + self.false_positives) > 0 else 0.0
 
-    def negative_predictive_value(self):
+    def negative_predictive_value(self) -> float:
         """
         Calculate Negative Predictive Value (NPV).
 
@@ -158,7 +158,7 @@ class BinaryClassificationStats:
         """
         return self.true_negatives / (self.true_negatives + self.false_negatives) if (self.true_negatives + self.false_negatives) > 0 else 0.0
 
-    def false_positive_rate(self):
+    def false_positive_rate(self) -> float:
         """
         Calculate False Positive Rate (FPR).
 
@@ -170,6 +170,17 @@ class BinaryClassificationStats:
         """
         return self.false_positives / (self.false_positives + self.true_negatives) if (self.false_positives + self.true_negatives) > 0 else 0.0
 
+    def false_discovery_rate(self) -> float:
+        """
+        Calculate False Discovery Rate (FDR).
+
+        FDR measures the proportion of instances predicted as positive that are actually negative.
+
+        Returns:
+            float: The False Discovery Rate of the model, calculated as false positives divided by the sum of
+            false positives and true positives. Returns 0.0 if both false positives and true positives are zero.
+        """
+        return self.false_positives / (self.false_positives + self.true_positives) if (self.false_positives + self.true_positives) > 0 else 0.0
 
 
 
