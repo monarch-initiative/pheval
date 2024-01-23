@@ -123,3 +123,9 @@ class TestBinaryClassificationStats(unittest.TestCase):
 
     def test_precision(self):
         self.assertEqual(self.complete_binary_classification_stats.precision(),0.2)
+
+    def test_negative_predictive_value_0(self):
+        self.assertEqual(self.binary_classification_stats.negative_predictive_value(), 0)
+
+    def test_negative_predictive_value(self):
+        self.assertEqual(self.complete_binary_classification_stats.negative_predictive_value(), 0.75)
