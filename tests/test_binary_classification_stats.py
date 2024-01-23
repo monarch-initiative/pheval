@@ -34,6 +34,7 @@ disease_results = [
 class TestBinaryClassificationStats(unittest.TestCase):
     def setUp(self):
         self.binary_classification_stats = BinaryClassificationStats()
+        self.complete_binary_classification_stats = BinaryClassificationStats(10, 15, 40, 5)
 
     def test_remove_relevant_ranks(self):
         self.assertEqual(
@@ -101,4 +102,12 @@ class TestBinaryClassificationStats(unittest.TestCase):
             BinaryClassificationStats(
                 true_positives=1, true_negatives=2, false_positives=0, false_negatives=1
             ),
+        )
+
+    def test_sensitivity_0(self):
+        self.assertEqual(self.binary_classification_stats.sensitivity(), 0)
+
+    def test_sensitivity(self):
+        self.assertEqual(
+            self.complete_binary_classification_stats.sensitivity(), 0.6666666666666666
         )
