@@ -105,7 +105,7 @@ class BinaryClassificationStats:
             self.remove_relevant_ranks(pheval_results, relevant_ranks)
         )
 
-    def sensitivity(self):
+    def sensitivity(self) -> float:
         """
         Calculate sensitivity.
 
@@ -120,3 +120,15 @@ class BinaryClassificationStats:
             if (self.true_positives + self.false_negatives) > 0
             else 0.0
         )
+
+    def specificity(self) -> float:
+        """
+        Calculate specificity.
+
+        Specificity measures the proportion of actual negative instances correctly identified by the model.
+
+        Returns:
+            float: The specificity of the model, calculated as true negatives divided by the sum of true negatives
+            and false positives. Returns 0.0 if both true negatives and false positives are zero.
+        """
+        return self.true_negatives / (self.true_negatives + self.false_positives) if (self.true_negatives + self.false_positives) > 0 else 0.0
