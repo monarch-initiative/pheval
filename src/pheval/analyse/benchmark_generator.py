@@ -28,6 +28,8 @@ class BenchmarkRunOutputGenerator:
             Takes parameters: input and results directory, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
         rank_stats_comparison_file_suffix (str): Suffix for the rank comparison file.
+        binary_classification_stats_comparison_file_suffix (str): Suffix for the binary classification stats
+            comparison file.
     """
 
     prioritisation_type_file_prefix: str
@@ -36,6 +38,7 @@ class BenchmarkRunOutputGenerator:
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ]
     rank_stats_comparison_file_suffix: str
+    binary_classification_stats_comparison_file_suffix: str
 
 
 @dataclass
@@ -56,8 +59,10 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             benchmark run results. Defaults to benchmark_gene_prioritisation.
             Takes parameters: input and results directory, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
-        rank_comparison_file_suffix (str): Suffix for the gene rank comparison file.
+        rank_stats_comparison_file_suffix (str): Suffix for the gene rank comparison file.
             Defaults to "-gene_summary.tsv".
+        binary_classification_stats_comparison_file_suffix (str): Suffix for the binary classification stats file.
+            Defaults to "-gene_binary_classification_stats.tsv"
     """
 
     prioritisation_type_file_prefix: str = GENE_PLOT_FILE_PREFIX
@@ -66,6 +71,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_gene_prioritisation
     rank_stats_comparison_file_suffix: str = "-gene_summary.tsv"
+    binary_classification_stats_comparison_file_suffix: str = "-gene_binary_classification_stats.tsv"
 
 
 @dataclass
@@ -86,8 +92,11 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             benchmark run results. Defaults to benchmark_variant_prioritisation.
             Takes parameters: input and results directory, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
-        rank_comparison_file_suffix (str): Suffix for the variant rank comparison file.
+        rank_stats_comparison_file_suffix (str): Suffix for the variant rank comparison file.
             Defaults to "-variant_summary.tsv".
+        binary_classification_stats_comparison_file_suffix (str): Suffix for the binary classification stats file.
+            Defaults to "-variant_binary_classification_stats.tsv"
+
     """
 
     prioritisation_type_file_prefix: str = VARIANT_PLOT_FILE_PREFIX
@@ -96,6 +105,8 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_variant_prioritisation
     rank_stats_comparison_file_suffix: str = "-variant_summary.tsv"
+    binary_classification_stats_comparison_file_suffix: str = "-variant_binary_classification_stats.tsv"
+
 
 
 @dataclass
@@ -116,8 +127,10 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             benchmark run results. Defaults to benchmark_disease_prioritisation.
             Takes parameters: input and results directory, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
-        rank_comparison_file_suffix (str): Suffix for the disease rank comparison file.
+        rank_stats_comparison_file_suffix (str): Suffix for the disease rank comparison file.
             Defaults to "-disease_summary.tsv".
+        binary_classification_stats_comparison_file_suffix (str): Suffix for the binary classification stats file.
+            Defaults to "-disease_binary_classification_stats.tsv"
     """
 
     prioritisation_type_file_prefix: str = DISEASE_PLOT_FILE_PREFIX
@@ -126,3 +139,5 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
     ] = benchmark_disease_prioritisation
     rank_stats_comparison_file_suffix: str = "-disease_summary.tsv"
+    binary_classification_stats_comparison_file_suffix: str = "-disease_binary_classification_stats.tsv"
+
