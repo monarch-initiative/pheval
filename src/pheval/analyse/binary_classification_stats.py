@@ -104,3 +104,19 @@ class BinaryClassificationStats:
         self.add_classification_for_other_entities(
             self.remove_relevant_ranks(pheval_results, relevant_ranks)
         )
+
+    def sensitivity(self):
+        """
+        Calculate sensitivity.
+
+        Sensitivity measures the proportion of actual positive instances correctly identified by the model.
+
+        Returns:
+            float: The sensitivity of the model, calculated as true positives divided by the sum of true positives
+            and false negatives. Returns 0 if both true positives and false negatives are zero.
+        """
+        return (
+            self.true_positives / (self.true_positives + self.false_negatives)
+            if (self.true_positives + self.false_negatives) > 0
+            else 0.0
+        )
