@@ -318,7 +318,7 @@ class BinaryClassificationWriter:
                 "true_positives",
                 "false_positives",
                 "true_negatives",
-                "false_positives",
+                "false_negatives",
                 "sensitivity",
                 "specificity",
                 "precision",
