@@ -1464,7 +1464,12 @@
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessGenePrioritisation</span><span class="p">:</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessGenePrioritisation</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for assessing gene prioritisation based on thresholds and scoring orders.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1600,6 +1605,7 @@
 <span class="sd">            rank_stats (RankStats): RankStats class instance</span>
 <span class="sd">            rank_records (defaultdict): A defaultdict to store the correct ranked results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">relevant_ranks</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proband_causative_genes</span><span class="p">:</span>
             <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">gene_match</span> <span class="o">=</span> <span class="n">GenePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">)</span>
@@ -1611,6 +1617,9 @@
                     <span class="n">gene_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_record_matched_gene</span><span class="p">(</span>
                         <span class="n">gene</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">,</span> <span class="n">standardised_gene_result</span>
                     <span class="p">)</span>
+                    <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gene_match</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="k">if</span> <span class="n">gene_match</span> <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="mi">0</span>
+                    <span class="p">)</span>
                     <span class="k">break</span>
             <span class="n">PrioritisationRankRecorder</span><span class="p">(</span>
                 <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
@@ -1620,6 +1629,7 @@
                 <span class="k">else</span> <span class="n">gene_match</span><span class="p">,</span>
                 <span class="n">rank_records</span><span class="p">,</span>
             <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
+        <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1863,7 +1873,12 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_gene_prioritisation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_gene_prioritisation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Assess gene prioritisation.</span>
 <span class="sd">    This method assesses the prioritisation of genes based on the provided criteria</span>
@@ -1873,6 +1888,7 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="sd">        rank_stats (RankStats): RankStats class instance</span>
 <span class="sd">        rank_records (defaultdict): A defaultdict to store the correct ranked results.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">relevant_ranks</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proband_causative_genes</span><span class="p">:</span>
         <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">gene_match</span> <span class="o">=</span> <span class="n">GenePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">)</span>
@@ -1884,6 +1900,9 @@ and records ranks using a PrioritisationRankRecorder.</p>
                 <span class="n">gene_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_record_matched_gene</span><span class="p">(</span>
                     <span class="n">gene</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">,</span> <span class="n">standardised_gene_result</span>
                 <span class="p">)</span>
+                <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gene_match</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="k">if</span> <span class="n">gene_match</span> <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="mi">0</span>
+                <span class="p">)</span>
                 <span class="k">break</span>
         <span class="n">PrioritisationRankRecorder</span><span class="p">(</span>
             <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
@@ -1893,6 +1912,7 @@ and records ranks using a PrioritisationRankRecorder.</p>
             <span class="k">else</span> <span class="n">gene_match</span><span class="p">,</span>
             <span class="n">rank_records</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
+    <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1999,12 +2019,7 @@ against the recorded causative genes for a proband in the Phenopacket.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/gene_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
@@ -2031,7 +2046,12 @@ against the recorded causative genes for a proband in the Phenopacket.</p>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
-<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_gene_prioritisation</span><span class="p">(</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_gene_prioritisation</span><span class="p">(</span>
     <span class="n">standardised_gene_result</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">results_dir_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
@@ -2094,12 +2114,7 @@ against the recorded causative genes for a proband in the Phenopacket.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/gene_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
@@ -2127,7 +2142,12 @@ against the recorded causative genes for a proband in the Phenopacket.</p>
 <span class="normal">253</span>
 <span class="normal">254</span>
 <span class="normal">255</span>
-<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_gene_prioritisation</span><span class="p">(</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_gene_prioritisation</span><span class="p">(</span>
     <span class="n">results_directory_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
