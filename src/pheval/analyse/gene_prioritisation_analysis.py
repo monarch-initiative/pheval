@@ -149,6 +149,7 @@ class AssessGenePrioritisation:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
         """
+        relevant_ranks = []
         for gene in self.proband_causative_genes:
             rank_stats.total += 1
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
@@ -160,6 +161,9 @@ class AssessGenePrioritisation:
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
                     )
+                    relevant_ranks.append(gene_match.rank) if gene_match else relevant_ranks.append(
+                        0
+                    )
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
@@ -169,6 +173,7 @@ class AssessGenePrioritisation:
                 else gene_match,
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
 
 
 def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene]:
