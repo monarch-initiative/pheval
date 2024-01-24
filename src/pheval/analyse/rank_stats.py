@@ -17,6 +17,7 @@ class RankStats:
         found (int): Count of found matches.
         total (int): Total count of matches.
         reciprocal_ranks (List[float]): List of reciprocal ranks.
+        relevant_ranks List[List[int]]: Nested list of ranks for the known entities for all cases in a run.
         mrr (float): Mean Reciprocal Rank (MRR). Defaults to None.
     """
 
@@ -27,6 +28,7 @@ class RankStats:
     found: int = 0
     total: int = 0
     reciprocal_ranks: List = field(default_factory=list)
+    relevant_result_ranks: List[List[int]] = field(default_factory=list)
     mrr: float = None
 
     def add_rank(self, rank: int) -> None:
@@ -174,6 +176,56 @@ class RankStats:
         k_attr = getattr(self, f"top{k}") if k > 1 else self.top
         return k_attr / (self.total * k)
 
+    @staticmethod
+    def _average_precision_at_k(
+        number_of_relevant_entities_at_k: int, precision_at_k: float
+    ) -> float:
+        """
+        Calculate the Average Precision at k.
+
+        Average Precision at k (AP@k) is a metric used to evaluate the precision of a ranked retrieval system.
+        It measures the precision at each relevant position up to k and takes the average.
+
+        Args:
+            number_of_relevant_entities_at_k (int): The count of relevant entities in the top-k predictions.
+            precision_at_k (float): The precision at k - the sum of the precision values at each relevant position.
+
+        Returns:
+            float: The Average Precision at k, ranging from 0.0 to 1.0.
+                   A higher value indicates better precision in the top-k predictions.
+        """
+        return (
+            (1 / number_of_relevant_entities_at_k) * precision_at_k
+            if number_of_relevant_entities_at_k > 0
+            else 0.0
+        )
+
+    def mean_average_precision_at_k(self, k: int) -> float:
+        """
+        Calculate the Mean Average Precision at k.
+
+        Mean Average Precision at k (MAP@k) is a performance metric for ranked data.
+        It calculates the average precision at k for each result rank and then takes the mean across all queries.
+
+        Args:
+            k (int): The number of top predictions to consider for precision calculation.
+
+        Returns:
+            float: The Mean Average Precision at k, ranging from 0.0 to 1.0.
+                   A higher value indicates better performance in ranking relevant entities higher in the predictions.
+        """
+        cumulative_average_precision_scores = 0
+        for result_ranks in self.relevant_result_ranks:
+            precision_at_k, number_of_relevant_entities_at_k = 0, 0
+            for rank in result_ranks:
+                if 0 < rank <= k:
+                    number_of_relevant_entities_at_k += 1
+                    precision_at_k += number_of_relevant_entities_at_k / rank
+                cumulative_average_precision_scores += self._average_precision_at_k(
+                    number_of_relevant_entities_at_k, precision_at_k
+                )
+        return (1 / self.total) * cumulative_average_precision_scores
+
     def f_beta_score_at_k(self, percentage_at_k: float, k: int) -> float:
         """
         Calculate the F-beta score at k.
@@ -230,6 +282,10 @@ class RankStatsWriter:
                 "precision@3",
                 "precision@5",
                 "precision@10",
+                "MAP@1",
+                "MAP@3",
+                "MAP@5",
+                "MAP@10",
                 "f_beta_score@1",
                 "f_beta_score@3",
                 "f_beta_score@5",
@@ -268,6 +324,10 @@ class RankStatsWriter:
                     rank_stats.precision_at_k(3),
                     rank_stats.precision_at_k(5),
                     rank_stats.precision_at_k(10),
+                    rank_stats.mean_average_precision_at_k(1),
+                    rank_stats.mean_average_precision_at_k(3),
+                    rank_stats.mean_average_precision_at_k(5),
+                    rank_stats.mean_average_precision_at_k(10),
                     rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1),
                     rank_stats.f_beta_score_at_k(rank_stats.percentage_top3(), 3),
                     rank_stats.f_beta_score_at_k(rank_stats.percentage_top5(), 5),
