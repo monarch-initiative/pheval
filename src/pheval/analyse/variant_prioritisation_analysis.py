@@ -181,6 +181,7 @@ class AssessVariantPrioritisation:
                 else variant_match,
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
         binary_classification_stats.add_classification(
             self.standardised_variant_results, relevant_ranks
         )

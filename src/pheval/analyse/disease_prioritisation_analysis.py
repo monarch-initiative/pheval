@@ -187,6 +187,7 @@ class AssessDiseasePrioritisation:
                 else disease_match,
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
         binary_classification_stats.add_classification(
             self.standardised_disease_results, relevant_ranks
         )

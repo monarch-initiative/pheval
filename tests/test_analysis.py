@@ -550,7 +550,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -582,7 +591,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=2,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -614,7 +632,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[0.25]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[0.25],
+                relevant_result_ranks=[[4]],
+            ),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -646,7 +673,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=2,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -678,7 +714,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.gene_rank_records,
@@ -888,7 +933,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -920,7 +974,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=2,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -952,7 +1015,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -984,7 +1056,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=2, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=2,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -1016,7 +1097,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=2, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=2,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.variant_rank_records,
@@ -1254,7 +1344,16 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.disease_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=1, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=1,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.disease_rank_records,
@@ -1281,7 +1380,16 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.disease_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=1, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=1,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.disease_rank_records,
@@ -1308,7 +1416,16 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.disease_rank_stats,
-            RankStats(top=0, top3=0, top5=1, top10=1, found=1, total=1, reciprocal_ranks=[0.25]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=1,
+                top10=1,
+                found=1,
+                total=1,
+                reciprocal_ranks=[0.25],
+                relevant_result_ranks=[[4]],
+            ),
         )
         self.assertEqual(
             self.disease_rank_records,
@@ -1335,7 +1452,16 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.disease_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=1, reciprocal_ranks=[]),
+            RankStats(
+                top=0,
+                top3=0,
+                top5=0,
+                top10=0,
+                found=0,
+                total=1,
+                reciprocal_ranks=[],
+                relevant_result_ranks=[[0]],
+            ),
         )
         self.assertEqual(
             self.disease_rank_records,
@@ -1362,7 +1488,16 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.assertEqual(
             self.disease_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=1, reciprocal_ranks=[1.0]),
+            RankStats(
+                top=1,
+                top3=1,
+                top5=1,
+                top10=1,
+                found=1,
+                total=1,
+                reciprocal_ranks=[1.0],
+                relevant_result_ranks=[[1]],
+            ),
         )
         self.assertEqual(
             self.disease_rank_records,
