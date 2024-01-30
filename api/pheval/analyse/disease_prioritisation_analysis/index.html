@@ -1478,7 +1478,11 @@
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
-<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessDiseasePrioritisation</span><span class="p">:</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessDiseasePrioritisation</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for assessing disease prioritisation based on thresholds and scoring orders.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1635,16 +1639,20 @@
                     <span class="n">disease_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_record_matched_disease</span><span class="p">(</span>
                         <span class="n">disease</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">,</span> <span class="n">standardised_disease_result</span>
                     <span class="p">)</span>
-                    <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="n">disease_match</span><span class="o">.</span><span class="n">rank</span>
-                    <span class="p">)</span> <span class="k">if</span> <span class="n">disease_match</span> <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="p">(</span>
+                        <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">disease_match</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">disease_match</span>
+                        <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="p">)</span>
                     <span class="k">break</span>
             <span class="n">PrioritisationRankRecorder</span><span class="p">(</span>
                 <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">results_dir</span><span class="p">,</span>
-                <span class="n">DiseasePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">disease</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">disease_match</span> <span class="ow">is</span> <span class="kc">None</span>
-                <span class="k">else</span> <span class="n">disease_match</span><span class="p">,</span>
+                <span class="p">(</span>
+                    <span class="n">DiseasePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">disease</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">disease_match</span> <span class="ow">is</span> <span class="kc">None</span>
+                    <span class="k">else</span> <span class="n">disease_match</span>
+                <span class="p">),</span>
                 <span class="n">rank_records</span><span class="p">,</span>
             <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
         <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
@@ -1901,7 +1909,11 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
-<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_disease_prioritisation</span><span class="p">(</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_disease_prioritisation</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1926,16 +1938,20 @@ and records ranks using a PrioritisationRankRecorder.</p>
                 <span class="n">disease_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_record_matched_disease</span><span class="p">(</span>
                     <span class="n">disease</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">,</span> <span class="n">standardised_disease_result</span>
                 <span class="p">)</span>
-                <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="n">disease_match</span><span class="o">.</span><span class="n">rank</span>
-                <span class="p">)</span> <span class="k">if</span> <span class="n">disease_match</span> <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">(</span>
+                    <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">disease_match</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">disease_match</span>
+                    <span class="k">else</span> <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">)</span>
                 <span class="k">break</span>
         <span class="n">PrioritisationRankRecorder</span><span class="p">(</span>
             <span class="n">rank_stats</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">results_dir</span><span class="p">,</span>
-            <span class="n">DiseasePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">disease</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">disease_match</span> <span class="ow">is</span> <span class="kc">None</span>
-            <span class="k">else</span> <span class="n">disease_match</span><span class="p">,</span>
+            <span class="p">(</span>
+                <span class="n">DiseasePrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">disease</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">disease_match</span> <span class="ow">is</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">disease_match</span>
+            <span class="p">),</span>
             <span class="n">rank_records</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
     <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
@@ -2045,11 +2061,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -2077,7 +2089,11 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="normal">232</span>
 <span class="normal">233</span>
 <span class="normal">234</span>
-<span class="normal">235</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_disease_prioritisation</span><span class="p">(</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_disease_prioritisation</span><span class="p">(</span>
     <span class="n">standardised_disease_result</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">results_dir_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
@@ -2208,11 +2224,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
 <span class="normal">245</span>
@@ -2244,7 +2256,11 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
-<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_disease_prioritisation</span><span class="p">(</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_disease_prioritisation</span><span class="p">(</span>
     <span class="n">results_directory_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
