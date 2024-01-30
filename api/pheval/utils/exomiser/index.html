@@ -1228,7 +1228,7 @@
 
 
 <h2 id="src.pheval.utils.exomiser.semsim_to_exomiserdb" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">db_path</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">db_path</span><span class="p">,</span> <span class="n">h2_jar</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1288,6 +1288,16 @@
               <em>required</em>
           </td>
         </tr>
+        <tr>
+          <td><code>h2_jar</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td><p>H2 JAR file. JAR required to run H2 Database. e.g h2.jar</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
     </tbody>
   </table>
 
@@ -1303,7 +1313,12 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">semsim_to_exomiserdb</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">h2_jar</span><span class="p">:</span> <span class="n">Path</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;ingests semsim file into exomiser phenotypic database</span>
 
 <span class="sd">    Args:</span>
@@ -1311,8 +1326,9 @@
 <span class="sd">        object_prefix (str): object prefix. e.g. MP</span>
 <span class="sd">        subject_prefix (str): subject prefix e.g HP</span>
 <span class="sd">        db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)</span>
+<span class="sd">        h2_jar (Path): H2 JAR file. JAR required to run H2 Database. e.g h2.jar</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">exomiserdb</span> <span class="o">=</span> <span class="n">ExomiserDB</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
+    <span class="n">exomiserdb</span> <span class="o">=</span> <span class="n">ExomiserDB</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">h2_jar</span><span class="p">)</span>
     <span class="n">exomiserdb</span><span class="o">.</span><span class="n">import_from_semsim_file</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>

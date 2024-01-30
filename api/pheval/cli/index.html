@@ -1778,7 +1778,7 @@ Args:
 <tr>
 <td><code>--variant-analysis</code> / <code>--no-variant-analysis</code></td>
 <td>boolean</td>
-<td>Specify analysis for variant prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, gene_analysis].</td>
+<td>Specify analysis for variant prioritisation NOTE: This argument is mutually exclusive with  arguments: [gene_analysis, disease_analysis].</td>
 <td><code>False</code></td>
 </tr>
 <tr>
@@ -1920,7 +1920,8 @@ Args:
     input_file (Path): semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv
     object_prefix (str): object prefix. e.g. MP
     subject_prefix (str): subject prefix e.g HP
-    db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)</p>
+    db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)
+    h2_jar (Path): H2 JAR file. JAR required to run H2 Database. e.g h2.jar</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils semsim-to-exomiserdb [OPTIONS]
 </code></pre></div>
@@ -1970,6 +1971,12 @@ Args:
 <td>_required</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><code>--h2-jar</code></td>
+<td>Path</td>
+<td>H2 JAR file. JAR required to run H2 Database. e.g h2.jar</td>
+<td>_required</td>
 </tr>
 <tr>
 <td><code>--help</code></td>
