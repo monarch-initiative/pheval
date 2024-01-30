@@ -7,6 +7,7 @@ from pheval.infra.exomiserdb import DBConnection, ExomiserDB, _format_row
 from pheval.utils.exomiser import semsim_to_exomiserdb
 
 PHENO_FOLDER = os.path.abspath("./testdata/phenotype/2302_phenotype")
+H2_JAR = os.path.abspath("./tests/lib/h2-1.4.199.jar")
 
 
 class TestExomiserDBIngestion(unittest.TestCase):
@@ -17,7 +18,7 @@ class TestExomiserDBIngestion(unittest.TestCase):
         _clean_db()
 
     def select_data(self, query: str):
-        edb = ExomiserDB(f"{PHENO_FOLDER}/2302_phenotype_test")
+        edb = ExomiserDB(f"{PHENO_FOLDER}/2302_phenotype_test", H2_JAR)
         with edb.connector as cnn:
             conn = DBConnection(cnn)
             cursor = conn.get_cursor()
@@ -36,6 +37,7 @@ class TestExomiserDBIngestion(unittest.TestCase):
             object_prefix="MP",
             subject_prefix="HP",
             db_path=f"{PHENO_FOLDER}/2302_phenotype_test",
+            h2_jar=H2_JAR,
         )
         new_res = self.select_data(query)
         self.assertEqual(len(new_res), 9)

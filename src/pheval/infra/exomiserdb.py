@@ -1,6 +1,5 @@
 # -*- coding: cp936 -*-
 import logging as log
-import os
 from pathlib import Path
 
 import jaydebeapi
@@ -15,7 +14,7 @@ class DBConnector:
     def __init__(
         self, jar: Path, driver: str, server: str, database: str, user: str, password: str
     ):
-        self.jar = jar
+        self.jar = str(jar)
         self.driver = driver
         self.server = server
         self.database = database
@@ -61,10 +60,10 @@ class DBConnection:
 
 
 class ExomiserDB:
-    def __init__(self, db_path: Path):
+    def __init__(self, db_path: Path, h2_jar: Path):
         try:
             self.connector = DBConnector(  # noqa
-                jar=os.path.join(os.path.dirname(__file__), "../../../lib/h2-1.4.199.jar"),
+                jar=h2_jar,
                 driver="org.h2.Driver",
                 server=f"jdbc:h2:{db_path}",
                 user="sa",
