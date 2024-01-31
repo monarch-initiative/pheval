@@ -279,9 +279,11 @@ class VcfSpiker:
             str(proband_variant_data.variant.pos),
             ".",
             proband_variant_data.variant.ref,
-            f"<{proband_variant_data.variant.alt}>"
-            if proband_variant_data.variant.ref == "N"
-            else proband_variant_data.variant.alt,
+            (
+                f"<{proband_variant_data.variant.alt}>"
+                if proband_variant_data.variant.ref == "N"
+                else proband_variant_data.variant.alt
+            ),
             "100",
             "PASS",
             proband_variant_data.info if proband_variant_data.info else ".",

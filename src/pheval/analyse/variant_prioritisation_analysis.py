@@ -169,16 +169,20 @@ class AssessVariantPrioritisation:
                 )
                 if variant == result_variant:
                     variant_match = self._record_matched_variant(rank_stats, result)
-                    relevant_ranks.append(
-                        variant_match.rank
-                    ) if variant_match else relevant_ranks.append(0)
+                    (
+                        relevant_ranks.append(variant_match.rank)
+                        if variant_match
+                        else relevant_ranks.append(0)
+                    )
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
-                VariantPrioritisationResult(self.phenopacket_path, variant)
-                if variant_match is None
-                else variant_match,
+                (
+                    VariantPrioritisationResult(self.phenopacket_path, variant)
+                    if variant_match is None
+                    else variant_match
+                ),
                 rank_records,
             ).record_rank()
         rank_stats.relevant_result_ranks.append(relevant_ranks)
