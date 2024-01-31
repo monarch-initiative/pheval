@@ -490,7 +490,7 @@ def benchmark_comparison(
 
 @click.command("semsim-to-exomiserdb")
 @click.option(
-    "--input",
+    "--input-file",
     "-i",
     required=True,
     metavar="FILE",
