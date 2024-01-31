@@ -161,16 +161,20 @@ class AssessGenePrioritisation:
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
                     )
-                    relevant_ranks.append(gene_match.rank) if gene_match else relevant_ranks.append(
-                        0
+                    (
+                        relevant_ranks.append(gene_match.rank)
+                        if gene_match
+                        else relevant_ranks.append(0)
                     )
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
-                GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
-                if gene_match is None
-                else gene_match,
+                (
+                    GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
+                    if gene_match is None
+                    else gene_match
+                ),
                 rank_records,
             ).record_rank()
         rank_stats.relevant_result_ranks.append(relevant_ranks)

@@ -1,4 +1,5 @@
 """docs generate utils"""
+
 import ast
 import os
 import shutil

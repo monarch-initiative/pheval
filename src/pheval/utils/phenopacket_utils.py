@@ -301,12 +301,16 @@ class PhenopacketUtil:
         diagnoses = []
         interpretation = self.interpretations()
         for i in interpretation:
-            diagnoses.append(
-                ProbandDisease(
-                    disease_name=i.diagnosis.disease.label,
-                    disease_identifier=i.diagnosis.disease.id,
+            (
+                diagnoses.append(
+                    ProbandDisease(
+                        disease_name=i.diagnosis.disease.label,
+                        disease_identifier=i.diagnosis.disease.id,
+                    )
                 )
-            ) if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != "" else None
+                if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != ""
+                else None
+            )
         return diagnoses
 
     def _diagnosis_from_disease(self) -> List[ProbandDisease]:

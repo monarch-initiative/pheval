@@ -1,6 +1,7 @@
 """
 Contains all pheval utility methods
 """
+
 from pathlib import Path
 
 import numpy
