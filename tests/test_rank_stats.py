@@ -115,3 +115,33 @@ class TestRankStats(unittest.TestCase):
         self.assertEqual(
             self.complete_rank_stats.mean_average_precision_at_k(10), 0.03968253968253968
         )
+
+    def test_f_beta_score_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(0, 1), 0)
+
+    def test_f_beta_score_at_k_3(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(20, 3), 0.1)
+
+    def test_f_beta_score_at_k_5(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(25, 5), 0.08333333333333334)
+
+    def test_f_beta_score_at_k_10(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(37.5, 10), 0.06818181818181818)
+
+    def test_mean_normalised_discounted_cumulative_gain_3(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(3),
+            0.09424414613095478,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_5(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(5),
+            0.243557389859924,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_10(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(10),
+            0.3368971541167727,
+        )

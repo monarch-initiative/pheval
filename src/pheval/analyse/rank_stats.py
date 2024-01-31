@@ -4,6 +4,9 @@ from pathlib import Path
 from statistics import mean
 from typing import List
 
+import numpy as np
+from sklearn.metrics import ndcg_score
+
 
 @dataclass
 class RankStats:
@@ -226,6 +229,51 @@ class RankStats:
                 )
         return (1 / self.total) * cumulative_average_precision_scores
 
+    def f_beta_score_at_k(self, percentage_at_k: float, k: int) -> float:
+        """
+        Calculate the F-beta score at k.
+
+        The F-beta score is a metric that combines precision and recall,
+        with beta controlling the emphasis on precision.
+        The Beta value is set to the value of 1 to allow for equal weighting for both precision and recall.
+        This method computes the F-beta score at a specific percentage threshold within the top-k predictions.
+
+        Args:
+            percentage_at_k (float): The percentage of true positive predictions within the top-k.
+            k (int): The number of top predictions to consider.
+
+        Returns:
+            float: The F-beta score at k, ranging from 0.0 to 1.0.
+                   A higher score indicates better trade-off between precision and recall.
+        """
+        precision = self.precision_at_k(k)
+        recall_at_k = percentage_at_k / 100
+        return (
+            (2 * precision * recall_at_k) / (precision + recall_at_k)
+            if (precision + recall_at_k) > 0
+            else 0
+        )
+
+    def mean_normalised_discounted_cumulative_gain(self, k: int) -> float:
+        """
+        Calculate the mean Normalised Discounted Cumulative Gain (NDCG) for a given rank cutoff.
+
+        NDCG measures the effectiveness of a ranking by considering both the relevance and the order of items.
+
+        Args:
+            k (int): The rank cutoff for calculating NDCG.
+
+        Returns:
+            float: The mean NDCG score across all query results.
+        """
+        ndcg_scores = []
+        for result_ranks in self.relevant_result_ranks:
+            result_ranks = [rank for rank in result_ranks if rank <= k]
+            result_ranks = [3 if i in result_ranks else 0 for i in range(k)]
+            ideal_ranking = sorted(result_ranks, reverse=True)
+            ndcg_scores.append(ndcg_score(np.asarray([ideal_ranking]), np.asarray([result_ranks])))
+        return np.mean(ndcg_scores)
+
 
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
@@ -261,6 +309,13 @@ class RankStatsWriter:
                 "MAP@3",
                 "MAP@5",
                 "MAP@10",
+                "f_beta_score@1",
+                "f_beta_score@3",
+                "f_beta_score@5",
+                "f_beta_score@10",
+                "NDCG@3",
+                "NDCG@5",
+                "NDCG@10",
             ]
         )
 
@@ -299,6 +354,13 @@ class RankStatsWriter:
                     rank_stats.mean_average_precision_at_k(3),
                     rank_stats.mean_average_precision_at_k(5),
                     rank_stats.mean_average_precision_at_k(10),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top3(), 3),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top5(), 5),
+                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top10(), 10),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(3),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(5),
+                    rank_stats.mean_normalised_discounted_cumulative_gain(10),
                 ]
             )
         except IOError:
