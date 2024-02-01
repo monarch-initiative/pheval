@@ -121,15 +121,16 @@ class HpoRandomiser:
         parent_terms = []
         for term in hpo_terms_to_be_changed:
             try:
-                parent_terms.append(
-                    self.retrieve_hpo_term(self.hpo_ontology.hierarchical_parents(term.type.id)[0])
-                )
+                parents = self.hpo_ontology.hierarchical_parents(term.type.id)
+                parent_terms.append(self.retrieve_hpo_term(random.choice(parents)))
             except IndexError:
                 obsolete_term = self.hpo_ontology.entity_metadata_map(term.type.id)
                 updated_term = list(obsolete_term.values())[0][0]
-                parent_terms.append(
-                    self.retrieve_hpo_term(self.hpo_ontology.hierarchical_parents(updated_term)[0])
-                )
+                parents = self.hpo_ontology.hierarchical_parents(updated_term)
+                if not parents:
+                    parent_terms.append(term)
+                else:
+                    parent_terms.append(self.retrieve_hpo_term(random.choice(parents)))
         return parent_terms
 
     def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> List[PhenotypicFeature]:
