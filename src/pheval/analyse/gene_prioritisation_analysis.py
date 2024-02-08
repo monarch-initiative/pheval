@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import List
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import GenePrioritisationResult
@@ -139,7 +140,12 @@ class AssessGenePrioritisation:
                 )
             )
 
-    def assess_gene_prioritisation(self, rank_stats: RankStats, rank_records: defaultdict) -> None:
+    def assess_gene_prioritisation(
+        self,
+        rank_stats: RankStats,
+        rank_records: defaultdict,
+        binary_classification_stats: BinaryClassificationStats,
+    ) -> None:
         """
         Assess gene prioritisation.
         This method assesses the prioritisation of genes based on the provided criteria
@@ -148,6 +154,7 @@ class AssessGenePrioritisation:
         Args:
             rank_stats (RankStats): RankStats class instance
             rank_records (defaultdict): A defaultdict to store the correct ranked results.
+            binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         """
         relevant_ranks = []
         for gene in self.proband_causative_genes:
@@ -178,6 +185,9 @@ class AssessGenePrioritisation:
                 rank_records,
             ).record_rank()
         rank_stats.relevant_result_ranks.append(relevant_ranks)
+        binary_classification_stats.add_classification(
+            pheval_results=self.standardised_gene_results, relevant_ranks=relevant_ranks
+        )
 
 
 def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene]:
@@ -201,6 +211,7 @@ def assess_phenopacket_gene_prioritisation(
     threshold: float,
     gene_rank_stats: RankStats,
     gene_rank_comparison: defaultdict,
+    gene_binary_classification_stats: BinaryClassificationStats,
 ) -> None:
     """
     Assess gene prioritisation for a Phenopacket by comparing PhEval standardised gene results
@@ -213,6 +224,7 @@ def assess_phenopacket_gene_prioritisation(
         threshold (float): Threshold for assessment.
         gene_rank_stats (RankStats): RankStats class instance.
         gene_rank_comparison (defaultdict): Default dictionary for gene rank comparisons.
+        gene_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
     phenopacket_path = obtain_closest_file_name(
         standardised_gene_result, all_files(results_dir_and_input.phenopacket_dir)
@@ -226,7 +238,9 @@ def assess_phenopacket_gene_prioritisation(
         threshold,
         score_order,
         proband_causative_genes,
-    ).assess_gene_prioritisation(gene_rank_stats, gene_rank_comparison)
+    ).assess_gene_prioritisation(
+        gene_rank_stats, gene_rank_comparison, gene_binary_classification_stats
+    )
 
 
 def benchmark_gene_prioritisation(
@@ -247,6 +261,7 @@ def benchmark_gene_prioritisation(
          including ranks and rank statistics for the benchmarked directory.
     """
     gene_rank_stats = RankStats()
+    gene_binary_classification_stats = BinaryClassificationStats()
     for standardised_result in files_with_suffix(
         results_directory_and_input.results_dir.joinpath("pheval_gene_results/"), ".tsv"
     ):
@@ -257,9 +272,11 @@ def benchmark_gene_prioritisation(
             threshold,
             gene_rank_stats,
             gene_rank_comparison,
+            gene_binary_classification_stats,
         )
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         ranks=gene_rank_comparison,
         rank_stats=gene_rank_stats,
+        binary_classification_stats=gene_binary_classification_stats,
     )

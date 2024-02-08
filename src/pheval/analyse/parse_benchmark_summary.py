@@ -4,6 +4,7 @@ from typing import List
 import pandas as pd
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.rank_stats import RankStats
 
 
@@ -61,6 +62,7 @@ def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> List[Benchm
             ),
             ranks={},
             benchmark_name=row["results_directory_path"],
+            binary_classification_stats=BinaryClassificationStats(),
         )
         benchmarking_results.append(benchmarking_result)
     return benchmarking_results

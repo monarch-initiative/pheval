@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.rank_stats import RankStats
 
 
@@ -18,5 +19,6 @@ class BenchmarkRunResults:
 
     ranks: dict
     rank_stats: RankStats
+    binary_classification_stats: BinaryClassificationStats
     results_dir: Path = None
     benchmark_name: str = None
