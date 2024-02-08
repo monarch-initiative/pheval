@@ -502,6 +502,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../binary_classification_stats/" class="md-nav__link">
+        Binary classification stats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../disease_prioritisation_analysis/" class="md-nav__link">
         Disease prioritisation analysis
       </a>
@@ -1297,8 +1311,7 @@
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
-<span class="normal">39</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
@@ -1325,7 +1338,9 @@
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_benchmark_result_summary</span><span class="p">(</span><span class="n">benchmarking_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">]:</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_benchmark_result_summary</span><span class="p">(</span><span class="n">benchmarking_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parse the summary benchmark DataFrame into a list of BenchmarkRunResults.</span>
 
@@ -1351,6 +1366,7 @@
             <span class="p">),</span>
             <span class="n">ranks</span><span class="o">=</span><span class="p">{},</span>
             <span class="n">benchmark_name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;results_directory_path&quot;</span><span class="p">],</span>
+            <span class="n">binary_classification_stats</span><span class="o">=</span><span class="n">BinaryClassificationStats</span><span class="p">(),</span>
         <span class="p">)</span>
         <span class="n">benchmarking_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmarking_result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">benchmarking_results</span>
@@ -1420,8 +1436,7 @@
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -1445,7 +1460,8 @@
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_benchmark_tsv_result_summary</span><span class="p">(</span><span class="n">benchmarking_tsv</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_benchmark_tsv_result_summary</span><span class="p">(</span><span class="n">benchmarking_tsv</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Read the summary benchmark TSV output generated from the benchmark-comparison command.</span>
 

@@ -500,6 +500,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../binary_classification_stats/" class="md-nav__link">
+        Binary classification stats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -1309,8 +1323,7 @@
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 16</span>
-<span class="normal"> 17</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 17</span>
 <span class="normal"> 18</span>
 <span class="normal"> 19</span>
 <span class="normal"> 20</span>
@@ -1482,7 +1495,15 @@
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
-<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessDiseasePrioritisation</span><span class="p">:</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessDiseasePrioritisation</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for assessing disease prioritisation based on thresholds and scoring orders.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1615,7 +1636,10 @@
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">assess_disease_prioritisation</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span>
+        <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">,</span>
+        <span class="n">binary_classification_stats</span><span class="p">:</span> <span class="n">BinaryClassificationStats</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assess disease prioritisation.</span>
@@ -1626,6 +1650,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            rank_stats (RankStats): RankStats class instance</span>
 <span class="sd">            rank_records (defaultdict): A defaultdict to store the correct ranked results.</span>
+<span class="sd">            binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">relevant_ranks</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">disease</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proband_diseases</span><span class="p">:</span>
@@ -1656,6 +1681,9 @@
                 <span class="n">rank_records</span><span class="p">,</span>
             <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
         <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
+        <span class="n">binary_classification_stats</span><span class="o">.</span><span class="n">add_classification</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">standardised_disease_results</span><span class="p">,</span> <span class="n">relevant_ranks</span>
+        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1761,8 +1789,7 @@
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
-<span class="normal">20</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
@@ -1787,7 +1814,8 @@
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">results_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -1825,7 +1853,7 @@
 
 
 <h3 id="src.pheval.analyse.disease_prioritisation_analysis.AssessDiseasePrioritisation.assess_disease_prioritisation" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">assess_disease_prioritisation</span><span class="p">(</span><span class="n">rank_stats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">assess_disease_prioritisation</span><span class="p">(</span><span class="n">rank_stats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">,</span> <span class="n">binary_classification_stats</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1867,13 +1895,22 @@ and records ranks using a PrioritisationRankRecorder.</p>
               <em>required</em>
           </td>
         </tr>
+        <tr>
+          <td><code>binary_classification_stats</code></td>
+          <td>
+                <code><span title="pheval.analyse.binary_classification_stats.BinaryClassificationStats">BinaryClassificationStats</span></code>
+          </td>
+          <td><p>BinaryClassificationStats class instance.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
     </tbody>
   </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
-<span class="normal">149</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
@@ -1913,8 +1950,19 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
-<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_disease_prioritisation</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span> <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_disease_prioritisation</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span>
+    <span class="n">rank_records</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">,</span>
+    <span class="n">binary_classification_stats</span><span class="p">:</span> <span class="n">BinaryClassificationStats</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Assess disease prioritisation.</span>
@@ -1925,6 +1973,7 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        rank_stats (RankStats): RankStats class instance</span>
 <span class="sd">        rank_records (defaultdict): A defaultdict to store the correct ranked results.</span>
+<span class="sd">        binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">relevant_ranks</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">disease</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proband_diseases</span><span class="p">:</span>
@@ -1955,6 +2004,9 @@ and records ranks using a PrioritisationRankRecorder.</p>
             <span class="n">rank_records</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">record_rank</span><span class="p">()</span>
     <span class="n">rank_stats</span><span class="o">.</span><span class="n">relevant_result_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">relevant_ranks</span><span class="p">)</span>
+    <span class="n">binary_classification_stats</span><span class="o">.</span><span class="n">add_classification</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">standardised_disease_results</span><span class="p">,</span> <span class="n">relevant_ranks</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1975,7 +2027,7 @@ and records ranks using a PrioritisationRankRecorder.</p>
 
 
 <h2 id="src.pheval.analyse.disease_prioritisation_analysis.assess_phenopacket_disease_prioritisation" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">assess_phenopacket_disease_prioritisation</span><span class="p">(</span><span class="n">standardised_disease_result</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">results_dir_and_input</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">disease_rank_stats</span><span class="p">,</span> <span class="n">disease_rank_comparison</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">assess_phenopacket_disease_prioritisation</span><span class="p">(</span><span class="n">standardised_disease_result</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">results_dir_and_input</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">disease_rank_stats</span><span class="p">,</span> <span class="n">disease_rank_comparison</span><span class="p">,</span> <span class="n">disease_binary_classification_stats</span><span class="p">)</span></code>
 
 </h2>
 
@@ -2056,20 +2108,22 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
               <em>required</em>
           </td>
         </tr>
+        <tr>
+          <td><code>disease_binary_classification_stats</code></td>
+          <td>
+                <code><span title="pheval.analyse.binary_classification_stats.BinaryClassificationStats">BinaryClassificationStats</span></code>
+          </td>
+          <td><p>BinaryClassificationStats class instance.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
     </tbody>
   </table>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
@@ -2093,13 +2147,26 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
-<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_disease_prioritisation</span><span class="p">(</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_disease_prioritisation</span><span class="p">(</span>
     <span class="n">standardised_disease_result</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">results_dir_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">disease_rank_stats</span><span class="p">:</span> <span class="n">RankStats</span><span class="p">,</span>
     <span class="n">disease_rank_comparison</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">,</span>
+    <span class="n">disease_binary_classification_stats</span><span class="p">:</span> <span class="n">BinaryClassificationStats</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Assess disease prioritisation for a Phenopacket by comparing PhEval standardised disease results</span>
@@ -2112,6 +2179,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="sd">        threshold (float): Threshold for assessment.</span>
 <span class="sd">        disease_rank_stats (RankStats): RankStats class instance.</span>
 <span class="sd">        disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.</span>
+<span class="sd">        disease_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">phenopacket_path</span> <span class="o">=</span> <span class="n">obtain_closest_file_name</span><span class="p">(</span>
         <span class="n">standardised_disease_result</span><span class="p">,</span> <span class="n">all_files</span><span class="p">(</span><span class="n">results_dir_and_input</span><span class="o">.</span><span class="n">phenopacket_dir</span><span class="p">)</span>
@@ -2125,7 +2193,9 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
         <span class="n">threshold</span><span class="p">,</span>
         <span class="n">score_order</span><span class="p">,</span>
         <span class="n">proband_diseases</span><span class="p">,</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">assess_disease_prioritisation</span><span class="p">(</span><span class="n">disease_rank_stats</span><span class="p">,</span> <span class="n">disease_rank_comparison</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">assess_disease_prioritisation</span><span class="p">(</span>
+        <span class="n">disease_rank_stats</span><span class="p">,</span> <span class="n">disease_rank_comparison</span><span class="p">,</span> <span class="n">disease_binary_classification_stats</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -2224,19 +2294,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/disease_prioritisation_analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
 <span class="normal">255</span>
 <span class="normal">256</span>
 <span class="normal">257</span>
@@ -2260,7 +2318,22 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="normal">275</span>
 <span class="normal">276</span>
 <span class="normal">277</span>
-<span class="normal">278</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_disease_prioritisation</span><span class="p">(</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_disease_prioritisation</span><span class="p">(</span>
     <span class="n">results_directory_and_input</span><span class="p">:</span> <span class="n">TrackInputOutputDirectories</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -2280,6 +2353,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
 <span class="sd">        including ranks and rank statistics for the benchmarked directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">disease_rank_stats</span> <span class="o">=</span> <span class="n">RankStats</span><span class="p">()</span>
+    <span class="n">disease_binary_classification_stats</span> <span class="o">=</span> <span class="n">BinaryClassificationStats</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">standardised_result</span> <span class="ow">in</span> <span class="n">files_with_suffix</span><span class="p">(</span>
         <span class="n">results_directory_and_input</span><span class="o">.</span><span class="n">results_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_disease_results/&quot;</span><span class="p">),</span>
         <span class="s2">&quot;.tsv&quot;</span><span class="p">,</span>
@@ -2291,11 +2365,13 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
             <span class="n">threshold</span><span class="p">,</span>
             <span class="n">disease_rank_stats</span><span class="p">,</span>
             <span class="n">disease_rank_comparison</span><span class="p">,</span>
+            <span class="n">disease_binary_classification_stats</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">BenchmarkRunResults</span><span class="p">(</span>
         <span class="n">results_dir</span><span class="o">=</span><span class="n">results_directory_and_input</span><span class="o">.</span><span class="n">results_dir</span><span class="p">,</span>
         <span class="n">ranks</span><span class="o">=</span><span class="n">disease_rank_comparison</span><span class="p">,</span>
         <span class="n">rank_stats</span><span class="o">=</span><span class="n">disease_rank_stats</span><span class="p">,</span>
+        <span class="n">binary_classification_stats</span><span class="o">=</span><span class="n">disease_binary_classification_stats</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -2330,7 +2406,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../benchmarking_data/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Benchmarking data" rel="prev">
+        <a href="../binary_classification_stats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Binary classification stats" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2339,7 +2415,7 @@ against the recorded causative diseases for a proband in the Phenopacket.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Benchmarking data
+              Binary classification stats
             </div>
           </div>
         </a>
