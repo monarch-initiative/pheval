@@ -1,7 +1,5 @@
-import csv
 from dataclasses import dataclass
 from math import sqrt
-from pathlib import Path
 from typing import List, Union
 
 from pheval.post_processing.post_processing import (
@@ -301,80 +299,3 @@ class BinaryClassificationStats:
             > 0
             else 0.0
         )
-
-
-class BinaryClassificationWriter:
-    def __init__(self, file: Path):
-        """
-        Initialise the BinaryClassificationWriter class
-        Args:
-            file (Path): Path to the file where binary classification stats will be written
-        """
-        self.file = open(file, "w")
-        self.writer = csv.writer(self.file, delimiter="\t")
-        self.writer.writerow(
-            [
-                "results_directory_path",
-                "true_positives",
-                "false_positives",
-                "true_negatives",
-                "false_negatives",
-                "sensitivity",
-                "specificity",
-                "precision",
-                "negative_predictive_value",
-                "false_positive_rate",
-                "false_discovery_rate",
-                "false_negative_rate",
-                "accuracy",
-                "f1_score",
-                "matthews_correlation_coefficient",
-            ]
-        )
-
-    def write_row(self, directory: Path, binary_classification: BinaryClassificationStats) -> None:
-        """
-        Write binary classification statistics row for a run to the file.
-
-        Args:
-            directory (Path): Path to the results directory corresponding to the run
-            binary_classification (BinaryClassificationStats): BinaryClassificationStats instance containing
-                binary classification counts corresponding to the run
-
-        Raises:
-            IOError: If there is an error writing to the file.
-        """
-        try:
-            self.writer.writerow(
-                [
-                    directory,
-                    binary_classification.true_positives,
-                    binary_classification.false_positives,
-                    binary_classification.true_negatives,
-                    binary_classification.false_negatives,
-                    binary_classification.sensitivity(),
-                    binary_classification.specificity(),
-                    binary_classification.precision(),
-                    binary_classification.negative_predictive_value(),
-                    binary_classification.false_positive_rate(),
-                    binary_classification.false_discovery_rate(),
-                    binary_classification.false_negative_rate(),
-                    binary_classification.accuracy(),
-                    binary_classification.f1_score(),
-                    binary_classification.matthews_correlation_coefficient(),
-                ]
-            )
-        except IOError:
-            print("Error writing ", self.file)
-
-    def close(self) -> None:
-        """
-        Close the file used for writing binary classification statistics.
-
-        Raises:
-            IOError: If there's an error while closing the file.
-        """
-        try:
-            self.file.close()
-        except IOError:
-            print("Error closing ", self.file)

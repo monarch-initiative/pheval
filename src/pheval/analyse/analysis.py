@@ -8,7 +8,6 @@ from pheval.analyse.benchmark_generator import (
     GeneBenchmarkRunOutputGenerator,
     VariantBenchmarkRunOutputGenerator,
 )
-from pheval.analyse.binary_classification_stats import BinaryClassificationWriter
 from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_comparison_output,
     generate_benchmark_output,
@@ -36,22 +35,15 @@ def _run_benchmark(
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.rank_stats_comparison_file_suffix)
-    )
-    binary_classification_writer = BinaryClassificationWriter(
-        Path(output_prefix + benchmark_generator.binary_classification_stats_comparison_file_suffix)
+        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     rank_comparison = defaultdict(dict)
     benchmark_result = benchmark_generator.generate_benchmark_run_results(
         results_dir_and_input, score_order, threshold, rank_comparison
     )
     stats_writer.write_row(results_dir_and_input.results_dir, benchmark_result.rank_stats)
-    binary_classification_writer.write_row(
-        results_dir_and_input.results_dir, benchmark_result.binary_classification_stats
-    )
     generate_benchmark_output(benchmark_result, plot_type, benchmark_generator)
     stats_writer.close()
-    binary_classification_writer.close()
 
 
 def benchmark_directory(
@@ -127,10 +119,7 @@ def _run_benchmark_comparison(
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.rank_stats_comparison_file_suffix)
-    )
-    binary_classification_writer = BinaryClassificationWriter(
-        Path(output_prefix + benchmark_generator.binary_classification_stats_comparison_file_suffix)
+        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     benchmarking_results = []
     for results_dir_and_input in results_directories:
@@ -139,13 +128,9 @@ def _run_benchmark_comparison(
             results_dir_and_input, score_order, threshold, rank_comparison
         )
         stats_writer.write_row(results_dir_and_input.results_dir, benchmark_result.rank_stats)
-        binary_classification_writer.write_row(
-            results_dir_and_input.results_dir, benchmark_result.binary_classification_stats
-        )
         benchmarking_results.append(benchmark_result)
     generate_benchmark_comparison_output(benchmarking_results, plot_type, benchmark_generator)
     stats_writer.close()
-    binary_classification_writer.close()
 
 
 def benchmark_run_comparisons(
