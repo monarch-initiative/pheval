@@ -175,18 +175,23 @@ class AssessDiseasePrioritisation:
                     disease_match = self._record_matched_disease(
                         disease, rank_stats, standardised_disease_result
                     )
-                    relevant_ranks.append(
-                        disease_match.rank
-                    ) if disease_match else relevant_ranks.append(0)
+                    (
+                        relevant_ranks.append(disease_match.rank)
+                        if disease_match
+                        else relevant_ranks.append(0)
+                    )
                     break
             PrioritisationRankRecorder(
                 rank_stats.total,
                 self.results_dir,
-                DiseasePrioritisationResult(self.phenopacket_path, disease)
-                if disease_match is None
-                else disease_match,
+                (
+                    DiseasePrioritisationResult(self.phenopacket_path, disease)
+                    if disease_match is None
+                    else disease_match
+                ),
                 rank_records,
             ).record_rank()
+        rank_stats.relevant_result_ranks.append(relevant_ranks)
         binary_classification_stats.add_classification(
             self.standardised_disease_results, relevant_ranks
         )

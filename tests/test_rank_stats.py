@@ -6,6 +6,15 @@ from pheval.analyse.rank_stats import RankStats
 class TestRankStats(unittest.TestCase):
     def setUp(self) -> None:
         self.rank_stats = RankStats()
+        self.complete_rank_stats = RankStats(
+            top=0,
+            top3=8,
+            top5=10,
+            top10=15,
+            found=20,
+            total=40,
+            relevant_result_ranks=[[4], [3], [6, 7], [2], [9], [20]],
+        )
 
     def test_add_rank(self):
         self.rank_stats.add_rank(1)
@@ -70,3 +79,69 @@ class TestRankStats(unittest.TestCase):
     def test_return_mean_reciprocal_rank_from_mrr_variable(self):
         self.rank_stats.mrr = 0.1
         self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)
+
+    def test_precision_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(1), 0)
+
+    def test_precision_at_k_3(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(3), 0.06666666666666667)
+
+    def test_precision_at_k_5(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(5), 0.05)
+
+    def test_precision_at_k_10(self):
+        self.assertEqual(self.complete_rank_stats.precision_at_k(10), 0.0375)
+
+    def test__calculate_average_precision(self):
+        self.assertEqual(self.rank_stats._average_precision_at_k(3, 0.5), 0.16666666666666666)
+
+    def test__calculate_average_precision_0(self):
+        self.assertEqual(self.rank_stats._average_precision_at_k(0, 0), 0)
+
+    def test_mean_average_precision_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.mean_average_precision_at_k(1), 0.0)
+
+    def test_mean_average_precision_at_k_3(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_average_precision_at_k(3), 0.020833333333333332
+        )
+
+    def test_mean_average_precision_at_k_5(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_average_precision_at_k(5), 0.027083333333333334
+        )
+
+    def test_mean_average_precision_at_k_10(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_average_precision_at_k(10), 0.03968253968253968
+        )
+
+    def test_f_beta_score_at_k_1(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(0, 1), 0)
+
+    def test_f_beta_score_at_k_3(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(20, 3), 0.1)
+
+    def test_f_beta_score_at_k_5(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(25, 5), 0.08333333333333334)
+
+    def test_f_beta_score_at_k_10(self):
+        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(37.5, 10), 0.06818181818181818)
+
+    def test_mean_normalised_discounted_cumulative_gain_3(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(3),
+            0.09424414613095478,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_5(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(5),
+            0.243557389859924,
+        )
+
+    def test_mean_normalised_discounted_cumulative_gain_10(self):
+        self.assertEqual(
+            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(10),
+            0.3368971541167727,
+        )

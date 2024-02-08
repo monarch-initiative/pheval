@@ -1,4 +1,5 @@
 """implementations"""
+
 from functools import cache
 
 from class_resolver import ClassResolver

@@ -1,4 +1,5 @@
 """CLI Test """
+
 import logging
 import shutil
 import tempfile

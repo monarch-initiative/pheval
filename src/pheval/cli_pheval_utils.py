@@ -16,8 +16,9 @@ from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
 from pheval.prepare.update_phenopacket import update_phenopackets
+from pheval.utils.exomiser import semsim_to_exomiserdb
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
-from pheval.utils.utils import semsim_convert, semsim_scramble
+from pheval.utils.utils import semsim_scramble
 
 
 @click.command("semsim-scramble")
@@ -292,54 +293,6 @@ def create_spiked_vcfs_command(
     spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, template_vcf_path, vcf_dir)
 
 
-@click.command("semsim-convert")
-@click.option(
-    "--input",
-    "-i",
-    required=True,
-    metavar="FILE",
-    help="Path to the semsim file.",
-    type=Path,
-)
-@click.option(
-    "--output",
-    "-o",
-    required=True,
-    metavar="FILE",
-    help="Path where converted semsim will be written.",
-    type=Path,
-)
-@click.option(
-    "--subject-prefix",
-    "-s",
-    required=True,
-    metavar="FILE",
-    help="Subject Prefix that will be mapped to the database",
-    type=str,
-)
-@click.option(
-    "--object-prefix",
-    "-b",
-    required=True,
-    metavar="FILE",
-    help="Object Prefix that will be mapped to the database.",
-    type=str,
-)
-@click.option(
-    "--output-format",
-    "-O",
-    required=True,
-    metavar=str,
-    help="Output file format. Available formats: (exomiserdb)",
-    type=click.Choice(["exomiserdb"], case_sensitive=False),
-)
-def semsim_convert_command(
-    input: Path, output: Path, subject_prefix: str, object_prefix: str, output_format: str
-):
-    """convert semsim profile to an exomiser database file"""
-    semsim_convert(input, output, subject_prefix, object_prefix, output_format)
-
-
 @click.command()
 @click.option(
     "--directory",
@@ -533,6 +486,53 @@ def benchmark_comparison(
         disease_analysis,
         plot_type,
     )
+
+
+@click.command("semsim-to-exomiserdb")
+@click.option(
+    "--input-file",
+    "-i",
+    required=True,
+    metavar="FILE",
+    help="Semsim input file.",
+    type=Path,
+)
+@click.option(
+    "--object-prefix",
+    required=True,
+    metavar="object-prefix",
+    help="Object Prefix. e.g. MP",
+    type=str,
+)
+@click.option(
+    "--subject-prefix",
+    required=True,
+    metavar="subject-prefix",
+    help="Subject Prefix. e.g. HP",
+    type=str,
+)
+@click.option(
+    "--db-path",
+    "-d",
+    required=True,
+    metavar="db-path",
+    help="""Exomiser Phenotypic Database Folder Path.
+    (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/).
+    This is the path where the phenotypic database folder will be written out.""",
+    type=Path,
+)
+def semsim_to_exomiserdb_command(
+    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
+):
+    """ingests semsim file into exomiser phenotypic database
+
+    Args:
+        input_file (Path): semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv
+        object_prefix (str): object prefix. e.g. MP
+        subject_prefix (str): subject prefix e.g HP
+        db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)
+    """
+    semsim_to_exomiserdb(input_file, object_prefix, subject_prefix, db_path)
 
 
 @click.command()
