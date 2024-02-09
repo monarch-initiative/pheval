@@ -274,7 +274,9 @@ class PlotGenerator:
             hue="Run",
             palette=self.palette_hex_codes,
             edgecolor="white",
+            legend=False,
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
+        plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
@@ -381,7 +383,9 @@ class PlotGenerator:
             hue="Run",
             palette=self.palette_hex_codes,
             edgecolor="white",
+            legend=False,
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
+        plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
