@@ -1739,7 +1739,11 @@
 <span class="normal">393</span>
 <span class="normal">394</span>
 <span class="normal">395</span>
-<span class="normal">396</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PlotGenerator</span><span class="p">:</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PlotGenerator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to generate plots.&quot;&quot;&quot;</span>
 
     <span class="n">palette_hex_codes</span> <span class="o">=</span> <span class="p">[</span>
@@ -1980,7 +1984,9 @@
             <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
             <span class="n">palette</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">palette_hex_codes</span><span class="p">,</span>
             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">y_label</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_file_prefix</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Cumulative Rank Stats&quot;</span>
@@ -2087,7 +2093,9 @@
             <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
             <span class="n">palette</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">palette_hex_codes</span><span class="p">,</span>
             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">y_label</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_file_prefix</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Non-Cumulative Rank Stats&quot;</span>
@@ -2268,7 +2276,9 @@ for generated plots.</p>
 <span class="normal">286</span>
 <span class="normal">287</span>
 <span class="normal">288</span>
-<span class="normal">289</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_cumulative_bar</span><span class="p">(</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_cumulative_bar</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">benchmarking_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">],</span>
     <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkRunOutputGenerator</span><span class="p">,</span>
@@ -2293,7 +2303,9 @@ for generated plots.</p>
         <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
         <span class="n">palette</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">palette_hex_codes</span><span class="p">,</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">y_label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_file_prefix</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Cumulative Rank Stats&quot;</span>
@@ -2372,9 +2384,7 @@ for generated plots.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">360</span>
 <span class="normal">361</span>
 <span class="normal">362</span>
 <span class="normal">363</span>
@@ -2410,7 +2420,11 @@ for generated plots.</p>
 <span class="normal">393</span>
 <span class="normal">394</span>
 <span class="normal">395</span>
-<span class="normal">396</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_non_cumulative_bar</span><span class="p">(</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_non_cumulative_bar</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">benchmarking_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">],</span>
     <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkRunOutputGenerator</span><span class="p">,</span>
@@ -2436,7 +2450,9 @@ for generated plots.</p>
         <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span>
         <span class="n">palette</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">palette_hex_codes</span><span class="p">,</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">y_label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_file_prefix</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Non-Cumulative Rank Stats&quot;</span>
@@ -2803,11 +2819,7 @@ for generated plots.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">403</span>
 <span class="normal">404</span>
 <span class="normal">405</span>
 <span class="normal">406</span>
@@ -2826,7 +2838,11 @@ for generated plots.</p>
 <span class="normal">419</span>
 <span class="normal">420</span>
 <span class="normal">421</span>
-<span class="normal">422</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_plots</span><span class="p">(</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_plots</span><span class="p">(</span>
     <span class="n">benchmarking_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">],</span>
     <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkRunOutputGenerator</span><span class="p">,</span>
     <span class="n">plot_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2966,11 +2982,7 @@ based on the analysis type and plot type.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">429</span>
 <span class="normal">430</span>
 <span class="normal">431</span>
 <span class="normal">432</span>
@@ -3002,7 +3014,11 @@ based on the analysis type and plot type.</p>
 <span class="normal">458</span>
 <span class="normal">459</span>
 <span class="normal">460</span>
-<span class="normal">461</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_plots_from_benchmark_summary_tsv</span><span class="p">(</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_plots_from_benchmark_summary_tsv</span><span class="p">(</span>
     <span class="n">benchmark_summary_tsv</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">gene_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">variant_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
