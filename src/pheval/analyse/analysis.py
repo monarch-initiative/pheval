@@ -35,7 +35,7 @@ def _run_benchmark(
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.rank_comparison_file_suffix)
+        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     rank_comparison = defaultdict(dict)
     benchmark_result = benchmark_generator.generate_benchmark_run_results(
@@ -119,7 +119,7 @@ def _run_benchmark_comparison(
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.rank_comparison_file_suffix)
+        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     benchmarking_results = []
     for results_dir_and_input in results_directories:

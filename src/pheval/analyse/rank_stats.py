@@ -7,6 +7,8 @@ from typing import List
 import numpy as np
 from sklearn.metrics import ndcg_score
 
+from pheval.analyse.binary_classification_stats import BinaryClassificationStats
+
 
 @dataclass
 class RankStats:
@@ -316,10 +318,29 @@ class RankStatsWriter:
                 "NDCG@3",
                 "NDCG@5",
                 "NDCG@10",
+                "true_positives",
+                "false_positives",
+                "true_negatives",
+                "false_negatives",
+                "sensitivity",
+                "specificity",
+                "precision",
+                "negative_predictive_value",
+                "false_positive_rate",
+                "false_discovery_rate",
+                "false_negative_rate",
+                "accuracy",
+                "f1_score",
+                "matthews_correlation_coefficient",
             ]
         )
 
-    def write_row(self, directory: Path, rank_stats: RankStats) -> None:
+    def write_row(
+        self,
+        directory: Path,
+        rank_stats: RankStats,
+        binary_classification: BinaryClassificationStats,
+    ) -> None:
         """
         Write summary rank statistics row for a run to the file.
 
@@ -361,6 +382,20 @@ class RankStatsWriter:
                     rank_stats.mean_normalised_discounted_cumulative_gain(3),
                     rank_stats.mean_normalised_discounted_cumulative_gain(5),
                     rank_stats.mean_normalised_discounted_cumulative_gain(10),
+                    binary_classification.true_positives,
+                    binary_classification.false_positives,
+                    binary_classification.true_negatives,
+                    binary_classification.false_negatives,
+                    binary_classification.sensitivity(),
+                    binary_classification.specificity(),
+                    binary_classification.precision(),
+                    binary_classification.negative_predictive_value(),
+                    binary_classification.false_positive_rate(),
+                    binary_classification.false_discovery_rate(),
+                    binary_classification.false_negative_rate(),
+                    binary_classification.accuracy(),
+                    binary_classification.f1_score(),
+                    binary_classification.matthews_correlation_coefficient(),
                 ]
             )
         except IOError:

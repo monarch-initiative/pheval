@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from math import sqrt
 from typing import List, Union
 
 from pheval.post_processing.post_processing import (
@@ -103,4 +104,198 @@ class BinaryClassificationStats:
         self.add_classification_for_known_entities(relevant_ranks)
         self.add_classification_for_other_entities(
             self.remove_relevant_ranks(pheval_results, relevant_ranks)
+        )
+
+    def sensitivity(self) -> float:
+        """
+        Calculate sensitivity.
+
+        Sensitivity measures the proportion of actual positive instances correctly identified by the model.
+
+        Returns:
+            float: The sensitivity of the model, calculated as true positives divided by the sum of true positives
+            and false negatives. Returns 0 if both true positives and false negatives are zero.
+        """
+        return (
+            self.true_positives / (self.true_positives + self.false_negatives)
+            if (self.true_positives + self.false_negatives) > 0
+            else 0.0
+        )
+
+    def specificity(self) -> float:
+        """
+        Calculate specificity.
+
+        Specificity measures the proportion of actual negative instances correctly identified by the model.
+
+        Returns:
+            float: The specificity of the model, calculated as true negatives divided by the sum of true negatives
+            and false positives. Returns 0.0 if both true negatives and false positives are zero.
+        """
+        return (
+            self.true_negatives / (self.true_negatives + self.false_positives)
+            if (self.true_negatives + self.false_positives) > 0
+            else 0.0
+        )
+
+    def precision(self) -> float:
+        """
+        Calculate precision.
+
+        Precision measures the proportion of correctly predicted positive instances out of all instances
+        predicted as positive.
+
+        Returns:
+            float: The precision of the model, calculated as true positives divided by the sum of true positives
+            and false positives. Returns 0.0 if both true positives and false positives are zero.
+        """
+        return (
+            self.true_positives / (self.true_positives + self.false_positives)
+            if (self.true_positives + self.false_positives) > 0
+            else 0.0
+        )
+
+    def negative_predictive_value(self) -> float:
+        """
+        Calculate Negative Predictive Value (NPV).
+
+        NPV measures the proportion of correctly predicted negative instances out of all instances predicted negative.
+
+        Returns:
+            float: The Negative Predictive Value of the model, calculated as true negatives divided by the sum of
+            true negatives and false negatives. Returns 0.0 if both true negatives and false negatives are zero.
+        """
+        return (
+            self.true_negatives / (self.true_negatives + self.false_negatives)
+            if (self.true_negatives + self.false_negatives) > 0
+            else 0.0
+        )
+
+    def false_positive_rate(self) -> float:
+        """
+        Calculate False Positive Rate (FPR).
+
+        FPR measures the proportion of instances predicted as positive that are actually negative.
+
+        Returns:
+            float: The False Positive Rate of the model, calculated as false positives divided by the sum of
+            false positives and true negatives. Returns 0.0 if both false positives and true negatives are zero.
+        """
+        return (
+            self.false_positives / (self.false_positives + self.true_negatives)
+            if (self.false_positives + self.true_negatives) > 0
+            else 0.0
+        )
+
+    def false_discovery_rate(self) -> float:
+        """
+        Calculate False Discovery Rate (FDR).
+
+        FDR measures the proportion of instances predicted as positive that are actually negative.
+
+        Returns:
+            float: The False Discovery Rate of the model, calculated as false positives divided by the sum of
+            false positives and true positives. Returns 0.0 if both false positives and true positives are zero.
+        """
+        return (
+            self.false_positives / (self.false_positives + self.true_positives)
+            if (self.false_positives + self.true_positives) > 0
+            else 0.0
+        )
+
+    def false_negative_rate(self) -> float:
+        """
+        Calculate False Negative Rate (FNR).
+
+        FNR measures the proportion of instances that are actually positive but predicted as negative.
+
+        Returns:
+            float: The False Negative Rate of the model, calculated as false negatives divided by the sum of
+            false negatives and true positives. Returns 0.0 if both false negatives and true positives are zero.
+        """
+        return (
+            self.false_negatives / (self.false_negatives + self.true_positives)
+            if (self.false_negatives + self.true_positives) > 0
+            else 0.0
+        )
+
+    def accuracy(self) -> float:
+        """
+        Calculate Accuracy.
+
+        Accuracy measures the proportion of correctly predicted instances out of all instances.
+
+        Returns:
+            float: The Accuracy of the model, calculated as the sum of true positives and true negatives divided by
+            the sum of true positives, false positives, true negatives, and false negatives.
+            Returns 0.0 if the total sum of counts is zero.
+        """
+        return (
+            (self.true_positives + self.true_negatives)
+            / (
+                self.true_positives
+                + self.false_positives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            if (
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
+            else 0.0
+        )
+
+    def f1_score(self) -> float:
+        """
+        Calculate F1 Score.
+
+        F1 Score is the harmonic mean of precision and recall, providing a balance between false positives
+        and false negatives.
+
+        Returns:
+            float: The F1 Score of the model, calculated as 2 * TP / (2 * TP + FP + FN).
+            Returns 0.0 if the denominator is zero.
+        """
+        return (
+            (2 * self.true_positives)
+            / ((2 * self.true_positives) + self.false_positives + self.false_negatives)
+            if (self.true_positives + self.false_positives + self.false_negatives) > 0
+            else 0.0
+        )
+
+    def matthews_correlation_coefficient(self) -> float:
+        """
+        Calculate Matthews Correlation Coefficient (MCC).
+
+        MCC is a measure of the quality of binary classifications, accounting for imbalances in the data.
+
+        Returns:
+            float: The Matthews Correlation Coefficient of the model, calculated as
+            ((TP * TN) - (FP * FN)) / sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN)).
+            Returns 0.0 if the denominator is zero.
+        """
+        return (
+            (
+                (self.true_positives * self.true_negatives)
+                - (self.false_positives * self.false_negatives)
+            )
+            / (
+                sqrt(
+                    (self.true_positives + self.false_positives)
+                    * (self.true_positives + self.false_negatives)
+                    * (self.true_negatives + self.false_positives)
+                    * (self.true_negatives + self.false_negatives)
+                )
+            )
+            if (
+                self.true_positives
+                + self.false_negatives
+                + self.true_negatives
+                + self.false_negatives
+            )
+            > 0
+            else 0.0
         )
