@@ -41,7 +41,11 @@ def _run_benchmark(
     benchmark_result = benchmark_generator.generate_benchmark_run_results(
         results_dir_and_input, score_order, threshold, rank_comparison
     )
-    stats_writer.write_row(results_dir_and_input.results_dir, benchmark_result.rank_stats)
+    stats_writer.write_row(
+        results_dir_and_input.results_dir,
+        benchmark_result.rank_stats,
+        benchmark_result.binary_classification_stats,
+    )
     generate_benchmark_output(benchmark_result, plot_type, benchmark_generator)
     stats_writer.close()
 
@@ -127,7 +131,11 @@ def _run_benchmark_comparison(
         benchmark_result = benchmark_generator.generate_benchmark_run_results(
             results_dir_and_input, score_order, threshold, rank_comparison
         )
-        stats_writer.write_row(results_dir_and_input.results_dir, benchmark_result.rank_stats)
+        stats_writer.write_row(
+            results_dir_and_input.results_dir,
+            benchmark_result.rank_stats,
+            benchmark_result.binary_classification_stats,
+        )
         benchmarking_results.append(benchmark_result)
     generate_benchmark_comparison_output(benchmarking_results, plot_type, benchmark_generator)
     stats_writer.close()
