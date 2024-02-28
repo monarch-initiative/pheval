@@ -51,6 +51,9 @@ class RankComparisonGenerator:
                 comparison_df["rank_change"],
             ),
         )
+        comparison_df["rank_change"] = comparison_df["rank_change"].apply(
+            lambda x: int(x) if str(x).lstrip("-").isdigit() else x
+        )
         return comparison_df
 
     def generate_output(self, prefix: str, suffix: str) -> None:
