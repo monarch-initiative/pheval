@@ -3,6 +3,7 @@ from collections import defaultdict
 from copy import deepcopy
 from typing import List
 
+import numpy as np
 import pandas as pd
 
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
@@ -40,7 +41,7 @@ class RankComparisonGenerator:
             pd.DataFrame: DataFrame containing the calculated rank differences.
         """
         comparison_df = self._generate_dataframe()
-        comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
+        comparison_df["rank_change"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
         return comparison_df
 
     def generate_output(self, prefix: str, suffix: str) -> None:
@@ -65,9 +66,9 @@ class RankComparisonGenerator:
 
 
 def generate_benchmark_output(
-    benchmarking_results: BenchmarkRunResults,
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
+        benchmarking_results: BenchmarkRunResults,
+        plot_type: str,
+        benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """
     Generate prioritisation outputs for a single benchmarking run.
@@ -122,9 +123,9 @@ def merge_results(result1: dict, result2: dict) -> defaultdict:
 
 
 def generate_benchmark_comparison_output(
-    benchmarking_results: List[BenchmarkRunResults],
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
+        benchmarking_results: List[BenchmarkRunResults],
+        plot_type: str,
+        benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """
     Generate prioritisation outputs for benchmarking multiple runs.
