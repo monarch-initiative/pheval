@@ -579,8 +579,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0,  labels=[1, 0, 0, 0],
-                          scores=[0.8764, 0.5777, 0.5777, 0.3765]
+                true_positives=1,
+                true_negatives=3,
+                false_positives=0,
+                false_negatives=0,
+                labels=[1, 0, 0, 0],
+                scores=[0.8764, 0.5777, 0.5777, 0.3765],
             ),
         )
 
@@ -621,8 +625,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1, labels=[0, 0, 0, 0],
-                          scores=[0.3765, 0.5777, 0.5777, 0.8764]
+                true_positives=0,
+                true_negatives=3,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 0],
+                scores=[0.3765, 0.5777, 0.5777, 0.8764],
             ),
         )
 
@@ -663,8 +671,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=2, false_positives=1, false_negatives=1, labels=[0, 0, 0, 1],
-                          scores=[0.3765, 0.5777, 0.5777, 0.8764]
+                true_positives=0,
+                true_negatives=2,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 1],
+                scores=[0.3765, 0.5777, 0.5777, 0.8764],
             ),
         )
 
@@ -705,8 +717,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1, labels=[0, 0, 0, 0],
-                          scores=[0.8764, 0.5777, 0.5777, 0.3765]
+                true_positives=0,
+                true_negatives=3,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 0],
+                scores=[0.8764, 0.5777, 0.5777, 0.3765],
             ),
         )
 
@@ -747,8 +763,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0, labels=[1, 0, 0, 0],
-                          scores=[0.8764, 0.5777, 0.5777, 0.3765]
+                true_positives=1,
+                true_negatives=3,
+                false_positives=0,
+                false_negatives=0,
+                labels=[1, 0, 0, 0],
+                scores=[0.8764, 0.5777, 0.5777, 0.3765],
             ),
         )
 
@@ -967,8 +987,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0, labels=[1, 0, 0],
-                          scores=[0.0484, 0.0484, 0.0484]
+                true_positives=1,
+                true_negatives=0,
+                false_positives=2,
+                false_negatives=0,
+                labels=[1, 0, 0],
+                scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
@@ -1009,8 +1033,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=0, false_positives=3, false_negatives=1, labels=[0, 0, 0],
-                          scores=[0.0484, 0.0484, 0.0484]
+                true_positives=0,
+                true_negatives=0,
+                false_positives=3,
+                false_negatives=1,
+                labels=[0, 0, 0],
+                scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
@@ -1051,8 +1079,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0, labels=[1, 0, 0],
-                          scores=[0.0484, 0.0484, 0.0484]
+                true_positives=1,
+                true_negatives=0,
+                false_positives=2,
+                false_negatives=0,
+                labels=[1, 0, 0],
+                scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
@@ -1093,8 +1125,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=0, false_positives=3, false_negatives=1, labels=[0, 0, 0],
-                          scores=[0.0484, 0.0484, 0.0484]
+                true_positives=0,
+                true_negatives=0,
+                false_positives=3,
+                false_negatives=1,
+                labels=[0, 0, 0],
+                scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
@@ -1135,8 +1171,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=0, false_positives=2, false_negatives=0, labels=[1, 0, 0],
-                          scores=[0.0484, 0.0484, 0.0484]
+                true_positives=1,
+                true_negatives=0,
+                false_positives=2,
+                false_negatives=0,
+                labels=[1, 0, 0],
+                scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
@@ -1378,8 +1418,12 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0, labels=[1, 0, 0, 0],
-                          scores=[1.0, 0.5, 0.5, 0.3]
+                true_positives=1,
+                true_negatives=3,
+                false_positives=0,
+                false_negatives=0,
+                labels=[1, 0, 0, 0],
+                scores=[1.0, 0.5, 0.5, 0.3],
             ),
         )
 
@@ -1415,8 +1459,12 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1, labels=[0, 0, 0, 0],
-                          scores=[0.3765, 0.5777, 0.5777, 0.8764]
+                true_positives=0,
+                true_negatives=3,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 0],
+                scores=[0.3765, 0.5777, 0.5777, 0.8764],
             ),
         )
 
@@ -1452,8 +1500,12 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=2, false_positives=1, false_negatives=1, labels=[0, 0, 0, 1],
-                          scores=[0.3765, 0.5777, 0.5777, 0.8764]
+                true_positives=0,
+                true_negatives=2,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 1],
+                scores=[0.3765, 0.5777, 0.5777, 0.8764],
             ),
         )
 
@@ -1489,8 +1541,12 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=0, true_negatives=3, false_positives=1, false_negatives=1, labels=[0, 0, 0, 0],
-                          scores=[1.0, 0.5, 0.5, 0.3]
+                true_positives=0,
+                true_negatives=3,
+                false_positives=1,
+                false_negatives=1,
+                labels=[0, 0, 0, 0],
+                scores=[1.0, 0.5, 0.5, 0.3],
             ),
         )
 
@@ -1526,7 +1582,11 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=3, false_positives=0, false_negatives=0, labels=[1, 0, 0, 0],
-                          scores=[1.0, 0.5, 0.5, 0.3]
+                true_positives=1,
+                true_negatives=3,
+                false_positives=0,
+                false_negatives=0,
+                labels=[1, 0, 0, 0],
+                scores=[1.0, 0.5, 0.5, 0.3],
             ),
         )
