@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from math import sqrt
 from typing import List, Union
 
@@ -29,6 +29,8 @@ class BinaryClassificationStats:
     true_negatives: int = 0
     false_positives: int = 0
     false_negatives: int = 0
+    labels: List = field(default_factory=list)
+    scores: List = field(default_factory=list)
 
     @staticmethod
     def remove_relevant_ranks(
@@ -84,6 +86,31 @@ class BinaryClassificationStats:
             elif rank != 1:
                 self.true_negatives += 1
 
+    def add_labels_and_scores(
+        self,
+        pheval_results: Union[
+            List[RankedPhEvalGeneResult],
+            List[RankedPhEvalVariantResult],
+            List[RankedPhEvalDiseaseResult],
+        ],
+        relevant_ranks: List[int],
+    ):
+        """
+        Adds scores and labels from the PhEval results.
+
+        Args:
+            pheval_results (Union[List[RankedPhEvalGeneResult], List[RankedPhEvalVariantResult],
+                                  List[RankedPhEvalDiseaseResult]]):
+                List of all PhEval results
+            relevant_ranks (List[int]): A list of the ranks associated with the known entities.
+        """
+        relevant_ranks_copy = relevant_ranks.copy()
+        for result in pheval_results:
+            self.scores.append(result.score)
+            label = 1 if result.rank in relevant_ranks_copy else 0
+            self.labels.append(label)
+            relevant_ranks_copy.remove(result.rank) if label == 1 else None
+
     def add_classification(
         self,
         pheval_results: Union[
@@ -105,6 +132,7 @@ class BinaryClassificationStats:
         self.add_classification_for_other_entities(
             self.remove_relevant_ranks(pheval_results, relevant_ranks)
         )
+        self.add_labels_and_scores(pheval_results, relevant_ranks)
 
     def sensitivity(self) -> float:
         """
