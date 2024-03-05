@@ -5,7 +5,7 @@ import matplotlib
 import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
-from sklearn.metrics import auc, roc_curve, precision_recall_curve
+from sklearn.metrics import auc, precision_recall_curve, roc_curve
 
 from pheval.analyse.benchmark_generator import (
     BenchmarkRunOutputGenerator,
@@ -397,9 +397,9 @@ class PlotGenerator:
         )
 
     def generate_precision_recall(
-            self,
-            benchmarking_results: List[BenchmarkRunResults],
-            benchmark_generator: BenchmarkRunOutputGenerator,
+        self,
+        benchmarking_results: List[BenchmarkRunResults],
+        benchmark_generator: BenchmarkRunOutputGenerator,
     ):
         """
         Generate and plot Precision-Recall curves for binary classification benchmark results.
@@ -418,7 +418,8 @@ class PlotGenerator:
             plt.plot(
                 recall,
                 precision,
-                label=f"{self.return_benchmark_name(benchmark_result)} Precision-Recall Curve (AUC = {precision_recall_auc:.2f})",
+                label=f"{self.return_benchmark_name(benchmark_result)} Precision-Recall Curve "
+                f"(AUC = {precision_recall_auc:.2f})",
                 color=self.palette_hex_codes[i],
             )
 
