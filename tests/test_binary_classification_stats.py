@@ -100,7 +100,12 @@ class TestBinaryClassificationStats(unittest.TestCase):
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
-                true_positives=1, true_negatives=2, false_positives=0, false_negatives=1
+                true_positives=1,
+                true_negatives=2,
+                false_positives=0,
+                false_negatives=1,
+                labels=[1, 1, 0, 0],
+                scores=[1.0, 0.5, 0.5, 0.3],
             ),
         )
 
