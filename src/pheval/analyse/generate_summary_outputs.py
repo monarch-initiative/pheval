@@ -41,7 +41,7 @@ class RankComparisonGenerator:
             pd.DataFrame: DataFrame containing the calculated rank differences.
         """
         comparison_df = self._generate_dataframe()
-        comparison_df["rank_change"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
+        comparison_df["rank_change"] = comparison_df.iloc[:, 2] - comparison_df.iloc[:, 3]
         comparison_df["rank_change"] = np.where(
             (comparison_df.iloc[:, 2] == 0) & (comparison_df.iloc[:, 3] != 0),
             "GAINED",

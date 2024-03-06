@@ -102,7 +102,7 @@ class TestRankComparisonGenerator(unittest.TestCase):
                     "Gene": "GCDH",
                     "/path/to/results_directory1": 1,
                     "/path/to/results_directory2": 5,
-                    "rank_change": 4,
+                    "rank_change": -4,
                 }
             ]
         )
@@ -117,7 +117,7 @@ class TestRankComparisonGenerator(unittest.TestCase):
                     "Variant": "3-12563453454-C-T",
                     "/path/to/results_directory1": 9,
                     "/path/to/results_directory2": 3,
-                    "rank_change": -6,
+                    "rank_change": 6,
                 }
             ]
         )
