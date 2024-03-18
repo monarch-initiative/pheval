@@ -3,6 +3,7 @@ from collections import defaultdict
 from copy import deepcopy
 from typing import List
 
+import numpy as np
 import pandas as pd
 
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
@@ -40,7 +41,19 @@ class RankComparisonGenerator:
             pd.DataFrame: DataFrame containing the calculated rank differences.
         """
         comparison_df = self._generate_dataframe()
-        comparison_df["rank_decrease"] = comparison_df.iloc[:, 3] - comparison_df.iloc[:, 2]
+        comparison_df["rank_change"] = comparison_df.iloc[:, 2] - comparison_df.iloc[:, 3]
+        comparison_df["rank_change"] = np.where(
+            (comparison_df.iloc[:, 2] == 0) & (comparison_df.iloc[:, 3] != 0),
+            "GAINED",
+            np.where(
+                (comparison_df.iloc[:, 3] == 0) & (comparison_df.iloc[:, 2] != 0),
+                "LOST",
+                comparison_df["rank_change"],
+            ),
+        )
+        comparison_df["rank_change"] = comparison_df["rank_change"].apply(
+            lambda x: int(x) if str(x).lstrip("-").isdigit() else x
+        )
         return comparison_df
 
     def generate_output(self, prefix: str, suffix: str) -> None:
