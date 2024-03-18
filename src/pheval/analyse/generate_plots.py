@@ -5,6 +5,7 @@ import matplotlib
 import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
+from sklearn.metrics import auc, precision_recall_curve, roc_curve
 
 from pheval.analyse.benchmark_generator import (
     BenchmarkRunOutputGenerator,
@@ -357,6 +358,82 @@ class PlotGenerator:
             ]
         )
 
+    def generate_roc_curve(
+        self,
+        benchmarking_results: List[BenchmarkRunResults],
+        benchmark_generator: BenchmarkRunOutputGenerator,
+    ):
+        """
+        Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.
+
+        Args:
+            benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+            benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+        """
+        for i, benchmark_result in enumerate(benchmarking_results):
+            fpr, tpr, thresh = roc_curve(
+                benchmark_result.binary_classification_stats.labels,
+                benchmark_result.binary_classification_stats.scores,
+                pos_label=1,
+            )
+            roc_auc = auc(fpr, tpr)
+
+            plt.plot(
+                fpr,
+                tpr,
+                label=f"{self.return_benchmark_name(benchmark_result)} ROC Curve (AUC = {roc_auc:.2f})",
+                color=self.palette_hex_codes[i],
+            )
+
+        plt.plot(linestyle="--", color="gray")
+        plt.xlabel("False Positive Rate")
+        plt.ylabel("True Positive Rate")
+        plt.title("Receiver Operating Characteristic (ROC) Curve")
+        plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
+        plt.savefig(
+            f"{benchmark_generator.prioritisation_type_file_prefix}_roc_curve.svg",
+            format="svg",
+            bbox_inches="tight",
+        )
+
+    def generate_precision_recall(
+        self,
+        benchmarking_results: List[BenchmarkRunResults],
+        benchmark_generator: BenchmarkRunOutputGenerator,
+    ):
+        """
+        Generate and plot Precision-Recall curves for binary classification benchmark results.
+
+        Args:
+            benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
+            benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+        """
+        plt.figure()
+        for i, benchmark_result in enumerate(benchmarking_results):
+            precision, recall, thresh = precision_recall_curve(
+                benchmark_result.binary_classification_stats.labels,
+                benchmark_result.binary_classification_stats.scores,
+            )
+            precision_recall_auc = auc(recall, precision)
+            plt.plot(
+                recall,
+                precision,
+                label=f"{self.return_benchmark_name(benchmark_result)} Precision-Recall Curve "
+                f"(AUC = {precision_recall_auc:.2f})",
+                color=self.palette_hex_codes[i],
+            )
+
+        plt.plot(linestyle="--", color="gray")
+        plt.xlabel("Recall")
+        plt.ylabel("Precision")
+        plt.title("Precision-Recall Curve")
+        plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
+        plt.savefig(
+            f"{benchmark_generator.prioritisation_type_file_prefix}_precision_recall_curve.svg",
+            format="svg",
+            bbox_inches="tight",
+        )
+
     def generate_non_cumulative_bar(
         self,
         benchmarking_results: List[BenchmarkRunResults],
@@ -418,6 +495,8 @@ def generate_plots(
         title (str, optional): Title for the generated plot. Defaults to None.
     """
     plot_generator = PlotGenerator()
+    plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
+    plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_plot(benchmarking_results, benchmark_generator, title)
     elif plot_type == "bar_cumulative":
