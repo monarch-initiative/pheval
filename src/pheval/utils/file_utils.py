@@ -1,4 +1,3 @@
-import difflib
 import itertools
 import re
 import unicodedata
@@ -71,23 +70,33 @@ def normalise_file_name(file_path: Path) -> str:
     return re.sub("[\u0300-\u036f]", "", normalised_file_name)
 
 
-def obtain_closest_file_name(file_to_be_queried: Path, file_paths: list[Path]) -> Path:
+def obtain_phenopacket_path_from_pheval_result(
+    pheval_result_path: Path, phenopacket_paths: list[Path]
+) -> Path:
     """
-    Obtains the closest file name when given a template file name
-    and a list of full paths of files to be queried.
+    Obtains the phenopacket file name when given a pheval result file name
+    and a list of full paths of phenopackets to be queried.
 
     Args:
-        file_to_be_queried (Path): The template file name to find the closest match.
-        file_paths (list[Path]): List of full paths of files to be queried.
+        pheval_result_path (Path): The PhEval result.
+        phenopacket_paths (list[Path]): List of full paths of phenopackets to be queried.
 
     Returns:
-        Path: The closest matching file path from the provided list.
+        Path: The matching phenopacket file path from the provided list.
     """
-    stems = [Path(file_path).stem for file_path in file_paths]
-    closest_file_match = difflib.get_close_matches(
-        str(Path(file_to_be_queried).stem), stems, cutoff=0.1, n=1
-    )[0]
-    return [file_path for file_path in file_paths if closest_file_match == str(file_path.stem)][0]
+    pheval_result_path_stem_stripped = pheval_result_path.stem.split("-pheval_")[0]
+    matching_phenopacket_paths = [
+        phenopacket_path
+        for phenopacket_path in phenopacket_paths
+        if phenopacket_path.stem == pheval_result_path_stem_stripped
+    ]
+    if matching_phenopacket_paths:
+        return matching_phenopacket_paths[0]
+    else:
+        raise FileNotFoundError(
+            f"Unable to find matching phenopacket file named "
+            f"{pheval_result_path_stem_stripped}.json for {pheval_result_path.name}"
+        )
 
 
 def ensure_file_exists(*files: str):

@@ -10,7 +10,11 @@ from pheval.analyse.prioritisation_result_types import VariantPrioritisationResu
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalVariantResult
-from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
+from pheval.utils.file_utils import (
+    all_files,
+    files_with_suffix,
+    obtain_phenopacket_path_from_pheval_result,
+)
 from pheval.utils.phenopacket_utils import GenomicVariant, PhenopacketUtil, phenopacket_reader
 
 
@@ -228,7 +232,7 @@ def assess_phenopacket_variant_prioritisation(
         variant_rank_comparison (defaultdict): Default dictionary for variant rank comparisons.
         variant_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
-    phenopacket_path = obtain_closest_file_name(
+    phenopacket_path = obtain_phenopacket_path_from_pheval_result(
         standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
     )
     proband_causative_variants = _obtain_causative_variants(phenopacket_path)
