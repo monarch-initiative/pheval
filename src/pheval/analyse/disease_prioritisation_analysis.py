@@ -10,7 +10,11 @@ from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResu
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
-from pheval.utils.file_utils import all_files, files_with_suffix, obtain_closest_file_name
+from pheval.utils.file_utils import (
+    all_files,
+    files_with_suffix,
+    obtain_phenopacket_path_from_pheval_result,
+)
 from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandDisease, phenopacket_reader
 
 
@@ -234,7 +238,7 @@ def assess_phenopacket_disease_prioritisation(
         disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.
         disease_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
-    phenopacket_path = obtain_closest_file_name(
+    phenopacket_path = obtain_phenopacket_path_from_pheval_result(
         standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
     )
     pheval_disease_result = read_standardised_result(standardised_disease_result)
