@@ -52,7 +52,7 @@ interpretations = [
                             gene_context=GeneDescriptor(value_id="NCBIGene:2245", symbol="FGD1"),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh37",
-                                chrom="X",
+                                chrom="chrX",
                                 pos=54492285,
                                 ref="C",
                                 alt="T",
@@ -149,7 +149,7 @@ updated_interpretations = [
                             ),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh37",
-                                chrom="X",
+                                chrom="chrX",
                                 pos=54492285,
                                 ref="C",
                                 alt="T",
@@ -516,7 +516,7 @@ class TestPhenopacketUtil(unittest.TestCase):
                 ProbandCausativeVariant(
                     proband_id="test-subject-1",
                     assembly="GRCh37",
-                    variant=GenomicVariant(chrom="X", pos=54492285, ref="C", alt="T"),
+                    variant=GenomicVariant(chrom="chrX", pos=54492285, ref="C", alt="T"),
                     genotype="hemizygous",
                     info="",
                 ),
