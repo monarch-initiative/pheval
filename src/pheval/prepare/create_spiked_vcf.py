@@ -229,7 +229,13 @@ def check_variant_assembly(
         raise ValueError("Too many genome assemblies!")
     if phenopacket_assembly[0] not in compatible_genome_assembly:
         raise IncompatibleGenomeAssemblyError(phenopacket_assembly, phenopacket_path)
-    if phenopacket_assembly[0] != vcf_header.assembly:
+    if (
+        phenopacket_assembly[0] in {"hg19", "GRCh37"}
+        and vcf_header.assembly not in {"hg19", "GRCh37"}
+    ) or (
+        phenopacket_assembly[0] in {"hg38", "GRCh38"}
+        and vcf_header.assembly not in {"hg38", "GRCh38"}
+    ):
         raise IncompatibleGenomeAssemblyError(
             assembly=phenopacket_assembly, phenopacket=phenopacket_path
         )
