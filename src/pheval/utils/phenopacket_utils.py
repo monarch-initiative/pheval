@@ -503,13 +503,13 @@ class PhenopacketUtil:
 
     def check_incomplete_gene_record(self) -> bool:
         """
-            Check if any gene record in the phenopacket has incomplete information.
+        Check if any gene record in the phenopacket has incomplete information.
 
-            This method iterates through the diagnosed gene records and checks if any of them
-            have missing or incomplete information such as gene name, or gene identifier.
+        This method iterates through the diagnosed gene records and checks if any of them
+        have missing or incomplete information such as gene name, or gene identifier.
 
-            Returns:
-                bool: True if any gene record is incomplete, False otherwise.
+        Returns:
+            bool: True if any gene record is incomplete, False otherwise.
         """
         genes = self.diagnosed_genes()
         for gene in genes:
@@ -519,13 +519,13 @@ class PhenopacketUtil:
 
     def check_incomplete_disease_record(self) -> bool:
         """
-            Check if any disease record in the phenopacket has incomplete information.
+        Check if any disease record in the phenopacket has incomplete information.
 
-            This method iterates through the diagnosed disease records and checks if any of them
-            have missing or incomplete information such as empty disease name, or disease identifier.
+        This method iterates through the diagnosed disease records and checks if any of them
+        have missing or incomplete information such as empty disease name, or disease identifier.
 
-            Returns:
-                bool: True if any disease record is incomplete, False otherwise.
+        Returns:
+            bool: True if any disease record is incomplete, False otherwise.
         """
         if len(self.diagnoses()) == 0:
             return True

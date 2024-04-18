@@ -54,8 +54,8 @@ def prepare_corpus(
                 continue
         if gene_identifier:
             create_updated_phenopacket(
-                    gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
-                )
+                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
+            )
         if template_vcf_path:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
             create_spiked_vcf(output_dir.joinpath("vcf"), phenopacket_path, template_vcf_path, None)
