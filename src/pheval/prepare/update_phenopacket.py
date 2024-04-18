@@ -38,8 +38,7 @@ def update_outdated_gene_context(
     interpretations = PhenopacketUtil(phenopacket).interpretations()
     updated_interpretations = GeneIdentifierUpdater(
         hgnc_data=hgnc_data, gene_identifier=gene_identifier
-    ).update_genomic_interpretations_gene_identifier(interpretations)
-
+    ).update_genomic_interpretations_gene_identifier(interpretations, phenopacket_path)
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
 
