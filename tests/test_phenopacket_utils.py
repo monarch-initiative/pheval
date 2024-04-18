@@ -736,7 +736,7 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         self.assertEqual(
             list(
                 self.gene_identifier_updater_ens.update_genomic_interpretations_gene_identifier(
-                    phenopacket.interpretations
+                    phenopacket.interpretations, Path("/phenopacket_path.json")
                 )
             ),
             updated_interpretations,
