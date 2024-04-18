@@ -1,6 +1,5 @@
 import json
-
-# import logging
+import logging
 import os
 from collections import defaultdict
 from copy import copy
@@ -21,6 +20,8 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
+
+info_log = logging.getLogger("info")
 
 
 class IncompatibleGenomeAssemblyError(Exception):
@@ -708,7 +709,7 @@ class GeneIdentifierUpdater:
                         ]
 
     def update_genomic_interpretations_gene_identifier(
-        self, interpretations: List[Interpretation]
+        self, interpretations: List[Interpretation], phenopacket_path: Path
     ) -> List[Interpretation]:
         """
         Update the genomic interpretations of a Phenopacket.
@@ -722,10 +723,16 @@ class GeneIdentifierUpdater:
         updated_interpretations = copy(list(interpretations))
         for updated_interpretation in updated_interpretations:
             for g in updated_interpretation.diagnosis.genomic_interpretations:
+                updated_gene_identifier = self.find_identifier(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol
+                )
+                info_log.info(
+                    f"Updating gene identifier in {phenopacket_path} from "
+                    f"{g.variant_interpretation.variation_descriptor.gene_context.value_id}"
+                    f"to {updated_gene_identifier}"
+                )
                 g.variant_interpretation.variation_descriptor.gene_context.value_id = (
-                    self.find_identifier(
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol
-                    )
+                    updated_gene_identifier
                 )
                 del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
                 g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(
