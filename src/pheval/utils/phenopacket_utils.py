@@ -477,6 +477,59 @@ class PhenopacketUtil:
                 variants.append(variant)
         return variants
 
+    def check_incomplete_variant_record(self) -> bool:
+        """
+        Check if any variant record in the phenopacket has incomplete information.
+
+        This method iterates through the diagnosed variant records and checks if any of them
+        have missing or incomplete information such as empty chromosome, position, reference,
+        or alternate allele.
+
+        Returns:
+            bool: True if any variant record is incomplete, False otherwise.
+        """
+        variants = self.diagnosed_variants()
+        for variant in variants:
+            if (
+                variant.chrom == ""
+                or variant.pos == 0
+                or variant.pos == ""
+                or variant.ref == ""
+                or variant.alt == ""
+            ):
+                return True
+        return False
+
+    def check_incomplete_gene_record(self) -> bool:
+        """
+            Check if any gene record in the phenopacket has incomplete information.
+
+            This method iterates through the diagnosed gene records and checks if any of them
+            have missing or incomplete information such as gene name, or gene identifier.
+
+            Returns:
+                bool: True if any gene record is incomplete, False otherwise.
+        """
+        genes = self.diagnosed_genes()
+        for gene in genes:
+            if gene.gene_symbol == "" or gene.gene_identifier == "":
+                return True
+        return False
+
+    def check_incomplete_disease_record(self) -> bool:
+        """
+            Check if any disease record in the phenopacket has incomplete information.
+
+            This method iterates through the diagnosed disease records and checks if any of them
+            have missing or incomplete information such as empty disease name, or disease identifier.
+
+            Returns:
+                bool: True if any disease record is incomplete, False otherwise.
+        """
+        if len(self.diagnoses()) == 0:
+            return True
+        return False
+
 
 class PhenopacketRebuilder:
     """Class for rebuilding a Phenopacket"""
