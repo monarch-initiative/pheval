@@ -9,6 +9,8 @@ from typing import List, Union
 
 from phenopackets import Family, File, Phenopacket
 
+from pheval.prepare.custom_exceptions import InputError
+from pheval.utils.file_utils import files_with_suffix, is_gzipped
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
@@ -17,9 +19,6 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
     write_phenopacket,
 )
-
-from .custom_exceptions import InputError
-from ..utils.file_utils import files_with_suffix, is_gzipped
 
 info_log = logging.getLogger("info")
 
@@ -175,13 +174,14 @@ class VcfHeaderParser:
 @dataclass
 class VcfFile:
     """
-   Represents a VCF file with its name, contents, and header information.
+    Represents a VCF file with its name, contents, and header information.
 
-   Attributes:
-       vcf_file_name (str): The name of the VCF file.
-       vcf_contents (List[str]): The contents of the VCF file.
-       vcf_header (VcfHeader): The parsed header information of the VCF file.
+    Attributes:
+        vcf_file_name (str): The name of the VCF file.
+        vcf_contents (List[str]): The contents of the VCF file.
+        vcf_header (VcfHeader): The parsed header information of the VCF file.
     """
+
     vcf_file_name: str = None
     vcf_contents: List[str] = None
     vcf_header: VcfHeader = None
@@ -203,15 +203,16 @@ class VcfFile:
 
 
 def select_vcf_template(
-        phenopacket_path: Path,
-        proband_causative_variants: List[ProbandCausativeVariant],
-        hg19_vcf_info: VcfFile,
-        hg38_vcf_info: VcfFile,
+    phenopacket_path: Path,
+    proband_causative_variants: List[ProbandCausativeVariant],
+    hg19_vcf_info: VcfFile,
+    hg38_vcf_info: VcfFile,
 ) -> VcfFile:
     """
     Select the appropriate VCF template based on the assembly information of the proband causative variants.
 
     Args:
+        phenopacket_path (Path): The path to the Phenopacket file.
         proband_causative_variants (List[ProbandCausativeVariant]): A list of causative variants from the proband.
         hg19_vcf_info (VcfFile): VCF file info for hg19 template vcf.
         hg38_vcf_info (VcfFile): CF file info for hg38 template vcf.
@@ -231,14 +232,15 @@ def select_vcf_template(
         else:
             raise InputError("Must specify hg38 template VCF!")
     else:
-        raise IncompatibleGenomeAssemblyError(proband_causative_variants[0].assembly, phenopacket_path)
-
+        raise IncompatibleGenomeAssemblyError(
+            proband_causative_variants[0].assembly, phenopacket_path
+        )
 
 
 def check_variant_assembly(
-        proband_causative_variants: list[ProbandCausativeVariant],
-        vcf_header: VcfHeader,
-        phenopacket_path: Path,
+    proband_causative_variants: list[ProbandCausativeVariant],
+    vcf_header: VcfHeader,
+    phenopacket_path: Path,
 ) -> None:
     """
     Check the assembly of the variant assembly against the VCF.
@@ -258,7 +260,13 @@ def check_variant_assembly(
         raise ValueError("Too many genome assemblies!")
     if phenopacket_assembly[0] not in compatible_genome_assembly:
         raise IncompatibleGenomeAssemblyError(phenopacket_assembly, phenopacket_path)
-    if phenopacket_assembly[0] != vcf_header.assembly:
+    if (
+        phenopacket_assembly[0] in {"hg19", "GRCh37"}
+        and vcf_header.assembly not in {"hg19", "GRCh37"}
+    ) or (
+        phenopacket_assembly[0] in {"hg38", "GRCh38"}
+        and vcf_header.assembly not in {"hg38", "GRCh38"}
+    ):
         raise IncompatibleGenomeAssemblyError(
             assembly=phenopacket_assembly, phenopacket=phenopacket_path
         )
@@ -268,10 +276,10 @@ class VcfSpiker:
     """Class for spiking proband variants into template VCF file contents."""
 
     def __init__(
-            self,
-            vcf_contents: list[str],
-            proband_causative_variants: list[ProbandCausativeVariant],
-            vcf_header: VcfHeader,
+        self,
+        vcf_contents: list[str],
+        proband_causative_variants: list[ProbandCausativeVariant],
+        vcf_header: VcfHeader,
     ):
         """
         Initialise the VcfSpiker.
@@ -331,11 +339,10 @@ class VcfSpiker:
         for variant in self.proband_causative_variants:
             variant = self.construct_variant_entry(variant)
             variant_entry_position = [
-                                         i
-                                         for i, val in enumerate(updated_vcf_records)
-                                         if
-                                         val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
-                                     ][-1] + 1
+                i
+                for i, val in enumerate(updated_vcf_records)
+                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
+            ][-1] + 1
             updated_vcf_records.insert(variant_entry_position, "\t".join(variant))
         return updated_vcf_records
 
@@ -372,9 +379,9 @@ class VcfWriter:
     """Class for writing VCF file."""
 
     def __init__(
-            self,
-            vcf_contents: List[str],
-            spiked_vcf_file_path: Path,
+        self,
+        vcf_contents: List[str],
+        spiked_vcf_file_path: Path,
     ):
         """
         Initialise the VcfWriter class.
@@ -415,10 +422,10 @@ class VcfWriter:
 
 
 def spike_vcf_contents(
-        phenopacket: Union[Phenopacket, Family],
-        phenopacket_path: Path,
-        hg19_vcf_info: VcfFile,
-        hg38_vcf_info: VcfFile,
+    phenopacket: Union[Phenopacket, Family],
+    phenopacket_path: Path,
+    hg19_vcf_info: VcfFile,
+    hg38_vcf_info: VcfFile,
 ) -> tuple[str, List[str]]:
     """
     Spike VCF records with variants obtained from a Phenopacket or Family.
@@ -452,11 +459,11 @@ def spike_vcf_contents(
 
 
 def generate_spiked_vcf_file(
-        output_dir: Path,
-        phenopacket: Union[Phenopacket, Family],
-        phenopacket_path: Path,
-        hg19_vcf_info: VcfFile,
-        hg38_vcf_info: VcfFile,
+    output_dir: Path,
+    phenopacket: Union[Phenopacket, Family],
+    phenopacket_path: Path,
+    hg19_vcf_info: VcfFile,
+    hg38_vcf_info: VcfFile,
 ) -> File:
     """
     Write spiked VCF contents to a new file.
@@ -495,7 +502,7 @@ def spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, output_dir, pheno
 
 
 def create_spiked_vcf(
-        output_dir: Path, phenopacket_path: Path, hg19_template_vcf: Path, hg38_template_vcf: Path
+    output_dir: Path, phenopacket_path: Path, hg19_template_vcf: Path, hg38_template_vcf: Path
 ) -> None:
     """
     Create a spiked VCF for a Phenopacket.
@@ -509,7 +516,7 @@ def create_spiked_vcf(
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
     """
-    if hg19_template_vcf and hg38_template_vcf is None:
+    if hg19_template_vcf is None and hg38_template_vcf is None:
         raise InputError("Either a hg19 template vcf or hg38 template vcf must be specified")
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
@@ -517,7 +524,7 @@ def create_spiked_vcf(
 
 
 def create_spiked_vcfs(
-        output_dir: Path, phenopacket_dir: Path, hg19_template_vcf: Path, hg38_template_vcf: Path
+    output_dir: Path, phenopacket_dir: Path, hg19_template_vcf: Path, hg38_template_vcf: Path
 ) -> None:
     """
     Create a spiked VCF for a directory of Phenopackets.
@@ -531,24 +538,20 @@ def create_spiked_vcfs(
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
     """
-    if hg19_template_vcf and hg38_template_vcf is None:
+    if hg19_template_vcf is None and hg38_template_vcf is None:
         raise InputError("Either a hg19 template vcf or hg38 template vcf must be specified")
-    hg19_vcf_info = (
-        VcfFile(hg19_template_vcf.name, read_vcf(hg19_template_vcf)) if hg19_template_vcf else None
-    )
-    hg38_vcf_info = (
-        VcfFile(hg38_template_vcf.name, read_vcf(hg38_template_vcf)) if hg38_template_vcf else None
-    )
+    hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
+    hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, output_dir, phenopacket_path)
 
 
 def spike_vcfs(
-        output_dir: Path,
-        phenopacket_path: Path,
-        phenopacket_dir: Path,
-        hg19_template_vcf: Path,
-        hg38_template_vcf: Path,
+    output_dir: Path,
+    phenopacket_path: Path,
+    phenopacket_dir: Path,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
 ) -> None:
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
