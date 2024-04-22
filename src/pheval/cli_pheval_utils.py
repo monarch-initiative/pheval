@@ -253,22 +253,19 @@ def update_phenopackets_command(
     mutually_exclusive=["phenopacket_path"],
 )
 @click.option(
-    "--template-vcf-path",
-    "-t",
-    cls=MutuallyExclusiveOptionError,
+    "--hg19-template-vcf",
+    "-hg19",
     metavar="PATH",
     required=False,
-    help="Template VCF file",
-    mutually_exclusive=["vcf_dir"],
+    help="Template hg19 VCF file",
     type=Path,
 )
 @click.option(
-    "--vcf-dir",
-    "-v",
-    cls=MutuallyExclusiveOptionError,
+    "--hg38-template-vcf",
+    "-hg38",
     metavar="PATH",
-    help="Directory containing template VCF files",
-    mutually_exclusive=["template_vcf"],
+    required=False,
+    help="Template hg38 VCF file",
     type=Path,
 )
 @click.option(
@@ -284,13 +281,22 @@ def create_spiked_vcfs_command(
     phenopacket_path: Path,
     phenopacket_dir: Path,
     output_dir: Path,
-    template_vcf_path: Path = None,
-    vcf_dir: Path = None,
+    hg19_template_vcf: Path = None,
+    hg38_template_vcf: Path = None,
 ):
-    """Spikes variants into a template VCF file for a directory of phenopackets."""
+    """
+    Create spiked VCF from either a Phenopacket or a Phenopacket directory.
+
+    Args:
+        phenopacket_path (Path): Path to a single Phenopacket file (optional).
+        phenopacket_dir (Path): Path to a directory containing Phenopacket files (optional).
+        output_dir (Path): The directory to store the generated spiked VCF file(s).
+        hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+    """
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
-    spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, template_vcf_path, vcf_dir)
+    spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, hg19_template_vcf, hg38_template_vcf)
 
 
 @click.command()
