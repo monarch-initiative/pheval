@@ -650,11 +650,19 @@ def generate_stats_plot(
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
 @click.option(
-    "--template-vcf-path",
-    "-t",
+    "--hg19-template-vcf",
+    "-hg19",
     metavar="PATH",
     required=False,
-    help="Path to template VCF file",
+    help="Template hg19 VCF file",
+    type=Path,
+)
+@click.option(
+    "--hg38-template-vcf",
+    "-hg38",
+    metavar="PATH",
+    required=False,
+    help="Template hg38 VCF file",
     type=Path,
 )
 @click.option(
@@ -672,7 +680,8 @@ def prepare_corpus_command(
     gene_analysis: bool,
     disease_analysis: bool,
     gene_identifier: str,
-    template_vcf_path: Path,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
     output_dir: Path,
 ):
     """
@@ -685,7 +694,8 @@ def prepare_corpus_command(
             gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
             disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
             gene_identifier (str): Identifier for updating gene identifiers, if applicable.
-            template_vcf_path (Path): The path to the template VCF file.
+            hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+            hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
             output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
     """
     prepare_corpus(
@@ -694,6 +704,7 @@ def prepare_corpus_command(
         gene_analysis,
         disease_analysis,
         gene_identifier,
-        template_vcf_path,
+        hg19_template_vcf,
+        hg38_template_vcf,
         output_dir,
     )

@@ -15,7 +15,8 @@ def prepare_corpus(
     gene_analysis: bool,
     disease_analysis: bool,
     gene_identifier: str,
-    template_vcf_path: Path,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
     output_dir: Path,
 ) -> None:
     """
@@ -28,7 +29,8 @@ def prepare_corpus(
         gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
         disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
         gene_identifier (str): Identifier for updating gene identifiers, if applicable.
-        template_vcf_path (Path): The path to the template VCF file.
+        hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
         output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
     """
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
@@ -56,6 +58,8 @@ def prepare_corpus(
             create_updated_phenopacket(
                 gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
             )
-        if template_vcf_path:
+        if hg19_template_vcf or hg38_template_vcf:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
-            create_spiked_vcf(output_dir.joinpath("vcf"), phenopacket_path, template_vcf_path, None)
+            create_spiked_vcf(
+                output_dir.joinpath("vcf"), phenopacket_path, hg19_template_vcf, hg38_template_vcf
+            )
