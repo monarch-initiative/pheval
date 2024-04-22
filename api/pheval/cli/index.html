@@ -1565,7 +1565,7 @@ Args:
 <ul>
 <li><em>benchmark</em>: Benchmark the gene/variant/disease prioritisation performance for a single run.</li>
 <li><em>benchmark-comparison</em>: Benchmark the gene/variant/disease prioritisation performance for two runs.</li>
-<li><em>create-spiked-vcfs</em>: Spikes variants into a template VCF file for a directory of phenopackets.</li>
+<li><em>create-spiked-vcfs</em>: </li>
 <li><em>generate-stats-plot</em>: Generate bar plot from benchmark stats summary tsv.</li>
 <li><em>scramble-phenopackets</em>: Generate noisy phenopackets from existing ones.</li>
 <li><em>semsim-scramble</em>: Scrambles semsim profile multiplying score value by scramble factor</li>
@@ -1723,7 +1723,13 @@ Args:
 </tbody>
 </table>
 <h6 id="create-spiked-vcfs">create-spiked-vcfs</h6>
-<p>Spikes variants into a template VCF file for a directory of phenopackets.</p>
+<p>Create spiked VCF from either a Phenopacket or a Phenopacket directory.</p>
+<p>Args:
+    phenopacket_path (Path): Path to a single Phenopacket file (optional).
+    phenopacket_dir (Path): Path to a directory containing Phenopacket files (optional).
+    output_dir (Path): The directory to store the generated spiked VCF file(s).
+    hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+    hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils create-spiked-vcfs [OPTIONS]
 </code></pre></div>
@@ -1751,15 +1757,15 @@ Args:
 <td>None</td>
 </tr>
 <tr>
-<td><code>--template-vcf-path</code>, <code>-t</code></td>
+<td><code>--hg19-template-vcf</code>, <code>-hg19</code></td>
 <td>Path</td>
-<td>Template VCF file NOTE: This argument is mutually exclusive with  arguments: [vcf_dir].</td>
+<td>Template hg19 VCF file</td>
 <td>None</td>
 </tr>
 <tr>
-<td><code>--vcf-dir</code>, <code>-v</code></td>
+<td><code>--hg38-template-vcf</code>, <code>-hg38</code></td>
 <td>Path</td>
-<td>Directory containing template VCF files NOTE: This argument is mutually exclusive with  arguments: [template_vcf].</td>
+<td>Template hg38 VCF file</td>
 <td>None</td>
 </tr>
 <tr>
@@ -1801,7 +1807,7 @@ Args:
 <tr>
 <td><code>--gene-analysis</code> / <code>--no-gene-analysis</code></td>
 <td>boolean</td>
-<td>Specify analysis for gene prioritisation NOTE: This argument is mutually exclusive with  arguments: [variant_analysis, disease_analysis].</td>
+<td>Specify analysis for gene prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, variant_analysis].</td>
 <td><code>False</code></td>
 </tr>
 <tr>
