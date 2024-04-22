@@ -284,7 +284,16 @@ def create_spiked_vcfs_command(
     hg19_template_vcf: Path = None,
     hg38_template_vcf: Path = None,
 ):
-    """Spikes variants into a template VCF file for a directory of phenopackets."""
+    """
+    Create spiked VCF from either a Phenopacket or a Phenopacket directory.
+
+    Args:
+        phenopacket_path (Path): Path to a single Phenopacket file (optional).
+        phenopacket_dir (Path): Path to a directory containing Phenopacket files (optional).
+        output_dir (Path): The directory to store the generated spiked VCF file(s).
+        hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+    """
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
     spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, hg19_template_vcf, hg38_template_vcf)
