@@ -402,8 +402,6 @@ def spike_vcf_contents(
             assembly (str): The genome assembly information extracted from VCF header.
             modified_vcf_contents (List[str]): Modified VCF records with spiked variants.
     """
-    # this is a separate function to a click command as it will fail if annotated with click annotations
-    # and referenced from another click command
     phenopacket_causative_variants = PhenopacketUtil(phenopacket).causative_variants()
     vcf_contents = read_vcf(chosen_template_vcf)
     vcf_header = VcfHeaderParser(vcf_contents).parse_vcf_header()
@@ -450,7 +448,7 @@ def generate_spiked_vcf_file(
 
 
 def create_spiked_vcf(
-    output_dir: Path, phenopacket_path: Path, template_vcf_path: Path, vcf_dir: Path
+    output_dir: Path, phenopacket_path: Path, template_vcf_path: Path
 ) -> None:
     """
     Create a spiked VCF for a Phenopacket.
@@ -459,17 +457,15 @@ def create_spiked_vcf(
         output_dir (Path): The directory to store the generated spiked VCF file.
         phenopacket_path (Path): Path to the Phenopacket file.
         template_vcf_path (Path): Path to the template VCF file (optional).
-        vcf_dir (Path): Path to the directory containing VCF files (optional).
 
     Raises:
-        InputError: If both template_vcf_path and vcf_dir are None.
+        InputError: If both template_vcf_path are None.
     """
-    if template_vcf_path is None and vcf_dir is None:
-        raise InputError("Either a template_vcf or vcf_dir must be specified")
-    vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
+    if template_vcf_path is None:
+        raise InputError("Either a template_vcf must be specified")
     phenopacket = phenopacket_reader(phenopacket_path)
     spiked_vcf_file_message = generate_spiked_vcf_file(
-        output_dir, phenopacket, phenopacket_path, vcf_file_path
+        output_dir, phenopacket, phenopacket_path, template_vcf_path
     )
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
         spiked_vcf_file_message
@@ -478,7 +474,7 @@ def create_spiked_vcf(
 
 
 def create_spiked_vcfs(
-    output_dir: Path, phenopacket_dir: Path, template_vcf_path: Path, vcf_dir: Path
+    output_dir: Path, phenopacket_dir: Path, template_vcf_path: Path
 ) -> None:
     """
     Create a spiked VCF for a directory of Phenopackets.
@@ -487,18 +483,16 @@ def create_spiked_vcfs(
         output_dir (Path): The directory to store the generated spiked VCF file.
         phenopacket_dir (Path): Path to the Phenopacket directory.
         template_vcf_path (Path): Path to the template VCF file (optional).
-        vcf_dir (Path): Path to the directory containing VCF files (optional).
 
     Raises:
-        InputError: If both template_vcf_path and vcf_dir are None.
+        InputError: If both template_vcf_path are None.
     """
-    if template_vcf_path is None and vcf_dir is None:
-        raise InputError("Either a template_vcf or vcf_dir must be specified")
+    if template_vcf_path is None:
+        raise InputError("Either a template_vcf must be specified")
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
-        vcf_file_path = VcfPicker(template_vcf_path, vcf_dir).pick_file()
         phenopacket = phenopacket_reader(phenopacket_path)
         spiked_vcf_file_message = generate_spiked_vcf_file(
-            output_dir, phenopacket, phenopacket_path, vcf_file_path
+            output_dir, phenopacket, phenopacket_path, template_vcf_path
         )
         updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
             spiked_vcf_file_message
@@ -514,7 +508,6 @@ def spike_vcfs(
     phenopacket_path: Path,
     phenopacket_dir: Path,
     template_vcf_path: Path,
-    vcf_dir: Path,
 ) -> None:
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
@@ -524,9 +517,8 @@ def spike_vcfs(
         phenopacket_path (Path): Path to a single Phenopacket file (optional).
         phenopacket_dir (Path): Path to a directory containing Phenopacket files (optional).
         template_vcf_path (Path): Path to the template VCF file (optional).
-        vcf_dir (Path): Path to the directory containing VCF files (optional).
     """
     if phenopacket_path is not None:
-        create_spiked_vcf(output_dir, phenopacket_path, template_vcf_path, vcf_dir)
+        create_spiked_vcf(output_dir, phenopacket_path, template_vcf_path)
     elif phenopacket_dir is not None:
-        create_spiked_vcfs(output_dir, phenopacket_dir, template_vcf_path, vcf_dir)
+        create_spiked_vcfs(output_dir, phenopacket_dir, template_vcf_path)
