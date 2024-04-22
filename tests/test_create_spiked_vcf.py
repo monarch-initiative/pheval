@@ -4,7 +4,6 @@ from pathlib import Path
 from pheval.prepare.create_spiked_vcf import (
     VcfHeader,
     VcfHeaderParser,
-    VcfPicker,
     VcfSpiker,
     check_variant_assembly,
     read_vcf,
@@ -129,21 +128,6 @@ hg38_vcf = [
     "difficultregion=GRCh38_AllHomopolymers_gt6bp_imperfectgt10bp_slop5,GRCh38_SimpleRepeat_imperfecthomopolgt10_slop5"
     "\tGT:PS:DP:ADALL:AD:GQ\t1/1:.:575:30,271:7,237:128",
 ]
-
-
-class TestVcfPicker(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.vcf_file = Path("./tests/input_dir/test_vcf_dir/test_1.vcf")
-        cls.vcf_dir = Path("./tests/input_dir/test_vcf_dir/")
-
-    def test_pick_file_from_dir(self):
-        self.assertTrue(
-            "test_1.vcf" or "test_2.vcf.gz" == VcfPicker(None, self.vcf_dir).pick_file_from_dir()
-        )
-
-    def test_pick_file(self):
-        self.assertEqual("test_1.vcf", VcfPicker(self.vcf_file, None).pick_file().name)
 
 
 class TestReadVcf(unittest.TestCase):
