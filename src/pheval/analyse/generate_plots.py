@@ -482,6 +482,7 @@ def generate_plots(
     benchmark_generator: BenchmarkRunOutputGenerator,
     plot_type: str,
     title: str = None,
+    generate_from_tsv: bool = False,
 ) -> None:
     """
     Generate summary statistics bar plots for prioritisation.
@@ -493,10 +494,12 @@ def generate_plots(
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
         title (str, optional): Title for the generated plot. Defaults to None.
+        generate_from_tsv (bool): Specify whether to generate plots from the TSV file. Defaults to False.
     """
     plot_generator = PlotGenerator()
-    plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
-    plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
+    if not generate_from_tsv:
+        plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
+        plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
     if plot_type == "bar_stacked":
         plot_generator.generate_stacked_bar_plot(benchmarking_results, benchmark_generator, title)
     elif plot_type == "bar_cumulative":
@@ -541,4 +544,4 @@ def generate_plots_from_benchmark_summary_tsv(
         raise ValueError(
             "Specify one analysis type (gene_analysis, variant_analysis, or disease_analysis)"
         )
-    generate_plots(benchmarking_results, benchmark_generator, plot_type, title)
+    generate_plots(benchmarking_results, benchmark_generator, plot_type, title, True)
