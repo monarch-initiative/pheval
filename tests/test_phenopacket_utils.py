@@ -592,7 +592,6 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertFalse(self.phenopacket.check_incomplete_variant_record())
 
     def test_check_incomplete_variant_records_missing_records(self):
-        print(self.phenopacket_no_variants.diagnosed_variants())
         self.assertTrue(self.phenopacket_no_variants.check_incomplete_variant_record())
 
     def test_check_incomplete_gene_record(self):
