@@ -835,6 +835,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/pheval/prepare/prepare_corpus/" class="md-nav__link">
+        Prepare corpus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/pheval/prepare/update_phenopacket/" class="md-nav__link">
         Update phenopacket
       </a>
@@ -1920,8 +1934,7 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
-<span class="normal">219</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
@@ -2180,7 +2193,61 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <span class="normal">475</span>
 <span class="normal">476</span>
 <span class="normal">477</span>
-<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PhenopacketUtil</span><span class="p">:</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PhenopacketUtil</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for retrieving data from a Phenopacket or Family object&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
@@ -2441,6 +2508,59 @@ This allows PhEval extensibility to be standardized in terms of documentation an
                 <span class="p">)</span>
                 <span class="n">variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">variants</span>
+
+    <span class="k">def</span> <span class="nf">check_incomplete_variant_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if any variant record in the phenopacket has incomplete information.</span>
+
+<span class="sd">        This method iterates through the diagnosed variant records and checks if any of them</span>
+<span class="sd">        have missing or incomplete information such as empty chromosome, position, reference,</span>
+<span class="sd">        or alternate allele.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if any variant record is incomplete, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span>
+                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">check_incomplete_gene_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if any gene record in the phenopacket has incomplete information.</span>
+
+<span class="sd">        This method iterates through the diagnosed gene records and checks if any of them</span>
+<span class="sd">        have missing or incomplete information such as gene name, or gene identifier.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if any gene record is incomplete, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">genes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_genes</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_identifier</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">check_incomplete_disease_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if any disease record in the phenopacket has incomplete information.</span>
+
+<span class="sd">        This method iterates through the diagnosed disease records and checks if any of them</span>
+<span class="sd">        have missing or incomplete information such as empty disease name, or disease identifier.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if any disease record is incomplete, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">diagnoses</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
         </details>
 

@@ -837,6 +837,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../prepare_corpus/" class="md-nav__link">
+        Prepare corpus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -1360,7 +1374,8 @@ to describe the gene identifiers.</p>
 </details>
       <details class="quote">
         <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+<span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -1376,8 +1391,7 @@ to describe the gene identifiers.</p>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopacket</span><span class="p">(</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopacket</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1468,7 +1482,8 @@ to describe the gene identifiers.</p>
 </details>
       <details class="quote">
         <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+<span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
@@ -1488,8 +1503,7 @@ to describe the gene identifiers.</p>
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopackets</span><span class="p">(</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopackets</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1626,8 +1640,7 @@ to describe the gene identifiers.</p>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_outdated_gene_context</span><span class="p">(</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_outdated_gene_context</span><span class="p">(</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">:</span> <span class="n">defaultdict</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1650,8 +1663,7 @@ to describe the gene identifiers.</p>
     <span class="n">interpretations</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">interpretations</span><span class="p">()</span>
     <span class="n">updated_interpretations</span> <span class="o">=</span> <span class="n">GeneIdentifierUpdater</span><span class="p">(</span>
         <span class="n">hgnc_data</span><span class="o">=</span><span class="n">hgnc_data</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="o">=</span><span class="n">gene_identifier</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span>
-
+    <span class="p">)</span><span class="o">.</span><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">update_interpretations</span><span class="p">(</span><span class="n">updated_interpretations</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -1735,7 +1747,8 @@ to describe the gene identifiers.</p>
 </details>
       <details class="quote">
         <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 90</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
+<span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
 <span class="normal"> 93</span>
@@ -1754,8 +1767,7 @@ to describe the gene identifiers.</p>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_phenopackets</span><span class="p">(</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_phenopackets</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1809,7 +1821,7 @@ to describe the gene identifiers.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../custom_exceptions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom exceptions" rel="prev">
+        <a href="../prepare_corpus/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Prepare corpus" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1818,7 +1830,7 @@ to describe the gene identifiers.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Custom exceptions
+              Prepare corpus
             </div>
           </div>
         </a>
