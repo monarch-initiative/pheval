@@ -103,7 +103,6 @@ structural_variant_interpretations = [
                         acmg_pathogenicity_classification="NOT_PROVIDED",
                         therapeutic_actionability="UNKNOWN_ACTIONABILITY",
                         variation_descriptor=VariationDescriptor(
-                            gene_context=GeneDescriptor(value_id="", symbol=""),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh38",
                                 chrom="5",
@@ -217,13 +216,6 @@ interpretations_no_variant_data = [
                                     "ensembl:ENSG00000102302",
                                     "symbol:FGD1",
                                 ],
-                            ),
-                            vcf_record=VcfRecord(
-                                genome_assembly="GRCh37",
-                                chrom="",
-                                pos=0,
-                                ref="",
-                                alt="",
                             ),
                             allelic_state=OntologyClass(
                                 id="GENO:0000134",
