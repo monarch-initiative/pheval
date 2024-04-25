@@ -694,8 +694,10 @@ def prepare_corpus_command(
             gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
             disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
             gene_identifier (str): Identifier for updating gene identifiers, if applicable.
-            hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
-            hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+            hg19_template_vcf (Path): Path to the hg19 template VCF file (optional), to spike variants into
+            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
+            hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into
+            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
             output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
     """
     prepare_corpus(
