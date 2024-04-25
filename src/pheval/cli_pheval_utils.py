@@ -15,6 +15,7 @@ from pheval.analyse.run_data_parser import parse_run_data_text_file
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
+from pheval.prepare.prepare_corpus import prepare_corpus
 from pheval.prepare.update_phenopacket import update_phenopackets
 from pheval.utils.exomiser import semsim_to_exomiserdb
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
@@ -605,4 +606,107 @@ def generate_stats_plot(
     """Generate bar plot from benchmark stats summary tsv."""
     generate_plots_from_benchmark_summary_tsv(
         benchmarking_tsv, gene_analysis, variant_analysis, disease_analysis, plot_type, title
+    )
+
+
+@click.command("prepare-corpus")
+@click.option(
+    "--phenopacket-dir",
+    "-p",
+    required=True,
+    metavar="PATH",
+    help="Path to phenopacket corpus directory..",
+    type=Path,
+)
+@click.option(
+    "--variant-analysis/--no-variant-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify whether to check for complete variant records in the phenopackets.",
+)
+@click.option(
+    "--gene-analysis/--no-gene-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify whether to check for complete gene records in the phenopackets.",
+)
+@click.option(
+    "--disease-analysis/--no-disease-analysis",
+    default=False,
+    required=False,
+    type=bool,
+    show_default=True,
+    help="Specify whether to check for complete disease records in the phenopackets.",
+)
+@click.option(
+    "--gene-identifier",
+    "-g",
+    required=False,
+    help="Gene identifier to update in phenopacket",
+    type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
+)
+@click.option(
+    "--hg19-template-vcf",
+    "-hg19",
+    metavar="PATH",
+    required=False,
+    help="Template hg19 VCF file",
+    type=Path,
+)
+@click.option(
+    "--hg38-template-vcf",
+    "-hg38",
+    metavar="PATH",
+    required=False,
+    help="Template hg38 VCF file",
+    type=Path,
+)
+@click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=True,
+    help="Path to output prepared corpus.",
+    default="prepared_corpus",
+    type=Path,
+)
+def prepare_corpus_command(
+    phenopacket_dir: Path,
+    variant_analysis: bool,
+    gene_analysis: bool,
+    disease_analysis: bool,
+    gene_identifier: str,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
+    output_dir: Path,
+):
+    """
+    Prepare a corpus of Phenopackets for analysis, optionally checking for complete variant records and updating
+    gene identifiers.
+
+        Args:
+            phenopacket_dir (Path): The path to the directory containing Phenopackets.
+            variant_analysis (bool): If True, check for complete variant records in the Phenopackets.
+            gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
+            disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
+            gene_identifier (str): Identifier for updating gene identifiers, if applicable.
+            hg19_template_vcf (Path): Path to the hg19 template VCF file (optional), to spike variants into
+            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
+            hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into
+            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
+            output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
+    """
+    prepare_corpus(
+        phenopacket_dir,
+        variant_analysis,
+        gene_analysis,
+        disease_analysis,
+        gene_identifier,
+        hg19_template_vcf,
+        hg38_template_vcf,
+        output_dir,
     )

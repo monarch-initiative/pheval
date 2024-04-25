@@ -1,6 +1,5 @@
 import json
-
-# import logging
+import logging
 import os
 from collections import defaultdict
 from copy import copy
@@ -21,6 +20,8 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
+
+info_log = logging.getLogger("info")
 
 
 class IncompatibleGenomeAssemblyError(Exception):
@@ -477,6 +478,59 @@ class PhenopacketUtil:
                 variants.append(variant)
         return variants
 
+    def check_incomplete_variant_record(self) -> bool:
+        """
+        Check if any variant record in the phenopacket has incomplete information.
+
+        This method iterates through the diagnosed variant records and checks if any of them
+        have missing or incomplete information such as empty chromosome, position, reference,
+        or alternate allele.
+
+        Returns:
+            bool: True if any variant record is incomplete, False otherwise.
+        """
+        variants = self.diagnosed_variants()
+        for variant in variants:
+            if (
+                variant.chrom == ""
+                or variant.pos == 0
+                or variant.pos == ""
+                or variant.ref == ""
+                or variant.alt == ""
+            ):
+                return True
+        return False
+
+    def check_incomplete_gene_record(self) -> bool:
+        """
+        Check if any gene record in the phenopacket has incomplete information.
+
+        This method iterates through the diagnosed gene records and checks if any of them
+        have missing or incomplete information such as gene name, or gene identifier.
+
+        Returns:
+            bool: True if any gene record is incomplete, False otherwise.
+        """
+        genes = self.diagnosed_genes()
+        for gene in genes:
+            if gene.gene_symbol == "" or gene.gene_identifier == "":
+                return True
+        return False
+
+    def check_incomplete_disease_record(self) -> bool:
+        """
+        Check if any disease record in the phenopacket has incomplete information.
+
+        This method iterates through the diagnosed disease records and checks if any of them
+        have missing or incomplete information such as empty disease name, or disease identifier.
+
+        Returns:
+            bool: True if any disease record is incomplete, False otherwise.
+        """
+        if len(self.diagnoses()) == 0:
+            return True
+        return False
+
 
 class PhenopacketRebuilder:
     """Class for rebuilding a Phenopacket"""
@@ -655,7 +709,7 @@ class GeneIdentifierUpdater:
                         ]
 
     def update_genomic_interpretations_gene_identifier(
-        self, interpretations: List[Interpretation]
+        self, interpretations: List[Interpretation], phenopacket_path: Path
     ) -> List[Interpretation]:
         """
         Update the genomic interpretations of a Phenopacket.
@@ -669,10 +723,16 @@ class GeneIdentifierUpdater:
         updated_interpretations = copy(list(interpretations))
         for updated_interpretation in updated_interpretations:
             for g in updated_interpretation.diagnosis.genomic_interpretations:
+                updated_gene_identifier = self.find_identifier(
+                    g.variant_interpretation.variation_descriptor.gene_context.symbol
+                )
+                info_log.info(
+                    f"Updating gene identifier in {phenopacket_path} from "
+                    f"{g.variant_interpretation.variation_descriptor.gene_context.value_id}"
+                    f"to {updated_gene_identifier}"
+                )
                 g.variant_interpretation.variation_descriptor.gene_context.value_id = (
-                    self.find_identifier(
-                        g.variant_interpretation.variation_descriptor.gene_context.symbol
-                    )
+                    updated_gene_identifier
                 )
                 del g.variant_interpretation.variation_descriptor.gene_context.alternate_ids[:]
                 g.variant_interpretation.variation_descriptor.gene_context.alternate_ids.extend(

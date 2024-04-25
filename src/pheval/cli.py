@@ -10,6 +10,7 @@ from .cli_pheval_utils import (
     benchmark_comparison,
     create_spiked_vcfs_command,
     generate_stats_plot,
+    prepare_corpus_command,
     scramble_phenopackets_command,
     semsim_scramble_command,
     semsim_to_exomiserdb_command,
@@ -60,6 +61,7 @@ pheval_utils.add_command(benchmark)
 pheval_utils.add_command(benchmark_comparison)
 pheval_utils.add_command(semsim_to_exomiserdb_command)
 pheval_utils.add_command(generate_stats_plot)
+pheval_utils.add_command(prepare_corpus_command)
 
 if __name__ == "__main__":
     main()

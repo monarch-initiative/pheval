@@ -103,7 +103,6 @@ structural_variant_interpretations = [
                         acmg_pathogenicity_classification="NOT_PROVIDED",
                         therapeutic_actionability="UNKNOWN_ACTIONABILITY",
                         variation_descriptor=VariationDescriptor(
-                            gene_context=GeneDescriptor(value_id="ENSG00000069011", symbol="PITX1"),
                             vcf_record=VcfRecord(
                                 genome_assembly="GRCh38",
                                 chrom="5",
@@ -217,13 +216,6 @@ interpretations_no_variant_data = [
                                     "ensembl:ENSG00000102302",
                                     "symbol:FGD1",
                                 ],
-                            ),
-                            vcf_record=VcfRecord(
-                                genome_assembly="GRCh37",
-                                chrom="X",
-                                pos=54492285,
-                                ref="C",
-                                alt="T",
                             ),
                             allelic_state=OntologyClass(
                                 id="GENO:0000134",
@@ -596,6 +588,24 @@ class TestPhenopacketUtil(unittest.TestCase):
             ],
         )
 
+    def test_check_incomplete_variant_record(self):
+        self.assertFalse(self.phenopacket.check_incomplete_variant_record())
+
+    def test_check_incomplete_variant_records_missing_records(self):
+        self.assertTrue(self.phenopacket_no_variants.check_incomplete_variant_record())
+
+    def test_check_incomplete_gene_record(self):
+        self.assertFalse(self.phenopacket.check_incomplete_gene_record())
+
+    def test_check_incomplete_gene_records_missing_records(self):
+        self.assertTrue(self.structural_variant_phenopacket.check_incomplete_gene_record())
+
+    def test_check_incomplete_disease_record(self):
+        self.assertFalse(self.phenopacket.check_incomplete_disease_record())
+
+    def test_check_incomplete_disease_record_missing_records(self):
+        self.assertTrue(self.structural_variant_phenopacket.check_incomplete_disease_record())
+
 
 class TestPhenopacketRebuilder(unittest.TestCase):
     @classmethod
@@ -717,7 +727,7 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         self.assertEqual(
             list(
                 self.gene_identifier_updater_ens.update_genomic_interpretations_gene_identifier(
-                    phenopacket.interpretations
+                    phenopacket.interpretations, Path("/phenopacket_path.json")
                 )
             ),
             updated_interpretations,
