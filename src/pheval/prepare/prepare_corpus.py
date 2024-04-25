@@ -1,4 +1,5 @@
 import logging
+import shutil
 from pathlib import Path
 
 from pheval.prepare.create_spiked_vcf import create_spiked_vcf
@@ -56,12 +57,17 @@ def prepare_corpus(
                     f"Removed {phenopacket_path.name} from the corpus due to missing disease fields."
                 )
                 continue
-        if gene_identifier:
-            create_updated_phenopacket(
-                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
-            )
         if hg19_template_vcf or hg38_template_vcf:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
             create_spiked_vcf(
                 output_dir.joinpath("vcf"), phenopacket_path, hg19_template_vcf, hg38_template_vcf
+            )
+        if gene_identifier:
+            create_updated_phenopacket(
+                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
+            )
+        else:
+            # if not updating phenopacket gene identifiers then copy phenopacket as is to output directory
+            shutil.copy(
+                phenopacket_path, output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
             )
