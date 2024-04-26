@@ -1,17 +1,17 @@
 import gzip
 import logging
+import random
 import re
 import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
-import random
 from typing import List, Union
 
 from phenopackets import Family, File, Phenopacket
 
 from pheval.prepare.custom_exceptions import InputError
-from pheval.utils.file_utils import files_with_suffix, is_gzipped, all_files
+from pheval.utils.file_utils import all_files, files_with_suffix, is_gzipped
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
@@ -209,7 +209,7 @@ def select_vcf_template(
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
-    hg38_vcf_dir: Path
+    hg38_vcf_dir: Path,
 ) -> VcfFile:
     """
     Select the appropriate VCF template based on the assembly information of the proband causative variants.
@@ -434,7 +434,7 @@ def spike_vcf_contents(
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
-    hg38_vcf_dir: Path
+    hg38_vcf_dir: Path,
 ) -> tuple[str, List[str]]:
     """
     Spike VCF records with variants obtained from a Phenopacket or Family.
@@ -452,7 +452,12 @@ def spike_vcf_contents(
     """
     phenopacket_causative_variants = PhenopacketUtil(phenopacket).causative_variants()
     chosen_template_vcf = select_vcf_template(
-        phenopacket_path, phenopacket_causative_variants, hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir
+        phenopacket_path,
+        phenopacket_causative_variants,
+        hg19_vcf_info,
+        hg38_vcf_info,
+        hg19_vcf_dir,
+        hg38_vcf_dir,
     )
     check_variant_assembly(
         phenopacket_causative_variants, chosen_template_vcf.vcf_header, phenopacket_path
@@ -474,7 +479,7 @@ def generate_spiked_vcf_file(
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
-    hg38_vcf_dir: Path
+    hg38_vcf_dir: Path,
 ) -> File:
     """
     Write spiked VCF contents to a new file.
@@ -501,10 +506,23 @@ def generate_spiked_vcf_file(
     )
 
 
-def spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir: Path, hg38_vcf_dir: Path, output_dir, phenopacket_path):
+def spike_and_update_phenopacket(
+    hg19_vcf_info,
+    hg38_vcf_info,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
+    output_dir,
+    phenopacket_path,
+):
     phenopacket = phenopacket_reader(phenopacket_path)
     spiked_vcf_file_message = generate_spiked_vcf_file(
-        output_dir, phenopacket, phenopacket_path, hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir
+        output_dir,
+        phenopacket,
+        phenopacket_path,
+        hg19_vcf_info,
+        hg38_vcf_info,
+        hg19_vcf_dir,
+        hg38_vcf_dir,
     )
     updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
         spiked_vcf_file_message
@@ -513,7 +531,12 @@ def spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir: Pat
 
 
 def create_spiked_vcf(
-    output_dir: Path, phenopacket_path: Path, hg19_template_vcf: Path, hg38_template_vcf: Path, hg19_vcf_dir: Path, hg38_vcf_dir: Path
+    output_dir: Path,
+    phenopacket_path: Path,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
 ) -> None:
     """
     Create a spiked VCF for a Phenopacket.
@@ -531,11 +554,18 @@ def create_spiked_vcf(
         raise InputError("Either a hg19 template vcf or hg38 template vcf must be specified")
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
-    spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path)
+    spike_and_update_phenopacket(
+        hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path
+    )
 
 
 def create_spiked_vcfs(
-    output_dir: Path, phenopacket_dir: Path, hg19_template_vcf: Path, hg38_template_vcf: Path, hg19_vcf_dir: Path, hg38_vcf_dir: Path
+    output_dir: Path,
+    phenopacket_dir: Path,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
 ) -> None:
     """
     Create a spiked VCF for a directory of Phenopackets.
@@ -549,12 +579,19 @@ def create_spiked_vcfs(
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
     """
-    if hg19_template_vcf is None and hg38_template_vcf is None and hg19_vcf_dir is None and hg38_vcf_dir is None:
+    if (
+        hg19_template_vcf is None
+        and hg38_template_vcf is None
+        and hg19_vcf_dir is None
+        and hg38_vcf_dir is None
+    ):
         raise InputError("Need to specify a VCF!")
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
-        spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path)
+        spike_and_update_phenopacket(
+            hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path
+        )
 
 
 def spike_vcfs(
@@ -564,7 +601,7 @@ def spike_vcfs(
     hg19_template_vcf: Path,
     hg38_template_vcf: Path,
     hg19_vcf_dir: Path,
-    hg38_vcf_dir: Path
+    hg38_vcf_dir: Path,
 ) -> None:
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
@@ -579,6 +616,20 @@ def spike_vcfs(
         hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
     """
     if phenopacket_path is not None:
-        create_spiked_vcf(output_dir, phenopacket_path, hg19_template_vcf, hg38_template_vcf, hg19_vcf_dir, hg38_vcf_dir)
+        create_spiked_vcf(
+            output_dir,
+            phenopacket_path,
+            hg19_template_vcf,
+            hg38_template_vcf,
+            hg19_vcf_dir,
+            hg38_vcf_dir,
+        )
     elif phenopacket_dir is not None:
-        create_spiked_vcfs(output_dir, phenopacket_dir, hg19_template_vcf, hg38_template_vcf, hg19_vcf_dir, hg38_vcf_dir)
+        create_spiked_vcfs(
+            output_dir,
+            phenopacket_dir,
+            hg19_template_vcf,
+            hg38_template_vcf,
+            hg19_vcf_dir,
+            hg38_vcf_dir,
+        )
