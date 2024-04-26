@@ -243,6 +243,18 @@ class TestVcfSpiker(unittest.TestCase):
             ],
             VcfHeader("TEMPLATE", "GRCh37", True),
         )
+        cls.vcf_spiker_new_variant_chrom = VcfSpiker(
+            hg19_vcf,
+            [
+                ProbandCausativeVariant(
+                    "TEST1",
+                    "GRCh37",
+                    GenomicVariant("X", 123450, "G", "A"),
+                    "heterozygous",
+                )
+            ],
+            VcfHeader("TEMPLATE", "GRCh37", True),
+        )
         cls.vcf_spiker_multiple_variants = VcfSpiker(
             hg19_vcf,
             [
@@ -337,6 +349,13 @@ class TestVcfSpiker(unittest.TestCase):
         self.assertEqual(
             updated_records[45],
             "chr3\t61580860\t.\tG\tA\t100\tPASS\t.\t" "GT\t1/1\n",
+        )
+
+    def test_construct_vcf_records_new_variant_pos(self):
+        updated_records = self.vcf_spiker_new_variant_chrom.construct_vcf_records()
+        self.assertEqual(
+            updated_records[48],
+            "chrX\t123450\t.\tG\tA\t100\tPASS\t.\tGT\t0/1\n",
         )
 
     def test_construct_header(self):

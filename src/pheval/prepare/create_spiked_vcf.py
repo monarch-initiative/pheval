@@ -337,13 +337,23 @@ class VcfSpiker:
         """
         updated_vcf_records = copy(self.vcf_contents)
         for variant in self.proband_causative_variants:
-            variant = self.construct_variant_entry(variant)
-            variant_entry_position = [
+            variant_entry = self.construct_variant_entry(variant)
+            matching_indices = [
                 i
                 for i, val in enumerate(updated_vcf_records)
-                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
-            ][-1] + 1
-            updated_vcf_records.insert(variant_entry_position, "\t".join(variant))
+                if val.split("\t")[0] == variant_entry[0]
+                and int(val.split("\t")[1]) < int(variant_entry[1])
+            ]
+            if matching_indices:
+                variant_entry_position = matching_indices[-1] + 1
+            else:
+                info_log.warning(
+                    f"Could not find entry position for {variant.variant.chrom}-{variant.variant.pos}-"
+                    f"{variant.variant.ref}-{variant.variant.alt} in VCF records, "
+                    "inserting at end of VCF contents."
+                )
+                variant_entry_position = len(updated_vcf_records)
+            updated_vcf_records.insert(variant_entry_position, "\t".join(variant_entry))
         return updated_vcf_records
 
     def construct_header(self, updated_vcf_records: List[str]) -> List[str]:
