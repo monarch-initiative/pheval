@@ -219,6 +219,8 @@ def select_vcf_template(
         proband_causative_variants (List[ProbandCausativeVariant]): A list of causative variants from the proband.
         hg19_vcf_info (VcfFile): VCF file info for hg19 template vcf.
         hg38_vcf_info (VcfFile): CF file info for hg38 template vcf.
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files.
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files.
 
     Returns:
         VcfFile: The selected VCF template file based on the assembly information of the proband causative variants.
@@ -444,6 +446,8 @@ def spike_vcf_contents(
         phenopacket_path (Path): Path to the Phenopacket file.
         hg19_vcf_info (VcfFile): VCF file info for hg19 template vcf.
         hg38_vcf_info (VcfFile): VCF file info for hg38 template vcf.
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files.
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files.
 
     Returns:
         A tuple containing:
@@ -490,6 +494,8 @@ def generate_spiked_vcf_file(
         phenopacket_path (Path): Path to the Phenopacket file.
         hg19_vcf_info (VcfFile): VCF file info for hg19 template vcf.
         hg38_vcf_info (VcfFile): VCF file info for hg38 template vcf.
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files.
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files.
     Returns:
         File: The generated File object representing the newly created spiked VCF file.
     """
@@ -507,13 +513,28 @@ def generate_spiked_vcf_file(
 
 
 def spike_and_update_phenopacket(
-    hg19_vcf_info,
-    hg38_vcf_info,
+    hg19_vcf_info: VcfFile,
+    hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
     hg38_vcf_dir: Path,
-    output_dir,
-    phenopacket_path,
-):
+    output_dir: Path,
+    phenopacket_path: Path,
+) -> None:
+    """
+    Spike the VCF files with genetic variants relevant to the provided Phenopacket, update the Phenopacket
+    accordingly, and write the updated Phenopacket to the specified output directory.
+
+    Args:
+        hg19_vcf_info (VcfFile): VCF file info for hg19 template vcf.
+        hg38_vcf_info (VcfFile): VCF file info for hg38 template vcf.
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files.
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files.
+        output_dir (Path): Directory where the updated Phenopacket will be saved.
+        phenopacket_path (Path): Path to the original Phenopacket file.
+
+    Returns:
+        None
+    """
     phenopacket = phenopacket_reader(phenopacket_path)
     spiked_vcf_file_message = generate_spiked_vcf_file(
         output_dir,
@@ -546,6 +567,8 @@ def create_spiked_vcf(
         phenopacket_path (Path): Path to the Phenopacket file.
         hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
         hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files (optional).
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
 
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
@@ -575,6 +598,8 @@ def create_spiked_vcfs(
         phenopacket_dir (Path): Path to the Phenopacket directory.
         hg19_template_vcf (Path): Path to the template hg19 VCF file (optional).
         hg38_template_vcf (Path): Path to the template hg19 VCF file (optional).
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files (optional).
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
 
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
