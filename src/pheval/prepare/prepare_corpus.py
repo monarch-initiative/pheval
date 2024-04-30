@@ -17,6 +17,8 @@ def prepare_corpus(
     gene_identifier: str,
     hg19_template_vcf: Path,
     hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
     output_dir: Path,
 ) -> None:
     """
@@ -33,7 +35,12 @@ def prepare_corpus(
         VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
         hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into
         VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
+        hg19_vcf_dir (Path): Path to the directory containing hg19 template VCF files (optional).
+        hg38_vcf_dir (Path): Path to the directory containing hg38 template VCF files (optional).
         output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
+    Notes:
+        To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
+        hg19_vcf_dir or hg38_vcf_dir is required.
     """
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
     for phenopacket_path in all_files(phenopacket_dir):
@@ -63,5 +70,10 @@ def prepare_corpus(
         if hg19_template_vcf or hg38_template_vcf:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
             create_spiked_vcf(
-                output_dir.joinpath("vcf"), phenopacket_path, hg19_template_vcf, hg38_template_vcf
+                output_dir.joinpath("vcf"),
+                phenopacket_path,
+                hg19_template_vcf,
+                hg38_template_vcf,
+                hg19_vcf_dir,
+                hg38_vcf_dir,
             )
