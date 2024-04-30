@@ -336,12 +336,12 @@ class TestVcfSpiker(unittest.TestCase):
 
     def test_construct_vcf_records_single_variant(self):
         self.assertEqual(
-            self.vcf_spiker.construct_vcf_records()[40],
+            self.vcf_spiker.construct_vcf_records("template.vcf")[40],
             "chr1\t886190\t.\tG\tA\t100\tPASS\t.\t" "GT\t0/1\n",
         )
 
     def test_construct_vcf_records_multiple_variants(self):
-        updated_records = self.vcf_spiker_multiple_variants.construct_vcf_records()
+        updated_records = self.vcf_spiker_multiple_variants.construct_vcf_records("template.vcf")
         self.assertEqual(
             updated_records[40],
             "chr1\t886190\t.\tG\tA\t100\tPASS\t.\t" "GT\t0/1\n",
@@ -352,7 +352,7 @@ class TestVcfSpiker(unittest.TestCase):
         )
 
     def test_construct_vcf_records_new_variant_pos(self):
-        updated_records = self.vcf_spiker_new_variant_chrom.construct_vcf_records()
+        updated_records = self.vcf_spiker_new_variant_chrom.construct_vcf_records("template.vcf")
         self.assertEqual(
             updated_records[48],
             "chrX\t123450\t.\tG\tA\t100\tPASS\t.\tGT\t0/1\n",
