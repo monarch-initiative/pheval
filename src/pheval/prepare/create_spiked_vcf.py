@@ -328,9 +328,12 @@ class VcfSpiker:
             genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
-    def construct_vcf_records(self) -> List[str]:
+    def construct_vcf_records(self, template_vcf_name: str) -> List[str]:
         """
         Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.
+
+        Args:
+            template_vcf_name (str): Name of the template VCF file.
 
         Returns:
             List[str]: Updated VCF records containing the spiked variants.
@@ -349,7 +352,7 @@ class VcfSpiker:
             else:
                 info_log.warning(
                     f"Could not find entry position for {variant.variant.chrom}-{variant.variant.pos}-"
-                    f"{variant.variant.ref}-{variant.variant.alt} in VCF records, "
+                    f"{variant.variant.ref}-{variant.variant.alt} in {template_vcf_name}, "
                     "inserting at end of VCF contents."
                 )
                 variant_entry_position = len(updated_vcf_records)
@@ -375,14 +378,17 @@ class VcfSpiker:
             updated_vcf_file.append(text)
         return updated_vcf_file
 
-    def construct_vcf(self) -> List[str]:
+    def construct_vcf(self, template_vcf_name: str) -> List[str]:
         """
         Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
+
+        Args:
+            template_vcf_name (str): Name of the template VCF file.
 
         Returns:
             List[str]: The complete spiked VCF file content as a list of strings.
         """
-        return self.construct_header(self.construct_vcf_records())
+        return self.construct_header(self.construct_vcf_records(template_vcf_name))
 
 
 class VcfWriter:
@@ -464,7 +470,7 @@ def spike_vcf_contents(
             chosen_template_vcf.vcf_contents,
             phenopacket_causative_variants,
             chosen_template_vcf.vcf_header,
-        ).construct_vcf(),
+        ).construct_vcf(chosen_template_vcf.vcf_file_name),
     )
 
 
