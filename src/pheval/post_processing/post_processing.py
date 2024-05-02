@@ -227,68 +227,7 @@ class ResultSorter:
         )
 
 
-class ScoreRanker:
-    """
-    Class for ranking scores based on a given sort order
-
-    Attributes:
-       rank (int): Represents the current rank, initialised with 0
-       current_score (float): Represents the current score, initialised with positive infinity (float("inf"))
-       count (int): Used for counting, initialised with 0
-    """
-
-    rank: int = 0
-    current_score: float = float("inf")
-    count: int = 0
-
-    def __init__(self, sort_order: SortOrder):
-        """
-        Initialise ScoreRanker
-
-        Args:
-            sort_order (SortOrder): Sorting order to be applied
-        """
-        self.sort_order = sort_order
-
-    def _check_rank_order(self, round_score: float) -> None:
-        """
-        Check if the results are correctly ordered
-
-        Args:
-            round_score (float): Score to be checked against the current score
-
-        Raises:
-            ValueError: If results are not correctly sorted.
-        """
-        if self.sort_order == SortOrder.ASCENDING and round_score < self.current_score != float(
-            "inf"
-        ):
-            raise ValueError("Results are not correctly sorted!")
-        elif self.sort_order == SortOrder.DESCENDING and round_score > self.current_score != float(
-            "inf"
-        ):
-            raise ValueError("Results are not correctly sorted!")
-
-    def rank_scores(self, round_score: float) -> int:
-        """
-        Add ranks to a result; equal scores are given the same rank, e.g., 1, 1, 3
-
-        Args:
-            round_score (float): Score to be ranked
-
-        Returns:
-            int: Rank assigned to the score
-        """
-        self._check_rank_order(round_score)
-        self.count += 1
-        if self.current_score == round_score:
-            return self.rank
-        self.current_score = round_score
-        self.rank = self.count
-        return self.rank
-
-
-def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) -> [PhEvalResult]:
+def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) -> pd.DataFrame:
     """
     Rank PhEval results post-processed from tool-specific output, managing tied scores (ex aequo)
 
@@ -297,35 +236,17 @@ def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) ->
         sort_order (SortOrder): Sorting order based on which ranking is performed
 
     Returns:
-        List[PhEvalResult]: Ranked PhEval results with tied scores managed
+        pd.DataFrame : Ranked PhEval results with tied scores managed
 
     Raises:
         ValueError: If an incompatible PhEval result type is encountered
     """
-    score_ranker = ScoreRanker(sort_order)
-    ranked_result = []
-    for result in pheval_result:
-        if type(result) == PhEvalGeneResult:
-            ranked_result.append(
-                RankedPhEvalGeneResult.from_gene_result(
-                    result, score_ranker.rank_scores(result.score)
-                )
-            )
-        elif type(result) == PhEvalVariantResult:
-            ranked_result.append(
-                RankedPhEvalVariantResult.from_variant_result(
-                    result, score_ranker.rank_scores(result.score)
-                )
-            )
-        elif type(result) == PhEvalDiseaseResult:
-            ranked_result.append(
-                RankedPhEvalDiseaseResult.from_disease_result(
-                    result, score_ranker.rank_scores(result.score)
-                )
-            )
-        else:
-            raise ValueError("Incompatible PhEval result type.")
-    return ranked_result
+    pheval_result_df = pd.DataFrame([data.__dict__ for data in pheval_result])
+    if sort_order == SortOrder.ASCENDING:
+        pheval_result_df["rank"] = pheval_result_df["score"].rank(method="max", ascending=True)
+    elif sort_order == SortOrder.DESCENDING:
+        pheval_result_df["rank"] = pheval_result_df["score"].rank(method="max", ascending=False)
+    return pheval_result_df
 
 
 def _return_sort_order(sort_order_str: str) -> SortOrder:
@@ -347,7 +268,7 @@ def _return_sort_order(sort_order_str: str) -> SortOrder:
         raise ValueError("Incompatible ordering method specified.")
 
 
-def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) -> [PhEvalResult]:
+def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) -> pd.DataFrame:
     """
     Create PhEval results with corresponding ranks based on the specified sorting order.
 
@@ -356,7 +277,7 @@ def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) ->
         sort_order_str (str): String representation of the desired sorting order.
 
     Returns:
-        List[PhEvalResult]: PhEval results with ranks assigned.
+       pd.DataFrame: PhEval results with ranks assigned.
     """
     sort_order = _return_sort_order(sort_order_str)
     sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
@@ -364,7 +285,7 @@ def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) ->
 
 
 def _write_pheval_gene_result(
-    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
+    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval gene results to a TSV file
@@ -374,8 +295,9 @@ def _write_pheval_gene_result(
         output_dir (Path): Path to the output directory
         tool_result_path (Path): Path to the tool-specific result file
     """
-    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
-    pheval_gene_output = ranked_result.loc[:, ["rank", "score", "gene_symbol", "gene_identifier"]]
+    pheval_gene_output = ranked_pheval_result.loc[
+        :, ["rank", "score", "gene_symbol", "gene_identifier"]
+    ]
     pheval_gene_output.to_csv(
         output_dir.joinpath(
             "pheval_gene_results/" + tool_result_path.stem + "-pheval_gene_result.tsv"
@@ -386,7 +308,7 @@ def _write_pheval_gene_result(
 
 
 def _write_pheval_variant_result(
-    ranked_pheval_result: [PhEvalResult], output_dir: Path, tool_result_path: Path
+    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval variant results to a TSV file
@@ -396,8 +318,7 @@ def _write_pheval_variant_result(
         output_dir (Path): Path to the output directory
         tool_result_path (Path): Path to the tool-specific result file
     """
-    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
-    pheval_variant_output = ranked_result.loc[
+    pheval_variant_output = ranked_pheval_result.loc[
         :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
     ]
     pheval_variant_output.to_csv(
@@ -410,7 +331,7 @@ def _write_pheval_variant_result(
 
 
 def _write_pheval_disease_result(
-    ranked_pheval_result: [RankedPhEvalDiseaseResult], output_dir: Path, tool_result_path: Path
+    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
 ) -> None:
     """
     Write ranked PhEval disease results to a TSV file
@@ -420,8 +341,7 @@ def _write_pheval_disease_result(
         output_dir (Path): Path to the output directory
         tool_result_path (Path): Path to the tool-specific result file
     """
-    ranked_result = pd.DataFrame([data.__dict__ for data in ranked_pheval_result])
-    pheval_disease_output = ranked_result.loc[
+    pheval_disease_output = ranked_pheval_result.loc[
         :, ["rank", "score", "disease_name", "disease_identifier"]
     ]
     pheval_disease_output.to_csv(
