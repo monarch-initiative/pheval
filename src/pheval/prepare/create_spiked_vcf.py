@@ -371,10 +371,13 @@ class VcfSpiker:
         """
         updated_vcf_file = []
         for line in updated_vcf_records:
-            text = line.replace(
-                self.vcf_header.sample_id,
-                self.proband_causative_variants[0].proband_id,
-            )
+            if line.startswith("#"):
+                text = line.replace(
+                    self.vcf_header.sample_id,
+                    self.proband_causative_variants[0].proband_id,
+                )
+            else:
+                text = line
             updated_vcf_file.append(text)
         return updated_vcf_file
 
