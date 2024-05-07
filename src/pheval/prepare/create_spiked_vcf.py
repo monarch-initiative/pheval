@@ -328,22 +328,35 @@ class VcfSpiker:
             genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
-    def construct_vcf_records(self) -> List[str]:
+    def construct_vcf_records(self, template_vcf_name: str) -> List[str]:
         """
         Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.
+
+        Args:
+            template_vcf_name (str): Name of the template VCF file.
 
         Returns:
             List[str]: Updated VCF records containing the spiked variants.
         """
         updated_vcf_records = copy(self.vcf_contents)
         for variant in self.proband_causative_variants:
-            variant = self.construct_variant_entry(variant)
-            variant_entry_position = [
+            variant_entry = self.construct_variant_entry(variant)
+            matching_indices = [
                 i
                 for i, val in enumerate(updated_vcf_records)
-                if val.split("\t")[0] == variant[0] and int(val.split("\t")[1]) < int(variant[1])
-            ][-1] + 1
-            updated_vcf_records.insert(variant_entry_position, "\t".join(variant))
+                if val.split("\t")[0] == variant_entry[0]
+                and int(val.split("\t")[1]) < int(variant_entry[1])
+            ]
+            if matching_indices:
+                variant_entry_position = matching_indices[-1] + 1
+            else:
+                info_log.warning(
+                    f"Could not find entry position for {variant.variant.chrom}-{variant.variant.pos}-"
+                    f"{variant.variant.ref}-{variant.variant.alt} in {template_vcf_name}, "
+                    "inserting at end of VCF contents."
+                )
+                variant_entry_position = len(updated_vcf_records)
+            updated_vcf_records.insert(variant_entry_position, "\t".join(variant_entry))
         return updated_vcf_records
 
     def construct_header(self, updated_vcf_records: List[str]) -> List[str]:
@@ -365,14 +378,17 @@ class VcfSpiker:
             updated_vcf_file.append(text)
         return updated_vcf_file
 
-    def construct_vcf(self) -> List[str]:
+    def construct_vcf(self, template_vcf_name: str) -> List[str]:
         """
         Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
+
+        Args:
+            template_vcf_name (str): Name of the template VCF file.
 
         Returns:
             List[str]: The complete spiked VCF file content as a list of strings.
         """
-        return self.construct_header(self.construct_vcf_records())
+        return self.construct_header(self.construct_vcf_records(template_vcf_name))
 
 
 class VcfWriter:
@@ -454,7 +470,7 @@ def spike_vcf_contents(
             chosen_template_vcf.vcf_contents,
             phenopacket_causative_variants,
             chosen_template_vcf.vcf_header,
-        ).construct_vcf(),
+        ).construct_vcf(chosen_template_vcf.vcf_file_name),
     )
 
 
