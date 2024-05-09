@@ -39,6 +39,11 @@ def prepare_corpus(
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
     for phenopacket_path in all_files(phenopacket_dir):
         phenopacket_util = PhenopacketUtil(phenopacket_reader(phenopacket_path))
+        if not phenopacket_util.observed_phenotypic_features():
+            info_log.warning(
+                f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features."
+            )
+            continue
         if variant_analysis:
             if phenopacket_util.check_incomplete_variant_record():
                 info_log.warning(
