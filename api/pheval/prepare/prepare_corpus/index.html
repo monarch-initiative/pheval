@@ -1437,7 +1437,12 @@ gene identifiers.</p>
 <span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">variant_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">gene_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -1466,6 +1471,11 @@ gene identifiers.</p>
     <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;phenopackets&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
         <span class="n">phenopacket_util</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">():</span>
+            <span class="n">info_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to no observed phenotypic features.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">continue</span>
         <span class="k">if</span> <span class="n">variant_analysis</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_incomplete_variant_record</span><span class="p">():</span>
                 <span class="n">info_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
