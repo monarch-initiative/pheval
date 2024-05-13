@@ -375,11 +375,11 @@ def generate_pheval_result(
         info_log.warning(f"No results found for {tool_result_path.name}")
         return
     ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
-    if all(isinstance(result, RankedPhEvalGeneResult) for result in ranked_pheval_result):
+    if all(isinstance(result, PhEvalGeneResult) for result in pheval_result):
         _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, RankedPhEvalVariantResult) for result in ranked_pheval_result):
+    elif all(isinstance(result, PhEvalVariantResult) for result in pheval_result):
         _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, RankedPhEvalDiseaseResult) for result in ranked_pheval_result):
+    elif all(isinstance(result, PhEvalDiseaseResult) for result in pheval_result):
         _write_pheval_disease_result(ranked_pheval_result, output_dir, tool_result_path)
     else:
         raise ValueError("Results are not all of the same type.")
