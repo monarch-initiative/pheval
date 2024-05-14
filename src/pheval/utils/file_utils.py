@@ -70,35 +70,6 @@ def normalise_file_name(file_path: Path) -> str:
     return re.sub("[\u0300-\u036f]", "", normalised_file_name)
 
 
-def obtain_phenopacket_path_from_pheval_result(
-    pheval_result_path: Path, phenopacket_paths: list[Path]
-) -> Path:
-    """
-    Obtains the phenopacket file name when given a pheval result file name
-    and a list of full paths of phenopackets to be queried.
-
-    Args:
-        pheval_result_path (Path): The PhEval result.
-        phenopacket_paths (list[Path]): List of full paths of phenopackets to be queried.
-
-    Returns:
-        Path: The matching phenopacket file path from the provided list.
-    """
-    pheval_result_path_stem_stripped = pheval_result_path.stem.split("-pheval_")[0]
-    matching_phenopacket_paths = [
-        phenopacket_path
-        for phenopacket_path in phenopacket_paths
-        if phenopacket_path.stem == pheval_result_path_stem_stripped
-    ]
-    if matching_phenopacket_paths:
-        return matching_phenopacket_paths[0]
-    else:
-        raise FileNotFoundError(
-            f"Unable to find matching phenopacket file named "
-            f"{pheval_result_path_stem_stripped}.json for {pheval_result_path.name}"
-        )
-
-
 def ensure_file_exists(*files: str):
     """Ensures the existence of files passed as parameter
     Raises:

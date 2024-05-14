@@ -10,11 +10,7 @@ from pheval.analyse.prioritisation_result_types import VariantPrioritisationResu
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalVariantResult
-from pheval.utils.file_utils import (
-    all_files,
-    files_with_suffix,
-    obtain_phenopacket_path_from_pheval_result,
-)
+from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import GenomicVariant, PhenopacketUtil, phenopacket_reader
 
 
@@ -211,7 +207,7 @@ def _obtain_causative_variants(phenopacket_path: Path) -> List[GenomicVariant]:
 
 
 def assess_phenopacket_variant_prioritisation(
-    standardised_variant_result: Path,
+    phenopacket_path: Path,
     score_order: str,
     results_dir_and_input: TrackInputOutputDirectories,
     threshold: float,
@@ -224,7 +220,7 @@ def assess_phenopacket_variant_prioritisation(
     against the recorded causative variants for a proband in the Phenopacket.
 
     Args:
-        standardised_variant_result (Path): Path to the PhEval standardised variant result file.
+        phenopacket_path (Path): Path to the Phenopacket.
         score_order (str): The order in which scores are arranged, either ascending or descending.
         results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
         threshold (float): Threshold for assessment.
@@ -232,10 +228,10 @@ def assess_phenopacket_variant_prioritisation(
         variant_rank_comparison (defaultdict): Default dictionary for variant rank comparisons.
         variant_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
-    phenopacket_path = obtain_phenopacket_path_from_pheval_result(
-        standardised_variant_result, all_files(results_dir_and_input.phenopacket_dir)
-    )
     proband_causative_variants = _obtain_causative_variants(phenopacket_path)
+    standardised_variant_result = results_dir_and_input.results_dir.joinpath(
+        f"pheval_variant_results/{phenopacket_path.stem}-pheval_variant_result.tsv"
+    )
     pheval_variant_result = read_standardised_result(standardised_variant_result)
     AssessVariantPrioritisation(
         phenopacket_path,
@@ -270,12 +266,9 @@ def benchmark_variant_prioritisation(
     """
     variant_rank_stats = RankStats()
     variant_binary_classification_stats = BinaryClassificationStats()
-    for standardised_result in files_with_suffix(
-        results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
-        ".tsv",
-    ):
+    for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_variant_prioritisation(
-            standardised_result,
+            phenopacket_path,
             score_order,
             results_directory_and_input,
             threshold,
