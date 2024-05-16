@@ -1,5 +1,7 @@
 import unittest
 
+import pandas as pd
+
 from pheval.post_processing.post_processing import (
     PhEvalDiseaseResult,
     PhEvalGeneResult,
@@ -8,7 +10,6 @@ from pheval.post_processing.post_processing import (
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
     ResultSorter,
-    ScoreRanker,
     SortOrder,
     _create_pheval_result,
     _rank_pheval_result,
@@ -46,7 +47,7 @@ pheval_disease_result = [
     PhEvalDiseaseResult(
         disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
         disease_identifier="OMIM:618646",
-        score=-1.378,
+        score=4.284,
     ),
     PhEvalDiseaseResult(
         disease_name=" Brain small vessel disease 2", disease_identifier="OMIM:614483", score=-1.871
@@ -216,42 +217,6 @@ class TestResultSorter(unittest.TestCase):
         )
 
 
-class TestScoreRanker(unittest.TestCase):
-    def setUp(self) -> None:
-        self.score_ranker_descending = ScoreRanker(SortOrder.DESCENDING)
-        self.score_ranker_ascending = ScoreRanker(SortOrder.ASCENDING)
-
-    def test_check_rank_order_descending(self):
-        self.score_ranker_descending.rank_scores(0.9)
-        self.score_ranker_descending.rank_scores(0.8)
-        with self.assertRaises(ValueError):
-            self.score_ranker_descending.rank_scores(0.9)
-
-    def test_check_rank_order_ascending(self):
-        self.score_ranker_ascending.rank_scores(0.1)
-        self.score_ranker_ascending.rank_scores(0.2)
-        with self.assertRaises(ValueError):
-            self.score_ranker_ascending.rank_scores(0.1)
-
-    def test_rank_scores_first_rank(self):
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
-
-    def test_rank_scores_increase_rank(self):
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
-
-    def test_rank_scores_same_rank(self):
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
-
-    def test_rank_scores_count_increase(self):
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.7342), 1)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.3452), 2)
-        self.assertEqual(self.score_ranker_descending.rank_scores(0.1234), 4)
-
-
 class TestRankPhEvalResults(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -286,202 +251,120 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
-            _rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING),
-            [
-                RankedPhEvalGeneResult(
-                    gene_symbol="MAP3K14",
-                    gene_identifier="ENSG00000006062",
-                    score=0.9234,
-                    rank=1,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="A4GNT",
-                    gene_identifier="ENSG00000118017",
-                    score=0.6529,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="OR14J1",
-                    gene_identifier="ENSG00000204695",
-                    score=0.6529,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="PAGE1",
-                    gene_identifier="ENSG00000068985",
-                    score=0.5235,
-                    rank=4,
-                ),
-            ],
+            _rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING).equals(
+                pd.DataFrame(
+                    {
+                        "gene_symbol": ["MAP3K14", "A4GNT", "OR14J1", "PAGE1"],
+                        "gene_identifier": [
+                            "ENSG00000006062",
+                            "ENSG00000118017",
+                            "ENSG00000204695",
+                            "ENSG00000068985",
+                        ],
+                        "score": [0.9234, 0.6529, 0.6529, 0.5235],
+                        "rank": [1.0, 3.0, 3.0, 4.0],
+                    }
+                )
+            )
         )
 
     def test_rank_pheval_results_variant(self):
-        self.assertEqual(
-            _rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING),
-            [
-                RankedPhEvalVariantResult(
-                    chromosome="X",
-                    start=93473023,
-                    end=93473024,
-                    ref="A",
-                    alt="G",
-                    score=0.1245,
-                    rank=1,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="8",
-                    start=532356,
-                    end=532357,
-                    ref="A",
-                    alt="C",
-                    score=0.4578,
-                    rank=2,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="5",
-                    start=23457444233,
-                    end=23457444234,
-                    ref="A",
-                    alt="C",
-                    score=0.9348,
-                    rank=3,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="12",
-                    start=12754332,
-                    end=12754333,
-                    ref="T",
-                    alt="G",
-                    score=0.9999,
-                    rank=4,
-                ),
-            ],
+        self.assertTrue(
+            _rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING).equals(
+                pd.DataFrame(
+                    {
+                        "chromosome": ["X", "8", "5", "12"],
+                        "start": [93473023, 532356, 23457444233, 12754332],
+                        "end": [93473024, 532357, 23457444234, 12754333],
+                        "ref": ["A", "A", "A", "T"],
+                        "alt": ["G", "C", "C", "G"],
+                        "score": [0.1245, 0.4578, 0.9348, 0.9999],
+                        "rank": [1.0, 2.0, 3.0, 4.0],
+                    }
+                )
+            )
         )
 
     def test_rank_pheval_results_disease(self):
-        self.assertEqual(
-            _rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING),
-            [
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric acidemia I",
-                    disease_identifier="OMIM:231670",
-                    score=4.284,
-                    rank=1,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
-                    disease_identifier="OMIM:618646",
-                    score=-1.378,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name=" Brain small vessel disease 2",
-                    disease_identifier="OMIM:614483",
-                    score=-1.871,
-                    rank=3,
-                ),
-            ],
+        self.assertTrue(
+            _rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING).equals(
+                pd.DataFrame(
+                    {
+                        "disease_name": {
+                            0: "Glutaric acidemia I",
+                            1: "Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                            2: " Brain small vessel disease 2",
+                        },
+                        "disease_identifier": {
+                            0: "OMIM:231670",
+                            1: "OMIM:618646",
+                            2: "OMIM:614483",
+                        },
+                        "score": {0: 4.284, 1: 4.284, 2: -1.871},
+                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                    }
+                )
+            )
         )
 
 
 class TestCreatePhEvalResult(unittest.TestCase):
     def test_create_pheval_result_gene(self):
-        self.assertEqual(
-            _create_pheval_result(pheval_gene_result, "descending"),
-            [
-                RankedPhEvalGeneResult(
-                    gene_symbol="MAP3K14",
-                    gene_identifier="ENSG00000006062",
-                    score=0.9234,
-                    rank=1,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="A4GNT",
-                    gene_identifier="ENSG00000118017",
-                    score=0.6529,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="OR14J1",
-                    gene_identifier="ENSG00000204695",
-                    score=0.6529,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="PAGE1",
-                    gene_identifier="ENSG00000068985",
-                    score=0.5235,
-                    rank=4,
-                ),
-            ],
+        self.assertTrue(
+            _create_pheval_result(pheval_gene_result, "descending").equals(
+                pd.DataFrame(
+                    {
+                        "gene_symbol": ["MAP3K14", "A4GNT", "OR14J1", "PAGE1"],
+                        "gene_identifier": [
+                            "ENSG00000006062",
+                            "ENSG00000118017",
+                            "ENSG00000204695",
+                            "ENSG00000068985",
+                        ],
+                        "score": [0.9234, 0.6529, 0.6529, 0.5235],
+                        "rank": [1.0, 3.0, 3.0, 4.0],
+                    }
+                )
+            )
         )
 
     def test_create_pheval_result_variant(self):
-        self.assertEqual(
-            _create_pheval_result(pheval_variant_result, "ascending"),
-            [
-                RankedPhEvalVariantResult(
-                    chromosome="X",
-                    start=93473023,
-                    end=93473024,
-                    ref="A",
-                    alt="G",
-                    score=0.1245,
-                    rank=1,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="8",
-                    start=532356,
-                    end=532357,
-                    ref="A",
-                    alt="C",
-                    score=0.4578,
-                    rank=2,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="5",
-                    start=23457444233,
-                    end=23457444234,
-                    ref="A",
-                    alt="C",
-                    score=0.9348,
-                    rank=3,
-                ),
-                RankedPhEvalVariantResult(
-                    chromosome="12",
-                    start=12754332,
-                    end=12754333,
-                    ref="T",
-                    alt="G",
-                    score=0.9999,
-                    rank=4,
-                ),
-            ],
+        self.assertTrue(
+            _create_pheval_result(pheval_variant_result, "ascending").equals(
+                pd.DataFrame(
+                    {
+                        "chromosome": ["X", "8", "5", "12"],
+                        "start": [93473023, 532356, 23457444233, 12754332],
+                        "end": [93473024, 532357, 23457444234, 12754333],
+                        "ref": ["A", "A", "A", "T"],
+                        "alt": ["G", "C", "C", "G"],
+                        "score": [0.1245, 0.4578, 0.9348, 0.9999],
+                        "rank": [1.0, 2.0, 3.0, 4.0],
+                    }
+                )
+            )
         )
 
     def test_create_pheval_result_disease(self):
-        self.assertEqual(
-            _create_pheval_result(pheval_disease_result, "descending"),
-            [
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric acidemia I",
-                    disease_identifier="OMIM:231670",
-                    score=4.284,
-                    rank=1,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Diencephalic-mesencephalic junction dysplasia syndrome 2",
-                    disease_identifier="OMIM:618646",
-                    score=-1.378,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name=" Brain small vessel disease 2",
-                    disease_identifier="OMIM:614483",
-                    score=-1.871,
-                    rank=3,
-                ),
-            ],
+        self.assertTrue(
+            _create_pheval_result(pheval_disease_result, "descending").equals(
+                pd.DataFrame(
+                    {
+                        "disease_name": {
+                            0: "Glutaric acidemia I",
+                            1: "Diencephalic-mesencephalic junction dysplasia syndrome 2",
+                            2: " Brain small vessel disease 2",
+                        },
+                        "disease_identifier": {
+                            0: "OMIM:231670",
+                            1: "OMIM:618646",
+                            2: "OMIM:614483",
+                        },
+                        "score": {0: 4.284, 1: 4.284, 2: -1.871},
+                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                    }
+                )
+            )
         )
 
 

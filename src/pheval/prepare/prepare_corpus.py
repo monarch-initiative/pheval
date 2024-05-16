@@ -1,4 +1,5 @@
 import logging
+import shutil
 from pathlib import Path
 
 from pheval.prepare.create_spiked_vcf import create_spiked_vcf
@@ -45,6 +46,11 @@ def prepare_corpus(
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
     for phenopacket_path in all_files(phenopacket_dir):
         phenopacket_util = PhenopacketUtil(phenopacket_reader(phenopacket_path))
+        if not phenopacket_util.observed_phenotypic_features():
+            info_log.warning(
+                f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features."
+            )
+            continue
         if variant_analysis:
             if phenopacket_util.check_incomplete_variant_record():
                 info_log.warning(
@@ -63,10 +69,6 @@ def prepare_corpus(
                     f"Removed {phenopacket_path.name} from the corpus due to missing disease fields."
                 )
                 continue
-        if gene_identifier:
-            create_updated_phenopacket(
-                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
-            )
         if hg19_template_vcf or hg38_template_vcf:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
             create_spiked_vcf(
@@ -76,4 +78,13 @@ def prepare_corpus(
                 hg38_template_vcf,
                 hg19_vcf_dir,
                 hg38_vcf_dir,
+            )
+        if gene_identifier:
+            create_updated_phenopacket(
+                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
+            )
+        else:
+            # if not updating phenopacket gene identifiers then copy phenopacket as is to output directory
+            shutil.copy(
+                phenopacket_path, output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
             )

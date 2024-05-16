@@ -10,11 +10,7 @@ from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResu
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
-from pheval.utils.file_utils import (
-    all_files,
-    files_with_suffix,
-    obtain_phenopacket_path_from_pheval_result,
-)
+from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandDisease, phenopacket_reader
 
 
@@ -217,7 +213,7 @@ def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
 
 
 def assess_phenopacket_disease_prioritisation(
-    standardised_disease_result: Path,
+    phenopacket_path: Path,
     score_order: str,
     results_dir_and_input: TrackInputOutputDirectories,
     threshold: float,
@@ -230,7 +226,7 @@ def assess_phenopacket_disease_prioritisation(
     against the recorded causative diseases for a proband in the Phenopacket.
 
     Args:
-        standardised_disease_result (Path): Path to the PhEval standardised disease result file.
+        phenopacket_path (Path): Path to the Phenopacket.
         score_order (str): The order in which scores are arranged, either ascending or descending.
         results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
         threshold (float): Threshold for assessment.
@@ -238,8 +234,8 @@ def assess_phenopacket_disease_prioritisation(
         disease_rank_comparison (defaultdict): Default dictionary for disease rank comparisons.
         disease_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
     """
-    phenopacket_path = obtain_phenopacket_path_from_pheval_result(
-        standardised_disease_result, all_files(results_dir_and_input.phenopacket_dir)
+    standardised_disease_result = results_dir_and_input.results_dir.joinpath(
+        f"pheval_disease_results/{phenopacket_path.stem}-pheval_disease_result.tsv"
     )
     pheval_disease_result = read_standardised_result(standardised_disease_result)
     proband_diseases = _obtain_causative_diseases(phenopacket_path)
@@ -276,12 +272,9 @@ def benchmark_disease_prioritisation(
     """
     disease_rank_stats = RankStats()
     disease_binary_classification_stats = BinaryClassificationStats()
-    for standardised_result in files_with_suffix(
-        results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
-        ".tsv",
-    ):
+    for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_disease_prioritisation(
-            standardised_result,
+            phenopacket_path,
             score_order,
             results_directory_and_input,
             threshold,
