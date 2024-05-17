@@ -1758,7 +1758,9 @@ Args:
     phenopacket_dir (Path): Path to a directory containing Phenopacket files (optional).
     output_dir (Path): The directory to store the generated spiked VCF file(s).
     hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
-    hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).</p>
+    hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+    hg19_vcf_dir (Path): Path to the directory containing the hg19 VCF files (optional).
+    hg38_vcf_dir (Path): Path to the directory containing the hg38 VCF files (optional).</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils create-spiked-vcfs [OPTIONS]
 </code></pre></div>
@@ -1788,13 +1790,25 @@ Args:
 <tr>
 <td><code>--hg19-template-vcf</code>, <code>-hg19</code></td>
 <td>Path</td>
-<td>Template hg19 VCF file</td>
+<td>Template hg19 VCF file NOTE: This argument is mutually exclusive with  arguments: [hg19_vcf_dir].</td>
 <td>None</td>
 </tr>
 <tr>
 <td><code>--hg38-template-vcf</code>, <code>-hg38</code></td>
 <td>Path</td>
-<td>Template hg38 VCF file</td>
+<td>Template hg38 VCF file NOTE: This argument is mutually exclusive with  arguments: [hg38_vcf_dir].</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--hg19-vcf-dir</code>, <code>-hg19-dir</code></td>
+<td>Path</td>
+<td>Path to directory containing hg19 VCF templates. NOTE: This argument is mutually exclusive with  arguments: [hg19_template_vcf].</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--hg38-vcf-dir</code>, <code>-hg38-dir</code></td>
+<td>Path</td>
+<td>Path to directory containing hg38 VCF templates. NOTE: This argument is mutually exclusive with  arguments: [hg38_template_vcf].</td>
 <td>None</td>
 </tr>
 <tr>
@@ -1836,19 +1850,19 @@ Args:
 <tr>
 <td><code>--gene-analysis</code> / <code>--no-gene-analysis</code></td>
 <td>boolean</td>
-<td>Specify analysis for gene prioritisation NOTE: This argument is mutually exclusive with  arguments: [variant_analysis, disease_analysis].</td>
+<td>Specify analysis for gene prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, variant_analysis].</td>
 <td><code>False</code></td>
 </tr>
 <tr>
 <td><code>--variant-analysis</code> / <code>--no-variant-analysis</code></td>
 <td>boolean</td>
-<td>Specify analysis for variant prioritisation NOTE: This argument is mutually exclusive with  arguments: [disease_analysis, gene_analysis].</td>
+<td>Specify analysis for variant prioritisation NOTE: This argument is mutually exclusive with  arguments: [gene_analysis, disease_analysis].</td>
 <td><code>False</code></td>
 </tr>
 <tr>
 <td><code>--disease-analysis</code> / <code>--no-disease-analysis</code></td>
 <td>boolean</td>
-<td>Specify analysis for disease prioritisation NOTE: This argument is mutually exclusive with  arguments: [variant_analysis, gene_analysis].</td>
+<td>Specify analysis for disease prioritisation NOTE: This argument is mutually exclusive with  arguments: [gene_analysis, variant_analysis].</td>
 <td><code>False</code></td>
 </tr>
 <tr>
@@ -1874,18 +1888,20 @@ Args:
 <h6 id="prepare-corpus">prepare-corpus</h6>
 <p>Prepare a corpus of Phenopackets for analysis, optionally checking for complete variant records and updating
 gene identifiers.</p>
-<div class="highlight"><pre><span></span><code>Args:
+<p>Args:
     phenopacket_dir (Path): The path to the directory containing Phenopackets.
     variant_analysis (bool): If True, check for complete variant records in the Phenopackets.
     gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
     disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
     gene_identifier (str): Identifier for updating gene identifiers, if applicable.
-    hg19_template_vcf (Path): Path to the hg19 template VCF file (optional), to spike variants into
-    VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
-    hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into
-    VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
+    hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+    hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+    hg19_vcf_dir (Path): Path to the directory containing the hg19 VCF files (optional).
+    hg38_vcf_dir (Path): Path to the directory containing the hg38 VCF files (optional).
     output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
-</code></pre></div>
+Notes:
+    To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
+    hg19_vcf_dir or hg38_vcf_dir is required.</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code>pheval-utils prepare-corpus [OPTIONS]
 </code></pre></div>
@@ -1933,13 +1949,25 @@ gene identifiers.</p>
 <tr>
 <td><code>--hg19-template-vcf</code>, <code>-hg19</code></td>
 <td>Path</td>
-<td>Template hg19 VCF file</td>
+<td>Template hg19 VCF file NOTE: This argument is mutually exclusive with  arguments: [hg19_vcf_dir].</td>
 <td>None</td>
 </tr>
 <tr>
 <td><code>--hg38-template-vcf</code>, <code>-hg38</code></td>
 <td>Path</td>
-<td>Template hg38 VCF file</td>
+<td>Template hg38 VCF file NOTE: This argument is mutually exclusive with  arguments: [hg38_vcf_dir].</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--hg19-vcf-dir</code>, <code>-hg19-dir</code></td>
+<td>Path</td>
+<td>Path to directory containing hg19 VCF templates. NOTE: This argument is mutually exclusive with  arguments: [hg19_template_vcf].</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--hg38-vcf-dir</code>, <code>-hg38-dir</code></td>
+<td>Path</td>
+<td>Path to directory containing hg38 VCF templates. NOTE: This argument is mutually exclusive with  arguments: [hg38_template_vcf].</td>
 <td>None</td>
 </tr>
 <tr>

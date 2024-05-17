@@ -1271,7 +1271,7 @@
 
 
 <h2 id="src.pheval.prepare.prepare_corpus.prepare_corpus" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">prepare_corpus</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">prepare_corpus</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1363,6 +1363,26 @@ gene identifiers.</p>
           </td>
         </tr>
         <tr>
+          <td><code>hg19_vcf_dir</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td><p>Path to the directory containing hg19 template VCF files (optional).</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>hg38_vcf_dir</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td><p>Path to the directory containing hg38 template VCF files (optional).</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
           <td><code>output_dir</code></td>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
@@ -1375,6 +1395,11 @@ gene identifiers.</p>
     </tbody>
   </table>
 
+<details class="notes">
+  <summary>Notes</summary>
+  <p>To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
+hg19_vcf_dir or hg38_vcf_dir is required.</p>
+</details>
       <details class="quote">
         <summary>Source code in <code>src/pheval/prepare/prepare_corpus.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
@@ -1442,7 +1467,19 @@ gene identifiers.</p>
 <span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">variant_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">gene_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -1450,6 +1487,8 @@ gene identifiers.</p>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">hg19_template_vcf</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">hg38_template_vcf</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">hg19_vcf_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">hg38_vcf_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1466,7 +1505,12 @@ gene identifiers.</p>
 <span class="sd">        VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.</span>
 <span class="sd">        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into</span>
 <span class="sd">        VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.</span>
+<span class="sd">        hg19_vcf_dir (Path): Path to the directory containing hg19 template VCF files (optional).</span>
+<span class="sd">        hg38_vcf_dir (Path): Path to the directory containing hg38 template VCF files (optional).</span>
 <span class="sd">        output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.</span>
+<span class="sd">    Notes:</span>
+<span class="sd">        To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,</span>
+<span class="sd">        hg19_vcf_dir or hg38_vcf_dir is required.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;phenopackets&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
@@ -1497,7 +1541,12 @@ gene identifiers.</p>
         <span class="k">if</span> <span class="n">hg19_template_vcf</span> <span class="ow">or</span> <span class="n">hg38_template_vcf</span><span class="p">:</span>
             <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;vcf&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">create_spiked_vcf</span><span class="p">(</span>
-                <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;vcf&quot;</span><span class="p">),</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span>
+                <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;vcf&quot;</span><span class="p">),</span>
+                <span class="n">phenopacket_path</span><span class="p">,</span>
+                <span class="n">hg19_template_vcf</span><span class="p">,</span>
+                <span class="n">hg38_template_vcf</span><span class="p">,</span>
+                <span class="n">hg19_vcf_dir</span><span class="p">,</span>
+                <span class="n">hg38_vcf_dir</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">if</span> <span class="n">gene_identifier</span><span class="p">:</span>
             <span class="n">create_updated_phenopacket</span><span class="p">(</span>
