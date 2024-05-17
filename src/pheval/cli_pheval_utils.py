@@ -260,6 +260,8 @@ def update_phenopackets_command(
     required=False,
     help="Template hg19 VCF file",
     type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg19_vcf_dir"],
 )
 @click.option(
     "--hg38-template-vcf",
@@ -268,6 +270,28 @@ def update_phenopackets_command(
     required=False,
     help="Template hg38 VCF file",
     type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg38_vcf_dir"],
+)
+@click.option(
+    "--hg19-vcf-dir",
+    "-hg19-dir",
+    metavar="PATH",
+    required=False,
+    help="Path to directory containing hg19 VCF templates.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg19_template_vcf"],
+)
+@click.option(
+    "--hg38-vcf-dir",
+    "-hg38-dir",
+    metavar="PATH",
+    required=False,
+    help="Path to directory containing hg38 VCF templates.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg38_template_vcf"],
 )
 @click.option(
     "--output-dir",
@@ -284,6 +308,8 @@ def create_spiked_vcfs_command(
     output_dir: Path,
     hg19_template_vcf: Path = None,
     hg38_template_vcf: Path = None,
+    hg19_vcf_dir: Path = None,
+    hg38_vcf_dir: Path = None,
 ):
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
@@ -294,10 +320,20 @@ def create_spiked_vcfs_command(
         output_dir (Path): The directory to store the generated spiked VCF file(s).
         hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
         hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+        hg19_vcf_dir (Path): Path to the directory containing the hg19 VCF files (optional).
+        hg38_vcf_dir (Path): Path to the directory containing the hg38 VCF files (optional).
     """
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
-    spike_vcfs(output_dir, phenopacket_path, phenopacket_dir, hg19_template_vcf, hg38_template_vcf)
+    spike_vcfs(
+        output_dir,
+        phenopacket_path,
+        phenopacket_dir,
+        hg19_template_vcf,
+        hg38_template_vcf,
+        hg19_vcf_dir,
+        hg38_vcf_dir,
+    )
 
 
 @click.command()
@@ -656,6 +692,8 @@ def generate_stats_plot(
     required=False,
     help="Template hg19 VCF file",
     type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg19_vcf_dir"],
 )
 @click.option(
     "--hg38-template-vcf",
@@ -664,6 +702,28 @@ def generate_stats_plot(
     required=False,
     help="Template hg38 VCF file",
     type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg38_vcf_dir"],
+)
+@click.option(
+    "--hg19-vcf-dir",
+    "-hg19-dir",
+    metavar="PATH",
+    required=False,
+    help="Path to directory containing hg19 VCF templates.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg19_template_vcf"],
+)
+@click.option(
+    "--hg38-vcf-dir",
+    "-hg38-dir",
+    metavar="PATH",
+    required=False,
+    help="Path to directory containing hg38 VCF templates.",
+    type=Path,
+    cls=MutuallyExclusiveOptionError,
+    mutually_exclusive=["hg38_template_vcf"],
 )
 @click.option(
     "--output-dir",
@@ -682,23 +742,28 @@ def prepare_corpus_command(
     gene_identifier: str,
     hg19_template_vcf: Path,
     hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
     output_dir: Path,
 ):
     """
     Prepare a corpus of Phenopackets for analysis, optionally checking for complete variant records and updating
     gene identifiers.
 
-        Args:
-            phenopacket_dir (Path): The path to the directory containing Phenopackets.
-            variant_analysis (bool): If True, check for complete variant records in the Phenopackets.
-            gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
-            disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
-            gene_identifier (str): Identifier for updating gene identifiers, if applicable.
-            hg19_template_vcf (Path): Path to the hg19 template VCF file (optional), to spike variants into
-            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
-            hg38_template_vcf (Path): Path to the hg38 template VCF file (optional), to spike variants into
-            VCFs for variant-based analysis at least one of hg19_template_vcf or hg38_template_vcf is required.
-            output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
+    Args:
+        phenopacket_dir (Path): The path to the directory containing Phenopackets.
+        variant_analysis (bool): If True, check for complete variant records in the Phenopackets.
+        gene_analysis (bool): If True, check for complete gene records in the Phenopackets.
+        disease_analysis (bool): If True, check for complete disease records in the Phenopackets.
+        gene_identifier (str): Identifier for updating gene identifiers, if applicable.
+        hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+        hg19_vcf_dir (Path): Path to the directory containing the hg19 VCF files (optional).
+        hg38_vcf_dir (Path): Path to the directory containing the hg38 VCF files (optional).
+        output_dir (Path): The directory to save the prepared Phenopackets and, optionally, VCF files.
+    Notes:
+        To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
+        hg19_vcf_dir or hg38_vcf_dir is required.
     """
     prepare_corpus(
         phenopacket_dir,
@@ -708,5 +773,7 @@ def prepare_corpus_command(
         gene_identifier,
         hg19_template_vcf,
         hg38_template_vcf,
+        hg19_vcf_dir,
+        hg38_vcf_dir,
         output_dir,
     )
