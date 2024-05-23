@@ -1,6 +1,8 @@
+import ast
+import re
 from collections import defaultdict
 from pathlib import Path
-from typing import List
+from typing import List, Union
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
@@ -140,6 +142,24 @@ class AssessGenePrioritisation:
                 )
             )
 
+    @staticmethod
+    def _check_string_representation(entity: str) -> Union[List[str], str]:
+        """
+        Check if the input string is a representation of a list and returns the list if true, otherwise the string.
+
+        Args:
+            entity (str): The input entity to check.
+
+        Returns:
+            Union[List[str], str]: A list if the input string is a list representation, otherwise
+            the original string.
+        """
+        list_pattern = re.compile(r"^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*\]$")
+        if list_pattern.match(entity):
+            return ast.literal_eval(entity)
+        else:
+            return entity
+
     def assess_gene_prioritisation(
         self,
         rank_stats: RankStats,
@@ -161,9 +181,21 @@ class AssessGenePrioritisation:
             rank_stats.total += 1
             gene_match = GenePrioritisationResult(self.phenopacket_path, gene.gene_symbol)
             for standardised_gene_result in self.standardised_gene_results:
+                gene_identifier = self._check_string_representation(
+                    standardised_gene_result.gene_identifier
+                )
+                gene_symbol = self._check_string_representation(
+                    standardised_gene_result.gene_symbol
+                )
                 if (
-                    gene.gene_identifier == standardised_gene_result.gene_identifier
-                    or gene.gene_symbol == standardised_gene_result.gene_symbol
+                    isinstance(gene_identifier, list)
+                    and gene.gene_identifier in gene_identifier
+                    or isinstance(gene_identifier, str)
+                    and gene.gene_identifier == str
+                    or isinstance(gene_symbol, list)
+                    and gene.gene_symbol in gene_symbol
+                    or isinstance(gene_symbol, str)
+                    and gene.gene_symbol == gene_symbol
                 ):
                     gene_match = self._record_matched_gene(
                         gene, rank_stats, standardised_gene_result
