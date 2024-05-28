@@ -468,10 +468,12 @@ class PhenopacketUtil:
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
                 variant = GenomicVariant(
-                    chrom=g.variant_interpretation.variation_descriptor.vcf_record.chrom.replace(
-                        "chr", ""
+                    chrom=str(
+                        g.variant_interpretation.variation_descriptor.vcf_record.chrom.replace(
+                            "chr", ""
+                        )
                     ),
-                    pos=g.variant_interpretation.variation_descriptor.vcf_record.pos,
+                    pos=int(g.variant_interpretation.variation_descriptor.vcf_record.pos),
                     ref=g.variant_interpretation.variation_descriptor.vcf_record.ref,
                     alt=g.variant_interpretation.variation_descriptor.vcf_record.alt,
                 )
