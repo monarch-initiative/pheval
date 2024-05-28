@@ -1674,8 +1674,8 @@
             <span class="n">variant_match</span> <span class="o">=</span> <span class="n">VariantPrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">variant</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">standardised_variant_results</span><span class="p">:</span>
                 <span class="n">result_variant</span> <span class="o">=</span> <span class="n">GenomicVariant</span><span class="p">(</span>
-                    <span class="n">chrom</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                    <span class="n">pos</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                    <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">),</span>
+                    <span class="n">pos</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">start</span><span class="p">),</span>
                     <span class="n">ref</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
                     <span class="n">alt</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -1999,8 +1999,8 @@ and records ranks using a PrioritisationRankRecorder.</p>
         <span class="n">variant_match</span> <span class="o">=</span> <span class="n">VariantPrioritisationResult</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">variant</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">standardised_variant_results</span><span class="p">:</span>
             <span class="n">result_variant</span> <span class="o">=</span> <span class="n">GenomicVariant</span><span class="p">(</span>
-                <span class="n">chrom</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                <span class="n">pos</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">),</span>
+                <span class="n">pos</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">start</span><span class="p">),</span>
                 <span class="n">ref</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
                 <span class="n">alt</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
             <span class="p">)</span>
