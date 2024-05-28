@@ -162,8 +162,8 @@ class AssessVariantPrioritisation:
             variant_match = VariantPrioritisationResult(self.phenopacket_path, variant)
             for result in self.standardised_variant_results:
                 result_variant = GenomicVariant(
-                    chrom=result.chromosome,
-                    pos=result.start,
+                    chrom=str(result.chromosome),
+                    pos=int(result.start),
                     ref=result.ref,
                     alt=result.alt,
                 )
