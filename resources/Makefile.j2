@@ -3,7 +3,11 @@ SHELL 					:= bash
 .DEFAULT_GOAL			:= help
 URIBASE					:=	http://purl.obolibrary.org/obo
 TMP_DATA				:=	{{ directories.tmp }}
+{% if directories.root is defined %}
+ROOT_DIR				:=	{{ directories.root }}
+{% else %}
 ROOT_DIR				:=	$(shell pwd)
+{% endif %}
 PHENOTYPE_DIR			:= $(ROOT_DIR)/data/phenotype
 RUNNERS_DIR				:= $(ROOT_DIR)/runners
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
