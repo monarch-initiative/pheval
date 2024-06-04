@@ -3,21 +3,21 @@ SHELL 					:= bash
 .DEFAULT_GOAL			:= help
 URIBASE					:=	http://purl.obolibrary.org/obo
 TMP_DATA				:=	{{ directories.tmp }}
-ROOT_DIR				:=	{{ directories.workspace }}
+ROOT_DIR				:=	$(shell pwd)
+PHENOTYPE_DIR			:= $(ROOT_DIR)/data/phenotype
+RUNNERS_DIR				:= $(ROOT_DIR)/runners
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
+SEMSIM_BASE_URL			:= https://storage.googleapis.com/data-public-monarchinitiative/semantic-similarity/latest
+
+
 
 help: info
 	@echo ""
 	@echo "help"
-	@echo "make pheval -- this runs the entire pipeline including corpus preparation and pheval run"
-	@echo "make semsim -- generate all configured similarity profiles"
-	@echo "make semsim-shuffle -- generate new ontology terms to the semsim process"
-	@echo "make semsim-scramble -- scramble semsim profile"
-	@echo "make semsim-convert -- convert all semsim profiles into exomiser SQL format"
-	@echo "make semsim-ingest -- takes all the configured semsim profiles and loads them into the exomiser databases"
-
-	@echo "make clean -- removes corpora and pheval results"
+	@echo "make setup -- this runs the download and extraction of genomic, phenotypic and runners data"
+	@echo "make pheval -- this runs pheval pipeline corpus preparation and run"
+	@echo "make all -- this runs the entire pipeline including setup, corpus preparation and pheval run"
 	@echo "make help -- show this help"
 	@echo ""
 
@@ -28,46 +28,91 @@ info:
 .PHONY: prepare-inputs
 
 {%- for config in configs %}
-prepare-inputs: configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml
 
-configurations/{{ config.tool }}-{{ config.version }}-{{ config.configuration }}/config.yaml:
-	rm -rf $(ROOT_DIR)/$(shell dirname $@)
-	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
-	{% set toolversion = config.tool ~ "-" ~ config.version %}
+{% if config.preprocessing is defined %}
+SQL_DEPENDENCIES_{{ config.id }} = {%- for pp in config.preprocessing %} $(TMP_DATA)/semsim/{{ pp }} {%endfor %}
 
-	ln -s {{ directories[toolversion] }}//* $(ROOT_DIR)/$(shell dirname $@)
-	ln -s {{ directories.phenotype }}/* $(ROOT_DIR)/$(shell dirname $@)
+configurations/{{ config.id }}/config.yaml: $(RUNNERS_DIR)/exomiser-{{ config.version }} $(SQL_DEPENDENCIES_{{ config.id }})
+	mkdir -p $(ROOT_DIR)/$(shell dirname $@)/
+
+	cp -rf $(PHENOTYPE_DIR)/{{ config.phenotype }}_phenotype $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_phenotype
+	cp $(RUNNERS_DIR)/configurations/{{ config.tool }}-{{ config.version }}-{{ config.phenotype }}_phenotype.config.yaml $(ROOT_DIR)/$(shell dirname $@)/config.yaml
+
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_hg19  || ln -s $(PHENOTYPE_DIR)/{{ config.phenotype }}_hg19 $(ROOT_DIR)/$(shell dirname $@)/
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_hg38 || ln -s $(PHENOTYPE_DIR)/{{ config.phenotype }}_hg38 $(ROOT_DIR)/$(shell dirname $@)/
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_phenotype || ln -s $(RUNNERS_DIR)/{{ config.tool }}-{{ config.version }}/* $(ROOT_DIR)/$(shell dirname $@)/
+
+ {%- for pp in config.preprocessing %}
+	java -Xms128m -Xmx8192m -Dh2.bindAddress=127.0.0.1 -cp $(shell find $< -type f -name "h2*.jar") org.h2.tools.RunScript -url jdbc:h2:file:$(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_phenotype/{{ config.phenotype }}_phenotype -script $(TMP_DATA)/semsim/{{ pp }} -user sa
+ {%endfor %}
+
+.PHONY: semsim-ingest
+semsim-ingest: configurations/{{ config.id }}/config.yaml
+
+{% else %}
 
 
+{% if config.phenotype is defined %}
 
+configurations/{{ config.id }}/config.yaml:
+	mkdir -p $(ROOT_DIR)/$(shell dirname $@)/
 
-{% if directories.h2jar is not defined -%}
-configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/%phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
-	@echo ------------------------------------------------WARNING------------------------------------------------
-	@echo -------------------------------------------------------------------------------------------------------
-	@echo ------h2jar variable needs to be configured in pheval-config.yaml file in directories the section------
-	@echo -------------------------------------------------------------------------------------------------------
-	@echo ------------------------------------------------WARNING------------------------------------------------
+	cp -rf $(PHENOTYPE_DIR)/{{ config.phenotype }}_phenotype $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_phenotype
+	cp $(RUNNERS_DIR)/configurations/{{ config.tool }}-{{ config.version }}-{{ config.phenotype }}_phenotype.config.yaml $(ROOT_DIR)/$(shell dirname $@)/config.yaml
+
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_hg19  || ln -s $(PHENOTYPE_DIR)/{{ config.phenotype }}_hg19 $(ROOT_DIR)/$(shell dirname $@)/
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_hg38 || ln -s $(PHENOTYPE_DIR)/{{ config.phenotype }}_hg38 $(ROOT_DIR)/$(shell dirname $@)/
+	test -L $(ROOT_DIR)/$(shell dirname $@)/{{ config.phenotype }}_phenotype || ln -s $(RUNNERS_DIR)/{{ config.tool }}-{{ config.version }}/* $(ROOT_DIR)/$(shell dirname $@)/
+{% else %}
+
+configurations/{{ config.id }}/config.yaml:
+	mkdir -p $(ROOT_DIR)/$(shell dirname $@)/
+	cp $(RUNNERS_DIR)/configurations/{{ config.tool }}-{{ config.version }}.config.yaml $(ROOT_DIR)/$(shell dirname $@)/config.yaml
 {% endif %}
 
 
-{% if config.tool == 'exomiser' and directories.h2jar is defined -%}
-configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db: $(TMP_DATA)/{{ config.exomiser_db }}.sql
-	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/ || mkdir -p configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/
-	test -d configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/ || cp -rf {{ directories.phenotype }} configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/
-	java -cp {{ directories.h2jar }} org.h2.tools.RunScript -user sa -url jdbc:h2:$(ROOT_DIR)/configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype  -script $<
 
-semsim-ingest: configurations/{{ config.tool }}-{{ config.version }}/{{ config.configuration }}/{{ phenotype.version }}_phenotype/{{ phenotype.version }}_phenotype.h2.db
 {% endif %}
+
 {% endfor %}
 .PHONY: prepare-corpora
 
+
+$(TMP_DATA)/semsim/%.tsv:
+	mkdir -p $(TMP_DATA)/semsim/
+	wget $(SEMSIM_BASE_URL)/$*.tsv -O $@
+
+
+$(TMP_DATA)/semsim/%.sql:
+	mkdir -p $(TMP_DATA)/semsim/
+	wget $(SEMSIM_BASE_URL)/$*.sql -O $@
+
+
+results/run_data.txt:
+	touch $@
+
+results/gene_rank_stats.svg: results/run_data.txt
+	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
+	mv $(ROOT_DIR)/gene_rank_stats.svg $@
+
+.PHONY: pheval-report
+pheval-report: results/gene_rank_stats.svg
+
 {% for run in runs %}
-results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml: configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+results/{{ run.configuration }}/results.yml: configurations/{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+
+
+
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
+
+{% if  run.tool  == "phen2gene" %}
+	ln -s $(RUNNERS_DIR)/Phen2Gene/* $(ROOT_DIR)/configurations/{{ run.configuration }}/
+{% endif %}
+
+
 	pheval run \
-	 --input-dir $(ROOT_DIR)/configurations/{{ run.tool }}-{{ run.version }}-{{ run.configuration }} \
+	 --input-dir $(ROOT_DIR)/configurations/{{ run.configuration }} \
 	 --testdata-dir $(ROOT_DIR)/corpora/{{ run.corpus }}/{{ run.corpusvariant }} \
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
@@ -75,22 +120,26 @@ results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }
 	 --output-dir $(ROOT_DIR)/$(shell dirname $@)
 
 	touch $@
+	echo -e "$(ROOT_DIR)/corpora/{{ run.corpus }}/default/phenopackets\t$(ROOT_DIR)/$(shell dirname $@)" >> results/run_data.txt
 
-.PHONY: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
-
-run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}:
-	$(MAKE) results/{{ run.tool }}-{{ run.version }}-{{ run.configuration }}/{{ run.corpus }}-{{ run.corpusvariant }}/results.yml
-
-
-pheval-run: run-{{ run.tool }}-{{ run.version }}-{{ run.configuration }}-{{ run.corpus }}-{{ run.corpusvariant }}
-
+.PHONY: pheval-run
+pheval-run: results/{{ run.configuration }}/results.yml
 {% endfor %}
 
 
-{% for corpus in corpora %}
+{%- for corpus in corpora -%}
+corpora/{{ corpus.id }}/default/corpus.yml:
+	test -d $(ROOT_DIR)/corpora/{{ corpus.id }}/default/ || mkdir -p $(ROOT_DIR)/corpora/{{ corpus.id }}/default/
 
+	test -L $(ROOT_DIR)/corpora/{{ corpus.id }}/default/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/{{ corpus.id }}/default/template_exome_hg19.vcf.gz
+	pheval-utils create-spiked-vcfs \
+	 --template-vcf-path $(ROOT_DIR)/corpora/{{ corpus.id }}/default/template_exome_hg19.vcf.gz  \
+	 --phenopacket-dir=$(ROOT_DIR)/corpora/{{ corpus.id }}/default/phenopackets \
+	 --output-dir $(ROOT_DIR)/corpora/{{ corpus.id }}/default/vcf
+	touch $@
 
-{% for scrambled in corpus.scrambled %}
+{%- if corpus.scrambled is defined -%}
+{%- for scrambled in corpus.scrambled -%}
 corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ corpus.id }}/default/corpus.yml $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
 	test -d $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/ || mkdir -p $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/
 	test -L $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/template_exome_hg19.vcf.gz
@@ -110,19 +159,27 @@ corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml: corpora/{{ 
 
 prepare-corpora: corpora/{{ corpus.id }}/scrambled-{{ scrambled.factor }}/corpus.yml
 
-{% endfor %}
+{%- endfor -%}
 
-{% for custom_corpus in corpus.custom_variants %}
+{% for custom_corpus in corpus.custom_variants -%}
 corpora/{{ corpus.id }}/{{ custom_corpus.id }}/corpus.yml: $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
 	echo "error $@ needs to be configured manually" && false
+{%- endfor -%}
+
+{% endif %}
 {% endfor %}
 
-{% endfor %}
 
 .PHONY: pheval
 pheval:
 	$(MAKE) prepare-inputs
 	$(MAKE) prepare-corpora
 	$(MAKE) pheval-run
+	$(MAKE) pheval-report
+
+.PHONY: all
+all:
+	$(MAKE) setup
+	$(MAKE) pheval
 
 include ./resources/custom.Makefile

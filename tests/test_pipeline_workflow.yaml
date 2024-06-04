@@ -1,0 +1,13 @@
+- name: Run PhEval pipeline
+  command: make pheval
+  files:
+  - path: results/run_data.txt
+    contains:
+      - "corpora/lirical/default/phenopackets"
+  - path: gene_roc_curve.svg
+  - path: gene_precision_recall_curve.svg
+  - path: results/gene_rank_stats.svg
+
+  stdout:
+    contains:
+      - "running with fake predictor"
