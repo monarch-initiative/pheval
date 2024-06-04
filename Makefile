@@ -4,7 +4,7 @@ SHELL 					:= bash
 URIBASE					:=	http://purl.obolibrary.org/obo
 TMP_DATA				:=	data/tmp
 
-ROOT_DIR				:=	/home/runner/work/pheval/pheval
+ROOT_DIR				:=	$(shell pwd)
 
 PHENOTYPE_DIR			:= $(ROOT_DIR)/data/phenotype
 RUNNERS_DIR				:= $(ROOT_DIR)/runners
@@ -57,18 +57,18 @@ $(TMP_DATA)/semsim/%.sql:
 	wget $(SEMSIM_BASE_URL)/$*.sql -O $@
 
 
-results/run_data.txt:
+$(ROOT_DIR)/results/run_data.txt:
 	touch $@
 
-results/gene_rank_stats.svg: results/run_data.txt
+$(ROOT_DIR)/results/gene_rank_stats.svg: $(ROOT_DIR)/results/run_data.txt
 	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
 	mv $(ROOT_DIR)/gene_rank_stats.svg $@
 
 .PHONY: pheval-report
-pheval-report: results/gene_rank_stats.svg
+pheval-report: $(ROOT_DIR)/results/gene_rank_stats.svg
 
 
-results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml corpora/lirical/default/corpus.yml
+$(ROOT_DIR)/results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml corpora/lirical/default/corpus.yml
 
 
 
@@ -77,6 +77,7 @@ results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml co
 
 
 
+	mkdir -p $(shell dirname $@)
 
 	pheval run \
 	 --input-dir $(ROOT_DIR)/configurations/template-1.0.0 \
@@ -84,13 +85,13 @@ results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml co
 	 --runner templatephevalrunner \
 	 --tmp-dir data/tmp/ \
 	 --version 1.0.0 \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)
+	 --output-dir $(shell dirname $@)
 
 	touch $@
-	echo -e "$(ROOT_DIR)/corpora/lirical/default/phenopackets\t$(ROOT_DIR)/$(shell dirname $@)" >> results/run_data.txt
+	echo -e "$(ROOT_DIR)/corpora/lirical/default/phenopackets\t$(shell dirname $@)" >> results/run_data.txt
 
 .PHONY: pheval-run
-pheval-run: results/template-1.0.0/results.yml
+pheval-run: $(ROOT_DIR)/results/template-1.0.0/results.yml
 corpora/lirical/default/corpus.yml:
 	test -d $(ROOT_DIR)/corpora/lirical/default/ || mkdir -p $(ROOT_DIR)/corpora/lirical/default/
 

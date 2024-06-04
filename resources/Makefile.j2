@@ -92,18 +92,18 @@ $(TMP_DATA)/semsim/%.sql:
 	wget $(SEMSIM_BASE_URL)/$*.sql -O $@
 
 
-results/run_data.txt:
+$(ROOT_DIR)/results/run_data.txt:
 	touch $@
 
-results/gene_rank_stats.svg: results/run_data.txt
+$(ROOT_DIR)/results/gene_rank_stats.svg: $(ROOT_DIR)/results/run_data.txt
 	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
 	mv $(ROOT_DIR)/gene_rank_stats.svg $@
 
 .PHONY: pheval-report
-pheval-report: results/gene_rank_stats.svg
+pheval-report: $(ROOT_DIR)/results/gene_rank_stats.svg
 
 {% for run in runs %}
-results/{{ run.configuration }}/results.yml: configurations/{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
+$(ROOT_DIR)/results/{{ run.configuration }}/results.yml: configurations/{{ run.configuration }}/config.yaml corpora/{{ run.corpus }}/{{ run.corpusvariant }}/corpus.yml
 
 
 
@@ -114,6 +114,7 @@ results/{{ run.configuration }}/results.yml: configurations/{{ run.configuration
 	ln -s $(RUNNERS_DIR)/Phen2Gene/* $(ROOT_DIR)/configurations/{{ run.configuration }}/
 {% endif %}
 
+	mkdir -p $(shell dirname $@)
 
 	pheval run \
 	 --input-dir $(ROOT_DIR)/configurations/{{ run.configuration }} \
@@ -121,13 +122,13 @@ results/{{ run.configuration }}/results.yml: configurations/{{ run.configuration
 	 --runner {{ run.tool }}phevalrunner \
 	 --tmp-dir {{ directories.tmp }}/ \
 	 --version {{ run.version }} \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)
+	 --output-dir $(shell dirname $@)
 
 	touch $@
-	echo -e "$(ROOT_DIR)/corpora/{{ run.corpus }}/default/phenopackets\t$(ROOT_DIR)/$(shell dirname $@)" >> results/run_data.txt
+	echo -e "$(ROOT_DIR)/corpora/{{ run.corpus }}/default/phenopackets\t$(shell dirname $@)" >> results/run_data.txt
 
 .PHONY: pheval-run
-pheval-run: results/{{ run.configuration }}/results.yml
+pheval-run: $(ROOT_DIR)/results/{{ run.configuration }}/results.yml
 {% endfor %}
 
 
