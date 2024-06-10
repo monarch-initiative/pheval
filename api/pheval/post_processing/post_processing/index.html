@@ -1638,8 +1638,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
@@ -1653,7 +1652,8 @@ in the analysis.</p>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">145</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalDiseaseResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for disease prioritisation</span>
 <span class="sd">    Args:</span>
@@ -1728,9 +1728,9 @@ in the analysis.</p>
         <tr>
           <td><code>gene_symbol</code></td>
           <td>
-                <code>str</code>
+                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
           </td>
-          <td><p>The gene symbol for the result entry</p></td>
+          <td><p>The gene symbol(s) for the result entry</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1738,9 +1738,9 @@ in the analysis.</p>
         <tr>
           <td><code>gene_identifier</code></td>
           <td>
-                <code>str</code>
+                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
           </td>
-          <td><p>The ENSEMBL gene identifier for the result entry</p></td>
+          <td><p>The ENSEMBL gene identifier(s) for the result entry</p></td>
           <td>
               <em>required</em>
           </td>
@@ -1767,8 +1767,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
-<span class="normal">30</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -1782,12 +1781,13 @@ in the analysis.</p>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalGeneResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for gene prioritisation result</span>
 <span class="sd">    Args:</span>
-<span class="sd">        gene_symbol (str): The gene symbol for the result entry</span>
-<span class="sd">        gene_identifier (str): The ENSEMBL gene identifier for the result entry</span>
+<span class="sd">        gene_symbol (Union[List[str], str]): The gene symbol(s) for the result entry</span>
+<span class="sd">        gene_identifier (Union[List[str], str]): The ENSEMBL gene identifier(s) for the result entry</span>
 <span class="sd">        score (float): The score for the gene result entry</span>
 <span class="sd">    Notes:</span>
 <span class="sd">        While we recommend providing the gene identifier in the ENSEMBL namespace,</span>
@@ -1795,8 +1795,8 @@ in the analysis.</p>
 <span class="sd">        in the analysis.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">gene_symbol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="n">gene_identifier</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -1844,9 +1844,9 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalResult</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for PhEval results.&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
@@ -1961,8 +1961,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
-<span class="normal">75</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
@@ -1984,7 +1983,8 @@ in the analysis.</p>
 <span class="normal">94</span>
 <span class="normal">95</span>
 <span class="normal">96</span>
-<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalVariantResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for variant prioritisation</span>
 <span class="sd">    Args:</span>
@@ -2080,8 +2080,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
-<span class="normal">149</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
@@ -2104,7 +2103,8 @@ in the analysis.</p>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
-<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RankedPhEvalDiseaseResult</span><span class="p">(</span><span class="n">PhEvalDiseaseResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhEval disease result with corresponding rank</span>
 <span class="sd">    Args:</span>
@@ -2215,8 +2215,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
-<span class="normal">158</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
@@ -2230,7 +2229,8 @@ in the analysis.</p>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
-<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_disease_result</span><span class="p">(</span><span class="n">pheval_disease_result</span><span class="p">:</span> <span class="n">PhEvalDiseaseResult</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return RankedPhEvalDiseaseResult from a PhEvalDiseaseResult and rank</span>
 <span class="sd">    Args:</span>
@@ -2309,8 +2309,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">47</span>
-<span class="normal">48</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
@@ -2333,7 +2332,8 @@ in the analysis.</p>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RankedPhEvalGeneResult</span><span class="p">(</span><span class="n">PhEvalGeneResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhEval gene result with corresponding rank</span>
 <span class="sd">    Args:</span>
@@ -2444,8 +2444,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
-<span class="normal">57</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
@@ -2459,7 +2458,8 @@ in the analysis.</p>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_gene_result</span><span class="p">(</span><span class="n">pheval_gene_result</span><span class="p">:</span> <span class="n">PhEvalGeneResult</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return RankedPhEvalGeneResult from a PhEvalGeneResult and rank</span>
 <span class="sd">    Args:</span>
@@ -2538,8 +2538,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
-<span class="normal">101</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
 <span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
@@ -2565,7 +2564,8 @@ in the analysis.</p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RankedPhEvalVariantResult</span><span class="p">(</span><span class="n">PhEvalVariantResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhEval variant result with corresponding rank</span>
 <span class="sd">    Args:</span>
@@ -2679,8 +2679,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
-<span class="normal">110</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
@@ -2697,7 +2696,8 @@ in the analysis.</p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_variant_result</span><span class="p">(</span><span class="n">pheval_variant_result</span><span class="p">:</span> <span class="n">PhEvalVariantResult</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return RankedPhEvalVariantResult from a PhEvalVariantResult and rank</span>
 <span class="sd">    Args:</span>
@@ -2749,8 +2749,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">184</span>
-<span class="normal">185</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
@@ -2792,7 +2791,8 @@ in the analysis.</p>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ResultSorter</span><span class="p">:</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ResultSorter</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for sorting PhEvalResult instances based on a given sort order.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pheval_results</span><span class="p">:</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">],</span> <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">):</span>
@@ -2901,8 +2901,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">187</span>
-<span class="normal">188</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
@@ -2910,7 +2909,8 @@ in the analysis.</p>
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
-<span class="normal">196</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pheval_results</span><span class="p">:</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">],</span> <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">):</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pheval_results</span><span class="p">:</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">],</span> <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialise ResultSorter</span>
 
@@ -2960,8 +2960,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
-<span class="normal">217</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
@@ -2971,7 +2970,8 @@ in the analysis.</p>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sort_pheval_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">]:</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sort_pheval_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sort results based on the specified sort order.</span>
 
@@ -3018,13 +3018,13 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
-<span class="normal">176</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
 <span class="normal">179</span>
 <span class="normal">180</span>
-<span class="normal">181</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SortOrder</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">181</span>
+<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SortOrder</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration representing sorting orders.&quot;&quot;&quot;</span>
 
     <span class="n">ASCENDING</span> <span class="o">=</span> <span class="mi">1</span>
@@ -3165,8 +3165,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
-<span class="normal">13</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -3174,7 +3173,8 @@ in the analysis.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the end position for a variant</span>
 <span class="sd">    Args:</span>
 <span class="sd">        variant_start (int): The start position of the variant</span>
@@ -3278,8 +3278,7 @@ in the analysis.</p>
 
       <details class="quote">
         <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">356</span>
-<span class="normal">357</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">357</span>
 <span class="normal">358</span>
 <span class="normal">359</span>
 <span class="normal">360</span>
@@ -3307,7 +3306,8 @@ in the analysis.</p>
 <span class="normal">382</span>
 <span class="normal">383</span>
 <span class="normal">384</span>
-<span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_pheval_result</span><span class="p">(</span>
+<span class="normal">385</span>
+<span class="normal">386</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_pheval_result</span><span class="p">(</span>
     <span class="n">pheval_result</span><span class="p">:</span> <span class="p">[</span><span class="n">PhEvalResult</span><span class="p">],</span>
     <span class="n">sort_order_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>

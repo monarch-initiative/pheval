@@ -2690,9 +2690,9 @@ This allows PhEval extensibility to be standardized in terms of documentation an
         <tr>
           <td><code>gene_symbol</code></td>
           <td>
-                <code>str</code>
+                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
           </td>
-          <td><p>The gene symbol for the result entry</p></td>
+          <td><p>The gene symbol(s) for the result entry</p></td>
           <td>
               <em>required</em>
           </td>
@@ -2700,9 +2700,9 @@ This allows PhEval extensibility to be standardized in terms of documentation an
         <tr>
           <td><code>gene_identifier</code></td>
           <td>
-                <code>str</code>
+                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
           </td>
-          <td><p>The ENSEMBL gene identifier for the result entry</p></td>
+          <td><p>The ENSEMBL gene identifier(s) for the result entry</p></td>
           <td>
               <em>required</em>
           </td>
@@ -2729,8 +2729,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
-<span class="normal">30</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -2744,12 +2743,13 @@ in the analysis.</p>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalGeneResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for gene prioritisation result</span>
 <span class="sd">    Args:</span>
-<span class="sd">        gene_symbol (str): The gene symbol for the result entry</span>
-<span class="sd">        gene_identifier (str): The ENSEMBL gene identifier for the result entry</span>
+<span class="sd">        gene_symbol (Union[List[str], str]): The gene symbol(s) for the result entry</span>
+<span class="sd">        gene_identifier (Union[List[str], str]): The ENSEMBL gene identifier(s) for the result entry</span>
 <span class="sd">        score (float): The score for the gene result entry</span>
 <span class="sd">    Notes:</span>
 <span class="sd">        While we recommend providing the gene identifier in the ENSEMBL namespace,</span>
@@ -2757,8 +2757,8 @@ in the analysis.</p>
 <span class="sd">        in the analysis.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">gene_symbol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="n">gene_identifier</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -2878,8 +2878,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
-<span class="normal">75</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
@@ -2901,7 +2900,8 @@ in the analysis.</p>
 <span class="normal">94</span>
 <span class="normal">95</span>
 <span class="normal">96</span>
-<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalVariantResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for variant prioritisation</span>
 <span class="sd">    Args:</span>
@@ -3013,8 +3013,7 @@ in the analysis.</p>
 
         <details class="quote">
           <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
@@ -3028,7 +3027,8 @@ in the analysis.</p>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">145</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalDiseaseResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for disease prioritisation</span>
 <span class="sd">    Args:</span>
