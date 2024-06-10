@@ -3,6 +3,7 @@ import operator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+from typing import List, Union
 
 import pandas as pd
 
@@ -30,8 +31,8 @@ class PhEvalResult:
 class PhEvalGeneResult(PhEvalResult):
     """Minimal data required from tool-specific output for gene prioritisation result
     Args:
-        gene_symbol (str): The gene symbol for the result entry
-        gene_identifier (str): The ENSEMBL gene identifier for the result entry
+        gene_symbol (Union[List[str], str]): The gene symbol(s) for the result entry
+        gene_identifier (Union[List[str], str]): The ENSEMBL gene identifier(s) for the result entry
         score (float): The score for the gene result entry
     Notes:
         While we recommend providing the gene identifier in the ENSEMBL namespace,
@@ -39,8 +40,8 @@ class PhEvalGeneResult(PhEvalResult):
         in the analysis.
     """
 
-    gene_symbol: str
-    gene_identifier: str
+    gene_symbol: Union[List[str], str]
+    gene_identifier: Union[List[str], str]
     score: float
 
 
