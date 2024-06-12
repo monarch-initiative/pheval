@@ -1,0 +1,57 @@
+{
+  "id": "hypokalemic_alkalosis,_familial,_with_specific_renal_tubulopathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004921",
+        "label": "Abnormal magnesium concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000114",
+        "label": "Proximal tubulopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002013",
+        "label": "Vomiting"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:241150",
+        "label": "Hypokalemic alkalosis, familial, with specific renal tubulopathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:20:36.178160Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

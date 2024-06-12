@@ -1,0 +1,75 @@
+{
+  "id": "hypertrophic_osteoarthropathy,_primary,_autosomal_recessive_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001061",
+        "label": "Acne"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001051",
+        "label": "Seborrheic dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001072",
+        "label": "Thickened skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005208",
+        "label": "Secretory diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030839",
+        "label": "Knee pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030314",
+        "label": "Periostosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614441",
+        "label": "Hypertrophic osteoarthropathy, primary, autosomal recessive 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:33:04.617580Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

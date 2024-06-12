@@ -1,0 +1,87 @@
+{
+  "id": "cardiomyopathy,_dilated,_1a",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001645",
+        "label": "Sudden cardiac death"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001688",
+        "label": "Sinus bradycardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004749",
+        "label": "Atrial flutter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004308",
+        "label": "Ventricular arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001635",
+        "label": "Congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001644",
+        "label": "Dilated cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005110",
+        "label": "Atrial fibrillation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001698",
+        "label": "Pericardial effusion"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:115200",
+        "label": "Cardiomyopathy, dilated, 1A"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:10:24.101930Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

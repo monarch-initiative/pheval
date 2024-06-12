@@ -1,0 +1,99 @@
+{
+  "id": "heterotaxy,_visceral,_4,_autosomal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011671",
+        "label": "Interrupted inferior vena cava with azygous continuation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011565",
+        "label": "Common atrium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001669",
+        "label": "Transposition of the great arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010452",
+        "label": "Ectopia of the spleen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005160",
+        "label": "Total anomalous pulmonary venous return"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006695",
+        "label": "Atrioventricular canal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034188",
+        "label": "Midline liver"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012020",
+        "label": "Right aortic arch"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033379",
+        "label": "Bilateral superior vena cava"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001748",
+        "label": "Polysplenia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613751",
+        "label": "Heterotaxy, visceral, 4, autosomal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:57:12.249574Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

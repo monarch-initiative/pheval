@@ -1,0 +1,105 @@
+{
+  "id": "respiratory_infections,_recurrent,_and_failure_to_thrive_with_or_without_diarrhea",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001525",
+        "label": "Severe failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034315",
+        "label": "Chronic cough"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034388",
+        "label": "Hilar lymph node enlargement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031650",
+        "label": "Abnormal atrioventricular valve physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000403",
+        "label": "Recurrent otitis media"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030829",
+        "label": "Abnormal breath sound"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033214",
+        "label": "Recurrent viral pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031247",
+        "label": "Whooping cough"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031995",
+        "label": "Squawks"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620233",
+        "label": "Respiratory infections, recurrent, and failure to thrive with or without diarrhea"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:23:57.969627Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

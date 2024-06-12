@@ -1,0 +1,74 @@
+{
+  "id": "alzheimer_disease_4",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P60Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002511",
+        "label": "Alzheimer disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002185",
+        "label": "Neurofibrillary tangles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012662",
+        "label": "Parietal hypometabolism in FDG PET"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011970",
+        "label": "Cerebral amyloid angiopathy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:606889",
+        "label": "Alzheimer disease 4"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:47:12.562157Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

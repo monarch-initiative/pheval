@@ -1,0 +1,92 @@
+{
+  "id": "megaloblastic_anemia,_folate-responsive",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P26Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004802",
+        "label": "Episodic hemolytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004821",
+        "label": "Hypersegmentation of neutrophil nuclei"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011462",
+          "label": "Young adult onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001981",
+        "label": "Schistocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025435",
+        "label": "Increased circulating lactate dehydrogenase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004851",
+        "label": "Folate-responsive megaloblastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040126",
+        "label": "Abnormal circulating vitamin B12 concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002908",
+        "label": "Conjugated hyperbilirubinemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601775",
+        "label": "Megaloblastic anemia, folate-responsive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:54:03.778787Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

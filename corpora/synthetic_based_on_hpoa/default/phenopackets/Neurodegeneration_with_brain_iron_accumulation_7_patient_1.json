@@ -1,0 +1,99 @@
+{
+  "id": "neurodegeneration_with_brain_iron_accumulation_7",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002505",
+        "label": "Loss of ambulation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012675",
+        "label": "Iron accumulation in brain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001337",
+        "label": "Tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012447",
+        "label": "Abnormal myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010993",
+        "label": "Abnormal cerebral subcortex morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032988",
+        "label": "Persistent head lag"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008278",
+        "label": "Cerebellar cortical atrophy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617916",
+        "label": "Neurodegeneration with brain iron accumulation 7"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:31:51.661736Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

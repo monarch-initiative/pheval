@@ -1,0 +1,116 @@
+{
+  "id": "ceroid_lipofuscinosis,_neuronal,_5",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P12Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011017",
+        "label": "Abnormal cellular physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007401",
+        "label": "Macular atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007078",
+        "label": "Decreased amplitude of sensory action potentials"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002333",
+        "label": "Motor deterioration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003208",
+        "label": "Fingerprint intracellular accumulation of autofluorescent lipopigment storage material"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002074",
+        "label": "Increased neuronal autofluorescent lipopigment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011017",
+        "label": "Abnormal cellular physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007263",
+        "label": "Spinocerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012547",
+        "label": "Abnormal involuntary eye movements"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:256731",
+        "label": "Ceroid lipofuscinosis, neuronal, 5"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:42:42.787604Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

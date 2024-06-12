@@ -1,0 +1,51 @@
+{
+  "id": "keratosis_palmoplantaris_striata_ii",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000982",
+        "label": "Palmoplantar keratoderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025122",
+        "label": "Sawtooth acanthosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612908",
+        "label": "Keratosis palmoplantaris striata II"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:41:08.706703Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

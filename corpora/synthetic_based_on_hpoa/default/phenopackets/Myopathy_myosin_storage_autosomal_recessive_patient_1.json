@@ -1,0 +1,146 @@
+{
+  "id": "myopathy,_myosin_storage,_autosomal_recessive",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P52Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200128",
+        "label": "Biventricular hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003458",
+        "label": "EMG: myopathic abnormalities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001644",
+        "label": "Dilated cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002875",
+        "label": "Exertional dyspnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003701",
+        "label": "Proximal muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008331",
+        "label": "Elevated creatine kinase after exercise"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012497",
+        "label": "Reduced maximal expiratory pressure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001722",
+        "label": "High-output congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002058",
+        "label": "Myopathic facies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011710",
+        "label": "Bundle branch block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100306",
+        "label": "Muscle fiber hyaline bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001670",
+        "label": "Asymmetric septal hypertrophy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:255160",
+        "label": "Myopathy, myosin storage, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:00:56.177077Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

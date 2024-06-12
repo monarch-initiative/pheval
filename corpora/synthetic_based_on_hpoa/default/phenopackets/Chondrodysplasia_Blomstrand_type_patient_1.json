@@ -1,0 +1,99 @@
+{
+  "id": "chondrodysplasia,_blomstrand_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000272",
+        "label": "Malar flattening"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001791",
+        "label": "Fetal ascites"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001622",
+        "label": "Premature birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002644",
+        "label": "Abnormal pelvic girdle bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008369",
+        "label": "Abnormal tarsal ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008754",
+        "label": "Laryngeal calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005151",
+        "label": "Preductal coarctation of the aorta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200083",
+        "label": "Severe limb shortening"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:215045",
+        "label": "Chondrodysplasia, Blomstrand type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:13:09.436457Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

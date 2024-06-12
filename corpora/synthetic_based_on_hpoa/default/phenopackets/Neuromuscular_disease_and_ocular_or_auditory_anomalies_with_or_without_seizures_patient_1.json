@@ -1,0 +1,129 @@
+{
+  "id": "neuromuscular_disease_and_ocular_or_auditory_anomalies_with_or_without_seizures",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007078",
+        "label": "Decreased amplitude of sensory action potentials"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012469",
+        "label": "Infantile spasms"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005562",
+        "label": "Multiple renal cysts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005565",
+        "label": "Reduced renal corticomedullary differentiation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007165",
+        "label": "Periventricular heterotopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000762",
+        "label": "Decreased nerve conduction velocity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003458",
+        "label": "EMG: myopathic abnormalities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001762",
+        "label": "Talipes equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000358",
+        "label": "Posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003712",
+        "label": "Skeletal muscle hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007793",
+        "label": "Granular macular appearance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006889",
+        "label": "Intellectual disability, borderline"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618733",
+        "label": "Neuromuscular disease and ocular or auditory anomalies with or without seizures"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:29:16.278725Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

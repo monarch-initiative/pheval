@@ -1,0 +1,105 @@
+{
+  "id": "multiple_endocrine_neoplasia,_type_iia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011781",
+        "label": "Thyroid C cell hyperplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002251",
+        "label": "Aganglionic megacolon"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032346",
+        "label": "Cutaneous lichen amyloidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011979",
+        "label": "Elevated urinary dopamine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003345",
+        "label": "Elevated urinary norepinephrine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001574",
+        "label": "Abnormality of the integument"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003528",
+        "label": "Elevated circulating calcitonin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011978",
+        "label": "Elevated urinary vanillylmandelic acid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011976",
+        "label": "Elevated urinary catecholamine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002865",
+        "label": "Medullary thyroid carcinoma"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:171400",
+        "label": "Multiple endocrine neoplasia, type IIA"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:35:29.047956Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

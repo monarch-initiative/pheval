@@ -1,0 +1,63 @@
+{
+  "id": "renal_failure,_progressive,_with_hypertension",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003259",
+        "label": "Elevated circulating creatinine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002907",
+        "label": "Microscopic hematuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030972",
+        "label": "Abnormal systemic blood pressure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012622",
+        "label": "Chronic kidney disease"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:161900",
+        "label": "Renal failure, progressive, with hypertension"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:08:30.369847Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

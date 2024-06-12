@@ -1,0 +1,189 @@
+{
+  "id": "craniosynostosis_and_dental_anomalies",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004425",
+        "label": "Flat forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011455",
+        "label": "Absent malleus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011317",
+        "label": "Right unicoronal synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001098",
+        "label": "Abnormal fundus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000326",
+        "label": "Abnormal maxilla morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000444",
+        "label": "Convex nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000680",
+        "label": "Delayed eruption of primary teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002683",
+        "label": "Abnormal calvaria morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000520",
+        "label": "Proptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000381",
+        "label": "Stapes ankylosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011283",
+        "label": "Abnormal metencephalon morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011330",
+        "label": "Metopic synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004442",
+        "label": "Sagittal craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002683",
+        "label": "Abnormal calvaria morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010051",
+        "label": "Deviation of the hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004691",
+        "label": "2-3 toe syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011821",
+        "label": "Abnormal facial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003396",
+        "label": "Syringomyelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614188",
+        "label": "Craniosynostosis and dental anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:10:21.964577Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

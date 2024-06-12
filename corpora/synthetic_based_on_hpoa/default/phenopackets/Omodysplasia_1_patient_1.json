@@ -1,0 +1,147 @@
+{
+  "id": "omodysplasia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001377",
+        "label": "Limited elbow extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004415",
+        "label": "Pulmonary artery stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002996",
+        "label": "Limited elbow movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005766",
+        "label": "Disproportionate shortening of the tibia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005120",
+        "label": "Abnormal cardiac atrium morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005792",
+        "label": "Short humerus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010501",
+        "label": "Limitation of knee mobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012741",
+        "label": "Unilateral cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001537",
+        "label": "Umbilical hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012368",
+        "label": "Flat face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000422",
+        "label": "Abnormal nasal bridge morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009826",
+        "label": "Limb undergrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001373",
+        "label": "Joint dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410273",
+        "label": "Retropharyngeal hemangioma"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:258315",
+        "label": "Omodysplasia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:13:35.162979Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

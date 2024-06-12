@@ -1,0 +1,51 @@
+{
+  "id": "bladder_dysfunction,_autonomic,_with_impaired_pupillary_reflex_and_secondary_cakut",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000011",
+        "label": "Neurogenic bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025634",
+        "label": "Abnormal ureter physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:191800",
+        "label": "Bladder dysfunction, autonomic, with impaired pupillary reflex and secondary CAKUT"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:17:32.909558Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

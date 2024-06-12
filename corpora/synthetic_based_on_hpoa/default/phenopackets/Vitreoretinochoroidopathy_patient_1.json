@@ -1,0 +1,141 @@
+{
+  "id": "vitreoretinochoroidopathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007902",
+        "label": "Vitreous hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030666",
+        "label": "Retinal neovascularization"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000519",
+        "label": "Developmental cataract"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031720",
+        "label": "Simulated distance exotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000551",
+        "label": "Color vision defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012231",
+        "label": "Exudative retinal detachment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007985",
+        "label": "Retinal arteriolar occlusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012547",
+        "label": "Abnormal involuntary eye movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008043",
+        "label": "Retinal arteriolar constriction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000482",
+        "label": "Microcornea"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011518",
+        "label": "Dichromacy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010698",
+        "label": "Nuclear pulverulent cataract"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:193220",
+        "label": "Vitreoretinochoroidopathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:31:59.531151Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

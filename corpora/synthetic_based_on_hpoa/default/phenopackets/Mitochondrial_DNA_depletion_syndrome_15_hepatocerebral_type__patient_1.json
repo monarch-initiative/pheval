@@ -1,0 +1,117 @@
+{
+  "id": "mitochondrial_dna_depletion_syndrome_15_(hepatocerebral_type)",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009141",
+        "label": "Depletion of mitochondrial DNA in muscle tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003607",
+        "label": "4-hydroxyphenylacetic aciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003270",
+        "label": "Abdominal distention"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001511",
+        "label": "Intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003231",
+        "label": "Hypertyrosinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001541",
+        "label": "Ascites"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001396",
+        "label": "Cholestasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001410",
+        "label": "Decreased liver function"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0003676",
+          "label": "Progressive"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012051",
+        "label": "Reactive hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001397",
+        "label": "Hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008150",
+        "label": "Elevated serum transaminases during infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617156",
+        "label": "Mitochondrial DNA depletion syndrome 15 (hepatocerebral type)"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:59:52.242132Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

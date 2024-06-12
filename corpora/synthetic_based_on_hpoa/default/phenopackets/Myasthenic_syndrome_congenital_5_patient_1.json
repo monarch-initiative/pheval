@@ -1,0 +1,117 @@
+{
+  "id": "myasthenic_syndrome,_congenital,_5",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003403",
+        "label": "EMG: decremental response of compound muscle action potential to repetitive nerve stimulation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003554",
+        "label": "Type 2 muscle fiber atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002747",
+        "label": "Respiratory insufficiency due to muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002093",
+        "label": "Respiratory insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003199",
+        "label": "Decreased muscle mass"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000467",
+        "label": "Neck muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003473",
+        "label": "Fatigable weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003803",
+        "label": "Type 1 muscle fiber predominance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003388",
+        "label": "Easy fatigability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002015",
+        "label": "Dysphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003443",
+        "label": "Decreased size of nerve terminals"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:603034",
+        "label": "Myasthenic syndrome, congenital, 5"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:45:57.108236Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

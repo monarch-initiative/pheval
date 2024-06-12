@@ -1,0 +1,99 @@
+{
+  "id": "glycogen_storage_disease_ixc",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410042",
+        "label": "Abnormal liver morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006568",
+        "label": "Increased hepatic glycogen content"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006268",
+        "label": "Fluctuating splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031964",
+        "label": "Elevated circulating alanine aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032988",
+        "label": "Persistent head lag"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613027",
+        "label": "Glycogen storage disease IXc"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:30:12.166158Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

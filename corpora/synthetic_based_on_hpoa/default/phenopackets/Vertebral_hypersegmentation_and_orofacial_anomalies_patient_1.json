@@ -1,0 +1,93 @@
+{
+  "id": "vertebral_hypersegmentation_and_orofacial_anomalies",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100334",
+        "label": "Unilateral cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000176",
+        "label": "Submucous cleft hard palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000349",
+        "label": "Widow's peak"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011261",
+        "label": "Darwin tubercle of helix"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005815",
+        "label": "Supernumerary ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100333",
+        "label": "Unilateral cleft lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008416",
+        "label": "Six lumbar vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003691",
+        "label": "Scapular winging"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000767",
+        "label": "Pectus excavatum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619122",
+        "label": "Vertebral hypersegmentation and orofacial anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:49:48.998193Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
