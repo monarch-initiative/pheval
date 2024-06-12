@@ -1,0 +1,141 @@
+{
+  "id": "combined_oxidative_phosphorylation_deficiency_7",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001284",
+        "label": "Areflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011923",
+        "label": "Decreased activity of mitochondrial complex I"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002376",
+        "label": "Developmental regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008347",
+        "label": "Decreased activity of mitochondrial complex IV"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001271",
+        "label": "Polyneuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011997",
+        "label": "Postprandial hyperlactemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007958",
+        "label": "Optic atrophy from cranial nerve compression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009063",
+        "label": "Progressive distal muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000549",
+        "label": "Abnormal conjugate eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007188",
+        "label": "Congenital facial diplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032122",
+        "label": "Very low visual acuity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012707",
+        "label": "Elevated brain lactate level by MRS"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613559",
+        "label": "Combined oxidative phosphorylation deficiency 7"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:08:20.166681Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

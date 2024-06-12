@@ -1,0 +1,134 @@
+{
+  "id": "wilson_disease",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P14Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002063",
+        "label": "Rigidity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001397",
+        "label": "Hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033748",
+        "label": "Hypoesthesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001538",
+        "label": "Protuberant abdomen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006580",
+        "label": "Portal fibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010839",
+        "label": "Increased urinary copper concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002378",
+        "label": "Hand tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005017",
+        "label": "Polyarticular chondrocalcinosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007609",
+        "label": "Hypoproteinemic edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004372",
+        "label": "Reduced consciousness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033045",
+        "label": "Bipedal edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010837",
+        "label": "Decreased circulating ceruloplasmin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100626",
+        "label": "Chronic hepatic failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002548",
+        "label": "Parkinsonism with favorable response to dopaminergic medication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:277900",
+        "label": "Wilson disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:57:47.523314Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

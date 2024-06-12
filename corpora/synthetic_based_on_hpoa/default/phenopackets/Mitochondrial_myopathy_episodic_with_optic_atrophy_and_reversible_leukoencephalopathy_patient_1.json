@@ -1,0 +1,129 @@
+{
+  "id": "mitochondrial_myopathy,_episodic,_with_optic_atrophy_and_reversible_leukoencephalopathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003394",
+        "label": "Muscle spasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008314",
+        "label": "Decreased activity of mitochondrial complex II"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003326",
+        "label": "Myalgia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002151",
+        "label": "Increased circulating lactate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003701",
+        "label": "Proximal muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003712",
+        "label": "Skeletal muscle hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410252",
+        "label": "Chronic neutropenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009053",
+        "label": "Distal lower limb muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004902",
+        "label": "Congenital lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003271",
+        "label": "Visceromegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003808",
+        "label": "Abnormal muscle tone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:251900",
+        "label": "Mitochondrial myopathy, episodic, with optic atrophy and reversible leukoencephalopathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:07:10.944629Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

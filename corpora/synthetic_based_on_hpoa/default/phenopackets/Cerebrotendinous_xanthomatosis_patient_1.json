@@ -1,0 +1,93 @@
+{
+  "id": "cerebrotendinous_xanthomatosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100321",
+        "label": "Abnormal dentate nucleus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031290",
+        "label": "Tuberous xanthoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002059",
+        "label": "Cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007256",
+        "label": "Abnormal pyramidal sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001081",
+        "label": "Cholelithiasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010845",
+        "label": "EEG with generalized slow activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000991",
+        "label": "Xanthomatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007340",
+        "label": "Lower limb muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002093",
+        "label": "Respiratory insufficiency"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:213700",
+        "label": "Cerebrotendinous xanthomatosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:48:36.593668Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

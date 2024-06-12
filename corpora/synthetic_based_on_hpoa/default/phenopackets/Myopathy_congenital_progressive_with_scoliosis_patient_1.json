@@ -1,0 +1,93 @@
+{
+  "id": "myopathy,_congenital,_progressive,_with_scoliosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009062",
+        "label": "Infantile axial hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031146",
+        "label": "Impaired oral bolus formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008689",
+        "label": "Bilateral cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007911",
+        "label": "Congenital bilateral ptosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618578",
+        "label": "Myopathy, congenital, progressive, with scoliosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:04:45.021593Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "lymphatic_malformation_13",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001195",
+        "label": "Single umbilical artery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001028",
+        "label": "Hemangioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000969",
+        "label": "Edema"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0030674",
+          "label": "Antenatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011603",
+        "label": "Congenital malformation of the great arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034058",
+        "label": "Abnormal fetal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000339",
+        "label": "Pugilistic facies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025677",
+        "label": "Fetal chylothorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100742",
+        "label": "Vascular neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500051",
+        "label": "Retinopathy of prematurity stage 2"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004890",
+        "label": "Elevated pulmonary artery pressure"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620244",
+        "label": "Lymphatic malformation 13"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:05:11.383033Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

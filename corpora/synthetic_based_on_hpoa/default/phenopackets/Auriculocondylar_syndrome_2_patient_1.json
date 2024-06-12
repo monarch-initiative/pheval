@@ -1,0 +1,153 @@
+{
+  "id": "auriculocondylar_syndrome_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007627",
+        "label": "Mandibular condyle aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002793",
+        "label": "Abnormal pattern of respiration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004453",
+        "label": "Overfolding of the superior helices"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200239",
+        "label": "Consonant expressive impediment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008559",
+        "label": "Hypoplastic superior helix"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000372",
+        "label": "Abnormal auditory canal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000277",
+        "label": "Abnormal mandible morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008537",
+        "label": "Cleft at the superior portion of the pinna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030809",
+        "label": "Abnormal tongue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008513",
+        "label": "Bilateral conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007628",
+        "label": "Mandibular condyle hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025372",
+        "label": "Loud snoring"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614669",
+        "label": "Auriculocondylar syndrome 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T02:25:02.209641Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

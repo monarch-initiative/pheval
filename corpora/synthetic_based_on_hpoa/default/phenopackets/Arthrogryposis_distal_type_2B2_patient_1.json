@@ -1,0 +1,111 @@
+{
+  "id": "arthrogryposis,_distal,_type_2b2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010557",
+        "label": "Overlapping fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003049",
+        "label": "Ulnar deviation of the wrist"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001831",
+        "label": "Short toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001762",
+        "label": "Talipes equinovarus"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001840",
+        "label": "Metatarsus adductus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004220",
+        "label": "Short middle phalanx of the 5th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001780",
+        "label": "Abnormal toe morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008115",
+        "label": "Clinodactyly of the 3rd toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001384",
+        "label": "Abnormal hip joint morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001172",
+        "label": "Abnormal thumb morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001772",
+        "label": "Talipes equinovalgus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618435",
+        "label": "Arthrogryposis, distal, type 2B2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:22:23.474623Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

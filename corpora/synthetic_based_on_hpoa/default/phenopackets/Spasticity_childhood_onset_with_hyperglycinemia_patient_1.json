@@ -1,0 +1,75 @@
+{
+  "id": "spasticity,_childhood-onset,_with_hyperglycinemia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0500230",
+        "label": "Increased CSF glycine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002154",
+        "label": "Hyperglycinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007364",
+        "label": "Aplasia/Hypoplasia of the cerebrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006978",
+        "label": "Dysmyelinating leukodystrophy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616859",
+        "label": "Spasticity, childhood-onset, with hyperglycinemia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:18:48.512865Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "hypophosphatemic_rickets_and_hyperparathyroidism",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004912",
+        "label": "Hypophosphatemic rickets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000117",
+        "label": "Renal phosphate wasting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000897",
+        "label": "Rachitic rosary"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002148",
+        "label": "Hypophosphatemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008208",
+        "label": "Parathyroid hyperplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002748",
+        "label": "Rickets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003072",
+        "label": "Hypercalcemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612089",
+        "label": "Hypophosphatemic rickets and hyperparathyroidism"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:07:19.528938Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

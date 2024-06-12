@@ -1,0 +1,153 @@
+{
+  "id": "arthrogryposis,_renal_dysfunction,_and_cholestasis_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001667",
+        "label": "Right ventricular hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000989",
+        "label": "Pruritus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002611",
+        "label": "Cholestatic liver disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003355",
+        "label": "Aminoaciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001942",
+        "label": "Metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003076",
+        "label": "Glycosuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001884",
+        "label": "Talipes calcaneovalgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200084",
+        "label": "Giant cell hepatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004916",
+        "label": "Generalized distal tubular acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012593",
+        "label": "Nephrotic range proteinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003397",
+        "label": "Generalized hypotonia due to defect at the neuromuscular junction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006579",
+        "label": "Prolonged neonatal jaundice"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002804",
+        "label": "Arthrogryposis multiplex congenita"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001525",
+        "label": "Severe failure to thrive"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613404",
+        "label": "Arthrogryposis, renal dysfunction, and cholestasis 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:21:14.109243Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "myopathy,_tubular_aggregate,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002522",
+        "label": "Areflexia of lower limbs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003803",
+        "label": "Type 1 muscle fiber predominance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003738",
+        "label": "Exercise-induced myalgia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003236",
+        "label": "Elevated circulating creatine kinase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009046",
+        "label": "Difficulty running"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003388",
+        "label": "Easy fatigability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002359",
+        "label": "Frequent falls"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007156",
+        "label": "Asymmetric limb muscle stiffness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009005",
+        "label": "Weakness of the intrinsic hand muscles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003554",
+        "label": "Type 2 muscle fiber atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007250",
+        "label": "Recurrent external ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001324",
+        "label": "Muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002600",
+        "label": "Hyporeflexia of lower limbs"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:160565",
+        "label": "Myopathy, tubular aggregate, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:17:53.478190Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

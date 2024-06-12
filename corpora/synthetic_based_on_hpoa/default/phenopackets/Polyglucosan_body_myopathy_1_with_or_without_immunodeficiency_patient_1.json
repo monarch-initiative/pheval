@@ -1,0 +1,111 @@
+{
+  "id": "polyglucosan_body_myopathy_1_with_or_without_immunodeficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012647",
+        "label": "Abnormal inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025033",
+        "label": "Abnormal digestive system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001722",
+        "label": "High-output congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008360",
+        "label": "Neonatal hypoproteinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004910",
+        "label": "Bicarbonate-wasting renal tubular acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006268",
+        "label": "Fluctuating splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009073",
+        "label": "Progressive proximal muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003391",
+        "label": "Gowers sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615895",
+        "label": "Polyglucosan body myopathy 1 with or without immunodeficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:34:20.030067Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

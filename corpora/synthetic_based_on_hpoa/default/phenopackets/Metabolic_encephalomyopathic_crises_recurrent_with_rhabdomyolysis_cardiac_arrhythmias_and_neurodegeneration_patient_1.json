@@ -1,0 +1,195 @@
+{
+  "id": "metabolic_encephalomyopathic_crises,_recurrent,_with_rhabdomyolysis,_cardiac_arrhythmias,_and_neurodegeneration",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200136",
+        "label": "Oral-pharyngeal dysphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001943",
+        "label": "Hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002059",
+        "label": "Cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001663",
+        "label": "Ventricular fibrillation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001332",
+        "label": "Dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002058",
+        "label": "Myopathic facies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008942",
+        "label": "Acute rhabdomyolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002919",
+        "label": "Ketonuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002180",
+        "label": "Neurodegeneration"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0003676",
+          "label": "Progressive"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0010314",
+        "label": "Premature thelarche"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002157",
+        "label": "Azotemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007057",
+        "label": "Poor hand-eye coordination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008331",
+        "label": "Elevated creatine kinase after exercise"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003781",
+        "label": "Excessive salivation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000273",
+        "label": "Elevated circulating decanoylcarnitine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031956",
+        "label": "Elevated circulating aspartate aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000821",
+        "label": "Hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012758",
+        "label": "Neurodevelopmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012651",
+        "label": "Abasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616878",
+        "label": "Metabolic encephalomyopathic crises, recurrent, with rhabdomyolysis, cardiac arrhythmias, and neurodegeneration"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:20:53.000590Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

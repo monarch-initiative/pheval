@@ -1,0 +1,123 @@
+{
+  "id": "neurodegeneration_with_ataxia_and_late-onset_optic_atrophy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006568",
+        "label": "Increased hepatic glycogen content"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002321",
+        "label": "Vertigo"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001638",
+        "label": "Cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012199",
+        "label": "Cluster headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006962",
+        "label": "Gait instability, worse in the dark"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031189",
+        "label": "Wrist drop"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007958",
+        "label": "Optic atrophy from cranial nerve compression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002311",
+        "label": "Incoordination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000651",
+        "label": "Diplopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002172",
+        "label": "Postural instability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003535",
+        "label": "3-Methylglutaconic aciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619259",
+        "label": "Neurodegeneration with ataxia and late-onset optic atrophy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:05:40.535245Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

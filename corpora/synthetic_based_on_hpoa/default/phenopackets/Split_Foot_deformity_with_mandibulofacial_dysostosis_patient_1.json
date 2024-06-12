@@ -1,0 +1,57 @@
+{
+  "id": "split-foot_deformity_with_mandibulofacial_dysostosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001839",
+        "label": "Split foot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005922",
+        "label": "Abnormal hand morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:183700",
+        "label": "Split-Foot deformity with mandibulofacial dysostosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:25:47.084576Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "id": "diamond-blackfan_anemia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005518",
+        "label": "Increased mean corpuscular volume"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000270",
+        "label": "Delayed cranial suture closure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001622",
+        "label": "Premature birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001894",
+        "label": "Thrombocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000278",
+        "label": "Retrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004810",
+        "label": "Congenital hypoplastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000465",
+        "label": "Webbed neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001875",
+        "label": "Neutropenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001245",
+        "label": "Small thenar eminence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000204",
+        "label": "Cleft upper lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008475",
+        "label": "Hypoplastic sacral vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002644",
+        "label": "Abnormal pelvic girdle bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004974",
+        "label": "Coarctation of abdominal aorta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000774",
+        "label": "Narrow chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012149",
+        "label": "Bilineage myelodysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000921",
+        "label": "Missing ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000277",
+        "label": "Abnormal mandible morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003312",
+        "label": "Abnormal form of the vertebral bodies"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:105650",
+        "label": "Diamond-Blackfan anemia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:49:39.952236Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

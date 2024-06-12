@@ -1,0 +1,93 @@
+{
+  "id": "neurodevelopmental_disorder_with_seizures_and_gingival_overgrowth",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002066",
+        "label": "Gait ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002376",
+        "label": "Developmental regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001256",
+        "label": "Intellectual disability, mild"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000212",
+        "label": "Gingival overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001350",
+        "label": "Slurred speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032895",
+        "label": "Febrile seizure outside the age of 3 months to 6 years"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030215",
+        "label": "Inappropriate crying"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007958",
+        "label": "Optic atrophy from cranial nerve compression"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619323",
+        "label": "Neurodevelopmental disorder with seizures and gingival overgrowth"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:22:53.277087Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "congenital_disorder_of_glycosylation,_type_iib",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000278",
+        "label": "Retrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000445",
+        "label": "Wide nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007840",
+        "label": "Long upper eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010557",
+        "label": "Overlapping fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006829",
+        "label": "Severe muscular hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012745",
+        "label": "Short palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410042",
+        "label": "Abnormal liver morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000060",
+        "label": "Clitoral hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001188",
+        "label": "Hand clenching"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012050",
+        "label": "Anasarca"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100711",
+        "label": "Abnormal thoracic spine morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032823",
+        "label": "Neonatal electro-clinical seizure with behavior arrest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003460",
+        "label": "Decreased circulating total IgA"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011343",
+        "label": "Moderate global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002683",
+        "label": "Abnormal calvaria morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031956",
+        "label": "Elevated circulating aspartate aminotransferase concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:606056",
+        "label": "Congenital disorder of glycosylation, type IIB"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:02:16.208990Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

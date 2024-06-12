@@ -1,0 +1,165 @@
+{
+  "id": "short-rib_thoracic_dysplasia_15_with_polydactyly",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100259",
+        "label": "Postaxial polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001680",
+        "label": "Coarctation of aorta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000774",
+        "label": "Narrow chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001674",
+        "label": "Complete atrioventricular canal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002164",
+        "label": "Nail dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006136",
+        "label": "Bilateral postaxial polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000008",
+        "label": "Abnormal morphology of female internal genitalia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000191",
+        "label": "Accessory oral frenulum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010017",
+        "label": "Cone-shaped epiphysis of the 1st metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000772",
+        "label": "Abnormal rib morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003561",
+        "label": "Birth length less than 3rd percentile"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000204",
+        "label": "Cleft upper lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000148",
+        "label": "Vaginal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006332",
+        "label": "Supernumerary maxillary incisor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030864",
+        "label": "Intercostal retractions"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617088",
+        "label": "Short-rib thoracic dysplasia 15 with polydactyly"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:59:21.747733Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

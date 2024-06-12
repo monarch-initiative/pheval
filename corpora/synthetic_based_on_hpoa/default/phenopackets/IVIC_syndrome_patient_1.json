@@ -1,0 +1,158 @@
+{
+  "id": "ivic_syndrome",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002996",
+        "label": "Limited elbow movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030241",
+        "label": "Hypoplasia of deltoid muscle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006248",
+        "label": "Limited wrist movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001498",
+        "label": "Carpal bone hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002984",
+        "label": "Hypoplasia of the radius"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033980",
+        "label": "Paroxysmal tonic upgaze"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010034",
+        "label": "Short 1st metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000602",
+        "label": "Ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006064",
+        "label": "Limited interphalangeal movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005211",
+        "label": "Midgut malrotation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002823",
+        "label": "Abnormal femur morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005922",
+        "label": "Abnormal hand morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001881",
+        "label": "Abnormal leukocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009381",
+        "label": "Short finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005648",
+        "label": "Bilateral ulnar hypoplasia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:147750",
+        "label": "IVIC syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:13:42.100023Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

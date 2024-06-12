@@ -1,0 +1,164 @@
+{
+  "id": "autoinflammation_with_infantile_enterocolitis",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P2Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001025",
+        "label": "Urticaria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011900",
+        "label": "Hypofibrinogenemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0025303",
+          "label": "Episodic"
+        }
+      ],
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012378",
+        "label": "Fatigue"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0025303",
+          "label": "Episodic"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0025303",
+          "label": "Episodic"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0033331",
+        "label": "Acute phase response"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0025303",
+          "label": "Episodic"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011469",
+        "label": "Nasal regurgitation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616050",
+        "label": "Autoinflammation with infantile enterocolitis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:29:34.828105Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

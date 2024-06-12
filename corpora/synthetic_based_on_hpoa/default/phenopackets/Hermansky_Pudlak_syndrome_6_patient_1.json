@@ -1,0 +1,147 @@
+{
+  "id": "hermansky-pudlak_syndrome_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011870",
+        "label": "Impaired arachidonic acid-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007663",
+        "label": "Reduced visual acuity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012805",
+        "label": "Iris transillumination defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000010",
+        "label": "Recurrent urinary tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001022",
+        "label": "Albinism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008320",
+        "label": "Impaired collagen-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031364",
+        "label": "Ecchymosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002788",
+        "label": "Recurrent upper respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003010",
+        "label": "Prolonged bleeding time"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012889",
+        "label": "Cervical endometriosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011869",
+        "label": "Abnormal platelet function"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000978",
+        "label": "Bruising susceptibility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004406",
+        "label": "Spontaneous, recurrent epistaxis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000646",
+        "label": "Amblyopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001107",
+        "label": "Ocular albinism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614075",
+        "label": "Hermansky-Pudlak syndrome 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:17:06.077240Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

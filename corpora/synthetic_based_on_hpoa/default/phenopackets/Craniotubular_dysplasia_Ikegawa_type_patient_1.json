@@ -1,0 +1,188 @@
+{
+  "id": "craniotubular_dysplasia,_ikegawa_type",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P10Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004279",
+        "label": "Short palm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000885",
+        "label": "Broad ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006429",
+        "label": "Broad femoral neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000667",
+        "label": "Phthisis bulbi"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000771",
+        "label": "Gynecomastia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002694",
+        "label": "Sclerosis of skull base"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002684",
+        "label": "Thickened calvaria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000537",
+        "label": "Epicanthus inversus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001293",
+        "label": "Cranial nerve compression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002644",
+        "label": "Abnormal pelvic girdle bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007634",
+        "label": "Nonarteritic anterior ischemic optic neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002057",
+        "label": "Prominent glabella"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004272",
+        "label": "Cortical thinning of hand bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005108",
+        "label": "Abnormal intervertebral disk morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619727",
+        "label": "Craniotubular dysplasia, Ikegawa type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:29:23.673392Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

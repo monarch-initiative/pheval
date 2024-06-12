@@ -1,0 +1,69 @@
+{
+  "id": "neuronopathy,_distal_hereditary_motor,_autosomal_recessive_10",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003557",
+        "label": "Increased variability in muscle fiber diameter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003487",
+        "label": "Babinski sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001347",
+        "label": "Hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100297",
+        "label": "Increased endomysial connective tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003387",
+        "label": "Decreased number of large peripheral myelinated nerve fibers"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620542",
+        "label": "Neuronopathy, distal hereditary motor, autosomal recessive 10"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:47:53.047388Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

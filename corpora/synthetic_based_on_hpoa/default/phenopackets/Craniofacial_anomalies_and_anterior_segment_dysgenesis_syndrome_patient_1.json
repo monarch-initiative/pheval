@@ -1,0 +1,87 @@
+{
+  "id": "craniofacial_anomalies_and_anterior_segment_dysgenesis_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007291",
+        "label": "Posterior fossa cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008625",
+        "label": "Severe sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030023",
+        "label": "Quelprud nodule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004328",
+        "label": "Abnormal anterior eye segment morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011818",
+        "label": "Nasofrontal encephalocele"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614195",
+        "label": "Craniofacial anomalies and anterior segment dysgenesis syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:48:22.956479Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

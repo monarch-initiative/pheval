@@ -1,0 +1,69 @@
+{
+  "id": "poland_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009011",
+        "label": "Hypoplasia of serratus anterior muscle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006657",
+        "label": "Hypoplasia of first ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006008",
+        "label": "Unilateral brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010711",
+        "label": "1-2 toe syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009026",
+        "label": "Hypoplasia of latissimus dorsi muscle"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:173800",
+        "label": "Poland syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:05:54.273800Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

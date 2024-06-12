@@ -1,0 +1,255 @@
+{
+  "id": "restrictive_dermopathy_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000444",
+        "label": "Convex nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002089",
+        "label": "Pulmonary hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001511",
+        "label": "Intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040189",
+        "label": "Scaling skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001788",
+        "label": "Premature rupture of membranes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045075",
+        "label": "Sparse eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000561",
+        "label": "Absent eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002751",
+        "label": "Kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012478",
+        "label": "Temporomandibular joint ankylosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000176",
+        "label": "Submucous cleft hard palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006645",
+        "label": "Thin clavicles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000418",
+        "label": "Narrow nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001196",
+        "label": "Short umbilical cord"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000894",
+        "label": "Short clavicles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005253",
+        "label": "Increased anterioposterior diameter of thorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000835",
+        "label": "Adrenal hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000073",
+        "label": "Ureteral duplication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012745",
+        "label": "Short palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009839",
+        "label": "Osteolytic defects of the distal phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031013",
+        "label": "Ankylosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000695",
+        "label": "Natal tooth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100840",
+        "label": "Aplasia/Hypoplasia of the eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001622",
+        "label": "Premature birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000260",
+        "label": "Wide anterior fontanel"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003121",
+        "label": "Limb joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006585",
+        "label": "Congenital pseudoarthrosis of the clavicle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001371",
+        "label": "Flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008365",
+        "label": "Abnormal talus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008065",
+        "label": "Aplasia/Hypoplasia of the skin"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:275210",
+        "label": "Restrictive dermopathy 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:21:34.594629Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

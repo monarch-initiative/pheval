@@ -1,0 +1,86 @@
+{
+  "id": "papilloma_of_choroid_plexus",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P30Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0200022",
+        "label": "Choroid plexus papilloma"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0025710",
+          "label": "Late young adult onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002669",
+        "label": "Osteosarcoma"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0025709",
+          "label": "Intermediate young adult onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001085",
+        "label": "Papilledema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002343",
+        "label": "Normal pressure hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:260500",
+        "label": "Papilloma of choroid plexus"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:53:04.759639Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

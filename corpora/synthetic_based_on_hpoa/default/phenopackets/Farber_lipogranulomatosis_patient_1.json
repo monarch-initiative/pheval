@@ -1,0 +1,75 @@
+{
+  "id": "farber_lipogranulomatosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001482",
+        "label": "Subcutaneous nodule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001187",
+        "label": "Hyperextensibility of the finger joints"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006234",
+        "label": "Osteolysis involving tarsal bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001609",
+        "label": "Hoarse voice"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:228000",
+        "label": "Farber lipogranulomatosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:59:59.987097Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

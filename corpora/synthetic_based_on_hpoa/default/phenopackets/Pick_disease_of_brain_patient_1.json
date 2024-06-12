@@ -1,0 +1,111 @@
+{
+  "id": "pick_disease_of_brain",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002476",
+        "label": "Primitive reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030213",
+        "label": "Emotional blunting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000751",
+        "label": "Personality changes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030223",
+        "label": "Perseverative thought"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002145",
+        "label": "Frontotemporal dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002591",
+        "label": "Polyphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034434",
+        "label": "Abnormal communication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:4000074",
+        "label": "Involuntary vocalization"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200046",
+        "label": "Sensory behavioral abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000749",
+        "label": "Paroxysmal bursts of laughter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031473",
+        "label": "Hostility"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:172700",
+        "label": "Pick disease of brain"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:13:05.444804Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

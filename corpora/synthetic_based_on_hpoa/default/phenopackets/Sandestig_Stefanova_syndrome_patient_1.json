@@ -1,0 +1,93 @@
+{
+  "id": "sandestig-stefanova_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000519",
+        "label": "Developmental cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006610",
+        "label": "Wide intermamillary distance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002118",
+        "label": "Abnormal cerebral ventricle morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001838",
+        "label": "Rocker bottom foot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001989",
+        "label": "Fetal akinesia sequence"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0030674",
+          "label": "Antenatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002977",
+        "label": "Aplasia/Hypoplasia involving the central nervous system"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0030674",
+          "label": "Antenatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618804",
+        "label": "Sandestig-Stefanova syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:28:09.763245Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

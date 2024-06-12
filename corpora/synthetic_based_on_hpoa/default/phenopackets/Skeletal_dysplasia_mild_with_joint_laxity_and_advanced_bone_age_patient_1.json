@@ -1,0 +1,122 @@
+{
+  "id": "skeletal_dysplasia,_mild,_with_joint_laxity_and_advanced_bone_age",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P5Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002194",
+        "label": "Delayed gross motor development"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005180",
+        "label": "Tricuspid regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003180",
+        "label": "Flat acetabular roof"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006149",
+        "label": "Increased laxity of fingers"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000343",
+        "label": "Long philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005274",
+        "label": "Prominent nasal tip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003423",
+        "label": "Thoracolumbar kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618870",
+        "label": "Skeletal dysplasia, mild, with joint laxity and advanced bone age"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:42:30.564215Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "mismatch_repair_cancer_syndrome_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002671",
+        "label": "Basal cell carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002282",
+        "label": "Gray matter heterotopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009592",
+        "label": "Astrocytoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001909",
+        "label": "Leukemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000997",
+        "label": "Axillary freckling"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002665",
+        "label": "Lymphoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002885",
+        "label": "Medulloblastoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001010",
+        "label": "Hypopigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012190",
+        "label": "T-cell lymphoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001338",
+        "label": "Partial agenesis of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007565",
+        "label": "Multiple cafe-au-lait spots"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012539",
+        "label": "Non-Hodgkin lymphoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012174",
+        "label": "Glioblastoma multiforme"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:276300",
+        "label": "Mismatch repair cancer syndrome 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:37:18.409288Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

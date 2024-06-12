@@ -1,0 +1,129 @@
+{
+  "id": "epiphyseal_dysplasia,_multiple,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003510",
+        "label": "Severe short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002663",
+        "label": "Delayed epiphyseal ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003502",
+        "label": "Mild short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010585",
+        "label": "Small epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010582",
+        "label": "Irregular epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008800",
+        "label": "Limited hip movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030840",
+        "label": "Ankle pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003301",
+        "label": "Irregular vertebral endplates"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002761",
+        "label": "Generalized joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002656",
+        "label": "Epiphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009103",
+        "label": "Aplasia/Hypoplasia involving the pelvis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009638",
+        "label": "Short proximal phalanx of thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:132400",
+        "label": "Epiphyseal dysplasia, multiple, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:55:04.029695Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

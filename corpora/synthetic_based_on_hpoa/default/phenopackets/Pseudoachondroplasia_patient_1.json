@@ -1,0 +1,98 @@
+{
+  "id": "pseudoachondroplasia",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P3Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002970",
+        "label": "Genu varum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001377",
+        "label": "Limited elbow extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010049",
+        "label": "Short metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003093",
+        "label": "Limited hip extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004042",
+        "label": "Ulnar metaphyseal irregularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002938",
+        "label": "Lumbar hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004227",
+        "label": "Short distal phalanx of the 5th finger"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:177170",
+        "label": "Pseudoachondroplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:10:32.680270Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

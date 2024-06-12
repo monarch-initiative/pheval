@@ -1,0 +1,111 @@
+{
+  "id": "denys-drash_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000112",
+        "label": "Nephropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000100",
+        "label": "Nephrotic syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001153",
+        "label": "Septate vagina"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000260",
+        "label": "Wide anterior fontanel"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001967",
+        "label": "Diffuse mesangial sclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000037",
+        "label": "Male pseudohermaphroditism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002643",
+        "label": "Neonatal respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003248",
+        "label": "Gonadal tissue inappropriate for external genitalia or chromosomal sex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003762",
+        "label": "Uterus didelphys"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000097",
+        "label": "Focal segmental glomerulosclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000812",
+        "label": "Abnormal internal genitalia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:194080",
+        "label": "Denys-Drash syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:07:56.407321Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

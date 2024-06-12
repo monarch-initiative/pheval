@@ -1,0 +1,117 @@
+{
+  "id": "combined_oxidative_phosphorylation_deficiency_13",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000496",
+        "label": "Abnormality of eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001266",
+        "label": "Choreoathetosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000762",
+        "label": "Decreased nerve conduction velocity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011470",
+        "label": "Nasogastric tube feeding in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007747",
+        "label": "Monocular horizontal nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006558",
+        "label": "Decreased mitochondrial complex III activity in liver tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002421",
+        "label": "Poor head control"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009062",
+        "label": "Infantile axial hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006978",
+        "label": "Dysmyelinating leukodystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100660",
+        "label": "Dyskinesia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614932",
+        "label": "Combined oxidative phosphorylation deficiency 13"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:09:12.257751Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

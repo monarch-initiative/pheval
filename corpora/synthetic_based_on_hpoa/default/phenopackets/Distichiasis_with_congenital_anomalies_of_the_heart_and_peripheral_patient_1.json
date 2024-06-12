@@ -1,0 +1,69 @@
+{
+  "id": "distichiasis_with_congenital_anomalies_of_the_heart_and_peripheral",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011650",
+        "label": "Bilateral ductus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005297",
+        "label": "Premature occlusive vascular stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010438",
+        "label": "Abnormal ventricular septum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033353",
+        "label": "Abnormal blood vessel morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011138",
+        "label": "Abnormal skin adnexa morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:126320",
+        "label": "Distichiasis with congenital anomalies of the heart and peripheral"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:04:00.960731Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "id": "brachyphalangy,_polydactyly,_and_tibial_aplasia/hypoplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010743",
+        "label": "Short metatarsal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002869",
+        "label": "Flared iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006507",
+        "label": "Aplasia/hypoplasia of the humerus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002697",
+        "label": "Parietal foramina"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006380",
+        "label": "Knee flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011344",
+        "label": "Severe global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000811",
+        "label": "Abnormal external genitalia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009756",
+        "label": "Popliteal pterygium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007687",
+        "label": "Unilateral ptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000765",
+        "label": "Abnormal thorax morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:609945",
+        "label": "Brachyphalangy, polydactyly, and tibial aplasia/hypoplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:18:14.804457Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

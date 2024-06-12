@@ -1,0 +1,93 @@
+{
+  "id": "alpha-1-antitrypsin_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001394",
+        "label": "Cirrhosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012735",
+        "label": "Cough"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030169",
+        "label": "Gastric varix"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033709",
+        "label": "Increased sputum production"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032025",
+        "label": "Reduced circulating alpha-1-antitrypsin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002105",
+        "label": "Hemoptysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002110",
+        "label": "Bronchiectasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006510",
+        "label": "Chronic pulmonary obstruction"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613490",
+        "label": "Alpha-1-Antitrypsin deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:48:41.419297Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

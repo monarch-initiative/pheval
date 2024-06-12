@@ -1,0 +1,51 @@
+{
+  "id": "hypogonadism,_malehypogonadism_and_testicular_atrophy,_included",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000029",
+        "label": "Testicular atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008736",
+        "label": "Hypoplasia of penis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:241100",
+        "label": "Hypogonadism, malehypogonadism and testicular atrophy, included"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:46:57.168391Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

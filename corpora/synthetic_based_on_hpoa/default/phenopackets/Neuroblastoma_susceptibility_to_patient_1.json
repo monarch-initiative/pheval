@@ -1,0 +1,105 @@
+{
+  "id": "neuroblastoma,_susceptibility_to",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011978",
+        "label": "Elevated urinary vanillylmandelic acid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006747",
+        "label": "Ganglioneuroblastoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011979",
+        "label": "Elevated urinary dopamine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010543",
+        "label": "Opsoclonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000616",
+        "label": "Miosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001955",
+        "label": "Unexplained fevers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033822",
+        "label": "Mass on thoracic imaging"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011281",
+        "label": "Abnormality of urine catecholamine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011977",
+        "label": "Elevated urinary homovanillic acid"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:256700",
+        "label": "Neuroblastoma, susceptibility to"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:17:48.521374Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "axenfeld-rieger_syndrome,_type_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011484",
+        "label": "Posterior synechiae of the anterior chamber"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007875",
+        "label": "Congenital blindness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012108",
+        "label": "Open angle glaucoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000506",
+        "label": "Telecanthus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000051",
+        "label": "Perineal hypospadias"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034915",
+        "label": "Abnormal anus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000322",
+        "label": "Short philtrum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601499",
+        "label": "Axenfeld-rieger syndrome, type 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:52:16.917199Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

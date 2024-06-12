@@ -1,0 +1,141 @@
+{
+  "id": "insensitivity_to_pain,_congenital,_with_anhidrosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002754",
+        "label": "Osteomyelitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000970",
+        "label": "Anhidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000559",
+        "label": "Corneal scarring"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000742",
+        "label": "Self-mutilation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012332",
+        "label": "Abnormal autonomic nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100725",
+        "label": "Lichenification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002821",
+        "label": "Neuropathic arthropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007021",
+        "label": "Pain insensitivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000495",
+        "label": "Recurrent corneal erosions"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002715",
+        "label": "Abnormality of the immune system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012804",
+        "label": "Corneal ulceration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001256",
+        "label": "Intellectual disability, mild"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005307",
+        "label": "Postural hypotension with compensatory tachycardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007249",
+        "label": "Decreased number of small peripheral myelinated nerve fibers"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:256800",
+        "label": "Insensitivity to pain, congenital, with anhidrosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:51:34.917533Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

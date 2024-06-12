@@ -1,0 +1,111 @@
+{
+  "id": "brachydactyly,_type_b2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010034",
+        "label": "Short 1st metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001204",
+        "label": "Distal symphalangism of hands"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006152",
+        "label": "Proximal symphalangism of hands"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009882",
+        "label": "Short distal phalanx of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009843",
+        "label": "Aplasia/Hypoplasia of the middle phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010621",
+        "label": "Cutaneous syndactyly of toes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010185",
+        "label": "Aplasia/Hypoplasia of the distal phalanges of the toes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008499",
+        "label": "High hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100240",
+        "label": "Synostosis of joints"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008122",
+        "label": "Calcaneonavicular fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008386",
+        "label": "Aplasia/Hypoplasia of the nails"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:611377",
+        "label": "Brachydactyly, type B2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:22:31.601453Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

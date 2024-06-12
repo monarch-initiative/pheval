@@ -1,0 +1,63 @@
+{
+  "id": "atrophoderma_vermiculata",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100837",
+        "label": "Atrophodermia vermiculata"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001820",
+        "label": "Leukonychia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500019",
+        "label": "Abnormal resting energy expenditure from metabolic cart test"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001056",
+        "label": "Milia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:209700",
+        "label": "Atrophoderma vermiculata"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:31:05.158512Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

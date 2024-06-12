@@ -1,0 +1,117 @@
+{
+  "id": "phace_association",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007986",
+        "label": "Increased retinal vascularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007434",
+        "label": "Plaque-like facial hemangioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002277",
+        "label": "Horner syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100545",
+        "label": "Arterial stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000609",
+        "label": "Optic nerve hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002617",
+        "label": "Vascular dilatation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005314",
+        "label": "Anomalous branches of internal carotid artery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100029",
+        "label": "Lingual thyroid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001643",
+        "label": "Patent ductus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007486",
+        "label": "Cavernous hemangioma of the face"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:606519",
+        "label": "PHACE association"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:28:28.190961Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

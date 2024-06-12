@@ -1,0 +1,237 @@
+{
+  "id": "chromosome_17q12_deletion_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000324",
+        "label": "Facial asymmetry"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005343",
+        "label": "Hypoplasia of the bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002164",
+        "label": "Nail dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002910",
+        "label": "Elevated circulating hepatic transaminase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000666",
+        "label": "Horizontal nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004719",
+        "label": "Hyperechogenic kidneys"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000998",
+        "label": "Hypertrichosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008407",
+        "label": "Hyperconvex thumb nails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000348",
+        "label": "High forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030791",
+        "label": "Abnormal jaw morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002187",
+        "label": "Intellectual disability, profound"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002553",
+        "label": "Highly arched eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012786",
+        "label": "Recurrent cystitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012674",
+        "label": "Aplasia of the lower vagina"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008684",
+        "label": "Aplasia/hypoplasia of the uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025325",
+        "label": "Sparse medial eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000126",
+        "label": "Hydronephrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001847",
+        "label": "Long hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000122",
+        "label": "Unilateral renal agenesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012583",
+        "label": "Unilateral renal hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000272",
+        "label": "Malar flattening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000717",
+        "label": "Autism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031909",
+        "label": "Unicornuate uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100753",
+        "label": "Schizophrenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025633",
+        "label": "Abnormal ureter morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614527",
+        "label": "Chromosome 17q12 deletion syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:47:31.913968Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "gray_platelet_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008320",
+        "label": "Impaired collagen-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012147",
+        "label": "Reduced quantity of Von Willebrand factor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011872",
+        "label": "Impaired thrombin-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011974",
+        "label": "Myelofibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012528",
+        "label": "Abnormal number of alpha granules"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008330",
+        "label": "Reduced von Willebrand factor activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000132",
+        "label": "Menorrhagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:139090",
+        "label": "Gray platelet syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:17:46.996090Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "paget_disease_of_bone_2,_early-onset",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P2Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006480",
+        "label": "Premature loss of teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002315",
+        "label": "Headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003097",
+        "label": "Short femur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008513",
+        "label": "Bilateral conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003072",
+        "label": "Hypercalcemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002659",
+        "label": "Increased susceptibility to fractures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003084",
+        "label": "Fractures of the long bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002694",
+        "label": "Sclerosis of skull base"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002797",
+        "label": "Osteolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005096",
+        "label": "Distal femoral bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003991",
+        "label": "Osteosclerosis of the ulna"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:602080",
+        "label": "Paget disease of bone 2, early-onset"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:12:21.289882Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "id": "microphthalmia_with_limb_anomalies",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001849",
+        "label": "Foot oligodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012741",
+        "label": "Unilateral cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001215",
+        "label": "Camptodactyly of 2nd-5th fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000528",
+        "label": "Anophthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010715",
+        "label": "2-5 toe syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000960",
+        "label": "Sacral dimple"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001241",
+        "label": "Capitate-hamate fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001162",
+        "label": "Postaxial hand polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005709",
+        "label": "2-3 toe cutaneous syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000278",
+        "label": "Retrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001852",
+        "label": "Sandal gap"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003038",
+        "label": "Fibular hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001440",
+        "label": "Metatarsal synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005867",
+        "label": "4-5 metacarpal synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002982",
+        "label": "Tibial bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000175",
+        "label": "Cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001762",
+        "label": "Talipes equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008081",
+        "label": "Pes valgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001830",
+        "label": "Postaxial foot polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000581",
+        "label": "Blepharophimosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000954",
+        "label": "Single transverse palmar crease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001159",
+        "label": "Syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005345",
+        "label": "Abnormal vena cava morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001384",
+        "label": "Abnormal hip joint morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:206920",
+        "label": "Microphthalmia with limb anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:41:49.596506Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

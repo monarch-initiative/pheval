@@ -1,0 +1,189 @@
+{
+  "id": "brain_abnormalities,_neurodegeneration,_and_dysosteosclerosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007165",
+        "label": "Periventricular heterotopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002465",
+        "label": "Poor speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002808",
+        "label": "Kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002510",
+        "label": "Spastic tetraplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001268",
+        "label": "Mental deterioration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100861",
+        "label": "Sclerotic vertebral body"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002119",
+        "label": "Ventriculomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003034",
+        "label": "Diaphyseal sclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007099",
+        "label": "Chiari type I malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001321",
+        "label": "Cerebellar hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004330",
+        "label": "Increased skull ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002514",
+        "label": "Cerebral calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001274",
+        "label": "Agenesis of corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001591",
+        "label": "Bell-shaped thorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003472",
+        "label": "Hypocalcemic tetany"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200001",
+        "label": "Selective mutism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004026",
+        "label": "Broad radial metaphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007024",
+        "label": "Pseudobulbar paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025711",
+        "label": "Convergence-retraction nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618476",
+        "label": "Brain abnormalities, neurodegeneration, and dysosteosclerosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:16:53.500890Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

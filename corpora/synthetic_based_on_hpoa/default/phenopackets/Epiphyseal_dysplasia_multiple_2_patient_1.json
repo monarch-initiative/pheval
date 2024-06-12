@@ -1,0 +1,111 @@
+{
+  "id": "epiphyseal_dysplasia,_multiple,_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002656",
+        "label": "Epiphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002136",
+        "label": "Broad-based gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030839",
+        "label": "Knee pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005715",
+        "label": "Flattened knee epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012431",
+        "label": "Episodic fatigue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010886",
+        "label": "Osteochondritis dissecans"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034373",
+        "label": "External tibial torsion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003272",
+        "label": "Abnormal hip bone morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:600204",
+        "label": "Epiphyseal dysplasia, multiple, 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:04:31.863694Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

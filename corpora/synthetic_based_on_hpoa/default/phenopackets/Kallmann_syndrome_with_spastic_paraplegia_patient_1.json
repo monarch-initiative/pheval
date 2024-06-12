@@ -1,0 +1,87 @@
+{
+  "id": "kallmann_syndrome_with_spastic_paraplegia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002225",
+        "label": "Sparse pubic hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000044",
+        "label": "Hypogonadotropic hypogonadism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000163",
+        "label": "Abnormal oral cavity morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030341",
+        "label": "Decreased circulating follicle stimulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001341",
+        "label": "Olfactory lobe agenesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003782",
+        "label": "Eunuchoid habitus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:308750",
+        "label": "Kallmann syndrome with spastic paraplegia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:01:06.705141Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

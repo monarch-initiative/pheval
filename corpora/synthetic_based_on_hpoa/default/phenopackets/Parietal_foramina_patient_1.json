@@ -1,0 +1,81 @@
+{
+  "id": "parietal_foramina",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004471",
+        "label": "Aplasia cutis congenita over the scalp vertex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410030",
+        "label": "Cleft lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012199",
+        "label": "Cluster headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011819",
+        "label": "Submucous cleft soft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002683",
+        "label": "Abnormal calvaria morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020219",
+        "label": "Motor seizure"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:168500",
+        "label": "Parietal foramina"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:25:11.998891Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

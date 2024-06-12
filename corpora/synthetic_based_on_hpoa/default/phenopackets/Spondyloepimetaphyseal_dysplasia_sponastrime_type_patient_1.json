@@ -1,0 +1,159 @@
+{
+  "id": "spondyloepimetaphyseal_dysplasia,_sponastrime_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006336",
+        "label": "Short dental root"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000523",
+        "label": "Subcapsular cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002938",
+        "label": "Lumbar hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005607",
+        "label": "Abnormal tracheobronchial morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003366",
+        "label": "Abnormal femoral neck/head morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011991",
+        "label": "Abnormal neutrophil count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003370",
+        "label": "Flat capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000272",
+        "label": "Malar flattening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000422",
+        "label": "Abnormal nasal bridge morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100199",
+        "label": "Small epiphysis of the proximal phalanx of the 4th toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005619",
+        "label": "Thoracolumbar kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001607",
+        "label": "Subglottic stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003799",
+        "label": "Marked delay in bone age"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006335",
+        "label": "Persistence of primary teeth"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:271510",
+        "label": "Spondyloepimetaphyseal dysplasia, sponastrime type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:28:09.245588Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

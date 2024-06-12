@@ -1,0 +1,69 @@
+{
+  "id": "immunodeficiency_81",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100838",
+        "label": "Recurrent cutaneous abscess formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025632",
+        "label": "Reduced reactive oxygen species production in neutrophils"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031404",
+        "label": "Impaired antigen-specific response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031292",
+        "label": "Cutaneous abscess"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008320",
+        "label": "Impaired collagen-induced platelet aggregation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619374",
+        "label": "Immunodeficiency 81"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:06:53.356308Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

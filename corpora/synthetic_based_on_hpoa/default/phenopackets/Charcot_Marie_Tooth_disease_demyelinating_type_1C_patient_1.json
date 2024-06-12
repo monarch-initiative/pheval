@@ -1,0 +1,99 @@
+{
+  "id": "charcot-marie-tooth_disease,_demyelinating,_type_1c",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002066",
+        "label": "Gait ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007230",
+        "label": "Decreased distal sensory nerve action potential"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012078",
+        "label": "Motor conduction block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040131",
+        "label": "Abnormal motor nerve conduction velocity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001271",
+        "label": "Polyneuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006937",
+        "label": "Impaired distal tactile sensation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003392",
+        "label": "First dorsal interossei muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002403",
+        "label": "Positive Romberg sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601098",
+        "label": "Charcot-Marie-Tooth disease, demyelinating, type 1C"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T00:31:45.197544Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "osteogenesis_imperfecta_21",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002979",
+        "label": "Bowing of the legs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001552",
+        "label": "Barrel-shaped chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006488",
+        "label": "Bowing of the arm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002673",
+        "label": "Coxa valga"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005653",
+        "label": "Moderate generalized osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000915",
+        "label": "Pectus excavatum of inferior sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008845",
+        "label": "Mesomelic short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002645",
+        "label": "Wormian bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001591",
+        "label": "Bell-shaped thorax"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619131",
+        "label": "Osteogenesis imperfecta 21"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:58:32.314342Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

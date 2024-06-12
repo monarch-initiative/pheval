@@ -1,0 +1,51 @@
+{
+  "id": "ventricular_tachycardia,_catecholaminergic_polymorphic,_5,_with_or_without_muscle_weakness",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031628",
+        "label": "Aborted sudden cardiac death"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003694",
+        "label": "Late-onset proximal muscle weakness"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615441",
+        "label": "Ventricular tachycardia, catecholaminergic polymorphic, 5, with or without muscle weakness"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:54:09.781692Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

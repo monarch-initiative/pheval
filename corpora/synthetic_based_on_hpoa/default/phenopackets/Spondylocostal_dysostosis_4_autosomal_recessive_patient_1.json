@@ -1,0 +1,165 @@
+{
+  "id": "spondylocostal_dysostosis_4,_autosomal_recessive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030322",
+        "label": "Vertebral artery hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034237",
+        "label": "Open neural tube defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004619",
+        "label": "Lumbar kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000011",
+        "label": "Neurogenic bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001591",
+        "label": "Bell-shaped thorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0034197",
+          "label": "Third trimester onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011283",
+        "label": "Abnormal metencephalon morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032356",
+        "label": "Decreased pre-bronchodilator forced vital capacity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001545",
+        "label": "Anteriorly placed anus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008848",
+        "label": "Moderately short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025668",
+        "label": "Abnormal neck morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005626",
+        "label": "Posterior fusion of lumbosacral vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008467",
+        "label": "Thoracic hemivertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002025",
+        "label": "Anal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000765",
+        "label": "Abnormal thorax morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031772",
+        "label": "Abnormal posterior circulating artery morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002091",
+        "label": "Restrictive ventilatory defect"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613686",
+        "label": "Spondylocostal dysostosis 4, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:45:03.454907Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

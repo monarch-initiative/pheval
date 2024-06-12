@@ -1,0 +1,93 @@
+{
+  "id": "xeroderma_pigmentosum,_variant_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000509",
+        "label": "Conjunctivitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002671",
+        "label": "Basal cell carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034697",
+        "label": "Cutaneous telangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004334",
+        "label": "Dermal atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000621",
+        "label": "Entropion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001029",
+        "label": "Poikiloderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008069",
+        "label": "Neoplasm of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007603",
+        "label": "Freckles in sun-exposed areas"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:278750",
+        "label": "Xeroderma pigmentosum, variant type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:32:22.372476Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

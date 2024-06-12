@@ -1,0 +1,87 @@
+{
+  "id": "interstitial_lung_and_liver_disease",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002013",
+        "label": "Vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002094",
+        "label": "Dyspnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034444",
+        "label": "Abnormal gamma-glutamyltransferase level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033539",
+        "label": "Bilateral apical pulmonary fibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030190",
+        "label": "Oral motor hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001410",
+        "label": "Decreased liver function"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615486",
+        "label": "Interstitial lung and liver disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:34:31.061144Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

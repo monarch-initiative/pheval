@@ -1,0 +1,105 @@
+{
+  "id": "immunodeficiency_9",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002719",
+        "label": "Recurrent infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003391",
+        "label": "Gowers sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000705",
+        "label": "Amelogenesis imperfecta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007476",
+        "label": "Anhidrotic ectodermal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006852",
+        "label": "Episodic generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004889",
+        "label": "Intermittent episodes of respiratory insufficiency due to muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010515",
+        "label": "Aplasia/Hypoplasia of the thymus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001531",
+        "label": "Failure to thrive in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002850",
+        "label": "Decreased circulating total IgM"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612782",
+        "label": "Immunodeficiency 9"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T00:31:10.207961Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

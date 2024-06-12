@@ -1,0 +1,177 @@
+{
+  "id": "homocystinuria_due_to_cystathionine_beta-synthase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001083",
+        "label": "Ectopia lentis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001166",
+        "label": "Arachnodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001397",
+        "label": "Hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032352",
+        "label": "Methioninuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000965",
+        "label": "Cutis marmorata"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000098",
+        "label": "Tall stature"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000501",
+        "label": "Glaucoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000716",
+        "label": "Depression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001376",
+        "label": "Limitation of joint mobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040160",
+        "label": "Generalized osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001297",
+        "label": "Stroke"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003235",
+        "label": "Hypermethioninemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001519",
+        "label": "Disproportionate tall stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012075",
+        "label": "Personality disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004328",
+        "label": "Abnormal anterior eye segment morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:236200",
+        "label": "Homocystinuria due to cystathionine beta-synthase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:12:44.122922Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

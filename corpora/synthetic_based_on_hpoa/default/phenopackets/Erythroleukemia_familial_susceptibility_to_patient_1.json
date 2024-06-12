@@ -1,0 +1,69 @@
+{
+  "id": "erythroleukemia,_familial,_susceptibility_to",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012132",
+        "label": "Erythroid hyperplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004377",
+        "label": "Hematological neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004859",
+        "label": "Amegakaryocytic thrombocytopenia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:133180",
+        "label": "Erythroleukemia, familial, susceptibility to"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:57:04.181085Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

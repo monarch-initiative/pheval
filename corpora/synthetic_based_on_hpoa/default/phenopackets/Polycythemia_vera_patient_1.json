@@ -1,0 +1,75 @@
+{
+  "id": "polycythemia_vera",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001898",
+        "label": "Increased red blood cell mass"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001900",
+        "label": "Increased circulating hemoglobin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001899",
+        "label": "Increased hematocrit"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001977",
+        "label": "Abnormal thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006268",
+        "label": "Fluctuating splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005404",
+        "label": "Increased B cell count"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:263300",
+        "label": "Polycythemia vera"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:22:04.236414Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

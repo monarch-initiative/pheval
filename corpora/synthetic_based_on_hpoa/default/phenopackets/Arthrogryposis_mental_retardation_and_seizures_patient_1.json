@@ -1,0 +1,93 @@
+{
+  "id": "arthrogryposis,_mental_retardation,_and_seizures",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002121",
+        "label": "Generalized non-motor (absence) seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002804",
+        "label": "Arthrogryposis multiplex congenita"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000277",
+        "label": "Abnormal mandible morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006852",
+        "label": "Episodic generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000253",
+        "label": "Progressive microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005191",
+        "label": "Congenital knee dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032856",
+        "label": "Focal aware bilateral motor seizure"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615553",
+        "label": "Arthrogryposis, mental retardation, and seizures"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:07:35.323391Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

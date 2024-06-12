@@ -1,0 +1,141 @@
+{
+  "id": "schimmelpenning-feuerstein-mims_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010815",
+        "label": "Nevus sebaceous"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002751",
+        "label": "Kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008064",
+        "label": "Ichthyosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001548",
+        "label": "Overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010817",
+        "label": "Linear nevus sebaceous"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000267",
+        "label": "Cranial asymmetry"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000938",
+        "label": "Osteopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000589",
+        "label": "Coloboma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004912",
+        "label": "Hypophosphatemic rickets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001028",
+        "label": "Hemangioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006482",
+        "label": "Abnormal dental morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001780",
+        "label": "Abnormal toe morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002757",
+        "label": "Recurrent fractures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001596",
+        "label": "Alopecia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002671",
+        "label": "Basal cell carcinoma"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:163200",
+        "label": "Schimmelpenning-Feuerstein-Mims syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:32:17.160244Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

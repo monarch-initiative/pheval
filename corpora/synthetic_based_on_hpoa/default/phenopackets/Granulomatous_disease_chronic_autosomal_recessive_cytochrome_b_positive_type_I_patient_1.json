@@ -1,0 +1,93 @@
+{
+  "id": "granulomatous_disease,_chronic,_autosomal_recessive,_cytochrome_b-positive,_type_i",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000964",
+        "label": "Eczematoid dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002741",
+        "label": "Recurrent Serratia marcescens infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002842",
+        "label": "Recurrent Burkholderia cepacia infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100658",
+        "label": "Cellulitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003203",
+        "label": "Impaired oxidative burst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002740",
+        "label": "Recurrent E. coli infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:233700",
+        "label": "Granulomatous disease, chronic, autosomal recessive, cytochrome b-positive, type I"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:44:14.238179Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

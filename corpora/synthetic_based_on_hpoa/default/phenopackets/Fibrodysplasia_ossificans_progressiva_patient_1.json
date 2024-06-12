@@ -1,0 +1,140 @@
+{
+  "id": "fibrodysplasia_ossificans_progressiva",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P2Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008449",
+        "label": "Progressive cervical vertebral spine fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004629",
+        "label": "Small cervical vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010034",
+        "label": "Short 1st metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005986",
+        "label": "Limitation of neck motion"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010109",
+        "label": "Short hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010054",
+        "label": "Abnormality of the first metatarsal bone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001844",
+        "label": "Abnormal hallux morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011987",
+        "label": "Ectopic ossification in muscle tissue"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002878",
+        "label": "Respiratory failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002135",
+        "label": "Basal ganglia calcification"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:135100",
+        "label": "Fibrodysplasia ossificans progressiva"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:06:22.506640Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "fanconi_anemia,_complementation_group_i",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000145",
+        "label": "Boot-shaped cardiac silhouette"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030048",
+        "label": "Colpocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005726",
+        "label": "Thumbs hypoplastic with bulbous tips"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001017",
+        "label": "Anemic pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002438",
+        "label": "Cerebellar malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009658",
+        "label": "Aplasia/Hypoplasia of the phalanges of the thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410252",
+        "label": "Chronic neutropenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011452",
+        "label": "Functional abnormality of the middle ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000325",
+        "label": "Triangular face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008056",
+        "label": "Aplasia/Hypoplasia affecting the eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100240",
+        "label": "Synostosis of joints"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011451",
+        "label": "Primary microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009777",
+        "label": "Absent thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001655",
+        "label": "Patent foramen ovale"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000832",
+        "label": "Primary hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003221",
+        "label": "Chromosomal breakage induced by crosslinking agents"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001533",
+        "label": "Slender build"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007429",
+        "label": "Few cafe-au-lait spots"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001338",
+        "label": "Partial agenesis of the corpus callosum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:609053",
+        "label": "Fanconi anemia, complementation group I"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:56:30.166823Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

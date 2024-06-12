@@ -1,0 +1,140 @@
+{
+  "id": "sideroblastic_anemia_with_b-cell_immunodeficiency,_periodic_fevers,_and_developmental_delay",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001924",
+        "label": "Sideroblastic anemia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004840",
+        "label": "Hypochromic microcytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032323",
+        "label": "Periodic fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034028",
+        "label": "Saccharopinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030251",
+        "label": "Absence of memory B cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008625",
+        "label": "Severe sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001334",
+        "label": "Communicating hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012409",
+        "label": "Cortical nephrocalcinosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004779",
+        "label": "Brittle scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007947",
+        "label": "Pericentral retinitis pigmentosa"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616084",
+        "label": "Sideroblastic anemia with B-cell immunodeficiency, periodic fevers, and developmental delay"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:04:37.363373Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

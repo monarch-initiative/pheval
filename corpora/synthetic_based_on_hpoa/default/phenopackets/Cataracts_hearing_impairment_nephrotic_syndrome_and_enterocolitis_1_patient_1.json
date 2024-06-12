@@ -1,0 +1,93 @@
+{
+  "id": "cataracts,_hearing_impairment,_nephrotic_syndrome,_and_enterocolitis_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000100",
+        "label": "Nephrotic syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004387",
+        "label": "Enterocolitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000962",
+        "label": "Hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000327",
+        "label": "Hypoplasia of the maxilla"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000097",
+        "label": "Focal segmental glomerulosclerosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:301108",
+        "label": "Cataracts, hearing impairment, nephrotic syndrome, and enterocolitis 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:53:03.383896Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

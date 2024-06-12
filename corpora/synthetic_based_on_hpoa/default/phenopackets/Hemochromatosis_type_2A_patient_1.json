@@ -1,0 +1,63 @@
+{
+  "id": "hemochromatosis,_type_2a",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000953",
+        "label": "Hyperpigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003452",
+        "label": "Increased circulating iron concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000869",
+        "label": "Secondary amenorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033331",
+        "label": "Acute phase response"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:602390",
+        "label": "Hemochromatosis, type 2A"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:22:03.143514Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

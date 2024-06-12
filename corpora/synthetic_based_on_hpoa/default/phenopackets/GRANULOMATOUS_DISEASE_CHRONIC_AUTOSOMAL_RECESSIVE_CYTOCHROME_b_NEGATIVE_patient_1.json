@@ -1,0 +1,135 @@
+{
+  "id": "granulomatous_disease,_chronic,_autosomal_recessive,_cytochrome_b-negative",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002740",
+        "label": "Recurrent E. coli infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002726",
+        "label": "Recurrent Staphylococcus aureus infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011955",
+        "label": "Hepatic granulomatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410042",
+        "label": "Abnormal liver morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100838",
+        "label": "Recurrent cutaneous abscess formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003206",
+        "label": "Decreased activity of NADPH oxidase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032282",
+        "label": "Contact dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002742",
+        "label": "Recurrent Klebsiella infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012732",
+        "label": "Anorectal anomaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002840",
+        "label": "Lymphadenitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011993",
+        "label": "Impaired neutrophil bactericidal activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100658",
+        "label": "Cellulitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002842",
+        "label": "Recurrent Burkholderia cepacia infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006564",
+        "label": "Fluctuating hepatomegaly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:233690",
+        "label": "GRANULOMATOUS DISEASE, CHRONIC, AUTOSOMAL RECESSIVE, CYTOCHROME b-NEGATIVE"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:03:28.518259Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

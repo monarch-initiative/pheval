@@ -1,0 +1,69 @@
+{
+  "id": "immunodeficiency_71_with_inflammatory_disease_and_congenital_thrombocytopenia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002633",
+        "label": "Vasculitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031813",
+        "label": "Colonic eosinophilia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200029",
+        "label": "Vasculitis in the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100658",
+        "label": "Cellulitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011450",
+        "label": "Unusual CNS infection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617718",
+        "label": "Immunodeficiency 71 with inflammatory disease and congenital thrombocytopenia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:22:49.781267Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

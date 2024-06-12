@@ -1,0 +1,63 @@
+{
+  "id": "ichthyosis,_congenital,_autosomal_recessive_5",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025092",
+        "label": "Epidermal acanthosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012826",
+          "label": "Moderate"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001927",
+        "label": "Acanthocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033252",
+        "label": "Palmar hyperlinearity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:604777",
+        "label": "Ichthyosis, congenital, autosomal recessive 5"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:39:18.749861Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

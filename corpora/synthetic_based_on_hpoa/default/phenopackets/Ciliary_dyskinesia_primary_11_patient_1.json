@@ -1,0 +1,99 @@
+{
+  "id": "ciliary_dyskinesia,_primary,_11",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012263",
+        "label": "Immotile cilia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002110",
+        "label": "Bronchiectasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011108",
+        "label": "Recurrent sinusitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033036",
+        "label": "Decreased nasal nitric oxide"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002257",
+        "label": "Chronic rhinitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012260",
+        "label": "Abnormal central microtubular pair morphology of respiratory motile cilia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012207",
+        "label": "Reduced sperm motility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002643",
+        "label": "Neonatal respiratory distress"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004469",
+        "label": "Chronic bronchitis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612649",
+        "label": "Ciliary dyskinesia, primary, 11"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:34:22.370538Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

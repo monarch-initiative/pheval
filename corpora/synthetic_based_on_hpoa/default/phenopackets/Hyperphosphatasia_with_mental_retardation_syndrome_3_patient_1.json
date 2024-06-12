@@ -1,0 +1,123 @@
+{
+  "id": "hyperphosphatasia_with_mental_retardation_syndrome_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000431",
+        "label": "Wide nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002079",
+        "label": "Hypoplasia of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010804",
+        "label": "Tented upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004485",
+        "label": "Cessation of head growth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006915",
+        "label": "Inability to walk by childhood/adolescence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200007",
+        "label": "Abnormal size of the palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034057",
+        "label": "Fetal anomaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5201004",
+        "label": "Incomplete cleft hard palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032656",
+        "label": "Febrile status epilepticus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002944",
+        "label": "Thoracolumbar scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006118",
+        "label": "Shortening of all distal phalanges of the fingers"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614207",
+        "label": "Hyperphosphatasia with mental retardation syndrome 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:55:22.544036Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "progressive_familial_heart_block,_type_ia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001279",
+        "label": "Syncope"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005170",
+        "label": "Complete heart block with broad QRS complexes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011712",
+        "label": "Right bundle branch block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003115",
+        "label": "Abnormal EKG"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:113900",
+        "label": "Progressive familial heart block, type IA"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:54:59.355343Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "spondyloperipheral_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010049",
+        "label": "Short metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012106",
+        "label": "Rhizomelic leg shortening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009650",
+        "label": "Short distal phalanx of the thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009826",
+        "label": "Limb undergrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003301",
+        "label": "Irregular vertebral endplates"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034374",
+        "label": "Trident acetabulum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004180",
+        "label": "Short distal phalanx of the 3rd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003370",
+        "label": "Flat capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003180",
+        "label": "Flat acetabular roof"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005060",
+        "label": "Limited elbow flexion/extension"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:271700",
+        "label": "Spondyloperipheral dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:19:22.406194Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

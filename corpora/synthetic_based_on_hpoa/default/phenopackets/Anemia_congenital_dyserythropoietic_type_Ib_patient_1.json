@@ -1,0 +1,63 @@
+{
+  "id": "anemia,_congenital_dyserythropoietic,_type_ib",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001159",
+        "label": "Syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010972",
+        "label": "Anemia of inadequate production"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000980",
+        "label": "Pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020047",
+        "label": "Abnormal myeloid cell morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615631",
+        "label": "Anemia, congenital dyserythropoietic, type Ib"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:00:46.860010Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

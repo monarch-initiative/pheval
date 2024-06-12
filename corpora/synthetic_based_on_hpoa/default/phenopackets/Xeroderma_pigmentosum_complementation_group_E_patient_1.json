@@ -1,0 +1,87 @@
+{
+  "id": "xeroderma_pigmentosum,_complementation_group_e",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001009",
+        "label": "Telangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003079",
+        "label": "Defective DNA repair after ultraviolet radiation damage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031736",
+        "label": "Involutional entropion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008069",
+        "label": "Neoplasm of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007655",
+        "label": "Eversion of lateral third of lower eyelids"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007717",
+        "label": "Chronic irritative conjunctivitis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:278740",
+        "label": "Xeroderma pigmentosum, complementation group E"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:25:34.329383Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

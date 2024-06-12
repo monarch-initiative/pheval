@@ -1,0 +1,212 @@
+{
+  "id": "epiphyseal_dysplasia,_multiple,_with_early-onset_diabetes_mellitus",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P3Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003311",
+        "label": "Hypoplasia of the odontoid process"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001552",
+        "label": "Barrel-shaped chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005922",
+        "label": "Abnormal hand morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009155",
+        "label": "Cone-shaped epiphysis of the proximal phalanx of the 5th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000877",
+        "label": "Insulin-resistant diabetes mellitus at puberty"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000174",
+        "label": "Abnormal palate morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000422",
+        "label": "Abnormal nasal bridge morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031867",
+        "label": "Neck hypertonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012211",
+        "label": "Abnormal renal physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002654",
+        "label": "Multiple epiphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003312",
+        "label": "Abnormal form of the vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003370",
+        "label": "Flat capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002656",
+        "label": "Epiphyseal dysplasia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010160",
+        "label": "Abnormal toe epiphysis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008476",
+        "label": "Irregular sclerotic endplates"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009352",
+        "label": "Ivory epiphysis of the proximal phalanx of the 3rd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006274",
+        "label": "Reduced pancreatic beta cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001367",
+        "label": "Abnormal joint morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012736",
+        "label": "Profound global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010665",
+        "label": "Bilateral coxa valga"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004236",
+        "label": "Irregular carpal bones"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:226980",
+        "label": "Epiphyseal dysplasia, multiple, with early-onset diabetes mellitus"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:36:26.095107Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

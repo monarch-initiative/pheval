@@ -1,0 +1,117 @@
+{
+  "id": "peripheral_neuropathy_with_variable_spasticity,_exercise_intolerance,_and_developmental_delay",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000737",
+        "label": "Irritability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001394",
+        "label": "Cirrhosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002151",
+        "label": "Increased circulating lactate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000592",
+        "label": "Blue sclerae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002465",
+        "label": "Poor speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002017",
+        "label": "Nausea and vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000124",
+        "label": "Renal tubular dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030973",
+        "label": "Postexertional symptom exacerbation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002793",
+        "label": "Abnormal pattern of respiration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004901",
+        "label": "Exercise-induced lactic acidemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616539",
+        "label": "Peripheral neuropathy with variable spasticity, exercise intolerance, and developmental delay"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:35:30.327554Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

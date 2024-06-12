@@ -1,0 +1,135 @@
+{
+  "id": "frontotemporal_lobar_degeneration_with_tdp43_inclusions",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002120",
+        "label": "Cerebral cortical atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008762",
+        "label": "Repetitive compulsive behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002529",
+        "label": "Neuronal loss in central nervous system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000713",
+        "label": "Agitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030223",
+        "label": "Perseverative thought"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002354",
+        "label": "Memory impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002591",
+        "label": "Polyphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000710",
+        "label": "Hyperorality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100315",
+        "label": "Lewy bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030214",
+        "label": "Hypersexuality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002145",
+        "label": "Frontotemporal dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000734",
+        "label": "Disinhibition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000741",
+        "label": "Apathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002185",
+        "label": "Neurofibrillary tangles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000751",
+        "label": "Personality changes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001300",
+        "label": "Parkinsonism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607485",
+        "label": "Frontotemporal lobar degeneration with TDP43 inclusions"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:52:32.855137Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

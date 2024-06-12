@@ -1,0 +1,98 @@
+{
+  "id": "pseudoxanthoma_elasticum",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P57Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012426",
+        "label": "Optic disc drusen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002239",
+        "label": "Gastrointestinal hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004943",
+        "label": "Accelerated atherosclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001102",
+        "label": "Angioid streaks of the fundus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003581",
+          "label": "Adult onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025115",
+        "label": "Civatte bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033026",
+        "label": "White oral mucosal macule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001681",
+        "label": "Angina pectoris"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:264800",
+        "label": "Pseudoxanthoma elasticum"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:43:12.453786Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

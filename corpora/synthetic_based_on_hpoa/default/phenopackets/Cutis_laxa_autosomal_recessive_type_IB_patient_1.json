@@ -1,0 +1,105 @@
+{
+  "id": "cutis_laxa,_autosomal_recessive,_type_ib",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000977",
+        "label": "Soft skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410043",
+        "label": "Abnormal neural tube morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200007",
+        "label": "Abnormal size of the palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010315",
+        "label": "Aplasia/Hypoplasia of the diaphragm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032967",
+        "label": "Panacinar emphysema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004938",
+        "label": "Tortuous cerebral arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033309",
+        "label": "Ileoileal intussusception"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614437",
+        "label": "Cutis laxa, autosomal recessive, type IB"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:10:32.671576Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

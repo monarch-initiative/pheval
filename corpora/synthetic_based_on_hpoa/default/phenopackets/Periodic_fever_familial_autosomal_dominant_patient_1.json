@@ -1,0 +1,92 @@
+{
+  "id": "periodic_fever,_familial,_autosomal_dominant",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P31Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0033087",
+        "label": "Quotidian fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012280",
+        "label": "Hepatic amyloidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025021",
+        "label": "Abnormal erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008967",
+        "label": "Exercise-induced muscle stiffness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002331",
+        "label": "Recurrent paroxysmal headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005059",
+        "label": "Arthralgia/arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:142680",
+        "label": "Periodic fever, familial, autosomal dominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:34:25.678622Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

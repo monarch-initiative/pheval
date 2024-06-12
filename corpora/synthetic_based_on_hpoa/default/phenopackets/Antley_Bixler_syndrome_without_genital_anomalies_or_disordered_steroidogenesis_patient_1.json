@@ -1,0 +1,129 @@
+{
+  "id": "antley-bixler_syndrome_without_genital_anomalies_or_disordered_steroidogenesis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001838",
+        "label": "Rocker bottom foot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000402",
+        "label": "Stenosis of the external auditory canal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000059",
+        "label": "Hypoplastic labia majora"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000343",
+        "label": "Long philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000453",
+        "label": "Choanal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004440",
+        "label": "Coronal craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012385",
+        "label": "Camptodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003041",
+        "label": "Humeroradial synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040071",
+        "label": "Abnormal morphology of ulna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200138",
+        "label": "Bilateral choanal atresia/stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012443",
+        "label": "Abnormal brain morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000586",
+        "label": "Shallow orbits"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000148",
+        "label": "Vaginal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000774",
+        "label": "Narrow chest"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:207410",
+        "label": "Antley-Bixler syndrome without genital anomalies or disordered steroidogenesis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:44:40.971963Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

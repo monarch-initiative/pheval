@@ -1,0 +1,75 @@
+{
+  "id": "tubulointerstitial_kidney_disease,_autosomal_dominant,_5",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001875",
+        "label": "Neutropenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012622",
+        "label": "Chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011408",
+        "label": "Moderate intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004364",
+        "label": "Abnormal circulating nitrogen compound concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410018",
+        "label": "Recurrent ear infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617056",
+        "label": "Tubulointerstitial kidney disease, autosomal dominant, 5"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:21:32.892110Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

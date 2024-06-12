@@ -1,0 +1,93 @@
+{
+  "id": "agammaglobulinemia_1,_autosomal_recessive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005224",
+        "label": "Rectal abscess"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003139",
+        "label": "Panhypogammaglobulinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002110",
+        "label": "Bronchiectasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002961",
+        "label": "Dysgammaglobulinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012647",
+        "label": "Abnormal inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008866",
+        "label": "Failure to thrive secondary to recurrent infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003729",
+        "label": "Enteroviral dermatomyositis syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005365",
+        "label": "Severe B lymphocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001904",
+        "label": "Neutropenia in presence of anti-neutropil antibodies"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601495",
+        "label": "Agammaglobulinemia 1, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:09:32.354839Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

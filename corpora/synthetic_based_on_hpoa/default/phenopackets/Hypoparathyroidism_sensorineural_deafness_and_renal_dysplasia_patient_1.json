@@ -1,0 +1,117 @@
+{
+  "id": "hypoparathyroidism,_sensorineural_deafness,_and_renal_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000786",
+        "label": "Primary amenorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011026",
+        "label": "Aplasia/Hypoplasia of the vagina"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007859",
+        "label": "Congenital horizontal nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000829",
+        "label": "Hypoparathyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004916",
+        "label": "Generalized distal tubular acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000587",
+        "label": "Abnormal optic nerve morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002277",
+        "label": "Horner syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025648",
+        "label": "Steroid-sensitive nephrotic syndrome with infrequent relapses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000151",
+        "label": "Aplasia of the uterus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:146255",
+        "label": "Hypoparathyroidism, sensorineural deafness, and renal dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:30:34.478333Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

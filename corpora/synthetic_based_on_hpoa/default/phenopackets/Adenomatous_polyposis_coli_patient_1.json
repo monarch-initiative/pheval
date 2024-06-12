@@ -1,0 +1,111 @@
+{
+  "id": "adenomatous_polyposis_coli",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007649",
+        "label": "Congenital hypertrophy of retinal pigment epithelium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000670",
+        "label": "Carious teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001012",
+        "label": "Multiple lipomas"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011068",
+        "label": "Odontoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010562",
+        "label": "Keloids"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005227",
+        "label": "Adenomatous colonic polyposis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011069",
+        "label": "Supernumerary tooth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100246",
+        "label": "Osteoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002895",
+        "label": "Papillary thyroid carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007505",
+        "label": "Progressive hyperpigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007378",
+        "label": "Neoplasm of the gastrointestinal tract"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:175100",
+        "label": "Adenomatous polyposis coli"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:35:39.575821Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

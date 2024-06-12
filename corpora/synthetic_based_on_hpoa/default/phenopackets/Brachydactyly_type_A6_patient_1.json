@@ -1,0 +1,75 @@
+{
+  "id": "brachydactyly,_type_a6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009843",
+        "label": "Aplasia/Hypoplasia of the middle phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008368",
+        "label": "Tarsal synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001500",
+        "label": "Broad finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009803",
+        "label": "Short phalanx of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005013",
+        "label": "Dysplastic distal radial epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000925",
+        "label": "Abnormality of the vertebral column"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:112910",
+        "label": "Brachydactyly, type A6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:28:24.514016Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

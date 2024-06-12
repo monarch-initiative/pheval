@@ -1,0 +1,117 @@
+{
+  "id": "arterial_tortuosity_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006687",
+        "label": "Aortic tortuosity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002140",
+        "label": "Ischemic stroke"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000023",
+        "label": "Inguinal hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006149",
+        "label": "Increased laxity of fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001027",
+        "label": "Soft, doughy skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000915",
+        "label": "Pectus excavatum of inferior sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001977",
+        "label": "Abnormal thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033353",
+        "label": "Abnormal blood vessel morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000343",
+        "label": "Long philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000276",
+        "label": "Long face"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:208050",
+        "label": "Arterial tortuosity syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:06:29.373114Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

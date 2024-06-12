@@ -1,0 +1,195 @@
+{
+  "id": "diaphanospondylodysostosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003275",
+        "label": "Narrow pelvis bone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001804",
+        "label": "Hypoplastic fingernail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200133",
+        "label": "Lumbosacral meningocele"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002126",
+        "label": "Polymicrogyria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001765",
+        "label": "Hammertoe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008643",
+        "label": "Nephroblastomatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008435",
+        "label": "Absent in utero ossification of vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031096",
+        "label": "Delayed vertebral ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002093",
+        "label": "Respiratory insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000800",
+        "label": "Cystic renal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005257",
+        "label": "Thoracic hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000023",
+        "label": "Inguinal hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030146",
+        "label": "Abnormal liver parenchyma morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025668",
+        "label": "Abnormal neck morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011119",
+        "label": "Abnormal nasal dorsum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000465",
+        "label": "Webbed neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001538",
+        "label": "Protuberant abdomen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006829",
+        "label": "Severe muscular hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608022",
+        "label": "Diaphanospondylodysostosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:12:12.628894Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

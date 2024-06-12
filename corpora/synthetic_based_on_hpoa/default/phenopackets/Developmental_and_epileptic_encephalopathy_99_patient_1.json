@@ -1,0 +1,153 @@
+{
+  "id": "developmental_and_epileptic_encephalopathy_99",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007074",
+        "label": "Thick corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010841",
+        "label": "Multifocal epileptiform discharges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012650",
+        "label": "Perisylvian polymicrogyria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032792",
+        "label": "Tonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006892",
+        "label": "Frontotemporal cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002119",
+        "label": "Ventriculomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003781",
+        "label": "Excessive salivation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040195",
+        "label": "Decreased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001317",
+        "label": "Abnormal cerebellum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002871",
+        "label": "Central apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012759",
+        "label": "Neurodevelopmental abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011153",
+        "label": "Focal motor seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000549",
+        "label": "Abnormal conjugate eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007366",
+        "label": "Atrophy/Degeneration affecting the brainstem"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619606",
+        "label": "Developmental and epileptic encephalopathy 99"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:10:21.742156Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

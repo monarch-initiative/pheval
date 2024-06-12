@@ -1,0 +1,195 @@
+{
+  "id": "van_den_ende-gupta_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001363",
+        "label": "Craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006380",
+        "label": "Knee flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000444",
+        "label": "Convex nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001836",
+        "label": "Camptodactyly of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001847",
+        "label": "Long hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000581",
+        "label": "Blepharophimosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002987",
+        "label": "Elbow flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001166",
+        "label": "Arachnodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000430",
+        "label": "Underdeveloped nasal alae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000175",
+        "label": "Cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010307",
+        "label": "Stridor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000385",
+        "label": "Small earlobe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000396",
+        "label": "Overfolded helix"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002980",
+        "label": "Femoral bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007628",
+        "label": "Mandibular condyle hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005916",
+        "label": "Abnormal metacarpal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001195",
+        "label": "Single umbilical artery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009473",
+        "label": "Joint contracture of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010668",
+        "label": "Abnormal zygomatic bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003992",
+        "label": "Slender ulna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000460",
+        "label": "Narrow nose"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:600920",
+        "label": "Van den Ende-Gupta syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:35:08.761828Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

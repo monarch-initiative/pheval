@@ -1,0 +1,117 @@
+{
+  "id": "n-acetylglutamate_synthase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002789",
+        "label": "Tachypnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500149",
+        "label": "Hyperglutamatemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003217",
+        "label": "Hyperglutaminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000718",
+        "label": "Aggressive behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001259",
+        "label": "Coma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002013",
+        "label": "Vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011973",
+        "label": "Paroxysmal lethargy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002199",
+        "label": "Hypocalcemic seizures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003348",
+        "label": "Hyperalaninemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031258",
+        "label": "Delirium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000161",
+        "label": "Reduced hepatic N-acetylglutamate synthase activity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:237310",
+        "label": "N-acetylglutamate synthase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:41:21.943559Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

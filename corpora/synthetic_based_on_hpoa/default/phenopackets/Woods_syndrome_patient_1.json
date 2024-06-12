@@ -1,0 +1,93 @@
+{
+  "id": "woods_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001258",
+        "label": "Spastic paraplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001098",
+        "label": "Abnormal fundus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011937",
+        "label": "Hypoplastic fifth toenail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011335",
+        "label": "Frontal hirsutism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000954",
+        "label": "Single transverse palmar crease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001376",
+        "label": "Limitation of joint mobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002164",
+        "label": "Nail dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011939",
+        "label": "3-4 finger cutaneous syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012179",
+        "label": "Craniofacial dystonia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615236",
+        "label": "Woods syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:31:41.611303Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

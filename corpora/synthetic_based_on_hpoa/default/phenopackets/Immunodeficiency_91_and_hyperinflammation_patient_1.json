@@ -1,0 +1,141 @@
+{
+  "id": "immunodeficiency_91_and_hyperinflammation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002783",
+        "label": "Recurrent lower respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002514",
+        "label": "Cerebral calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002254",
+        "label": "Intermittent diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033399",
+        "label": "Persistent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004311",
+        "label": "Abnormal macrophage morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200148",
+        "label": "Abnormal liver function tests during pregnancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012758",
+        "label": "Neurodevelopmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025435",
+        "label": "Increased circulating lactate dehydrogenase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002730",
+        "label": "Chronic noninfectious lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012211",
+        "label": "Abnormal renal physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031695",
+        "label": "Severe parainfluenza infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012211",
+        "label": "Abnormal renal physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006564",
+        "label": "Fluctuating hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032772",
+        "label": "Focal impaired awareness autonomic seizure with piloerection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619644",
+        "label": "Immunodeficiency 91 and hyperinflammation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:49:14.661109Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

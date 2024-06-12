@@ -1,0 +1,87 @@
+{
+  "id": "hyper-ige_syndrome_2,_autosomal_recessive,_with_recurrent_infections",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0410323",
+        "label": "Drug allergy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100845",
+        "label": "Anaphylactic shock"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002850",
+        "label": "Decreased circulating total IgM"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011893",
+        "label": "Abnormal leukocyte count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032290",
+        "label": "Monoclonal elevation of IgG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010701",
+        "label": "Abnormal immunoglobulin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040218",
+        "label": "Reduced natural killer cell count"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:243700",
+        "label": "Hyper-IgE syndrome 2, autosomal recessive, with recurrent infections"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:11:49.674813Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

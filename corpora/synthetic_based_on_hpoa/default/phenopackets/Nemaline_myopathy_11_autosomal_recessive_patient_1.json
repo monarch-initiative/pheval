@@ -1,0 +1,63 @@
+{
+  "id": "nemaline_myopathy_11,_autosomal_recessive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003798",
+        "label": "Nemaline bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010628",
+        "label": "Facial palsy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003704",
+        "label": "Scapuloperoneal weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002515",
+        "label": "Waddling gait"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617336",
+        "label": "Nemaline myopathy 11, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:02:03.434941Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

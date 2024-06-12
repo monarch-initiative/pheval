@@ -1,0 +1,75 @@
+{
+  "id": "coloboma,_ocular,_with_or_without_hearing_impairment,_cleft_lip/palate,_and/or_mental_retardation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000567",
+        "label": "Chorioretinal coloboma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000204",
+        "label": "Cleft upper lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000364",
+        "label": "Hearing abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011144",
+        "label": "Age-related posterior subcapsular cataract"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:120433",
+        "label": "Coloboma, ocular, with or without hearing impairment, cleft lip/palate, and/or mental retardation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:57:20.994573Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "id": "asparagine_synthetase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025664",
+        "label": "Moderate to late preterm birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001320",
+        "label": "Cerebellar vermis hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000609",
+        "label": "Optic nerve hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005274",
+        "label": "Prominent nasal tip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001511",
+        "label": "Intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009879",
+        "label": "Simplified gyral pattern"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010535",
+        "label": "Sleep apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002510",
+        "label": "Spastic tetraplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002267",
+        "label": "Exaggerated startle response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007082",
+        "label": "Dilated third ventricle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000618",
+        "label": "Blindness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008936",
+        "label": "Axial hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033994",
+        "label": "Dependency on parenteral nutrition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000549",
+        "label": "Abnormal conjugate eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020206",
+        "label": "Simple ear"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615574",
+        "label": "Asparagine synthetase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:56:11.126413Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

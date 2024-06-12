@@ -1,0 +1,129 @@
+{
+  "id": "mental_retardation,_x-linked,_syndromic,_nascimento_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002714",
+        "label": "Downturned corners of mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000534",
+        "label": "Abnormal eyebrow morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007874",
+        "label": "Almond-shaped palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001344",
+        "label": "Absent speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010282",
+        "label": "Thin lower lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004676",
+        "label": "Prominent supraorbital arches in adult"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000958",
+        "label": "Dry skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001773",
+        "label": "Short foot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000475",
+        "label": "Broad neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000283",
+        "label": "Broad face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006887",
+        "label": "Intellectual disability, progressive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011138",
+        "label": "Abnormal skin adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000085",
+        "label": "Horseshoe kidney"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004324",
+        "label": "Increased body weight"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:300860",
+        "label": "Mental retardation, X-linked, syndromic, Nascimento type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:50:17.928271Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

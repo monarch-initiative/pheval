@@ -1,0 +1,135 @@
+{
+  "id": "porphyria,_acute_intermittent",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003163",
+        "label": "Elevated urinary delta-aminolevulinic acid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000716",
+        "label": "Depression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002027",
+        "label": "Abdominal pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001402",
+        "label": "Hepatocellular carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000020",
+        "label": "Urinary incontinence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003401",
+        "label": "Paresthesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100518",
+        "label": "Dysuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000016",
+        "label": "Urinary retention"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002590",
+        "label": "Paralytic ileus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:4000199",
+        "label": "Reduced erythrocyte porphobilinogen deaminase activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003489",
+        "label": "Acute episodes of neuropathic symptoms"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003470",
+        "label": "Paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002203",
+        "label": "Respiratory paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000739",
+        "label": "Anxiety"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000875",
+        "label": "Episodic hypertension"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:176000",
+        "label": "Porphyria, acute intermittent"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:21:41.076819Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

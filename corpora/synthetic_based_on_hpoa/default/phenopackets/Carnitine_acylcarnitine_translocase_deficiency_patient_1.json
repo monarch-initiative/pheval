@@ -1,0 +1,129 @@
+{
+  "id": "carnitine-acylcarnitine_translocase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001695",
+        "label": "Cardiac arrest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006543",
+        "label": "Cardiorespiratory arrest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003236",
+        "label": "Elevated circulating creatine kinase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002615",
+        "label": "Hypotension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001678",
+        "label": "Atrioventricular block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001397",
+        "label": "Hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001254",
+        "label": "Lethargy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001987",
+        "label": "Hyperammonemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006682",
+        "label": "Premature ventricular contraction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001649",
+        "label": "Tachycardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001712",
+        "label": "Left ventricular hypertrophy"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011440",
+        "label": "Alcohol-induced rhabdomyolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032808",
+        "label": "Neonatal seizure with electrographic correlate"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:212138",
+        "label": "Carnitine-acylcarnitine translocase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:03:00.139133Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

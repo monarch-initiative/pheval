@@ -1,0 +1,260 @@
+{
+  "id": "alstrom_syndrome",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001596",
+        "label": "Alopecia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001513",
+        "label": "Obesity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200120",
+        "label": "Chronic active hepatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001133",
+        "label": "Constriction of peripheral visual field"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000822",
+        "label": "Hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001763",
+        "label": "Pes planus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003233",
+        "label": "Decreased HDL cholesterol concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000831",
+        "label": "Insulin-resistant diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000572",
+        "label": "Visual loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005987",
+        "label": "Multinodular goiter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008609",
+        "label": "Abnormal middle ear morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000230",
+        "label": "Gingivitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008223",
+        "label": "Compensated hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031137",
+        "label": "Storage in hepatocytes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008240",
+        "label": "Secondary growth hormone deficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004438",
+        "label": "Hyperostosis frontalis interna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001969",
+        "label": "Abnormal tubulointerstitial morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008046",
+        "label": "Abnormal retinal vascular morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000408",
+        "label": "Progressive sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012758",
+        "label": "Neurodevelopmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030519",
+        "label": "Congruous heteronymous hemianopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009805",
+        "label": "Low-output congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011014",
+        "label": "Abnormal glucose homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100607",
+        "label": "Dysmenorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002805",
+        "label": "Accelerated bone age after puberty"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000863",
+        "label": "Central diabetes insipidus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:203800",
+        "label": "Alstrom syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:14:25.619161Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

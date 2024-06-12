@@ -1,0 +1,69 @@
+{
+  "id": "spermatogenic_failure_77",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008232",
+        "label": "Elevated circulating follicle stimulating hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034309",
+        "label": "Multiflagellar spermatozoa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000798",
+        "label": "Oligozoospermia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003251",
+        "label": "Male infertility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000028",
+        "label": "Cryptorchidism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620103",
+        "label": "Spermatogenic failure 77"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:06:26.645395Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "nephronophthisis_13",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P2Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001407",
+        "label": "Hepatic cysts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000089",
+        "label": "Renal hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033601",
+        "label": "Glomerular subepithelial immune-complex deposits"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033149",
+        "label": "Intrahepatic bile duct dilatation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000093",
+        "label": "Proteinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001737",
+        "label": "Pancreatic cysts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011035",
+        "label": "Abnormal renal cortex morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033867",
+        "label": "Multilamellation of medullary peritubular capillary basement membranes"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614377",
+        "label": "Nephronophthisis 13"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:26:06.611262Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "ifap_syndrome_with_or_without_bresheck_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000968",
+        "label": "Ectodermal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000495",
+        "label": "Recurrent corneal erosions"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008391",
+        "label": "Dystrophic fingernails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000003",
+        "label": "Multicystic kidney dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000110",
+        "label": "Renal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007759",
+        "label": "Opacification of the corneal stroma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012444",
+        "label": "Brain atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002827",
+        "label": "Hip dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001019",
+        "label": "Erythroderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000958",
+        "label": "Dry skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000491",
+        "label": "Keratitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000561",
+        "label": "Absent eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500262",
+        "label": "Atrichia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001537",
+        "label": "Umbilical hernia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:308205",
+        "label": "IFAP syndrome with or without BRESHECK syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:07:32.386853Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

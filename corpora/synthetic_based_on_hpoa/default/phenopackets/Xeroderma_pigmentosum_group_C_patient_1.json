@@ -1,0 +1,105 @@
+{
+  "id": "xeroderma_pigmentosum,_group_c",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003079",
+        "label": "Defective DNA repair after ultraviolet radiation damage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025127",
+        "label": "Actinic keratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001009",
+        "label": "Telangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001029",
+        "label": "Poikiloderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000992",
+        "label": "Cutaneous photosensitivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004334",
+        "label": "Dermal atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000656",
+        "label": "Ectropion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006739",
+        "label": "Squamous cell carcinoma of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001010",
+        "label": "Hypopigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001480",
+        "label": "Freckling"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:278720",
+        "label": "Xeroderma pigmentosum, group C"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:21:49.350652Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

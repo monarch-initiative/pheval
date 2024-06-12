@@ -1,0 +1,75 @@
+{
+  "id": "systemic_lupus_erythematosus_17",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001882",
+        "label": "Leukopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003493",
+        "label": "Antinuclear antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001653",
+        "label": "Mitral regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100735",
+        "label": "Hypertensive crisis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100653",
+        "label": "Optic neuritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005059",
+        "label": "Arthralgia/arthritis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:301080",
+        "label": "Systemic lupus erythematosus 17"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:08:27.957970Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

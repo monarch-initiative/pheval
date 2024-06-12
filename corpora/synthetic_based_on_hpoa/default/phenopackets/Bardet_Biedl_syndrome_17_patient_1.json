@@ -1,0 +1,99 @@
+{
+  "id": "bardet-biedl_syndrome_17",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001830",
+        "label": "Postaxial foot polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008915",
+        "label": "Childhood-onset truncal obesity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007017",
+        "label": "Progressive forgetfulness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010743",
+        "label": "Short metatarsal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031172",
+        "label": "Sectoral retinitis pigmentosa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012247",
+        "label": "Specific anosmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004307",
+        "label": "Abnormal anatomic location of the heart"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031044",
+        "label": "Type A5 brachydactyly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615994",
+        "label": "Bardet-Biedl syndrome 17"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:02:25.854307Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

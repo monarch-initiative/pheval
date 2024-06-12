@@ -1,0 +1,105 @@
+{
+  "id": "hyper-igd_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003326",
+        "label": "Myalgia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025143",
+        "label": "Chills"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000543",
+        "label": "Optic disc pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002716",
+        "label": "Lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410246",
+        "label": "Increased circulating IgD level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002321",
+        "label": "Vertigo"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001992",
+        "label": "Organic aciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012199",
+        "label": "Cluster headache"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:260920",
+        "label": "Hyper-Igd syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:05:48.126259Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

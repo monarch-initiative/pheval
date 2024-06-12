@@ -1,0 +1,219 @@
+{
+  "id": "andersen_cardiodysrhythmic_periodic_paralysis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006297",
+        "label": "Enamel hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003768",
+        "label": "Periodic paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000836",
+        "label": "Hyperthyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002900",
+        "label": "Hypokalemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003779",
+        "label": "Antegonial notching of mandible"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000677",
+        "label": "Oligodontia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005147",
+        "label": "Bidirectional ventricular ectopy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001962",
+        "label": "Palpitations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200007",
+        "label": "Abnormal size of the palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000326",
+        "label": "Abnormal maxilla morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200055",
+        "label": "Small hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005639",
+        "label": "Hyperextensible hand joints"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003115",
+        "label": "Abnormal EKG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011331",
+        "label": "Hemifacial atrophy"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005184",
+        "label": "Prolonged QTc interval"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002750",
+        "label": "Delayed skeletal maturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003115",
+        "label": "Abnormal EKG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006291",
+        "label": "Marked delay in eruption of permanent teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010716",
+        "label": "3-5 toe syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001864",
+        "label": "Clinodactyly of the 5th toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100871",
+        "label": "Abnormal palm morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:170390",
+        "label": "Andersen cardiodysrhythmic periodic paralysis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:12:31.180384Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

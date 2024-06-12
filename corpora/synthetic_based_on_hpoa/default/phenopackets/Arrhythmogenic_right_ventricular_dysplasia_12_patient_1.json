@@ -1,0 +1,63 @@
+{
+  "id": "arrhythmogenic_right_ventricular_dysplasia_12",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001279",
+        "label": "Syncope"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011663",
+        "label": "Right ventricular cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006677",
+        "label": "Prolonged QRS complex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010872",
+        "label": "T-wave inversion"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:611528",
+        "label": "Arrhythmogenic right ventricular dysplasia 12"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:10:01.849911Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

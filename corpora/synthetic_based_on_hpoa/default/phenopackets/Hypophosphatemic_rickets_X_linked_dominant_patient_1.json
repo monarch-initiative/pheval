@@ -1,0 +1,177 @@
+{
+  "id": "hypophosphatemic_rickets,_x-linked_dominant",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002748",
+        "label": "Rickets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004273",
+        "label": "Cupped metaphyses of hand bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003416",
+        "label": "Spinal canal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004363",
+        "label": "Abnormal circulating calcium concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002758",
+        "label": "Osteoarthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002653",
+        "label": "Bone pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004349",
+        "label": "Reduced bone mineral density"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002749",
+        "label": "Osteomalacia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006414",
+        "label": "Distal tibial bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010680",
+        "label": "Elevated alkaline phosphatase of renal origin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001270",
+        "label": "Motor delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000897",
+        "label": "Rachitic rosary"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006432",
+        "label": "Trapezoidal distal femoral condyles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010502",
+        "label": "Fibular bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002979",
+        "label": "Bowing of the legs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008285",
+        "label": "Transient hypophosphatemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031936",
+        "label": "Delayed ability to walk"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005059",
+        "label": "Arthralgia/arthritis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:307800",
+        "label": "Hypophosphatemic rickets, X-linked dominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:44:18.111469Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

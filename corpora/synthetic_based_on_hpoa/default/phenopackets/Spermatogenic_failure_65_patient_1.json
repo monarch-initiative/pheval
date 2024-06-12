@@ -1,0 +1,57 @@
+{
+  "id": "spermatogenic_failure_65",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012874",
+        "label": "Abnormal male reproductive system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012041",
+        "label": "Decreased fertility in males"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012874",
+        "label": "Abnormal male reproductive system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619712",
+        "label": "Spermatogenic failure 65"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:08:09.856909Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "tetra-amelia_with_ectodermal_dysplasia_and_lacrimal_duct_abnormalities",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001939",
+        "label": "Abnormality of metabolism/homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012451",
+        "label": "Acute constipation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001537",
+        "label": "Umbilical hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000414",
+        "label": "Bulbous nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003057",
+        "label": "Tetraamelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100277",
+        "label": "Periauricular skin pits"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001092",
+        "label": "Absent lacrimal punctum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007436",
+        "label": "Hair-nail ectodermal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002714",
+        "label": "Downturned corners of mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011481",
+        "label": "Abnormal lacrimal duct morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:273390",
+        "label": "Tetra-Amelia with ectodermal dysplasia and lacrimal duct abnormalities"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:07:06.713366Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

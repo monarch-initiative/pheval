@@ -1,0 +1,141 @@
+{
+  "id": "combined_oxidative_phosphorylation_deficiency_10",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002151",
+        "label": "Increased circulating lactate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011015",
+        "label": "Abnormal blood glucose concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011408",
+        "label": "Moderate intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011922",
+        "label": "Abnormal activity of mitochondrial respiratory chain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001276",
+        "label": "Hypertonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007958",
+        "label": "Optic atrophy from cranial nerve compression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031992",
+        "label": "Apical hypertrophic cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004913",
+        "label": "Intermittent lactic acidemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001697",
+        "label": "Abnormal pericardium morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031960",
+        "label": "Arm dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003348",
+        "label": "Hyperalaninemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614702",
+        "label": "Combined oxidative phosphorylation deficiency 10"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:42:19.122126Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "megalocornea_1,_x-linked",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100693",
+        "label": "Iridodonesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007765",
+        "label": "Deep anterior chamber"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000616",
+        "label": "Miosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001132",
+        "label": "Lens subluxation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100689",
+        "label": "Decreased corneal thickness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000485",
+        "label": "Megalocornea"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031788",
+        "label": "With the rule astigmatism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:309300",
+        "label": "Megalocornea 1, X-linked"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:00:04.461767Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

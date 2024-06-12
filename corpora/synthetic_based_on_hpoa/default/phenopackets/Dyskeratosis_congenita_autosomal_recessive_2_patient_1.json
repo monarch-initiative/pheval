@@ -1,0 +1,87 @@
+{
+  "id": "dyskeratosis_congenita,_autosomal_recessive,_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002745",
+        "label": "Oral leukoplakia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011875",
+        "label": "Abnormal platelet morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011005",
+        "label": "Mixed cirrhosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005390",
+        "label": "Recurrent opportunistic infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001915",
+        "label": "Aplastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001810",
+        "label": "Dystrophic toenail"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613987",
+        "label": "Dyskeratosis congenita, autosomal recessive, 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:31:00.247613Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

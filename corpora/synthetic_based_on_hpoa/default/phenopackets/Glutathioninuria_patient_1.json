@@ -1,0 +1,105 @@
+{
+  "id": "glutathioninuria",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002075",
+        "label": "Dysdiadochokinesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011342",
+        "label": "Mild global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034684",
+        "label": "Abnormal enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012379",
+        "label": "Abnormal circulating enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000009",
+        "label": "Functional abnormality of the bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034586",
+        "label": "Glutathionuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007573",
+        "label": "Late onset atopic dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033205",
+        "label": "Biceps hyperreflexia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:231950",
+        "label": "Glutathioninuria"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:12:09.307219Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "spondylometaphyseal_dysplasia_with_cone-rod_dystrophy",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000550",
+        "label": "Undetectable electroretinogram"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008905",
+        "label": "Rhizomelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004565",
+        "label": "Severe platyspondyly"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000529",
+        "label": "Progressive visual loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001105",
+        "label": "Retinal atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001387",
+        "label": "Joint stiffness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003026",
+        "label": "Short long bone"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608940",
+        "label": "Spondylometaphyseal dysplasia with cone-rod dystrophy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:45:40.575125Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "myhre_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000303",
+        "label": "Mandibular prognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011853",
+        "label": "Serous pericardial effusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008093",
+        "label": "Short 4th toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031653",
+        "label": "Abnormal heart valve physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001780",
+        "label": "Abnormal toe morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040265",
+        "label": "Upper limb muscle hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034392",
+        "label": "Joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003720",
+        "label": "Generalized muscle hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011838",
+        "label": "Sclerodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012743",
+        "label": "Abdominal obesity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002866",
+        "label": "Hypoplastic iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000035",
+        "label": "Abnormal testis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030962",
+        "label": "Abnormal morphology of the great vessels"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001376",
+        "label": "Limitation of joint mobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030053",
+        "label": "Stiff skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002213",
+        "label": "Fine hair"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005769",
+        "label": "Fifth finger distal phalanx clinodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001595",
+        "label": "Abnormal hair morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025263",
+        "label": "Stiff knee"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025313",
+        "label": "Exophoria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005872",
+        "label": "Brachytelomesophalangy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000322",
+        "label": "Short philtrum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:139210",
+        "label": "Myhre syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:57:40.794925Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

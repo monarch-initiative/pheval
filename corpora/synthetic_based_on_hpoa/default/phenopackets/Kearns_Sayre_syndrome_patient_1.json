@@ -1,0 +1,129 @@
+{
+  "id": "kearns-sayre_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003128",
+        "label": "Lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008207",
+        "label": "Primary adrenal insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000763",
+        "label": "Sensory neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000819",
+        "label": "Diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000508",
+        "label": "Ptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001947",
+        "label": "Renal tubular acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004864",
+        "label": "Refractory sideroblastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000727",
+        "label": "Frontal lobe dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000544",
+        "label": "External ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001678",
+        "label": "Atrioventricular block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011771",
+        "label": "Autoimmune hypoparathyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031372",
+        "label": "Cold paresis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:530000",
+        "label": "Kearns-Sayre syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:56:15.555318Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

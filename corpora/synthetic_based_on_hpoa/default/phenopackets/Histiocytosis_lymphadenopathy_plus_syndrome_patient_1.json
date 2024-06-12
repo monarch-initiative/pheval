@@ -1,0 +1,243 @@
+{
+  "id": "histiocytosis-lymphadenopathy_plus_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002716",
+        "label": "Lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000494",
+        "label": "Downslanted palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100727",
+        "label": "Histiocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100534",
+        "label": "Episcleritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007380",
+        "label": "Facial telangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012785",
+        "label": "Flexion contracture of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033190",
+        "label": "Hypertrichotic hyperpigmented patch"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002619",
+        "label": "Varicose veins"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005200",
+        "label": "Retroperitoneal fibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000771",
+        "label": "Gynecomastia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009540",
+        "label": "Contracture of the proximal interphalangeal joint of the 2nd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100651",
+        "label": "Type I diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012874",
+        "label": "Abnormal male reproductive system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025289",
+        "label": "Cervical lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011682",
+        "label": "Perimembranous ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000520",
+        "label": "Proptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005824",
+        "label": "Clinodactyly of the 2nd toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001822",
+        "label": "Hallux valgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003121",
+        "label": "Limb joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000953",
+        "label": "Hyperpigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034675",
+        "label": "Toe joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001507",
+        "label": "Growth abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033423",
+        "label": "Pulmonary arterial hypertension with positive acute response to NO challenge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025021",
+        "label": "Abnormal erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034392",
+        "label": "Joint contracture"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:602782",
+        "label": "Histiocytosis-lymphadenopathy plus syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:42:30.968494Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "hyperparathyroidism,_neonatal_self-limited_primary,_with_hypercalciuria",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003072",
+        "label": "Hypercalcemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002017",
+        "label": "Nausea and vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002150",
+        "label": "Hypercalciuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001531",
+        "label": "Failure to thrive in infancy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:239199",
+        "label": "Hyperparathyroidism, neonatal self-limited primary, with hypercalciuria"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:31:46.284062Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

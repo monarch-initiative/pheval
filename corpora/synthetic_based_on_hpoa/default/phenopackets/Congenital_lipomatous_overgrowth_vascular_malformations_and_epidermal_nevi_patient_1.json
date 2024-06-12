@@ -1,0 +1,123 @@
+{
+  "id": "congenital_lipomatous_overgrowth,_vascular_malformations,_and_epidermal_nevi",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025104",
+        "label": "Capillary malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012032",
+        "label": "Lipoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100559",
+        "label": "Lower limb asymmetry"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004437",
+        "label": "Cranial hyperostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001548",
+        "label": "Overgrowth"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100553",
+        "label": "Hemihypertrophy of lower limb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100747",
+        "label": "Macrodactyly of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011599",
+        "label": "Mesocardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002414",
+        "label": "Spina bifida"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001852",
+        "label": "Sandal gap"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012721",
+        "label": "Venous malformation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612918",
+        "label": "Congenital lipomatous overgrowth, vascular malformations, and epidermal nevi"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:45:29.181524Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

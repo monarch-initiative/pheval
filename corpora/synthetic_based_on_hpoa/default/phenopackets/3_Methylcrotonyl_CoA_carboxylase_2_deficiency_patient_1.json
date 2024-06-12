@@ -1,0 +1,159 @@
+{
+  "id": "3-methylcrotonyl-coa_carboxylase_2_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001254",
+        "label": "Lethargy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001993",
+        "label": "Ketoacidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001943",
+        "label": "Hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002919",
+        "label": "Ketonuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002013",
+        "label": "Vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008336",
+        "label": "Complex organic aciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001257",
+        "label": "Spasticity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001325",
+        "label": "Hypoglycemic coma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012379",
+        "label": "Abnormal circulating enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007569",
+        "label": "Generalized seborrheic dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003234",
+        "label": "Decreased circulating carnitine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033107",
+        "label": "Abnormal circulating proteinogenic amino acid concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008281",
+        "label": "Acute hyperammonemia"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:210210",
+        "label": "3-Methylcrotonyl-CoA carboxylase 2 deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:13:31.825626Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

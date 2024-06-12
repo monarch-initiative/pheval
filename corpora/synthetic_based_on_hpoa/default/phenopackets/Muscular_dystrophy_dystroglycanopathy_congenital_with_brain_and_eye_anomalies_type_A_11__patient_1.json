@@ -1,0 +1,129 @@
+{
+  "id": "muscular_dystrophy-dystroglycanopathy_(congenital_with_brain_and_eye_anomalies,_type_a,_11)",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001115",
+        "label": "Posterior polar cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006951",
+        "label": "Retrocerebellar cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011021",
+        "label": "Abnormal circulating enzyme concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007875",
+        "label": "Congenital blindness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006850",
+        "label": "Hypoplasia of the ventral pons"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002536",
+        "label": "Abnormal cortical gyration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011342",
+        "label": "Mild global developmental delay"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0020185",
+        "label": "Superior cerebellar dysplasia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615181",
+        "label": "Muscular dystrophy-dystroglycanopathy (congenital with brain and eye anomalies, type A, 11)"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:52:25.990898Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
