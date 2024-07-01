@@ -1,11 +1,15 @@
 A full list of implemented PhEval runners are listed below along with links to the original tool:
 
-| Tool      | PhEval plugin                                                              | Comment                                                                                                               |
-|-----------|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Exomiser  | [Exomiser runner](https://github.com/monarch-initiative/pheval.exomiser)   | The link to the original tool can be found [here](https://github.com/exomiser/Exomiser)                               |
-| Phen2Gene | [Phen2Gene runner](https://github.com/monarch-initiative/pheval.phen2gene) | The link to the original tool can be found [here](https://github.com/WGLab/Phen2Gene)                                 |
-| LIRICAL   | [LIRICAL runner](https://github.com/monarch-initiative/pheval.lirical)     | The link to the original tool can be found [here](https://github.com/TheJacksonLaboratory/LIRICAL)                    |
-| SvAnna    | [SvAnna runner](https://github.com/monarch-initiative/pheval.svanna)       | The link to the original tool can be found [here](https://github.com/TheJacksonLaboratory/SvAnna)                     |
-| GADO      | [GADO runner](https://github.com/monarch-initiative/pheval.gado)           | The link to the original tool can be found [here](https://github.com/molgenis/systemsgenetics/wiki/GADO-Command-line) |
-| Template  | [Template runner](https://github.com/monarch-initiative/pheval.template)   |                                                                                                                       |
-| OntoGPT   | [OntoGPT runner](https://github.com/monarch-initiative/pheval.ontogpt)     |                                                                                                                       |
+| Tool       | PhEval plugin                                                                | Comment                                                                                                               |
+|------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Exomiser   | [Exomiser runner](https://github.com/monarch-initiative/pheval.exomiser)     | The link to the original tool can be found [here](https://github.com/exomiser/Exomiser)                               |
+| Phen2Gene  | [Phen2Gene runner](https://github.com/monarch-initiative/pheval.phen2gene)   | The link to the original tool can be found [here](https://github.com/WGLab/Phen2Gene)                                 |
+| LIRICAL    | [LIRICAL runner](https://github.com/monarch-initiative/pheval.lirical)       | The link to the original tool can be found [here](https://github.com/TheJacksonLaboratory/LIRICAL)                    |
+| SvAnna     | [SvAnna runner](https://github.com/monarch-initiative/pheval.svanna)         | The link to the original tool can be found [here](https://github.com/TheJacksonLaboratory/SvAnna)                     |
+| GADO       | [GADO runner](https://github.com/monarch-initiative/pheval.gado)             | The link to the original tool can be found [here](https://github.com/molgenis/systemsgenetics/wiki/GADO-Command-line) |
+| Template   | [Template runner](https://github.com/monarch-initiative/pheval.template)     |                                                                                                                       |
+| OntoGPT    | [OntoGPT runner](https://github.com/monarch-initiative/pheval.ontogpt)       |                                                                                                                       |
+| ELDER      | [ELDER runner](https://github.com/iQuxLE/ELDER)                              |                                                                                                                       |
+| MALCO      | [MALCO runner](https://github.com/monarch-initiative/malco.git)              |                                                                                                                       |
+| AI MARRVEL | [AI MARRVEL runner](https://github.com/yaseminbridges/pheval.ai_marrvel.git) | The link to the original tool can be found [here](https://github.com/LiuzLab/AI_MARRVEL.git)                                                                   |
+| OAK        | [OAK runner](https://github.com/monarch-initiative/pheval.oak.git)                                                               |                                                                                                                                                                |
