@@ -1694,7 +1694,7 @@
 <span class="sd">            the original string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">list_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*\]$&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">list_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">list_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">entity</span><span class="p">)):</span>
             <span class="k">return</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">entity</span>
