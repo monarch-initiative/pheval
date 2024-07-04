@@ -155,7 +155,7 @@ class AssessGenePrioritisation:
             the original string.
         """
         list_pattern = re.compile(r"^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*\]$")
-        if list_pattern.match(entity):
+        if list_pattern.match(str(entity)):
             return ast.literal_eval(entity)
         else:
             return entity
