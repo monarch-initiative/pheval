@@ -1,6 +1,5 @@
 import ast
 import re
-from collections import defaultdict
 from pathlib import Path
 from typing import List, Union
 
@@ -203,7 +202,7 @@ def assess_phenopacket_gene_prioritisation(
         threshold,
         score_order,
     ).assess_gene_prioritisation(
-       gene_binary_classification_stats
+        gene_binary_classification_stats
     )
 
 
@@ -211,7 +210,6 @@ def benchmark_gene_prioritisation(
         results_directory_and_input: TrackInputOutputDirectories,
         score_order: str,
         threshold: float,
-        gene_rank_comparison: defaultdict,
 ) -> BenchmarkRunResults:
     """
     Benchmark a directory based on gene prioritisation results.
@@ -219,12 +217,10 @@ def benchmark_gene_prioritisation(
          results_directory_and_input (TrackInputOutputDirectories): Input and output directories.
          score_order (str): The order in which scores are arranged.
          threshold (float): Threshold for assessment.
-         gene_rank_comparison (defaultdict): Default dictionary for gene rank comparisons.
      Returns:
          BenchmarkRunResults: An object containing benchmarking results for gene prioritisation,
          including ranks and rank statistics for the benchmarked directory.
     """
-    gene_rank_stats = RankStats()
     gene_binary_classification_stats = BinaryClassificationStats()
     for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_gene_prioritisation(
@@ -234,9 +230,13 @@ def benchmark_gene_prioritisation(
             threshold,
             gene_binary_classification_stats,
         )
+    gene_rank_stats = RankStats()
+    gene_rank_stats.add_ranks(
+        table_name=f'{results_directory_and_input.phenopacket_dir.parents[0].name}_gene',
+        column_name=str(results_directory_and_input.results_dir))
     return BenchmarkRunResults(
-        results_dir=results_directory_and_input.results_dir,
-        ranks=gene_rank_comparison,
         rank_stats=gene_rank_stats,
+        results_dir=results_directory_and_input.results_dir,
         binary_classification_stats=gene_binary_classification_stats,
+        phenopacket_dir=results_directory_and_input.phenopacket_dir,
     )
