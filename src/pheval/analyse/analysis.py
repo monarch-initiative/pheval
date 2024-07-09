@@ -18,12 +18,12 @@ from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 
 
 def _run_benchmark(
-    results_dir_and_input: TrackInputOutputDirectories,
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
+        results_dir_and_input: TrackInputOutputDirectories,
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        plot_type: str,
+        benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """Run a benchmark on a result directory.
 
@@ -37,30 +37,29 @@ def _run_benchmark(
     """
     CorpusParser(results_dir_and_input.phenopacket_dir).parse_corpus(benchmark_generator)
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
+        str(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     rank_comparison = defaultdict(dict)
     benchmark_result = benchmark_generator.generate_benchmark_run_results(
         results_dir_and_input, score_order, threshold, rank_comparison
     )
-    stats_writer.write_row(
+    stats_writer.add_statistics_entry(
         results_dir_and_input.results_dir,
         benchmark_result.rank_stats,
         benchmark_result.binary_classification_stats,
     )
     generate_benchmark_output(benchmark_result, plot_type, benchmark_generator)
-    stats_writer.close()
 
 
 def benchmark_directory(
-    results_dir_and_input: TrackInputOutputDirectories,
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
-    plot_type: str,
+        results_dir_and_input: TrackInputOutputDirectories,
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
+        disease_analysis: bool,
+        plot_type: str,
 ) -> None:
     """
     Benchmark prioritisation performance for a single run.
@@ -105,12 +104,12 @@ def benchmark_directory(
 
 
 def _run_benchmark_comparison(
-    results_directories: List[TrackInputOutputDirectories],
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
+        results_directories: List[TrackInputOutputDirectories],
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        plot_type: str,
+        benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """
     Run a benchmark on several result directories.
@@ -125,36 +124,34 @@ def _run_benchmark_comparison(
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
-        Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
+        str(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
     unique_test_corpora_directories = set([result.phenopacket_dir for result in results_directories])
     [CorpusParser(test_corpora_directory).parse_corpus(benchmark_generator) for test_corpora_directory in
      unique_test_corpora_directories]
     benchmarking_results = []
     for results_dir_and_input in results_directories:
-        rank_comparison = defaultdict(dict)
         benchmark_result = benchmark_generator.generate_benchmark_run_results(
-            results_dir_and_input, score_order, threshold, rank_comparison
+            results_dir_and_input, score_order, threshold
         )
-        stats_writer.write_row(
+        stats_writer.add_statistics_entry(
             results_dir_and_input.results_dir,
             benchmark_result.rank_stats,
             benchmark_result.binary_classification_stats,
         )
         benchmarking_results.append(benchmark_result)
     generate_benchmark_comparison_output(benchmarking_results, plot_type, benchmark_generator)
-    stats_writer.close()
 
 
 def benchmark_run_comparisons(
-    results_directories: List[TrackInputOutputDirectories],
-    score_order: str,
-    output_prefix: str,
-    threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
-    plot_type: str,
+        results_directories: List[TrackInputOutputDirectories],
+        score_order: str,
+        output_prefix: str,
+        threshold: float,
+        gene_analysis: bool,
+        variant_analysis: bool,
+        disease_analysis: bool,
+        plot_type: str,
 ) -> None:
     """
     Benchmark prioritisation performance for several runs.
