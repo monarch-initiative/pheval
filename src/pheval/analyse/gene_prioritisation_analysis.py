@@ -130,6 +130,8 @@ class AssessGenePrioritisation:
         and records ranks using a PrioritisationRankRecorder.
 
         Args:
+            standardised_gene_results (List[RankedPhEvalGeneResult]) List of standardised gene results.
+            phenopacket_path (Path): Path to the Phenopacket.
             binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         """
         relevant_ranks = []
@@ -176,6 +178,7 @@ def assess_phenopacket_gene_prioritisation(
         phenopacket_path (Path): Path to the Phenopacket.
         results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
         gene_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
+        gene_benchmarker (AssessGenePrioritisation): AssessGenePrioritisation class instance.
     """
     standardised_gene_result = results_dir_and_input.results_dir.joinpath(
         f"pheval_gene_results/{phenopacket_path.stem}-pheval_gene_result.tsv"
@@ -205,11 +208,13 @@ def benchmark_gene_prioritisation(
     """
     gene_binary_classification_stats = BinaryClassificationStats()
     db_connection = DBConnector()
-    gene_benchmarker = AssessGenePrioritisation(db_connection=db_connection,
-                                                table_name=f"{results_directory_and_input.phenopacket_dir.parents[0].name}_gene",
-                                                results_dir=results_directory_and_input.results_dir.joinpath("pheval_gene_results/"),
-                                                threshold=threshold,
-                                                score_order=score_order
+    gene_benchmarker = AssessGenePrioritisation(db_connection,
+                                                f"{results_directory_and_input.phenopacket_dir.parents[0].name}"
+                                                f"_gene",
+                                                results_directory_and_input.results_dir.joinpath(
+                                                    "pheval_gene_results/"),
+                                                threshold,
+                                                score_order
                                                 )
     for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_gene_prioritisation(
