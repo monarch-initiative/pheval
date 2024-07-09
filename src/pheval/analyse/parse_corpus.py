@@ -1,8 +1,8 @@
 from pathlib import Path
-from typing import List, Union
+from typing import List
 
 from pheval.analyse.benchmark_generator import GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator, \
-    DiseaseBenchmarkRunOutputGenerator
+    DiseaseBenchmarkRunOutputGenerator, BenchmarkRunOutputGenerator
 from pheval.get_connection import get_connection
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene, phenopacket_reader, PhenopacketUtil, \
@@ -52,8 +52,10 @@ def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene
     phenopacket_util = PhenopacketUtil(phenopacket)
     return phenopacket_util.diagnosed_genes()
 
+
 class CorpusParser:
     """ Class for parsing phenopacket corpus and retrieving known variants/genes/diseases."""
+
     def __init__(self, phenopacket_dir: Path) -> None:
         """
         Initialise the CorpusParser class.
@@ -81,7 +83,7 @@ class CorpusParser:
 
     def _create_variant_table(self) -> None:
         """
-        Create the Variant benchmarking table if it doesn't already exist.'
+        Create the Variant benchmarking table if it doesn't already exist.
         """
         self.conn.execute(
             f"""
@@ -98,7 +100,7 @@ class CorpusParser:
 
     def _create_disease_table(self):
         """
-        Create the Disease benchmarking table if it doesn't already exist.'
+        Create the Disease benchmarking table if it doesn't already exist.
         """
         self.conn.execute(
             f"""
@@ -111,14 +113,11 @@ class CorpusParser:
                     """
         )
 
-    def _create_tables(self, benchmark_generator: Union[
-        GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator, DiseaseBenchmarkRunOutputGenerator]) -> None:
+    def _create_tables(self, benchmark_generator: BenchmarkRunOutputGenerator) -> None:
         """
         Create tables based on the benchmarking analysis specified.
         Args:
-            benchmark_generator
-            (Union[GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator,
-            DiseaseBenchmarkRunOutputGenerator]: Class instance of the benchmark generator type.
+            benchmark_generator (BenchmarkRunOutputGenerator): Class instance of the benchmark generator type.
         """
 
         if isinstance(benchmark_generator, GeneBenchmarkRunOutputGenerator):
@@ -193,13 +192,11 @@ class CorpusParser:
                 ),
             )
 
-    def parse_corpus(self, benchmark_generator: Union[GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator, DiseaseBenchmarkRunOutputGenerator]) -> None:
+    def parse_corpus(self, benchmark_generator: BenchmarkRunOutputGenerator) -> None:
         """
         Parse the phenopacket corpus and add known genes/variants/diseases to relevant benchmarking tables.
         Args:
-            benchmark_generator
-            (Union[GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator,
-            DiseaseBenchmarkRunOutputGenerator]): Class instance of the benchmark generator type.
+            benchmark_generator (BenchmarkRunOutputGenerator): Class instance of the benchmark generator type.
         """
         self._create_tables(benchmark_generator)
         for phenopacket_path in all_files(self.phenopacket_dir):
