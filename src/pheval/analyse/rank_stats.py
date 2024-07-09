@@ -8,7 +8,7 @@ from duckdb import DuckDBPyConnection
 from sklearn.metrics import ndcg_score
 
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
-from pheval.analyse.get_connection import get_connection
+from pheval.analyse.get_connection import DBConnector
 
 
 @dataclass
@@ -38,7 +38,7 @@ class RankStats:
     mrr: float = None
 
     def add_ranks(self, table_name: str, column_name: str):
-        conn = get_connection()
+        conn = DBConnector().conn
         self.top = self._execute_count_query(conn, table_name, column_name, " = 1")
         self.top3 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 3")
         self.top5 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 5")
@@ -292,7 +292,7 @@ class RankStatsWriter:
         """
 
         self.table_name = table_name
-        conn = get_connection()
+        conn = DBConnector().conn
         conn.execute(
             f"""
                     CREATE TABLE IF NOT EXISTS "{self.table_name}" (
@@ -355,7 +355,7 @@ class RankStatsWriter:
             rank_stats (RankStats): RankStats object for the run.
             binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
-        conn = get_connection()
+        conn = DBConnector().conn
         conn.execute(f"""
                 INSERT INTO "{self.table_name}" VALUES 
                 (
