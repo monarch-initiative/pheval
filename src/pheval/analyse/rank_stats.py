@@ -1,13 +1,14 @@
-import csv
 from dataclasses import dataclass, field
 from pathlib import Path
 from statistics import mean
 from typing import List
 
 import numpy as np
+from duckdb import DuckDBPyConnection
 from sklearn.metrics import ndcg_score
 
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
+from pheval.analyse.get_connection import get_connection
 
 
 @dataclass
@@ -36,29 +37,32 @@ class RankStats:
     relevant_result_ranks: List[List[int]] = field(default_factory=list)
     mrr: float = None
 
-    def add_rank(self, rank: int) -> None:
-        """
-        Add rank for matched result.
+    def add_ranks(self, table_name: str, column_name: str):
+        conn = get_connection()
+        self.top = self._execute_count_query(conn, table_name, column_name, " = 1")
+        self.top3 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 3")
+        self.top5 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 5")
+        self.top10 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 10")
+        self.found = self._execute_count_query(conn, table_name, column_name, " > 0")
+        self.total = self._execute_count_query(conn, table_name, column_name, " >= 0")
+        self.reciprocal_ranks = self._fetch_reciprocal_ranks(conn, table_name, column_name)
+        self.relevant_result_ranks = self._fetch_relevant_ranks(conn, table_name, column_name)
+        conn.close()
 
-        Args:
-            rank (int): The rank value to be added.
+    @staticmethod
+    def _execute_count_query(conn: DuckDBPyConnection, table_name: str, column_name: str, condition: str) -> int:
+        query = f'SELECT COUNT(*) FROM {table_name} WHERE "{column_name}" {condition}'
+        return conn.execute(query).fetchone()[0]
 
-        Notes:
-            This method updates the internal attributes of the RankStats object based on the provided rank value.
-            It calculates various statistics such as the count of top ranks (1, 3, 5, and 10),
-            the total number of ranks found,and the reciprocal rank.
-            This function modifies the object's state by updating the internal attributes.
-        """
-        self.reciprocal_ranks.append(1 / rank)
-        self.found += 1
-        if rank == 1:
-            self.top += 1
-        if rank != "" and rank <= 3:
-            self.top3 += 1
-        if rank != "" and rank <= 5:
-            self.top5 += 1
-        if rank != "" and rank <= 10:
-            self.top10 += 1
+    @staticmethod
+    def _fetch_reciprocal_ranks(conn: DuckDBPyConnection, table_name: str, column_name: str) -> List[float]:
+        query = f'SELECT "{column_name}" FROM {table_name}'
+        return [1 / rank[0] if rank[0] > 0 else 0 for rank in conn.execute(query).fetchall()]
+
+    @staticmethod
+    def _fetch_relevant_ranks(conn: DuckDBPyConnection, table_name: str, column_name: str) -> List[List[int]]:
+        query = f'SELECT LIST("{column_name}") as values_list FROM {table_name} GROUP BY phenopacket'
+        return [rank[0] for rank in conn.execute(query).fetchall()]
 
     def percentage_rank(self, value: int) -> float:
         """
@@ -183,7 +187,7 @@ class RankStats:
 
     @staticmethod
     def _average_precision_at_k(
-        number_of_relevant_entities_at_k: int, precision_at_k: float
+            number_of_relevant_entities_at_k: int, precision_at_k: float
     ) -> float:
         """
         Calculate the Average Precision at k.
@@ -280,135 +284,121 @@ class RankStats:
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
 
-    def __init__(self, file: Path):
+    def __init__(self, table_name: str):
         """
         Initialise the RankStatsWriter class
         Args:
-            file (Path): Path to the file where rank stats will be written
+            table_name (str): Name of table to add statistics.
         """
-        self.file = open(file, "w")
-        self.writer = csv.writer(self.file, delimiter="\t")
-        self.writer.writerow(
-            [
-                "results_directory_path",
-                "top",
-                "top3",
-                "top5",
-                "top10",
-                "found",
-                "total",
-                "mean_reciprocal_rank",
-                "percentage_top",
-                "percentage_top3",
-                "percentage_top5",
-                "percentage_top10",
-                "percentage_found",
-                "precision@1",
-                "precision@3",
-                "precision@5",
-                "precision@10",
-                "MAP@1",
-                "MAP@3",
-                "MAP@5",
-                "MAP@10",
-                "f_beta_score@1",
-                "f_beta_score@3",
-                "f_beta_score@5",
-                "f_beta_score@10",
-                "NDCG@3",
-                "NDCG@5",
-                "NDCG@10",
-                "true_positives",
-                "false_positives",
-                "true_negatives",
-                "false_negatives",
-                "sensitivity",
-                "specificity",
-                "precision",
-                "negative_predictive_value",
-                "false_positive_rate",
-                "false_discovery_rate",
-                "false_negative_rate",
-                "accuracy",
-                "f1_score",
-                "matthews_correlation_coefficient",
-            ]
+
+        self.table_name = table_name
+        conn = get_connection()
+        conn.execute(
+            f"""
+                    CREATE TABLE IF NOT EXISTS "{self.table_name}" (
+                        results_directory_path VARCHAR,
+                        top INT,
+                        top3 INT,
+                        top5 INT,
+                        top10 INT,
+                        "found" INT,
+                        total INT,
+                        mean_reciprocal_rank FLOAT,
+                        percentage_top FLOAT,
+                        percentage_top3 FLOAT,
+                        percentage_top5 FLOAT,
+                        percentage_top10 FLOAT,
+                        percentage_found FLOAT,
+                        "precision@1" FLOAT,
+                        "precision@3" FLOAT,
+                        "precision@5" FLOAT,
+                        "precision@10" FLOAT,
+                        "MAP@1" FLOAT,
+                        "MAP@3" FLOAT,
+                        "MAP@5" FLOAT,
+                        "MAP@10" FLOAT,
+                        "f_beta_score@1" FLOAT,
+                        "f_beta_score@3"FLOAT,
+                        "f_beta_score@5" FLOAT,
+                        "f_beta_score@10" FLOAT,
+                        "NDCG@3" FLOAT,
+                        "NDCG@5" FLOAT,
+                        "NDCG@10" FLOAT,
+                        true_positives INT,
+                        false_positives INT,
+                        true_negatives INT,
+                        false_negatives INT,
+                        sensitivity FLOAT,
+                        specificity FLOAT,
+                        "precision" FLOAT,
+                        negative_predictive_value FLOAT,
+                        false_positive_rate FLOAT,
+                        false_discovery_rate FLOAT,
+                        false_negative_rate FLOAT,
+                        accuracy FLOAT,
+                        f1_score FLOAT,
+                        matthews_correlation_coefficient FLOAT,
+                        
+                    )
+                    """
         )
+        conn.close()
 
-    def write_row(
-        self,
-        directory: Path,
-        rank_stats: RankStats,
-        binary_classification: BinaryClassificationStats,
-    ) -> None:
+    def add_statistics_entry(self,
+                             directory_path: Path,
+                             rank_stats: RankStats,
+                             binary_classification: BinaryClassificationStats):
         """
-        Write summary rank statistics row for a run to the file.
-
+        Add statistics row to table for a run.
         Args:
-            directory (Path): Path to the results directory corresponding to the run
-            rank_stats (RankStats): RankStats instance containing rank statistics corresponding to the run
-
-        Raises:
-            IOError: If there is an error writing to the file.
+            directory_path (Path): Path to the results directory associated with the run.
+            rank_stats (RankStats): RankStats object for the run.
+            binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
-        try:
-            self.writer.writerow(
-                [
-                    directory,
-                    rank_stats.top,
-                    rank_stats.top3,
-                    rank_stats.top5,
-                    rank_stats.top10,
-                    rank_stats.found,
-                    rank_stats.total,
-                    rank_stats.mean_reciprocal_rank(),
-                    rank_stats.percentage_top(),
-                    rank_stats.percentage_top3(),
-                    rank_stats.percentage_top5(),
-                    rank_stats.percentage_top10(),
-                    rank_stats.percentage_found(),
-                    rank_stats.precision_at_k(1),
-                    rank_stats.precision_at_k(3),
-                    rank_stats.precision_at_k(5),
-                    rank_stats.precision_at_k(10),
-                    rank_stats.mean_average_precision_at_k(1),
-                    rank_stats.mean_average_precision_at_k(3),
-                    rank_stats.mean_average_precision_at_k(5),
-                    rank_stats.mean_average_precision_at_k(10),
-                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1),
-                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top3(), 3),
-                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top5(), 5),
-                    rank_stats.f_beta_score_at_k(rank_stats.percentage_top10(), 10),
-                    rank_stats.mean_normalised_discounted_cumulative_gain(3),
-                    rank_stats.mean_normalised_discounted_cumulative_gain(5),
-                    rank_stats.mean_normalised_discounted_cumulative_gain(10),
-                    binary_classification.true_positives,
-                    binary_classification.false_positives,
-                    binary_classification.true_negatives,
-                    binary_classification.false_negatives,
-                    binary_classification.sensitivity(),
-                    binary_classification.specificity(),
-                    binary_classification.precision(),
-                    binary_classification.negative_predictive_value(),
-                    binary_classification.false_positive_rate(),
-                    binary_classification.false_discovery_rate(),
-                    binary_classification.false_negative_rate(),
-                    binary_classification.accuracy(),
-                    binary_classification.f1_score(),
-                    binary_classification.matthews_correlation_coefficient(),
-                ]
-            )
-        except IOError:
-            print("Error writing ", self.file)
-
-    def close(self) -> None:
-        """
-        Close the file used for writing rank statistics.
-
-        Raises:
-            IOError: If there's an error while closing the file.
-        """
-        try:
-            self.file.close()
-        except IOError:
-            print("Error closing ", self.file)
+        conn = get_connection()
+        conn.execute(f"""
+                INSERT INTO "{self.table_name}" VALUES 
+                (
+                '{directory_path}',
+                {rank_stats.top},
+                {rank_stats.top3},
+                {rank_stats.top5},
+                {rank_stats.top10},
+                {rank_stats.found},
+                {rank_stats.total},
+                {rank_stats.mean_reciprocal_rank()},
+                {rank_stats.percentage_top()},
+                {rank_stats.percentage_top3()},
+                {rank_stats.percentage_top5()},
+                {rank_stats.percentage_top10()},
+                {rank_stats.percentage_found()},
+                {rank_stats.precision_at_k(1)},
+                {rank_stats.precision_at_k(3)},
+                {rank_stats.precision_at_k(5)},
+                {rank_stats.precision_at_k(10)},
+                {rank_stats.mean_average_precision_at_k(1)},
+                {rank_stats.mean_average_precision_at_k(3)},
+                {rank_stats.mean_average_precision_at_k(5)},
+                {rank_stats.mean_average_precision_at_k(10)},
+                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1)},
+                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 3)},
+                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 5)},
+                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 10)},
+                {rank_stats.mean_normalised_discounted_cumulative_gain(3)},
+                {rank_stats.mean_normalised_discounted_cumulative_gain(5)},
+                {rank_stats.mean_normalised_discounted_cumulative_gain(10)},
+                {binary_classification.true_positives},
+                {binary_classification.false_positives},
+                {binary_classification.true_negatives},
+                {binary_classification.false_negatives},
+                {binary_classification.sensitivity()},
+                {binary_classification.specificity()},
+                {binary_classification.precision()},
+                {binary_classification.negative_predictive_value()},
+                {binary_classification.false_positive_rate()},
+                {binary_classification.false_discovery_rate()},
+                {binary_classification.false_negative_rate()},
+                {binary_classification.accuracy()},
+                {binary_classification.f1_score()},
+                {binary_classification.matthews_correlation_coefficient()},)""")
+        conn.close()
