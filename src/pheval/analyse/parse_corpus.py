@@ -3,7 +3,7 @@ from typing import List
 
 from pheval.analyse.benchmark_generator import GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator, \
     DiseaseBenchmarkRunOutputGenerator, BenchmarkRunOutputGenerator
-from pheval.get_connection import get_connection
+from pheval.analyse.get_connection import DBConnector
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene, phenopacket_reader, PhenopacketUtil, \
     ProbandDisease
@@ -63,7 +63,7 @@ class CorpusParser:
             phenopacket_dir (Path): Path to the Phenopacket directory.
         """
         self.phenopacket_dir = phenopacket_dir
-        self.conn = get_connection()
+        self.conn = DBConnector().conn
         self.table_name = phenopacket_dir.parents[0].name
 
     def _create_gene_table(self) -> None:
