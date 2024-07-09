@@ -4,6 +4,7 @@ from typing import List
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
+from pheval.analyse.parse_corpus import _obtain_causative_diseases
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.prioritisation_rank_recorder import PrioritisationRankRecorder
 from pheval.analyse.prioritisation_result_types import DiseasePrioritisationResult
@@ -11,7 +12,7 @@ from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
 from pheval.utils.file_utils import all_files
-from pheval.utils.phenopacket_utils import PhenopacketUtil, ProbandDisease, phenopacket_reader
+from pheval.utils.phenopacket_utils import ProbandDisease
 
 
 class AssessDiseasePrioritisation:
@@ -195,21 +196,6 @@ class AssessDiseasePrioritisation:
         binary_classification_stats.add_classification(
             self.standardised_disease_results, relevant_ranks
         )
-
-
-def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
-    """
-    Obtain known diseases from a Phenopacket.
-    Args:
-       phenopacket_path (Path): Path to the Phenopacket file.
-
-    Returns:
-       List[ProbandDisease]: A list of known diseases associated with the proband,
-       extracted from the Phenopacket.
-    """
-    phenopacket = phenopacket_reader(phenopacket_path)
-    phenopacket_util = PhenopacketUtil(phenopacket)
-    return phenopacket_util.diagnoses()
 
 
 def assess_phenopacket_disease_prioritisation(
