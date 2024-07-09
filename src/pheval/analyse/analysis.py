@@ -12,6 +12,7 @@ from pheval.analyse.generate_summary_outputs import (
     generate_benchmark_comparison_output,
     generate_benchmark_output,
 )
+from pheval.analyse.parse_corpus import CorpusParser
 from pheval.analyse.rank_stats import RankStatsWriter
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 
@@ -34,6 +35,7 @@ def _run_benchmark(
         plot_type (str): Type of plot for benchmark visualisation.
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
+    CorpusParser(results_dir_and_input.phenopacket_dir).parse_corpus(benchmark_generator)
     stats_writer = RankStatsWriter(
         Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
@@ -125,6 +127,9 @@ def _run_benchmark_comparison(
     stats_writer = RankStatsWriter(
         Path(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
+    unique_test_corpora_directories = set([result.phenopacket_dir for result in results_directories])
+    [CorpusParser(test_corpora_directory).parse_corpus(benchmark_generator) for test_corpora_directory in
+     unique_test_corpora_directories]
     benchmarking_results = []
     for results_dir_and_input in results_directories:
         rank_comparison = defaultdict(dict)
