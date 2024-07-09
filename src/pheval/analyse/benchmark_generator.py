@@ -8,11 +8,11 @@ from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritis
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
 from pheval.constants import (
-    DISEASE_PLOT_FILE_PREFIX,
+    DISEASE_PRIORITISATION_TYPE_STR,
     DISEASE_PLOT_Y_LABEL,
-    GENE_PLOT_FILE_PREFIX,
+    GENE_PRIORITISATION_TYPE_STR,
     GENE_PLOT_Y_LABEL,
-    VARIANT_PLOT_FILE_PREFIX,
+    VARIANT_PRIORITISATION_TYPE_STR,
     VARIANT_PLOT_Y_LABEL,
 )
 
@@ -22,7 +22,7 @@ class BenchmarkRunOutputGenerator:
     """Base class for recording data required for generating benchmarking outputs.
 
     Attributes:
-        prioritisation_type_file_prefix (str): Prefix for the prioritisation type output file.
+        prioritisation_type_string (str):  Prioritisation type string.
         y_label (str): Label for the y-axis in benchmarking outputs.
         generate_benchmark_run_results (Callable): Callable to generate benchmark run results.
             Takes parameters: input and results directory, score order, threshold, rank comparison,
@@ -30,7 +30,7 @@ class BenchmarkRunOutputGenerator:
         stats_comparison_file_suffix (str): Suffix for the rank comparison file.
     """
 
-    prioritisation_type_file_prefix: str
+    prioritisation_type_string: str
     y_label: str
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
@@ -48,8 +48,8 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     specifically for gene prioritisation benchmarking.
 
     Attributes:
-        prioritisation_type_file_prefix (str): Prefix for the gene prioritisation type file.
-            Defaults to GENE_PLOT_FILE_PREFIX.
+        prioritisation_type_string (str): Prioritisation type string.
+            Defaults to GENE_PRIORITISATION_TYPE_STR.
         y_label (str): Label for the y-axis in gene prioritisation benchmarking outputs.
             Defaults to GENE_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate gene prioritisation
@@ -60,7 +60,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to "-gene_summary.tsv".
     """
 
-    prioritisation_type_file_prefix: str = GENE_PLOT_FILE_PREFIX
+    prioritisation_type_string: str = GENE_PRIORITISATION_TYPE_STR
     y_label: str = GENE_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
@@ -78,8 +78,8 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     specifically for variant prioritisation benchmarking.
 
     Attributes:
-        prioritisation_type_file_prefix (str): Prefix for the variant prioritisation type file.
-            Defaults to VARIANT_PLOT_FILE_PREFIX.
+        prioritisation_type_string (str): Prioritisation type string.
+            Defaults to VARIANT_PRIORITISATION_TYPE_STR.
         y_label (str): Label for the y-axis in variant prioritisation benchmarking outputs.
             Defaults to VARIANT_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate variant prioritisation
@@ -91,7 +91,7 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
 
     """
 
-    prioritisation_type_file_prefix: str = VARIANT_PLOT_FILE_PREFIX
+    prioritisation_type_string: str = VARIANT_PRIORITISATION_TYPE_STR
     y_label: str = VARIANT_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
@@ -109,8 +109,8 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     specifically for disease prioritisation benchmarking.
 
     Attributes:
-        prioritisation_type_file_prefix (str): Prefix for the disease prioritisation type file.
-            Defaults to DISEASE_PLOT_FILE_PREFIX.
+        prioritisation_type_string (str): Prioritisation type string.
+            Defaults to DISEASE_PRIORITISATION_TYPE_STR.
         y_label (str): Label for the y-axis in disease prioritisation benchmarking outputs.
             Defaults to DISEASE_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate disease prioritisation
@@ -121,7 +121,7 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to "-disease_summary.tsv".
     """
 
-    prioritisation_type_file_prefix: str = DISEASE_PLOT_FILE_PREFIX
+    prioritisation_type_string: str = DISEASE_PRIORITISATION_TYPE_STR
     y_label: str = DISEASE_PLOT_Y_LABEL
     generate_benchmark_run_results: Callable[
         [TrackInputOutputDirectories, str, float, defaultdict], BenchmarkRunResults
