@@ -30,6 +30,8 @@ class AssessGenePrioritisation:
         Initialise AssessGenePrioritisation class.
 
         Args:
+            db_connection (DBConnector): Database connection
+            table_name (str): Table name
             results_dir (Path): Path to the results directory
             threshold (float): Threshold for scores
             score_order (str): Score order for results, either ascending or descending
