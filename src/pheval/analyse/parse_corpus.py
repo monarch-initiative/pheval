@@ -92,7 +92,7 @@ class CorpusParser:
                         phenopacket VARCHAR,
                         chrom VARCHAR,
                         pos INTEGER,
-                        reference VARCHAR,
+                        "ref" VARCHAR,
                         alt VARCHAR
                     )
                     """
@@ -157,7 +157,7 @@ class CorpusParser:
             )
             self.conn.execute(
                 f"""
-                INSERT OR IGNORE INTO {self.table_name}_variant (identifier, phenopacket, chrom, pos, reference, alt)
+                INSERT OR IGNORE INTO {self.table_name}_variant (identifier, phenopacket, chrom, pos, "ref", alt)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """,
                 (
