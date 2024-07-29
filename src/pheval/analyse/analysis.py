@@ -1,5 +1,3 @@
-from collections import defaultdict
-from pathlib import Path
 from typing import List
 
 from pheval.analyse.benchmark_generator import (
@@ -39,9 +37,8 @@ def _run_benchmark(
     stats_writer = RankStatsWriter(
         str(output_prefix + benchmark_generator.stats_comparison_file_suffix)
     )
-    rank_comparison = defaultdict(dict)
     benchmark_result = benchmark_generator.generate_benchmark_run_results(
-        results_dir_and_input, score_order, threshold, rank_comparison
+        results_dir_and_input, score_order, threshold
     )
     stats_writer.add_statistics_entry(
         results_dir_and_input.results_dir,
@@ -140,7 +137,12 @@ def _run_benchmark_comparison(
             benchmark_result.binary_classification_stats,
         )
         benchmarking_results.append(benchmark_result)
-    generate_benchmark_comparison_output(benchmarking_results, plot_type, benchmark_generator)
+    [generate_benchmark_comparison_output(benchmarking_results, plot_type, benchmark_generator,
+                                          f"{unique_test_corpora_directory.parents[0].name}_"
+                                          f"{benchmark_generator.prioritisation_type_string}")
+     for unique_test_corpora_directory in
+     unique_test_corpora_directories]
+
 
 
 def benchmark_run_comparisons(
