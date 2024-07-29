@@ -60,7 +60,6 @@ def parse_benchmark_result_summary(benchmarking_df: pd.DataFrame) -> List[Benchm
                 total=row["total"],
                 mrr=row["mean_reciprocal_rank"],
             ),
-            ranks={},
             benchmark_name=row["results_directory_path"],
             binary_classification_stats=BinaryClassificationStats(),
         )
