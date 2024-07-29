@@ -168,13 +168,13 @@ class PlotGenerator:
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         if title is None:
             plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Rank Stats"
+                f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats"
             )
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 100)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -183,16 +183,16 @@ class PlotGenerator:
         mrr_df.set_index("Run").plot(
             kind="bar",
             color=self.palette_hex_codes,
-            ylabel=f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} mean reciprocal rank",
+            ylabel=f"{benchmark_generator.prioritisation_type_string.capitalize()} mean reciprocal rank",
             legend=False,
             edgecolor="white",
         )
         plt.title(
-            f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} results - mean reciprocal rank"
+            f"{benchmark_generator.prioritisation_type_string.capitalize()} results - mean reciprocal rank"
         )
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_mrr.svg",
+            f"{benchmark_generator.prioritisation_type_string}_mrr.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -280,13 +280,13 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
+                f"{benchmark_generator.prioritisation_type_string.capitalize()} Cumulative Rank Stats"
             )
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -391,7 +391,7 @@ class PlotGenerator:
         plt.title("Receiver Operating Characteristic (ROC) Curve")
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_roc_curve.svg",
+            f"{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -429,7 +429,7 @@ class PlotGenerator:
         plt.title("Precision-Recall Curve")
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_precision_recall_curve.svg",
+            f"{benchmark_generator.prioritisation_type_string}_precision_recall_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -465,13 +465,13 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
+                f"{benchmark_generator.prioritisation_type_string.capitalize()} Non-Cumulative Rank Stats"
             )
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
