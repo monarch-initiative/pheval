@@ -40,7 +40,7 @@ class AssessGenePrioritisation:
         self.conn = db_connection.conn
         self.column = str(self.results_dir.parents[0])
         self.table_name = table_name
-        db_connection.add_column(table_name=table_name, column=self.column, default=0)
+        db_connection.add_column_integer_default(table_name=table_name, column=self.column, default=0)
 
     def _assess_gene_with_threshold_ascending_order(
             self,
