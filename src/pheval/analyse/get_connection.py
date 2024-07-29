@@ -28,7 +28,7 @@ class DBConnector:
             pass
 
     def drop_table(self, table_name: str) -> None:
-        self.conn.execute(f"""DROP TABLE IF EXISTS '{table_name}';""")
+        self.conn.execute(f"""DROP TABLE IF EXISTS "{table_name}";""")
 
     def close(self):
         self.conn.close()
