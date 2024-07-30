@@ -50,18 +50,26 @@ class RankStats:
         conn.close()
 
     @staticmethod
-    def _execute_count_query(conn: DuckDBPyConnection, table_name: str, column_name: str, condition: str) -> int:
+    def _execute_count_query(
+        conn: DuckDBPyConnection, table_name: str, column_name: str, condition: str
+    ) -> int:
         query = f'SELECT COUNT(*) FROM {table_name} WHERE "{column_name}" {condition}'
         return conn.execute(query).fetchone()[0]
 
     @staticmethod
-    def _fetch_reciprocal_ranks(conn: DuckDBPyConnection, table_name: str, column_name: str) -> List[float]:
+    def _fetch_reciprocal_ranks(
+        conn: DuckDBPyConnection, table_name: str, column_name: str
+    ) -> List[float]:
         query = f'SELECT "{column_name}" FROM {table_name}'
         return [1 / rank[0] if rank[0] > 0 else 0 for rank in conn.execute(query).fetchall()]
 
     @staticmethod
-    def _fetch_relevant_ranks(conn: DuckDBPyConnection, table_name: str, column_name: str) -> List[List[int]]:
-        query = f'SELECT LIST("{column_name}") as values_list FROM {table_name} GROUP BY phenopacket'
+    def _fetch_relevant_ranks(
+        conn: DuckDBPyConnection, table_name: str, column_name: str
+    ) -> List[List[int]]:
+        query = (
+            f'SELECT LIST("{column_name}") as values_list FROM {table_name} GROUP BY phenopacket'
+        )
         return [rank[0] for rank in conn.execute(query).fetchall()]
 
     def percentage_rank(self, value: int) -> float:
@@ -187,7 +195,7 @@ class RankStats:
 
     @staticmethod
     def _average_precision_at_k(
-            number_of_relevant_entities_at_k: int, precision_at_k: float
+        number_of_relevant_entities_at_k: int, precision_at_k: float
     ) -> float:
         """
         Calculate the Average Precision at k.
@@ -294,60 +302,58 @@ class RankStatsWriter:
         self.table_name = table_name
         conn = DBConnector().conn
         conn.execute(
-            f"""
-                    CREATE TABLE IF NOT EXISTS "{self.table_name}" (
-                        results_directory_path VARCHAR,
-                        top INT,
-                        top3 INT,
-                        top5 INT,
-                        top10 INT,
-                        "found" INT,
-                        total INT,
-                        mean_reciprocal_rank FLOAT,
-                        percentage_top FLOAT,
-                        percentage_top3 FLOAT,
-                        percentage_top5 FLOAT,
-                        percentage_top10 FLOAT,
-                        percentage_found FLOAT,
-                        "precision@1" FLOAT,
-                        "precision@3" FLOAT,
-                        "precision@5" FLOAT,
-                        "precision@10" FLOAT,
-                        "MAP@1" FLOAT,
-                        "MAP@3" FLOAT,
-                        "MAP@5" FLOAT,
-                        "MAP@10" FLOAT,
-                        "f_beta_score@1" FLOAT,
-                        "f_beta_score@3"FLOAT,
-                        "f_beta_score@5" FLOAT,
-                        "f_beta_score@10" FLOAT,
-                        "NDCG@3" FLOAT,
-                        "NDCG@5" FLOAT,
-                        "NDCG@10" FLOAT,
-                        true_positives INT,
-                        false_positives INT,
-                        true_negatives INT,
-                        false_negatives INT,
-                        sensitivity FLOAT,
-                        specificity FLOAT,
-                        "precision" FLOAT,
-                        negative_predictive_value FLOAT,
-                        false_positive_rate FLOAT,
-                        false_discovery_rate FLOAT,
-                        false_negative_rate FLOAT,
-                        accuracy FLOAT,
-                        f1_score FLOAT,
-                        matthews_correlation_coefficient FLOAT,
-                        
-                    )
-                    """
+            f'CREATE TABLE IF NOT EXISTS "{self.table_name}" ('
+            f"results_directory_path VARCHAR,"
+            f"top INT,"
+            f"top3 INT,"
+            f"top5 INT,"
+            f"top10 INT,"
+            f'"found" INT,'
+            f"total INT,"
+            f"mean_reciprocal_rank FLOAT,"
+            f"percentage_top FLOAT,"
+            f"percentage_top3 FLOAT,"
+            f"percentage_top5 FLOAT,"
+            f"percentage_top10 FLOAT,"
+            f"percentage_found FLOAT,"
+            f'"precision@1" FLOAT,'
+            f'"precision@3" FLOAT,'
+            f'"precision@5" FLOAT,'
+            f'"precision@10" FLOAT,'
+            f'"MAP@1" FLOAT,'
+            f'"MAP@3" FLOAT,'
+            f'"MAP@5" FLOAT,'
+            f'"MAP@10" FLOAT,'
+            f'"f_beta_score@1" FLOAT,'
+            f'"f_beta_score@3"FLOAT,'
+            f'"f_beta_score@5" FLOAT,'
+            f'"f_beta_score@10" FLOAT,'
+            f'"NDCG@3" FLOAT,'
+            f'"NDCG@5" FLOAT,'
+            f'"NDCG@10" FLOAT,'
+            f"true_positives INT,"
+            f"false_positives INT,"
+            f"true_negatives INT,"
+            f"false_negatives INT,"
+            f"sensitivity FLOAT,"
+            f"specificity FLOAT,"
+            f'"precision" FLOAT,'
+            f"negative_predictive_value FLOAT,"
+            f"false_positive_rate FLOAT,"
+            f"false_discovery_rate FLOAT,"
+            f"false_negative_rate FLOAT,"
+            f"accuracy FLOAT,"
+            f"f1_score FLOAT,"
+            f"matthews_correlation_coefficient FLOAT,                        )"
         )
         conn.close()
 
-    def add_statistics_entry(self,
-                             directory_path: Path,
-                             rank_stats: RankStats,
-                             binary_classification: BinaryClassificationStats):
+    def add_statistics_entry(
+        self,
+        directory_path: Path,
+        rank_stats: RankStats,
+        binary_classification: BinaryClassificationStats,
+    ):
         """
         Add statistics row to table for a run.
         Args:
@@ -356,49 +362,50 @@ class RankStatsWriter:
             binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
         conn = DBConnector().conn
-        conn.execute(f"""
-                INSERT INTO "{self.table_name}" VALUES 
-                (
-                '{directory_path}',
-                {rank_stats.top},
-                {rank_stats.top3},
-                {rank_stats.top5},
-                {rank_stats.top10},
-                {rank_stats.found},
-                {rank_stats.total},
-                {rank_stats.mean_reciprocal_rank()},
-                {rank_stats.percentage_top()},
-                {rank_stats.percentage_top3()},
-                {rank_stats.percentage_top5()},
-                {rank_stats.percentage_top10()},
-                {rank_stats.percentage_found()},
-                {rank_stats.precision_at_k(1)},
-                {rank_stats.precision_at_k(3)},
-                {rank_stats.precision_at_k(5)},
-                {rank_stats.precision_at_k(10)},
-                {rank_stats.mean_average_precision_at_k(1)},
-                {rank_stats.mean_average_precision_at_k(3)},
-                {rank_stats.mean_average_precision_at_k(5)},
-                {rank_stats.mean_average_precision_at_k(10)},
-                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1)},
-                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 3)},
-                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 5)},
-                {rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 10)},
-                {rank_stats.mean_normalised_discounted_cumulative_gain(3)},
-                {rank_stats.mean_normalised_discounted_cumulative_gain(5)},
-                {rank_stats.mean_normalised_discounted_cumulative_gain(10)},
-                {binary_classification.true_positives},
-                {binary_classification.false_positives},
-                {binary_classification.true_negatives},
-                {binary_classification.false_negatives},
-                {binary_classification.sensitivity()},
-                {binary_classification.specificity()},
-                {binary_classification.precision()},
-                {binary_classification.negative_predictive_value()},
-                {binary_classification.false_positive_rate()},
-                {binary_classification.false_discovery_rate()},
-                {binary_classification.false_negative_rate()},
-                {binary_classification.accuracy()},
-                {binary_classification.f1_score()},
-                {binary_classification.matthews_correlation_coefficient()},)""")
+        conn.execute(
+            f' INSERT INTO "{self.table_name}" VALUES ( '
+            f"'{directory_path}',"
+            f"{rank_stats.top},"
+            f"{rank_stats.top3},"
+            f"{rank_stats.top5},"
+            f"{rank_stats.top10},"
+            f"{rank_stats.found},"
+            f"{rank_stats.total},"
+            f"{rank_stats.mean_reciprocal_rank()},"
+            f"{rank_stats.percentage_top()},"
+            f"{rank_stats.percentage_top3()},"
+            f"{rank_stats.percentage_top5()},"
+            f"{rank_stats.percentage_top10()},"
+            f"{rank_stats.percentage_found()},"
+            f"{rank_stats.precision_at_k(1)},"
+            f"{rank_stats.precision_at_k(3)},"
+            f"{rank_stats.precision_at_k(5)},"
+            f"{rank_stats.precision_at_k(10)},"
+            f"{rank_stats.mean_average_precision_at_k(1)},"
+            f"{rank_stats.mean_average_precision_at_k(3)},"
+            f"{rank_stats.mean_average_precision_at_k(5)},"
+            f"{rank_stats.mean_average_precision_at_k(10)},"
+            f"{rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 1)},"
+            f"{rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 3)},"
+            f"{rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 5)},"
+            f"{rank_stats.f_beta_score_at_k(rank_stats.percentage_top(), 10)},"
+            f"{rank_stats.mean_normalised_discounted_cumulative_gain(3)},"
+            f"{rank_stats.mean_normalised_discounted_cumulative_gain(5)},"
+            f"{rank_stats.mean_normalised_discounted_cumulative_gain(10)},"
+            f"{binary_classification.true_positives},"
+            f"{binary_classification.false_positives},"
+            f"{binary_classification.true_negatives},"
+            f"{binary_classification.false_negatives},"
+            f"{binary_classification.sensitivity()},"
+            f"{binary_classification.specificity()},"
+            f"{binary_classification.precision()},"
+            f"{binary_classification.negative_predictive_value()},"
+            f"{binary_classification.false_positive_rate()},"
+            f"{binary_classification.false_discovery_rate()},"
+            f"{binary_classification.false_negative_rate()},"
+            f"{binary_classification.accuracy()},"
+            f"{binary_classification.f1_score()},"
+            f"{binary_classification.matthews_correlation_coefficient()})"
+        )
+
         conn.close()

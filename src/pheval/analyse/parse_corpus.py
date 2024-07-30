@@ -1,12 +1,21 @@
 from pathlib import Path
 from typing import List
 
-from pheval.analyse.benchmark_generator import GeneBenchmarkRunOutputGenerator, VariantBenchmarkRunOutputGenerator, \
-    DiseaseBenchmarkRunOutputGenerator, BenchmarkRunOutputGenerator
+from pheval.analyse.benchmark_generator import (
+    BenchmarkRunOutputGenerator,
+    DiseaseBenchmarkRunOutputGenerator,
+    GeneBenchmarkRunOutputGenerator,
+    VariantBenchmarkRunOutputGenerator,
+)
 from pheval.analyse.get_connection import DBConnector
 from pheval.utils.file_utils import all_files
-from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene, phenopacket_reader, PhenopacketUtil, \
-    ProbandDisease
+from pheval.utils.phenopacket_utils import (
+    GenomicVariant,
+    PhenopacketUtil,
+    ProbandCausativeGene,
+    ProbandDisease,
+    phenopacket_reader,
+)
 
 
 def _obtain_causative_diseases(phenopacket_path: Path) -> List[ProbandDisease]:
@@ -54,7 +63,7 @@ def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene
 
 
 class CorpusParser:
-    """ Class for parsing phenopacket corpus and retrieving known variants/genes/diseases."""
+    """Class for parsing phenopacket corpus and retrieving known variants/genes/diseases."""
 
     def __init__(self, phenopacket_dir: Path) -> None:
         """
@@ -180,10 +189,8 @@ class CorpusParser:
         for disease in diseases:
             identifier = f"{phenopacket_path.name}-{disease.disease_identifier}"
             self.conn.execute(
-                f"""
-                INSERT INTO {self.table_name}_disease (identifier, phenopacket, disease_identifier, disease_name)
-                VALUES (?, ?, ?, ?)
-                """,
+                f"INSERT OR IGNORE INTO {self.table_name}_disease "
+                f"(identifier, phenopacket, disease_identifier, disease_name) VALUES (?, ?, ?, ?)",
                 (
                     identifier,
                     phenopacket_path.name,

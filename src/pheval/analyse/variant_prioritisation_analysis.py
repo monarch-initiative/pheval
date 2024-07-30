@@ -1,4 +1,3 @@
-from collections import defaultdict
 from pathlib import Path
 from typing import List
 
@@ -17,12 +16,12 @@ class AssessVariantPrioritisation:
     """Class for assessing variant prioritisation based on thresholds and scoring orders."""
 
     def __init__(
-            self,
-            db_connection: DBConnector,
-            table_name: str,
-            results_dir: Path,
-            threshold: float,
-            score_order: str,
+        self,
+        db_connection: DBConnector,
+        table_name: str,
+        results_dir: Path,
+        threshold: float,
+        score_order: str,
     ):
         """
         Initialise AssessVariantPrioritisation class
@@ -39,10 +38,12 @@ class AssessVariantPrioritisation:
         self.conn = db_connection.conn
         self.column = str(self.results_dir.parents[0])
         self.table_name = table_name
-        db_connection.add_column_integer_default(table_name=table_name, column=self.column, default=0)
+        db_connection.add_column_integer_default(
+            table_name=table_name, column=self.column, default=0
+        )
 
     def _assess_variant_with_threshold_ascending_order(
-            self, result_entry: RankedPhEvalVariantResult
+        self, result_entry: RankedPhEvalVariantResult
     ) -> int:
         """
         Record the variant prioritisation rank if it meets the ascending order threshold.
@@ -61,9 +62,7 @@ class AssessVariantPrioritisation:
         else:
             return 0
 
-    def _assess_variant_with_threshold(
-            self, result_entry: RankedPhEvalVariantResult
-    ) -> int:
+    def _assess_variant_with_threshold(self, result_entry: RankedPhEvalVariantResult) -> int:
         """
         Record the variant prioritisation rank if it meets the score threshold.
 
@@ -82,7 +81,7 @@ class AssessVariantPrioritisation:
             return 0
 
     def _record_matched_variant(
-            self, standardised_variant_result: RankedPhEvalVariantResult
+        self, standardised_variant_result: RankedPhEvalVariantResult
     ) -> int:
         """
         Return the variant rank result - handling the specification of a threshold.
@@ -109,10 +108,10 @@ class AssessVariantPrioritisation:
             )
 
     def assess_variant_prioritisation(
-            self,
-            standardised_variant_results: List[RankedPhEvalVariantResult],
-            phenopacket_path: Path,
-            binary_classification_stats: BinaryClassificationStats,
+        self,
+        standardised_variant_results: List[RankedPhEvalVariantResult],
+        phenopacket_path: Path,
+        binary_classification_stats: BinaryClassificationStats,
     ) -> None:
         """
         Assess variant prioritisation.
@@ -127,37 +126,46 @@ class AssessVariantPrioritisation:
         """
         relevant_ranks = []
         df = self.conn.execute(
-            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'""").fetchdf()
-        for i, row in df.iterrows():
-            causative_variant = GenomicVariant(chrom=row["chrom"],
-                                               pos=int(row["pos"]),
-                                               ref=row["ref"],
-                                               alt=row["alt"], )
-            generated_matches = list(result for result in standardised_variant_results if
-                                     causative_variant == GenomicVariant(chrom=result.chromosome,
-                                                                         pos=result.start,
-                                                                         alt=result.alt,
-                                                                         ref=result.ref, ))
+            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'"""
+        ).fetchdf()
+        for _i, row in df.iterrows():
+            causative_variant = GenomicVariant(
+                chrom=row["chrom"],
+                pos=int(row["pos"]),
+                ref=row["ref"],
+                alt=row["alt"],
+            )
+            generated_matches = list(
+                result
+                for result in standardised_variant_results
+                if causative_variant
+                == GenomicVariant(
+                    chrom=result.chromosome,
+                    pos=result.start,
+                    alt=result.alt,
+                    ref=result.ref,
+                )
+            )
             if len(generated_matches) > 0:
                 variant_match = self._record_matched_variant(generated_matches[0])
                 relevant_ranks.append(variant_match)
-                primary_key = (f"{phenopacket_path.name}-{causative_variant.chrom}-{causative_variant.pos}-"
-                               f"{causative_variant.ref}-{causative_variant.alt}")
+                primary_key = (
+                    f"{phenopacket_path.name}-{causative_variant.chrom}-{causative_variant.pos}-"
+                    f"{causative_variant.ref}-{causative_variant.alt}"
+                )
                 self.conn.execute(
                     f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
                     (variant_match, primary_key),
                 )
 
-        binary_classification_stats.add_classification(
-            standardised_variant_results, relevant_ranks
-        )
+        binary_classification_stats.add_classification(standardised_variant_results, relevant_ranks)
 
 
 def assess_phenopacket_variant_prioritisation(
-        phenopacket_path: Path,
-        results_dir_and_input: TrackInputOutputDirectories,
-        variant_binary_classification_stats: BinaryClassificationStats,
-        variant_benchmarker: AssessVariantPrioritisation
+    phenopacket_path: Path,
+    results_dir_and_input: TrackInputOutputDirectories,
+    variant_binary_classification_stats: BinaryClassificationStats,
+    variant_benchmarker: AssessVariantPrioritisation,
 ) -> None:
     """
     Assess variant prioritisation for a Phenopacket by comparing PhEval standardised variant results
@@ -176,13 +184,14 @@ def assess_phenopacket_variant_prioritisation(
     variant_benchmarker.assess_variant_prioritisation(
         parse_pheval_result(RankedPhEvalVariantResult, pheval_variant_result),
         phenopacket_path,
-        variant_binary_classification_stats)
+        variant_binary_classification_stats,
+    )
 
 
 def benchmark_variant_prioritisation(
-        results_directory_and_input: TrackInputOutputDirectories,
-        score_order: str,
-        threshold: float,
+    results_directory_and_input: TrackInputOutputDirectories,
+    score_order: str,
+    threshold: float,
 ):
     """
     Benchmark a directory based on variant prioritisation results.
@@ -198,25 +207,25 @@ def benchmark_variant_prioritisation(
     """
     variant_binary_classification_stats = BinaryClassificationStats()
     db_connection = DBConnector()
-    variant_benchmarker = AssessVariantPrioritisation(db_connection,
-                                                      f"{results_directory_and_input.phenopacket_dir.parents[0].name}"
-                                                      f"_variant",
-                                                      results_directory_and_input.results_dir.joinpath(
-                                                          "pheval_variant_results/"),
-                                                      threshold,
-                                                      score_order,
-                                                      )
+    variant_benchmarker = AssessVariantPrioritisation(
+        db_connection,
+        f"{results_directory_and_input.phenopacket_dir.parents[0].name}" f"_variant",
+        results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
+        threshold,
+        score_order,
+    )
     for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_variant_prioritisation(
             phenopacket_path,
             results_directory_and_input,
             variant_binary_classification_stats,
-            variant_benchmarker
+            variant_benchmarker,
         )
     variant_rank_stats = RankStats()
     variant_rank_stats.add_ranks(
-        table_name=f'{results_directory_and_input.phenopacket_dir.parents[0].name}_variant',
-        column_name=str(results_directory_and_input.results_dir))
+        table_name=f"{results_directory_and_input.phenopacket_dir.parents[0].name}_variant",
+        column_name=str(results_directory_and_input.results_dir),
+    )
     return BenchmarkRunResults(
         results_dir=results_directory_and_input.results_dir,
         rank_stats=variant_rank_stats,

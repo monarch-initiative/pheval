@@ -7,12 +7,12 @@ from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritis
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
 from pheval.constants import (
-    DISEASE_PRIORITISATION_TYPE_STR,
     DISEASE_PLOT_Y_LABEL,
-    GENE_PRIORITISATION_TYPE_STR,
+    DISEASE_PRIORITISATION_TYPE_STR,
     GENE_PLOT_Y_LABEL,
-    VARIANT_PRIORITISATION_TYPE_STR,
+    GENE_PRIORITISATION_TYPE_STR,
     VARIANT_PLOT_Y_LABEL,
+    VARIANT_PRIORITISATION_TYPE_STR,
 )
 
 

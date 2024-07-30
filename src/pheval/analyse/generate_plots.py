@@ -167,9 +167,7 @@ class PlotGenerator:
             edgecolor="white",
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         if title is None:
-            plt.title(
-                f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats"
-            )
+            plt.title(f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats")
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 100)

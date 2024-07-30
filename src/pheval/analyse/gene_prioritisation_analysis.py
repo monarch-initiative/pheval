@@ -3,14 +3,12 @@ import re
 from pathlib import Path
 from typing import List, Union
 
-
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
+from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
-from pheval.analyse.prioritisation_result_types import GenePrioritisationResult
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import TrackInputOutputDirectories
-from pheval.analyse.get_connection import DBConnector
 from pheval.post_processing.post_processing import RankedPhEvalGeneResult
 from pheval.utils.file_utils import all_files
 
@@ -19,12 +17,12 @@ class AssessGenePrioritisation:
     """Class for assessing gene prioritisation based on thresholds and scoring orders."""
 
     def __init__(
-            self,
-            db_connection: DBConnector,
-            table_name: str,
-            results_dir: Path,
-            threshold: float,
-            score_order: str,
+        self,
+        db_connection: DBConnector,
+        table_name: str,
+        results_dir: Path,
+        threshold: float,
+        score_order: str,
     ):
         """
         Initialise AssessGenePrioritisation class.
@@ -39,14 +37,17 @@ class AssessGenePrioritisation:
         self.results_dir = results_dir
         self.threshold = threshold
         self.score_order = score_order
+        self.db_connection = db_connection
         self.conn = db_connection.conn
         self.column = str(self.results_dir.parents[0])
         self.table_name = table_name
-        db_connection.add_column_integer_default(table_name=table_name, column=self.column, default=0)
+        db_connection.add_column_integer_default(
+            table_name=table_name, column=self.column, default=0
+        )
 
     def _assess_gene_with_threshold_ascending_order(
-            self,
-            result_entry: RankedPhEvalGeneResult,
+        self,
+        result_entry: RankedPhEvalGeneResult,
     ) -> int:
         """
         Record the gene prioritisation rank if it meets the ascending order threshold.
@@ -61,8 +62,8 @@ class AssessGenePrioritisation:
             return 0
 
     def _assess_gene_with_threshold(
-            self,
-            result_entry: RankedPhEvalGeneResult,
+        self,
+        result_entry: RankedPhEvalGeneResult,
     ) -> int:
         """
         Record the gene prioritisation rank if it meets the score threshold.
@@ -78,8 +79,8 @@ class AssessGenePrioritisation:
             return 0
 
     def _record_matched_gene(
-            self,
-            standardised_gene_result: RankedPhEvalGeneResult,
+        self,
+        standardised_gene_result: RankedPhEvalGeneResult,
     ) -> int:
         """
         Return the gene rank result - handling the specification of a threshold.
@@ -121,10 +122,10 @@ class AssessGenePrioritisation:
             return entity
 
     def assess_gene_prioritisation(
-            self,
-            standardised_gene_results: List[RankedPhEvalGeneResult],
-            phenopacket_path: Path,
-            binary_classification_stats: BinaryClassificationStats,
+        self,
+        standardised_gene_results: List[RankedPhEvalGeneResult],
+        phenopacket_path: Path,
+        binary_classification_stats: BinaryClassificationStats,
     ) -> None:
         """
         Assess gene prioritisation.
@@ -138,27 +139,33 @@ class AssessGenePrioritisation:
         """
         relevant_ranks = []
         df = self.conn.execute(
-            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'""").fetchdf()
-        for i, row in df.iterrows():
+            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'"""
+        ).fetchdf()
+        for _i, row in df.iterrows():
             generated_matches = list(
-                result for result in standardised_gene_results
+                result
+                for result in standardised_gene_results
                 if (
-                        isinstance(self._check_string_representation(result.gene_identifier), list)
-                        and row["gene_identifier"] in self._check_string_representation(result.gene_identifier)
-                        or isinstance(self._check_string_representation(result.gene_identifier), str)
-                        and row["gene_identifier"] == self._check_string_representation(result.gene_identifier)
-                        or isinstance(self._check_string_representation(result.gene_symbol), list)
-                        and row["gene_symbol"] in self._check_string_representation(result.gene_symbol)
-                        or isinstance(self._check_string_representation(result.gene_symbol), str)
-                        and row["gene_symbol"] == self._check_string_representation(result.gene_symbol)
+                    isinstance(self._check_string_representation(result.gene_identifier), list)
+                    and row["gene_identifier"]
+                    in self._check_string_representation(result.gene_identifier)
+                    or isinstance(self._check_string_representation(result.gene_identifier), str)
+                    and row["gene_identifier"]
+                    == self._check_string_representation(result.gene_identifier)
+                    or isinstance(self._check_string_representation(result.gene_symbol), list)
+                    and row["gene_symbol"] in self._check_string_representation(result.gene_symbol)
+                    or isinstance(self._check_string_representation(result.gene_symbol), str)
+                    and row["gene_symbol"] == self._check_string_representation(result.gene_symbol)
                 )
             )
             if len(generated_matches) > 0:
                 gene_match = self._record_matched_gene(generated_matches[0])
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
+                safe_table_name = self.db_connection.sanitize_identifier(self.table_name)
+                safe_column = self.db_connection.sanitize_identifier(self.column)
                 self.conn.execute(
-                    f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
+                    f"UPDATE {safe_table_name} SET {safe_column} = ? WHERE identifier = ?",
                     (gene_match, primary_key),
                 )
         binary_classification_stats.add_classification(
@@ -167,10 +174,10 @@ class AssessGenePrioritisation:
 
 
 def assess_phenopacket_gene_prioritisation(
-        phenopacket_path: Path,
-        results_dir_and_input: TrackInputOutputDirectories,
-        gene_binary_classification_stats: BinaryClassificationStats,
-        gene_benchmarker: AssessGenePrioritisation,
+    phenopacket_path: Path,
+    results_dir_and_input: TrackInputOutputDirectories,
+    gene_binary_classification_stats: BinaryClassificationStats,
+    gene_benchmarker: AssessGenePrioritisation,
 ) -> None:
     """
     Assess gene prioritisation for a Phenopacket by comparing PhEval standardised gene results
@@ -189,14 +196,14 @@ def assess_phenopacket_gene_prioritisation(
     gene_benchmarker.assess_gene_prioritisation(
         parse_pheval_result(RankedPhEvalGeneResult, pheval_gene_result),
         phenopacket_path,
-        gene_binary_classification_stats
+        gene_binary_classification_stats,
     )
 
 
 def benchmark_gene_prioritisation(
-        results_directory_and_input: TrackInputOutputDirectories,
-        score_order: str,
-        threshold: float,
+    results_directory_and_input: TrackInputOutputDirectories,
+    score_order: str,
+    threshold: float,
 ) -> BenchmarkRunResults:
     """
     Benchmark a directory based on gene prioritisation results.
@@ -210,26 +217,26 @@ def benchmark_gene_prioritisation(
     """
     gene_binary_classification_stats = BinaryClassificationStats()
     db_connection = DBConnector()
-    gene_benchmarker = AssessGenePrioritisation(db_connection,
-                                                f"{results_directory_and_input.phenopacket_dir.parents[0].name}"
-                                                f"_gene",
-                                                results_directory_and_input.results_dir.joinpath(
-                                                    "pheval_gene_results/"),
-                                                threshold,
-                                                score_order
-                                                )
+    gene_benchmarker = AssessGenePrioritisation(
+        db_connection,
+        f"{results_directory_and_input.phenopacket_dir.parents[0].name}" f"_gene",
+        results_directory_and_input.results_dir.joinpath("pheval_gene_results/"),
+        threshold,
+        score_order,
+    )
     for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
         assess_phenopacket_gene_prioritisation(
             phenopacket_path,
             results_directory_and_input,
             gene_binary_classification_stats,
-            gene_benchmarker
+            gene_benchmarker,
         )
     db_connection.close()
     gene_rank_stats = RankStats()
     gene_rank_stats.add_ranks(
-        table_name=f'{results_directory_and_input.phenopacket_dir.parents[0].name}_gene',
-        column_name=str(results_directory_and_input.results_dir))
+        table_name=f"{results_directory_and_input.phenopacket_dir.parents[0].name}_gene",
+        column_name=str(results_directory_and_input.results_dir),
+    )
     return BenchmarkRunResults(
         rank_stats=gene_rank_stats,
         results_dir=results_directory_and_input.results_dir,
