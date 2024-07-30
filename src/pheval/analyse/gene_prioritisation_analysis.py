@@ -162,10 +162,8 @@ class AssessGenePrioritisation:
                 gene_match = self._record_matched_gene(generated_matches[0])
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
-                safe_table_name = self.db_connection.sanitize_identifier(self.table_name)
-                safe_column = self.db_connection.sanitize_identifier(self.column)
                 self.conn.execute(
-                    f"UPDATE {safe_table_name} SET {safe_column} = ? WHERE identifier = ?",
+                    f"UPDATE {self.table_name} SET \"{self.column}\" = ? WHERE identifier = ?",
                     (gene_match, primary_key),
                 )
         binary_classification_stats.add_classification(
