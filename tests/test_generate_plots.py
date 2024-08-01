@@ -15,7 +15,6 @@ class TestPlotGenerator(unittest.TestCase):
         self.disease_plot_generator = PlotGenerator()
         self.benchmarking_result = BenchmarkRunResults(
             benchmark_name="tool_corpus",
-            ranks={},
             rank_stats=RankStats(
                 top=1,
                 top3=2,
