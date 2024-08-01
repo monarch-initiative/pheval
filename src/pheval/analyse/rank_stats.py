@@ -37,7 +37,13 @@ class RankStats:
     relevant_result_ranks: List[List[int]] = field(default_factory=list)
     mrr: float = None
 
-    def add_ranks(self, table_name: str, column_name: str):
+    def add_ranks(self, table_name: str, column_name: str) -> None:
+        """
+        Add ranks to RankStats instance from table.
+        Args:
+            table_name (str): Name of the table to add ranks from.
+            column_name (str): Name of the column to add ranks from.:
+        """
         conn = DBConnector().conn
         self.top = self._execute_count_query(conn, table_name, column_name, " = 1")
         self.top3 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 3")
@@ -53,6 +59,16 @@ class RankStats:
     def _execute_count_query(
         conn: DuckDBPyConnection, table_name: str, column_name: str, condition: str
     ) -> int:
+        """
+        Execute count query on table.
+        Args:
+            conn (DuckDBPyConnection): Connection to the database.
+            table_name (str): Name of the table to execute count query on.
+            column_name (str): Name of the column to execute count query on.
+            condition (str): Condition to execute count query.
+        Returns:
+            int: Count query result.
+        """
         query = f'SELECT COUNT(*) FROM {table_name} WHERE "{column_name}" {condition}'
         return conn.execute(query).fetchone()[0]
 
@@ -60,6 +76,16 @@ class RankStats:
     def _fetch_reciprocal_ranks(
         conn: DuckDBPyConnection, table_name: str, column_name: str
     ) -> List[float]:
+        """
+        Fetch reciprocal ranks from table.
+        Args:
+            conn (DuckDBPyConnection): Connection to the database.
+            table_name (str): Name of the table to fetch reciprocal ranks from.
+            column_name (str): Name of the column to fetch reciprocal ranks from.
+
+        Returns:
+            List[float]: List of reciprocal ranks.
+        """
         query = f'SELECT "{column_name}" FROM {table_name}'
         return [1 / rank[0] if rank[0] > 0 else 0 for rank in conn.execute(query).fetchall()]
 
@@ -67,6 +93,16 @@ class RankStats:
     def _fetch_relevant_ranks(
         conn: DuckDBPyConnection, table_name: str, column_name: str
     ) -> List[List[int]]:
+        """
+        Fetch relevant ranks from table.
+        Args:
+            conn (DuckDBPyConnection): Connection to the database.
+            table_name (str): Name of the table to fetch relevant ranks from.
+            column_name (str): Name of the column to fetch relevant ranks from.
+
+        Returns:
+            List[List[int]]: List of relevant ranks.
+        """
         query = (
             f'SELECT LIST("{column_name}") as values_list FROM {table_name} GROUP BY phenopacket'
         )

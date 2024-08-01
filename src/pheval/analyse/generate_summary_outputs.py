@@ -63,6 +63,16 @@ def create_comparison_table(
     result_dir_2: str,
     table_name: str,
 ) -> None:
+    """
+    Create rank comparison tables.
+    Args:
+        comparison_table_name (str): Name of the comparison table to create.
+        connector (DBConnector): DBConnector instance.
+        drop_columns (List[str]): List of columns to drop.
+        result_dir_1 (str): Path to the first result directory.
+        result_dir_2 (str): Path to the second result directory.
+        table_name (str): Name of the table to extract ranks from
+    """
     connector.drop_table(comparison_table_name)
     connector.conn.execute(
         f'CREATE TABLE "{comparison_table_name}" AS SELECT * '
