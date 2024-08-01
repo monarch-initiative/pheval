@@ -1,6 +1,7 @@
 import duckdb
 from duckdb import DuckDBPyConnection
 
+
 class DBConnector:
 
     def __init__(self):
@@ -16,7 +17,7 @@ class DBConnector:
             self.conn.execute(
                 f'ALTER TABLE {table_name} ADD COLUMN "{column}" INTEGER DEFAULT {default}'
             )
-            self.conn.execute('UPDATE {table_name} SET "{column}" = ?', (default,))
+            self.conn.execute(f'UPDATE {table_name} SET "{column}" = ?', (default,))
             self.conn.commit()
         except duckdb.CatalogException:
             pass
