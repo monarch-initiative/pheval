@@ -1,139 +1,103 @@
 import unittest
-from collections import defaultdict
 from copy import copy
-from pathlib import Path, PosixPath
+from pathlib import Path
+from unittest.mock import patch
+
+import duckdb
 
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.disease_prioritisation_analysis import AssessDiseasePrioritisation
 from pheval.analyse.gene_prioritisation_analysis import AssessGenePrioritisation
-from pheval.analyse.prioritisation_result_types import (
-    DiseasePrioritisationResult,
-    GenePrioritisationResult,
-    VariantPrioritisationResult,
-)
-from pheval.analyse.rank_stats import RankStats
+from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.variant_prioritisation_analysis import AssessVariantPrioritisation
 from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
 )
-from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene, ProbandDisease
+
 
 class TestAssessGenePrioritisation(unittest.TestCase):
-    def setUp(self) -> None:
+    @classmethod
+    def setUpClass(cls):
+        cls.db_connection = duckdb.connect(":memory:")
+        cls.db_connection.execute(
+            "CREATE TABLE test_table_gene (identifier VARCHAR(255) PRIMARY KEY, "
+            "phenopacket VARCHAR, gene_symbol VARCHAR, gene_identifier VARCHAR)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO test_table_gene (identifier, phenopacket, gene_symbol, gene_identifier) VALUES "
+            "('phenopacket_1.json-PLXNA1', 'phenopacket_1.json', 'PLXNA1', 'ENSG00000114554'),"
+            "('phenopacket_1.json-LARGE1', 'phenopacket_1.json', 'LARGE1', 'ENSG00000133424'),"
+        )
+        cls.standardised_gene_results = [
+            RankedPhEvalGeneResult(
+                gene_symbol="PLXNA1",
+                gene_identifier="ENSG00000114554",
+                score=0.8764,
+                rank=1,
+            ),
+            RankedPhEvalGeneResult(
+                gene_symbol="ZNF804B",
+                gene_identifier="ENSG00000182348",
+                score=0.5777,
+                rank=2,
+            ),
+            RankedPhEvalGeneResult(
+                gene_symbol="SMCO2",
+                gene_identifier="ENSG00000165935",
+                score=0.5777,
+                rank=2,
+            ),
+            RankedPhEvalGeneResult(
+                gene_symbol="SPNS1",
+                gene_identifier="ENSG00000169682",
+                score=0.3765,
+                rank=4,
+            ),
+        ]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.db_connection.close()
+
+    def setUp(self):
+        patcher = patch(
+            "pheval.analyse.get_connection.DBConnector.get_connection",
+            return_value=self.db_connection,
+        )
+        self.mock_get_connection = patcher.start()
+        self.addCleanup(patcher.stop)
+        self.db_connector = DBConnector()
         self.assess_gene_prioritisation = AssessGenePrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
+            db_connection=self.db_connector,
+            table_name="test_table_gene",
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=[
-                RankedPhEvalGeneResult(
-                    gene_symbol="PLXNA1",
-                    gene_identifier="ENSG00000114554",
-                    score=0.8764,
-                    rank=1,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="ZNF804B",
-                    gene_identifier="ENSG00000182348",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="SMCO2",
-                    gene_identifier="ENSG00000165935",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="SPNS1",
-                    gene_identifier="ENSG00000169682",
-                    score=0.3765,
-                    rank=4,
-                ),
-            ],
-            threshold=0.0,
+            threshold=0,
             score_order="descending",
-            proband_causative_genes=[
-                ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                ProbandCausativeGene(gene_symbol="LARGE1", gene_identifier="ENSG00000133424"),
-            ],
         )
         self.assess_gene_prioritisation_ascending_order = AssessGenePrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
+            db_connection=self.db_connector,
+            table_name="test_table_gene",
             results_dir=Path("/path/to/results_dir"),
-            standardised_gene_results=[
-                RankedPhEvalGeneResult(
-                    gene_symbol="SPNS1",
-                    gene_identifier="ENSG00000169682",
-                    score=0.3765,
-                    rank=1,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="ZNF804B",
-                    gene_identifier="ENSG00000182348",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="SMCO2",
-                    gene_identifier="ENSG00000165935",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalGeneResult(
-                    gene_symbol="['PLXNA1', 'GENE2']",
-                    gene_identifier="['ENSG00000114554', 'ENSG00000100000']",
-                    score=0.8764,
-                    rank=4,
-                ),
-            ],
-            threshold=0.0,
+            threshold=0,
             score_order="ascending",
-            proband_causative_genes=[
-                ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                ProbandCausativeGene(gene_symbol="LARGE1", gene_identifier="ENSG00000133424"),
-            ],
         )
-        self.gene_rank_stats = RankStats(0, 0, 0, 0, 0)
-        self.gene_rank_records = defaultdict(dict)
         self.binary_classification_stats = BinaryClassificationStats()
-
-    def test_record_gene_prioritisation_match(self):
-        self.assertEqual(
-            self.assess_gene_prioritisation._record_gene_prioritisation_match(
-                gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
-                result_entry=RankedPhEvalGeneResult(
-                    gene_symbol="PLXNA1",
-                    gene_identifier="ENSG00000114554",
-                    score=0.8764,
-                    rank=1,
-                ),
-                rank_stats=self.gene_rank_stats,
-            ),
-            GenePrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
-            ),
-        )
 
     def test_assess_gene_with_ascending_order_threshold_fails_cutoff(self):
         assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
             assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
-                gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.gene_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_gene_with_ascending_order_threshold_meets_cutoff(self):
@@ -141,22 +105,14 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
             assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
-                gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.gene_rank_stats,
             ),
-            GenePrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
     def test_assess_gene_with_threshold_fails_cutoff(self):
@@ -164,20 +120,14 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
             assess_with_threshold._assess_gene_with_threshold(
-                gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.gene_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_gene_with_threshold_meets_cutoff(self):
@@ -185,239 +135,29 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.5
         self.assertEqual(
             assess_with_threshold._assess_gene_with_threshold(
-                gene=ProbandCausativeGene(gene_symbol="PLXNA1", gene_identifier="ENSG00000114554"),
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.gene_rank_stats,
             ),
-            GenePrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"), gene="PLXNA1", rank=1
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
     def test_assess_gene_prioritisation_no_threshold(self):
         self.assess_gene_prioritisation.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "PLXNA1",
-                    Path("/path/to/results_dir"): 1,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "LARGE1",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
+            self.standardised_gene_results,
+            Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=1,
-                true_negatives=3,
-                false_positives=0,
-                false_negatives=0,
-                labels=[1, 0, 0, 0],
-                scores=[0.8764, 0.5777, 0.5777, 0.3765],
-            ),
         )
-
-    def test_assess_gene_prioritisation_threshold_fails_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.01
-        assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
-        )
+        self.db_connector.conn.execute("SELECT * FROM test_table_gene")
         self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=2,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "PLXNA1",
-                    Path("/path/to/results_dir"): 0,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "LARGE1",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=3,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 0],
-                scores=[0.3765, 0.5777, 0.5777, 0.8764],
-            ),
-        )
-
-    def test_assess_gene_prioritisation_threshold_meets_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.9
-        assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[0.25],
-                relevant_result_ranks=[[4]],
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "PLXNA1",
-                    Path("/path/to/results_dir"): 4,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "LARGE1",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=2,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 1],
-                scores=[0.3765, 0.5777, 0.5777, 0.8764],
-            ),
-        )
-
-    def test_assess_gene_prioritisation_threshold_fails_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation)
-        assess_with_threshold.threshold = 0.9
-        assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=2,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "PLXNA1",
-                    Path("/path/to/results_dir"): 0,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "LARGE1",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=3,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 0],
-                scores=[0.8764, 0.5777, 0.5777, 0.3765],
-            ),
-        )
-
-    def test_assess_gene_prioritisation_threshold_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_gene_prioritisation)
-        assess_with_threshold.threshold = 0.1
-        assess_with_threshold.assess_gene_prioritisation(
-            self.gene_rank_stats, self.gene_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.gene_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.gene_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "PLXNA1",
-                    Path("/path/to/results_dir"): 1,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Gene": "LARGE1",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
+            self.db_connector.conn.fetchall(),
+            [
+                ("phenopacket_1.json-PLXNA1", "phenopacket_1.json", "PLXNA1", "ENSG00000114554", 1),
+                ("phenopacket_1.json-LARGE1", "phenopacket_1.json", "LARGE1", "ENSG00000133424", 0),
+            ],
         )
         self.assertEqual(
             self.binary_classification_stats,
@@ -444,8 +184,19 @@ class TestAssessGenePrioritisation(unittest.TestCase):
 
 
 class TestAssessVariantPrioritisation(unittest.TestCase):
-    def setUp(self) -> None:
-        variant_results = [
+    @classmethod
+    def setUpClass(cls):
+        cls.db_connection = duckdb.connect(":memory:")
+        cls.db_connection.execute(
+            "CREATE TABLE test_table_variant (identifier VARCHAR(255) PRIMARY KEY,"
+            "phenopacket VARCHAR, chrom VARCHAR, pos INTEGER, ref VARCHAR, alt VARCHAR)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO test_table_variant (identifier, phenopacket, chrom, pos, ref, alt) VALUES "
+            "('phenopacket_1.json-3-126741108-G-C', 'phenopacket_1.json', '3', 126741108, 'G', 'C'),"
+            "('phenopacket_1.json-16-133564345-C-T', 'phenopacket_1.json', '16', 133564345, 'C', 'T'),"
+        )
+        cls.standardised_variant_results = [
             RankedPhEvalVariantResult(
                 chromosome="3",
                 start=126730873,
@@ -469,57 +220,39 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 start=126741108,
                 end=126741108,
                 ref="G",
-                alt="A",
+                alt="C",
                 score=0.0484,
-                rank=1,
+                rank=2,
             ),
         ]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.db_connection.close()
+
+    def setUp(self):
+        patcher = patch(
+            "pheval.analyse.get_connection.DBConnector.get_connection",
+            return_value=self.db_connection,
+        )
+        self.mock_get_connection = patcher.start()
+        self.addCleanup(patcher.stop)
+        self.db_connector = DBConnector()
         self.assess_variant_prioritisation = AssessVariantPrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
+            db_connection=self.db_connector,
+            table_name="test_table_variant",
             results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=variant_results,
-            threshold=0.0,
+            threshold=0,
             score_order="descending",
-            proband_causative_variants=[
-                GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
-                GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
-            ],
         )
         self.assess_variant_prioritisation_ascending_order = AssessVariantPrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
+            db_connection=self.db_connector,
+            table_name="test_table_variant",
             results_dir=Path("/path/to/results_dir"),
-            standardised_variant_results=variant_results,
-            threshold=0.0,
+            threshold=0,
             score_order="ascending",
-            proband_causative_variants=[
-                GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
-                GenomicVariant(chrom="16", pos=133564345, ref="C", alt="T"),
-            ],
         )
-        self.variant_rank_stats = RankStats()
-        self.variant_rank_records = defaultdict(dict)
         self.binary_classification_stats = BinaryClassificationStats()
-
-    def test_record_variant_prioritisation_match(self):
-        self.assertEqual(
-            self.assess_variant_prioritisation._record_variant_prioritisation_match(
-                result_entry=RankedPhEvalVariantResult(
-                    chromosome="3",
-                    start=126741108,
-                    end=126741108,
-                    ref="G",
-                    alt="A",
-                    score=0.0484,
-                    rank=1,
-                ),
-                rank_stats=self.variant_rank_stats,
-            ),
-            VariantPrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"),
-                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
-                rank=1,
-            ),
-        )
 
     def test_assess_variant_with_ascending_order_threshold_fails_cutoff(self):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
@@ -535,13 +268,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     score=0.0484,
                     rank=1,
                 ),
-                rank_stats=self.variant_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_variant_with_ascending_order_threshold_meets_cutoff(self):
@@ -558,17 +286,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     score=0.0484,
                     rank=1,
                 ),
-                rank_stats=self.variant_rank_stats,
             ),
-            VariantPrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"),
-                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
-                rank=1,
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
     def test_assess_variant_with_threshold_fails_cutoff(self):
@@ -585,13 +304,8 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     score=0.0484,
                     rank=1,
                 ),
-                rank_stats=self.variant_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_variant_with_threshold_meets_cutoff(self):
@@ -608,373 +322,134 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     score=0.0484,
                     rank=1,
                 ),
-                rank_stats=self.variant_rank_stats,
             ),
-            VariantPrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"),
-                variant=GenomicVariant(chrom="3", pos=126741108, ref="G", alt="A"),
-                rank=1,
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
-    def test_assess_variant_prioritisation_no_threshold(self):
+    def test_assess_variant_prioritisation(self):
         self.assess_variant_prioritisation.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
-        )
-
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "3-126741108-G-A",
-                    Path("/path/to/results_dir"): 1,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "16-133564345-C-T",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
+            self.standardised_variant_results,
+            Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=1,
-                true_negatives=0,
-                false_positives=2,
-                false_negatives=0,
-                labels=[1, 0, 0],
-                scores=[0.0484, 0.0484, 0.0484],
-            ),
         )
-
-    def test_assess_variant_prioritisation_fails_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.01
-        assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
-        )
+        self.db_connector.conn.execute("SELECT * FROM test_table_variant")
         self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=2,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "3-126741108-G-A",
-                    Path("/path/to/results_dir"): 0,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "16-133564345-C-T",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
+            self.db_connector.conn.fetchall(),
+            [
+                (
+                    "phenopacket_1.json-3-126741108-G-C",
+                    "phenopacket_1.json",
+                    "3",
+                    126741108,
+                    "G",
+                    "C",
+                    2,
+                ),
+                (
+                    "phenopacket_1.json-16-133564345-C-T",
+                    "phenopacket_1.json",
+                    "16",
+                    133564345,
+                    "C",
+                    "T",
+                    0,
+                ),
+            ],
         )
         self.assertEqual(
             self.binary_classification_stats,
             BinaryClassificationStats(
                 true_positives=0,
                 true_negatives=0,
-                false_positives=3,
-                false_negatives=1,
-                labels=[0, 0, 0],
-                scores=[0.0484, 0.0484, 0.0484],
-            ),
-        )
-
-    def test_assess_variant_prioritisation_meets_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.9
-        assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "3-126741108-G-A",
-                    Path("/path/to/results_dir"): 1,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "16-133564345-C-T",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=1,
-                true_negatives=0,
                 false_positives=2,
-                false_negatives=0,
-                labels=[1, 0, 0],
-                scores=[0.0484, 0.0484, 0.0484],
-            ),
-        )
-
-    def test_assess_variant_prioritisation_fails_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation)
-        assess_with_threshold.threshold = 0.9
-        assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=2,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "3-126741108-G-A",
-                    Path("/path/to/results_dir"): 0,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "16-133564345-C-T",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=0,
-                false_positives=3,
                 false_negatives=1,
-                labels=[0, 0, 0],
-                scores=[0.0484, 0.0484, 0.0484],
-            ),
-        )
-
-    def test_assess_variant_prioritisation_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.1
-        assess_with_threshold.assess_variant_prioritisation(
-            self.variant_rank_stats, self.variant_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.variant_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=2,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.variant_rank_records,
-            {
-                1: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "3-126741108-G-A",
-                    Path("/path/to/results_dir"): 1,
-                },
-                2: {
-                    "Phenopacket": "phenopacket.json",
-                    "Variant": "16-133564345-C-T",
-                    Path("/path/to/results_dir"): 0,
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=1,
-                true_negatives=0,
-                false_positives=2,
-                false_negatives=0,
-                labels=[1, 0, 0],
+                labels=[0, 0, 1],
                 scores=[0.0484, 0.0484, 0.0484],
             ),
         )
 
 
 class TestAssessDiseasePrioritisation(unittest.TestCase):
-    def setUp(self) -> None:
-        self.assess_disease_prioritisation = AssessDiseasePrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
-            results_dir=Path("/path/to/results_dir"),
-            standardised_disease_results=[
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 1",
-                    disease_identifier="OMIM:231670",
-                    score=1.0,
-                    rank=1,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 2",
-                    disease_identifier="OMIM:231680",
-                    score=0.5,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 3",
-                    disease_identifier="OMIM:231690",
-                    score=0.5,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 4",
-                    disease_identifier="OMIM:231700",
-                    score=0.3,
-                    rank=4,
-                ),
-            ],
-            threshold=0.0,
-            score_order="descending",
-            proband_diseases=[
-                ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                )
-            ],
-        )
-        self.assess_disease_prioritisation_ascending_order = AssessDiseasePrioritisation(
-            phenopacket_path=Path("/path/to/phenopacket.json"),
-            results_dir=Path("/path/to/results_dir"),
-            standardised_disease_results=[
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 4",
-                    disease_identifier="OMIM:231690",
-                    score=0.3765,
-                    rank=1,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 2",
-                    disease_identifier="OMIM:231680",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 3",
-                    disease_identifier="OMIM:231690",
-                    score=0.5777,
-                    rank=2,
-                ),
-                RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 1",
-                    disease_identifier="OMIM:231670",
-                    score=0.8764,
-                    rank=4,
-                ),
-            ],
-            threshold=0.0,
-            score_order="ascending",
-            proband_diseases=[
-                ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                )
-            ],
-        )
-        self.disease_rank_stats = RankStats(0, 0, 0, 0, 0)
-        self.disease_rank_records = defaultdict(dict)
-        self.binary_classification_stats = BinaryClassificationStats()
 
-    def test_record_disease_prioritisation_match(self):
-        self.assertEqual(
-            self.assess_disease_prioritisation._record_disease_prioritisation_match(
-                disease=ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                ),
-                result_entry=RankedPhEvalDiseaseResult(
-                    disease_name="Glutaric aciduria type 1",
-                    disease_identifier="OMIM:231670",
-                    score=0.8764,
-                    rank=1,
-                ),
-                rank_stats=self.disease_rank_stats,
-            ),
-            DiseasePrioritisationResult(
-                phenopacket_path=PosixPath("/path/to/phenopacket.json"),
-                disease=ProbandDisease(
-                    disease_name="Glutaric aciduria type 1", disease_identifier="OMIM:231670"
-                ),
+    @classmethod
+    def setUpClass(cls):
+        cls.db_connection = duckdb.connect(":memory:")
+        cls.db_connection.execute(
+            "CREATE TABLE test_table_disease (identifier VARCHAR(255) PRIMARY KEY, "
+            "phenopacket VARCHAR, disease_identifier VARCHAR, disease_name VARCHAR)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO test_table_disease (identifier, phenopacket, disease_identifier, disease_name) VALUES "
+            "('phenopacket_1.json-OMIM:231670', 'phenopacket_1.json', 'OMIM:231670', 'Glutaric aciduria type 1'),"
+        )
+        cls.standardised_disease_results = [
+            RankedPhEvalDiseaseResult(
+                disease_name="Glutaric aciduria type 1",
+                disease_identifier="OMIM:231670",
+                score=1.0,
                 rank=1,
             ),
+            RankedPhEvalDiseaseResult(
+                disease_name="Glutaric aciduria type 2",
+                disease_identifier="OMIM:231680",
+                score=0.5,
+                rank=2,
+            ),
+            RankedPhEvalDiseaseResult(
+                disease_name="Glutaric aciduria type 3",
+                disease_identifier="OMIM:231690",
+                score=0.5,
+                rank=2,
+            ),
+            RankedPhEvalDiseaseResult(
+                disease_name="Glutaric aciduria type 4",
+                disease_identifier="OMIM:231700",
+                score=0.3,
+                rank=4,
+            ),
+        ]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.db_connection.close()
+
+    def setUp(self):
+        patcher = patch(
+            "pheval.analyse.get_connection.DBConnector.get_connection",
+            return_value=self.db_connection,
         )
+        self.mock_get_connection = patcher.start()
+        self.addCleanup(patcher.stop)
+        self.db_connector = DBConnector()
+        self.assess_disease_prioritisation = AssessDiseasePrioritisation(
+            db_connection=self.db_connector,
+            table_name="test_table_disease",
+            results_dir=Path("/path/to/results_dir"),
+            threshold=0,
+            score_order="descending",
+        )
+        self.assess_disease_prioritisation_ascending_order = AssessDiseasePrioritisation(
+            db_connection=self.db_connector,
+            table_name="test_table_disease",
+            results_dir=Path("/path/to/results_dir"),
+            threshold=0,
+            score_order="ascending",
+        )
+        self.binary_classification_stats = BinaryClassificationStats()
 
     def test_assess_disease_with_ascending_order_threshold_fails_cutoff(self):
         assess_ascending_order_threshold = copy(self.assess_disease_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
             assess_ascending_order_threshold._assess_disease_with_threshold_ascending_order(
-                disease=ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                ),
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_name="Glutaric aciduria type 1",
                     disease_identifier="OMIM:231670",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.disease_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_disease_with_ascending_order_threshold_meets_cutoff(self):
@@ -982,28 +457,14 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
             assess_ascending_order_threshold._assess_disease_with_threshold_ascending_order(
-                disease=ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                ),
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_name="Glutaric aciduria type 1",
                     disease_identifier="OMIM:231670",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.disease_rank_stats,
             ),
-            DiseasePrioritisationResult(
-                phenopacket_path=PosixPath("/path/to/phenopacket.json"),
-                disease=ProbandDisease(
-                    disease_name="Glutaric aciduria type 1", disease_identifier="OMIM:231670"
-                ),
-                rank=1,
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
     def test_assess_disease_with_threshold_fails_cutoff(self):
@@ -1011,22 +472,14 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
             assess_with_threshold._assess_disease_with_threshold(
-                disease=ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                ),
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_identifier="OMIM:231670",
                     disease_name="Glutaric aciduria type 1",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.disease_rank_stats,
             ),
-            None,
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(top=0, top3=0, top5=0, top10=0, found=0, total=0, reciprocal_ranks=[]),
+            0,
         )
 
     def test_assess_disease_with_threshold_meets_cutoff(self):
@@ -1034,220 +487,34 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_with_threshold.threshold = 0.5
         self.assertEqual(
             assess_with_threshold._assess_disease_with_threshold(
-                disease=ProbandDisease(
-                    disease_identifier="OMIM:231670", disease_name="Glutaric aciduria type 1"
-                ),
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_identifier="OMIM:231670",
                     disease_name="Glutaric aciduria type 1",
                     score=0.8764,
                     rank=1,
                 ),
-                rank_stats=self.disease_rank_stats,
             ),
-            DiseasePrioritisationResult(
-                phenopacket_path=Path("/path/to/phenopacket.json"),
-                disease=ProbandDisease(
-                    disease_name="Glutaric aciduria type 1", disease_identifier="OMIM:231670"
-                ),
-                rank=1,
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(top=1, top3=1, top5=1, top10=1, found=1, total=0, reciprocal_ranks=[1.0]),
+            1,
         )
 
-    def test_assess_disease_prioritisation_no_threshold(self):
+    def test_assess_disease_prioritisation(self):
         self.assess_disease_prioritisation.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=1,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_records,
-            {
-                1: {
-                    Path("/path/to/results_dir"): 1,
-                    "Disease": "OMIM:231670",
-                    "Phenopacket": "phenopacket.json",
-                }
-            },
-        )
-        self.assertEqual(
+            self.standardised_disease_results,
+            Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=1,
-                true_negatives=3,
-                false_positives=0,
-                false_negatives=0,
-                labels=[1, 0, 0, 0],
-                scores=[1.0, 0.5, 0.5, 0.3],
-            ),
         )
-
-    def test_assess_disease_prioritisation_threshold_fails_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_disease_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.01
-        assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
-        )
+        self.db_connector.conn.execute("SELECT * FROM test_table_disease")
         self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=1,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_records,
-            {
-                1: {
-                    Path("/path/to/results_dir"): 0,
-                    "Disease": "OMIM:231670",
-                    "Phenopacket": "phenopacket.json",
-                }
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=3,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 0],
-                scores=[0.3765, 0.5777, 0.5777, 0.8764],
-            ),
-        )
-
-    def test_assess_disease_prioritisation_threshold_meets_ascending_order_cutoff(self):
-        assess_with_threshold = copy(self.assess_disease_prioritisation_ascending_order)
-        assess_with_threshold.threshold = 0.9
-        assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=1,
-                top10=1,
-                found=1,
-                total=1,
-                reciprocal_ranks=[0.25],
-                relevant_result_ranks=[[4]],
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_records,
-            {
-                1: {
-                    Path("/path/to/results_dir"): 4,
-                    "Disease": "OMIM:231670",
-                    "Phenopacket": "phenopacket.json",
-                },
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=2,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 1],
-                scores=[0.3765, 0.5777, 0.5777, 0.8764],
-            ),
-        )
-
-    def test_assess_disease_prioritisation_threshold_fails_cutoff(self):
-        assess_with_threshold = copy(self.assess_disease_prioritisation)
-        assess_with_threshold.threshold = 1.0
-        assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(
-                top=0,
-                top3=0,
-                top5=0,
-                top10=0,
-                found=0,
-                total=1,
-                reciprocal_ranks=[],
-                relevant_result_ranks=[[0]],
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_records,
-            {
-                1: {
-                    Path("/path/to/results_dir"): 0,
-                    "Disease": "OMIM:231670",
-                    "Phenopacket": "phenopacket.json",
-                }
-            },
-        )
-        self.assertEqual(
-            self.binary_classification_stats,
-            BinaryClassificationStats(
-                true_positives=0,
-                true_negatives=3,
-                false_positives=1,
-                false_negatives=1,
-                labels=[0, 0, 0, 0],
-                scores=[1.0, 0.5, 0.5, 0.3],
-            ),
-        )
-
-    def test_assess_disease_prioritisation_threshold_meets_cutoff(self):
-        assess_with_threshold = copy(self.assess_disease_prioritisation)
-        assess_with_threshold.threshold = 0.1
-        assess_with_threshold.assess_disease_prioritisation(
-            self.disease_rank_stats, self.disease_rank_records, self.binary_classification_stats
-        )
-        self.assertEqual(
-            self.disease_rank_stats,
-            RankStats(
-                top=1,
-                top3=1,
-                top5=1,
-                top10=1,
-                found=1,
-                total=1,
-                reciprocal_ranks=[1.0],
-                relevant_result_ranks=[[1]],
-            ),
-        )
-        self.assertEqual(
-            self.disease_rank_records,
-            {
-                1: {
-                    Path("/path/to/results_dir"): 1,
-                    "Disease": "OMIM:231670",
-                    "Phenopacket": "phenopacket.json",
-                }
-            },
+            self.db_connector.conn.fetchall(),
+            [
+                (
+                    "phenopacket_1.json-OMIM:231670",
+                    "phenopacket_1.json",
+                    "OMIM:231670",
+                    "Glutaric aciduria type 1",
+                    1,
+                )
+            ],
         )
         self.assertEqual(
             self.binary_classification_stats,
