@@ -163,7 +163,7 @@ class AssessGenePrioritisation:
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
                 self.conn.execute(
-                    f"UPDATE {self.table_name} SET \"{self.column}\" = ? WHERE identifier = ?",
+                    f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
                     (gene_match, primary_key),
                 )
         binary_classification_stats.add_classification(
