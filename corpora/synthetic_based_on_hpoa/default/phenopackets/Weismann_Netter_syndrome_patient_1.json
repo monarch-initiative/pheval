@@ -1,0 +1,81 @@
+{
+  "id": "weismann-netter_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010502",
+        "label": "Fibular bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006390",
+        "label": "Anterior tibial bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005090",
+        "label": "Lateral femoral bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004490",
+        "label": "Calvarial hyperostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003272",
+        "label": "Abnormal hip bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000684",
+        "label": "Delayed eruption of teeth"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:112350",
+        "label": "Weismann-Netter syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:41:49.518545Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
