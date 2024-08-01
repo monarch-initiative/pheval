@@ -1,9 +1,33 @@
 import unittest
+from unittest.mock import patch
+
+import duckdb
 
 from pheval.analyse.rank_stats import RankStats
 
 
 class TestRankStats(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.db_connection = duckdb.connect(":memory:")
+        cls.db_connection.execute(
+            "CREATE TABLE test_table_gene (identifier VARCHAR(255) PRIMARY KEY, "
+            "phenopacket VARCHAR, gene_symbol VARCHAR, gene_identifier VARCHAR, results_dir_1 INTEGER)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO test_table_gene (identifier, phenopacket, gene_symbol, gene_identifier, results_dir_1) VALUES "
+            "('phenopacket_1.json-GENE1', 'phenopacket_1.json', 'GENE1', 'GENEID1', 1),"
+            "('phenopacket_2.json-GENE2', 'phenopacket_2.json', 'GENE2', 'GENEID2', 3),"
+            "('phenopacket_3.json-GENE3', 'phenopacket_3.json', 'GENE3', 'GENEID3', 5),"
+            "('phenopacket_4.json-GENE4', 'phenopacket_4.json', 'GENE4', 'GENEID4', 7),"
+            "('phenopacket_5.json-GENE5', 'phenopacket_5.json', 'GENE5', 'GENEID5', 10),"
+            "('phenopacket_2.json-GENE6', 'phenopacket_6.json', 'GENE6', 'GENEID6', 20),"
+        )
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.db_connection.close()
+
     def setUp(self) -> None:
         self.rank_stats = RankStats()
         self.complete_rank_stats = RankStats(
@@ -16,23 +40,22 @@ class TestRankStats(unittest.TestCase):
             relevant_result_ranks=[[4], [3], [6, 7], [2], [9], [20]],
         )
 
-    def test_add_rank(self):
-        self.rank_stats.add_rank(1)
-        self.rank_stats.add_rank(3)
-        self.rank_stats.add_rank(5)
-        self.rank_stats.add_rank(7)
-        self.rank_stats.add_rank(10)
+    @patch(
+        "pheval.analyse.get_connection.DBConnector.get_connection",
+        return_value=duckdb.connect(":memory:"),
+    )
+    def test_add_ranks(self, mock_get_connection):
+        mock_get_connection.return_value = self.db_connection
+        self.rank_stats.add_ranks("test_table_gene", "results_dir_1")
+        self.assertEqual(self.rank_stats.top, 1)
+        self.assertEqual(self.rank_stats.top3, 2)
+        self.assertEqual(self.rank_stats.top5, 3)
+        self.assertEqual(self.rank_stats.top10, 5)
+        self.assertEqual(self.rank_stats.found, 6)
+        self.assertEqual(self.rank_stats.total, 6)
         self.assertEqual(
-            self.rank_stats,
-            RankStats(
-                top=1,
-                top3=2,
-                top5=3,
-                top10=5,
-                found=5,
-                total=0,
-                reciprocal_ranks=[1.0, 0.3333333333333333, 0.2, 0.14285714285714285, 0.1],
-            ),
+            self.rank_stats.reciprocal_ranks,
+            [1.0, 0.3333333333333333, 0.2, 0.14285714285714285, 0.1, 0.05],
         )
 
     def test_percentage_rank(self):
