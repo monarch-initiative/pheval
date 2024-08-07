@@ -159,6 +159,7 @@ class PlotGenerator:
             self._generate_stacked_bar_plot_data(benchmark_result)
             self._generate_stats_mrr_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
+        plt.clf()
         stats_df.set_index("Run").plot(
             kind="bar",
             stacked=True,
@@ -265,6 +266,7 @@ class PlotGenerator:
         for benchmark_result in benchmarking_results:
             self._generate_cumulative_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
+        plt.clf()
         sns.catplot(
             data=stats_df,
             kind="bar",
@@ -368,6 +370,7 @@ class PlotGenerator:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         """
+        plt.clf()
         for i, benchmark_result in enumerate(benchmarking_results):
             fpr, tpr, thresh = roc_curve(
                 benchmark_result.binary_classification_stats.labels,
@@ -406,6 +409,7 @@ class PlotGenerator:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         """
+        plt.clf()
         plt.figure()
         for i, benchmark_result in enumerate(benchmarking_results):
             precision, recall, thresh = precision_recall_curve(
@@ -446,6 +450,7 @@ class PlotGenerator:
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
             title (str, optional): Title for the generated plot. Defaults to None.
         """
+        plt.clf()
         for benchmark_result in benchmarking_results:
             self._generate_non_cumulative_bar_plot_data(benchmark_result)
 
