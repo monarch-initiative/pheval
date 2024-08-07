@@ -5,13 +5,9 @@ from typing import List
 
 import click
 
-from pheval.analyse.analysis import (
-    TrackInputOutputDirectories,
-    benchmark_directory,
-    benchmark_run_comparisons,
-)
+from pheval.analyse.analysis import benchmark_directory, benchmark_run_comparisons
 from pheval.analyse.generate_plots import generate_plots_from_benchmark_summary_tsv
-from pheval.analyse.run_data_parser import parse_run_data_text_file
+from pheval.analyse.run_data_parser import RunConfig, parse_run_config
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -347,6 +343,14 @@ def create_spiked_vcfs_command(
     type=Path,
 )
 @click.option(
+    "--run-identifier",
+    "-r",
+    required=True,
+    metavar="STRING",
+    help="The run identifier.",
+    type=str,
+)
+@click.option(
     "--phenopacket-dir",
     "-p",
     required=True,
@@ -413,6 +417,7 @@ def create_spiked_vcfs_command(
 )
 def benchmark(
     directory: Path,
+    run_identifier: str,
     phenopacket_dir: Path,
     score_order: str,
     output_prefix: str,
@@ -426,13 +431,17 @@ def benchmark(
     if not gene_analysis and not variant_analysis and not disease_analysis:
         raise InputError("Need to specify at least one of gene/variant/disease analysis.")
     benchmark_directory(
-        TrackInputOutputDirectories(results_dir=directory, phenopacket_dir=phenopacket_dir),
+        RunConfig(
+            run_identifier=run_identifier,
+            phenopacket_dir=phenopacket_dir,
+            results_dir=directory,
+            gene_analysis=gene_analysis,
+            variant_analysis=variant_analysis,
+            disease_analysis=disease_analysis,
+        ),
         score_order,
         output_prefix,
         threshold,
-        gene_analysis,
-        variant_analysis,
-        disease_analysis,
         plot_type,
     )
 
@@ -475,30 +484,6 @@ def benchmark(
     type=float,
 )
 @click.option(
-    "--gene-analysis/--no-gene-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for gene prioritisation",
-)
-@click.option(
-    "--variant-analysis/--no-variant-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for variant prioritisation",
-)
-@click.option(
-    "--disease-analysis/--no-disease-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for disease prioritisation",
-)
-@click.option(
     "--plot-type",
     "-y",
     default="bar_cumulative",
@@ -511,22 +496,14 @@ def benchmark_comparison(
     score_order: str,
     output_prefix: str,
     threshold: float,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
     plot_type: str,
 ):
     """Benchmark the gene/variant/disease prioritisation performance for two runs."""
-    if not gene_analysis and not variant_analysis and not disease_analysis:
-        raise InputError("Need to specify at least one of gene/variant/disease analysis.")
     benchmark_run_comparisons(
-        parse_run_data_text_file(run_data),
+        parse_run_config(run_data),
         score_order,
         output_prefix,
         threshold,
-        gene_analysis,
-        variant_analysis,
-        disease_analysis,
         plot_type,
     )
 

@@ -159,6 +159,7 @@ class PlotGenerator:
             self._generate_stacked_bar_plot_data(benchmark_result)
             self._generate_stats_mrr_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
+        plt.clf()
         stats_df.set_index("Run").plot(
             kind="bar",
             stacked=True,
@@ -167,14 +168,12 @@ class PlotGenerator:
             edgecolor="white",
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
         if title is None:
-            plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Rank Stats"
-            )
+            plt.title(f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats")
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 100)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -183,16 +182,16 @@ class PlotGenerator:
         mrr_df.set_index("Run").plot(
             kind="bar",
             color=self.palette_hex_codes,
-            ylabel=f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} mean reciprocal rank",
+            ylabel=f"{benchmark_generator.prioritisation_type_string.capitalize()} mean reciprocal rank",
             legend=False,
             edgecolor="white",
         )
         plt.title(
-            f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} results - mean reciprocal rank"
+            f"{benchmark_generator.prioritisation_type_string.capitalize()} results - mean reciprocal rank"
         )
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_mrr.svg",
+            f"{benchmark_generator.prioritisation_type_string}_mrr.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -267,6 +266,7 @@ class PlotGenerator:
         for benchmark_result in benchmarking_results:
             self._generate_cumulative_bar_plot_data(benchmark_result)
         stats_df = pd.DataFrame(self.stats)
+        plt.clf()
         sns.catplot(
             data=stats_df,
             kind="bar",
@@ -280,13 +280,13 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Cumulative Rank Stats"
+                f"{benchmark_generator.prioritisation_type_string.capitalize()} Cumulative Rank Stats"
             )
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -370,6 +370,7 @@ class PlotGenerator:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         """
+        plt.clf()
         for i, benchmark_result in enumerate(benchmarking_results):
             fpr, tpr, thresh = roc_curve(
                 benchmark_result.binary_classification_stats.labels,
@@ -391,7 +392,7 @@ class PlotGenerator:
         plt.title("Receiver Operating Characteristic (ROC) Curve")
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_roc_curve.svg",
+            f"{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -408,6 +409,7 @@ class PlotGenerator:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         """
+        plt.clf()
         plt.figure()
         for i, benchmark_result in enumerate(benchmarking_results):
             precision, recall, thresh = precision_recall_curve(
@@ -429,7 +431,7 @@ class PlotGenerator:
         plt.title("Precision-Recall Curve")
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_precision_recall_curve.svg",
+            f"{benchmark_generator.prioritisation_type_string}_precision_recall_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -448,6 +450,7 @@ class PlotGenerator:
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
             title (str, optional): Title for the generated plot. Defaults to None.
         """
+        plt.clf()
         for benchmark_result in benchmarking_results:
             self._generate_non_cumulative_bar_plot_data(benchmark_result)
 
@@ -465,13 +468,13 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
         if title is None:
             plt.title(
-                f"{benchmark_generator.prioritisation_type_file_prefix.capitalize()} Non-Cumulative Rank Stats"
+                f"{benchmark_generator.prioritisation_type_string.capitalize()} Non-Cumulative Rank Stats"
             )
         else:
             plt.title(title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_file_prefix}_rank_stats.svg",
+            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
