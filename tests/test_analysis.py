@@ -72,14 +72,14 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         self.assess_gene_prioritisation = AssessGenePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_gene",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="descending",
         )
         self.assess_gene_prioritisation_ascending_order = AssessGenePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_gene",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="ascending",
         )
@@ -241,14 +241,14 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         self.assess_variant_prioritisation = AssessVariantPrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_variant",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="descending",
         )
         self.assess_variant_prioritisation_ascending_order = AssessVariantPrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_variant",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="ascending",
         )
@@ -424,14 +424,14 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         self.assess_disease_prioritisation = AssessDiseasePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_disease",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="descending",
         )
         self.assess_disease_prioritisation_ascending_order = AssessDiseasePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_disease",
-            results_dir=Path("/path/to/results_dir"),
+            column="run_1",
             threshold=0,
             score_order="ascending",
         )

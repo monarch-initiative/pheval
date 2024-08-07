@@ -2,7 +2,54 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
-import pandas as pd
+import yaml
+from pydantic import BaseModel
+
+
+class RunConfig(BaseModel):
+    """
+    Store configurations for a run.
+
+    Attributes:
+        run_identifier (str): The run identifier.
+        phenopacket_dir (str): The path to the phenopacket directory used for generating the results.
+        results_dir (str): The path to the results directory.
+        gene_analysis (bool): Whether or not to benchmark gene analysis results.
+        variant_analysis (bool): Whether or not to benchmark variant analysis results.
+        disease_analysis (bool): Whether or not to benchmark disease analysis results.
+    """
+
+    run_identifier: str
+    phenopacket_dir: Path
+    results_dir: Path
+    gene_analysis: bool
+    variant_analysis: bool
+    disease_analysis: bool
+
+
+class Config(BaseModel):
+    """
+    Store configurations for a runs.
+    Attributes:
+        runs (List[RunConfig]): The list of run configurations.
+    """
+
+    runs: List[RunConfig]
+
+
+def parse_run_config(run_data_path: Path) -> Config:
+    """
+    Parse a run configuration yaml file.
+    Args:
+        run_data_path (Path): The path to the run data yaml configuration.
+    Returns:
+        Config: The parsed run configurations.
+    """
+    with open(run_data_path, "r") as f:
+        config_data = yaml.safe_load(f)
+    f.close()
+    config = Config(**config_data)
+    return config
 
 
 @dataclass
@@ -17,28 +64,3 @@ class TrackInputOutputDirectories:
 
     phenopacket_dir: Path
     results_dir: Path
-
-
-def parse_run_data_text_file(run_data_path: Path) -> List[TrackInputOutputDirectories]:
-    """
-    Parse run data .txt file returning a list of input phenopacket and corresponding output directories.
-
-    Args:
-        run_data_path (Path): The path to the run data .txt file.
-
-    Returns:
-        List[TrackInputOutputDirectories]: A list of TrackInputOutputDirectories objects, containing
-        input test data directories and their corresponding output directories.
-
-    Notes:
-        The run data .txt file should be formatted with tab-separated values. Each row should contain
-        two columns: the first column representing the input test data phenopacket directory, and
-        the second column representing the corresponding run output directory.
-    """
-    run_data = pd.read_csv(run_data_path, delimiter="\t", header=None)
-    run_data_list = []
-    for _index, row in run_data.iterrows():
-        run_data_list.append(
-            TrackInputOutputDirectories(phenopacket_dir=Path(row[0]), results_dir=Path(row[1]))
-        )
-    return run_data_list

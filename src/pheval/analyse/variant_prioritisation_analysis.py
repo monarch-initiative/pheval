@@ -6,7 +6,9 @@ from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.rank_stats import RankStats
-from pheval.analyse.run_data_parser import TrackInputOutputDirectories
+from pheval.analyse.run_data_parser import RunConfig
+
+# from pheval.analyse.run_data_parser import TrackInputOutputDirectories
 from pheval.post_processing.post_processing import RankedPhEvalVariantResult
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import GenomicVariant
@@ -19,7 +21,7 @@ class AssessVariantPrioritisation:
         self,
         db_connection: DBConnector,
         table_name: str,
-        results_dir: Path,
+        column: str,
         threshold: float,
         score_order: str,
     ):
@@ -27,16 +29,17 @@ class AssessVariantPrioritisation:
         Initialise AssessVariantPrioritisation class
 
         Args:
-            results_dir (Path): Path to the results directory
+            db_connection (DBConnector): DB connection.
+            table_name (str): Table name.
+            column (str): Column name.
             threshold (float): Threshold for scores
             score_order (str): Score order for results, either ascending or descending
 
         """
-        self.results_dir = results_dir
         self.threshold = threshold
         self.score_order = score_order
         self.conn = db_connection.conn
-        self.column = str(self.results_dir.parents[0])
+        self.column = column
         self.table_name = table_name
         db_connection.add_column_integer_default(
             table_name=table_name, column=self.column, default=0
@@ -163,7 +166,7 @@ class AssessVariantPrioritisation:
 
 def assess_phenopacket_variant_prioritisation(
     phenopacket_path: Path,
-    results_dir_and_input: TrackInputOutputDirectories,
+    run: RunConfig,
     variant_binary_classification_stats: BinaryClassificationStats,
     variant_benchmarker: AssessVariantPrioritisation,
 ) -> None:
@@ -173,11 +176,11 @@ def assess_phenopacket_variant_prioritisation(
 
     Args:
         phenopacket_path (Path): Path to the Phenopacket.
-        results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
+        run (RunConfig): Run configuration.
         variant_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         variant_benchmarker (AssessVariantPrioritisation): AssessVariantPrioritisation class instance.
     """
-    standardised_variant_result = results_dir_and_input.results_dir.joinpath(
+    standardised_variant_result = run.results_dir.joinpath(
         f"pheval_variant_results/{phenopacket_path.stem}-pheval_variant_result.tsv"
     )
     pheval_variant_result = read_standardised_result(standardised_variant_result)
@@ -189,7 +192,7 @@ def assess_phenopacket_variant_prioritisation(
 
 
 def benchmark_variant_prioritisation(
-    results_directory_and_input: TrackInputOutputDirectories,
+    run: RunConfig,
     score_order: str,
     threshold: float,
 ):
@@ -197,7 +200,7 @@ def benchmark_variant_prioritisation(
     Benchmark a directory based on variant prioritisation results.
 
     Args:
-        results_directory_and_input (TrackInputOutputDirectories): Input and output directories.
+        run (RunConfig): Run configuration.
         score_order (str): The order in which scores are arranged.
         threshold (float): Threshold for assessment.
 
@@ -209,26 +212,26 @@ def benchmark_variant_prioritisation(
     db_connection = DBConnector()
     variant_benchmarker = AssessVariantPrioritisation(
         db_connection,
-        f"{results_directory_and_input.phenopacket_dir.parents[0].name}" f"_variant",
-        results_directory_and_input.results_dir.joinpath("pheval_variant_results/"),
+        f"{run.phenopacket_dir.parents[0].name}" f"_variant",
+        run.run_identifier,
         threshold,
         score_order,
     )
-    for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
+    for phenopacket_path in all_files(run.phenopacket_dir):
         assess_phenopacket_variant_prioritisation(
             phenopacket_path,
-            results_directory_and_input,
+            run,
             variant_binary_classification_stats,
             variant_benchmarker,
         )
     variant_rank_stats = RankStats()
     variant_rank_stats.add_ranks(
-        table_name=f"{results_directory_and_input.phenopacket_dir.parents[0].name}_variant",
-        column_name=str(results_directory_and_input.results_dir),
+        table_name=f"{run.phenopacket_dir.parents[0].name}_variant",
+        column_name=str(run.run_identifier),
     )
     return BenchmarkRunResults(
-        results_dir=results_directory_and_input.results_dir,
+        benchmark_name=run.run_identifier,
         rank_stats=variant_rank_stats,
         binary_classification_stats=variant_binary_classification_stats,
-        phenopacket_dir=results_directory_and_input.phenopacket_dir,
+        phenopacket_dir=run.phenopacket_dir,
     )

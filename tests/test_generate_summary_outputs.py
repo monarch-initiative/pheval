@@ -1,5 +1,4 @@
 import unittest
-from pathlib import Path
 from unittest.mock import patch
 
 import duckdb
@@ -10,12 +9,8 @@ from pheval.analyse.get_connection import DBConnector
 
 class TestGetNewTableName(unittest.TestCase):
     def test_get_new_table_name(self):
-        new_table_name = get_new_table_name(
-            Path("/path/to/result_dir_1/corpus_1"), Path("/path/to/result_dir_2/corpus_1"), "gene"
-        )
-        self.assertEqual(
-            new_table_name, "result_dir_1_corpus_1_vs_result_dir_2_corpus_1_gene_rank_comparison"
-        )
+        new_table_name = get_new_table_name("run_1", "run_2", "gene")
+        self.assertEqual(new_table_name, "run_1_vs_run_2_gene_rank_comparison")
 
 
 class TestCreateComparisonTable(unittest.TestCase):

@@ -4,7 +4,7 @@ from typing import Callable
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.disease_prioritisation_analysis import benchmark_disease_prioritisation
 from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritisation
-from pheval.analyse.run_data_parser import TrackInputOutputDirectories
+from pheval.analyse.run_data_parser import RunConfig
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
 from pheval.constants import (
     DISEASE_PLOT_Y_LABEL,
@@ -31,9 +31,7 @@ class BenchmarkRunOutputGenerator:
 
     prioritisation_type_string: str
     y_label: str
-    generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float], BenchmarkRunResults
-    ]
+    generate_benchmark_run_results: Callable[[RunConfig, str, float], BenchmarkRunResults]
     stats_comparison_file_suffix: str
 
 
@@ -53,18 +51,18 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to GENE_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate gene prioritisation
             benchmark run results. Defaults to benchmark_gene_prioritisation.
-            Takes parameters: input and results directory, score order, threshold, rank comparison,
+            Takes parameters: run configuration, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
         stats_comparison_file_suffix (str): Suffix for the gene rank comparison file.
-            Defaults to "-gene_summary.tsv".
+            Defaults to "-gene_summary".
     """
 
     prioritisation_type_string: str = GENE_PRIORITISATION_TYPE_STR
     y_label: str = GENE_PLOT_Y_LABEL
-    generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float], BenchmarkRunResults
-    ] = benchmark_gene_prioritisation
-    stats_comparison_file_suffix: str = "-gene_summary.tsv"
+    generate_benchmark_run_results: Callable[[RunConfig, str, float], BenchmarkRunResults] = (
+        benchmark_gene_prioritisation
+    )
+    stats_comparison_file_suffix: str = "-gene_summary"
 
 
 @dataclass
@@ -83,19 +81,19 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to VARIANT_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate variant prioritisation
             benchmark run results. Defaults to benchmark_variant_prioritisation.
-            Takes parameters: input and results directory, score order, threshold, rank comparison,
+            Takes parameters: run configuration, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
         stats_comparison_file_suffix (str): Suffix for the variant rank comparison file.
-            Defaults to "-variant_summary.tsv".
+            Defaults to "-variant_summary".
 
     """
 
     prioritisation_type_string: str = VARIANT_PRIORITISATION_TYPE_STR
     y_label: str = VARIANT_PLOT_Y_LABEL
-    generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float], BenchmarkRunResults
-    ] = benchmark_variant_prioritisation
-    stats_comparison_file_suffix: str = "-variant_summary.tsv"
+    generate_benchmark_run_results: Callable[[RunConfig, str, float], BenchmarkRunResults] = (
+        benchmark_variant_prioritisation
+    )
+    stats_comparison_file_suffix: str = "-variant_summary"
 
 
 @dataclass
@@ -114,15 +112,15 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to DISEASE_PLOT_Y_LABEL.
         generate_benchmark_run_results (Callable): Callable to generate disease prioritisation
             benchmark run results. Defaults to benchmark_disease_prioritisation.
-            Takes parameters: input and results directory, score order, threshold, rank comparison,
+            Takes parameters: run configuration, score order, threshold, rank comparison,
             and returns BenchmarkRunResults.
         stats_comparison_file_suffix (str): Suffix for the disease rank comparison file.
-            Defaults to "-disease_summary.tsv".
+            Defaults to "-disease_summary".
     """
 
     prioritisation_type_string: str = DISEASE_PRIORITISATION_TYPE_STR
     y_label: str = DISEASE_PLOT_Y_LABEL
-    generate_benchmark_run_results: Callable[
-        [TrackInputOutputDirectories, str, float], BenchmarkRunResults
-    ] = benchmark_disease_prioritisation
-    stats_comparison_file_suffix: str = "-disease_summary.tsv"
+    generate_benchmark_run_results: Callable[[RunConfig, str, float], BenchmarkRunResults] = (
+        benchmark_disease_prioritisation
+    )
+    stats_comparison_file_suffix: str = "-disease_summary"

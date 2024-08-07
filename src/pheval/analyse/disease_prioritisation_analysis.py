@@ -6,7 +6,7 @@ from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.rank_stats import RankStats
-from pheval.analyse.run_data_parser import TrackInputOutputDirectories
+from pheval.analyse.run_data_parser import RunConfig
 from pheval.post_processing.post_processing import RankedPhEvalDiseaseResult
 from pheval.utils.file_utils import all_files
 
@@ -18,7 +18,7 @@ class AssessDiseasePrioritisation:
         self,
         db_connection: DBConnector,
         table_name: str,
-        results_dir: Path,
+        column: str,
         threshold: float,
         score_order: str,
     ):
@@ -28,16 +28,15 @@ class AssessDiseasePrioritisation:
         Args:
             db_connection (DBConnector): Database connection
             table_name (str): Table name
-            results_dir (Path): Path to the results directory
+            column (Path): Column name
             threshold (float): Threshold for scores
             score_order (str): Score order for results, either ascending or descending
 
         """
-        self.results_dir = results_dir
         self.threshold = threshold
         self.score_order = score_order
         self.conn = db_connection.conn
-        self.column = str(self.results_dir.parents[0])
+        self.column = column
         self.table_name = table_name
         db_connection.add_column_integer_default(
             table_name=table_name, column=self.column, default=0
@@ -155,7 +154,7 @@ class AssessDiseasePrioritisation:
 
 def assess_phenopacket_disease_prioritisation(
     phenopacket_path: Path,
-    results_dir_and_input: TrackInputOutputDirectories,
+    run: RunConfig,
     disease_binary_classification_stats: BinaryClassificationStats,
     disease_benchmarker: AssessDiseasePrioritisation,
 ) -> None:
@@ -165,11 +164,11 @@ def assess_phenopacket_disease_prioritisation(
 
     Args:
         phenopacket_path (Path): Path to the Phenopacket.
-        results_dir_and_input (TrackInputOutputDirectories): Input and output directories.
+        run (RunConfig): Run configuration.
         disease_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         disease_benchmarker (AssessDiseasePrioritisation): AssessDiseasePrioritisation class instance.
     """
-    standardised_disease_result = results_dir_and_input.results_dir.joinpath(
+    standardised_disease_result = run.results_dir.joinpath(
         f"pheval_disease_results/{phenopacket_path.stem}-pheval_disease_result.tsv"
     )
     pheval_disease_result = read_standardised_result(standardised_disease_result)
@@ -181,7 +180,7 @@ def assess_phenopacket_disease_prioritisation(
 
 
 def benchmark_disease_prioritisation(
-    results_directory_and_input: TrackInputOutputDirectories,
+    run: RunConfig,
     score_order: str,
     threshold: float,
 ):
@@ -189,7 +188,7 @@ def benchmark_disease_prioritisation(
     Benchmark a directory based on disease prioritisation results.
 
     Args:
-        results_directory_and_input (TrackInputOutputDirectories): Input and output directories.
+        run (RunConfig): Run configuration.
         score_order (str): The order in which scores are arranged.
         threshold (float): Threshold for assessment.
 
@@ -201,27 +200,27 @@ def benchmark_disease_prioritisation(
     db_connection = DBConnector()
     disease_benchmarker = AssessDiseasePrioritisation(
         db_connection,
-        f"{results_directory_and_input.phenopacket_dir.parents[0].name}_disease",
-        results_directory_and_input.results_dir.joinpath("pheval_disease_results/"),
+        f"{run.phenopacket_dir.parents[0].name}_disease",
+        run.run_identifier,
         threshold,
         score_order,
     )
-    for phenopacket_path in all_files(results_directory_and_input.phenopacket_dir):
+    for phenopacket_path in all_files(run.phenopacket_dir):
         assess_phenopacket_disease_prioritisation(
             phenopacket_path,
-            results_directory_and_input,
+            run,
             disease_binary_classification_stats,
             disease_benchmarker,
         )
     db_connection.close()
     disease_rank_stats = RankStats()
     disease_rank_stats.add_ranks(
-        table_name=f"{results_directory_and_input.phenopacket_dir.parents[0].name}_disease",
-        column_name=str(results_directory_and_input.results_dir),
+        table_name=f"{run.phenopacket_dir.parents[0].name}_disease",
+        column_name=str(run.run_identifier),
     )
     return BenchmarkRunResults(
         rank_stats=disease_rank_stats,
-        results_dir=results_directory_and_input.results_dir,
+        benchmark_name=run.run_identifier,
         binary_classification_stats=disease_binary_classification_stats,
-        phenopacket_dir=results_directory_and_input.phenopacket_dir,
+        phenopacket_dir=run.phenopacket_dir,
     )

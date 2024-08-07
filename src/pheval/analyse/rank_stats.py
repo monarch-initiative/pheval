@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from pathlib import Path
 from statistics import mean
 from typing import List
 
@@ -386,21 +385,21 @@ class RankStatsWriter:
 
     def add_statistics_entry(
         self,
-        directory_path: Path,
+        run_identifier: str,
         rank_stats: RankStats,
         binary_classification: BinaryClassificationStats,
     ):
         """
         Add statistics row to table for a run.
         Args:
-            directory_path (Path): Path to the results directory associated with the run.
+            run_identifier (str): The run identifier.
             rank_stats (RankStats): RankStats object for the run.
             binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
         conn = DBConnector().conn
         conn.execute(
             f' INSERT INTO "{self.table_name}" VALUES ( '
-            f"'{directory_path}',"
+            f"'{run_identifier}',"
             f"{rank_stats.top},"
             f"{rank_stats.top3},"
             f"{rank_stats.top5},"
