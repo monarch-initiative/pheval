@@ -50,17 +50,3 @@ def parse_run_config(run_data_path: Path) -> Config:
     f.close()
     config = Config(**config_data)
     return config
-
-
-@dataclass
-class TrackInputOutputDirectories:
-    """
-    Track the input phenopacket test data for a corresponding pheval output directory.
-
-    Attributes:
-        phenopacket_dir (Path): The directory containing input phenopackets.
-        results_dir (Path): The directory containing output results from pheval.
-    """
-
-    phenopacket_dir: Path
-    results_dir: Path
