@@ -30,32 +30,16 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             "('phenopacket_1.json-PLXNA1', 'phenopacket_1.json', 'PLXNA1', 'ENSG00000114554'),"
             "('phenopacket_1.json-LARGE1', 'phenopacket_1.json', 'LARGE1', 'ENSG00000133424'),"
         )
-        cls.standardised_gene_results = [
-            RankedPhEvalGeneResult(
-                gene_symbol="PLXNA1",
-                gene_identifier="ENSG00000114554",
-                score=0.8764,
-                rank=1,
-            ),
-            RankedPhEvalGeneResult(
-                gene_symbol="ZNF804B",
-                gene_identifier="ENSG00000182348",
-                score=0.5777,
-                rank=2,
-            ),
-            RankedPhEvalGeneResult(
-                gene_symbol="SMCO2",
-                gene_identifier="ENSG00000165935",
-                score=0.5777,
-                rank=2,
-            ),
-            RankedPhEvalGeneResult(
-                gene_symbol="SPNS1",
-                gene_identifier="ENSG00000169682",
-                score=0.3765,
-                rank=4,
-            ),
-        ]
+        cls.db_connection.execute(
+            "CREATE TABLE result (rank INTEGER, score DOUBLE, gene_symbol VARCHAR, gene_identifier VARCHAR)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO result (rank, score, gene_symbol, gene_identifier) VALUES "
+            "(1, 0.8764, 'PLXNA1', 'ENSG00000114554'),"
+            "(2, 0.5777, 'ZNF804B', 'ENSG00000182348'),"
+            "(2, 0.5777, 'SMCO2', 'ENSG00000165935'),"
+            "(4, 0.3765, 'SPNS1', 'ENSG00000169682')"
+        )
 
     @classmethod
     def tearDownClass(cls):
@@ -146,8 +130,9 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
 
     def test_assess_gene_prioritisation_no_threshold(self):
+        self.db_connector.add_contains_function()
         self.assess_gene_prioritisation.assess_gene_prioritisation(
-            self.standardised_gene_results,
+            "result",
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )
@@ -171,17 +156,6 @@ class TestAssessGenePrioritisation(unittest.TestCase):
             ),
         )
 
-    def test__check_string_representation_string(self):
-        self.assertEqual(
-            self.assess_gene_prioritisation._check_string_representation("GENE1"), "GENE1"
-        )
-
-    def test__check_string_representation_list(self):
-        self.assertEqual(
-            self.assess_gene_prioritisation._check_string_representation("['GENE1', 'GENE2']"),
-            ["GENE1", "GENE2"],
-        )
-
 
 class TestAssessVariantPrioritisation(unittest.TestCase):
     @classmethod
@@ -196,35 +170,16 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
             "('phenopacket_1.json-3-126741108-G-C', 'phenopacket_1.json', '3', 126741108, 'G', 'C'),"
             "('phenopacket_1.json-16-133564345-C-T', 'phenopacket_1.json', '16', 133564345, 'C', 'T'),"
         )
-        cls.standardised_variant_results = [
-            RankedPhEvalVariantResult(
-                chromosome="3",
-                start=126730873,
-                end=126730873,
-                ref="G",
-                alt="A",
-                score=0.0484,
-                rank=1,
-            ),
-            RankedPhEvalVariantResult(
-                chromosome="3",
-                start=126730873,
-                end=126730873,
-                ref="G",
-                alt="A",
-                score=0.0484,
-                rank=1,
-            ),
-            RankedPhEvalVariantResult(
-                chromosome="3",
-                start=126741108,
-                end=126741108,
-                ref="G",
-                alt="C",
-                score=0.0484,
-                rank=2,
-            ),
-        ]
+        cls.db_connection.execute(
+            "CREATE TABLE result (rank INTEGER, score DOUBLE,"
+            'chromosome VARCHAR, start INTEGER, "end" INTEGER, ref VARCHAR, alt VARCHAR)'
+        )
+        cls.db_connection.execute(
+            'INSERT INTO result (rank, score, chromosome, start, "end", ref, alt) VALUES '
+            "(1, 0.0484, '3', 126730873, 126730873 ,'G', 'A'),"
+            "(1, 0.0484, '3', 126730873, 126730873 ,'G', 'T'),"
+            "(3, 0.0484, '3', 126741108, 126741108 ,'G', 'C'),"
+        )
 
     @classmethod
     def tearDownClass(cls):
@@ -327,8 +282,9 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
 
     def test_assess_variant_prioritisation(self):
+        self.db_connector.add_contains_function()
         self.assess_variant_prioritisation.assess_variant_prioritisation(
-            self.standardised_variant_results,
+            "result",
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )
@@ -343,7 +299,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                     126741108,
                     "G",
                     "C",
-                    2,
+                    3,
                 ),
                 (
                     "phenopacket_1.json-16-133564345-C-T",
@@ -382,32 +338,17 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
             "INSERT INTO test_table_disease (identifier, phenopacket, disease_identifier, disease_name) VALUES "
             "('phenopacket_1.json-OMIM:231670', 'phenopacket_1.json', 'OMIM:231670', 'Glutaric aciduria type 1'),"
         )
-        cls.standardised_disease_results = [
-            RankedPhEvalDiseaseResult(
-                disease_name="Glutaric aciduria type 1",
-                disease_identifier="OMIM:231670",
-                score=1.0,
-                rank=1,
-            ),
-            RankedPhEvalDiseaseResult(
-                disease_name="Glutaric aciduria type 2",
-                disease_identifier="OMIM:231680",
-                score=0.5,
-                rank=2,
-            ),
-            RankedPhEvalDiseaseResult(
-                disease_name="Glutaric aciduria type 3",
-                disease_identifier="OMIM:231690",
-                score=0.5,
-                rank=2,
-            ),
-            RankedPhEvalDiseaseResult(
-                disease_name="Glutaric aciduria type 4",
-                disease_identifier="OMIM:231700",
-                score=0.3,
-                rank=4,
-            ),
-        ]
+        cls.db_connection.execute(
+            "CREATE TABLE result (rank INTEGER, score DOUBLE,"
+            "disease_identifier VARCHAR, disease_name VARCHAR)"
+        )
+        cls.db_connection.execute(
+            "INSERT INTO result (rank, score, disease_identifier, disease_name) VALUES "
+            "(1, 1.0, 'OMIM:231670', 'Glutaric aciduria type 1'),"
+            "(2, 0.5, 'OMIM:231680', 'Glutaric aciduria type 2'),"
+            "(2, 0.5, 'OMIM:231690', 'Glutaric aciduria type 3'),"
+            "(4, 0.3, 'OMIM:231700', 'Glutaric aciduria type 4'),"
+        )
 
     @classmethod
     def tearDownClass(cls):
@@ -498,8 +439,9 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
 
     def test_assess_disease_prioritisation(self):
+        self.db_connector.add_contains_function()
         self.assess_disease_prioritisation.assess_disease_prioritisation(
-            self.standardised_disease_results,
+            "result",
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )
