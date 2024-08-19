@@ -1,5 +1,15 @@
+import ast
+import re
+from typing import List, Type, Union
+
 import duckdb
 from duckdb import DuckDBPyConnection
+
+from pheval.post_processing.post_processing import (
+    RankedPhEvalDiseaseResult,
+    RankedPhEvalGeneResult,
+    RankedPhEvalVariantResult,
+)
 
 
 class DBConnector:
@@ -10,6 +20,10 @@ class DBConnector:
     def __init__(self):
         """Initialize the DBConnector class."""
         self.conn = self.get_connection()
+
+    def initialise(self):
+        """Initialise the duckdb connection."""
+        self.add_contains_function()
 
     @staticmethod
     def get_connection() -> DuckDBPyConnection:
@@ -45,6 +59,64 @@ class DBConnector:
             table_name: Name of the table to drop from the database
         """
         self.conn.execute(f"""DROP TABLE IF EXISTS "{table_name}";""")
+
+    @staticmethod
+    def contains_entity_function(entity: str, known_causative_entity: str) -> bool:
+        """
+        Determines if a known causative entity is present within an entity or list of entities.
+        Args:
+            entity (str): The entity to be checked. It can be a single entity or a string representation of a list.
+            known_causative_entity (str): The entity to search for within the `entity`.
+
+        Returns:
+            bool: `True` if `known_causative_entity` is found in `entity` (or its list representation),
+                `False` otherwise.
+        """
+        list_pattern = re.compile(r"^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*]$")
+        if list_pattern.match(str(entity)):
+            list_representation = ast.literal_eval(entity)
+            if isinstance(list_representation, list):
+                return known_causative_entity in list_representation
+        return known_causative_entity == entity
+
+    def add_contains_function(self) -> None:
+        """
+        Adds a custom `contains_entity_function` to the DuckDB connection if it does not already exist.
+        """
+        result = self.conn.execute(
+            "SELECT * FROM duckdb_functions() WHERE function_name = ?", ["contains_entity_function"]
+        ).fetchall()
+        if not result:
+            self.conn.create_function("contains_entity_function", self.contains_entity_function)
+
+    def parse_table_into_dataclass(
+        self,
+        table_name: str,
+        dataclass: Union[
+            Type[RankedPhEvalGeneResult],
+            Type[RankedPhEvalVariantResult],
+            Type[RankedPhEvalDiseaseResult],
+        ],
+    ) -> Union[
+        List[RankedPhEvalGeneResult],
+        List[RankedPhEvalVariantResult],
+        List[RankedPhEvalDiseaseResult],
+    ]:
+        """
+        Parses a DuckDB table into a list of dataclass instances.
+        Args:
+            table_name (str): The name of the DuckDB table to be parsed.
+            dataclass (Union[Type[RankedPhEvalGeneResult], Type[RankedPhEvalVariantResult],
+            Type[RankedPhEvalDiseaseResult]]):
+                The dataclass type to which each row in the table should be mapped.
+
+        Returns:
+            List[dataclass]: A list of instances of the provided dataclass, each representing a row from the table.
+        """
+        result = (
+            self.conn.execute(f"SELECT * FROM '{table_name}'").fetchdf().to_dict(orient="records")
+        )
+        return [dataclass(**row) for row in result]
 
     def close(self):
         """Close the connection to the database."""
