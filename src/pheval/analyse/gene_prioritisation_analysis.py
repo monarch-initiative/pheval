@@ -1,12 +1,8 @@
-import ast
-import re
 from pathlib import Path
-from typing import List, Union
 
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.get_connection import DBConnector
-from pheval.analyse.parse_pheval_result import parse_pheval_result, read_standardised_result
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import RunConfig
 from pheval.post_processing.post_processing import RankedPhEvalGeneResult
@@ -102,27 +98,9 @@ class AssessGenePrioritisation:
                 )
             )
 
-    @staticmethod
-    def _check_string_representation(entity: str) -> Union[List[str], str]:
-        """
-        Check if the input string is a representation of a list and returns the list if true, otherwise the string.
-
-        Args:
-            entity (str): The input entity to check.
-
-        Returns:
-            Union[List[str], str]: A list if the input string is a list representation, otherwise
-            the original string.
-        """
-        list_pattern = re.compile(r"^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*\]$")
-        if list_pattern.match(str(entity)):
-            return ast.literal_eval(entity)
-        else:
-            return entity
-
     def assess_gene_prioritisation(
         self,
-        standardised_gene_results: List[RankedPhEvalGeneResult],
+        standardised_gene_result_path: Path,
         phenopacket_path: Path,
         binary_classification_stats: BinaryClassificationStats,
     ) -> None:
@@ -132,7 +110,7 @@ class AssessGenePrioritisation:
         and records ranks using a PrioritisationRankRecorder.
 
         Args:
-            standardised_gene_results (List[RankedPhEvalGeneResult]) List of standardised gene results.
+            standardised_gene_result_path (Path): Path to the standardised gene TSV result.
             phenopacket_path (Path): Path to the Phenopacket.
             binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         """
@@ -141,24 +119,19 @@ class AssessGenePrioritisation:
             f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'"""
         ).fetchdf()
         for _i, row in df.iterrows():
-            generated_matches = list(
-                result
-                for result in standardised_gene_results
-                if (
-                    isinstance(self._check_string_representation(result.gene_identifier), list)
-                    and row["gene_identifier"]
-                    in self._check_string_representation(result.gene_identifier)
-                    or isinstance(self._check_string_representation(result.gene_identifier), str)
-                    and row["gene_identifier"]
-                    == self._check_string_representation(result.gene_identifier)
-                    or isinstance(self._check_string_representation(result.gene_symbol), list)
-                    and row["gene_symbol"] in self._check_string_representation(result.gene_symbol)
-                    or isinstance(self._check_string_representation(result.gene_symbol), str)
-                    and row["gene_symbol"] == self._check_string_representation(result.gene_symbol)
+            result = (
+                self.conn.execute(
+                    f"SELECT * FROM '{standardised_gene_result_path}' "
+                    f"WHERE contains_entity_function(CAST(COALESCE(gene_identifier, '') AS VARCHAR),"
+                    f" '{row['gene_identifier']}') "
+                    f"OR contains_entity_function(CAST(COALESCE(gene_symbol, '') AS VARCHAR), "
+                    f"'{row['gene_symbol']}')"
                 )
+                .fetchdf()
+                .to_dict(orient="records")
             )
-            if len(generated_matches) > 0:
-                gene_match = self._record_matched_gene(generated_matches[0])
+            if len(result) > 0:
+                gene_match = self._record_matched_gene(RankedPhEvalGeneResult(**result[0]))
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
                 self.conn.execute(
@@ -166,7 +139,10 @@ class AssessGenePrioritisation:
                     (gene_match, primary_key),
                 )
         binary_classification_stats.add_classification(
-            pheval_results=standardised_gene_results, relevant_ranks=relevant_ranks
+            self.db_connection.parse_table_into_dataclass(
+                str(standardised_gene_result_path), RankedPhEvalGeneResult
+            ),
+            relevant_ranks,
         )
 
 
@@ -186,12 +162,11 @@ def assess_phenopacket_gene_prioritisation(
         gene_binary_classification_stats (BinaryClassificationStats): BinaryClassificationStats class instance.
         gene_benchmarker (AssessGenePrioritisation): AssessGenePrioritisation class instance.
     """
-    standardised_gene_result = run.results_dir.joinpath(
+    standardised_gene_result_path = run.results_dir.joinpath(
         f"pheval_gene_results/{phenopacket_path.stem}-pheval_gene_result.tsv"
     )
-    pheval_gene_result = read_standardised_result(standardised_gene_result)
     gene_benchmarker.assess_gene_prioritisation(
-        parse_pheval_result(RankedPhEvalGeneResult, pheval_gene_result),
+        standardised_gene_result_path,
         phenopacket_path,
         gene_binary_classification_stats,
     )
@@ -214,6 +189,7 @@ def benchmark_gene_prioritisation(
     """
     gene_binary_classification_stats = BinaryClassificationStats()
     db_connection = DBConnector()
+    db_connection.initialise()
     gene_benchmarker = AssessGenePrioritisation(
         db_connection,
         f"{run.phenopacket_dir.parents[0].name}" f"_gene",
