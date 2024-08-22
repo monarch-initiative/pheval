@@ -36,14 +36,14 @@ class RankStats:
     relevant_result_ranks: List[List[int]] = field(default_factory=list)
     mrr: float = None
 
-    def add_ranks(self, table_name: str, column_name: str) -> None:
+    def add_ranks(self, benchmark_name: str, table_name: str, column_name: str) -> None:
         """
         Add ranks to RankStats instance from table.
         Args:
             table_name (str): Name of the table to add ranks from.
             column_name (str): Name of the column to add ranks from.:
         """
-        conn = DBConnector().conn
+        conn = DBConnector(benchmark_name).conn
         self.top = self._execute_count_query(conn, table_name, column_name, " = 1")
         self.top3 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 3")
         self.top5 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 5")
@@ -327,7 +327,7 @@ class RankStats:
 class RankStatsWriter:
     """Class for writing the rank stats to a file."""
 
-    def __init__(self, table_name: str):
+    def __init__(self, benchmark_name: str, table_name: str):
         """
         Initialise the RankStatsWriter class
         Args:
@@ -335,7 +335,8 @@ class RankStatsWriter:
         """
 
         self.table_name = table_name
-        conn = DBConnector().conn
+        self.benchmark_name = benchmark_name
+        conn = DBConnector(benchmark_name).conn
         conn.execute(
             f'CREATE TABLE IF NOT EXISTS "{self.table_name}" ('
             f"results_directory_path VARCHAR,"
@@ -396,7 +397,7 @@ class RankStatsWriter:
             rank_stats (RankStats): RankStats object for the run.
             binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
-        conn = DBConnector().conn
+        conn = DBConnector(self.benchmark_name).conn
         conn.execute(
             f' INSERT INTO "{self.table_name}" VALUES ( '
             f"'{run_identifier}',"

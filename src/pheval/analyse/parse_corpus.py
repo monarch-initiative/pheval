@@ -65,14 +65,14 @@ def _obtain_causative_genes(phenopacket_path: Path) -> List[ProbandCausativeGene
 class CorpusParser:
     """Class for parsing phenopacket corpus and retrieving known variants/genes/diseases."""
 
-    def __init__(self, phenopacket_dir: Path) -> None:
+    def __init__(self, benchmark_name: str, phenopacket_dir: Path) -> None:
         """
         Initialise the CorpusParser class.
         Args:
             phenopacket_dir (Path): Path to the Phenopacket directory.
         """
         self.phenopacket_dir = phenopacket_dir
-        self.conn = DBConnector().conn
+        self.conn = DBConnector(benchmark_name).conn
         self.table_name = phenopacket_dir.parents[0].name
 
     def _create_gene_table(self) -> None:
