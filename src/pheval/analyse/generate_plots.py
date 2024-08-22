@@ -14,10 +14,8 @@ from pheval.analyse.benchmark_generator import (
     VariantBenchmarkRunOutputGenerator,
 )
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
-from pheval.analyse.parse_benchmark_summary import (
-    parse_benchmark_result_summary,
-    read_benchmark_tsv_result_summary,
-)
+from pheval.analyse.parse_benchmark_summary import parse_benchmark_db
+from pheval.analyse.run_data_parser import parse_run_config
 from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
@@ -489,7 +487,7 @@ class PlotGenerator:
 def generate_plots(
     benchmarking_results: List[BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
-    generate_from_tsv: bool = False,
+    generate_from_db: bool = False,
 ) -> None:
     """
     Generate summary statistics bar plots for prioritisation.
@@ -499,10 +497,10 @@ def generate_plots(
     Args:
         benchmarking_results (list[BenchmarkRunResults]): List of benchmarking results for multiple runs.
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-        generate_from_tsv (bool): Specify whether to generate plots from the TSV file. Defaults to False.
+        generate_from_db (bool): Specify whether to generate plots from the db file. Defaults to False.
     """
     plot_generator = PlotGenerator()
-    if not generate_from_tsv:
+    if not generate_from_db:
         plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
         plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
     if benchmark_generator.plot_customisation.plot_type == "bar_stacked":
@@ -513,36 +511,37 @@ def generate_plots(
         plot_generator.generate_non_cumulative_bar(benchmarking_results, benchmark_generator)
 
 
-def generate_plots_from_benchmark_summary_tsv(
-    benchmark_summary_tsv: Path,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
+def generate_plots_from_benchmark_summary_db(
+    benchmark_db: Path,
+    run_data: Path,
 ):
     """
     Generate bar plot from summary benchmark results.
 
-    Reads a summary of benchmark results from a TSV file and generates a bar plot
+    Reads a summary of benchmark results from a benchmark db and generates a bar plot
     based on the analysis type and plot type.
 
     Args:
-        benchmark_summary_tsv (Path): Path to the summary TSV file containing benchmark results.
-        gene_analysis (bool): Flag indicating whether to analyse gene prioritisation.
-        variant_analysis (bool): Flag indicating whether to analyse variant prioritisation.
-        disease_analysis (bool): Flag indicating whether to analyse disease prioritisation.
-    Raises:
-         ValueError: If an unsupported plot type is specified.
+        benchmark_db (Path): Path to the summary TSV file containing benchmark results.
+        run_data (Path): Path to YAML benchmarking configuration file.
     """
-    benchmark_stats_summary = read_benchmark_tsv_result_summary(benchmark_summary_tsv)
-    benchmarking_results = parse_benchmark_result_summary(benchmark_stats_summary)
-    if gene_analysis:
-        benchmark_generator = GeneBenchmarkRunOutputGenerator()
-    elif variant_analysis:
-        benchmark_generator = VariantBenchmarkRunOutputGenerator()
-    elif disease_analysis:
-        benchmark_generator = DiseaseBenchmarkRunOutputGenerator()
-    else:
-        raise ValueError(
-            "Specify one analysis type (gene_analysis, variant_analysis, or disease_analysis)"
+    benchmark_stats_summary = parse_benchmark_db(benchmark_db)
+    config = parse_run_config(run_data)
+    if benchmark_stats_summary.gene_results:
+        generate_plots(
+            benchmark_stats_summary.gene_results,
+            GeneBenchmarkRunOutputGenerator(config.plot_customisation.gene_plots),
+            True,
         )
-    generate_plots(benchmarking_results, benchmark_generator, True)
+    if benchmark_stats_summary.variant_results:
+        generate_plots(
+            benchmark_stats_summary.variant_results,
+            VariantBenchmarkRunOutputGenerator(config.plot_customisation.variant_plots),
+            True,
+        )
+    elif benchmark_stats_summary.disease_results:
+        generate_plots(
+            benchmark_stats_summary.disease_results,
+            DiseaseBenchmarkRunOutputGenerator(config.plot_customisation.disease_plots),
+            True,
+        )
