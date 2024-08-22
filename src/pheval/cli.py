@@ -7,7 +7,7 @@ import click
 from .cli_pheval import run
 from .cli_pheval_utils import (
     benchmark,
-    benchmark_comparison,
+    benchmark,
     create_spiked_vcfs_command,
     generate_stats_plot,
     prepare_corpus_command,
@@ -58,7 +58,7 @@ pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(update_phenopackets_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
 pheval_utils.add_command(benchmark)
-pheval_utils.add_command(benchmark_comparison)
+pheval_utils.add_command(benchmark)
 pheval_utils.add_command(semsim_to_exomiserdb_command)
 pheval_utils.add_command(generate_stats_plot)
 pheval_utils.add_command(prepare_corpus_command)
