@@ -19,7 +19,9 @@ class DBConnector:
 
     def __init__(self, benchmark_name: str):
         """Initialise the DBConnector class."""
-        self.conn = self.get_connection(f"{benchmark_name}.db")
+        self.conn = self.get_connection(
+            f"{benchmark_name}" if str(benchmark_name).endswith(".db") else f"{benchmark_name}.db"
+        )
 
     def initialise(self):
         """Initialise the duckdb connection."""
@@ -117,6 +119,14 @@ class DBConnector:
             self.conn.execute(f"SELECT * FROM '{table_name}'").fetchdf().to_dict(orient="records")
         )
         return [dataclass(**row) for row in result]
+
+    def check_table_exists(self, table_name: str) -> bool:
+        result = self.conn.execute(
+            f"SELECT * FROM information_schema.tables WHERE table_name = '{table_name}'"
+        ).fetchall()
+        if result:
+            return True
+        return False
 
     def close(self):
         """Close the connection to the database."""
