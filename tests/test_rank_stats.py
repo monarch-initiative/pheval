@@ -46,7 +46,7 @@ class TestRankStats(unittest.TestCase):
     )
     def test_add_ranks(self, mock_get_connection):
         mock_get_connection.return_value = self.db_connection
-        self.rank_stats.add_ranks("test_table_gene", "results_dir_1")
+        self.rank_stats.add_ranks("None", "test_table_gene", "results_dir_1")
         self.assertEqual(self.rank_stats.top, 1)
         self.assertEqual(self.rank_stats.top3, 2)
         self.assertEqual(self.rank_stats.top5, 3)

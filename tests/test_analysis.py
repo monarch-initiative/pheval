@@ -52,7 +52,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector()
+        self.db_connector = DBConnector("null")
         self.assess_gene_prioritisation = AssessGenePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_gene",
@@ -192,7 +192,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector()
+        self.db_connector = DBConnector("None")
         self.assess_variant_prioritisation = AssessVariantPrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_variant",
@@ -361,7 +361,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector()
+        self.db_connector = DBConnector("None")
         self.assess_disease_prioritisation = AssessDiseasePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_disease",

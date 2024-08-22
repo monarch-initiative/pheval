@@ -43,7 +43,7 @@ class TestCreateComparisonTable(unittest.TestCase):
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector()
+        self.db_connector = DBConnector("None")
 
     def test_create_comparison_table(self):
         create_comparison_table(
