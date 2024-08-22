@@ -8,39 +8,6 @@ from pheval.analyse.get_connection import DBConnector
 from pheval.constants import RANK_COMPARISON_SUFFIX
 
 
-def generate_benchmark_output(
-    benchmarking_results: BenchmarkRunResults,
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
-) -> None:
-    """
-    Generate prioritisation outputs for a single benchmarking run.
-
-    Args:
-        benchmarking_results (BenchmarkRunResults): Results of a benchmarking run.
-        plot_type (str): Type of plot to generate.
-        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-    """
-    results_dir_name = (
-        benchmarking_results.results_dir.name
-        if benchmarking_results.results_dir
-        else benchmarking_results.benchmark_name
-    )
-    conn = DBConnector().conn
-    conn.execute(
-        f"CREATE TABLE {results_dir_name}_{benchmark_generator.prioritisation_type_string}{RANK_COMPARISON_SUFFIX} "
-        f"AS SELECT * EXCLUDE (identifier) FROM "
-        f"{benchmarking_results.phenopacket_dir.parents[0].name}_{benchmark_generator.prioritisation_type_string}"
-    )
-
-    conn.close()
-    generate_plots(
-        [benchmarking_results],
-        benchmark_generator,
-        plot_type,
-    )
-
-
 def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_prefix: str) -> str:
     """
     Get the new table name for rank comparison tables.
@@ -94,9 +61,9 @@ def create_comparison_table(
 
 
 def generate_benchmark_comparison_output(
+    benchmark_name: str,
     benchmarking_results: List[BenchmarkRunResults],
     run_identifiers: List[str],
-    plot_type: str,
     benchmark_generator: BenchmarkRunOutputGenerator,
     table_name: str,
 ) -> None:
@@ -108,15 +75,15 @@ def generate_benchmark_comparison_output(
     comparison outputs using `RankComparisonGenerator` for each pair.
 
     Args:
+        benchmark_name (str): Name of the benchmark.
         benchmarking_results (List[BenchmarkRunResults]): A list containing BenchmarkRunResults instances
             representing the benchmarking results of multiple runs.
         run_identifiers (List[str]): A list of run identifiers.
-        plot_type (str): The type of plot to be generated.
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         table_name (str): The name of the table where ranks are stored.
     """
     output_prefix = benchmark_generator.prioritisation_type_string
-    connector = DBConnector()
+    connector = DBConnector(benchmark_name)
     for pair in itertools.combinations(
         [str(result.benchmark_name) for result in benchmarking_results], 2
     ):
@@ -137,5 +104,4 @@ def generate_benchmark_comparison_output(
     generate_plots(
         benchmarking_results,
         benchmark_generator,
-        plot_type,
     )
