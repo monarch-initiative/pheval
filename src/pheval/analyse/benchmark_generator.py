@@ -29,6 +29,7 @@ class BenchmarkRunOutputGenerator:
             and returns BenchmarkRunResults.
         stats_comparison_file (str): Suffix for the rank comparison file.
     """
+
     plot_customisation: SinglePlotCustomisation
     prioritisation_type_string: str
     y_label: str
@@ -58,6 +59,7 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         stats_comparison_file (str): Suffix for the gene rank comparison file.
             Defaults to "-gene_summary".
     """
+
     plot_customisation: SinglePlotCustomisation = None
     prioritisation_type_string: str = GENE_PRIORITISATION_TYPE_STR
     y_label: str = GENE_PLOT_Y_LABEL
@@ -90,6 +92,7 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
             Defaults to "-variant_summary".
 
     """
+
     plot_customisation: SinglePlotCustomisation = None
     prioritisation_type_string: str = VARIANT_PRIORITISATION_TYPE_STR
     y_label: str = VARIANT_PLOT_Y_LABEL
@@ -121,6 +124,7 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
         stats_comparison_file (str): Suffix for the disease rank comparison file.
             Defaults to "-disease_summary".
     """
+
     plot_customisation: SinglePlotCustomisation = None
     prioritisation_type_string: str = DISEASE_PRIORITISATION_TYPE_STR
     y_label: str = DISEASE_PLOT_Y_LABEL

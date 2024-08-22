@@ -36,6 +36,7 @@ class SinglePlotCustomisation(BaseModel):
         roc_curve_title (str): The title for the roc curve plot.
         precision_recall_title (str): The title for the precision-recall plot.
     """
+
     plot_type: Optional[str]
     rank_plot_title: Optional[str]
     roc_curve_title: Optional[str]
@@ -50,6 +51,7 @@ class PlotCustomisation(BaseModel):
         disease_plots (SinglePlotCustomisation): Customisation for all disease benchmarking plots.
         variant_plots (SinglePlotCustomisation): Customisation for all variant benchmarking plots.
     """
+
     gene_plots: SinglePlotCustomisation
     disease_plots: SinglePlotCustomisation
     variant_plots: SinglePlotCustomisation
@@ -61,6 +63,7 @@ class Config(BaseModel):
     Attributes:
         runs (List[RunConfig]): The list of run configurations.
     """
+
     benchmark_name: str
     runs: List[RunConfig]
     plot_customisation: PlotCustomisation

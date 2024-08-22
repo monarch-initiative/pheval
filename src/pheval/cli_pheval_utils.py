@@ -56,7 +56,7 @@ from pheval.utils.utils import semsim_scramble
     that will be applied to semantic similarity score column (e.g. jaccard similarity).""",
 )
 def semsim_scramble_command(
-        input: Path, output: Path, score_column: List[str], scramble_factor: float
+    input: Path, output: Path, score_column: List[str], scramble_factor: float
 ):
     """Scrambles semsim profile multiplying score value by scramble factor
     Args:
@@ -107,10 +107,10 @@ def semsim_scramble_command(
     type=Path,
 )
 def scramble_phenopackets_command(
-        phenopacket_path: Path,
-        phenopacket_dir: Path,
-        scramble_factor: float,
-        output_dir: Path,
+    phenopacket_path: Path,
+    phenopacket_dir: Path,
+    scramble_factor: float,
+    output_dir: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     if phenopacket_path is None and phenopacket_dir is None:
@@ -161,11 +161,11 @@ def scramble_phenopackets_command(
     help="Output path for the difference tsv. Defaults to percentage_diff.semsim.tsv",
 )
 def semsim_comparison(
-        semsim_left: Path,
-        semsim_right: Path,
-        score_column: str,
-        analysis: str,
-        output: Path = "percentage_diff.semsim.tsv",
+    semsim_left: Path,
+    semsim_right: Path,
+    score_column: str,
+    analysis: str,
+    output: Path = "percentage_diff.semsim.tsv",
 ):
     """Compares two semantic similarity profiles
 
@@ -222,7 +222,7 @@ def semsim_comparison(
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
 def update_phenopackets_command(
-        phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path, gene_identifier: str
+    phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path, gene_identifier: str
 ):
     """Update gene symbols and identifiers for phenopackets."""
     if phenopacket_path is None and phenopacket_dir is None:
@@ -299,13 +299,13 @@ def update_phenopackets_command(
     type=Path,
 )
 def create_spiked_vcfs_command(
-        phenopacket_path: Path,
-        phenopacket_dir: Path,
-        output_dir: Path,
-        hg19_template_vcf: Path = None,
-        hg38_template_vcf: Path = None,
-        hg19_vcf_dir: Path = None,
-        hg38_vcf_dir: Path = None,
+    phenopacket_path: Path,
+    phenopacket_dir: Path,
+    output_dir: Path,
+    hg19_template_vcf: Path = None,
+    hg38_template_vcf: Path = None,
+    hg19_vcf_dir: Path = None,
+    hg38_vcf_dir: Path = None,
 ):
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
@@ -360,9 +360,9 @@ def create_spiked_vcfs_command(
     type=float,
 )
 def benchmark(
-        run_data: Path,
-        score_order: str,
-        threshold: float,
+    run_data: Path,
+    score_order: str,
+    threshold: float,
 ):
     """Benchmark the gene/variant/disease prioritisation performance for two runs."""
     benchmark_run_comparisons(
@@ -406,7 +406,7 @@ def benchmark(
     type=Path,
 )
 def semsim_to_exomiserdb_command(
-        input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
+    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
 ):
     """ingests semsim file into exomiser phenotypic database
 
@@ -473,12 +473,12 @@ def semsim_to_exomiserdb_command(
     help='Title for plot, specify the title on the CLI enclosed with ""',
 )
 def generate_stats_plot(
-        benchmarking_tsv: Path,
-        gene_analysis: bool,
-        variant_analysis: bool,
-        disease_analysis: bool,
-        plot_type: str,
-        title: str = None,
+    benchmarking_tsv: Path,
+    gene_analysis: bool,
+    variant_analysis: bool,
+    disease_analysis: bool,
+    plot_type: str,
+    title: str = None,
 ):
     """Generate bar plot from benchmark stats summary tsv."""
     generate_plots_from_benchmark_summary_tsv(
@@ -576,16 +576,16 @@ def generate_stats_plot(
     type=Path,
 )
 def prepare_corpus_command(
-        phenopacket_dir: Path,
-        variant_analysis: bool,
-        gene_analysis: bool,
-        disease_analysis: bool,
-        gene_identifier: str,
-        hg19_template_vcf: Path,
-        hg38_template_vcf: Path,
-        hg19_vcf_dir: Path,
-        hg38_vcf_dir: Path,
-        output_dir: Path,
+    phenopacket_dir: Path,
+    variant_analysis: bool,
+    gene_analysis: bool,
+    disease_analysis: bool,
+    gene_identifier: str,
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
+    output_dir: Path,
 ):
     """
     Prepare a corpus of Phenopackets for analysis, optionally checking for complete variant records and updating

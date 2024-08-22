@@ -7,7 +7,6 @@ import click
 from .cli_pheval import run
 from .cli_pheval_utils import (
     benchmark,
-    benchmark,
     create_spiked_vcfs_command,
     generate_stats_plot,
     prepare_corpus_command,

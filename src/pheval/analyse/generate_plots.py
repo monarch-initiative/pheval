@@ -168,7 +168,9 @@ class PlotGenerator:
         if benchmark_generator.plot_customisation.rank_plot_title is None:
             plt.title(f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats")
         else:
-            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
+            plt.title(
+                benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15
+            )
         plt.ylim(0, 100)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
@@ -279,7 +281,9 @@ class PlotGenerator:
                 f"{benchmark_generator.prioritisation_type_string.capitalize()} Cumulative Rank Stats"
             )
         else:
-            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
+            plt.title(
+                benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15
+            )
         plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
@@ -471,7 +475,9 @@ class PlotGenerator:
                 f"{benchmark_generator.prioritisation_type_string.capitalize()} Non-Cumulative Rank Stats"
             )
         else:
-            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
+            plt.title(
+                benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15
+            )
         plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
