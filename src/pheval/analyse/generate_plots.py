@@ -145,7 +145,6 @@ class PlotGenerator:
         self,
         benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
     ) -> None:
         """
         Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
@@ -153,7 +152,6 @@ class PlotGenerator:
         Args:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-            title (str, optional): Title for the generated plot. Defaults to None.
         """
         for benchmark_result in benchmarking_results:
             self._generate_stacked_bar_plot_data(benchmark_result)
@@ -167,10 +165,10 @@ class PlotGenerator:
             ylabel=benchmark_generator.y_label,
             edgecolor="white",
         ).legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
-        if title is None:
+        if benchmark_generator.plot_customisation.rank_plot_title is None:
             plt.title(f"{benchmark_generator.prioritisation_type_string.capitalize()} Rank Stats")
         else:
-            plt.title(title, loc="center", fontsize=15)
+            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
         plt.ylim(0, 100)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
@@ -253,7 +251,6 @@ class PlotGenerator:
         self,
         benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
     ) -> None:
         """
         Generate a cumulative bar plot.
@@ -261,7 +258,6 @@ class PlotGenerator:
         Args:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-            title (str, optional): Title for the generated plot. Defaults to None.
         """
         for benchmark_result in benchmarking_results:
             self._generate_cumulative_bar_plot_data(benchmark_result)
@@ -278,12 +274,12 @@ class PlotGenerator:
             legend=False,
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
-        if title is None:
+        if benchmark_generator.plot_customisation.rank_plot_title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_string.capitalize()} Cumulative Rank Stats"
             )
         else:
-            plt.title(title, loc="center", fontsize=15)
+            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
@@ -389,7 +385,10 @@ class PlotGenerator:
         plt.plot(linestyle="--", color="gray")
         plt.xlabel("False Positive Rate")
         plt.ylabel("True Positive Rate")
-        plt.title("Receiver Operating Characteristic (ROC) Curve")
+        if benchmark_generator.plot_customisation.roc_curve_title is None:
+            plt.title("Receiver Operating Characteristic (ROC) Curve")
+        else:
+            plt.title(benchmark_generator.plot_customisation.roc_curve_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
@@ -428,7 +427,10 @@ class PlotGenerator:
         plt.plot(linestyle="--", color="gray")
         plt.xlabel("Recall")
         plt.ylabel("Precision")
-        plt.title("Precision-Recall Curve")
+        if benchmark_generator.plot_customisation.precision_recall_title is None:
+            plt.title("Precision-Recall Curve")
+        else:
+            plt.title(benchmark_generator.plot_customisation.precision_recall_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_precision_recall_curve.svg",
@@ -440,7 +442,6 @@ class PlotGenerator:
         self,
         benchmarking_results: List[BenchmarkRunResults],
         benchmark_generator: BenchmarkRunOutputGenerator,
-        title: str = None,
     ) -> None:
         """
         Generate a non-cumulative bar plot.
@@ -448,7 +449,6 @@ class PlotGenerator:
         Args:
             benchmarking_results (List[BenchmarkRunResults]): List of benchmarking results for multiple runs.
             benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-            title (str, optional): Title for the generated plot. Defaults to None.
         """
         plt.clf()
         for benchmark_result in benchmarking_results:
@@ -466,12 +466,12 @@ class PlotGenerator:
             legend=False,
         ).set(xlabel="Rank", ylabel=benchmark_generator.y_label)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=3, title="Run")
-        if title is None:
+        if benchmark_generator.plot_customisation.rank_plot_title is None:
             plt.title(
                 f"{benchmark_generator.prioritisation_type_string.capitalize()} Non-Cumulative Rank Stats"
             )
         else:
-            plt.title(title, loc="center", fontsize=15)
+            plt.title(benchmark_generator.plot_customisation.rank_plot_title, loc="center", fontsize=15)
         plt.ylim(0, 1)
         plt.savefig(
             f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
@@ -483,8 +483,6 @@ class PlotGenerator:
 def generate_plots(
     benchmarking_results: List[BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
-    plot_type: str,
-    title: str = None,
     generate_from_tsv: bool = False,
 ) -> None:
     """
@@ -495,20 +493,18 @@ def generate_plots(
     Args:
         benchmarking_results (list[BenchmarkRunResults]): List of benchmarking results for multiple runs.
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
-        plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
-        title (str, optional): Title for the generated plot. Defaults to None.
         generate_from_tsv (bool): Specify whether to generate plots from the TSV file. Defaults to False.
     """
     plot_generator = PlotGenerator()
     if not generate_from_tsv:
         plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
         plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
-    if plot_type == "bar_stacked":
-        plot_generator.generate_stacked_bar_plot(benchmarking_results, benchmark_generator, title)
-    elif plot_type == "bar_cumulative":
-        plot_generator.generate_cumulative_bar(benchmarking_results, benchmark_generator, title)
-    elif plot_type == "bar_non_cumulative":
-        plot_generator.generate_non_cumulative_bar(benchmarking_results, benchmark_generator, title)
+    if benchmark_generator.plot_customisation.plot_type == "bar_stacked":
+        plot_generator.generate_stacked_bar_plot(benchmarking_results, benchmark_generator)
+    elif benchmark_generator.plot_customisation.plot_type == "bar_cumulative":
+        plot_generator.generate_cumulative_bar(benchmarking_results, benchmark_generator)
+    elif benchmark_generator.plot_customisation.plot_type == "bar_non_cumulative":
+        plot_generator.generate_non_cumulative_bar(benchmarking_results, benchmark_generator)
 
 
 def generate_plots_from_benchmark_summary_tsv(
@@ -516,8 +512,6 @@ def generate_plots_from_benchmark_summary_tsv(
     gene_analysis: bool,
     variant_analysis: bool,
     disease_analysis: bool,
-    plot_type: str,
-    title: str,
 ):
     """
     Generate bar plot from summary benchmark results.
@@ -530,8 +524,6 @@ def generate_plots_from_benchmark_summary_tsv(
         gene_analysis (bool): Flag indicating whether to analyse gene prioritisation.
         variant_analysis (bool): Flag indicating whether to analyse variant prioritisation.
         disease_analysis (bool): Flag indicating whether to analyse disease prioritisation.
-        plot_type (str): Type of plot to be generated ("bar_stacked", "bar_cumulative", "bar_non_cumulative").
-        title (str): Title for the generated plot.
     Raises:
          ValueError: If an unsupported plot type is specified.
     """
@@ -547,4 +539,4 @@ def generate_plots_from_benchmark_summary_tsv(
         raise ValueError(
             "Specify one analysis type (gene_analysis, variant_analysis, or disease_analysis)"
         )
-    generate_plots(benchmarking_results, benchmark_generator, plot_type, title, True)
+    generate_plots(benchmarking_results, benchmark_generator, True)
