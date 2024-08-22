@@ -173,6 +173,7 @@ def assess_phenopacket_gene_prioritisation(
 
 
 def benchmark_gene_prioritisation(
+    benchmark_name: str,
     run: RunConfig,
     score_order: str,
     threshold: float,
@@ -180,6 +181,7 @@ def benchmark_gene_prioritisation(
     """
     Benchmark a directory based on gene prioritisation results.
      Args:
+         benchmark_name (str): Name of the benchmark.
          run (RunConfig): Run configuration.
          score_order (str): The order in which scores are arranged.
          threshold (float): Threshold for assessment.
@@ -188,7 +190,7 @@ def benchmark_gene_prioritisation(
          including ranks and rank statistics for the benchmarked directory.
     """
     gene_binary_classification_stats = BinaryClassificationStats()
-    db_connection = DBConnector()
+    db_connection = DBConnector(benchmark_name)
     db_connection.initialise()
     gene_benchmarker = AssessGenePrioritisation(
         db_connection,
@@ -207,6 +209,7 @@ def benchmark_gene_prioritisation(
     db_connection.close()
     gene_rank_stats = RankStats()
     gene_rank_stats.add_ranks(
+        benchmark_name=benchmark_name,
         table_name=f"{run.phenopacket_dir.parents[0].name}_gene",
         column_name=str(run.run_identifier),
     )

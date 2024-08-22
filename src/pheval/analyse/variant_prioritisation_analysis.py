@@ -195,6 +195,7 @@ def assess_phenopacket_variant_prioritisation(
 
 
 def benchmark_variant_prioritisation(
+    benchmark_name: str,
     run: RunConfig,
     score_order: str,
     threshold: float,
@@ -203,6 +204,7 @@ def benchmark_variant_prioritisation(
     Benchmark a directory based on variant prioritisation results.
 
     Args:
+        benchmark_name (str): Name of the benchmark.
         run (RunConfig): Run configuration.
         score_order (str): The order in which scores are arranged.
         threshold (float): Threshold for assessment.
@@ -212,7 +214,7 @@ def benchmark_variant_prioritisation(
         including ranks and rank statistics for the benchmarked directory.
     """
     variant_binary_classification_stats = BinaryClassificationStats()
-    db_connection = DBConnector()
+    db_connection = DBConnector(benchmark_name)
     variant_benchmarker = AssessVariantPrioritisation(
         db_connection,
         f"{run.phenopacket_dir.parents[0].name}" f"_variant",
@@ -229,6 +231,7 @@ def benchmark_variant_prioritisation(
         )
     variant_rank_stats = RankStats()
     variant_rank_stats.add_ranks(
+        benchmark_name=benchmark_name,
         table_name=f"{run.phenopacket_dir.parents[0].name}_variant",
         column_name=str(run.run_identifier),
     )

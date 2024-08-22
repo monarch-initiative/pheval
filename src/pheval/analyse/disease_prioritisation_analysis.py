@@ -189,6 +189,7 @@ def assess_phenopacket_disease_prioritisation(
 
 
 def benchmark_disease_prioritisation(
+    benchmark_name: str,
     run: RunConfig,
     score_order: str,
     threshold: float,
@@ -197,6 +198,7 @@ def benchmark_disease_prioritisation(
     Benchmark a directory based on disease prioritisation results.
 
     Args:
+        benchmark_name (str): Name of the benchmark.
         run (RunConfig): Run configuration.
         score_order (str): The order in which scores are arranged.
         threshold (float): Threshold for assessment.
@@ -206,7 +208,7 @@ def benchmark_disease_prioritisation(
         including ranks and rank statistics for the benchmarked directory.
     """
     disease_binary_classification_stats = BinaryClassificationStats()
-    db_connection = DBConnector()
+    db_connection = DBConnector(benchmark_name)
     db_connection.initialise()
     disease_benchmarker = AssessDiseasePrioritisation(
         db_connection,
@@ -225,6 +227,7 @@ def benchmark_disease_prioritisation(
     db_connection.close()
     disease_rank_stats = RankStats()
     disease_rank_stats.add_ranks(
+        benchmark_name=benchmark_name,
         table_name=f"{run.phenopacket_dir.parents[0].name}_disease",
         column_name=str(run.run_identifier),
     )
