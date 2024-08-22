@@ -359,7 +359,7 @@ def create_spiked_vcfs_command(
     help="Score threshold.",
     type=float,
 )
-def benchmark(
+def generate_benchmark_stats(
     run_data: Path,
     score_order: str,
     threshold: float,
