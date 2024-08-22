@@ -6,7 +6,7 @@ from typing import List
 import click
 
 from pheval.analyse.analysis import benchmark_run_comparisons
-from pheval.analyse.generate_plots import generate_plots_from_benchmark_summary_tsv
+from pheval.analyse.generate_plots import generate_plots_from_benchmark_summary_db
 from pheval.analyse.run_data_parser import parse_run_config
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
@@ -421,69 +421,27 @@ def semsim_to_exomiserdb_command(
 
 @click.command()
 @click.option(
-    "--benchmarking-tsv",
+    "--benchmark-db",
     "-b",
     required=True,
     metavar="PATH",
-    help="Path to benchmark summary tsv output by PhEval benchmark commands.",
+    help="Path to benchmark db output by PhEval benchmark commands.",
     type=Path,
 )
 @click.option(
-    "--gene-analysis/--no-gene-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for gene prioritisation",
-    cls=MutuallyExclusiveOptionError,
-    mutually_exclusive=["variant_analysis", "disease_analysis"],
-)
-@click.option(
-    "--variant-analysis/--no-variant-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for variant prioritisation",
-    cls=MutuallyExclusiveOptionError,
-    mutually_exclusive=["gene_analysis", "disease_analysis"],
-)
-@click.option(
-    "--disease-analysis/--no-disease-analysis",
-    default=False,
-    required=False,
-    type=bool,
-    show_default=True,
-    help="Specify analysis for disease prioritisation",
-    cls=MutuallyExclusiveOptionError,
-    mutually_exclusive=["gene_analysis", "variant_analysis"],
-)
-@click.option(
-    "--plot-type",
-    "-y",
-    default="bar_cumulative",
-    show_default=True,
-    type=click.Choice(["bar_stacked", "bar_cumulative", "bar_non_cumulative"]),
-    help="Bar chart type to output.",
-)
-@click.option(
-    "--title",
-    "-t",
-    type=str,
-    help='Title for plot, specify the title on the CLI enclosed with ""',
+    "--run-data",
+    "-r",
+    required=True,
+    metavar="PATH",
+    help="Path to yaml configuration file for benchmarking.",
+    type=Path,
 )
 def generate_stats_plot(
-    benchmarking_tsv: Path,
-    gene_analysis: bool,
-    variant_analysis: bool,
-    disease_analysis: bool,
-    plot_type: str,
-    title: str = None,
+    benchmark_db: Path,
+    run_data: Path,
 ):
-    """Generate bar plot from benchmark stats summary tsv."""
-    generate_plots_from_benchmark_summary_tsv(
-        benchmarking_tsv, gene_analysis, variant_analysis, disease_analysis, plot_type, title
-    )
+    """Generate bar plot from benchmark db."""
+    generate_plots_from_benchmark_summary_db(benchmark_db, run_data)
 
 
 @click.command("prepare-corpus")
