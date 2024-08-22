@@ -17,22 +17,22 @@ class DBConnector:
     Class to connect to database.
     """
 
-    def __init__(self):
-        """Initialize the DBConnector class."""
-        self.conn = self.get_connection()
+    def __init__(self, benchmark_name: str):
+        """Initialise the DBConnector class."""
+        self.conn = self.get_connection(f"{benchmark_name}.db")
 
     def initialise(self):
         """Initialise the duckdb connection."""
         self.add_contains_function()
 
     @staticmethod
-    def get_connection() -> DuckDBPyConnection:
+    def get_connection(db_name: str) -> DuckDBPyConnection:
         """
         Get a connection to the database.
         Returns:
             DuckDBPyConnection: Connection to the database.
         """
-        conn = duckdb.connect("analysis.db")
+        conn = duckdb.connect(db_name)
         return conn
 
     def add_column_integer_default(self, table_name: str, column: str, default: int = 0) -> None:
