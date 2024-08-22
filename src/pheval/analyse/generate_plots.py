@@ -48,9 +48,7 @@ class PlotGenerator:
         "#1b9e77",
     ]
 
-    def __init__(
-        self,
-    ):
+    def __init__(self, benchmark_name: str):
         """
         Initialise the PlotGenerator class.
         Note:
@@ -59,6 +57,7 @@ class PlotGenerator:
             Matplotlib settings are configured to remove the right and top axes spines
             for generated plots.
         """
+        self.benchmark_name = benchmark_name
         self.stats, self.mrr = [], []
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
@@ -171,7 +170,7 @@ class PlotGenerator:
             )
         plt.ylim(0, 100)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -189,7 +188,7 @@ class PlotGenerator:
         )
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_mrr.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_mrr.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -284,7 +283,7 @@ class PlotGenerator:
             )
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -393,7 +392,7 @@ class PlotGenerator:
             plt.title(benchmark_generator.plot_customisation.roc_curve_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -435,7 +434,7 @@ class PlotGenerator:
             plt.title(benchmark_generator.plot_customisation.precision_recall_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_precision_recall_curve.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg",
             format="svg",
             bbox_inches="tight",
         )
@@ -478,13 +477,14 @@ class PlotGenerator:
             )
         plt.ylim(0, 1)
         plt.savefig(
-            f"{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
+            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_rank_stats.svg",
             format="svg",
             bbox_inches="tight",
         )
 
 
 def generate_plots(
+    benchmark_name: str,
     benchmarking_results: List[BenchmarkRunResults],
     benchmark_generator: BenchmarkRunOutputGenerator,
     generate_from_db: bool = False,
@@ -499,7 +499,7 @@ def generate_plots(
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
         generate_from_db (bool): Specify whether to generate plots from the db file. Defaults to False.
     """
-    plot_generator = PlotGenerator()
+    plot_generator = PlotGenerator(benchmark_name)
     if not generate_from_db:
         plot_generator.generate_roc_curve(benchmarking_results, benchmark_generator)
         plot_generator.generate_precision_recall(benchmarking_results, benchmark_generator)
@@ -529,18 +529,21 @@ def generate_plots_from_benchmark_summary_db(
     config = parse_run_config(run_data)
     if benchmark_stats_summary.gene_results:
         generate_plots(
+            config.benchmark_name,
             benchmark_stats_summary.gene_results,
             GeneBenchmarkRunOutputGenerator(config.plot_customisation.gene_plots),
             True,
         )
     if benchmark_stats_summary.variant_results:
         generate_plots(
+            config.benchmark_name,
             benchmark_stats_summary.variant_results,
             VariantBenchmarkRunOutputGenerator(config.plot_customisation.variant_plots),
             True,
         )
     elif benchmark_stats_summary.disease_results:
         generate_plots(
+            config.benchmark_name,
             benchmark_stats_summary.disease_results,
             DiseaseBenchmarkRunOutputGenerator(config.plot_customisation.disease_plots),
             True,
