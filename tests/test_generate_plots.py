@@ -10,9 +10,9 @@ from pheval.analyse.rank_stats import RankStats
 
 class TestPlotGenerator(unittest.TestCase):
     def setUp(self) -> None:
-        self.gene_plot_generator = PlotGenerator()
-        self.variant_plot_generator = PlotGenerator()
-        self.disease_plot_generator = PlotGenerator()
+        self.gene_plot_generator = PlotGenerator("test")
+        self.variant_plot_generator = PlotGenerator("test")
+        self.disease_plot_generator = PlotGenerator("test")
         self.benchmarking_result = BenchmarkRunResults(
             benchmark_name="tool_corpus",
             rank_stats=RankStats(
