@@ -49,7 +49,7 @@ standardised outputs from the runner phase.
 
 ## Customising PhEval Pipeline Experiments 
 
-The phEval pipeline is orchestrated using a Makefile strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.
+The phEval pipeline is orchestrated using a Makefile Jinja template strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.
 
 In the resources folder are the following files responsible for Makefile generation:
 
@@ -59,9 +59,11 @@ In the resources folder are the following files responsible for Makefile generat
 ┣ 📜generatemakefile.sh  
 ┗ 📜pheval-config.yaml  
 
-Let's start describing `pheval-config.yaml` structure.
+Let's begin by describing the `pheval-config.yaml` file and its structure.
 
 ### PhEval Configuration File
+
+This file is responsible define the experiment settings and will be used to generate the Makefile using a Jinja template which consumes this YAML configuration file.
 
 #### Directories Section
 
@@ -147,4 +149,16 @@ runs:
     corpusvariant: small_version
     version: 13.3.0
     configuration: exomiser-semsim-ingest-13.3.0
+```
+
+### Generating new Makefile based on PhEval configuration file
+
+📦resources  
+┣ 📜generatemakefile.sh  
+┗ 📜pheval-config.yaml  
+
+To generate a new Makefile, simply execute the `generatemakefile.sh` script, which encapsulates the Makefile rendering process dynamically filling it using the `pheval-config.yaml` configuration file.
+
+```bash
+./resources/generatemakefile.sh
 ```
