@@ -4,7 +4,7 @@
 ## TLDR
 
 
-The Pipeline presented on PhEval preprint (https://www.biorxiv.org/content/10.1101/2024.06.13.598672v1) was moved to a new repository - Monarch PhEval - https://github.com/monarch-initiative/monarch_pheval.
+The Pipeline presented on [PhEval preprint](https://www.biorxiv.org/content/10.1101/2024.06.13.598672v1) was moved to a new repository - [Monarch PhEval](https://github.com/monarch-initiative/monarch_pheval).
 
 **NOTE: The default Monarch PhEval pipeline, as proposed in the paper preprint, requires approximately 1 TB of disk space. Learn how to modify the pipeline configuration [here](#customising-pheval-pipeline-experiments) to customize the experiments.**
 
@@ -38,6 +38,7 @@ The data preparation phase, checks the completeness of the disease, gene and var
 ### 2. Runner Phase
 
 The runner phase is structured into three stages: prepare, run, and post-process.
+
  - The prepare step plays a crucial role in adapting the input data to meet the specific requirements of the tool. 
  - In the run step, the VGPA is executed, applying the selected algorithm to the prepared data and generating the tool-specific outputs. Within the run stage, an essential task is the generation of input command files for the algorithm. These files serve as collections of individual commands, each tailored to run the targeted VGPA on specific samples. These commands are configured with the appropriate inputs, outputs and specific configuration settings, allowing for the automated and efficient processing of large corpora. 
  - Finally, the post-processing step takes care of harmonising the tool-specific outputs into standardised PhEval TSV format, ensuring uniformity and ease of analysis of results from all VGPAs. In this context, the tool-specific output is condensed to provide only two essential elements, the entity of interest, which can either be a variant, gene, or disease, and its corresponding score. PhEval then assumes the responsibility of subsequent standardisation processes. This involves the reranking of the results in a uniform manner, ensuring that fair and comprehensive comparisons can be made between tools.
