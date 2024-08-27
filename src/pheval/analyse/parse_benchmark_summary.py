@@ -4,9 +4,9 @@ from typing import List
 
 import pandas as pd
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
-from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.rank_stats import RankStats
 
 
@@ -56,7 +56,7 @@ def parse_benchmark_db(benchmarking_db: Path) -> BenchmarkSummaryResults:
     Returns:
         BenchmarkSummaryResults: A dataclass containing all benchmarking results contained in the db.
     """
-    db_connector = DBConnector(benchmarking_db)
+    db_connector = BenchmarkDBManager(benchmarking_db)
     gene_benchmarking_results, disease_benchmarking_results, variant_benchmarking_results = (
         None,
         None,

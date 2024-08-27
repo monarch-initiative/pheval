@@ -1,13 +1,13 @@
 from pathlib import Path
 from typing import List
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmark_generator import (
     BenchmarkRunOutputGenerator,
     DiseaseBenchmarkRunOutputGenerator,
     GeneBenchmarkRunOutputGenerator,
     VariantBenchmarkRunOutputGenerator,
 )
-from pheval.analyse.get_connection import DBConnector
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import (
     GenomicVariant,
@@ -72,7 +72,7 @@ class CorpusParser:
             phenopacket_dir (Path): Path to the Phenopacket directory.
         """
         self.phenopacket_dir = phenopacket_dir
-        self.conn = DBConnector(benchmark_name).conn
+        self.conn = BenchmarkDBManager(benchmark_name).conn
         self.table_name = phenopacket_dir.parents[0].name
 
     def _create_gene_table(self) -> None:

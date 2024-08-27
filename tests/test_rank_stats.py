@@ -41,7 +41,7 @@ class TestRankStats(unittest.TestCase):
         )
 
     @patch(
-        "pheval.analyse.get_connection.DBConnector.get_connection",
+        "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
         return_value=duckdb.connect(":memory:"),
     )
     def test_add_ranks(self, mock_get_connection):

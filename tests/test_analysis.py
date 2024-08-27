@@ -5,10 +5,10 @@ from unittest.mock import patch
 
 import duckdb
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
 from pheval.analyse.disease_prioritisation_analysis import AssessDiseasePrioritisation
 from pheval.analyse.gene_prioritisation_analysis import AssessGenePrioritisation
-from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.variant_prioritisation_analysis import AssessVariantPrioritisation
 from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
@@ -47,12 +47,12 @@ class TestAssessGenePrioritisation(unittest.TestCase):
 
     def setUp(self):
         patcher = patch(
-            "pheval.analyse.get_connection.DBConnector.get_connection",
+            "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
             return_value=self.db_connection,
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector("null")
+        self.db_connector = BenchmarkDBManager(None)
         self.assess_gene_prioritisation = AssessGenePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_gene",
@@ -187,12 +187,12 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
 
     def setUp(self):
         patcher = patch(
-            "pheval.analyse.get_connection.DBConnector.get_connection",
+            "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
             return_value=self.db_connection,
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector("None")
+        self.db_connector = BenchmarkDBManager("None")
         self.assess_variant_prioritisation = AssessVariantPrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_variant",
@@ -356,12 +356,12 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
 
     def setUp(self):
         patcher = patch(
-            "pheval.analyse.get_connection.DBConnector.get_connection",
+            "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
             return_value=self.db_connection,
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector("None")
+        self.db_connector = BenchmarkDBManager("None")
         self.assess_disease_prioritisation = AssessDiseasePrioritisation(
             db_connection=self.db_connector,
             table_name="test_table_disease",

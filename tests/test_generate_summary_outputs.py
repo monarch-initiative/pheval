@@ -3,8 +3,8 @@ from unittest.mock import patch
 
 import duckdb
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.generate_summary_outputs import create_comparison_table, get_new_table_name
-from pheval.analyse.get_connection import DBConnector
 
 
 class TestGetNewTableName(unittest.TestCase):
@@ -38,12 +38,12 @@ class TestCreateComparisonTable(unittest.TestCase):
 
     def setUp(self):
         patcher = patch(
-            "pheval.analyse.get_connection.DBConnector.get_connection",
+            "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
             return_value=self.db_connection,
         )
         self.mock_get_connection = patcher.start()
         self.addCleanup(patcher.stop)
-        self.db_connector = DBConnector("None")
+        self.db_connector = BenchmarkDBManager("None")
 
     def test_create_comparison_table(self):
         create_comparison_table(

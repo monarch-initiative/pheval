@@ -1,8 +1,8 @@
 from pathlib import Path
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
-from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import RunConfig
 from pheval.post_processing.post_processing import RankedPhEvalGeneResult
@@ -14,7 +14,7 @@ class AssessGenePrioritisation:
 
     def __init__(
         self,
-        db_connection: DBConnector,
+        db_connection: BenchmarkDBManager,
         table_name: str,
         column: str,
         threshold: float,
@@ -24,7 +24,7 @@ class AssessGenePrioritisation:
         Initialise AssessGenePrioritisation class.
 
         Args:
-            db_connection (DBConnector): Database connection
+            db_connection (BenchmarkDBManager): Database connection
             table_name (str): Table name
             column (Path): Column name
             threshold (float): Threshold for scores
@@ -190,7 +190,7 @@ def benchmark_gene_prioritisation(
          including ranks and rank statistics for the benchmarked directory.
     """
     gene_binary_classification_stats = BinaryClassificationStats()
-    db_connection = DBConnector(benchmark_name)
+    db_connection = BenchmarkDBManager(benchmark_name)
     db_connection.initialise()
     gene_benchmarker = AssessGenePrioritisation(
         db_connection,

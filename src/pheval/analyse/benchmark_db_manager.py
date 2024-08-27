@@ -12,13 +12,13 @@ from pheval.post_processing.post_processing import (
 )
 
 
-class DBConnector:
+class BenchmarkDBManager:
     """
     Class to connect to database.
     """
 
     def __init__(self, benchmark_name: str):
-        """Initialise the DBConnector class."""
+        """Initialise the BenchmarkDBManager class."""
         self.conn = self.get_connection(
             f"{benchmark_name}" if str(benchmark_name).endswith(".db") else f"{benchmark_name}.db"
         )
@@ -121,6 +121,13 @@ class DBConnector:
         return [dataclass(**row) for row in result]
 
     def check_table_exists(self, table_name: str) -> bool:
+        """
+        Check if a table exists in the connected DuckDB database.
+        Args:
+            table_name (str): The name of the table to check for existence.
+        Returns:
+            bool: Returns `True` if the table exists in the database, `False` otherwise.
+        """
         result = self.conn.execute(
             f"SELECT * FROM information_schema.tables WHERE table_name = '{table_name}'"
         ).fetchall()

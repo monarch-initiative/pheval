@@ -1,10 +1,10 @@
 import itertools
 from typing import List
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.generate_plots import generate_plots
-from pheval.analyse.get_connection import DBConnector
 from pheval.constants import RANK_COMPARISON_SUFFIX
 
 
@@ -25,7 +25,7 @@ def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_pref
 
 def create_comparison_table(
     comparison_table_name: str,
-    connector: DBConnector,
+    connector: BenchmarkDBManager,
     drop_columns: List[str],
     run_identifier_1: str,
     run_identifier_2: str,
@@ -35,7 +35,7 @@ def create_comparison_table(
     Create rank comparison tables.
     Args:
         comparison_table_name (str): Name of the comparison table to create.
-        connector (DBConnector): DBConnector instance.
+        connector (BenchmarkDBManager): DBConnector instance.
         drop_columns (List[str]): List of columns to drop.
         run_identifier_1 (str): The first run identifier.
         run_identifier_2 (str): The second run identifier.
@@ -83,7 +83,7 @@ def generate_benchmark_comparison_output(
         table_name (str): The name of the table where ranks are stored.
     """
     output_prefix = benchmark_generator.prioritisation_type_string
-    connector = DBConnector(benchmark_name)
+    connector = BenchmarkDBManager(benchmark_name)
     for pair in itertools.combinations(
         [str(result.benchmark_name) for result in benchmarking_results], 2
     ):
@@ -102,6 +102,7 @@ def generate_benchmark_comparison_output(
             table_name,
         )
     generate_plots(
+        benchmark_name,
         benchmarking_results,
         benchmark_generator,
     )

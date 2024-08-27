@@ -6,8 +6,8 @@ import numpy as np
 from duckdb import DuckDBPyConnection
 from sklearn.metrics import ndcg_score
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
-from pheval.analyse.get_connection import DBConnector
 
 
 @dataclass
@@ -43,7 +43,7 @@ class RankStats:
             table_name (str): Name of the table to add ranks from.
             column_name (str): Name of the column to add ranks from.:
         """
-        conn = DBConnector(benchmark_name).conn
+        conn = BenchmarkDBManager(benchmark_name).conn
         self.top = self._execute_count_query(conn, table_name, column_name, " = 1")
         self.top3 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 3")
         self.top5 = self._execute_count_query(conn, table_name, column_name, " BETWEEN 1 AND 5")
@@ -336,7 +336,7 @@ class RankStatsWriter:
 
         self.table_name = table_name
         self.benchmark_name = benchmark_name
-        conn = DBConnector(benchmark_name).conn
+        conn = BenchmarkDBManager(benchmark_name).conn
         conn.execute(
             f'CREATE TABLE IF NOT EXISTS "{self.table_name}" ('
             f"results_directory_path VARCHAR,"
@@ -397,7 +397,7 @@ class RankStatsWriter:
             rank_stats (RankStats): RankStats object for the run.
             binary_classification (BinaryClassificationStats): BinaryClassificationStats object for the run.
         """
-        conn = DBConnector(self.benchmark_name).conn
+        conn = BenchmarkDBManager(self.benchmark_name).conn
         conn.execute(
             f' INSERT INTO "{self.table_name}" VALUES ( '
             f"'{run_identifier}',"

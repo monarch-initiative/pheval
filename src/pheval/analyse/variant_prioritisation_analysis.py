@@ -1,8 +1,8 @@
 from pathlib import Path
 
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
-from pheval.analyse.get_connection import DBConnector
 from pheval.analyse.rank_stats import RankStats
 from pheval.analyse.run_data_parser import RunConfig
 from pheval.post_processing.post_processing import RankedPhEvalVariantResult
@@ -15,7 +15,7 @@ class AssessVariantPrioritisation:
 
     def __init__(
         self,
-        db_connection: DBConnector,
+        db_connection: BenchmarkDBManager,
         table_name: str,
         column: str,
         threshold: float,
@@ -25,7 +25,7 @@ class AssessVariantPrioritisation:
         Initialise AssessVariantPrioritisation class
 
         Args:
-            db_connection (DBConnector): DB connection.
+            db_connection (BenchmarkDBManager): DB connection.
             table_name (str): Table name.
             column (str): Column name.
             threshold (float): Threshold for scores
@@ -214,7 +214,7 @@ def benchmark_variant_prioritisation(
         including ranks and rank statistics for the benchmarked directory.
     """
     variant_binary_classification_stats = BinaryClassificationStats()
-    db_connection = DBConnector(benchmark_name)
+    db_connection = BenchmarkDBManager(benchmark_name)
     variant_benchmarker = AssessVariantPrioritisation(
         db_connection,
         f"{run.phenopacket_dir.parents[0].name}" f"_variant",
