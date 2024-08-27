@@ -334,41 +334,19 @@ def create_spiked_vcfs_command(
 
 @click.command()
 @click.option(
-    "--run-data",
+    "--run-yaml",
     "-r",
     required=True,
     metavar="PATH",
     help="Path to yaml configuration file for benchmarking.",
     type=Path,
 )
-@click.option(
-    "--score-order",
-    "-so",
-    required=True,
-    help="Ordering of results for ranking.",
-    type=click.Choice(["ascending", "descending"]),
-    default="descending",
-    show_default=True,
-)
-@click.option(
-    "--threshold",
-    "-t",
-    metavar="<float>",
-    default=float(0.0),
-    required=False,
-    help="Score threshold.",
-    type=float,
-)
 def generate_benchmark_stats(
-    run_data: Path,
-    score_order: str,
-    threshold: float,
+    run_yaml: Path,
 ):
-    """Benchmark the gene/variant/disease prioritisation performance for two runs."""
+    """Benchmark the gene/variant/disease prioritisation performance for runs."""
     benchmark_run_comparisons(
-        parse_run_config(run_data),
-        score_order,
-        threshold,
+        parse_run_config(run_yaml),
     )
 
 
