@@ -1,11 +1,19 @@
 # PhEval Pipeline
 
-### 1. Clone [PhEval](https://github.com/monarch-initiative/pheval)
+
+## TLDR
+
+
+The Pipeline presented on PhEval preprint (https://www.biorxiv.org/content/10.1101/2024.06.13.598672v1) was moved to a new repository - Monarch PhEval - https://github.com/monarch-initiative/monarch_pheval.
+
+**NOTE: The default Monarch PhEval pipeline, as proposed in the paper preprint, requires approximately 1 TB of disk space. Learn how to modify the pipeline configuration in the later sections of this documentation to customize the experiment.**
+
+### 1. Clone [Monarch PhEval](https://github.com/monarch-initiative/monarch_pheval)
   ```bash
-  git clone https://github.com/monarch-initiative/pheval.git
+  git clone https://github.com/monarch-initiative/monarch_pheval.git
   ```
 
-### 2. Installing PhEval dependencies
+### 2. Installing PhEval Pipeline dependencies
    Enter in the cloned folder and enter the following commands:
 
 ```bash
@@ -13,235 +21,130 @@ poetry shell
 poetry install
 ```
 
-### 3. Generate custom Makefile
-You must have Jinja2 installed, if you don't follow the steps [here](#installing-jinja-template)
+### 3. Executing Pipeline
 
-In resources folder are the following files responsible for makefile generation:
-
-📦resources  
- ┣ 📜Makefile.j2  
- ┣ 📜custom.Makefile  
- ┣ 📜generatemakefile.sh  
- ┗ 📜pheval-config.yaml  
-
-You must edit the `pheval-config.yaml` file setting the directory where you extracted exomiser and phenotype data. An example could be found [here](#pheval-configuration-file).
-After setting the pheval-config.yaml file
-
----
-
-```mermaid
-flowchart TD
-    inputs["prepare-inputs"]
-    sr1["Setting up Runners"]
-    corpora["prepare-corpora"]
-    scrambling["Scrambing Process"]
-    r1["run"]
-    inputs ===  sr1
-    sr1 === corpora
-    corpora === scrambling
-    scrambling === r1
+```bash
+make pheval
 ```
 
----
+## Pipeline Description
 
-## Data Flow
+The Pipeline is divided in three main steps
 
-```mermaid
-flowchart LR
-    vcf[("Phenopackets Original Data")]
-    pheno[("Scrambled Phenopackets")]
-    result["Phenotype Result"]
-    vcf -- prepare-corpora -->  pheno
-    pheno -- scramble factor e.g 0.5 -->  result
-```
+### 1. Data Preparation Phase
 
+The data preparation phase, checks the completeness of the disease, gene and variant input data and optionally preparing simulated VCF files if required, gives the user the ability to randomise phenotypic profiles using the PhEval corpus scramble command utility, allowing for the assessment of how well VGPAs handle noise and less specific phenotypic profiles when making predict.
 
-## Jinja Template PhEval Makefile Generator Requirements
+### 2. Runner Phase
 
-To generate a PhEval Makefile we use the [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) template engine.
+The runner phase is structured into three stages: prepare, run, and post-process.
+ - The prepare step plays a crucial role in adapting the input data to meet the specific requirements of the tool. 
+ - In the run step, the VGPA is executed, applying the selected algorithm to the prepared data and generating the tool-specific outputs. Within the run stage, an essential task is the generation of input command files for the algorithm. These files serve as collections of individual commands, each tailored to run the targeted VGPA on specific samples. These commands are configured with the appropriate inputs, outputs and specific configuration settings, allowing for the automated and efficient processing of large corpora. 
+ - Finally, the post-processing step takes care of harmonising the tool-specific outputs into standardised PhEval TSV format, ensuring uniformity and ease of analysis of results from all VGPAs. In this context, the tool-specific output is condensed to provide only two essential elements, the entity of interest, which can either be a variant, gene, or disease, and its corresponding score. PhEval then assumes the responsibility of subsequent standardisation processes. This involves the reranking of the results in a uniform manner, ensuring that fair and comprehensive comparisons can be made between tools.
 
-### Installing Jinja Template
+### 3. Analysis Phase
 
-- Linux (Ubuntu): `sudo snap install j2`
+In the analysis phase, PhEval generates comprehensive statistical reports based on
+standardised outputs from the runner phase.
 
-- Mac OS:
+## Customising PhEval Pipeline Experiments 
 
----
-## PhEval Makefile Template (.j2 file)
+The phEval pipeline is orchestrated using a Makefile strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.
 
-📦resources  
- ┣ 📜**Makefile.j2**  
-
-
-*custom.Makefile* is the template that will be generated on the fly based on the *pheval-config.yaml*. Each of these configurations is filled using a syntax like this: ```{{ config.tool }}```. The value between the curly brackets is replaced by the corresponding configuration in the configuration file.
-
----
-
-## PhEval custom.Makefile
+In the resources folder are the following files responsible for Makefile generation:
 
 📦resources  
- ┣ 📜**custom.Makefile**  
+┣ 📜Makefile.j2  
+┣ 📜custom.Makefile  
+┣ 📜generatemakefile.sh  
+┗ 📜pheval-config.yaml  
 
----
-## PhEval generatemakefile.sh
+Let's start describing `pheval-config.yaml` structure.
 
-📦resources  
- ┣ **📜generatemakefile.sh**  
+### PhEval Configuration File
 
+#### Directories Section
 
-*generatemakefile.sh* is only a shortcut for Makefile rendering using the configuration file e.g.
+The `data` and `tmp` properties are mandatory and must be specified in this section.
 
-    bash ./resources/generatemakefile.sh
+- `data` property refers to the folder location where the necessary phenotypic data for the pipeline will be downloaded and extracted.
+- `tmp` property points to the folder where all temporary intermediate files will be generated.
 
-## PhEval Configuration File
-
-In resources folder, there is a file named *pheval-config.yaml*, this file is responsible for storing the PhEval Makefile generation.
-
-📦resources  
- ┗ **📜pheval-config.yaml**  
-
----
-
-### Directories Section
 ```yaml
 directories:
+  data: data
   tmp: data/tmp
-  h2jar: ./h2-1.4.199.jar
-  phen2gene: ./Phen2Gene
-  exomiser: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
-  phenotype: /home/data/phenotype
-  workspace: /tmp/pheval
 ```
 
----
-
-### Configs Section
-```yaml
-configs:
-  - tool: phen2gene
-    version: 1.2.3
-    configuration: default
-  - tool: exomiser
-    version: 13.2.0
-    configuration: default
-    exomiser_db: semsim1
-```
-
-This section is responsible for setting up the configuration folder.
-All software declared in the configs section will be linked in this folder.
-In the configuration above, for example, we have one configuration for phen2gene and one for exomiser. In the [Directories Section](#directories-section), these two configurations must have one corresponding property set up.
-PhEval pipeline invokes the *prepare-inputs* goal, and in the preceding example, a configuration folder structure will be built that looks like this:
-
-📦configurations  
- ┣ 📂exomiser-13.2.0-default  
- ┗ 📂phen2gene-1.2.3-default  
+#### Corpora Section
 
 
-Each of these folders is a symbolic link that points to the corresponding software folder indicated in the [Directories Section](#directories-section)
+The `corpora` section specifies which corpus will be used in the experiment. In this example is defined [LIRICAL](https://pubmed.ncbi.nlm.nih.gov/32755546/) corpus, A small comparison corpus created for benchmarking the [LIRICAL](https://pubmed.ncbi.nlm.nih.gov/32755546/) system which contains 385 case reports.
 
----
+The user needs to specify corpus id and it must be equals to the corpora folder structure, e.g.
 
-### Corpora Section
+📦corpora  
+ ┃ ┣ 📂lirical  
+ ┃ ┣ ┣ 📂small_version  
+ ┃ ┣ ┣ ┣ 📂phenopackets  
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT1.json  
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT2.json  
+ ┃ ┣ ┣ ┣ 📂vcf  
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT1.vcf.gz  
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT2.vcf.gz  
+ ┃ ┣ ┣ ┣ 📜corpus.yml  
+ ┃ ┣ ┣ ┣ 📜template_exome_hg19.vcf.gz  
+
 ```yaml
 corpora:
   - id: lirical
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
-  - id: phen2gene
-    scrambled:
-      - factor: 0.2
-      - factor: 0.9
-    custom_variants:
-      - id: no_phenotype
+    variant: small_version
 ```
 
-In this corpora section we can set up different experiments for corpus scrambling. Currently, PhEval provides corpora data from lirical, phen2gene, small_test and structural_variants
+#### Configs Section
 
 
-📦corpora  
- ┣ 📂lirical  
- ┣ 📂phen2gene  
- ┣ 📂small_test  
- ┗ 📂structural_variants  
+The `configs` section holds all custom configurations for the different VGPAs.
+It must declare:
+- tool: VGPA tool name.
+- id: it's an arbiratry unique identifier that will be used in the `runs` section
+- version: VGPA tool version
 
-
-The scramble property defines the magnitude of the scrambling factor during Phenopackets and VCF variants spiking process. Using the configuration in the example above, a corpora structure will be created like this:
-
-📦corpora  
- ┣ 📂lirical  
- ┃ ┗ 📂default  
- ┃ ┗ 📂scrambled-0.5  
- ┃ ┗ 📂scrambled-0.7  
- ┣ 📂phen2gene  
- ┃ ┗ 📂default  
- ┃ ┗ 📂scrambled-0.2  
- ┃ ┗ 📂scrambled-0.9  
-
-
----
-
-### Runs Section
 ```yaml
-runs:
-  - tool: exomiser
-    configuration: default
-    corpus: lirical
-    corpusvariant: scrambled-0.5
-    version: 13.2.0
+configs:
   - tool: phen2gene
-    configuration: default
-    corpus: phen2gene
-    corpusvariant: scrambled-0.2
+    id: phen2gene-1.2.3
     version: 1.2.3
 ```
 
-## Phen2Gen Specific Configuration
-
-
-The input directory `config.yaml` should be formatted like the example below and must be placed in `phen2gene: /pathtoPhen2Gene/Phen2Gene` declared in `pheval-config.yaml` file.
+`configs` section can also deal with special VGPA data preparation steps, for example,  Semantic Similarity ingestions into Exomiser phenotypic database e.g.
 
 ```yaml
-tool: phen2gene
-tool_version: 1.2.3
-phenotype_only: True
-tool_specific_configuration_options:
-  environment: local
-  phen2gene_python_executable: phen2gene.py
-  post_process:
-    score_order: descending
+  configs:
+  - tool: exomiser
+    id: exomiser-semsim-ingest-13.3.0
+    version: 13.3.0
+    phenotype: 2309
+    preprocessing:
+      - phenio-monarch-hp-hp.0.4.semsimian.sql
+```    
+`phenotype` property describes the Exomiser phenotype database version and the `preprocessing` section will execute SQL scripts into that phenotypic database.
+
+
+#### Runs Section
+
+The "runs" section will integrate all previously described sections and pass them to pheval VGPA for concrete execution.
+
+- `tool` property specifies which runner will be called
+- `corpus` and `corpusvariant` must match properties declared on the [corpora section](#corpora-section).
+- `version` should correspond to the tool version
+- `configuration` must match the id described on the [configuration section](#configs-section).
+
+```yaml
+runs:
+  - tool: exomiser
+    corpus: lirical
+    corpusvariant: small_version
+    version: 13.3.0
+    configuration: exomiser-semsim-ingest-13.3.0
 ```
-
-## Makefile Goals
-
-### make pheval
-
-this runs the entire pipeline including corpus preparation and pheval run
-
-
-	$(MAKE) prepare-inputs
-	$(MAKE) prepare-corpora
-	$(MAKE) pheval-run
-
-
-### make semsim
-
-generate all configured similarity profiles
-
-### make semsim-shuffle
-
-generate new ontology terms to the semsim process
-
-### make semsim-scramble
-
-scramble semsim profile
-
-### make semsim-convert
-
-convert all semsim profiles into exomiser SQL format
-
-### make semsim-ingest
-
-takes all the configured semsim profiles and loads them into the exomiser databases
