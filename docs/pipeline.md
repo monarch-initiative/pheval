@@ -6,7 +6,7 @@
 
 The Pipeline presented on PhEval preprint (https://www.biorxiv.org/content/10.1101/2024.06.13.598672v1) was moved to a new repository - Monarch PhEval - https://github.com/monarch-initiative/monarch_pheval.
 
-**NOTE: The default Monarch PhEval pipeline, as proposed in the paper preprint, requires approximately 1 TB of disk space. Learn how to modify the pipeline configuration in the later sections of this documentation to customize the experiment.**
+**NOTE: The default Monarch PhEval pipeline, as proposed in the paper preprint, requires approximately 1 TB of disk space. Learn how to modify the pipeline configuration [here](#customising-pheval-pipeline-experiments) to customize the experiments.**
 
 ### 1. Clone [Monarch PhEval](https://github.com/monarch-initiative/monarch_pheval)
   ```bash
