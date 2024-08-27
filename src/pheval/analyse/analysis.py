@@ -12,8 +12,6 @@ from pheval.analyse.run_data_parser import Config
 
 def _run_benchmark_comparison(
     run_config: Config,
-    score_order: str,
-    threshold: float,
     benchmark_generator: BenchmarkRunOutputGenerator,
 ) -> None:
     """
@@ -22,8 +20,6 @@ def _run_benchmark_comparison(
     Args:
         run_config (List[TrackInputOutputDirectories]): List of input and output directories
             for tracking results across multiple directories.
-        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
-        threshold (float): The threshold for benchmark evaluation.
         benchmark_generator (BenchmarkRunOutputGenerator): Generator for benchmark run output.
     """
     stats_writer = RankStatsWriter(
@@ -39,7 +35,7 @@ def _run_benchmark_comparison(
     benchmarking_results = []
     for run in run_config.runs:
         benchmark_result = benchmark_generator.generate_benchmark_run_results(
-            run_config.benchmark_name, run, score_order, threshold
+            run_config.benchmark_name, run, run.score_order, run.threshold
         )
         stats_writer.add_statistics_entry(
             run.run_identifier,
@@ -63,16 +59,12 @@ def _run_benchmark_comparison(
 
 def benchmark_run_comparisons(
     run_config: Config,
-    score_order: str,
-    threshold: float,
 ) -> None:
     """
     Benchmark prioritisation performance for several runs.
 
     Args:
         run_config (Config): Run configurations.
-        score_order (str): The order in which scores are arranged, this can be either ascending or descending.
-        threshold (float): The threshold for benchmark evaluation.
     """
     gene_analysis_runs = Config(
         benchmark_name=run_config.benchmark_name,
@@ -92,8 +84,6 @@ def benchmark_run_comparisons(
     if gene_analysis_runs.runs:
         _run_benchmark_comparison(
             run_config=gene_analysis_runs,
-            score_order=score_order,
-            threshold=threshold,
             benchmark_generator=GeneBenchmarkRunOutputGenerator(
                 plot_customisation=gene_analysis_runs.plot_customisation.gene_plots
             ),
@@ -101,8 +91,6 @@ def benchmark_run_comparisons(
     if variant_analysis_runs.runs:
         _run_benchmark_comparison(
             run_config=variant_analysis_runs,
-            score_order=score_order,
-            threshold=threshold,
             benchmark_generator=VariantBenchmarkRunOutputGenerator(
                 plot_customisation=variant_analysis_runs.plot_customisation.variant_plots
             ),
@@ -110,8 +98,6 @@ def benchmark_run_comparisons(
     if disease_analysis_runs.runs:
         _run_benchmark_comparison(
             run_config=disease_analysis_runs,
-            score_order=score_order,
-            threshold=threshold,
             benchmark_generator=DiseaseBenchmarkRunOutputGenerator(
                 plot_customisation=disease_analysis_runs.plot_customisation.disease_plots
             ),
