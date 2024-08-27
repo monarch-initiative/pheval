@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import List, Optional
 
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, root_validator
 
 
 class RunConfig(BaseModel):
@@ -16,6 +16,8 @@ class RunConfig(BaseModel):
         gene_analysis (bool): Whether or not to benchmark gene analysis results.
         variant_analysis (bool): Whether or not to benchmark variant analysis results.
         disease_analysis (bool): Whether or not to benchmark disease analysis results.
+        threshold (Optional[float]): The threshold to consider for benchmarking.
+        score_order (Optional[str]): The order of scores to consider for benchmarking, either ascending or descending.
     """
 
     run_identifier: str
@@ -24,6 +26,28 @@ class RunConfig(BaseModel):
     gene_analysis: bool
     variant_analysis: bool
     disease_analysis: bool
+    threshold: Optional[float]
+    score_order: Optional[str]
+
+    @classmethod
+    @root_validator(pre=True)
+    def handle_blank_fields(cls, values: dict) -> dict:
+        """
+        Root validator to handle fields that may be explicitly set to None.
+
+        This method checks if 'threshold' and 'score_order' are None and assigns default values if so.
+
+        Args:
+            values (dict): The input values provided to the model.
+
+        Returns:
+            dict: The updated values with defaults applied where necessary.
+        """
+        if values.get("threshold") is None:
+            values["threshold"] = 0
+        if values.get("score_order") is None:
+            values["score_order"] = "descending"
+        return values
 
 
 class SinglePlotCustomisation(BaseModel):
@@ -37,10 +61,28 @@ class SinglePlotCustomisation(BaseModel):
         precision_recall_title (str): The title for the precision-recall plot.
     """
 
-    plot_type: Optional[str]
+    plot_type: Optional[str] = "bar_cumulative"
     rank_plot_title: Optional[str]
     roc_curve_title: Optional[str]
     precision_recall_title: Optional[str]
+
+    @classmethod
+    @root_validator(pre=True)
+    def handle_blank_fields(cls, values: dict) -> dict:
+        """
+        Root validator to handle fields that may be explicitly set to None.
+
+        This method checks if 'plot_type' is None and assigns default value if so.
+
+        Args:
+            values (dict): The input values provided to the model.
+
+        Returns:
+            dict: The updated values with defaults applied where necessary.
+        """
+        if values.get("plot_type") is None:
+            values["plot_type"] = "bar_cumulative"
+        return values
 
 
 class PlotCustomisation(BaseModel):
@@ -69,15 +111,15 @@ class Config(BaseModel):
     plot_customisation: PlotCustomisation
 
 
-def parse_run_config(run_data_path: Path) -> Config:
+def parse_run_config(run_config: Path) -> Config:
     """
     Parse a run configuration yaml file.
     Args:
-        run_data_path (Path): The path to the run data yaml configuration.
+        run_config (Path): The path to the run data yaml configuration.
     Returns:
         Config: The parsed run configurations.
     """
-    with open(run_data_path, "r") as f:
+    with open(run_config, "r") as f:
         config_data = yaml.safe_load(f)
     f.close()
     config = Config(**config_data)
