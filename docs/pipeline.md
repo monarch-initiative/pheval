@@ -50,7 +50,7 @@ standardised outputs from the runner phase.
 
 ## Customising PhEval Pipeline Experiments 
 
-The phEval pipeline is orchestrated using a Makefile Jinja template strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.
+The PhEval pipeline is orchestrated using a Makefile Jinja template strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.
 
 In the resources folder are the following files responsible for Makefile generation:
 
@@ -123,7 +123,7 @@ configs:
 `configs` section can also deal with special VGPA data preparation steps, for example,  Semantic Similarity ingestions into Exomiser phenotypic database e.g.
 
 ```yaml
-  configs:
+configs:
   - tool: exomiser
     id: exomiser-semsim-ingest-13.3.0
     version: 13.3.0
