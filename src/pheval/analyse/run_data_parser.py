@@ -29,9 +29,8 @@ class RunConfig(BaseModel):
     threshold: Optional[float]
     score_order: Optional[str]
 
-    @classmethod
     @root_validator(pre=True)
-    def handle_blank_fields(cls, values: dict) -> dict:
+    def handle_blank_fields(cls, values: dict) -> dict:  # noqa: N805
         """
         Root validator to handle fields that may be explicitly set to None.
 
@@ -45,6 +44,7 @@ class RunConfig(BaseModel):
         """
         if values.get("threshold") is None:
             values["threshold"] = 0
+            print("setting default threshold")
         if values.get("score_order") is None:
             values["score_order"] = "descending"
         return values
@@ -66,9 +66,8 @@ class SinglePlotCustomisation(BaseModel):
     roc_curve_title: Optional[str]
     precision_recall_title: Optional[str]
 
-    @classmethod
     @root_validator(pre=True)
-    def handle_blank_fields(cls, values: dict) -> dict:
+    def handle_blank_fields(cls, values: dict) -> dict:  # noqa: N805
         """
         Root validator to handle fields that may be explicitly set to None.
 
