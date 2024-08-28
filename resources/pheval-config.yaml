@@ -7,14 +7,6 @@ corpora:
     custom_variants:
       - id: no_phenotype
 
-mappings:
-  - id: hp
-  - id: mp
-  - id: zp
-ontologies:
-  - id: phenio-monarch
-    mirror_from: http://purl.obolibrary.org/obo/upheno.owl
-
 configs:
   - tool: template
     id: template-1.0.0
