@@ -422,8 +422,8 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                     rank=2,
                 ),
                 RankedPhEvalGeneResult(
-                    gene_symbol="PLXNA1",
-                    gene_identifier="ENSG00000114554",
+                    gene_symbol="['PLXNA1', 'GENE2']",
+                    gene_identifier="['ENSG00000114554', 'ENSG00000100000']",
                     score=0.8764,
                     rank=4,
                 ),
@@ -770,6 +770,17 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 labels=[1, 0, 0, 0],
                 scores=[0.8764, 0.5777, 0.5777, 0.3765],
             ),
+        )
+
+    def test__check_string_representation_string(self):
+        self.assertEqual(
+            self.assess_gene_prioritisation._check_string_representation("GENE1"), "GENE1"
+        )
+
+    def test__check_string_representation_list(self):
+        self.assertEqual(
+            self.assess_gene_prioritisation._check_string_representation("['GENE1', 'GENE2']"),
+            ["GENE1", "GENE2"],
         )
 
 
