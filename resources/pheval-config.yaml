@@ -1,66 +1,20 @@
-phenotype:
-  version: 2302
-  hg: hg19
-  url: https://data.monarchinitiative.org/exomiser/latest/
-
 directories:
+  data: data
   tmp: data/tmp
-  h2jar: /home/vinicius/.local/share/DBeaverData/drivers/maven/maven-central/com.h2database/h2-1.4.199.jar
-  phen2gene: /home/vinicius/Documents/softwares/Phen2Gene
-  exomiser-13.2.0: /home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0
-  exomiser-13.2.1: /home/data/exomiser/exomiser-cli-13.2.1-distribution/exomiser-cli-13.2.0
-  phenotype: /home/data/phenotype
-  workspace: /home/vinicius/workspace/pheval
 
 corpora:
   - id: lirical
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
-  - id: phen2gene
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
-  - id: small_test
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
-    custom_variants:
-      - id: no_phenotype
-  - id: structural_variants
-    scrambled:
-      - factor: 0.5
-      - factor: 0.7
     custom_variants:
       - id: no_phenotype
 
 configs:
-  - tool: phen2gene
-    version: 1.2.3
-    configuration: default
-  - tool: exomiser
-    version: 13.2.0
-    configuration: default
-    exomiser_db: semsim1
-  - tool: exomiser
-    version: 13.2.0
-    configuration: semsim1
-    description: Exomiser Deafault Configuration with a Randomised Semantic Similarity Profile
-    exomiser_db: semsim1
+  - tool: template
+    id: template-1.0.0
+    version: 1.0.0
 
 runs:
-  - tool: exomiser
-    configuration: default
-    corpus: small_test
-    corpusvariant: scrambled-0.5
-    version: 13.2.0
-  - tool: exomiser
-    configuration: default
+  - tool: template
     corpus: lirical
-    corpusvariant: scrambled-0.5
-    version: 13.2.0
-
+    corpusvariant: default
+    version: 1.0.0
+    configuration: template-1.0.0

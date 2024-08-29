@@ -3,21 +3,23 @@ SHELL 					:= bash
 .DEFAULT_GOAL			:= help
 URIBASE					:=	http://purl.obolibrary.org/obo
 TMP_DATA				:=	data/tmp
-ROOT_DIR				:=	/home/vinicius/workspace/pheval
+
+ROOT_DIR				:=	$(shell pwd)
+
+PHENOTYPE_DIR			:= $(ROOT_DIR)/data/phenotype
+RUNNERS_DIR				:= $(ROOT_DIR)/runners
 NAME					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["name"])')
 VERSION					:= $(shell python -c 'import tomli; print(tomli.load(open("pyproject.toml", "rb"))["tool"]["poetry"]["version"])')
+SEMSIM_BASE_URL			:= https://storage.googleapis.com/data-public-monarchinitiative/semantic-similarity/latest
+
+
 
 help: info
 	@echo ""
 	@echo "help"
-	@echo "make pheval -- this runs the entire pipeline including corpus preparation and pheval run"
-	@echo "make semsim -- generate all configured similarity profiles"
-	@echo "make semsim-shuffle -- generate new ontology terms to the semsim process"
-	@echo "make semsim-scramble -- scramble semsim profile"
-	@echo "make semsim-convert -- convert all semsim profiles into exomiser SQL format"
-	@echo "make semsim-ingest -- takes all the configured semsim profiles and loads them into the exomiser databases"
-
-	@echo "make clean -- removes corpora and pheval results"
+	@echo "make setup -- this runs the download and extraction of genomic, phenotypic and runners data"
+	@echo "make pheval -- this runs pheval pipeline corpus preparation and run"
+	@echo "make all -- this runs the entire pipeline including setup, corpus preparation and pheval run"
 	@echo "make help -- show this help"
 	@echo ""
 
@@ -26,92 +28,79 @@ info:
 	@echo "Version: $(VERSION)"
 
 .PHONY: prepare-inputs
-prepare-inputs: configurations/exomiser-13.2.0-default/config.yaml
 
-configurations/exomiser-13.2.0-default/config.yaml:
-	rm -rf $(ROOT_DIR)/$(shell dirname $@)
-	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
-	ln -s /path_where_exomiser_was_extracted/* $(ROOT_DIR)/$(shell dirname $@)
-	ln -s /path_where_phenotype_was_extracted/* $(ROOT_DIR)/$(shell dirname $@)
+
+
+
+
+
+configurations/template-1.0.0/config.yaml:
+	mkdir -p $(ROOT_DIR)/$(shell dirname $@)/
+	cp $(RUNNERS_DIR)/configurations/template-1.0.0.config.yaml $(ROOT_DIR)/$(shell dirname $@)/config.yaml
+
+
+
+
 
 
 
 .PHONY: prepare-corpora
 
 
-results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml: configurations/exomiser-13.2.0-default/config.yaml corpora/small_test/scrambled-0.5/corpus.yml
+$(TMP_DATA)/semsim/%.tsv:
+	mkdir -p $(TMP_DATA)/semsim/
+	wget $(SEMSIM_BASE_URL)/$*.tsv -O $@
+
+
+$(TMP_DATA)/semsim/%.sql:
+	mkdir -p $(TMP_DATA)/semsim/
+	wget $(SEMSIM_BASE_URL)/$*.sql -O $@
+
+
+$(ROOT_DIR)/results/run_data.txt:
+	touch $@
+
+$(ROOT_DIR)/results/gene_rank_stats.svg: $(ROOT_DIR)/results/run_data.txt
+	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
+	mv $(ROOT_DIR)/gene_rank_stats.svg $@
+
+.PHONY: pheval-report
+pheval-report: $(ROOT_DIR)/results/gene_rank_stats.svg
+
+
+$(ROOT_DIR)/results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml corpora/lirical/default/corpus.yml
+
+
+
 	rm -rf $(ROOT_DIR)/$(shell dirname $@)
 	mkdir -p $(ROOT_DIR)/$(shell dirname $@)
+
+
+
+	mkdir -p $(shell dirname $@)
+
 	pheval run \
-	 --input-dir $(ROOT_DIR)/configurations/exomiser-13.2.0-default \
-	 --testdata-dir $(ROOT_DIR)/corpora/small_test/scrambled-0.5 \
-	 --runner exomiserphevalrunner \
+	 --input-dir $(ROOT_DIR)/configurations/template-1.0.0 \
+	 --testdata-dir $(ROOT_DIR)/corpora/lirical/default \
+	 --runner templatephevalrunner \
 	 --tmp-dir data/tmp/ \
-	 --version 13.2.0 \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)
+	 --version 1.0.0 \
+	 --output-dir $(shell dirname $@)
 
 	touch $@
+	echo -e "$(ROOT_DIR)/corpora/lirical/default/phenopackets\t$(shell dirname $@)" >> results/run_data.txt
 
-.PHONY: run-exomiser-13.2.0-default-small_test-scrambled-0.5
+.PHONY: pheval-run
+pheval-run: $(ROOT_DIR)/results/template-1.0.0/results.yml
+corpora/lirical/default/corpus.yml:
+	test -d $(ROOT_DIR)/corpora/lirical/default/ || mkdir -p $(ROOT_DIR)/corpora/lirical/default/
 
-run-exomiser-13.2.0-default-small_test-scrambled-0.5:
-	$(MAKE) results/exomiser-13.2.0-default/small_test-scrambled-0.5/results.yml
-
-
-pheval-run: run-exomiser-13.2.0-default-small_test-scrambled-0.5
-
-
-
-
-
-
-
-
-corpora/small_test/scrambled-0.5/corpus.yml: corpora/small_test/default/corpus.yml $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(ROOT_DIR)/corpora/small_test/scrambled-0.5/ || mkdir -p $(ROOT_DIR)/corpora/small_test/scrambled-0.5/
-	test -L $(ROOT_DIR)/corpora/small_test/scrambled-0.5/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/small_test/scrambled-0.5/template_exome_hg19.vcf.gz
-
+	test -L $(ROOT_DIR)/corpora/lirical/default/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/lirical/default/template_exome_hg19.vcf.gz
 	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(ROOT_DIR)/corpora/small_test/scrambled-0.5/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.5 \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
+	 --template-vcf-path $(ROOT_DIR)/corpora/lirical/default/template_exome_hg19.vcf.gz  \
+	 --phenopacket-dir=$(ROOT_DIR)/corpora/lirical/default/phenopackets \
+	 --output-dir $(ROOT_DIR)/corpora/lirical/default/vcf
 	touch $@
-
-prepare-corpora: corpora/small_test/scrambled-0.5/corpus.yml
-
-
-corpora/small_test/scrambled-0.7/corpus.yml: corpora/small_test/default/corpus.yml $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
-	test -d $(ROOT_DIR)/corpora/small_test/scrambled-0.7/ || mkdir -p $(ROOT_DIR)/corpora/small_test/scrambled-0.7/
-	test -L $(ROOT_DIR)/corpora/small_test/scrambled-0.7/template_exome_hg19.vcf.gz || ln -s $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz $(ROOT_DIR)/corpora/small_test/scrambled-0.7/template_exome_hg19.vcf.gz
-
-	pheval-utils create-spiked-vcfs \
-	 --template-vcf-path $(ROOT_DIR)/corpora/small_test/scrambled-0.7/template_exome_hg19.vcf.gz  \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)/vcf
-
-	test -d $(shell dirname $@)/phenopackets || mkdir -p $(shell dirname $@)/phenopackets
-	pheval-utils scramble-phenopackets \
-	 --scramble-factor 0.7 \
-	 --output-dir $(ROOT_DIR)/$(shell dirname $@)/phenopackets \
-	 --phenopacket-dir=$(shell dirname $<)/phenopackets
-
-	touch $@
-
-prepare-corpora: corpora/small_test/scrambled-0.7/corpus.yml
-
-
-
-
-corpora/small_test/no_phenotype/corpus.yml: $(ROOT_DIR)/testdata/template_vcf/template_exome_hg19.vcf.gz
-	echo "error $@ needs to be configured manually" && false
-
 
 
 
@@ -120,5 +109,11 @@ pheval:
 	$(MAKE) prepare-inputs
 	$(MAKE) prepare-corpora
 	$(MAKE) pheval-run
+	$(MAKE) pheval-report
+
+.PHONY: all
+all:
+	$(MAKE) setup
+	$(MAKE) pheval
 
 include ./resources/custom.Makefile
