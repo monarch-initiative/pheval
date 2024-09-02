@@ -76,5 +76,5 @@ pheval-utils prepare-corpus \
     --output-dir /vcf
 ```
 
-See the [documentation](https://monarch-initiative.github.io/pheval/executing_a_benchmark/) for benchmarking and evaluating the performance of VGPA.
+See the [documentation](https://monarch-initiative.github.io/pheval/executing_a_benchmark/) for instructions on benchmarking and evaluating the performance of various VGPAs.
 
