@@ -1,8 +1,0 @@
-PHEVAL_RESULTS_DIRECTORY_SUFFIX = "_results"
-GENE_PRIORITISATION_TYPE_STR = "gene"
-GENE_PLOT_Y_LABEL = "Disease-causing genes (%)"
-VARIANT_PRIORITISATION_TYPE_STR = "variant"
-VARIANT_PLOT_Y_LABEL = "Disease-causing variants (%)"
-DISEASE_PRIORITISATION_TYPE_STR = "disease"
-DISEASE_PLOT_Y_LABEL = "Known diseases (%)"
-RANK_COMPARISON_SUFFIX = "_rank_comparison"
