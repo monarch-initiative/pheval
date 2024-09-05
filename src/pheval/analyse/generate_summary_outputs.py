@@ -17,9 +17,7 @@ def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_pref
     Returns:
         The new table name.
     """
-    return (
-        f"{run_identifier_1}_vs_" f"{run_identifier_2}_" f"{output_prefix}_rank_comparison"
-    )
+    return f"{run_identifier_1}_vs_" f"{run_identifier_2}_" f"{output_prefix}_rank_comparison"
 
 
 def create_comparison_table(

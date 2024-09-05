@@ -7,6 +7,7 @@ from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritis
 from pheval.analyse.run_data_parser import RunConfig, SinglePlotCustomisation
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
 
+
 @dataclass
 class BenchmarkRunOutputGenerator:
     """Base class for recording data required for generating benchmarking outputs.
