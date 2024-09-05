@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/developing_a_pheval_plugin/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -1098,7 +1098,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner" class="md-nav__link">
-    src.pheval.runners.runner.PhEvalRunner
+    PhEvalRunner
   </a>
   
 </li>
@@ -1200,10 +1200,10 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.phenopacket_utils.PhenopacketUtil" class="md-nav__link">
-    src.pheval.utils.phenopacket_utils.PhenopacketUtil
+    PhenopacketUtil
   </a>
   
-    <nav class="md-nav" aria-label="src.pheval.utils.phenopacket_utils.PhenopacketUtil">
+    <nav class="md-nav" aria-label="PhenopacketUtil">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1227,24 +1227,24 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalGeneResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalGeneResult
+    PhEvalGeneResult
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalVariantResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalVariantResult
+    PhEvalVariantResult
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalDiseaseResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalDiseaseResult
+    PhEvalDiseaseResult
   </a>
   
-    <nav class="md-nav" aria-label="src.pheval.post_processing.post_processing.PhEvalDiseaseResult">
+    <nav class="md-nav" aria-label="PhEvalDiseaseResult">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1388,7 +1388,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner" class="md-nav__link">
-    src.pheval.runners.runner.PhEvalRunner
+    PhEvalRunner
   </a>
   
 </li>
@@ -1490,10 +1490,10 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.phenopacket_utils.PhenopacketUtil" class="md-nav__link">
-    src.pheval.utils.phenopacket_utils.PhenopacketUtil
+    PhenopacketUtil
   </a>
   
-    <nav class="md-nav" aria-label="src.pheval.utils.phenopacket_utils.PhenopacketUtil">
+    <nav class="md-nav" aria-label="PhenopacketUtil">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1517,24 +1517,24 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalGeneResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalGeneResult
+    PhEvalGeneResult
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalVariantResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalVariantResult
+    PhEvalVariantResult
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.PhEvalDiseaseResult" class="md-nav__link">
-    src.pheval.post_processing.post_processing.PhEvalDiseaseResult
+    PhEvalDiseaseResult
   </a>
   
-    <nav class="md-nav" aria-label="src.pheval.post_processing.post_processing.PhEvalDiseaseResult">
+    <nav class="md-nav" aria-label="PhEvalDiseaseResult">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1586,18 +1586,18 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 <div class="doc doc-object doc-class">
 
 
+
 <a id="src.pheval.runners.runner.PhEvalRunner"></a>
   <div class="doc doc-contents first">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="abc.ABC">ABC</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
   
       <p>PhEvalRunner Class</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
 <span class="normal"> 15</span>
@@ -1829,7 +1829,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct run output meta data&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_data</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1848,6 +1848,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
   </div>
 
   </div>
+
 
 </div><hr />
 <h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
@@ -1911,8 +1912,8 @@ This allows PhEval extensibility to be standardized in terms of documentation an
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;post processing&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="4-add-pheval-plugins-section-to-the-pyprojecttoml-file">4. Add PhEval Plugins section to the pyproject.toml file</h3>
-<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry.plugins.&quot;pheval.plugins&quot;]</span>
-<span class="n">customrunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pheval_plugin_example.runner:CustomPhevalRunner&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry.plugins.</span><span class="s2">&quot;pheval.plugins&quot;</span><span class="k">]</span>
+<span class="n">customrunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pheval_plugin_example.runner:CustomPhevalRunner&quot;</span>
 </code></pre></div>
 <p><mark>Replace the value above with the path to your custom runner plugin</mark></p>
 <h3 id="5-implementing-pheval-helper-methods">5. Implementing PhEval helper methods</h3>
@@ -1925,16 +1926,16 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <div class="doc doc-object doc-class">
 
 
+
 <a id="src.pheval.utils.phenopacket_utils.PhenopacketUtil"></a>
   <div class="doc doc-contents first">
 
   
       <p>Class for retrieving data from a Phenopacket or Family object</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
@@ -2566,7 +2567,7 @@ This allows PhEval extensibility to be standardized in terms of documentation an
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2585,6 +2586,7 @@ This allows PhEval extensibility to be standardized in terms of documentation an
   </div>
 
   </div>
+
 
 </div><hr />
 <p><code>PhenopacketUtil</code> proves particularly beneficial in scenarios where the tool for which you're crafting a runner implementation does not directly accept Phenopackets as inputs. Instead, it might require elements—such as HPO IDs— via the command-line interface (CLI). In this context, leveraging PhenopacketUtil within the runner's preparation phase enables the extraction of observed phenotypic features from the Phenopacket input, facilitating seamless processing.</p>
@@ -2668,68 +2670,26 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <div class="doc doc-object doc-class">
 
 
+
 <a id="src.pheval.post_processing.post_processing.PhEvalGeneResult"></a>
   <div class="doc doc-contents first">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
 
   
-      <p>Minimal data required from tool-specific output for gene prioritisation result</p>
+      <p>Minimal data required from tool-specific output for gene prioritisation result
+Args:
+    gene_symbol (Union[List[str], str]): The gene symbol(s) for the result entry
+    gene_identifier (Union[List[str], str]): The ENSEMBL gene identifier(s) for the result entry
+    score (float): The score for the gene result entry
+Notes:
+    While we recommend providing the gene identifier in the ENSEMBL namespace,
+    any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+    in the analysis.</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>gene_symbol</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
-          </td>
-          <td><p>The gene symbol(s) for the result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>gene_identifier</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[str], str]</code>
-          </td>
-          <td><p>The ENSEMBL gene identifier(s) for the result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>score</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td><p>The score for the gene result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-<details class="notes">
-  <summary>Notes</summary>
-  <p>While we recommend providing the gene identifier in the ENSEMBL namespace,
-any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-in the analysis.</p>
-</details>
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -2761,7 +2721,7 @@ in the analysis.</p>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2781,104 +2741,38 @@ in the analysis.</p>
 
   </div>
 
+
 </div><hr />
 
 
 <div class="doc doc-object doc-class">
 
 
+
 <a id="src.pheval.post_processing.post_processing.PhEvalVariantResult"></a>
   <div class="doc doc-contents first">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
 
   
-      <p>Minimal data required from tool-specific output for variant prioritisation</p>
+      <p>Minimal data required from tool-specific output for variant prioritisation
+Args:
+    chromosome (str): The chromosome position of the variant recommended to be provided in the following format.
+    This includes numerical designations from 1 to 22 representing autosomal chromosomes,
+    as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
+    start (int): The start position of the variant
+    end (int): The end position of the variant
+    ref (str): The reference allele of the variant
+    alt (str): The alternate allele of the variant
+    score (float): The score for the variant result entry
+Notes:
+    While we recommend providing the variant's chromosome in the specified format,
+    any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+    in the analysis.</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>chromosome</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>The chromosome position of the variant recommended to be provided in the following format.</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>start</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td><p>The start position of the variant</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>end</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td><p>The end position of the variant</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>ref</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>The reference allele of the variant</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>alt</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>The alternate allele of the variant</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>score</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td><p>The score for the variant result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-<details class="notes">
-  <summary>Notes</summary>
-  <p>While we recommend providing the variant's chromosome in the specified format,
-any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-in the analysis.</p>
-</details>
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
@@ -2926,7 +2820,7 @@ in the analysis.</p>
     <span class="n">alt</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2946,74 +2840,33 @@ in the analysis.</p>
 
   </div>
 
+
 </div><hr />
 
 
 <div class="doc doc-object doc-class">
 
 
+
 <a id="src.pheval.post_processing.post_processing.PhEvalDiseaseResult"></a>
   <div class="doc doc-contents first">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.post_processing.post_processing.PhEvalResult" href="../api/pheval/post_processing/post_processing/#src.pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</a></code></p>
 
   
-      <p>Minimal data required from tool-specific output for disease prioritisation</p>
+      <p>Minimal data required from tool-specific output for disease prioritisation
+Args:
+    disease_name (str): Disease name for the result entry
+    disease_identifier (str): Identifier for the disease result entry in the OMIM namespace
+    score (str): Score for the disease result entry
+Notes:
+    While we recommend providing the disease identifier in the OMIM namespace,
+    any matching format used in Phenopacket interpretations is acceptable for result matching purposes
+    in the analysis.</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>disease_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Disease name for the result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>disease_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Identifier for the disease result entry in the OMIM namespace</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>score</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Score for the disease result entry</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-<details class="notes">
-  <summary>Notes</summary>
-  <p>While we recommend providing the disease identifier in the OMIM namespace,
-any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-in the analysis.</p>
-</details>
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
@@ -3045,7 +2898,7 @@ in the analysis.</p>
     <span class="n">disease_identifier</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3064,6 +2917,7 @@ in the analysis.</p>
   </div>
 
   </div>
+
 
 </div><hr />
 <p>The <code>generate_pheval_result()</code> can be implemented in your runner to write out the PhEval TSV results.</p>

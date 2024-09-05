@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/prepare/prepare_corpus/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -870,14 +870,14 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.prepare_corpus" class="md-nav__link">
-    src.pheval.prepare.prepare_corpus
+    prepare_corpus
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.prepare_corpus.prepare_corpus" class="md-nav__link">
-    prepare_corpus()
+    prepare_corpus
   </a>
   
 </li>
@@ -1214,14 +1214,14 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.prepare_corpus" class="md-nav__link">
-    src.pheval.prepare.prepare_corpus
+    prepare_corpus
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.prepare_corpus.prepare_corpus" class="md-nav__link">
-    prepare_corpus()
+    prepare_corpus
   </a>
   
 </li>
@@ -1251,6 +1251,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.prepare.prepare_corpus"></a>
   <div class="doc doc-contents first">
 
@@ -1266,12 +1267,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.prepare.prepare_corpus.prepare_corpus" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">prepare_corpus</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">prepare_corpus</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1280,6 +1282,8 @@
   
       <p>Prepare a corpus of Phenopackets for analysis, optionally checking for complete variant records and updating
 gene identifiers.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1297,7 +1301,11 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the directory containing Phenopackets.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the directory containing Phenopackets.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1307,7 +1315,11 @@ gene identifiers.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>If True, check for complete variant records in the Phenopackets.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>If True, check for complete variant records in the Phenopackets.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1317,7 +1329,11 @@ gene identifiers.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>If True, check for complete gene records in the Phenopackets.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>If True, check for complete gene records in the Phenopackets.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1327,7 +1343,11 @@ gene identifiers.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>If True, check for complete disease records in the Phenopackets.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>If True, check for complete disease records in the Phenopackets.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1337,7 +1357,11 @@ gene identifiers.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Identifier for updating gene identifiers, if applicable.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Identifier for updating gene identifiers, if applicable.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1347,7 +1371,11 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the hg19 template VCF file (optional), to spike variants into</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the hg19 template VCF file (optional), to spike variants into</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1357,7 +1385,11 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the hg38 template VCF file (optional), to spike variants into</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the hg38 template VCF file (optional), to spike variants into</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1367,7 +1399,11 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the directory containing hg19 template VCF files (optional).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the directory containing hg19 template VCF files (optional).</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1377,7 +1413,11 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the directory containing hg38 template VCF files (optional).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the directory containing hg38 template VCF files (optional).</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1387,22 +1427,24 @@ gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory to save the prepared Phenopackets and, optionally, VCF files.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory to save the prepared Phenopackets and, optionally, VCF files.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+      <p>Notes:
+    To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
+    hg19_vcf_dir or hg38_vcf_dir is required.</p>
 
-<details class="notes">
-  <summary>Notes</summary>
-  <p>To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
-hg19_vcf_dir or hg38_vcf_dir is required.</p>
-</details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/prepare_corpus.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/prepare_corpus.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -1558,7 +1600,7 @@ hg19_vcf_dir or hg38_vcf_dir is required.</p>
                 <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phenopackets/</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

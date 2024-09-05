@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/prepare/update_phenopacket/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -884,35 +884,35 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket" class="md-nav__link">
-    src.pheval.prepare.update_phenopacket
+    update_phenopacket
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="md-nav__link">
-    create_updated_phenopacket()
+    create_updated_phenopacket
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="md-nav__link">
-    create_updated_phenopackets()
+    create_updated_phenopackets
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="md-nav__link">
-    update_outdated_gene_context()
+    update_outdated_gene_context
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.update_phenopackets" class="md-nav__link">
-    update_phenopackets()
+    update_phenopackets
   </a>
   
 </li>
@@ -1235,35 +1235,35 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket" class="md-nav__link">
-    src.pheval.prepare.update_phenopacket
+    update_phenopacket
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="md-nav__link">
-    create_updated_phenopacket()
+    create_updated_phenopacket
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="md-nav__link">
-    create_updated_phenopackets()
+    create_updated_phenopackets
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="md-nav__link">
-    update_outdated_gene_context()
+    update_outdated_gene_context
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.update_phenopacket.update_phenopackets" class="md-nav__link">
-    update_phenopackets()
+    update_phenopackets
   </a>
   
 </li>
@@ -1293,6 +1293,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.prepare.update_phenopacket"></a>
   <div class="doc doc-contents first">
 
@@ -1308,12 +1309,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.prepare.update_phenopacket.create_updated_phenopacket" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_updated_phenopacket</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">create_updated_phenopacket</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1321,6 +1323,8 @@
   <div class="doc doc-contents ">
   
       <p>Update the gene context within the interpretations for a Phenopacket and writes the updated Phenopacket.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1338,7 +1342,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Identifier used to update the gene context.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Identifier used to update the gene context.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1348,7 +1356,11 @@
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the input Phenopacket file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the input Phenopacket file.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1358,23 +1370,25 @@
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory where the updated Phenopacket will be written.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory where the updated Phenopacket will be written.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+      <p>Notes:
+    The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+    to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+    to describe the gene identifiers.</p>
 
-<details class="notes">
-  <summary>Notes</summary>
-  <p>The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
-to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
-to describe the gene identifiers.</p>
-</details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
@@ -1410,17 +1424,18 @@ to describe the gene identifiers.</p>
     <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span>
     <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.prepare.update_phenopacket.create_updated_phenopackets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1429,6 +1444,8 @@ to describe the gene identifiers.</p>
   
       <p>Update the gene context within the interpretations for a directory of Phenopackets
 and writes the updated Phenopackets.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1446,7 +1463,11 @@ and writes the updated Phenopackets.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Identifier used to update the gene context.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Identifier used to update the gene context.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1456,7 +1477,11 @@ and writes the updated Phenopackets.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the input Phenopacket directory.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the input Phenopacket directory.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1466,23 +1491,25 @@ and writes the updated Phenopackets.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory where the updated Phenopackets will be written.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory where the updated Phenopackets will be written.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+      <p>Notes:
+    The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+    to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+    to describe the gene identifiers.</p>
 
-<details class="notes">
-  <summary>Notes</summary>
-  <p>The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
-to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
-to describe the gene identifiers.</p>
-</details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
@@ -1526,17 +1553,18 @@ to describe the gene identifiers.</p>
         <span class="p">)</span>
         <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1544,6 +1572,8 @@ to describe the gene identifiers.</p>
   <div class="doc doc-contents ">
   
       <p>Update the gene context of the Phenopacket.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1561,7 +1591,11 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the Phenopacket file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the Phenopacket file.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1571,7 +1605,11 @@ to describe the gene identifiers.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Identifier to update the gene context.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Identifier to update the gene context.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1581,13 +1619,19 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="collections.defaultdict">defaultdict</span></code>
           </td>
-          <td><p>The HGNC data used for updating.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The HGNC data used for updating.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1602,21 +1646,23 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
           </td>
-          <td><p>Union[Phenopacket, Family]: The updated Phenopacket or Family.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Union[Phenopacket, Family]: The updated Phenopacket or Family.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+      <p>Notes:
+    This function updates the gene context within the Phenopacket or Family instance.
+    The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+    to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+    to describe the gene identifiers.</p>
 
-<details class="notes">
-  <summary>Notes</summary>
-  <p>This function updates the gene context within the Phenopacket or Family instance.
-The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
-to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
-to describe the gene identifiers.</p>
-</details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
@@ -1666,17 +1712,18 @@ to describe the gene identifiers.</p>
     <span class="p">)</span><span class="o">.</span><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">update_interpretations</span><span class="p">(</span><span class="n">updated_interpretations</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.prepare.update_phenopacket.update_phenopackets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">update_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">update_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1684,6 +1731,8 @@ to describe the gene identifiers.</p>
   <div class="doc doc-contents ">
   
       <p>Update the gene identifiers in either a single phenopacket or a directory of phenopackets.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1701,7 +1750,11 @@ to describe the gene identifiers.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>The gene identifier to be updated.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The gene identifier to be updated.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1711,7 +1764,11 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to a single Phenopacket file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to a single Phenopacket file.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1721,7 +1778,11 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory containing multiple Phenopacket files.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory containing multiple Phenopacket files.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1731,23 +1792,25 @@ to describe the gene identifiers.</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The output directory to save the updated Phenopacket files.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The output directory to save the updated Phenopacket files.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+      <p>Notes:
+    The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
+    to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
+    to describe the gene identifiers.</p>
 
-<details class="notes">
-  <summary>Notes</summary>
-  <p>The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
-to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
-to describe the gene identifiers.</p>
-</details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
@@ -1789,7 +1852,7 @@ to describe the gene identifiers.</p>
     <span class="k">elif</span> <span class="n">phenopacket_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">create_updated_phenopackets</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

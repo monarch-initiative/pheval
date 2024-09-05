@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/parse_benchmark_summary/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -603,21 +603,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary" class="md-nav__link">
-    src.pheval.analyse.parse_benchmark_summary
+    parse_benchmark_summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary.parse_benchmark_result_summary" class="md-nav__link">
-    parse_benchmark_result_summary()
+    parse_benchmark_result_summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary.read_benchmark_tsv_result_summary" class="md-nav__link">
-    read_benchmark_tsv_result_summary()
+    read_benchmark_tsv_result_summary
   </a>
   
 </li>
@@ -1221,21 +1221,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary" class="md-nav__link">
-    src.pheval.analyse.parse_benchmark_summary
+    parse_benchmark_summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary.parse_benchmark_result_summary" class="md-nav__link">
-    parse_benchmark_result_summary()
+    parse_benchmark_result_summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_benchmark_summary.read_benchmark_tsv_result_summary" class="md-nav__link">
-    read_benchmark_tsv_result_summary()
+    read_benchmark_tsv_result_summary
   </a>
   
 </li>
@@ -1265,6 +1265,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.parse_benchmark_summary"></a>
   <div class="doc doc-contents first">
 
@@ -1280,12 +1281,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.parse_benchmark_summary.parse_benchmark_result_summary" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_benchmark_result_summary</span><span class="p">(</span><span class="n">benchmarking_df</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">parse_benchmark_result_summary</span><span class="p">(</span><span class="n">benchmarking_df</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1293,6 +1295,8 @@
   <div class="doc doc-contents ">
   
       <p>Parse the summary benchmark DataFrame into a list of BenchmarkRunResults.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1308,17 +1312,23 @@
         <tr>
           <td><code>benchmarking_df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
-          <td><p>Summary benchmark DataFrame containing columns such as
+          <td>
+            <div class="doc-md-description">
+              <p>Summary benchmark DataFrame containing columns such as
                             'results_directory_path', 'top', 'top3', 'top5', 'top10',
-                            'found', 'total', 'mean_reciprocal_rank'.</p></td>
+                            'found', 'total', 'mean_reciprocal_rank'.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1333,14 +1343,18 @@
           <td>
                 <code><span title="typing.List">List</span>[<span title="pheval.analyse.benchmarking_data.BenchmarkRunResults">BenchmarkRunResults</span>]</code>
           </td>
-          <td><p>List[BenchmarkRunResults]: A list of BenchmarkRunResults instances generated from the DataFrame.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[BenchmarkRunResults]: A list of BenchmarkRunResults instances generated from the DataFrame.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
@@ -1400,17 +1414,18 @@
         <span class="n">benchmarking_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmarking_result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">benchmarking_results</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.parse_benchmark_summary.read_benchmark_tsv_result_summary" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">read_benchmark_tsv_result_summary</span><span class="p">(</span><span class="n">benchmarking_tsv</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">read_benchmark_tsv_result_summary</span><span class="p">(</span><span class="n">benchmarking_tsv</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1418,6 +1433,8 @@
   <div class="doc doc-contents ">
   
       <p>Read the summary benchmark TSV output generated from the benchmark-comparison command.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1435,13 +1452,19 @@
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the summary benchmark TSV output file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the summary benchmark TSV output file.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1454,18 +1477,22 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
-          <td><p>pd.DataFrame: A pandas DataFrame containing specific columns from the TSV file, including:
+          <td>
+            <div class="doc-md-description">
+              <p>pd.DataFrame: A pandas DataFrame containing specific columns from the TSV file, including:
           'results_directory_path', 'top', 'top3', 'top5', 'top10', 'found',
-          'total', 'mean_reciprocal_rank'.</p></td>
+          'total', 'mean_reciprocal_rank'.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/parse_benchmark_summary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -1517,7 +1544,7 @@
         <span class="p">],</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

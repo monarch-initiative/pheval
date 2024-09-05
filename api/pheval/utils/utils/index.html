@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/utils/utils/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -1034,28 +1034,28 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils" class="md-nav__link">
-    src.pheval.utils.utils
+    utils
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.rand" class="md-nav__link">
-    rand()
+    rand
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.semsim_scramble" class="md-nav__link">
-    semsim_scramble()
+    semsim_scramble
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.semsim_scramble_df" class="md-nav__link">
-    semsim_scramble_df()
+    semsim_scramble_df
   </a>
   
 </li>
@@ -1228,28 +1228,28 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils" class="md-nav__link">
-    src.pheval.utils.utils
+    utils
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.rand" class="md-nav__link">
-    rand()
+    rand
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.semsim_scramble" class="md-nav__link">
-    semsim_scramble()
+    semsim_scramble
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.semsim_scramble_df" class="md-nav__link">
-    semsim_scramble_df()
+    semsim_scramble_df
   </a>
   
 </li>
@@ -1279,6 +1279,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.utils.utils"></a>
   <div class="doc doc-contents first">
   
@@ -1296,95 +1297,31 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.utils.utils.rand" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">min_num</span><span class="p">,</span> <span class="n">max_num</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">min_num</span><span class="p">,</span> <span class="n">max_num</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
 
 </h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Numeric scrambling</p>
+      <p>Numeric scrambling
+Args:
+    df (pd.DataFrame): dataframe records
+    min_num (int): min value from this records
+    max_num (int): max value from this records
+    scramble_factor (float): scramble factor scalar
+Returns:
+    float: randomized number</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>df</code></td>
-          <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
-          </td>
-          <td><p>dataframe records</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>min_num</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td><p>min value from this records</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>max_num</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td><p>max value from this records</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>scramble_factor</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td><p>scramble factor scalar</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-<td><code>float</code></td>          <td>
-                <code>float</code>
-          </td>
-          <td><p>randomized number</p></td>
-        </tr>
-    </tbody>
-  </table>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -1416,17 +1353,18 @@
         <span class="n">info_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="n">err</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.utils.utils.semsim_scramble" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">semsim_scramble</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">columns_to_be_scrambled</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">semsim_scramble</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">columns_to_be_scrambled</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1446,9 +1384,9 @@ and returns a scrambles pandas dataframe.
     Returns:
         pd.Dataframe: scrambled dataframe</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
@@ -1494,80 +1432,35 @@ and returns a scrambles pandas dataframe.
     <span class="n">dataframe</span> <span class="o">=</span> <span class="n">semsim_scramble_df</span><span class="p">(</span><span class="n">semsim</span><span class="p">,</span> <span class="n">columns_to_be_scrambled</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span>
     <span class="n">dataframe</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.utils.utils.semsim_scramble_df" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">semsim_scramble_df</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">columns_to_be_scrambled</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">semsim_scramble_df</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">columns_to_be_scrambled</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
 
 </h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>scramble_semsim_df</p>
+      <p>scramble_semsim_df
+Args:
+    dataframe (pd.DataFrame): dataframe that contains semsim profile
+    scramble_factor (float) scalar scramble factor
+    columns_to_be_scrambled (List[str]):
+Returns:
+    pd.Dataframe: scrambled dataframe</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>dataframe</code></td>
-          <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
-          </td>
-          <td><p>dataframe that contains semsim profile</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>columns_to_be_scrambled</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
-          </td>
-          <td><p>pd.Dataframe: scrambled dataframe</p></td>
-        </tr>
-    </tbody>
-  </table>
-
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
@@ -1603,7 +1496,7 @@ and returns a scrambles pandas dataframe.
         <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rand</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">min_num</span><span class="p">,</span> <span class="n">max_num</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">dataframe</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

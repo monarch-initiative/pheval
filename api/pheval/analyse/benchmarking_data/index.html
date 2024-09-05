@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/benchmarking_data/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -519,7 +519,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.benchmarking_data" class="md-nav__link">
-    src.pheval.analyse.benchmarking_data
+    benchmarking_data
   </a>
   
 </li>
@@ -1214,7 +1214,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.benchmarking_data" class="md-nav__link">
-    src.pheval.analyse.benchmarking_data
+    benchmarking_data
   </a>
   
 </li>
@@ -1251,6 +1251,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.benchmarking_data"></a>
   <div class="doc doc-contents first">
 
@@ -1270,7 +1271,7 @@
 
 
 <h2 id="src.pheval.analyse.benchmarking_data.BenchmarkRunResults" class="doc doc-heading">
-        <code>BenchmarkRunResults</code>
+          <code>BenchmarkRunResults</code>
 
   
   <span class="doc doc-labels">
@@ -1285,6 +1286,8 @@
   
       <p>Benchmarking results for a run.</p>
 
+
+
   <p><strong>Attributes:</strong></p>
   <table>
     <thead>
@@ -1296,40 +1299,55 @@
     </thead>
     <tbody>
         <tr>
-          <td><code>ranks</code></td>
+          <td><code><span title="src.pheval.analyse.benchmarking_data.BenchmarkRunResults.ranks">ranks</span></code></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Dictionary containing recorded ranks for samples.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dictionary containing recorded ranks for samples.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>rank_stats</code></td>
+          <td><code><span title="src.pheval.analyse.benchmarking_data.BenchmarkRunResults.rank_stats">rank_stats</span></code></td>
           <td>
                 <code><span title="pheval.analyse.rank_stats.RankStats">RankStats</span></code>
           </td>
-          <td><p>Statistics related to benchmark.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Statistics related to benchmark.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>results_dir</code></td>
+          <td><code><span title="src.pheval.analyse.benchmarking_data.BenchmarkRunResults.results_dir">results_dir</span></code></td>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>Path to the result directory. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the result directory. Defaults to None.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>benchmark_name</code></td>
+          <td><code><span title="src.pheval.analyse.benchmarking_data.BenchmarkRunResults.benchmark_name">benchmark_name</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the benchmark run. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the benchmark run. Defaults to None.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/benchmarking_data.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmarking_data.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -1363,7 +1381,7 @@
     <span class="n">results_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1382,6 +1400,7 @@
   </div>
 
   </div>
+
 
 </div>
 

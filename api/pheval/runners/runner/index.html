@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/runners/runner/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -931,7 +931,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.runners.runner" class="md-nav__link">
-    src.pheval.runners.runner
+    runner
   </a>
   
 </li>
@@ -953,35 +953,35 @@
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.build_output_directory_structure" class="md-nav__link">
-    build_output_directory_structure()
+    build_output_directory_structure
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.construct_meta_data" class="md-nav__link">
-    construct_meta_data()
+    construct_meta_data
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
-    post_process()
+    post_process
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
-    prepare()
+    prepare
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
-    run()
+    run
   </a>
   
 </li>
@@ -1262,7 +1262,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.runners.runner" class="md-nav__link">
-    src.pheval.runners.runner
+    runner
   </a>
   
 </li>
@@ -1284,35 +1284,35 @@
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.build_output_directory_structure" class="md-nav__link">
-    build_output_directory_structure()
+    build_output_directory_structure
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.construct_meta_data" class="md-nav__link">
-    construct_meta_data()
+    construct_meta_data
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.post_process" class="md-nav__link">
-    post_process()
+    post_process
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.prepare" class="md-nav__link">
-    prepare()
+    prepare
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#src.pheval.runners.runner.PhEvalRunner.run" class="md-nav__link">
-    run()
+    run
   </a>
   
 </li>
@@ -1347,6 +1347,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.runners.runner"></a>
   <div class="doc doc-contents first">
   
@@ -1368,18 +1369,20 @@
 
 
 <h2 id="src.pheval.runners.runner.DefaultPhEvalRunner" class="doc doc-heading">
-        <code>DefaultPhEvalRunner</code>
+          <code>DefaultPhEvalRunner</code>
 
 
 </h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.runners.runner.PhEvalRunner" href="#src.pheval.runners.runner.PhEvalRunner">PhEvalRunner</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.runners.runner.PhEvalRunner" href="../../../../developing_a_pheval_plugin/#src.pheval.runners.runner.PhEvalRunner">PhEvalRunner</a></code></p>
 
   
       <p>DefaultPhEvalRunner</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1395,9 +1398,13 @@
         <tr>
           <td><code>PhEvalRunner</code></td>
           <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.runners.runner.PhEvalRunner" href="#src.pheval.runners.runner.PhEvalRunner">PhEvalRunner</a></code>
+                <code><a class="autorefs autorefs-internal" title="src.pheval.runners.runner.PhEvalRunner" href="../../../../developing_a_pheval_plugin/#src.pheval.runners.runner.PhEvalRunner">PhEvalRunner</a></code>
           </td>
-          <td><p>Abstract PhEvalRunnerClass</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Abstract PhEvalRunnerClass</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1405,10 +1412,9 @@
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
@@ -1452,7 +1458,7 @@
     <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;post processing&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1472,6 +1478,7 @@
 
   </div>
 
+
 </div>
 
 <div class="doc doc-object doc-class">
@@ -1479,7 +1486,7 @@
 
 
 <h2 id="src.pheval.runners.runner.PhEvalRunner" class="doc doc-heading">
-        <code>PhEvalRunner</code>
+          <code>PhEvalRunner</code>
 
   
   <span class="doc doc-labels">
@@ -1490,16 +1497,15 @@
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="abc.ABC">ABC</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
   
       <p>PhEvalRunner Class</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
 <span class="normal"> 15</span>
@@ -1731,11 +1737,12 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct run output meta data&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_data</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1750,7 +1757,7 @@
 
 
 <h3 id="src.pheval.runners.runner.PhEvalRunner.build_output_directory_structure" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">build_output_directory_structure</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">build_output_directory_structure</span><span class="p">()</span></code>
 
 </h3>
 
@@ -1759,9 +1766,9 @@
   
       <p>build output directory structure</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
 <span class="normal">90</span>
@@ -1781,17 +1788,18 @@
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_disease_analysis</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pheval_disease_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="src.pheval.runners.runner.PhEvalRunner.construct_meta_data" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">construct_meta_data</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">construct_meta_data</span><span class="p">()</span></code>
 
 </h3>
 
@@ -1800,25 +1808,26 @@
   
       <p>Construct run output meta data</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">construct_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct run output meta data&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_data</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="src.pheval.runners.runner.PhEvalRunner.post_process" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">post_process</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">post_process</span><span class="p">()</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -1831,25 +1840,26 @@
   
       <p>post_process</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="src.pheval.runners.runner.PhEvalRunner.prepare" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">prepare</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">prepare</span><span class="p">()</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -1862,25 +1872,26 @@
   
       <p>prepare</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="src.pheval.runners.runner.PhEvalRunner.run" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">run</span><span class="p">()</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -1893,15 +1904,15 @@
   
       <p>run</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">117</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1911,6 +1922,7 @@
   </div>
 
   </div>
+
 
 </div>
 

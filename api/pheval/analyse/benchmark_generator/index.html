@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/benchmark_generator/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -505,7 +505,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.benchmark_generator" class="md-nav__link">
-    src.pheval.analyse.benchmark_generator
+    benchmark_generator
   </a>
   
 </li>
@@ -1235,7 +1235,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.benchmark_generator" class="md-nav__link">
-    src.pheval.analyse.benchmark_generator
+    benchmark_generator
   </a>
   
 </li>
@@ -1293,6 +1293,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.benchmark_generator"></a>
   <div class="doc doc-contents first">
 
@@ -1312,7 +1313,7 @@
 
 
 <h2 id="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" class="doc doc-heading">
-        <code>BenchmarkRunOutputGenerator</code>
+          <code>BenchmarkRunOutputGenerator</code>
 
   
   <span class="doc doc-labels">
@@ -1327,6 +1328,8 @@
   
       <p>Base class for recording data required for generating benchmarking outputs.</p>
 
+
+
   <p><strong>Attributes:</strong></p>
   <table>
     <thead>
@@ -1338,42 +1341,57 @@
     </thead>
     <tbody>
         <tr>
-          <td><code>prioritisation_type_file_prefix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator.prioritisation_type_file_prefix">prioritisation_type_file_prefix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the prioritisation type output file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the prioritisation type output file.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>y_label</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator.y_label">y_label</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Label for the y-axis in benchmarking outputs.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Label for the y-axis in benchmarking outputs.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>generate_benchmark_run_results</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator.generate_benchmark_run_results">generate_benchmark_run_results</span></code></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Callable to generate benchmark run results.
+          <td>
+            <div class="doc-md-description">
+              <p>Callable to generate benchmark run results.
 Takes parameters: input and results directory, score order, threshold, rank comparison,
-and returns BenchmarkRunResults.</p></td>
+and returns BenchmarkRunResults.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>stats_comparison_file_suffix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator.stats_comparison_file_suffix">stats_comparison_file_suffix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Suffix for the rank comparison file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Suffix for the rank comparison file.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
@@ -1411,7 +1429,7 @@ and returns BenchmarkRunResults.</p></td>
     <span class="p">]</span>
     <span class="n">stats_comparison_file_suffix</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1431,6 +1449,7 @@ and returns BenchmarkRunResults.</p></td>
 
   </div>
 
+
 </div>
 
 <div class="doc doc-object doc-class">
@@ -1438,7 +1457,7 @@ and returns BenchmarkRunResults.</p></td>
 
 
 <h2 id="src.pheval.analyse.benchmark_generator.DiseaseBenchmarkRunOutputGenerator" class="doc doc-heading">
-        <code>DiseaseBenchmarkRunOutputGenerator</code>
+          <code>DiseaseBenchmarkRunOutputGenerator</code>
 
   
   <span class="doc doc-labels">
@@ -1449,14 +1468,16 @@ and returns BenchmarkRunResults.</p></td>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
 
   
       <p>Subclass of BenchmarkRunOutputGenerator specialised
 for producing disease prioritisation benchmarking outputs.</p>
 <p>This subclass inherits from BenchmarkRunOutputGenerator and specialises its attributes
 specifically for disease prioritisation benchmarking.</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1469,46 +1490,61 @@ specifically for disease prioritisation benchmarking.</p>
     </thead>
     <tbody>
         <tr>
-          <td><code>prioritisation_type_file_prefix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.DiseaseBenchmarkRunOutputGenerator.prioritisation_type_file_prefix">prioritisation_type_file_prefix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the disease prioritisation type file.
-Defaults to DISEASE_PLOT_FILE_PREFIX.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the disease prioritisation type file.
+Defaults to DISEASE_PLOT_FILE_PREFIX.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>y_label</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.DiseaseBenchmarkRunOutputGenerator.y_label">y_label</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Label for the y-axis in disease prioritisation benchmarking outputs.
-Defaults to DISEASE_PLOT_Y_LABEL.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Label for the y-axis in disease prioritisation benchmarking outputs.
+Defaults to DISEASE_PLOT_Y_LABEL.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>generate_benchmark_run_results</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.DiseaseBenchmarkRunOutputGenerator.generate_benchmark_run_results">generate_benchmark_run_results</span></code></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Callable to generate disease prioritisation
+          <td>
+            <div class="doc-md-description">
+              <p>Callable to generate disease prioritisation
 benchmark run results. Defaults to benchmark_disease_prioritisation.
 Takes parameters: input and results directory, score order, threshold, rank comparison,
-and returns BenchmarkRunResults.</p></td>
+and returns BenchmarkRunResults.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>stats_comparison_file_suffix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.DiseaseBenchmarkRunOutputGenerator.stats_comparison_file_suffix">stats_comparison_file_suffix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Suffix for the disease rank comparison file.
-Defaults to "-disease_summary.tsv".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Suffix for the disease rank comparison file.
+Defaults to "-disease_summary.tsv".</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
@@ -1564,7 +1600,7 @@ Defaults to "-disease_summary.tsv".</p></td>
     <span class="p">]</span> <span class="o">=</span> <span class="n">benchmark_disease_prioritisation</span>
     <span class="n">stats_comparison_file_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-disease_summary.tsv&quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1584,6 +1620,7 @@ Defaults to "-disease_summary.tsv".</p></td>
 
   </div>
 
+
 </div>
 
 <div class="doc doc-object doc-class">
@@ -1591,7 +1628,7 @@ Defaults to "-disease_summary.tsv".</p></td>
 
 
 <h2 id="src.pheval.analyse.benchmark_generator.GeneBenchmarkRunOutputGenerator" class="doc doc-heading">
-        <code>GeneBenchmarkRunOutputGenerator</code>
+          <code>GeneBenchmarkRunOutputGenerator</code>
 
   
   <span class="doc doc-labels">
@@ -1602,14 +1639,16 @@ Defaults to "-disease_summary.tsv".</p></td>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
 
   
       <p>Subclass of BenchmarkRunOutputGenerator specialised
 for producing gene prioritisation benchmarking outputs.</p>
 <p>This subclass inherits from BenchmarkRunOutputGenerator and specialises its attributes
 specifically for gene prioritisation benchmarking.</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1622,46 +1661,61 @@ specifically for gene prioritisation benchmarking.</p>
     </thead>
     <tbody>
         <tr>
-          <td><code>prioritisation_type_file_prefix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.GeneBenchmarkRunOutputGenerator.prioritisation_type_file_prefix">prioritisation_type_file_prefix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the gene prioritisation type file.
-Defaults to GENE_PLOT_FILE_PREFIX.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the gene prioritisation type file.
+Defaults to GENE_PLOT_FILE_PREFIX.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>y_label</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.GeneBenchmarkRunOutputGenerator.y_label">y_label</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Label for the y-axis in gene prioritisation benchmarking outputs.
-Defaults to GENE_PLOT_Y_LABEL.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Label for the y-axis in gene prioritisation benchmarking outputs.
+Defaults to GENE_PLOT_Y_LABEL.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>generate_benchmark_run_results</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.GeneBenchmarkRunOutputGenerator.generate_benchmark_run_results">generate_benchmark_run_results</span></code></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Callable to generate gene prioritisation
+          <td>
+            <div class="doc-md-description">
+              <p>Callable to generate gene prioritisation
 benchmark run results. Defaults to benchmark_gene_prioritisation.
 Takes parameters: input and results directory, score order, threshold, rank comparison,
-and returns BenchmarkRunResults.</p></td>
+and returns BenchmarkRunResults.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>stats_comparison_file_suffix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.GeneBenchmarkRunOutputGenerator.stats_comparison_file_suffix">stats_comparison_file_suffix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Suffix for the gene rank comparison file.
-Defaults to "-gene_summary.tsv".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Suffix for the gene rank comparison file.
+Defaults to "-gene_summary.tsv".</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
@@ -1717,7 +1771,7 @@ Defaults to "-gene_summary.tsv".</p></td>
     <span class="p">]</span> <span class="o">=</span> <span class="n">benchmark_gene_prioritisation</span>
     <span class="n">stats_comparison_file_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-gene_summary.tsv&quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1737,6 +1791,7 @@ Defaults to "-gene_summary.tsv".</p></td>
 
   </div>
 
+
 </div>
 
 <div class="doc doc-object doc-class">
@@ -1744,7 +1799,7 @@ Defaults to "-gene_summary.tsv".</p></td>
 
 
 <h2 id="src.pheval.analyse.benchmark_generator.VariantBenchmarkRunOutputGenerator" class="doc doc-heading">
-        <code>VariantBenchmarkRunOutputGenerator</code>
+          <code>VariantBenchmarkRunOutputGenerator</code>
 
   
   <span class="doc doc-labels">
@@ -1755,14 +1810,16 @@ Defaults to "-gene_summary.tsv".</p></td>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator" href="#src.pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</a></code></p>
 
   
       <p>Subclass of BenchmarkRunOutputGenerator specialised
 for producing variant prioritisation benchmarking outputs.</p>
 <p>This subclass inherits from BenchmarkRunOutputGenerator and specialises its attributes
 specifically for variant prioritisation benchmarking.</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1775,46 +1832,61 @@ specifically for variant prioritisation benchmarking.</p>
     </thead>
     <tbody>
         <tr>
-          <td><code>prioritisation_type_file_prefix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.VariantBenchmarkRunOutputGenerator.prioritisation_type_file_prefix">prioritisation_type_file_prefix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the variant prioritisation type file.
-Defaults to VARIANT_PLOT_FILE_PREFIX.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the variant prioritisation type file.
+Defaults to VARIANT_PLOT_FILE_PREFIX.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>y_label</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.VariantBenchmarkRunOutputGenerator.y_label">y_label</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Label for the y-axis in variant prioritisation benchmarking outputs.
-Defaults to VARIANT_PLOT_Y_LABEL.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Label for the y-axis in variant prioritisation benchmarking outputs.
+Defaults to VARIANT_PLOT_Y_LABEL.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>generate_benchmark_run_results</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.VariantBenchmarkRunOutputGenerator.generate_benchmark_run_results">generate_benchmark_run_results</span></code></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Callable to generate variant prioritisation
+          <td>
+            <div class="doc-md-description">
+              <p>Callable to generate variant prioritisation
 benchmark run results. Defaults to benchmark_variant_prioritisation.
 Takes parameters: input and results directory, score order, threshold, rank comparison,
-and returns BenchmarkRunResults.</p></td>
+and returns BenchmarkRunResults.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>stats_comparison_file_suffix</code></td>
+          <td><code><span title="src.pheval.analyse.benchmark_generator.VariantBenchmarkRunOutputGenerator.stats_comparison_file_suffix">stats_comparison_file_suffix</span></code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Suffix for the variant rank comparison file.
-Defaults to "-variant_summary.tsv".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Suffix for the variant rank comparison file.
+Defaults to "-variant_summary.tsv".</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmark_generator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
@@ -1872,7 +1944,7 @@ Defaults to "-variant_summary.tsv".</p></td>
     <span class="p">]</span> <span class="o">=</span> <span class="n">benchmark_variant_prioritisation</span>
     <span class="n">stats_comparison_file_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-variant_summary.tsv&quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1891,6 +1963,7 @@ Defaults to "-variant_summary.tsv".</p></td>
   </div>
 
   </div>
+
 
 </div>
 

@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/prepare/custom_exceptions/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -856,7 +856,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.custom_exceptions" class="md-nav__link">
-    src.pheval.prepare.custom_exceptions
+    custom_exceptions
   </a>
   
 </li>
@@ -1221,7 +1221,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.prepare.custom_exceptions" class="md-nav__link">
-    src.pheval.prepare.custom_exceptions
+    custom_exceptions
   </a>
   
 </li>
@@ -1265,6 +1265,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.prepare.custom_exceptions"></a>
   <div class="doc doc-contents first">
 
@@ -1284,23 +1285,22 @@
 
 
 <h2 id="src.pheval.prepare.custom_exceptions.InputError" class="doc doc-heading">
-        <code>InputError</code>
+          <code>InputError</code>
 
 
 </h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code>Exception</code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code>Exception</code></p>
 
   
       <p>Exception raised for missing required inputs.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
 <span class="normal"> 5</span>
 <span class="normal"> 6</span>
 <span class="normal"> 7</span>
@@ -1320,7 +1320,7 @@
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="si">}</span><span class="s2"> &quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1340,6 +1340,7 @@
 
   </div>
 
+
 </div>
 
 <div class="doc doc-object doc-class">
@@ -1347,23 +1348,22 @@
 
 
 <h2 id="src.pheval.prepare.custom_exceptions.MutuallyExclusiveOptionError" class="doc doc-heading">
-        <code>MutuallyExclusiveOptionError</code>
+          <code>MutuallyExclusiveOptionError</code>
 
 
 </h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="click.Option">Option</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="click.Option">Option</span></code></p>
 
   
       <p>Exception raised for when</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
@@ -1405,7 +1405,7 @@
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MutuallyExclusiveOptionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle_parse_result</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1424,6 +1424,7 @@
   </div>
 
   </div>
+
 
 </div>
 

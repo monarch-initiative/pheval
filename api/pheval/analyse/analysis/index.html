@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/analysis/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -491,21 +491,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis" class="md-nav__link">
-    src.pheval.analyse.analysis
+    analysis
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis.benchmark_directory" class="md-nav__link">
-    benchmark_directory()
+    benchmark_directory
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis.benchmark_run_comparisons" class="md-nav__link">
-    benchmark_run_comparisons()
+    benchmark_run_comparisons
   </a>
   
 </li>
@@ -1221,21 +1221,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis" class="md-nav__link">
-    src.pheval.analyse.analysis
+    analysis
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis.benchmark_directory" class="md-nav__link">
-    benchmark_directory()
+    benchmark_directory
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.analysis.benchmark_run_comparisons" class="md-nav__link">
-    benchmark_run_comparisons()
+    benchmark_run_comparisons
   </a>
   
 </li>
@@ -1265,6 +1265,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.analysis"></a>
   <div class="doc doc-contents first">
 
@@ -1280,12 +1281,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.analysis.benchmark_directory" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">benchmark_directory</span><span class="p">(</span><span class="n">results_dir_and_input</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">benchmark_directory</span><span class="p">(</span><span class="n">results_dir_and_input</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1293,6 +1295,8 @@
   <div class="doc doc-contents ">
   
       <p>Benchmark prioritisation performance for a single run.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1310,7 +1314,11 @@
           <td>
                 <code><span title="pheval.analyse.run_data_parser.TrackInputOutputDirectories">TrackInputOutputDirectories</span></code>
           </td>
-          <td><p>Input and output directories for tracking results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input and output directories for tracking results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1320,7 +1328,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>The order in which scores are arranged, this can be either ascending or descending.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The order in which scores are arranged, this can be either ascending or descending.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1330,7 +1342,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the benchmark output file names.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the benchmark output file names.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1340,7 +1356,11 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold for benchmark evaluation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold for benchmark evaluation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1350,7 +1370,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark gene results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark gene results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1360,7 +1384,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark variant results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark variant results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1370,7 +1398,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark disease results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark disease results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1380,7 +1412,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Type of plot for benchmark visualisation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Type of plot for benchmark visualisation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1388,9 +1424,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 53</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/analysis.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 53</span>
 <span class="normal"> 54</span>
 <span class="normal"> 55</span>
 <span class="normal"> 56</span>
@@ -1490,17 +1526,18 @@
             <span class="n">benchmark_generator</span><span class="o">=</span><span class="n">DiseaseBenchmarkRunOutputGenerator</span><span class="p">(),</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.analysis.benchmark_run_comparisons" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">benchmark_run_comparisons</span><span class="p">(</span><span class="n">results_directories</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">benchmark_run_comparisons</span><span class="p">(</span><span class="n">results_directories</span><span class="p">,</span> <span class="n">score_order</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">gene_analysis</span><span class="p">,</span> <span class="n">variant_analysis</span><span class="p">,</span> <span class="n">disease_analysis</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1508,6 +1545,8 @@
   <div class="doc doc-contents ">
   
       <p>Benchmark prioritisation performance for several runs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1525,7 +1564,11 @@
           <td>
                 <code><span title="typing.List">List</span>[<span title="pheval.analyse.run_data_parser.TrackInputOutputDirectories">TrackInputOutputDirectories</span>]</code>
           </td>
-          <td><p>Input and output directories for tracking results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input and output directories for tracking results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1535,7 +1578,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>The order in which scores are arranged, this can be either ascending or descending.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The order in which scores are arranged, this can be either ascending or descending.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1545,7 +1592,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Prefix for the benchmark output file names.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Prefix for the benchmark output file names.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1555,7 +1606,11 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold for benchmark evaluation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold for benchmark evaluation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1565,7 +1620,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark gene results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark gene results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1575,7 +1634,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark variant results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark variant results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1585,7 +1648,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Boolean flag indicating whether to benchmark disease results.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Boolean flag indicating whether to benchmark disease results.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1595,7 +1662,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Type of plot for benchmark visualisation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Type of plot for benchmark visualisation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1603,9 +1674,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/analysis.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">144</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/analysis.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">144</span>
 <span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
@@ -1705,7 +1776,7 @@
             <span class="n">benchmark_generator</span><span class="o">=</span><span class="n">DiseaseBenchmarkRunOutputGenerator</span><span class="p">(),</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/run_data_parser/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -673,7 +673,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.run_data_parser" class="md-nav__link">
-    src.pheval.analyse.run_data_parser
+    run_data_parser
   </a>
   
 </li>
@@ -687,7 +687,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.run_data_parser.parse_run_data_text_file" class="md-nav__link">
-    parse_run_data_text_file()
+    parse_run_data_text_file
   </a>
   
 </li>
@@ -1221,7 +1221,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.run_data_parser" class="md-nav__link">
-    src.pheval.analyse.run_data_parser
+    run_data_parser
   </a>
   
 </li>
@@ -1235,7 +1235,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.run_data_parser.parse_run_data_text_file" class="md-nav__link">
-    parse_run_data_text_file()
+    parse_run_data_text_file
   </a>
   
 </li>
@@ -1265,6 +1265,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.run_data_parser"></a>
   <div class="doc doc-contents first">
 
@@ -1284,7 +1285,7 @@
 
 
 <h2 id="src.pheval.analyse.run_data_parser.TrackInputOutputDirectories" class="doc doc-heading">
-        <code>TrackInputOutputDirectories</code>
+          <code>TrackInputOutputDirectories</code>
 
   
   <span class="doc doc-labels">
@@ -1299,6 +1300,8 @@
   
       <p>Track the input phenopacket test data for a corresponding pheval output directory.</p>
 
+
+
   <p><strong>Attributes:</strong></p>
   <table>
     <thead>
@@ -1310,26 +1313,33 @@
     </thead>
     <tbody>
         <tr>
-          <td><code>phenopacket_dir</code></td>
+          <td><code><span title="src.pheval.analyse.run_data_parser.TrackInputOutputDirectories.phenopacket_dir">phenopacket_dir</span></code></td>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory containing input phenopackets.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory containing input phenopackets.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>results_dir</code></td>
+          <td><code><span title="src.pheval.analyse.run_data_parser.TrackInputOutputDirectories.results_dir">results_dir</span></code></td>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The directory containing output results from pheval.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory containing output results from pheval.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -1353,7 +1363,7 @@
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span>
     <span class="n">results_dir</span><span class="p">:</span> <span class="n">Path</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1373,7 +1383,9 @@
 
   </div>
 
+
 </div>
+
 
 
 <div class="doc doc-object doc-function">
@@ -1381,7 +1393,7 @@
 
 
 <h2 id="src.pheval.analyse.run_data_parser.parse_run_data_text_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_run_data_text_file</span><span class="p">(</span><span class="n">run_data_path</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">parse_run_data_text_file</span><span class="p">(</span><span class="n">run_data_path</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1389,6 +1401,8 @@
   <div class="doc doc-contents ">
   
       <p>Parse run data .txt file returning a list of input phenopacket and corresponding output directories.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1406,13 +1420,19 @@
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the run data .txt file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the run data .txt file.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1427,26 +1447,34 @@
           <td>
                 <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="src.pheval.analyse.run_data_parser.TrackInputOutputDirectories" href="#src.pheval.analyse.run_data_parser.TrackInputOutputDirectories">TrackInputOutputDirectories</a>]</code>
           </td>
-          <td><p>List[TrackInputOutputDirectories]: A list of TrackInputOutputDirectories objects, containing</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[TrackInputOutputDirectories]: A list of TrackInputOutputDirectories objects, containing</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
                 <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="src.pheval.analyse.run_data_parser.TrackInputOutputDirectories" href="#src.pheval.analyse.run_data_parser.TrackInputOutputDirectories">TrackInputOutputDirectories</a>]</code>
           </td>
-          <td><p>input test data directories and their corresponding output directories.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input test data directories and their corresponding output directories.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-<details class="notes">
+<details class="notes" open>
   <summary>Notes</summary>
   <p>The run data .txt file should be formatted with tab-separated values. Each row should contain
 two columns: the first column representing the input test data phenopacket directory, and
 the second column representing the corresponding run output directory.</p>
 </details>
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -1492,7 +1520,7 @@ the second column representing the corresponding run output directory.</p>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">run_data_list</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/parse_pheval_result/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -617,21 +617,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result" class="md-nav__link">
-    src.pheval.analyse.parse_pheval_result
+    parse_pheval_result
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result.parse_pheval_result" class="md-nav__link">
-    parse_pheval_result()
+    parse_pheval_result
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result.read_standardised_result" class="md-nav__link">
-    read_standardised_result()
+    read_standardised_result
   </a>
   
 </li>
@@ -1221,21 +1221,21 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result" class="md-nav__link">
-    src.pheval.analyse.parse_pheval_result
+    parse_pheval_result
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result.parse_pheval_result" class="md-nav__link">
-    parse_pheval_result()
+    parse_pheval_result
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.parse_pheval_result.read_standardised_result" class="md-nav__link">
-    read_standardised_result()
+    read_standardised_result
   </a>
   
 </li>
@@ -1265,6 +1265,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.parse_pheval_result"></a>
   <div class="doc doc-contents first">
 
@@ -1280,12 +1281,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.parse_pheval_result.parse_pheval_result" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_pheval_result</span><span class="p">(</span><span class="n">data_class_type</span><span class="p">,</span> <span class="n">pheval_result</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">parse_pheval_result</span><span class="p">(</span><span class="n">data_class_type</span><span class="p">,</span> <span class="n">pheval_result</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1293,6 +1295,8 @@
   <div class="doc doc-contents ">
   
       <p>Parse PhEval result into specified dataclass type.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1310,7 +1314,11 @@
           <td>
                 <code><span title="pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</span></code>
           </td>
-          <td><p>The data class type to parse the result into.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The data class type to parse the result into.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1320,13 +1328,19 @@
           <td>
                 <code><span title="typing.List">List</span>[dict]</code>
           </td>
-          <td><p>A list of dictionaries representing the PhEval result.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A list of dictionaries representing the PhEval result.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1341,20 +1355,28 @@
           <td>
                 <code><span title="typing.List">List</span>[<span title="pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</span>]</code>
           </td>
-          <td><p>List[PhEvalResult]: A list of instances of the specified data class type,</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[PhEvalResult]: A list of instances of the specified data class type,</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
                 <code><span title="typing.List">List</span>[<span title="pheval.post_processing.post_processing.PhEvalResult">PhEvalResult</span>]</code>
           </td>
-          <td><p>each instance representing a row in the PhEval result.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>each instance representing a row in the PhEval result.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/parse_pheval_result.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/parse_pheval_result.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
@@ -1384,17 +1406,18 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">data_class_type</span><span class="p">(</span><span class="o">**</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pheval_result</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="src.pheval.analyse.parse_pheval_result.read_standardised_result" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">read_standardised_result</span><span class="p">(</span><span class="n">standardised_result_path</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">read_standardised_result</span><span class="p">(</span><span class="n">standardised_result_path</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1402,6 +1425,8 @@
   <div class="doc doc-contents ">
   
       <p>Read the standardised result output and return a list of dictionaries.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1419,13 +1444,19 @@
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The path to the file containing the standardised result output.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the file containing the standardised result output.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1440,14 +1471,18 @@
           <td>
                 <code><span title="typing.List">List</span>[dict]</code>
           </td>
-          <td><p>List[dict]: A list of dictionaries representing the content of the standardised result file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[dict]: A list of dictionaries representing the content of the standardised result file.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/parse_pheval_result.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/parse_pheval_result.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -1477,7 +1512,7 @@
         <span class="n">info_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find </span><span class="si">{</span><span class="n">standardised_result_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

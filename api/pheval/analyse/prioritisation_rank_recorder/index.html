@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/prioritisation_rank_recorder/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
@@ -631,7 +631,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.prioritisation_rank_recorder" class="md-nav__link">
-    src.pheval.analyse.prioritisation_rank_recorder
+    prioritisation_rank_recorder
   </a>
   
 </li>
@@ -646,7 +646,7 @@
         
           <li class="md-nav__item">
   <a href="#src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.record_rank" class="md-nav__link">
-    record_rank()
+    record_rank
   </a>
   
 </li>
@@ -1227,7 +1227,7 @@
       
         <li class="md-nav__item">
   <a href="#src.pheval.analyse.prioritisation_rank_recorder" class="md-nav__link">
-    src.pheval.analyse.prioritisation_rank_recorder
+    prioritisation_rank_recorder
   </a>
   
 </li>
@@ -1242,7 +1242,7 @@
         
           <li class="md-nav__item">
   <a href="#src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.record_rank" class="md-nav__link">
-    record_rank()
+    record_rank
   </a>
   
 </li>
@@ -1277,6 +1277,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="src.pheval.analyse.prioritisation_rank_recorder"></a>
   <div class="doc doc-contents first">
 
@@ -1296,7 +1297,7 @@
 
 
 <h2 id="src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder" class="doc doc-heading">
-        <code>PrioritisationRankRecorder</code>
+          <code>PrioritisationRankRecorder</code>
 
   
   <span class="doc doc-labels">
@@ -1311,6 +1312,8 @@
   
       <p>Record ranks for different types of prioritisation results.</p>
 
+
+
   <p><strong>Attributes:</strong></p>
   <table>
     <thead>
@@ -1322,33 +1325,44 @@
     </thead>
     <tbody>
         <tr>
-          <td><code>index</code></td>
+          <td><code><span title="src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.index">index</span></code></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>The index representing the run.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The index representing the run.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>directory</code></td>
+          <td><code><span title="src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.directory">directory</span></code></td>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>The result directory path.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The result directory path.</p>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td><code>run_comparison</code></td>
+          <td><code><span title="src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.run_comparison">run_comparison</span></code></td>
           <td>
                 <code><span title="collections.defaultdict">defaultdict</span></code>
           </td>
-          <td><p>The comparison dictionary to record ranks.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The comparison dictionary to record ranks.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>src/pheval/analyse/prioritisation_rank_recorder.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/prioritisation_rank_recorder.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -1490,11 +1504,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_record_disease_rank</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">run_comparison</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prioritisation_result</span><span class="o">.</span><span class="n">rank</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1509,7 +1524,7 @@
 
 
 <h3 id="src.pheval.analyse.prioritisation_rank_recorder.PrioritisationRankRecorder.record_rank" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">record_rank</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">record_rank</span><span class="p">()</span></code>
 
 </h3>
 
@@ -1522,9 +1537,9 @@ and prioritisation result type ('Gene', 'Variant', or 'Disease') to the run comp
 dictionary for each respective run, allowing comparison and analysis of the ranks of correct results
 across different runs.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>src/pheval/analyse/prioritisation_rank_recorder.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/prioritisation_rank_recorder.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
@@ -1562,7 +1577,7 @@ across different runs.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_record_disease_rank</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">run_comparison</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prioritisation_result</span><span class="o">.</span><span class="n">rank</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1572,6 +1587,7 @@ across different runs.</p>
   </div>
 
   </div>
+
 
 </div>
 
