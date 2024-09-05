@@ -16,7 +16,6 @@ from pheval.analyse.benchmark_generator import (
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.parse_benchmark_summary import parse_benchmark_db
 from pheval.analyse.run_data_parser import parse_run_config
-from pheval.constants import PHEVAL_RESULTS_DIRECTORY_SUFFIX
 
 
 def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path:
@@ -29,7 +28,7 @@ def trim_corpus_results_directory_suffix(corpus_results_directory: Path) -> Path
     Returns:
         Path: The Path object with the suffix removed from the directory name.
     """
-    return Path(str(corpus_results_directory).replace(PHEVAL_RESULTS_DIRECTORY_SUFFIX, ""))
+    return Path(str(corpus_results_directory).replace("_results", ""))
 
 
 class PlotGenerator:

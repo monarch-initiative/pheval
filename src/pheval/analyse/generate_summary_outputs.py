@@ -5,7 +5,6 @@ from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.generate_plots import generate_plots
-from pheval.constants import RANK_COMPARISON_SUFFIX
 
 
 def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_prefix: str) -> str:
@@ -19,7 +18,7 @@ def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_pref
         The new table name.
     """
     return (
-        f"{run_identifier_1}_vs_" f"{run_identifier_2}_" f"{output_prefix}{RANK_COMPARISON_SUFFIX}"
+        f"{run_identifier_1}_vs_" f"{run_identifier_2}_" f"{output_prefix}_rank_comparison"
     )
 
 

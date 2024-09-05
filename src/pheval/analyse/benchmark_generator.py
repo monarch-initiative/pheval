@@ -6,15 +6,6 @@ from pheval.analyse.disease_prioritisation_analysis import benchmark_disease_pri
 from pheval.analyse.gene_prioritisation_analysis import benchmark_gene_prioritisation
 from pheval.analyse.run_data_parser import RunConfig, SinglePlotCustomisation
 from pheval.analyse.variant_prioritisation_analysis import benchmark_variant_prioritisation
-from pheval.constants import (
-    DISEASE_PLOT_Y_LABEL,
-    DISEASE_PRIORITISATION_TYPE_STR,
-    GENE_PLOT_Y_LABEL,
-    GENE_PRIORITISATION_TYPE_STR,
-    VARIANT_PLOT_Y_LABEL,
-    VARIANT_PRIORITISATION_TYPE_STR,
-)
-
 
 @dataclass
 class BenchmarkRunOutputGenerator:
@@ -61,8 +52,8 @@ class GeneBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     """
 
     plot_customisation: SinglePlotCustomisation = None
-    prioritisation_type_string: str = GENE_PRIORITISATION_TYPE_STR
-    y_label: str = GENE_PLOT_Y_LABEL
+    prioritisation_type_string: str = "gene"
+    y_label: str = "Disease-causing genes (%)"
     generate_benchmark_run_results: Callable[[str, RunConfig, str, float], BenchmarkRunResults] = (
         benchmark_gene_prioritisation
     )
@@ -94,8 +85,8 @@ class VariantBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     """
 
     plot_customisation: SinglePlotCustomisation = None
-    prioritisation_type_string: str = VARIANT_PRIORITISATION_TYPE_STR
-    y_label: str = VARIANT_PLOT_Y_LABEL
+    prioritisation_type_string: str = "variant"
+    y_label: str = "Disease-causing variants (%)"
     generate_benchmark_run_results: Callable[[str, RunConfig, str, float], BenchmarkRunResults] = (
         benchmark_variant_prioritisation
     )
@@ -126,8 +117,8 @@ class DiseaseBenchmarkRunOutputGenerator(BenchmarkRunOutputGenerator):
     """
 
     plot_customisation: SinglePlotCustomisation = None
-    prioritisation_type_string: str = DISEASE_PRIORITISATION_TYPE_STR
-    y_label: str = DISEASE_PLOT_Y_LABEL
+    prioritisation_type_string: str = "disease"
+    y_label: str = "Known diseases (%)"
     generate_benchmark_run_results: Callable[[str, RunConfig, str, float], BenchmarkRunResults] = (
         benchmark_disease_prioritisation
     )
