@@ -96,7 +96,7 @@ $(ROOT_DIR)/results/run_data.txt:
 	touch $@
 
 $(ROOT_DIR)/results/gene_rank_stats.svg: $(ROOT_DIR)/results/run_data.txt
-	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
+	pheval-utils generate-benchmark-stats -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
 	mv $(ROOT_DIR)/gene_rank_stats.svg $@
 
 .PHONY: pheval-report
