@@ -1,143 +1,68 @@
 import itertools
-from collections import defaultdict
-from copy import deepcopy
 from typing import List
 
-import numpy as np
-import pandas as pd
-
+from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmark_generator import BenchmarkRunOutputGenerator
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.generate_plots import generate_plots
-from pheval.constants import RANK_COMPARISON_FILE_SUFFIX
 
 
-class RankComparisonGenerator:
-    """Class for writing the run comparison of rank assignment for prioritisation."""
-
-    def __init__(self, run_comparison: defaultdict):
-        """
-        Initialise the RankComparisonGenerator class.
-
-        Args:
-            run_comparison (defaultdict): A nested dictionary containing the run comparison data.
-        """
-        self.run_comparison = run_comparison
-
-    def _generate_dataframe(self) -> pd.DataFrame:
-        """
-        Generate a Pandas DataFrame based on the run comparison data.
-
-        Returns:
-            pd.DataFrame: DataFrame containing the run comparison data.
-        """
-        return pd.DataFrame.from_dict(self.run_comparison, orient="index")
-
-    def _calculate_rank_difference(self) -> pd.DataFrame:
-        """
-        Calculate the rank decrease for runs, taking the first directory as a baseline.
-
-        Returns:
-            pd.DataFrame: DataFrame containing the calculated rank differences.
-        """
-        comparison_df = self._generate_dataframe()
-        comparison_df["rank_change"] = comparison_df.iloc[:, 2] - comparison_df.iloc[:, 3]
-        comparison_df["rank_change"] = np.where(
-            (comparison_df.iloc[:, 2] == 0) & (comparison_df.iloc[:, 3] != 0),
-            "GAINED",
-            np.where(
-                (comparison_df.iloc[:, 3] == 0) & (comparison_df.iloc[:, 2] != 0),
-                "LOST",
-                comparison_df["rank_change"],
-            ),
-        )
-        comparison_df["rank_change"] = comparison_df["rank_change"].apply(
-            lambda x: int(x) if str(x).lstrip("-").isdigit() else x
-        )
-        return comparison_df
-
-    def generate_output(self, prefix: str, suffix: str) -> None:
-        """
-        Generate output file from the run comparison data.
-
-        Args:
-            prefix (str): Prefix for the output file name.
-            suffix (str): Suffix for the output file name.
-        """
-        self._generate_dataframe().to_csv(prefix + suffix, sep="\t")
-
-    def generate_comparison_output(self, prefix: str, suffix: str) -> None:
-        """
-        Generate output file with calculated rank differences.
-
-        Args:
-            prefix (str): Prefix for the output file name.
-            suffix (str): Suffix for the output file name.
-        """
-        self._calculate_rank_difference().to_csv(prefix + suffix, sep="\t")
+def get_new_table_name(run_identifier_1: str, run_identifier_2: str, output_prefix: str) -> str:
+    """
+    Get the new table name for rank comparison tables.
+    Args:
+        run_identifier_1: The first run identifier.
+        run_identifier_2: The second run identifier.
+        output_prefix: The output prefix of the table
+    Returns:
+        The new table name.
+    """
+    return f"{run_identifier_1}_vs_" f"{run_identifier_2}_" f"{output_prefix}_rank_comparison"
 
 
-def generate_benchmark_output(
-    benchmarking_results: BenchmarkRunResults,
-    plot_type: str,
-    benchmark_generator: BenchmarkRunOutputGenerator,
+def create_comparison_table(
+    comparison_table_name: str,
+    connector: BenchmarkDBManager,
+    drop_columns: List[str],
+    run_identifier_1: str,
+    run_identifier_2: str,
+    table_name: str,
 ) -> None:
     """
-    Generate prioritisation outputs for a single benchmarking run.
-
+    Create rank comparison tables.
     Args:
-        benchmarking_results (BenchmarkRunResults): Results of a benchmarking run.
-        plot_type (str): Type of plot to generate.
-        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+        comparison_table_name (str): Name of the comparison table to create.
+        connector (BenchmarkDBManager): DBConnector instance.
+        drop_columns (List[str]): List of columns to drop.
+        run_identifier_1 (str): The first run identifier.
+        run_identifier_2 (str): The second run identifier.
+        table_name (str): Name of the table to extract ranks from
     """
-    rank_comparison_data = benchmarking_results.ranks
-    results_dir_name = benchmarking_results.results_dir.name
-    RankComparisonGenerator(rank_comparison_data).generate_output(
-        f"{results_dir_name}",
-        f"-{benchmark_generator.prioritisation_type_file_prefix}{RANK_COMPARISON_FILE_SUFFIX}",
-    )
-    generate_plots(
-        [benchmarking_results],
-        benchmark_generator,
-        plot_type,
+    connector.drop_table(comparison_table_name)
+    excluded_columns = (", ".join(drop_columns), "identifier") if drop_columns else ("identifier",)
+    connector.conn.execute(
+        f'CREATE TABLE "{comparison_table_name}" AS SELECT * '
+        f"EXCLUDE {excluded_columns} FROM {table_name}"
     )
 
-
-def merge_results(result1: dict, result2: dict) -> defaultdict:
-    """
-    Merge two nested dictionaries containing results on commonalities.
-
-    This function merges two dictionaries, `result1` and `result2`, containing nested structures.
-    It traverses the dictionaries recursively and merges their contents based on common keys.
-    If a key is present in both dictionaries and points to another dictionary, the function
-    will further merge their nested contents. If a key exists in `result2` but not in `result1`,
-    it will be added to `result1`.
-
-    Args:
-        result1 (dict): The first dictionary to be merged.
-        result2 (dict): The second dictionary to be merged.
-
-    Returns:
-        defaultdict: The merged dictionary containing the combined contents of `result1` and `result2`.
-    """
-    for key, val in result1.items():
-        if type(val) == dict:
-            if key in result2 and type(result2[key] == dict):
-                merge_results(result1[key], result2[key])
-        else:
-            if key in result2:
-                result1[key] = result2[key]
-
-    for key, val in result2.items():
-        if key not in result1:
-            result1[key] = val
-    return result1
+    connector.conn.execute(
+        f"""ALTER TABLE "{comparison_table_name}" ADD COLUMN rank_change VARCHAR;"""
+    )
+    connector.conn.execute(
+        f'UPDATE "{comparison_table_name}" SET rank_change = CASE WHEN "{run_identifier_1}" = 0 '
+        f'AND "{run_identifier_2}" != 0 '
+        f"THEN 'GAINED' WHEN \"{run_identifier_1}\" != 0 AND \"{run_identifier_2}\" = 0 THEN 'LOST' ELSE "
+        f'CAST ("{run_identifier_1}" - "{run_identifier_2}" AS VARCHAR) END;'
+    )
+    connector.conn.commit()
 
 
 def generate_benchmark_comparison_output(
+    benchmark_name: str,
     benchmarking_results: List[BenchmarkRunResults],
-    plot_type: str,
+    run_identifiers: List[str],
     benchmark_generator: BenchmarkRunOutputGenerator,
+    table_name: str,
 ) -> None:
     """
     Generate prioritisation outputs for benchmarking multiple runs.
@@ -147,29 +72,34 @@ def generate_benchmark_comparison_output(
     comparison outputs using `RankComparisonGenerator` for each pair.
 
     Args:
+        benchmark_name (str): Name of the benchmark.
         benchmarking_results (List[BenchmarkRunResults]): A list containing BenchmarkRunResults instances
             representing the benchmarking results of multiple runs.
-        plot_type (str): The type of plot to be generated.
+        run_identifiers (List[str]): A list of run identifiers.
         benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.
+        table_name (str): The name of the table where ranks are stored.
     """
-    output_prefix = benchmark_generator.prioritisation_type_file_prefix
-    for pair in itertools.combinations(benchmarking_results, 2):
-        result1 = pair[0]
-        result2 = pair[1]
-        merged_results = merge_results(
-            deepcopy(result1.ranks),
-            deepcopy(result2.ranks),
+    output_prefix = benchmark_generator.prioritisation_type_string
+    connector = BenchmarkDBManager(benchmark_name)
+    for pair in itertools.combinations(
+        [str(result.benchmark_name) for result in benchmarking_results], 2
+    ):
+        run_identifier_1 = pair[0]
+        run_identifier_2 = pair[1]
+        drop_columns = [run for run in run_identifiers if run not in pair]
+        comparison_table_name = get_new_table_name(
+            run_identifier_1, run_identifier_2, output_prefix
         )
-        RankComparisonGenerator(merged_results).generate_comparison_output(
-            f"{result1.results_dir.parents[0].name}_"
-            f"{result1.results_dir.name}"
-            f"_vs_{result2.results_dir.parents[0].name}_"
-            f"{result2.results_dir.name}",
-            f"-{output_prefix}{RANK_COMPARISON_FILE_SUFFIX}",
+        create_comparison_table(
+            comparison_table_name,
+            connector,
+            drop_columns,
+            run_identifier_1,
+            run_identifier_2,
+            table_name,
         )
-
     generate_plots(
+        benchmark_name,
         benchmarking_results,
         benchmark_generator,
-        plot_type,
     )

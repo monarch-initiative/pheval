@@ -57,15 +57,6 @@ $(TMP_DATA)/semsim/%.sql:
 	wget $(SEMSIM_BASE_URL)/$*.sql -O $@
 
 
-$(ROOT_DIR)/results/run_data.txt:
-	touch $@
-
-$(ROOT_DIR)/results/gene_rank_stats.svg: $(ROOT_DIR)/results/run_data.txt
-	pheval-utils benchmark-comparison -r $< -o $(ROOT_DIR)/$(shell dirname $@)/results --gene-analysis -y bar_cumulative
-	mv $(ROOT_DIR)/gene_rank_stats.svg $@
-
-.PHONY: pheval-report
-pheval-report: $(ROOT_DIR)/results/gene_rank_stats.svg
 
 
 $(ROOT_DIR)/results/template-1.0.0/results.yml: configurations/template-1.0.0/config.yaml corpora/lirical/default/corpus.yml
@@ -88,10 +79,48 @@ $(ROOT_DIR)/results/template-1.0.0/results.yml: configurations/template-1.0.0/co
 	 --output-dir $(shell dirname $@)
 
 	touch $@
-	echo -e "$(ROOT_DIR)/corpora/lirical/default/phenopackets\t$(shell dirname $@)" >> results/run_data.txt
 
 .PHONY: pheval-run
 pheval-run: $(ROOT_DIR)/results/template-1.0.0/results.yml
+
+
+$(ROOT_DIR)/results/template-1.0.0/run_data.yaml:
+	printf '%s\n' \
+	"benchmark_name: fake_predictor_benchmark" \
+	"runs:" \
+	"  - run_identifier: run_identifier_1" \
+	"    results_dir: $(shell dirname $@)" \
+	"    phenopacket_dir: $(ROOT_DIR)/corpora/lirical/default/phenopackets" \
+	"    gene_analysis: True" \
+	"    variant_analysis: False" \
+	"    disease_analysis: False" \
+	"    threshold:" \
+	"    score_order: descending" \
+	"plot_customisation:" \
+	"  gene_plots:" \
+	"    plot_type: bar_cumulative" \
+	"    rank_plot_title:" \
+	"    roc_curve_title: " \
+	"    precision_recall_title: " \
+	"  disease_plots:" \
+	"    plot_type: bar_cumulative" \
+	"    rank_plot_title:" \
+	"    roc_curve_title: " \
+	"    precision_recall_title: " \
+	"  variant_plots:" \
+	"    plot_type: bar_cumulative" \
+	"    rank_plot_title: " \
+	"    roc_curve_title: " \
+	"    precision_recall_title: " \
+	> $@
+
+$(ROOT_DIR)/results/template-1.0.0/gene_rank_stats.svg: $(ROOT_DIR)/results/template-1.0.0/run_data.yaml
+	pheval-utils generate-benchmark-stats -r $<
+
+.PHONY: pheval-report
+pheval-report: $(ROOT_DIR)/results/template-1.0.0/gene_rank_stats.svg
+
+
 corpora/lirical/default/corpus.yml:
 	test -d $(ROOT_DIR)/corpora/lirical/default/ || mkdir -p $(ROOT_DIR)/corpora/lirical/default/
 
