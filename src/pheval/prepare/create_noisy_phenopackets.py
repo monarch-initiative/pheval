@@ -15,15 +15,20 @@ from pheval.utils.phenopacket_utils import (
 )
 
 
-def load_ontology():
+def load_ontology(local_cached_ontology: Path = None) -> ProntoImplementation:
     """
     Load the Human Phenotype Ontology (HPO).
-
+    Args:
+        local_cached_ontology(Path): Path to the local cached ontology.
     Returns:
         ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.
     """
-    resource = OntologyResource(slug="hp.obo", local=False)
-    return ProntoImplementation(resource)
+    if local_cached_ontology is None:
+        resource = OntologyResource(slug="hp.obo", local=False)
+        return ProntoImplementation(resource)
+    else:
+        resource = OntologyResource(slug=local_cached_ontology, local=True)
+        return ProntoImplementation(resource)
 
 
 class HpoRandomiser:
@@ -203,7 +208,7 @@ def add_noise_to_phenotypic_profile(
 
 
 def create_scrambled_phenopacket(
-    output_dir: Path, phenopacket_path: Path, scramble_factor: float
+    output_dir: Path, phenopacket_path: Path, scramble_factor: float, local_cached_ontology: Path
 ) -> None:
     """
     Create a scrambled version of a Phenopacket.
@@ -212,8 +217,9 @@ def create_scrambled_phenopacket(
         output_dir (Path): The directory to store the output scrambled Phenopacket.
         phenopacket_path (Path): The path to the original Phenopacket file.
         scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
+        local_cached_ontology (Path): The path to the local cached ontology.
     """
-    ontology = load_ontology()
+    ontology = load_ontology(local_cached_ontology)
     hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
     phenopacket = phenopacket_reader(phenopacket_path)
     created_noisy_phenopacket = add_noise_to_phenotypic_profile(
@@ -227,7 +233,7 @@ def create_scrambled_phenopacket(
 
 
 def create_scrambled_phenopackets(
-    output_dir: Path, phenopacket_dir: Path, scramble_factor: float
+    output_dir: Path, phenopacket_dir: Path, scramble_factor: float, local_cached_ontology: Path
 ) -> None:
     """
     Create scrambled versions of Phenopackets within a directory.
@@ -236,8 +242,9 @@ def create_scrambled_phenopackets(
         output_dir (Path): The directory to store the output scrambled Phenopackets.
         phenopacket_dir (Path): The directory containing the original Phenopacket files.
         scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
+        local_cached_ontology (Path): The path to the local cached ontology.
     """
-    ontology = load_ontology()
+    ontology = load_ontology(local_cached_ontology)
     hpo_randomiser = HpoRandomiser(ontology, scramble_factor)
     phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
     for phenopacket_path in phenopacket_files:
@@ -252,7 +259,11 @@ def create_scrambled_phenopackets(
 
 
 def scramble_phenopackets(
-    output_dir: Path, phenopacket_path: Path, phenopacket_dir: Path, scramble_factor: float
+    output_dir: Path,
+    phenopacket_path: Path,
+    phenopacket_dir: Path,
+    scramble_factor: float,
+    local_cached_ontology: Path,
 ) -> None:
     """
     Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.
@@ -262,9 +273,14 @@ def scramble_phenopackets(
         phenopacket_path (Path): The path to a single Phenopacket file (if applicable).
         phenopacket_dir (Path): The directory containing multiple Phenopacket files (if applicable).
         scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
+        local_cached_ontology (Path): The path to the local cached ontology.
     """
     output_dir.mkdir(exist_ok=True)
     if phenopacket_path is not None:
-        create_scrambled_phenopacket(output_dir, phenopacket_path, scramble_factor)
+        create_scrambled_phenopacket(
+            output_dir, phenopacket_path, scramble_factor, local_cached_ontology
+        )
     elif phenopacket_dir is not None:
-        create_scrambled_phenopackets(output_dir, phenopacket_dir, scramble_factor)
+        create_scrambled_phenopackets(
+            output_dir, phenopacket_dir, scramble_factor, local_cached_ontology
+        )
