@@ -835,6 +835,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.add_noise_to_phenotypic_profile" class="md-nav__link">
+    add_noise_to_phenotypic_profile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.convert_patient_terms_to_parent" class="md-nav__link">
     convert_patient_terms_to_parent
   </a>
@@ -844,6 +851,20 @@
           <li class="md-nav__item">
   <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_random_hpo_terms" class="md-nav__link">
     create_random_hpo_terms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopacket" class="md-nav__link">
+    create_scrambled_phenopacket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopackets" class="md-nav__link">
+    create_scrambled_phenopackets
   </a>
   
 </li>
@@ -878,27 +899,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.add_noise_to_phenotypic_profile" class="md-nav__link">
-    add_noise_to_phenotypic_profile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopacket" class="md-nav__link">
-    create_scrambled_phenopacket
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopackets" class="md-nav__link">
-    create_scrambled_phenopackets
-  </a>
   
 </li>
       
@@ -1326,6 +1326,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.add_noise_to_phenotypic_profile" class="md-nav__link">
+    add_noise_to_phenotypic_profile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.convert_patient_terms_to_parent" class="md-nav__link">
     convert_patient_terms_to_parent
   </a>
@@ -1335,6 +1342,20 @@
           <li class="md-nav__item">
   <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_random_hpo_terms" class="md-nav__link">
     create_random_hpo_terms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopacket" class="md-nav__link">
+    create_scrambled_phenopacket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopackets" class="md-nav__link">
+    create_scrambled_phenopackets
   </a>
   
 </li>
@@ -1369,27 +1390,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.add_noise_to_phenotypic_profile" class="md-nav__link">
-    add_noise_to_phenotypic_profile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopacket" class="md-nav__link">
-    create_scrambled_phenopacket
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopackets" class="md-nav__link">
-    create_scrambled_phenopackets
-  </a>
   
 </li>
       
@@ -1465,12 +1465,7 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 34</span>
 <span class="normal"> 35</span>
 <span class="normal"> 36</span>
 <span class="normal"> 37</span>
@@ -1618,7 +1613,76 @@
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HpoRandomiser</span><span class="p">:</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HpoRandomiser</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO).&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
@@ -1772,6 +1836,70 @@
             <span class="p">)</span>
             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_random_hpo_terms</span><span class="p">(</span><span class="n">number_of_scrambled_terms</span><span class="p">)</span>
         <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Randomise the phenotypic profile of a Phenopacket or Family.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            phenopacket (Union[Phenopacket, Family]): The Phenopacket or Family to be randomised.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[Phenopacket, Family]: The randomised Phenopacket or Family.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">phenotypic_features</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">()</span>
+        <span class="n">random_phenotypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
+        <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span>
+            <span class="n">random_phenotypes</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">randomised_phenopacket</span>
+
+    <span class="k">def</span> <span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a scrambled version of a Phenopacket.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_dir (Path): The directory to store the output scrambled Phenopacket.</span>
+<span class="sd">            phenopacket_path (Path): The path to the original Phenopacket file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
+        <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span>
+            <span class="n">phenopacket</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">write_phenopacket</span><span class="p">(</span>
+            <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
+            <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_scrambled_phenopackets</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create scrambled versions of Phenopackets within a directory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_dir (Path): The directory to store the output scrambled Phenopackets.</span>
+<span class="sd">            phenopacket_dir (Path): The directory containing the original Phenopacket files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="n">files_with_suffix</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">phenopacket_files</span><span class="p">:</span>
+            <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
+            <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span>
+            <span class="n">write_phenopacket</span><span class="p">(</span>
+                <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
+                <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+                    <span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1848,17 +1976,17 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialise the HpoRandomiser.</span>
 
@@ -1869,6 +1997,120 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span> <span class="o">=</span> <span class="n">hpo_ontology</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">predicates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;HP:0000118&quot;</span><span class="p">]))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">scramble_factor</span> <span class="o">=</span> <span class="n">scramble_factor</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.add_noise_to_phenotypic_profile" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Randomise the phenotypic profile of a Phenopacket or Family.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>phenopacket</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The Phenopacket or Family to be randomised.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Union[Phenopacket, Family]: The randomised Phenopacket or Family.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Randomise the phenotypic profile of a Phenopacket or Family.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        phenopacket (Union[Phenopacket, Family]): The Phenopacket or Family to be randomised.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Union[Phenopacket, Family]: The randomised Phenopacket or Family.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">phenotypic_features</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">()</span>
+    <span class="n">random_phenotypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
+    <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span>
+        <span class="n">random_phenotypes</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">randomised_phenopacket</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1981,12 +2223,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 </details>
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
@@ -2020,7 +2257,12 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_patient_terms_to_parent</span><span class="p">(</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_patient_terms_to_parent</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
     <span class="n">retained_phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
@@ -2137,12 +2379,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
@@ -2150,7 +2387,12 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
-<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a list of random HPO terms.</span>
 
@@ -2164,6 +2406,222 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
         <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span><span class="p">),</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">random_id</span> <span class="ow">in</span> <span class="n">random_ids</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopacket" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Create a scrambled version of a Phenopacket.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>output_dir</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory to store the output scrambled Phenopacket.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>phenopacket_path</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the original Phenopacket file.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a scrambled version of a Phenopacket.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        output_dir (Path): The directory to store the output scrambled Phenopacket.</span>
+<span class="sd">        phenopacket_path (Path): The path to the original Phenopacket file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
+    <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span>
+        <span class="n">phenopacket</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">write_phenopacket</span><span class="p">(</span>
+        <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopackets" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">create_scrambled_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Create scrambled versions of Phenopackets within a directory.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>output_dir</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory to store the output scrambled Phenopackets.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>phenopacket_dir</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The directory containing the original Phenopacket files.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_scrambled_phenopackets</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create scrambled versions of Phenopackets within a directory.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        output_dir (Path): The directory to store the output scrambled Phenopackets.</span>
+<span class="sd">        phenopacket_dir (Path): The directory containing the original Phenopacket files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="n">files_with_suffix</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">phenopacket_files</span><span class="p">:</span>
+        <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
+        <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span>
+        <span class="n">write_phenopacket</span><span class="p">(</span>
+            <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
+            <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+                <span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2250,12 +2708,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 </details>
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
@@ -2282,7 +2735,12 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">randomise_hpo_terms</span><span class="p">(</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">randomise_hpo_terms</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
@@ -2410,12 +2868,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
@@ -2429,7 +2882,12 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">89</span>
 <span class="normal">90</span>
 <span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">retain_real_patient_terms</span><span class="p">(</span>
     <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
     <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -2526,19 +2984,19 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve_hpo_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypicFeature</span><span class="p">:</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve_hpo_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypicFeature</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve an HPO term based on the provided HPO ID.</span>
 
@@ -2628,12 +3086,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
@@ -2641,7 +3094,12 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">scramble_factor_proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">scramble_factor_proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the proportion of scrambled HPO terms based on the scramble factor.</span>
 
@@ -2676,414 +3134,19 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
 
 
-<h2 id="src.pheval.prepare.create_noisy_phenopackets.add_noise_to_phenotypic_profile" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">hpo_randomiser</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Randomise the phenotypic profile of a Phenopacket or Family.</p>
-
-
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>hpo_randomiser</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser" href="#src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser">HpoRandomiser</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>An instance of HpoRandomiser used for randomisation.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The Phenopacket or Family to be randomised.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Union[Phenopacket, Family]: The randomised Phenopacket or Family.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
-    <span class="n">hpo_randomiser</span><span class="p">:</span> <span class="n">HpoRandomiser</span><span class="p">,</span>
-    <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Randomise the phenotypic profile of a Phenopacket or Family.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        hpo_randomiser (HpoRandomiser): An instance of HpoRandomiser used for randomisation.</span>
-<span class="sd">        phenopacket (Union[Phenopacket, Family]): The Phenopacket or Family to be randomised.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Union[Phenopacket, Family]: The randomised Phenopacket or Family.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">phenotypic_features</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">()</span>
-    <span class="n">random_phenotypes</span> <span class="o">=</span> <span class="n">hpo_randomiser</span><span class="o">.</span><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
-    <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span><span class="n">random_phenotypes</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">randomised_phenopacket</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopacket" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Create a scrambled version of a Phenopacket.</p>
-
-
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the output scrambled Phenopacket.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the original Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>scramble_factor</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A factor determining the level of scrambling for phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
-    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create a scrambled version of a Phenopacket.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        output_dir (Path): The directory to store the output scrambled Phenopacket.</span>
-<span class="sd">        phenopacket_path (Path): The path to the original Phenopacket file.</span>
-<span class="sd">        scramble_factor (float): A factor determining the level of scrambling for phenotypic features.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ontology</span> <span class="o">=</span> <span class="n">load_ontology</span><span class="p">()</span>
-    <span class="n">hpo_randomiser</span> <span class="o">=</span> <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span>
-    <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
-    <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span>
-        <span class="n">hpo_randomiser</span><span class="p">,</span>
-        <span class="n">phenopacket</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">write_phenopacket</span><span class="p">(</span>
-        <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
-        <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.prepare.create_noisy_phenopackets.create_scrambled_phenopackets" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_scrambled_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Create scrambled versions of Phenopackets within a directory.</p>
-
-
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the output scrambled Phenopackets.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the original Phenopacket files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>scramble_factor</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A factor determining the level of scrambling for phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_scrambled_phenopackets</span><span class="p">(</span>
-    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create scrambled versions of Phenopackets within a directory.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        output_dir (Path): The directory to store the output scrambled Phenopackets.</span>
-<span class="sd">        phenopacket_dir (Path): The directory containing the original Phenopacket files.</span>
-<span class="sd">        scramble_factor (float): A factor determining the level of scrambling for phenotypic features.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ontology</span> <span class="o">=</span> <span class="n">load_ontology</span><span class="p">()</span>
-    <span class="n">hpo_randomiser</span> <span class="o">=</span> <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span>
-    <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="n">files_with_suffix</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="s2">&quot;.json&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">phenopacket_files</span><span class="p">:</span>
-        <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
-        <span class="n">created_noisy_phenopacket</span> <span class="o">=</span> <span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">hpo_randomiser</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">)</span>
-        <span class="n">write_phenopacket</span><span class="p">(</span>
-            <span class="n">created_noisy_phenopacket</span><span class="p">,</span>
-            <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
-                <span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
 <h2 id="src.pheval.prepare.create_noisy_phenopackets.load_ontology" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">load_ontology</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Load the Human Phenotype Ontology (HPO).</p>
-
-
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-<td><code>ProntoImplementation</code></td>          <td>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>An instance of ProntoImplementation containing the loaded HPO.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      <p>Load the Human Phenotype Ontology (HPO).
+Args:
+    local_cached_ontology(Path): Path to the local cached ontology.
+Returns:
+    ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
@@ -3095,15 +3158,25 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_ontology</span><span class="p">():</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProntoImplementation</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load the Human Phenotype Ontology (HPO).</span>
-
+<span class="sd">    Args:</span>
+<span class="sd">        local_cached_ontology(Path): Path to the local cached ontology.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">resource</span> <span class="o">=</span> <span class="n">OntologyResource</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="s2">&quot;hp.obo&quot;</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ProntoImplementation</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">local_cached_ontology</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resource</span> <span class="o">=</span> <span class="n">OntologyResource</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="s2">&quot;hp.obo&quot;</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ProntoImplementation</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">resource</span> <span class="o">=</span> <span class="n">OntologyResource</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">local_cached_ontology</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ProntoImplementation</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3116,7 +3189,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
 
 <h2 id="src.pheval.prepare.create_noisy_phenopackets.scramble_phenopackets" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">scramble_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">scramble_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">,</span> <span class="n">local_cached_ontology</span><span class="p">)</span></code>
 
 </h2>
 
@@ -3194,6 +3267,20 @@ of randomised HPO terms to be used in the phenotypic features.</p>
               <em>required</em>
           </td>
         </tr>
+        <tr>
+          <td><code>local_cached_ontology</code></td>
+          <td>
+                <code><span title="pathlib.Path">Path</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the local cached ontology.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
     </tbody>
   </table>
 
@@ -3215,8 +3302,23 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">267</span>
 <span class="normal">268</span>
 <span class="normal">269</span>
-<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">scramble_phenopackets</span><span class="p">(</span>
-    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">scramble_phenopackets</span><span class="p">(</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">local_cached_ontology</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.</span>
@@ -3226,12 +3328,19 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="sd">        phenopacket_path (Path): The path to a single Phenopacket file (if applicable).</span>
 <span class="sd">        phenopacket_dir (Path): The directory containing multiple Phenopacket files (if applicable).</span>
 <span class="sd">        scramble_factor (float): A factor determining the level of scrambling for phenotypic features.</span>
+<span class="sd">        local_cached_ontology (Path): The path to the local cached ontology.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ontology</span> <span class="o">=</span> <span class="n">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">phenopacket_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span>
+        <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span><span class="o">.</span><span class="n">create_scrambled_phenopacket</span><span class="p">(</span>
+            <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span>
+        <span class="p">)</span>
     <span class="k">elif</span> <span class="n">phenopacket_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">create_scrambled_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span>
+        <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span><span class="o">.</span><span class="n">create_scrambled_phenopackets</span><span class="p">(</span>
+            <span class="n">output_dir</span><span class="p">,</span>
+            <span class="n">phenopacket_dir</span><span class="p">,</span>
+        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
