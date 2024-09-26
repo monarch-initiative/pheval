@@ -106,17 +106,29 @@ def semsim_scramble_command(
     default="noisy_phenopackets",
     type=Path,
 )
+@click.option(
+    "--local-ontology-cache",
+    "-l",
+    metavar="PATH",
+    required=False,
+    help="Path to the local ontology cache, e.g., path to the hp.obo.",
+    default=None,
+    type=Path,
+)
 def scramble_phenopackets_command(
     phenopacket_path: Path,
     phenopacket_dir: Path,
     scramble_factor: float,
     output_dir: Path,
+    local_ontology_cache: Path,
 ):
     """Generate noisy phenopackets from existing ones."""
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
     else:
-        scramble_phenopackets(output_dir, phenopacket_path, phenopacket_dir, scramble_factor)
+        scramble_phenopackets(
+            output_dir, phenopacket_path, phenopacket_dir, scramble_factor, local_ontology_cache
+        )
 
 
 @click.command("semsim-comparison")
