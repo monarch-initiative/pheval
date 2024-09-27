@@ -73,7 +73,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
-            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
@@ -88,7 +88,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold = copy(self.assess_gene_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
-            assess_ascending_order_threshold._assess_gene_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
@@ -103,7 +103,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold._assess_gene_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
@@ -118,7 +118,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_gene_prioritisation)
         assess_with_threshold.threshold = 0.5
         self.assertEqual(
-            assess_with_threshold._assess_gene_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalGeneResult(
                     gene_symbol="PLXNA1",
                     gene_identifier="ENSG00000114554",
@@ -213,7 +213,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold._assess_variant_with_threshold_ascending_order(
+            assess_with_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalVariantResult(
                     chromosome="3",
                     start=126741108,
@@ -231,7 +231,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation_ascending_order)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold._assess_variant_with_threshold_ascending_order(
+            assess_with_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalVariantResult(
                     chromosome="3",
                     start=126741108,
@@ -249,7 +249,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold._assess_variant_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalVariantResult(
                     chromosome="3",
                     start=126741108,
@@ -267,7 +267,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_variant_prioritisation)
         assess_with_threshold.threshold = 0.01
         self.assertEqual(
-            assess_with_threshold._assess_variant_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalVariantResult(
                     chromosome="3",
                     start=126741108,
@@ -382,7 +382,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold = copy(self.assess_disease_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.1
         self.assertEqual(
-            assess_ascending_order_threshold._assess_disease_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_name="Glutaric aciduria type 1",
                     disease_identifier="OMIM:231670",
@@ -397,7 +397,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_ascending_order_threshold = copy(self.assess_disease_prioritisation_ascending_order)
         assess_ascending_order_threshold.threshold = 0.9
         self.assertEqual(
-            assess_ascending_order_threshold._assess_disease_with_threshold_ascending_order(
+            assess_ascending_order_threshold._assess_with_threshold_ascending_order(
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_name="Glutaric aciduria type 1",
                     disease_identifier="OMIM:231670",
@@ -412,7 +412,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_disease_prioritisation)
         assess_with_threshold.threshold = 0.9
         self.assertEqual(
-            assess_with_threshold._assess_disease_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_identifier="OMIM:231670",
                     disease_name="Glutaric aciduria type 1",
@@ -427,7 +427,7 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         assess_with_threshold = copy(self.assess_disease_prioritisation)
         assess_with_threshold.threshold = 0.5
         self.assertEqual(
-            assess_with_threshold._assess_disease_with_threshold(
+            assess_with_threshold._assess_with_threshold(
                 result_entry=RankedPhEvalDiseaseResult(
                     disease_identifier="OMIM:231670",
                     disease_name="Glutaric aciduria type 1",

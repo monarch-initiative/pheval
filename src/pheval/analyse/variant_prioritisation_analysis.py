@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from pheval.analyse.assess_prioritisation_base import AssessPrioritisationBase
 from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
@@ -10,102 +11,8 @@ from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import GenomicVariant
 
 
-class AssessVariantPrioritisation:
+class AssessVariantPrioritisation(AssessPrioritisationBase):
     """Class for assessing variant prioritisation based on thresholds and scoring orders."""
-
-    def __init__(
-        self,
-        db_connection: BenchmarkDBManager,
-        table_name: str,
-        column: str,
-        threshold: float,
-        score_order: str,
-    ):
-        """
-        Initialise AssessVariantPrioritisation class
-
-        Args:
-            db_connection (BenchmarkDBManager): DB connection.
-            table_name (str): Table name.
-            column (str): Column name.
-            threshold (float): Threshold for scores
-            score_order (str): Score order for results, either ascending or descending
-
-        """
-        self.threshold = threshold
-        self.score_order = score_order
-        self.db_connection = db_connection
-        self.conn = db_connection.conn
-        self.column = column
-        self.table_name = table_name
-        db_connection.add_column_integer_default(
-            table_name=table_name, column=self.column, default=0
-        )
-
-    def _assess_variant_with_threshold_ascending_order(
-        self, result_entry: RankedPhEvalVariantResult
-    ) -> int:
-        """
-        Record the variant prioritisation rank if it meets the ascending order threshold.
-
-        This method checks if the variant prioritisation rank meets the ascending order threshold.
-        If the score of the result entry is less than the threshold, it records the variant rank.
-
-        Args:
-            result_entry (RankedPhEvalVariantResult): Ranked PhEval variant result entry
-
-        Returns:
-            int: Recorded variant prioritisation rank
-        """
-        if float(self.threshold) > float(result_entry.score):
-            return result_entry.rank
-        else:
-            return 0
-
-    def _assess_variant_with_threshold(self, result_entry: RankedPhEvalVariantResult) -> int:
-        """
-        Record the variant prioritisation rank if it meets the score threshold.
-
-        This method checks if the variant prioritisation rank meets the score threshold.
-        If the score of the result entry is greater than the threshold, it records the variant rank.
-
-        Args:
-            result_entry (RankedPhEvalVariantResult): Ranked PhEval variant result entry
-
-        Returns:
-            int: Recorded variant prioritisation rank
-        """
-        if float(self.threshold) < float(result_entry.score):
-            return result_entry.rank
-        else:
-            return 0
-
-    def _record_matched_variant(
-        self, standardised_variant_result: RankedPhEvalVariantResult
-    ) -> int:
-        """
-        Return the variant rank result - handling the specification of a threshold.
-
-        This method determines and returns the variant rank result based on the specified threshold
-        and score order. If the threshold is 0.0, it records the variant rank directly.
-        Otherwise, it assesses the variant with the threshold based on the score order.
-
-        Args:
-            standardised_variant_result (RankedPhEvalVariantResult): Ranked PhEval variant result entry
-
-        Returns:
-            int: Recorded variant prioritisation rank
-        """
-        if float(self.threshold) == 0.0:
-            return standardised_variant_result.rank
-        else:
-            return (
-                self._assess_variant_with_threshold(standardised_variant_result)
-                if self.score_order != "ascending"
-                else self._assess_variant_with_threshold_ascending_order(
-                    standardised_variant_result,
-                )
-            )
 
     def assess_variant_prioritisation(
         self,
@@ -149,7 +56,7 @@ class AssessVariantPrioritisation:
             )
 
             if len(result) > 0:
-                variant_match = self._record_matched_variant(RankedPhEvalVariantResult(**result[0]))
+                variant_match = self._record_matched_entity(RankedPhEvalVariantResult(**result[0]))
                 relevant_ranks.append(variant_match)
                 primary_key = (
                     f"{phenopacket_path.name}-{causative_variant.chrom}-{causative_variant.pos}-"

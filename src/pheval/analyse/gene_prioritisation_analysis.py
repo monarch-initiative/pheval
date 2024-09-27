@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from pheval.analyse.assess_prioritisation_base import AssessPrioritisationBase
 from pheval.analyse.benchmark_db_manager import BenchmarkDBManager
 from pheval.analyse.benchmarking_data import BenchmarkRunResults
 from pheval.analyse.binary_classification_stats import BinaryClassificationStats
@@ -9,94 +10,8 @@ from pheval.post_processing.post_processing import RankedPhEvalGeneResult
 from pheval.utils.file_utils import all_files
 
 
-class AssessGenePrioritisation:
+class AssessGenePrioritisation(AssessPrioritisationBase):
     """Class for assessing gene prioritisation based on thresholds and scoring orders."""
-
-    def __init__(
-        self,
-        db_connection: BenchmarkDBManager,
-        table_name: str,
-        column: str,
-        threshold: float,
-        score_order: str,
-    ):
-        """
-        Initialise AssessGenePrioritisation class.
-
-        Args:
-            db_connection (BenchmarkDBManager): Database connection
-            table_name (str): Table name
-            column (Path): Column name
-            threshold (float): Threshold for scores
-            score_order (str): Score order for results, either ascending or descending
-        """
-        self.threshold = threshold
-        self.score_order = score_order
-        self.db_connection = db_connection
-        self.conn = db_connection.conn
-        self.column = column
-        self.table_name = table_name
-        db_connection.add_column_integer_default(
-            table_name=table_name, column=self.column, default=0
-        )
-
-    def _assess_gene_with_threshold_ascending_order(
-        self,
-        result_entry: RankedPhEvalGeneResult,
-    ) -> int:
-        """
-        Record the gene prioritisation rank if it meets the ascending order threshold.
-        Args:
-            result_entry (RankedPhEvalGeneResult): Ranked PhEval gene result entry
-        Returns:
-            int: Recorded gene prioritisation rank.
-        """
-        if float(self.threshold) > float(result_entry.score):
-            return result_entry.rank
-        else:
-            return 0
-
-    def _assess_gene_with_threshold(
-        self,
-        result_entry: RankedPhEvalGeneResult,
-    ) -> int:
-        """
-        Record the gene prioritisation rank if it meets the score threshold.
-        Args:
-            result_entry (RankedPhEvalResult): Ranked PhEval gene result entry
-
-        Returns:
-            int: Recorded correct gene prioritisation rank.
-        """
-        if float(self.threshold) < float(result_entry.score):
-            return result_entry.rank
-        else:
-            return 0
-
-    def _record_matched_gene(
-        self,
-        standardised_gene_result: RankedPhEvalGeneResult,
-    ) -> int:
-        """
-        Return the gene rank result - handling the specification of a threshold.
-        This method determines and returns the gene rank result based on the specified threshold
-        and score order. If the threshold is 0.0, it records the gene rank directly.
-        Otherwise, it assesses the gene with the threshold based on the score order.
-        Args:
-            standardised_gene_result (RankedPhEvalGeneResult): Ranked PhEval gene result entry
-        Returns:
-            GenePrioritisationResult: Recorded correct gene prioritisation rank result
-        """
-        if float(self.threshold) == 0.0:
-            return standardised_gene_result.rank
-        else:
-            return (
-                self._assess_gene_with_threshold(standardised_gene_result)
-                if self.score_order != "ascending"
-                else self._assess_gene_with_threshold_ascending_order(
-                    standardised_gene_result,
-                )
-            )
 
     def assess_gene_prioritisation(
         self,
@@ -131,7 +46,7 @@ class AssessGenePrioritisation:
                 .to_dict(orient="records")
             )
             if len(result) > 0:
-                gene_match = self._record_matched_gene(RankedPhEvalGeneResult(**result[0]))
+                gene_match = self._record_matched_entity(RankedPhEvalGeneResult(**result[0]))
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
                 self.conn.execute(
