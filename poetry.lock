@@ -2376,9 +2376,9 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
     {version = ">=1.22.4", markers = "python_version < \"3.11\""},
     {version = ">=1.23.2", markers = "python_version == \"3.11\""},
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -2455,17 +2455,17 @@ test = ["pytest (>=7.0.0,<8.0.0)"]
 
 [[package]]
 name = "pheval-template"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 optional = false
 python-versions = "<4.0.0,>=3.9"
 files = [
-    {file = "pheval_template-0.1.1-py3-none-any.whl", hash = "sha256:eef6f177ca8907fe5783eaa4003fa07f20342e26cc66368ba17432a06c2eb6ce"},
-    {file = "pheval_template-0.1.1.tar.gz", hash = "sha256:17c2d985402b4b6827666b0af9c45359c9f3e1147d9275e194de06497e55dbc9"},
+    {file = "pheval_template-0.1.2-py3-none-any.whl", hash = "sha256:1f5b32a877048a2d717f97fa6f0eb8cc5b85932a97b1a6c72660ea2599d04446"},
+    {file = "pheval_template-0.1.2.tar.gz", hash = "sha256:accfc707f8e1f48f9c12be5d334d36c2df22cea57c52c2bb3a44799ecc2f8e43"},
 ]
 
 [package.dependencies]
-pheval = ">=0.3.2,<0.4.0"
+pheval = ">=0.3.2,<0.5.0"
 
 [[package]]
 name = "pillow"
@@ -2766,8 +2766,8 @@ files = [
 annotated-types = ">=0.4.0"
 pydantic-core = "2.20.1"
 typing-extensions = [
-    {version = ">=4.12.2", markers = "python_version >= \"3.13\""},
     {version = ">=4.6.1", markers = "python_version < \"3.13\""},
+    {version = ">=4.12.2", markers = "python_version >= \"3.13\""},
 ]
 
 [package.extras]
@@ -4239,4 +4239,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0.0"
-content-hash = "022280d4194fe33023d111c87826fa7d2474eadf738e15a08d6bf5d6174e2a52"
+content-hash = "daa6ffd82a06b2ab88c5299c4170003c146b91c58c06c7aee889d0c724c32421"
