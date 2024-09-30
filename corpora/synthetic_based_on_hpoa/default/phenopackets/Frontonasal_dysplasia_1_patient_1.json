@@ -1,0 +1,135 @@
+{
+  "id": "frontonasal_dysplasia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000405",
+        "label": "Conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009466",
+        "label": "Radial deviation of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002000",
+        "label": "Short columella"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009473",
+        "label": "Joint contracture of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000161",
+        "label": "Median cleft upper lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006931",
+        "label": "Pericallosal lipoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012385",
+        "label": "Camptodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000349",
+        "label": "Widow's peak"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001566",
+        "label": "Widely-spaced maxillary central incisors"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005258",
+        "label": "Pectoral muscle hypoplasia/aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000384",
+        "label": "Preauricular skin tag"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006992",
+        "label": "Anterior basal encephalocele"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011480",
+        "label": "Unilateral microphthalmos"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011803",
+        "label": "Bifid nose"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:136760",
+        "label": "Frontonasal dysplasia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:00:20.100353Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

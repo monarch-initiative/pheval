@@ -1,0 +1,75 @@
+{
+  "id": "arthrogryposis,_perthes_disease,_and_upward_gaze_palsy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001845",
+        "label": "Overlapping toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000293",
+        "label": "Full cheeks"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002021",
+        "label": "Pyloric stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012042",
+        "label": "Aspirin-induced asthma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031653",
+        "label": "Abnormal heart valve physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025331",
+        "label": "Upgaze palsy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614262",
+        "label": "Arthrogryposis, perthes disease, and upward gaze palsy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:25:27.873718Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

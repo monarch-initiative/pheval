@@ -1,0 +1,81 @@
+{
+  "id": "heterotaxy,_visceral,_2,_autosomal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001746",
+        "label": "Asplenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005211",
+        "label": "Midgut malrotation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001696",
+        "label": "Situs inversus totalis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011537",
+        "label": "Left atrial isomerism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001338",
+        "label": "Partial agenesis of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011667",
+        "label": "Bilateral superior vena cava with bridging vein"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:605376",
+        "label": "Heterotaxy, visceral, 2, autosomal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:36:06.081168Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

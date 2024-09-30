@@ -1,0 +1,165 @@
+{
+  "id": "cleidocranial_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006660",
+        "label": "Aplastic clavicle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004474",
+        "label": "Persistent open anterior fontanelle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000242",
+        "label": "Parietal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000175",
+        "label": "Cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002688",
+        "label": "Absent frontal sinuses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000239",
+        "label": "Large fontanelles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011001",
+        "label": "Increased bone mineral density"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003183",
+        "label": "Wide pubic symphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006483",
+        "label": "Abnormal number of teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004633",
+        "label": "Lower thoracic kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003423",
+        "label": "Thoracolumbar kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005259",
+        "label": "Abnormal facility in opposing the shoulders"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006713",
+        "label": "Aplasia/Hypoplasia of the scapulae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:119600",
+        "label": "Cleidocranial dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:28:29.363469Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

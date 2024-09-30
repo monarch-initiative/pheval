@@ -1,0 +1,189 @@
+{
+  "id": "parkinson_disease_14,_autosomal_recessive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002172",
+        "label": "Postural instability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000718",
+        "label": "Aggressive behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000716",
+        "label": "Depression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025097",
+        "label": "Eyelid myoclonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000751",
+        "label": "Personality changes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002312",
+        "label": "Clumsiness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001337",
+        "label": "Tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003236",
+        "label": "Elevated circulating creatine kinase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000511",
+        "label": "Vertical supranuclear gaze palsy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025387",
+        "label": "Pill-rolling tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002548",
+        "label": "Parkinsonism with favorable response to dopaminergic medication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025387",
+        "label": "Pill-rolling tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030219",
+        "label": "Semantic dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040141",
+        "label": "Tardive dyskinesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007086",
+        "label": "Social and occupational deterioration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002491",
+        "label": "Spasticity of facial muscles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033683",
+        "label": "Jaw hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002396",
+        "label": "Cogwheel rigidity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001332",
+        "label": "Dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000658",
+        "label": "Eyelid apraxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002283",
+        "label": "Global brain atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002067",
+        "label": "Bradykinesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031833",
+        "label": "Hypometric upward saccades"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612953",
+        "label": "Parkinson disease 14, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:01:33.606686Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

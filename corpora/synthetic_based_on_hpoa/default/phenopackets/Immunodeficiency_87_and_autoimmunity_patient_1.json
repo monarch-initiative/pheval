@@ -1,0 +1,177 @@
+{
+  "id": "immunodeficiency_87_and_autoimmunity",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000175",
+        "label": "Cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034056",
+        "label": "Increased fecal calprotectin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020136",
+        "label": "Anticardiolipin IgG antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001511",
+        "label": "Intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002582",
+        "label": "Atrophic gastritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001541",
+        "label": "Ascites"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002718",
+        "label": "Recurrent bacterial infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001399",
+        "label": "Hepatic failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030948",
+        "label": "Elevated gamma-glutamyltransferase level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001397",
+        "label": "Hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001942",
+        "label": "Metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003186",
+        "label": "Inverted nipples"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002724",
+        "label": "Recurrent Aspergillus infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025624",
+        "label": "Reduced proportion of CD4+ effector memory T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010445",
+        "label": "Primum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012726",
+        "label": "Episodic hypokalemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001046",
+        "label": "Intermittent jaundice"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033222",
+        "label": "Decreased CD4:CD8 ratio"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020072",
+        "label": "Persistent EBV viremia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012334",
+        "label": "Extrahepatic cholestasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033166",
+        "label": "Recurrent viral upper respiratory tract infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619573",
+        "label": "Immunodeficiency 87 and autoimmunity"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:50:38.384369Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "id": "cartilage-hair_hypoplasia",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002938",
+        "label": "Lumbar hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008070",
+        "label": "Sparse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006589",
+        "label": "Flaring of lower rib cage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001377",
+        "label": "Limited elbow extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002812",
+        "label": "Coxa vara"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000774",
+        "label": "Narrow chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0045075",
+        "label": "Sparse eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001888",
+        "label": "Lymphopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000248",
+        "label": "Brachycephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002032",
+        "label": "Esophageal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005374",
+        "label": "Cellular immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003016",
+        "label": "Metaphyseal widening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031087",
+        "label": "Absent pubertal growth spurt"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003311",
+        "label": "Hypoplasia of the odontoid process"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008921",
+        "label": "Neonatal short-limb short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002286",
+        "label": "Fair hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004810",
+        "label": "Congenital hypoplastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005360",
+        "label": "Susceptibility to chickenpox"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005871",
+        "label": "Metaphyseal chondrodysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006208",
+        "label": "Metaphyseal cupping of proximal phalanges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003347",
+        "label": "Impaired lymphocyte transformation with phytohemagglutinin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008866",
+        "label": "Failure to thrive secondary to recurrent infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005096",
+        "label": "Distal femoral bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:250250",
+        "label": "Cartilage-hair hypoplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:04:03.269267Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

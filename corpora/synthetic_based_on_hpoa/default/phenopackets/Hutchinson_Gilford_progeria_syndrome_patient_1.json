@@ -1,0 +1,63 @@
+{
+  "id": "hutchinson-gilford_progeria_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005181",
+        "label": "Premature coronary artery atherosclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001658",
+        "label": "Myocardial infarction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040160",
+        "label": "Generalized osteoporosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:176670",
+        "label": "Hutchinson-Gilford progeria syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T02:15:28.362415Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

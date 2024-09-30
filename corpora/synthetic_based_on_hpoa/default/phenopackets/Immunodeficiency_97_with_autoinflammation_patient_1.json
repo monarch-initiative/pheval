@@ -1,0 +1,135 @@
+{
+  "id": "immunodeficiency_97_with_autoinflammation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100721",
+        "label": "Mediastinal lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005415",
+        "label": "Decreased proportion of CD8-positive T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001742",
+        "label": "Nasal congestion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001888",
+        "label": "Lymphopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005425",
+        "label": "Recurrent sinopulmonary infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032151",
+        "label": "Episodic eosinophilia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025142",
+        "label": "Constitutional symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020113",
+        "label": "Decreased proportion of CD4+CD25+ regulatory T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007573",
+        "label": "Late onset atopic dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000010",
+        "label": "Recurrent urinary tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012647",
+        "label": "Abnormal inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012312",
+        "label": "Monocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034029",
+        "label": "Hepatic foam cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031028",
+        "label": "Lactescent serum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010701",
+        "label": "Abnormal immunoglobulin level"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619802",
+        "label": "Immunodeficiency 97 with autoinflammation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:02:27.334845Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
