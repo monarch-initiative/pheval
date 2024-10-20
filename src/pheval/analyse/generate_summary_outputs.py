@@ -39,7 +39,7 @@ def create_comparison_table(
         table_name (str): Name of the table to extract ranks from
     """
     connector.drop_table(comparison_table_name)
-    excluded_columns = (", ".join(drop_columns), "identifier") if drop_columns else ("identifier",)
+    excluded_columns = tuple(drop_columns + ["identifier"]) if drop_columns else ("identifier",)
     connector.conn.execute(
         f'CREATE TABLE "{comparison_table_name}" AS SELECT * '
         f"EXCLUDE {excluded_columns} FROM {table_name}"
