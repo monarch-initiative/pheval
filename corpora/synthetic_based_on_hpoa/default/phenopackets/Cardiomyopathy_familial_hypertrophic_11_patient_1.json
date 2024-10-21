@@ -1,0 +1,93 @@
+{
+  "id": "cardiomyopathy,_familial_hypertrophic,_11",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031971",
+        "label": "Subaortic ventricular septal bulge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011711",
+        "label": "Left anterior fascicular block"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001637",
+        "label": "Abnormal myocardium morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005129",
+        "label": "Congenital hypertrophy of left ventricle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010445",
+        "label": "Primum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612098",
+        "label": "Cardiomyopathy, familial hypertrophic, 11"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:35:36.756676Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "lipodystrophy,_familial_partial,_type_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000956",
+        "label": "Acanthosis nigricans"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009017",
+        "label": "Loss of gluteal subcutaneous adipose tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000831",
+        "label": "Insulin-resistant diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001015",
+        "label": "Prominent superficial veins"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002155",
+        "label": "Hypertriglyceridemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003758",
+        "label": "Reduced subcutaneous adipose tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000855",
+        "label": "Insulin resistance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001414",
+        "label": "Microvesicular hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002230",
+        "label": "Generalized hirsutism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009124",
+        "label": "Abnormal adipose tissue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000825",
+        "label": "Hyperinsulinemic hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009056",
+        "label": "Loss of subcutaneous adipose tissue from upper limbs"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:604367",
+        "label": "Lipodystrophy, familial partial, type 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:45:27.804349Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

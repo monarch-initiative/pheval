@@ -1,0 +1,123 @@
+{
+  "id": "boudin-mortier_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001847",
+        "label": "Long hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011297",
+        "label": "Abnormal digit morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001654",
+        "label": "Abnormal heart valve morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002616",
+        "label": "Aortic root aneurysm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001182",
+        "label": "Tapered finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009671",
+        "label": "Pseudoepiphysis of the proximal phalanx of the thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003517",
+        "label": "Birth length greater than 97th percentile"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045087",
+        "label": "Hip joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010022",
+        "label": "Pseudoepiphysis of the 1st metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009531",
+        "label": "Pseudoepiphysis of the proximal phalanx of the 2nd finger"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619543",
+        "label": "Boudin-Mortier syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:08:28.804882Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

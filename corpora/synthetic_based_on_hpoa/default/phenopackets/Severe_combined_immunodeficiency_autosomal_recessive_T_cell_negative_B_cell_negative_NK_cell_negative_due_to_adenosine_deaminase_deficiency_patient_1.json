@@ -1,0 +1,123 @@
+{
+  "id": "severe_combined_immunodeficiency,_autosomal_recessive,_t_cell-negative,_b_cell-negative,_nk_cell-negative,_due_to_adenosine_deaminase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004430",
+        "label": "Severe combined immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000988",
+        "label": "Skin rash"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002028",
+        "label": "Chronic diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031233",
+        "label": "Horizontal inferior border of scapula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001880",
+        "label": "Eosinophilia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003212",
+        "label": "Increased circulating IgE level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006532",
+        "label": "Recurrent pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000907",
+        "label": "Anterior rib cupping"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000246",
+        "label": "Sinusitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005359",
+        "label": "Aplasia of the thymus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031191",
+        "label": "Deep dermal perivascular inflammatory infiltrate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:102700",
+        "label": "Severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-negative, due to adenosine deaminase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:00:23.776828Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

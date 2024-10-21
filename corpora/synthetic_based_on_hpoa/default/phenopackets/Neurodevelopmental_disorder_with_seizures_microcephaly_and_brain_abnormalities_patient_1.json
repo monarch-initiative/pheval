@@ -1,0 +1,201 @@
+{
+  "id": "neurodevelopmental_disorder_with_seizures,_microcephaly,_and_brain_abnormalities",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001270",
+        "label": "Motor delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001518",
+        "label": "Small for gestational age"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002079",
+        "label": "Hypoplasia of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032792",
+        "label": "Tonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002510",
+        "label": "Spastic tetraplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012447",
+        "label": "Abnormal myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007068",
+        "label": "Inferior cerebellar vermis hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002268",
+        "label": "Paroxysmal dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001285",
+        "label": "Spastic tetraparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0430048",
+        "label": "Intracranial calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002060",
+        "label": "Abnormal cerebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011330",
+        "label": "Metopic synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011649",
+        "label": "Patent ductus arteriosus after premature birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012547",
+        "label": "Abnormal involuntary eye movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012736",
+        "label": "Profound global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002536",
+        "label": "Abnormal cortical gyration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025373",
+        "label": "Interictal EEG abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040195",
+        "label": "Decreased head circumference"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620024",
+        "label": "Neurodevelopmental disorder with seizures, microcephaly, and brain abnormalities"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:06:40.764352Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

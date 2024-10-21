@@ -1,0 +1,255 @@
+{
+  "id": "noonan_syndrome-like_with_loose_anagen_hair_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008070",
+        "label": "Sparse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001520",
+        "label": "Large for gestational age"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007018",
+        "label": "Attention deficit hyperactivity disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002212",
+        "label": "Curly hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040169",
+        "label": "Loose anagen hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033564",
+        "label": "Stasis dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001003",
+        "label": "Multiple lentigines"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000494",
+        "label": "Downslanted palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004488",
+        "label": "Macrocephaly at birth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000465",
+        "label": "Webbed neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410265",
+        "label": "Supraglottic hemangioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008929",
+        "label": "Asymmetric short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002967",
+        "label": "Cubitus valgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031936",
+        "label": "Delayed ability to walk"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001615",
+        "label": "Hoarse cry"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007565",
+        "label": "Multiple cafe-au-lait spots"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000752",
+        "label": "Hyperactivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004768",
+        "label": "Sparse anterior scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000337",
+        "label": "Broad forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012736",
+        "label": "Profound global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000081",
+        "label": "Duplicated collecting system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001531",
+        "label": "Failure to thrive in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040053",
+        "label": "Long lower eyelashes"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607721",
+        "label": "Noonan syndrome-like with loose anagen hair 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:24:03.986985Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

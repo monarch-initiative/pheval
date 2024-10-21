@@ -1,0 +1,176 @@
+{
+  "id": "retinitis_pigmentosa_with_or_without_skeletal_anomalies",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P11Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001363",
+        "label": "Craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031936",
+        "label": "Delayed ability to walk"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000546",
+        "label": "Retinal degeneration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008070",
+        "label": "Sparse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000510",
+        "label": "Rod-cone dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010761",
+        "label": "Broad columella"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045075",
+        "label": "Sparse eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010049",
+        "label": "Short metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000957",
+        "label": "Cafe-au-lait spot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012471",
+        "label": "Thick vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009882",
+        "label": "Short distal phalanx of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033994",
+        "label": "Dependency on parenteral nutrition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040194",
+        "label": "Increased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005871",
+        "label": "Metaphyseal chondrodysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000349",
+        "label": "Widow's peak"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200006",
+        "label": "Slanting of the palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001256",
+        "label": "Intellectual disability, mild"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:250410",
+        "label": "Retinitis pigmentosa with or without skeletal anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:11:31.495188Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

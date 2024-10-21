@@ -1,0 +1,207 @@
+{
+  "id": "papillorenal_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030854",
+        "label": "Scleral staphyloma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012622",
+        "label": "Chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000977",
+        "label": "Soft skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000089",
+        "label": "Renal hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012595",
+        "label": "Mild proteinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032285",
+        "label": "Ultra-low vision with retained light projection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012027",
+        "label": "Laryngeal edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011509",
+        "label": "Macular hyperpigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025514",
+        "label": "Morning glory anomaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012211",
+        "label": "Abnormal renal physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003259",
+        "label": "Elevated circulating creatinine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033738",
+        "label": "Primary vesicoureteral reflux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007099",
+        "label": "Chiari type I malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031726",
+        "label": "Incyclotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011003",
+        "label": "High myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000085",
+        "label": "Horseshoe kidney"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:120330",
+        "label": "Papillorenal syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:06:58.492865Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

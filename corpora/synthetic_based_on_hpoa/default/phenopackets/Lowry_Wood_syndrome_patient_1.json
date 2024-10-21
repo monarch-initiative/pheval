@@ -1,0 +1,75 @@
+{
+  "id": "lowry-wood_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007994",
+        "label": "Peripheral visual field loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012471",
+        "label": "Thick vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000340",
+        "label": "Sloping forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003182",
+        "label": "Shallow acetabular fossae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012095",
+        "label": "Multiple joint dislocation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:226960",
+        "label": "Lowry-Wood syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:16:01.948774Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

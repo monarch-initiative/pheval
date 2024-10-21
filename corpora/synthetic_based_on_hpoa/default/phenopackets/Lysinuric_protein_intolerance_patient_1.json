@@ -1,0 +1,165 @@
+{
+  "id": "lysinuric_protein_intolerance",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001324",
+        "label": "Muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000973",
+        "label": "Cutis laxa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001733",
+        "label": "Pancreatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003281",
+        "label": "Increased circulating ferritin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002014",
+        "label": "Diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002038",
+        "label": "Protein avoidance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003218",
+        "label": "Oroticaciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500142",
+        "label": "Hypolysinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012156",
+        "label": "Hemophagocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003355",
+        "label": "Aminoaciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002018",
+        "label": "Nausea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003297",
+        "label": "Hyperlysinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011029",
+        "label": "Internal hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012759",
+        "label": "Neurodevelopmental abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004395",
+        "label": "Malnutrition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004349",
+        "label": "Reduced bone mineral density"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:222700",
+        "label": "Lysinuric protein intolerance"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:39:36.863126Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

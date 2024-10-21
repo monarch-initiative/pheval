@@ -1,0 +1,63 @@
+{
+  "id": "glycogen_storage_disease_v",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003710",
+        "label": "Exercise-induced muscle cramps"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003201",
+        "label": "Rhabdomyolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033072",
+        "label": "Abnormal macroscopic urine appearance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008180",
+        "label": "Mildly elevated creatine kinase"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:232600",
+        "label": "Glycogen storage disease V"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:05:08.680732Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

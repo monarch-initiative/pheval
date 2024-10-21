@@ -1,0 +1,57 @@
+{
+  "id": "brachydactyly,_type_a2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009536",
+        "label": "Short 2nd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010109",
+        "label": "Short hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011297",
+        "label": "Abnormal digit morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:112600",
+        "label": "Brachydactyly, type A2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:57:27.495984Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "hyper-ige_recurrent_infection_syndrome_4a,_autosomal_dominant",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004315",
+        "label": "Decreased circulating IgG level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002788",
+        "label": "Recurrent upper respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002099",
+        "label": "Asthma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025419",
+        "label": "Pulmonary pneumatocele"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002720",
+        "label": "Decreased circulating IgA level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006335",
+        "label": "Persistence of primary teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003212",
+        "label": "Increased circulating IgE level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002110",
+        "label": "Bronchiectasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031292",
+        "label": "Cutaneous abscess"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033214",
+        "label": "Recurrent viral pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007573",
+        "label": "Late onset atopic dermatitis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619752",
+        "label": "Hyper-IgE recurrent infection syndrome 4A, autosomal dominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:25:19.281335Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

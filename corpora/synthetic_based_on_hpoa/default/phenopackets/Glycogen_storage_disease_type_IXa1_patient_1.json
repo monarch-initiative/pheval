@@ -1,0 +1,123 @@
+{
+  "id": "glycogen_storage_disease,_type_ixa1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:6000333",
+        "label": "Reduced hepatic phosphorylase kinase activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003128",
+        "label": "Lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002910",
+        "label": "Elevated circulating hepatic transaminase concentration"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001946",
+        "label": "Ketosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0025212",
+          "label": "Triggered by fasting"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0430071",
+        "label": "Abnormal circulating organic compound concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025142",
+        "label": "Constitutional symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003119",
+        "label": "Abnormal circulating lipid concentration"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:306000",
+        "label": "Glycogen storage disease, type IXa1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:48:17.076511Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

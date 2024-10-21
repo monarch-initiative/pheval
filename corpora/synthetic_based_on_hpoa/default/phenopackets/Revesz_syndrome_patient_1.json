@@ -1,0 +1,105 @@
+{
+  "id": "revesz_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002514",
+        "label": "Cerebral calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008404",
+        "label": "Nail dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000555",
+        "label": "Leukocoria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002136",
+        "label": "Broad-based gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007898",
+        "label": "Exudative retinopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031413",
+        "label": "Short telomere length"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001972",
+        "label": "Macrocytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002370",
+        "label": "Poor coordination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011408",
+        "label": "Moderate intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002164",
+        "label": "Nail dysplasia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:268130",
+        "label": "Revesz syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:59:41.950234Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "ectodermal_dysplasia-syndactyly_syndrome_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010554",
+        "label": "Cutaneous finger syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000698",
+        "label": "Conical tooth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002209",
+        "label": "Sparse scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000687",
+        "label": "Widely spaced teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002550",
+        "label": "Absent facial hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005709",
+        "label": "2-3 toe cutaneous syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000653",
+        "label": "Sparse eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003777",
+        "label": "Pili torti"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001800",
+        "label": "Hypoplastic toenails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002046",
+        "label": "Heat intolerance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006297",
+        "label": "Enamel hypoplasia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613573",
+        "label": "Ectodermal dysplasia-syndactyly syndrome 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:42:09.126178Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

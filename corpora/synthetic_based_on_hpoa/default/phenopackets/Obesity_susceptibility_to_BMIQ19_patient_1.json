@@ -1,0 +1,75 @@
+{
+  "id": "obesity,_susceptibility_to,_bmiq19",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000458",
+        "label": "Anosmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000842",
+        "label": "Hyperinsulinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031793",
+        "label": "Increased serum leptin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002591",
+        "label": "Polyphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004324",
+        "label": "Increased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617885",
+        "label": "Obesity, susceptibility to, BMIQ19"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:47:25.746976Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "oeis_complex",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000061",
+        "label": "Ambiguous genitalia, female"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010305",
+        "label": "Absence of the sacrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000039",
+        "label": "Epispadias"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002937",
+        "label": "Hemivertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000238",
+        "label": "Hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008490",
+        "label": "Sacral segmentation defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002475",
+        "label": "Myelomeningocele"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002836",
+        "label": "Bladder exstrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002144",
+        "label": "Tethered cord"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000143",
+        "label": "Rectovaginal fistula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005223",
+        "label": "Duplicated colon"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000072",
+        "label": "Hydroureter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000878",
+        "label": "11 pairs of ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001545",
+        "label": "Anteriorly placed anus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100790",
+        "label": "Hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010958",
+        "label": "Bilateral renal agenesis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:258040",
+        "label": "OEIS complex"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:53:57.766298Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

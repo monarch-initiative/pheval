@@ -1,0 +1,237 @@
+{
+  "id": "feingold_syndrome_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0045025",
+        "label": "Narrow palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000437",
+        "label": "Depressed nasal tip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000325",
+        "label": "Triangular face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001991",
+        "label": "Aplasia/Hypoplasia of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000159",
+        "label": "Abnormal lip morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025033",
+        "label": "Abnormal digestive system morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000237",
+        "label": "Small anterior fontanelle"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001734",
+        "label": "Annular pancreas"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200007",
+        "label": "Abnormal size of the palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011100",
+        "label": "Intestinal atresia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031801",
+        "label": "Vocal cord dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002683",
+        "label": "Abnormal calvaria morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002031",
+        "label": "Abnormal esophagus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025611",
+        "label": "Epicanthus superciliaris"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000503",
+        "label": "4-5 toe cutaneous syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009799",
+        "label": "Supernumerary spleens"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010864",
+        "label": "Intellectual disability, severe"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:164280",
+        "label": "Feingold syndrome 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:39:13.339170Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "diamond-blackfan_anemia_7",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010487",
+        "label": "Small hypothenar eminence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001684",
+        "label": "Secundum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000938",
+        "label": "Osteopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009778",
+        "label": "Short thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001199",
+        "label": "Triphalangeal thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000372",
+        "label": "Abnormal auditory canal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012716",
+        "label": "Moderate conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410151",
+        "label": "Eosinophilic infiltration of the esophagus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011408",
+        "label": "Moderate intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612562",
+        "label": "Diamond-Blackfan anemia 7"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:57:36.391703Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

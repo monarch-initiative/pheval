@@ -1,0 +1,75 @@
+{
+  "id": "immunodeficiency_70",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002583",
+        "label": "Colitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005407",
+        "label": "Decreased proportion of CD4-positive helper T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033004",
+        "label": "Palmar warts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003460",
+        "label": "Decreased circulating total IgA"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012432",
+        "label": "Chronic fatigue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033005",
+        "label": "Plantar warts"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618969",
+        "label": "Immunodeficiency 70"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:42:56.673597Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

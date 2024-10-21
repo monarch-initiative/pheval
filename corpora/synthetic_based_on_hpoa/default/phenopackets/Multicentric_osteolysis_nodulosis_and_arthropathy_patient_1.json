@@ -1,0 +1,243 @@
+{
+  "id": "multicentric_osteolysis,_nodulosis,_and_arthropathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001239",
+        "label": "Wrist flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001473",
+        "label": "Metatarsal osteolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002829",
+        "label": "Arthralgia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006012",
+        "label": "Widened metacarpal shaft"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001230",
+        "label": "Broad metacarpals"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005441",
+        "label": "Sclerotic cranial sutures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000520",
+        "label": "Proptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001504",
+        "label": "Metacarpal osteolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000248",
+        "label": "Brachycephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003273",
+        "label": "Hip contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008078",
+        "label": "Thin metatarsal cortices"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001220",
+        "label": "Interphalangeal joint contracture of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006252",
+        "label": "Interphalangeal joint erosions"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000684",
+        "label": "Delayed eruption of teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002753",
+        "label": "Thin bony cortex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003493",
+        "label": "Antinuclear antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006234",
+        "label": "Osteolysis involving tarsal bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000212",
+        "label": "Gingival overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010537",
+        "label": "Wide cranial sutures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006086",
+        "label": "Thin metacarpal cortices"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001007",
+        "label": "Hirsutism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000938",
+        "label": "Osteopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001783",
+        "label": "Broad metatarsal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002751",
+        "label": "Kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000446",
+        "label": "Narrow nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000414",
+        "label": "Bulbous nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001482",
+        "label": "Subcutaneous nodule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001761",
+        "label": "Pes cavus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:259600",
+        "label": "Multicentric osteolysis, nodulosis, and arthropathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:45:25.959851Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "friedreich_ataxia_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003487",
+        "label": "Babinski sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003133",
+        "label": "Abnormality of the spinocerebellar tracts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031599",
+        "label": "P mitrale"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003232",
+        "label": "Mitochondrial malic enzyme reduced"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008453",
+        "label": "Congenital kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012337",
+        "label": "Abnormal homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003474",
+        "label": "Somatic sensory dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009805",
+        "label": "Low-output congestive heart failure"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601992",
+        "label": "Friedreich ataxia 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:20:57.211703Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

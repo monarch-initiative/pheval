@@ -1,0 +1,159 @@
+{
+  "id": "holoprosencephaly_12_with_or_without_pancreatic_agenesis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002384",
+        "label": "Focal impaired awareness seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011467",
+        "label": "Absent gallbladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001738",
+        "label": "Exocrine pancreatic insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031771",
+        "label": "Epicanthus tarsalis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003397",
+        "label": "Generalized hypotonia due to defect at the neuromuscular junction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002500",
+        "label": "Abnormal cerebral white matter morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100801",
+        "label": "Pancreatic aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000269",
+        "label": "Prominent occiput"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000601",
+        "label": "Hypotelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008513",
+        "label": "Bilateral conductive hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031964",
+        "label": "Elevated circulating alanine aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000343",
+        "label": "Long philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007364",
+        "label": "Aplasia/Hypoplasia of the cerebrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000819",
+        "label": "Diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001234",
+        "label": "Hitchhiker thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030948",
+        "label": "Elevated gamma-glutamyltransferase level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001518",
+        "label": "Small for gestational age"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618500",
+        "label": "Holoprosencephaly 12 with or without pancreatic agenesis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:35:54.799946Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

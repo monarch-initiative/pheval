@@ -1,0 +1,182 @@
+{
+  "id": "spondyloepimetaphyseal_dysplasia,_krakow_type",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003025",
+        "label": "Metaphyseal irregularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011123",
+        "label": "Inflammatory abnormality of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012106",
+        "label": "Rhizomelic leg shortening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005477",
+        "label": "Progressive sclerosis of skull base"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011844",
+        "label": "Abnormal appendicular skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033353",
+        "label": "Abnormal blood vessel morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001270",
+        "label": "Motor delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004004",
+        "label": "Irregular radial epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003086",
+        "label": "Acromesomelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034671",
+        "label": "Knee contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011297",
+        "label": "Abnormal digit morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034392",
+        "label": "Joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003193",
+        "label": "Allergic rhinitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004691",
+        "label": "2-3 toe syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007099",
+        "label": "Chiari type I malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030353",
+        "label": "Decreased serum insulin-like growth factor 1"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618162",
+        "label": "Spondyloepimetaphyseal dysplasia, Krakow type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:57:44.912341Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

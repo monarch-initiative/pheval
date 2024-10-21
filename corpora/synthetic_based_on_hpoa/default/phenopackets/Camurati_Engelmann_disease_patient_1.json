@@ -1,0 +1,86 @@
+{
+  "id": "camurati-engelmann_disease",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P46Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005791",
+        "label": "Cortical thickening of long bone diaphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001533",
+        "label": "Slender build"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003758",
+        "label": "Reduced subcutaneous adipose tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000823",
+        "label": "Delayed puberty"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012514",
+        "label": "Lower limb pain"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:131300",
+        "label": "Camurati-Engelmann disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T00:30:46.896893Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

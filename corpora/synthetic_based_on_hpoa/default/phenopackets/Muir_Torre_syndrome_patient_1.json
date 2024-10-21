@@ -1,0 +1,75 @@
+{
+  "id": "muir-torre_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006771",
+        "label": "Duodenal adenocarcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003003",
+        "label": "Colon cancer"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100615",
+        "label": "Ovarian neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030410",
+        "label": "Sebaceous gland carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002253",
+        "label": "Colonic diverticula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006719",
+        "label": "Benign gastrointestinal tract tumors"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:158320",
+        "label": "Muir-Torre syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:18:59.134548Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
