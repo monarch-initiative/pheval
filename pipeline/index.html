@@ -332,44 +332,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-clone-pheval" class="md-nav__link">
-    1. Clone PhEval
+  <a href="#tldr" class="md-nav__link">
+    TLDR
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-installing-pheval-dependencies" class="md-nav__link">
-    2. Installing PhEval dependencies
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-generate-custom-makefile" class="md-nav__link">
-    3. Generate custom Makefile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-flow" class="md-nav__link">
-    Data Flow
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jinja-template-pheval-makefile-generator-requirements" class="md-nav__link">
-    Jinja Template PhEval Makefile Generator Requirements
-  </a>
-  
-    <nav class="md-nav" aria-label="Jinja Template PhEval Makefile Generator Requirements">
+    <nav class="md-nav" aria-label="TLDR">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-jinja-template" class="md-nav__link">
-    Installing Jinja Template
+  <a href="#1-clone-monarch-pheval" class="md-nav__link">
+    1. Clone Monarch PhEval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-installing-pheval-pipeline-dependencies" class="md-nav__link">
+    2. Installing PhEval Pipeline dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-executing-pipeline" class="md-nav__link">
+    3. Executing Pipeline
   </a>
   
 </li>
@@ -380,27 +366,48 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pheval-makefile-template-j2-file" class="md-nav__link">
-    PhEval Makefile Template (.j2 file)
+  <a href="#pipeline-description" class="md-nav__link">
+    Pipeline Description
   </a>
+  
+    <nav class="md-nav" aria-label="Pipeline Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-preparation-phase" class="md-nav__link">
+    1. Data Preparation Phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-runner-phase" class="md-nav__link">
+    2. Runner Phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-analysis-phase" class="md-nav__link">
+    3. Analysis Phase
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pheval-custommakefile" class="md-nav__link">
-    PhEval custom.Makefile
+  <a href="#customising-pheval-pipeline-experiments" class="md-nav__link">
+    Customising PhEval Pipeline Experiments
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pheval-generatemakefilesh" class="md-nav__link">
-    PhEval generatemakefile.sh
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Customising PhEval Pipeline Experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#pheval-configuration-file" class="md-nav__link">
     PhEval Configuration File
   </a>
@@ -416,15 +423,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configs-section" class="md-nav__link">
-    Configs Section
+  <a href="#corpora-section" class="md-nav__link">
+    Corpora Section
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#corpora-section" class="md-nav__link">
-    Corpora Section
+  <a href="#configs-section" class="md-nav__link">
+    Configs Section
   </a>
   
 </li>
@@ -440,60 +447,10 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#phen2gen-specific-configuration" class="md-nav__link">
-    Phen2Gen Specific Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#makefile-goals" class="md-nav__link">
-    Makefile Goals
-  </a>
-  
-    <nav class="md-nav" aria-label="Makefile Goals">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#make-pheval" class="md-nav__link">
-    make pheval
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim" class="md-nav__link">
-    make semsim
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-shuffle" class="md-nav__link">
-    make semsim-shuffle
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-scramble" class="md-nav__link">
-    make semsim-scramble
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-convert" class="md-nav__link">
-    make semsim-convert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-ingest" class="md-nav__link">
-    make semsim-ingest
+  <a href="#generating-new-makefile-based-on-pheval-configuration-file" class="md-nav__link">
+    Generating new Makefile based on PhEval configuration file
   </a>
   
 </li>
@@ -1390,44 +1347,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-clone-pheval" class="md-nav__link">
-    1. Clone PhEval
+  <a href="#tldr" class="md-nav__link">
+    TLDR
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-installing-pheval-dependencies" class="md-nav__link">
-    2. Installing PhEval dependencies
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-generate-custom-makefile" class="md-nav__link">
-    3. Generate custom Makefile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-flow" class="md-nav__link">
-    Data Flow
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jinja-template-pheval-makefile-generator-requirements" class="md-nav__link">
-    Jinja Template PhEval Makefile Generator Requirements
-  </a>
-  
-    <nav class="md-nav" aria-label="Jinja Template PhEval Makefile Generator Requirements">
+    <nav class="md-nav" aria-label="TLDR">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installing-jinja-template" class="md-nav__link">
-    Installing Jinja Template
+  <a href="#1-clone-monarch-pheval" class="md-nav__link">
+    1. Clone Monarch PhEval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-installing-pheval-pipeline-dependencies" class="md-nav__link">
+    2. Installing PhEval Pipeline dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-executing-pipeline" class="md-nav__link">
+    3. Executing Pipeline
   </a>
   
 </li>
@@ -1438,27 +1381,48 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pheval-makefile-template-j2-file" class="md-nav__link">
-    PhEval Makefile Template (.j2 file)
+  <a href="#pipeline-description" class="md-nav__link">
+    Pipeline Description
   </a>
+  
+    <nav class="md-nav" aria-label="Pipeline Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-preparation-phase" class="md-nav__link">
+    1. Data Preparation Phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-runner-phase" class="md-nav__link">
+    2. Runner Phase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-analysis-phase" class="md-nav__link">
+    3. Analysis Phase
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pheval-custommakefile" class="md-nav__link">
-    PhEval custom.Makefile
+  <a href="#customising-pheval-pipeline-experiments" class="md-nav__link">
+    Customising PhEval Pipeline Experiments
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pheval-generatemakefilesh" class="md-nav__link">
-    PhEval generatemakefile.sh
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Customising PhEval Pipeline Experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#pheval-configuration-file" class="md-nav__link">
     PhEval Configuration File
   </a>
@@ -1474,15 +1438,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configs-section" class="md-nav__link">
-    Configs Section
+  <a href="#corpora-section" class="md-nav__link">
+    Corpora Section
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#corpora-section" class="md-nav__link">
-    Corpora Section
+  <a href="#configs-section" class="md-nav__link">
+    Configs Section
   </a>
   
 </li>
@@ -1498,60 +1462,10 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#phen2gen-specific-configuration" class="md-nav__link">
-    Phen2Gen Specific Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#makefile-goals" class="md-nav__link">
-    Makefile Goals
-  </a>
-  
-    <nav class="md-nav" aria-label="Makefile Goals">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#make-pheval" class="md-nav__link">
-    make pheval
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim" class="md-nav__link">
-    make semsim
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-shuffle" class="md-nav__link">
-    make semsim-shuffle
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-scramble" class="md-nav__link">
-    make semsim-scramble
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-convert" class="md-nav__link">
-    make semsim-convert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#make-semsim-ingest" class="md-nav__link">
-    make semsim-ingest
+  <a href="#generating-new-makefile-based-on-pheval-configuration-file" class="md-nav__link">
+    Generating new Makefile based on PhEval configuration file
   </a>
   
 </li>
@@ -1582,177 +1496,116 @@
 
 
 <h1 id="pheval-pipeline">PhEval Pipeline</h1>
-<h3 id="1-clone-pheval">1. Clone <a href="https://github.com/monarch-initiative/pheval">PhEval</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/monarch-initiative/pheval.git
+<h2 id="tldr">TLDR</h2>
+<p>The Pipeline presented on <a href="https://www.biorxiv.org/content/10.1101/2024.06.13.598672v1">PhEval preprint</a> was moved to a new repository - <a href="https://github.com/monarch-initiative/monarch_pheval">Monarch PhEval</a>.</p>
+<p><strong>NOTE: The default Monarch PhEval pipeline, as proposed in the paper preprint, requires approximately 1 TB of disk space. Learn how to modify the pipeline configuration <a href="#customising-pheval-pipeline-experiments">here</a> to customize the experiments.</strong></p>
+<h3 id="1-clone-monarch-pheval">1. Clone <a href="https://github.com/monarch-initiative/monarch_pheval">Monarch PhEval</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/monarch-initiative/monarch_pheval.git
 </code></pre></div>
-<h3 id="2-installing-pheval-dependencies">2. Installing PhEval dependencies</h3>
+<h3 id="2-installing-pheval-pipeline-dependencies">2. Installing PhEval Pipeline dependencies</h3>
 <p>Enter in the cloned folder and enter the following commands:</p>
 <div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>shell
 poetry<span class="w"> </span>install
 </code></pre></div>
-<h3 id="3-generate-custom-makefile">3. Generate custom Makefile</h3>
-<p>You must have Jinja2 installed, if you don't follow the steps <a href="#installing-jinja-template">here</a></p>
-<p>In resources folder are the following files responsible for makefile generation:</p>
-<p>📦resources<br />
- ┣ 📜Makefile.j2<br />
- ┣ 📜custom.Makefile<br />
- ┣ 📜generatemakefile.sh<br />
- ┗ 📜pheval-config.yaml  </p>
-<p>You must edit the <code>pheval-config.yaml</code> file setting the directory where you extracted exomiser and phenotype data. An example could be found <a href="#pheval-configuration-file">here</a>.
-After setting the pheval-config.yaml file</p>
-<hr />
-<div class="mermaid">flowchart TD
-    inputs["prepare-inputs"]
-    sr1["Setting up Runners"]
-    corpora["prepare-corpora"]
-    scrambling["Scrambing Process"]
-    r1["run"]
-    inputs ===  sr1
-    sr1 === corpora
-    corpora === scrambling
-    scrambling === r1</div>
-<hr />
-<h2 id="data-flow">Data Flow</h2>
-<div class="mermaid">flowchart LR
-    vcf[("Phenopackets Original Data")]
-    pheno[("Scrambled Phenopackets")]
-    result["Phenotype Result"]
-    vcf -- prepare-corpora --&gt;  pheno
-    pheno -- scramble factor e.g 0.5 --&gt;  result</div>
-<h2 id="jinja-template-pheval-makefile-generator-requirements">Jinja Template PhEval Makefile Generator Requirements</h2>
-<p>To generate a PhEval Makefile we use the <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> template engine.</p>
-<h3 id="installing-jinja-template">Installing Jinja Template</h3>
+<h3 id="3-executing-pipeline">3. Executing Pipeline</h3>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>pheval
+</code></pre></div>
+<h2 id="pipeline-description">Pipeline Description</h2>
+<p>The Pipeline is divided in three main steps</p>
+<h3 id="1-data-preparation-phase">1. Data Preparation Phase</h3>
+<p>The data preparation phase, checks the completeness of the disease, gene and variant input data and optionally preparing simulated VCF files if required, gives the user the ability to randomise phenotypic profiles using the PhEval corpus scramble command utility, allowing for the assessment of how well VGPAs handle noise and less specific phenotypic profiles when making predict.</p>
+<h3 id="2-runner-phase">2. Runner Phase</h3>
+<p>The runner phase is structured into three stages: prepare, run, and post-process.</p>
 <ul>
-<li>
-<p>Linux (Ubuntu): <code>sudo snap install j2</code></p>
-</li>
-<li>
-<p>Mac OS:</p>
-</li>
+<li>The prepare step plays a crucial role in adapting the input data to meet the specific requirements of the tool. </li>
+<li>In the run step, the VGPA is executed, applying the selected algorithm to the prepared data and generating the tool-specific outputs. Within the run stage, an essential task is the generation of input command files for the algorithm. These files serve as collections of individual commands, each tailored to run the targeted VGPA on specific samples. These commands are configured with the appropriate inputs, outputs and specific configuration settings, allowing for the automated and efficient processing of large corpora. </li>
+<li>Finally, the post-processing step takes care of harmonising the tool-specific outputs into standardised PhEval TSV format, ensuring uniformity and ease of analysis of results from all VGPAs. In this context, the tool-specific output is condensed to provide only two essential elements, the entity of interest, which can either be a variant, gene, or disease, and its corresponding score. PhEval then assumes the responsibility of subsequent standardisation processes. This involves the reranking of the results in a uniform manner, ensuring that fair and comprehensive comparisons can be made between tools.</li>
 </ul>
-<hr />
-<h2 id="pheval-makefile-template-j2-file">PhEval Makefile Template (.j2 file)</h2>
+<h3 id="3-analysis-phase">3. Analysis Phase</h3>
+<p>In the analysis phase, PhEval generates comprehensive statistical reports based on
+standardised outputs from the runner phase.</p>
+<h2 id="customising-pheval-pipeline-experiments">Customising PhEval Pipeline Experiments</h2>
+<p>The PhEval pipeline is orchestrated using a Makefile Jinja template strategy. Therefore, to describe a new experiment in the pipeline, the user needs to generate a Makefile workflow based on a configuration file.</p>
+<p>In the resources folder are the following files responsible for Makefile generation:</p>
 <p>📦resources<br />
- ┣ 📜<strong>Makefile.j2</strong>  </p>
-<p><em>custom.Makefile</em> is the template that will be generated on the fly based on the <em>pheval-config.yaml</em>. Each of these configurations is filled using a syntax like this: <code>{{ config.tool }}</code>. The value between the curly brackets is replaced by the corresponding configuration in the configuration file.</p>
-<hr />
-<h2 id="pheval-custommakefile">PhEval custom.Makefile</h2>
-<p>📦resources<br />
- ┣ 📜<strong>custom.Makefile</strong>  </p>
-<hr />
-<h2 id="pheval-generatemakefilesh">PhEval generatemakefile.sh</h2>
-<p>📦resources<br />
- ┣ <strong>📜generatemakefile.sh</strong>  </p>
-<p><em>generatemakefile.sh</em> is only a shortcut for Makefile rendering using the configuration file e.g.</p>
-<div class="highlight"><pre><span></span><code>bash ./resources/generatemakefile.sh
-</code></pre></div>
-<h2 id="pheval-configuration-file">PhEval Configuration File</h2>
-<p>In resources folder, there is a file named <em>pheval-config.yaml</em>, this file is responsible for storing the PhEval Makefile generation.</p>
-<p>📦resources<br />
- ┗ <strong>📜pheval-config.yaml</strong>  </p>
-<hr />
-<h3 id="directories-section">Directories Section</h3>
+┣ 📜Makefile.j2<br />
+┣ 📜custom.Makefile<br />
+┣ 📜generatemakefile.sh<br />
+┗ 📜pheval-config.yaml  </p>
+<p>Let's begin by describing the <code>pheval-config.yaml</code> file and its structure.</p>
+<h3 id="pheval-configuration-file">PhEval Configuration File</h3>
+<p>This file is responsible define the experiment settings and will be used to generate the Makefile using a Jinja template which consumes this YAML configuration file.</p>
+<h4 id="directories-section">Directories Section</h4>
+<p>The <code>data</code> and <code>tmp</code> properties are mandatory and must be specified in this section.</p>
+<ul>
+<li><code>data</code> property refers to the folder location where the necessary phenotypic data for the pipeline will be downloaded and extracted.</li>
+<li><code>tmp</code> property points to the folder where all temporary intermediate files will be generated.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">directories</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
 <span class="w">  </span><span class="nt">tmp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/tmp</span>
-<span class="w">  </span><span class="nt">h2jar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./h2-1.4.199.jar</span>
-<span class="w">  </span><span class="nt">phen2gene</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./Phen2Gene</span>
-<span class="w">  </span><span class="nt">exomiser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/data/exomiser/exomiser-cli-13.2.0-distribution/exomiser-cli-13.2.0</span>
-<span class="w">  </span><span class="nt">phenotype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/data/phenotype</span>
-<span class="w">  </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/pheval</span>
 </code></pre></div>
-<hr />
-<h3 id="configs-section">Configs Section</h3>
-<div class="highlight"><pre><span></span><code><span class="nt">configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3</span>
-<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
-<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">    </span><span class="nt">exomiser_db</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">semsim1</span>
-</code></pre></div>
-<p>This section is responsible for setting up the configuration folder.
-All software declared in the configs section will be linked in this folder.
-In the configuration above, for example, we have one configuration for phen2gene and one for exomiser. In the <a href="#directories-section">Directories Section</a>, these two configurations must have one corresponding property set up.
-PhEval pipeline invokes the <em>prepare-inputs</em> goal, and in the preceding example, a configuration folder structure will be built that looks like this:</p>
-<p>📦configurations<br />
- ┣ 📂exomiser-13.2.0-default<br />
- ┗ 📂phen2gene-1.2.3-default  </p>
-<p>Each of these folders is a symbolic link that points to the corresponding software folder indicated in the <a href="#directories-section">Directories Section</a></p>
-<hr />
-<h3 id="corpora-section">Corpora Section</h3>
+<h4 id="corpora-section">Corpora Section</h4>
+<p>The <code>corpora</code> section specifies which corpus will be used in the experiment. In this example is defined <a href="https://pubmed.ncbi.nlm.nih.gov/32755546/">LIRICAL</a> corpus, A small comparison corpus created for benchmarking the <a href="https://pubmed.ncbi.nlm.nih.gov/32755546/">LIRICAL</a> system which contains 385 case reports.</p>
+<p>The user needs to specify corpus id and it must be equals to the corpora folder structure, e.g.</p>
+<p>📦corpora<br />
+ ┃ ┣ 📂lirical<br />
+ ┃ ┣ ┣ 📂small_version<br />
+ ┃ ┣ ┣ ┣ 📂phenopackets<br />
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT1.json<br />
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT2.json<br />
+ ┃ ┣ ┣ ┣ 📂vcf<br />
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT1.vcf.gz<br />
+ ┃ ┣ ┣ ┣ ┣ 📜PATIENT2.vcf.gz<br />
+ ┃ ┣ ┣ ┣ 📜corpus.yml<br />
+ ┃ ┣ ┣ ┣ 📜template_exome_hg19.vcf.gz  </p>
 <div class="highlight"><pre><span></span><code><span class="nt">corpora</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lirical</span>
-<span class="w">    </span><span class="nt">scrambled</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7</span>
-<span class="w">    </span><span class="nt">custom_variants</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_phenotype</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
-<span class="w">    </span><span class="nt">scrambled</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
-<span class="w">    </span><span class="nt">custom_variants</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no_phenotype</span>
+<span class="w">    </span><span class="nt">variant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small_version</span>
 </code></pre></div>
-<p>In this corpora section we can set up different experiments for corpus scrambling. Currently, PhEval provides corpora data from lirical, phen2gene, small_test and structural_variants</p>
-<p>📦corpora<br />
- ┣ 📂lirical<br />
- ┣ 📂phen2gene<br />
- ┣ 📂small_test<br />
- ┗ 📂structural_variants  </p>
-<p>The scramble property defines the magnitude of the scrambling factor during Phenopackets and VCF variants spiking process. Using the configuration in the example above, a corpora structure will be created like this:</p>
-<p>📦corpora<br />
- ┣ 📂lirical<br />
- ┃ ┗ 📂default<br />
- ┃ ┗ 📂scrambled-0.5<br />
- ┃ ┗ 📂scrambled-0.7<br />
- ┣ 📂phen2gene<br />
- ┃ ┗ 📂default<br />
- ┃ ┗ 📂scrambled-0.2<br />
- ┃ ┗ 📂scrambled-0.9  </p>
-<hr />
-<h3 id="runs-section">Runs Section</h3>
-<div class="highlight"><pre><span></span><code><span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
-<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">    </span><span class="nt">corpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lirical</span>
-<span class="w">    </span><span class="nt">corpusvariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scrambled-0.5</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.2.0</span>
+<h4 id="configs-section">Configs Section</h4>
+<p>The <code>configs</code> section holds all custom configurations for the different VGPAs.
+It must declare:
+- tool: VGPA tool name.
+- id: it's an arbiratry unique identifier that will be used in the <code>runs</code> section
+- version: VGPA tool version</p>
+<div class="highlight"><pre><span></span><code><span class="nt">configs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
-<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">    </span><span class="nt">corpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
-<span class="w">    </span><span class="nt">corpusvariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scrambled-0.2</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene-1.2.3</span>
 <span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3</span>
 </code></pre></div>
-<h2 id="phen2gen-specific-configuration">Phen2Gen Specific Configuration</h2>
-<p>The input directory <code>config.yaml</code> should be formatted like the example below and must be placed in <code>phen2gene: /pathtoPhen2Gene/Phen2Gene</code> declared in <code>pheval-config.yaml</code> file.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene</span>
-<span class="nt">tool_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3</span>
-<span class="nt">phenotype_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="w">  </span><span class="nt">phen2gene_python_executable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phen2gene.py</span>
-<span class="w">  </span><span class="nt">post_process</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">score_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descending</span>
+<p><code>configs</code> section can also deal with special VGPA data preparation steps, for example,  Semantic Similarity ingestions into Exomiser phenotypic database e.g.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser-semsim-ingest-13.3.0</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.3.0</span>
+<span class="w">    </span><span class="nt">phenotype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2309</span>
+<span class="w">    </span><span class="nt">preprocessing</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phenio-monarch-hp-hp.0.4.semsimian.sql</span>
 </code></pre></div>
-<h2 id="makefile-goals">Makefile Goals</h2>
-<h3 id="make-pheval">make pheval</h3>
-<p>this runs the entire pipeline including corpus preparation and pheval run</p>
-<div class="highlight"><pre><span></span><code>$(MAKE) prepare-inputs
-$(MAKE) prepare-corpora
-$(MAKE) pheval-run
+<code>phenotype</code> property describes the Exomiser phenotype database version and the <code>preprocessing</code> section will execute SQL scripts into that phenotypic database.</p>
+<h4 id="runs-section">Runs Section</h4>
+<p>The "runs" section will integrate all previously described sections and pass them to pheval VGPA for concrete execution.</p>
+<ul>
+<li><code>tool</code> property specifies which runner will be called</li>
+<li><code>corpus</code> and <code>corpusvariant</code> must match properties declared on the <a href="#corpora-section">corpora section</a>.</li>
+<li><code>version</code> should correspond to the tool version</li>
+<li><code>configuration</code> must match the id described on the <a href="#configs-section">configuration section</a>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">runs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser</span>
+<span class="w">    </span><span class="nt">corpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lirical</span>
+<span class="w">    </span><span class="nt">corpusvariant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small_version</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.3.0</span>
+<span class="w">    </span><span class="nt">configuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exomiser-semsim-ingest-13.3.0</span>
 </code></pre></div>
-<h3 id="make-semsim">make semsim</h3>
-<p>generate all configured similarity profiles</p>
-<h3 id="make-semsim-shuffle">make semsim-shuffle</h3>
-<p>generate new ontology terms to the semsim process</p>
-<h3 id="make-semsim-scramble">make semsim-scramble</h3>
-<p>scramble semsim profile</p>
-<h3 id="make-semsim-convert">make semsim-convert</h3>
-<p>convert all semsim profiles into exomiser SQL format</p>
-<h3 id="make-semsim-ingest">make semsim-ingest</h3>
-<p>takes all the configured semsim profiles and loads them into the exomiser databases</p>
+<h3 id="generating-new-makefile-based-on-pheval-configuration-file">Generating new Makefile based on PhEval configuration file</h3>
+<p>📦resources<br />
+┣ 📜generatemakefile.sh<br />
+┗ 📜pheval-config.yaml  </p>
+<p>To generate a new Makefile, simply execute the <code>generatemakefile.sh</code> script, which encapsulates the Makefile rendering process dynamically filling it using the <code>pheval-config.yaml</code> configuration file.</p>
+<div class="highlight"><pre><span></span><code>./resources/generatemakefile.sh
+</code></pre></div>
 
 
 
