@@ -1,0 +1,75 @@
+{
+  "id": "progressive_external_ophthalmoplegia_with_mitochondrial_dna_deletions,autosomal_dominant,_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003198",
+        "label": "Myopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003307",
+        "label": "Hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000590",
+        "label": "Progressive external ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000623",
+        "label": "Supranuclear ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003689",
+        "label": "Multiple mitochondrial DNA deletions"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615156",
+        "label": "Progressive external ophthalmoplegia with mitochondrial DNA deletions,autosomal dominant, 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:50:04.777643Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

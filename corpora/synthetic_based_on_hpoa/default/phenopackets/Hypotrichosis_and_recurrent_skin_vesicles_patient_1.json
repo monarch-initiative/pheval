@@ -1,0 +1,75 @@
+{
+  "id": "hypotrichosis_and_recurrent_skin_vesicles",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0045075",
+        "label": "Sparse eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008066",
+        "label": "Abnormal blistering of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200037",
+        "label": "Skin vesicle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002231",
+        "label": "Sparse body hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007776",
+        "label": "Sparse lower eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025122",
+        "label": "Sawtooth acanthosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613102",
+        "label": "Hypotrichosis and recurrent skin vesicles"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:41:53.255264Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "klippel-feil_syndrome_4,_autosomal_recessive,_with_myopathy_and_facial_dysmorphism",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011451",
+        "label": "Primary microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006837",
+        "label": "Congenital Horner syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003510",
+        "label": "Severe short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025668",
+        "label": "Abnormal neck morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000159",
+        "label": "Abnormal lip morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000465",
+        "label": "Webbed neck"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009924",
+        "label": "Aplasia/Hypoplasia involving the nose"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616549",
+        "label": "Klippel-Feil syndrome 4, autosomal recessive, with myopathy and facial dysmorphism"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:41:47.536671Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

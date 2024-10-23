@@ -1,0 +1,146 @@
+{
+  "id": "seckel_syndrome_10",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P3Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001714",
+        "label": "Ventricular hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000956",
+        "label": "Acanthosis nigricans"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003100",
+        "label": "Slender long bone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000855",
+        "label": "Insulin resistance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031956",
+        "label": "Elevated circulating aspartate aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003076",
+        "label": "Glycosuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000819",
+        "label": "Diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012371",
+        "label": "Hyperplasia of midface"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001952",
+        "label": "Glucose intolerance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011969",
+        "label": "Elevated circulating luteinizing hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040217",
+        "label": "Elevated hemoglobin A1c"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011451",
+        "label": "Primary microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003510",
+        "label": "Severe short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011355",
+        "label": "Localized skin lesion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617253",
+        "label": "Seckel syndrome 10"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:36:17.245948Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

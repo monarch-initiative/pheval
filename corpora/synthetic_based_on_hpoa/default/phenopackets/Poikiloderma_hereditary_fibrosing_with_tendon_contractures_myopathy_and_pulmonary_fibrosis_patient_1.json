@@ -1,0 +1,99 @@
+{
+  "id": "poikiloderma,_hereditary_fibrosing,_with_tendon_contractures,_myopathy,_and_pulmonary_fibrosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002522",
+        "label": "Areflexia of lower limbs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045075",
+        "label": "Sparse eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000823",
+        "label": "Delayed puberty"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034392",
+        "label": "Joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007480",
+        "label": "Decreased sweating due to autonomic dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008180",
+        "label": "Mildly elevated creatine kinase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0550005",
+        "label": "Bilateral basilar pulmonary fibrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040050",
+        "label": "Sparse upper eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615704",
+        "label": "Poikiloderma, hereditary fibrosing, with tendon contractures, myopathy, and pulmonary fibrosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:45:04.253481Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

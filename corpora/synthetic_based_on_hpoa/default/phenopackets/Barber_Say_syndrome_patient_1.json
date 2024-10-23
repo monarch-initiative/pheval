@@ -1,0 +1,159 @@
+{
+  "id": "barber-say_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000445",
+        "label": "Wide nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0400002",
+        "label": "Extra concha fold"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000998",
+        "label": "Hypertrichosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004334",
+        "label": "Dermal atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000958",
+        "label": "Dry skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000294",
+        "label": "Low anterior hairline"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000653",
+        "label": "Sparse eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000154",
+        "label": "Wide mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002561",
+        "label": "Absent nipple"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011266",
+        "label": "Microtia, first degree"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008067",
+        "label": "Abnormally lax or hyperextensible skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002557",
+        "label": "Hypoplastic nipples"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007651",
+        "label": "Ectropion of lower eyelids"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011297",
+        "label": "Abnormal digit morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000372",
+        "label": "Abnormal auditory canal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000414",
+        "label": "Bulbous nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009124",
+        "label": "Abnormal adipose tissue morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:209885",
+        "label": "Barber-Say syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:40:22.866602Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

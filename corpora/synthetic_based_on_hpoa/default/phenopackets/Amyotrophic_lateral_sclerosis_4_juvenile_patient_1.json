@@ -1,0 +1,87 @@
+{
+  "id": "amyotrophic_lateral_sclerosis_4,_juvenile",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003405",
+        "label": "Diffuse axonal swelling"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002398",
+        "label": "Degeneration of anterior horn cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030007",
+        "label": "EMG: positive sharp waves"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006827",
+        "label": "Atrophy of the spinal cord"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010546",
+        "label": "Muscle fibrillation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008955",
+        "label": "Progressive distal muscular atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033383",
+        "label": "Decreased compound muscle action potential amplitude"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:602433",
+        "label": "Amyotrophic lateral sclerosis 4, juvenile"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T02:16:42.261508Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

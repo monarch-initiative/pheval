@@ -1,0 +1,254 @@
+{
+  "id": "prader-willi_syndrome",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P78Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002857",
+        "label": "Genu valgum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000486",
+        "label": "Strabismus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001558",
+        "label": "Decreased fetal movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025501",
+        "label": "Class III obesity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100716",
+        "label": "Self-injurious behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002791",
+        "label": "Hypoventilation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000046",
+        "label": "Small scrotum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000064",
+        "label": "Hypoplastic labia minora"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000268",
+        "label": "Dolichocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000028",
+        "label": "Cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001513",
+        "label": "Obesity"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000842",
+        "label": "Hyperinsulinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002591",
+        "label": "Polyphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000565",
+        "label": "Esotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003233",
+        "label": "Decreased HDL cholesterol concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001611",
+        "label": "Hypernasal speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031878",
+        "label": "Acromicria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007513",
+        "label": "Generalized hypopigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033454",
+        "label": "Tube feeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200055",
+        "label": "Small hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010860",
+        "label": "Complete breech presentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000969",
+        "label": "Edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000582",
+        "label": "Upslanted palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002275",
+        "label": "Poor motor coordination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008373",
+        "label": "Puberty and gonadal disorders"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012743",
+        "label": "Abdominal obesity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:176270",
+        "label": "Prader-Willi syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:43:07.557231Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "ehlers-danlos_syndrome,_dermatosparaxis_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012471",
+        "label": "Thick vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001030",
+        "label": "Fragile skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000974",
+        "label": "Hyperextensible skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001831",
+        "label": "Short toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008897",
+        "label": "Postnatal growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001058",
+        "label": "Poor wound healing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000222",
+        "label": "Gingival hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005332",
+        "label": "Recurrent mandibular subluxations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000212",
+        "label": "Gingival overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001537",
+        "label": "Umbilical hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000260",
+        "label": "Wide anterior fontanel"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000225",
+        "label": "Gingival bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000270",
+        "label": "Delayed cranial suture closure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011335",
+        "label": "Frontal hirsutism"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001787",
+        "label": "Abnormal delivery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009815",
+        "label": "Aplasia/hypoplasia of the extremities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001027",
+        "label": "Soft, doughy skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000159",
+        "label": "Abnormal lip morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008067",
+        "label": "Abnormally lax or hyperextensible skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000494",
+        "label": "Downslanted palpebral fissures"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001507",
+        "label": "Growth abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:225410",
+        "label": "Ehlers-Danlos syndrome, dermatosparaxis type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:51:09.333249Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

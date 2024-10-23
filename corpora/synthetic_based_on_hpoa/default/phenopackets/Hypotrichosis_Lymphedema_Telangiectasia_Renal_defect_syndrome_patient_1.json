@@ -1,0 +1,111 @@
+{
+  "id": "hypotrichosis-lymphedema-telangiectasia-renal_defect_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000561",
+        "label": "Absent eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000426",
+        "label": "Prominent nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000095",
+        "label": "Abnormal renal glomerulus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002209",
+        "label": "Sparse scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000083",
+        "label": "Renal insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000653",
+        "label": "Sparse eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007543",
+        "label": "Epidermal hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001004",
+        "label": "Lymphedema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000286",
+        "label": "Epicanthus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000431",
+        "label": "Wide nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003189",
+        "label": "Long nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002223",
+        "label": "Absent eyebrow"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:137940",
+        "label": "Hypotrichosis-Lymphedema-Telangiectasia-Renal defect syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:52:22.316812Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

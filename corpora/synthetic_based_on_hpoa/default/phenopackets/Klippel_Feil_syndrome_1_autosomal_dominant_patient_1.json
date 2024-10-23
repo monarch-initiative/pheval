@@ -1,0 +1,87 @@
+{
+  "id": "klippel-feil_syndrome_1,_autosomal_dominant",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000410",
+        "label": "Mixed hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007291",
+        "label": "Posterior fossa cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000077",
+        "label": "Abnormality of the kidney"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006371",
+        "label": "Broad long bone diaphyses"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:118100",
+        "label": "Klippel-Feil syndrome 1, autosomal dominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:55:36.801119Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

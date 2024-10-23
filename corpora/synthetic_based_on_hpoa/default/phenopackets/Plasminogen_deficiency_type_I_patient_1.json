@@ -1,0 +1,75 @@
+{
+  "id": "plasminogen_deficiency,_type_i",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000123",
+        "label": "Nephritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040228",
+        "label": "Decreased level of plasminogen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000704",
+        "label": "Periodontitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000230",
+        "label": "Gingivitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030035",
+        "label": "Struvite nephrolithiasis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:217090",
+        "label": "Plasminogen deficiency, type I"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:12:50.284573Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

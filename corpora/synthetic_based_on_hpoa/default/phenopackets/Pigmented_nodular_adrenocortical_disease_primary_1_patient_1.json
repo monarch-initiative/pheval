@@ -1,0 +1,123 @@
+{
+  "id": "pigmented_nodular_adrenocortical_disease,_primary,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000963",
+        "label": "Thin skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000869",
+        "label": "Secondary amenorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003466",
+        "label": "Paradoxical increased cortisol secretion on dexamethasone suppression test"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000716",
+        "label": "Depression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001065",
+        "label": "Striae distensae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004324",
+        "label": "Increased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005897",
+        "label": "Severe generalized osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012030",
+        "label": "Increased urinary cortisol level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100735",
+        "label": "Hypertensive crisis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000978",
+        "label": "Bruising susceptibility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002717",
+        "label": "Adrenal overactivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002920",
+        "label": "Decreased circulating ACTH concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200401",
+        "label": "Abnormal judgment"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610489",
+        "label": "Pigmented nodular adrenocortical disease, primary, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:48:07.664018Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

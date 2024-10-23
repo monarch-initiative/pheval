@@ -1,0 +1,63 @@
+{
+  "id": "aortic_aneurysm,_familial_thoracic_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0500007",
+        "label": "Iris flocculi"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004942",
+        "label": "Aortic aneurysm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011834",
+        "label": "Moyamoya phenomenon"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004933",
+        "label": "Ascending aortic dissection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:611788",
+        "label": "Aortic aneurysm, familial thoracic 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:23:47.515923Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

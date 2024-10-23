@@ -1,0 +1,117 @@
+{
+  "id": "intellectual_developmental_disorder_with_gastrointestinal_difficulties_and_high_pain_threshold",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005831",
+        "label": "Type B brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011343",
+        "label": "Moderate global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000154",
+        "label": "Wide mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010780",
+        "label": "Hyperacusis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000337",
+        "label": "Broad forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012381",
+        "label": "Delayed self-feeding during toddler years"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617450",
+        "label": "Intellectual developmental disorder with gastrointestinal difficulties and high pain threshold"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:02:24.409027Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

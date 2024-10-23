@@ -1,0 +1,116 @@
+{
+  "id": "pontocerebellar_hypoplasia,_type_2e",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P7Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002179",
+        "label": "Opisthotonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000341",
+        "label": "Narrow forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007421",
+        "label": "Telangiectases of the cheeks"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100547",
+        "label": "Abnormal forebrain morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0003676",
+          "label": "Progressive"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0020219",
+        "label": "Motor seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000316",
+        "label": "Spastic monoplegia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615851",
+        "label": "Pontocerebellar hypoplasia, type 2E"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:32:13.891765Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

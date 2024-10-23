@@ -1,0 +1,123 @@
+{
+  "id": "smith-mccort_dysplasia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002808",
+        "label": "Kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008835",
+        "label": "Multicentric femoral head ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004568",
+        "label": "Beaking of vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001376",
+        "label": "Limitation of joint mobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003467",
+        "label": "Atlantoaxial instability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008786",
+        "label": "Iliac crest serration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000884",
+        "label": "Prominent sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004558",
+        "label": "Cervical platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008829",
+        "label": "Delayed femoral head ossification"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607326",
+        "label": "Smith-Mccort dysplasia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:42:36.214155Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

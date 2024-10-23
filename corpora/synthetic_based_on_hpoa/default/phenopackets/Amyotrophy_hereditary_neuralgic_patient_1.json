@@ -1,0 +1,105 @@
+{
+  "id": "amyotrophy,_hereditary_neuralgic",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045054",
+        "label": "Brachial plexus neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011333",
+        "label": "Asymmetric crying face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033142",
+        "label": "Long nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031770",
+        "label": "Epicanthus palpebralis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008929",
+        "label": "Asymmetric short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011805",
+        "label": "Abnormal skeletal muscle morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000601",
+        "label": "Hypotelorism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:162100",
+        "label": "Amyotrophy, hereditary neuralgic"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:32:31.051658Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

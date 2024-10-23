@@ -1,0 +1,51 @@
+{
+  "id": "lymphoid_interstitial_pneumonia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100760",
+        "label": "Clubbing of toes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006530",
+        "label": "Abnormal pulmonary interstitial morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:247610",
+        "label": "Lymphoid interstitial pneumonia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:17:25.484342Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "anterior_segment_dysgenesis_3",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P5Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001320",
+        "label": "Cerebellar vermis hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005445",
+        "label": "Enlarged posterior fossa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007990",
+        "label": "Hypoplastic iris stroma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000659",
+        "label": "Peters anomaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004328",
+        "label": "Abnormal anterior eye segment morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601631",
+        "label": "Anterior segment dysgenesis 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:53:52.472410Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

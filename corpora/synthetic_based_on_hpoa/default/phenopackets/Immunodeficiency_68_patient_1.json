@@ -1,0 +1,75 @@
+{
+  "id": "immunodeficiency_68",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025615",
+        "label": "Abscess"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032434",
+        "label": "Delayed umbilical cord separation"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009098",
+        "label": "Chronic oral candidiasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030252",
+        "label": "Absent circulating B cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007274",
+        "label": "Recurrent bacterial meningitis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612260",
+        "label": "Immunodeficiency 68"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:12:23.335476Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

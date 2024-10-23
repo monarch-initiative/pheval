@@ -1,0 +1,117 @@
+{
+  "id": "ichthyosis,_congenital,_autosomal_recessive_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000982",
+        "label": "Palmoplantar keratoderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025114",
+        "label": "Hypergranulosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000970",
+        "label": "Anhidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003241",
+        "label": "External genital hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007479",
+        "label": "Congenital nonbullous ichthyosiform erythroderma"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012553",
+        "label": "Hypoplastic thumbnail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002552",
+        "label": "Trichodysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011368",
+        "label": "Epidermal thickening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010109",
+        "label": "Short hallux"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:242100",
+        "label": "Ichthyosis, congenital, autosomal recessive 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:37:41.612637Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

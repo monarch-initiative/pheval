@@ -1,0 +1,224 @@
+{
+  "id": "marshall_syndrome",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P57Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012283",
+        "label": "Small distal femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002986",
+        "label": "Radial bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004329",
+        "label": "Abnormal posterior eye segment morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000201",
+        "label": "Pierre-Robin sequence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000215",
+        "label": "Thick upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500066",
+        "label": "Latent myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100866",
+        "label": "Short iliac bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006200",
+        "label": "Widened distal phalanges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010920",
+        "label": "Zonular cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005769",
+        "label": "Fifth finger distal phalanx clinodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006407",
+        "label": "Irregular distal femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008609",
+        "label": "Abnormal middle ear morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006500",
+        "label": "Abnormal lower limb epiphysis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002684",
+        "label": "Thickened calvaria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031767",
+        "label": "Consecutive esotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003468",
+        "label": "Abnormal vertebral morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410219",
+        "label": "Hypoplasia of mandible relative to maxilla"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001757",
+        "label": "High-frequency sensorineural hearing impairment"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011844",
+        "label": "Abnormal appendicular skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:154780",
+        "label": "Marshall syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:29:41.125979Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

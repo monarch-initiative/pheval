@@ -1,0 +1,141 @@
+{
+  "id": "ondontochondrodysplasia_2_with_hearing_loss_and_diabetes",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006291",
+        "label": "Marked delay in eruption of permanent teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100326",
+        "label": "Immunologic hypersensitivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:3000050",
+        "label": "Abnormal odontoid tissue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005752",
+        "label": "Flattened moderately deformed vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030866",
+        "label": "Large knee"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025453",
+        "label": "Delayed adrenarche"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000819",
+        "label": "Diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005922",
+        "label": "Abnormal hand morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032004",
+        "label": "Pruritus vulvae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003502",
+        "label": "Mild short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005920",
+        "label": "Abnormal epiphysis morphology of the phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000422",
+        "label": "Abnormal nasal bridge morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006323",
+        "label": "Premature loss of primary teeth"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619269",
+        "label": "Ondontochondrodysplasia 2 with hearing loss and diabetes"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:02:06.481743Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

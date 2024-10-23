@@ -1,0 +1,81 @@
+{
+  "id": "spastic_ataxia_8,_autosomal_recessive,_with_hypomyelinating_leukodystrophy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000570",
+        "label": "Abnormal saccadic eye movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000297",
+        "label": "Facial hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007034",
+        "label": "Generalized hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012080",
+        "label": "Cerebellar granular layer atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010545",
+        "label": "Downbeat nystagmus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617560",
+        "label": "Spastic ataxia 8, autosomal recessive, with hypomyelinating leukodystrophy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:19:49.487805Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
