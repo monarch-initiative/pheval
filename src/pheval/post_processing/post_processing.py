@@ -99,14 +99,14 @@ class PhEvalVariantResult(PhEvalResult):
     grouping_id: str = field(default=None)
 
 
-@dataclass(kw_only=True)
+@dataclass
 class RankedPhEvalVariantResult(PhEvalVariantResult):
     """PhEval variant result with corresponding rank
     Args:
         rank (int): The rank for the result entry
     """
 
-    rank: int
+    rank: int = 0
 
     @staticmethod
     def from_variant_result(pheval_variant_result: PhEvalVariantResult, rank: int):
