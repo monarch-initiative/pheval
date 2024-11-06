@@ -242,6 +242,7 @@ The dataclasses representing essential information extracted from tool-specific 
       show_source: true
 ---
 
+For variant prioritisation results the `grouping_id` parameter is designed to handle compound heterozygous variants in ranking. Compound heterozygosity occurs when two or more variants, inherited together, contribute to a phenotype. For this purpose, variants that are part of the same compound heterozygous group (e.g., within the same gene) should be assigned the same `grouping_id`. This ensures they are ranked as a single entity, preserving their combined significance. Variants that are not part of any compound heterozygous group should each have a unique `grouping_id`. This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented.
 ::: src.pheval.post_processing.post_processing.PhEvalVariantResult
     handler: python
     options:
