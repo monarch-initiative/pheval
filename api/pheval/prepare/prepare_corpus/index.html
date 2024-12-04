@@ -1536,7 +1536,12 @@ gene identifiers.</p>
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
-<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">prepare_corpus</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">variant_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">gene_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -1583,6 +1588,11 @@ gene identifiers.</p>
                     <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing variant fields.&quot;</span>
                 <span class="p">)</span>
                 <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_variant_alleles</span><span class="p">():</span>
+                <span class="n">info_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to identical &quot;</span>
+                    <span class="s2">&quot;reference and alternate allele fields.&quot;</span>
+                <span class="p">)</span>
         <span class="k">if</span> <span class="n">gene_analysis</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_incomplete_gene_record</span><span class="p">():</span>
                 <span class="n">info_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>

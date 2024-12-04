@@ -2265,7 +2265,20 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <span class="normal">531</span>
 <span class="normal">532</span>
 <span class="normal">533</span>
-<span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PhenopacketUtil</span><span class="p">:</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PhenopacketUtil</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for retrieving data from a Phenopacket or Family object&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
@@ -2549,6 +2562,19 @@ This allows PhEval extensibility to be standardized in terms of documentation an
                 <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
                 <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
             <span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">check_variant_alleles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if any variant record in the phenopacket has identical reference and alternate alleles.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the reference and alternate alleles are identical, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
