@@ -269,15 +269,15 @@ class ResultRanker:
         pheval_result_df["min_rank"] = (
             pheval_result_df.groupby(["score", "grouping_id"])
             .ngroup()
-            .rank(method="min", ascending=self.ascending)
-        )
+            .rank(method="dense", ascending=self.ascending)
+        ).astype(int)
         pheval_result_df["rank"] = pheval_result_df.groupby("score")["min_rank"].transform("max")
         return pheval_result_df
 
     def _rank_without_grouping_id(self, pheval_result_df: pd.DataFrame) -> pd.DataFrame:
         """Apply ranking without using grouping_id."""
-        pheval_result_df["rank"] = pheval_result_df["score"].rank(
-            method="max", ascending=self.ascending
+        pheval_result_df["rank"] = (
+            pheval_result_df["score"].rank(method="max", ascending=self.ascending).astype(int)
         )
         return pheval_result_df
 

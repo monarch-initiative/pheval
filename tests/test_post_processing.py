@@ -329,8 +329,8 @@ class TestResultRanker(unittest.TestCase):
                     {
                         "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
                         "grouping_id": ["A", "A", "B", "C", "D", "E", "F", "F", "G"],
-                        "min_rank": [1.0, 1.0, 3.0, 5.0, 4.0, 6.0, 7.0, 7.0, 9.0],
-                        "rank": [1.0, 1.0, 3.0, 5.0, 5.0, 6.0, 7.0, 7.0, 9.0],
+                        "min_rank": [1, 1, 2, 4, 3, 5, 6, 6, 7],
+                        "rank": [1, 1, 2, 4, 4, 5, 6, 6, 7],
                     }
                 )
             )
@@ -347,7 +347,7 @@ class TestResultRanker(unittest.TestCase):
                 pd.DataFrame(
                     {
                         "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
-                        "rank": [2.0, 2.0, 3.0, 5.0, 5.0, 6.0, 8.0, 8.0, 9.0],
+                        "rank": [2, 2, 3, 5, 5, 6, 8, 8, 9],
                     }
                 )
             )
@@ -366,7 +366,7 @@ class TestResultRanker(unittest.TestCase):
                             "ENSG00000068985",
                         ],
                         "score": [0.9234, 0.6529, 0.6529, 0.5235],
-                        "rank": [1.0, 3.0, 3.0, 4.0],
+                        "rank": [1, 3, 3, 4],
                     }
                 )
             )
@@ -383,7 +383,7 @@ class TestResultRanker(unittest.TestCase):
                         "ref": ["A", "A", "A", "T"],
                         "alt": ["G", "C", "C", "G"],
                         "score": [0.1245, 0.4578, 0.9999, 0.9999],
-                        "rank": [1.0, 2.0, 4.0, 4.0],
+                        "rank": [1, 2, 4, 4],
                     }
                 )
             )
@@ -400,7 +400,7 @@ class TestResultRanker(unittest.TestCase):
                         "ref": ["A", "A", "A", "T"],
                         "alt": ["G", "C", "C", "G"],
                         "score": [0.1245, 0.4578, 0.9999, 0.9999],
-                        "rank": [4.0, 3.0, 1.0, 1.0],
+                        "rank": [3, 2, 1, 1],
                     }
                 )
             )
@@ -422,7 +422,7 @@ class TestResultRanker(unittest.TestCase):
                             2: "OMIM:614483",
                         },
                         "score": {0: 4.284, 1: 4.284, 2: -1.871},
-                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                        "rank": {0: 2, 1: 2, 2: 3},
                     }
                 )
             )
@@ -443,7 +443,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                             "ENSG00000068985",
                         ],
                         "score": [0.9234, 0.6529, 0.6529, 0.5235],
-                        "rank": [1.0, 3.0, 3.0, 4.0],
+                        "rank": [1, 3, 3, 4],
                     }
                 )
             )
@@ -460,7 +460,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                         "ref": ["A", "A", "A", "T"],
                         "alt": ["G", "C", "C", "G"],
                         "score": [0.1245, 0.4578, 0.9348, 0.9999],
-                        "rank": [1.0, 2.0, 3.0, 4.0],
+                        "rank": [1, 2, 3, 4],
                     }
                 )
             )
@@ -482,7 +482,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                             2: "OMIM:614483",
                         },
                         "score": {0: 4.284, 1: 4.284, 2: -1.871},
-                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                        "rank": {0: 2, 1: 2, 2: 3},
                     }
                 )
             )
