@@ -57,6 +57,11 @@ def prepare_corpus(
                     f"Removed {phenopacket_path.name} from the corpus due to missing variant fields."
                 )
                 continue
+            elif phenopacket_util.check_variant_alleles():
+                info_log.warning(
+                    f"Removed {phenopacket_path.name} from the corpus due to identical "
+                    "reference and alternate allele fields."
+                )
         if gene_analysis:
             if phenopacket_util.check_incomplete_gene_record():
                 info_log.warning(
