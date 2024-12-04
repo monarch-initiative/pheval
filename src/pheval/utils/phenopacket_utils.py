@@ -503,6 +503,19 @@ class PhenopacketUtil:
                 return True
         return False
 
+    def check_variant_alleles(self) -> bool:
+        """
+        Check if any variant record in the phenopacket has identical reference and alternate alleles.
+
+        Returns:
+            bool: True if the reference and alternate alleles are identical, False otherwise.
+        """
+        variants = self.diagnosed_variants()
+        for variant in variants:
+            if variant.ref == variant.alt:
+                return True
+        return False
+
     def check_incomplete_gene_record(self) -> bool:
         """
         Check if any gene record in the phenopacket has incomplete information.

@@ -1,4 +1,5 @@
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
 from phenopackets import (
@@ -605,6 +606,16 @@ class TestPhenopacketUtil(unittest.TestCase):
 
     def test_check_incomplete_disease_record_missing_records(self):
         self.assertTrue(self.structural_variant_phenopacket.check_incomplete_disease_record())
+
+    def test_check_variant_alleles(self):
+        self.assertFalse(self.phenopacket.check_variant_alleles())
+
+    def test_check_variant_alleles_duplicate(self):
+        phenopacket_copy = deepcopy(self.phenopacket)
+        phenopacket_copy.phenopacket_contents.interpretations[0].diagnosis.genomic_interpretations[
+            0
+        ].variant_interpretation.variation_descriptor.vcf_record.alt = "C"
+        self.assertTrue(phenopacket_copy.check_variant_alleles())
 
 
 class TestPhenopacketRebuilder(unittest.TestCase):
