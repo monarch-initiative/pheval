@@ -1,6 +1,6 @@
 import logging
 import operator
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
 from typing import List, Union
@@ -96,6 +96,7 @@ class PhEvalVariantResult(PhEvalResult):
     ref: str
     alt: str
     score: float
+    grouping_id: str = field(default=None)
 
 
 @dataclass
@@ -105,7 +106,7 @@ class RankedPhEvalVariantResult(PhEvalVariantResult):
         rank (int): The rank for the result entry
     """
 
-    rank: int
+    rank: int = 0
 
     @staticmethod
     def from_variant_result(pheval_variant_result: PhEvalVariantResult, rank: int):
@@ -228,26 +229,57 @@ class ResultSorter:
         )
 
 
-def _rank_pheval_result(pheval_result: [PhEvalResult], sort_order: SortOrder) -> pd.DataFrame:
-    """
-    Rank PhEval results post-processed from tool-specific output, managing tied scores (ex aequo)
+class ResultRanker:
+    def __init__(self, pheval_result: List[PhEvalResult], sort_order: SortOrder):
+        """
+        Initialise the PhEvalRanker.
+        Args:
+            pheval_result (List[PhEvalResult]): PhEval results to rank.
+            sort_order (SortOrder): Sorting order based on which ranking is performed.
+        """
+        self.pheval_result = pheval_result
+        self.sort_order = sort_order
+        self.ascending = sort_order == SortOrder.ASCENDING
 
-    Args:
-        pheval_result ([PhEvalResult]): PhEval results obtained from tool-specific output
-        sort_order (SortOrder): Sorting order based on which ranking is performed
+    def rank(self) -> pd.DataFrame:
+        """
+        Rank PhEval results, managing tied scores (ex aequo) and handling grouping_id if present.
 
-    Returns:
-        pd.DataFrame : Ranked PhEval results with tied scores managed
+        Returns:
+            pd.DataFrame : Ranked PhEval results with tied scores managed.
+        """
+        pheval_result_df = pd.DataFrame([data.__dict__ for data in self.pheval_result])
 
-    Raises:
-        ValueError: If an incompatible PhEval result type is encountered
-    """
-    pheval_result_df = pd.DataFrame([data.__dict__ for data in pheval_result])
-    if sort_order == SortOrder.ASCENDING:
-        pheval_result_df["rank"] = pheval_result_df["score"].rank(method="max", ascending=True)
-    elif sort_order == SortOrder.DESCENDING:
-        pheval_result_df["rank"] = pheval_result_df["score"].rank(method="max", ascending=False)
-    return pheval_result_df
+        if self._has_valid_grouping_id(pheval_result_df):
+            pheval_result_df = self._rank_with_grouping_id(pheval_result_df)
+        else:
+            pheval_result_df = self._rank_without_grouping_id(pheval_result_df)
+        return pheval_result_df.drop(columns=["min_rank", "grouping_id"], errors="ignore")
+
+    @staticmethod
+    def _has_valid_grouping_id(pheval_result_df: pd.DataFrame) -> bool:
+        """Check if grouping_id exists and has no None values."""
+        return (
+            "grouping_id" in pheval_result_df.columns
+            and not pheval_result_df["grouping_id"].isnull().any()
+        )
+
+    def _rank_with_grouping_id(self, pheval_result_df: pd.DataFrame) -> pd.DataFrame:
+        """Apply ranking when grouping_id is present and has no None values."""
+        pheval_result_df["min_rank"] = (
+            pheval_result_df.groupby(["score", "grouping_id"])
+            .ngroup()
+            .rank(method="dense", ascending=self.ascending)
+        ).astype(int)
+        pheval_result_df["rank"] = pheval_result_df.groupby("score")["min_rank"].transform("max")
+        return pheval_result_df
+
+    def _rank_without_grouping_id(self, pheval_result_df: pd.DataFrame) -> pd.DataFrame:
+        """Apply ranking without using grouping_id."""
+        pheval_result_df["rank"] = (
+            pheval_result_df["score"].rank(method="max", ascending=self.ascending).astype(int)
+        )
+        return pheval_result_df
 
 
 def _return_sort_order(sort_order_str: str) -> SortOrder:
@@ -282,7 +314,7 @@ def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) ->
     """
     sort_order = _return_sort_order(sort_order_str)
     sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
-    return _rank_pheval_result(sorted_pheval_result, sort_order)
+    return ResultRanker(sorted_pheval_result, sort_order).rank()
 
 
 def _write_pheval_gene_result(
