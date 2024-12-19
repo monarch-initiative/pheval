@@ -17,6 +17,9 @@ from pheval.utils.exomiser import semsim_to_exomiserdb
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 from pheval.utils.utils import semsim_scramble
 
+# ME
+from pheval.utils.synthetic_corpora_semantic_similarity import oaklib_phenopackets_comapre
+
 
 @click.command("semsim-scramble")
 @click.option(
@@ -566,3 +569,56 @@ def prepare_corpus_command(
         hg38_vcf_dir,
         output_dir,
     )
+
+
+@click.command("semantic-phenopacket-comapare")
+@click.option(
+    "--obo-file",
+    "-hpo",
+    required=True,
+    help="Filepath to hpo.obo file",
+    type=str,
+)
+@click.option(
+    "--input-dirs",
+    "-i",
+    required=True,
+    help="Comma separated list of filepaths to the directories we want to compare",
+    type=str,
+)
+@click.option(
+    "--output-dir",
+    "-o",
+    required=True,
+    help="Path where the scrambled semsim file will be written.",
+    type=Path,
+)
+@click.option(
+    "--output-prefix",
+    "-e",
+    required=False,
+    help="Prefix of the filenames to be saved",
+    type=str,
+    default="semantic_compare"
+)
+@click.option(
+    "--num-cores",
+    "-c",
+    required=False,
+    help="Number of multiprocess cpu-cores to use",
+    type=int,
+    default=1
+)
+def semantic_corpora_compare(obo_file: str, input_dirs: str, output_dir: str, output_prefix: str, num_cores: int):
+    """Performs oaklib semantic similarity calculations between a base set of phenopackets, and additional directories
+       containing the same set of filenames, but differing phenopacket content. For baseline vs noisy/synthetic corpora comparisons
+    
+    Args:
+        hp-obo: Filepath to hp.obo file
+        input-dirs: Comma seperated list of directory paths to compare. First directory listed will be compared against all others
+        output-dir: Filepath to output directory desired for data (must exist beforehand)
+        output-prefix: Prefix to name output files, default is "semantic_compare"
+        num-cores: Integer of the number of cores to leverage for parallel processing (Highly reccommended)
+    """
+    input_dirs = [dname.strip() for dname in input_dirs.split(",")]
+    oaklib_phenopackets_comapre(obo_file, input_dirs, output_dir, output_prefix, num_cores)

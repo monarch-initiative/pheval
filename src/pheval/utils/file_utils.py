@@ -80,6 +80,16 @@ def ensure_file_exists(*files: str):
             raise FileNotFoundError(f"File {file} not found")
 
 
+def ensure_dir_exists(dirs: List[str]):
+    """Ensures the existence of directories passed as parameter
+    Raises:
+        DirectoryNotFoundError: If any file passed as a parameter doesn't exist a FileNotFound Exception will be raised
+    """
+    for dirname in dirs:
+        if not path.isdir(dirname):
+            raise FileNotFoundError(f"Directory {dirname} not found")
+
+
 def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_message: str = ""):
     """Ensures the columns exist in dataframes passed as argument (e.g)
 
