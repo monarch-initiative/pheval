@@ -6,23 +6,20 @@ import numpy as np
 import pandas as pd
 import logging
 import random
+from typing import List, Any, Optional, Union
 
-from pydantic import BaseModel
-from typing import List, Any, Optional
+# Data vis
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 
-# Pheval phenopacket utils
+# Pheval phenopacket utils, Ontology tools, parallel processing
 from pheval.utils.phenopacket_utils import phenopacket_reader
 from pheval.utils.phenopacket_utils import PhenopacketUtil
+from semsimian import Semsimian
+import multiprocessing as mp
 
-# Ontology tools
-from oaklib import OntologyResource, get_adapter
-from oaklib.implementations import ProntoImplementation
-
-# Parallel process lib
-from multiprocessing import Pool
-
-# Pheval base tools imports
-from utils import ensure_file_exists, ensure_dir_exists
+# Pheval imports
+###from pheval.utils.file_utils import ensure_file_exists, ensure_dir_exists
 
 
 ### Utility functions
@@ -46,6 +43,35 @@ def ensure_dir_exists(dirs: List[str]):
             raise FileNotFoundError(f"Directory {dirname} not found")
 
 
+def divide_workload(data_list, num_proc: int=1) -> list:
+    """
+    Meant to divide up the elements in data_list into num_proc equal portions
+    by iteratively adding each element to a basket never repeating the same basket until all baskets have an equal amount
+    If num_proc == 1 then the original input list will be returned nested in a top layer list i.e. [data_list]
+    """
+
+    # Deal with our edge case at the very begginning which then is used as input into the second potential edge case
+    ndata_elements = len(data_list)
+    if ndata_elements < num_proc:
+        num_proc = ndata_elements
+
+    # Edge case
+    if num_proc <= 1:
+        return [data_list]
+    else:
+        baskets = [[] for i in range(0, num_proc)]
+        index_count = 0
+        for d in data_list:
+            baskets[index_count].append(d)
+            if index_count == (num_proc-1):
+                index_count = 0
+            else:
+                index_count += 1
+
+        #print("- Workload divided into {} portions with each portion recieving {} elements respectively...".format(num_proc, [format(len(b), ',') for b in baskets]))
+        return baskets
+
+
 ### Semantic similariy code
 def avg_best_matches(termset_sim_obj):
     scores = {"jaccard_similarity":[], "ancestor_information_content":[], "phenodigm_score":[]}
@@ -61,30 +87,34 @@ def avg_best_matches(termset_sim_obj):
     return scores
 
 
-def load_ontology_and_compare_terms(input_args):
+def semsim_termset_compare(hp_db_path, input_args):
     
-    # Expand input arguments and create output datastructure
-    onto_file, termset1, termset2, filename = input_args
+    # Load in data
+    semsim_obj = Semsimian(spo=None, resource_path=hp_db_path)
+
+    # Create output datastructure
+    sim_metrics = ["jaccard_similarity", "ancestor_information_content", "phenodigm_score"]
     output_data = {"filename":[],
                    "jaccard_similarity":[],
                    "ancestor_information_content":[],
                    "phenodigm_score":[]}
-
-    resource = ProntoImplementation(OntologyResource(slug=str(onto_file), local=True))
-    dv = resource.termset_pairwise_similarity(termset1, termset2)
-    tscores = avg_best_matches(dv)
-            
-    output_data["filename"].append(filename)
-    for sim_metric in output_data:
-        if sim_metric == "filename":
-            continue
-        output_data[sim_metric].append(tscores[sim_metric])
     
+    # For each set of input arguments, compute jaccar, ic, and phenodigm sim scores and add to our output dict
+    for i, argset in enumerate(input_args):
+        termset1, termset2, filename = argset
+        output_data["filename"].append(filename)
+        for sim in sim_metrics:
+            score = semsim_obj.termset_comparison(set(termset1), set(termset2), score_metric=sim)
+            output_data[sim].append(score)
+
+        if i % 100 == 0:
+            print("- processed {}/{}".format(i+1, format(len(input_args), ',')))
+
     return output_data
 
 
 ### Main function to bring everything together
-def oaklib_phenopackets_comapre(hpo_obo_filepath: str,
+def semsim_phenopackets_comapre(hp_db_path: str,
                                 comparison_dirs: List[str], 
                                 output_dir: str, 
                                 output_prefix: str = "semantic_compare",
@@ -101,7 +131,7 @@ def oaklib_phenopackets_comapre(hpo_obo_filepath: str,
     """
     
     # Filepath and input arg checks
-    ensure_file_exists(hpo_obo_filepath)
+    ensure_file_exists(hp_db_path)
     ensure_dir_exists(comparison_dirs)
     ensure_dir_exists([output_dir])
     if len(comparison_dirs) < 2:
@@ -141,6 +171,7 @@ def oaklib_phenopackets_comapre(hpo_obo_filepath: str,
     sim_keys = ["jaccard_similarity", "ancestor_information_content", "phenodigm_score"]
 
     # HPO termset similarity comparisons between base phenopacket terms and new
+    print('wooo', len(comparison_dirs))
     for i in range(1, len(comparison_dirs)):
         print("- Comparing directorie indices {}-->{}...".format(0, i))
         
@@ -154,47 +185,63 @@ def oaklib_phenopackets_comapre(hpo_obo_filepath: str,
         parallel_args = []
         for fname in base_fnames:
             terms1, terms2 = corpora_phenotype_terms[0][fname], corpora_phenotype_terms[i][fname]
-            pargs = [hpo_obo_filepath, terms1, terms2, fname]
+            pargs = [terms1, terms2, fname]
             parallel_args.append(pargs)
         
-        # Perform comparisons in parallel
-        pool = Pool(processes=num_proc)
-        res = pool.map_async(load_ontology_and_compare_terms, parallel_args).get()
+        # Divide input arguments into batchs for async processing, and instantiate num_procs worth of Semsimian objects to compute with
+        div_parallel_args = divide_workload(parallel_args, num_proc=num_proc)
+        div_semsim_objs = [hp_db_path for i in range(0, num_proc)]
+
+        # Setup parallel processing overhead, kick off jobs via asynchronous processing, and retrieve results
+        output = mp.Queue()
+        pool = mp.Pool(processes=num_proc)
+        results = [pool.apply_async(semsim_termset_compare, args=(sem, inargs)) for sem, inargs in zip(div_semsim_objs,
+                                                                                                       div_parallel_args)]
+        # .get() method needs to be called
+        output = [p.get() for p in results]
         print("- Semantic similarity comparisons completed...")
         print("- Combining and writing results to {}...".format(outfilename))
 
-        # Combine and write results
-        df_keys = list(res[0].keys())
-        combined_df = {k:[] for k in df_keys}
-        for r in res:
-            for k in df_keys:
-                combined_df[k] += r[k]
-        
-        pd.DataFrame(combined_df).to_csv(outfilename, sep='\t', index=False)
+        # Merge results from previous step into single data structure
+        # Each element in the output list is a dictionary {sival:[pval,pval,...], }
+        merged_data = {}
+        for p in output:
+            for k,v in p.items():
+                if k not in merged_data:
+                    merged_data.update({k:[]})
+                merged_data[k] += v
+
+        # Convert and write from dataframe
+        pd.DataFrame(merged_data).to_csv(outfilename, sep='\t', index=False)
         print("- Data successfully written. {}/{} comparisons made...".format(i, len(comparison_dirs)-1))
 
 
-def plot_semantic_similarity_results(res_files: List[str]):
+
+def plot_semantic_similarity_results(res_files: List[str], 
+                                     comp_labels: List[str] = [], 
+                                     save_fig: Optional[Union[str, bool]] = False):
     
-    # make sure data exists before plotting
-    for fpath in res_files:
-        ensure_file_exists(fpath)
+    ## make sure data exists before plotting
+    #for fpath in res_files:
+    #    ensure(file_exists)
     
     # plot individual comparisons
+    
     all_data = {}
     sim_keys = {}
+    out_figs = []
     for fpath in res_files:
         res_df = pd.read_csv(fpath, sep='\t')
-
-        all_data.update({fpath.split('/')[-1]:{}})
+        all_data.update({fpath:{}})
         fig = plt.figure().set_size_inches(12, 4)
         col = 0
+        fname = fpath.split('/')[-1].split(".tsv")[0]
 
-        for sim_metric in df.columns:
+        for sim_metric in res_df.columns:
             if sim_metric == "filename":
                 continue
             
-            plot_vals = np.asarray(df[sim_metric].astype(float))
+            plot_vals = np.asarray(res_df[sim_metric].astype(float))
             all_data[fpath].update({sim_metric:plot_vals})
             sim_keys.update({sim_metric:''})
             tot_comps = len(plot_vals)
@@ -204,13 +251,12 @@ def plot_semantic_similarity_results(res_files: List[str]):
             ax.hist(plot_vals, edgecolor='black')
             ax.set_xlabel("{} score".format(sim_metric))
             ax.set_ylabel("Number of comparisons")
-            ax.set_title("{} similarity scores{}(N={}, Avg={})".format(sim_metric, '\n', format(tot_comps, ','), avg))
+            ax.set_title("{} (Avg={})".format(sim_metric, avg))
             col += 1
-    
+        
+        plt.suptitle("{} Similarity score results (N={})".format(fname, format(len(res_df), ',')))
         plt.tight_layout()
-        plt.show()
     
-
     # Combine comparison to single plot
     if len(res_files) >= 2:
         fig = plt.figure().set_size_inches(12, 4)
@@ -218,15 +264,36 @@ def plot_semantic_similarity_results(res_files: List[str]):
         
         for sim_metric in sim_keys:
             ax = plt.subplot2grid((1, 3), (0, col))
+            vplot_data =[]
+            vlabs = []
             col += 1
+            dir_ind = 0
+            
             for fpath in all_data:
                 fname = fpath.split('/')[-1]
                 plot_data = all_data[fpath][sim_metric]
-                ax.hist(plot_data, edgecolors='black', density=True, lable=fname, alpha=.5)
+                vplot_data.append(plot_data)
+                vlabs.append(fname)
+                dir_ind += 1
+
             
-            ax.set_xlabel("{} score".format(sim_metric))
-            ax.set_ylabel("Number of comparisons")
-            ax.set_title("{} similarity scores comparisons)".format(sim_metric))
+            ax.violinplot(vplot_data) #, labels=vlabs)
+            ax.set_ylabel("{} score".format(sim_metric))
+            ax.set_xticks([i for i in range(1, len(vplot_data)+1)])
+            if len(comp_labels) > 0:
+                vlabs = comp_labels
+                
+            ax.set_xticklabels(vlabs, rotation=0)##, size=labsize)
+            ax.set_title("{} similarity scores{}(N={})".format(sim_metric, "\n", format(len(vplot_data[0]), ',')))
         
         plt.tight_layout()
-        plt.show()
+    
+    # Save the plots to a PDF file
+    if save_fig != False:
+        pdf = PdfPages(save_fig)
+        fig_nums = plt.get_fignums()
+        figs = [plt.figure(n) for n in fig_nums]
+        for fig in figs:   
+            fig.savefig(pdf, format='pdf') 
+
+        pdf.close()

@@ -1,7 +1,7 @@
 """PhEval utils Command Line Interface"""
 
 from pathlib import Path
-from typing import List
+from typing import List, Union, Optional
 
 import click
 
@@ -18,7 +18,8 @@ from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 from pheval.utils.utils import semsim_scramble
 
 # ME
-from pheval.utils.synthetic_corpora_semantic_similarity import oaklib_phenopackets_comapre
+from pheval.utils.synthetic_corpora_semantic_similarity import semsim_phenopackets_comapre
+from pheval.utils.synthetic_corpora_semantic_similarity import plot_semantic_similarity_results
 
 
 @click.command("semsim-scramble")
@@ -573,8 +574,8 @@ def prepare_corpus_command(
 
 @click.command("semantic-phenopacket-comapare")
 @click.option(
-    "--obo-file",
-    "-hpo",
+    "--hp-db-file",
+    "-hpdb",
     required=True,
     help="Filepath to hpo.obo file",
     type=str,
@@ -609,9 +610,10 @@ def prepare_corpus_command(
     type=int,
     default=1
 )
-def semantic_corpora_compare(obo_file: str, input_dirs: str, output_dir: str, output_prefix: str, num_cores: int):
-    """Performs oaklib semantic similarity calculations between a base set of phenopackets, and additional directories
-       containing the same set of filenames, but differing phenopacket content. For baseline vs noisy/synthetic corpora comparisons
+def semantic_corpora_compare(hp_db_file: str, input_dirs: str, output_dir: str, output_prefix: str, num_cores: int):
+    """
+    Performs semsimian semantic similarity calculations between a base set of phenopackets, and additional directories
+    containing the same set of filenames, but differing phenopacket content. For baseline vs noisy/synthetic corpora comparisons
     
     Args:
         hp-obo: Filepath to hp.obo file
@@ -621,4 +623,53 @@ def semantic_corpora_compare(obo_file: str, input_dirs: str, output_dir: str, ou
         num-cores: Integer of the number of cores to leverage for parallel processing (Highly reccommended)
     """
     input_dirs = [dname.strip() for dname in input_dirs.split(",")]
-    oaklib_phenopackets_comapre(obo_file, input_dirs, output_dir, output_prefix, num_cores)
+    semsim_phenopackets_comapre(hp_db_file, input_dirs, output_dir, output_prefix, num_cores)
+
+
+@click.command("plot-semantic-pheno-results")
+@click.option(
+    "--input-files",
+    "-i",
+    required=True,
+    help="Comma separated list of filepaths to plot data for. Should be results files from the semantic-phenopacket-comapare argument",
+    type=str,
+)
+@click.option(
+    "--file-labels",
+    "-labs",
+    required=False,
+    help="Comma separated list of names for comparisons. Should be in the same order as the --input-files argument. \
+          For example... -labs A,B,C --input-files file1.tsv,file2.tsv,file3.tsv will result in file1 being labeled A in resulting figures",
+    type=str,
+    default=''
+)
+@click.option(
+    "--save-fig",
+    "-s",
+    required=True,
+    help="Output filepath for figure to be saved to. Directory (not filename) must exist beforehand",
+    type=str,
+)
+def plot_semantic_pheno_results(input_files: str,
+                                file_labels: str,
+                                save_fig: Optional[Union[str, bool]] = False):
+    
+    """
+    Plots results from semantic_corpora_compare function. Primarily used for baseline vs noisy/synthetic corpora comparisons
+
+    Args:
+        input-files: Comma separated list of filepaths to plot data for. Should be results files from the semantic-phenopacket-comapare argument
+        file-labels: Comma separated list of names for comparisons. Should be in the same order as the --input-files argument. \
+                     For example... -labs A,B,C --input-files file1.tsv,file2.tsv,file3.tsv \
+                     will result in file1 being labeled A in resulting figures
+        save-fig: Output filepath for figure to be saved to. Directory (not filename) must exist beforehand
+    """
+
+    # Pull file labels and filepaths
+    flabs = []
+    if len(file_labels) > 0:
+        flabs = [flab.strip() for flab in file_labels.split(",")]
+    fnames = [f.strip() for f in input_files.split(",")]
+
+    # Plot our data
+    plot_semantic_similarity_results(fnames, flabs, save_fig=save_fig)

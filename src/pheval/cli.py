@@ -15,6 +15,7 @@ from .cli_pheval_utils import (
     semsim_to_exomiserdb_command,
     update_phenopackets_command,
     semantic_corpora_compare,
+    plot_semantic_pheno_results,
 )
 
 info_log = logging.getLogger("info")
@@ -62,6 +63,7 @@ pheval_utils.add_command(semsim_to_exomiserdb_command)
 pheval_utils.add_command(generate_stats_plot)
 pheval_utils.add_command(prepare_corpus_command)
 pheval_utils.add_command(semantic_corpora_compare)
+pheval_utils.add_command(plot_semantic_pheno_results)
 
 if __name__ == "__main__":
     main()
