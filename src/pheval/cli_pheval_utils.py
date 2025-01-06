@@ -17,7 +17,7 @@ from pheval.utils.exomiser import semsim_to_exomiserdb
 from pheval.utils.semsim_utils import percentage_diff, semsim_heatmap_plot
 from pheval.utils.utils import semsim_scramble
 
-# ME
+# Semantic similarity comparison / plotting functions for baseline vs. synthentic corpora
 from pheval.utils.synthetic_corpora_semantic_similarity import semsim_phenopackets_comapre
 from pheval.utils.synthetic_corpora_semantic_similarity import plot_semantic_similarity_results
 
@@ -591,7 +591,7 @@ def prepare_corpus_command(
     "--output-dir",
     "-o",
     required=True,
-    help="Path where the scrambled semsim file will be written.",
+    help="Path to directory where the scrambled semsim file will be written. Directory must exist beforehand",
     type=Path,
 )
 @click.option(

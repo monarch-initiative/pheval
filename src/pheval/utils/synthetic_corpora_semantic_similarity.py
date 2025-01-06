@@ -4,6 +4,7 @@ from os import path
 from pathlib import Path
 import numpy as np
 import pandas as pd
+import copy
 import logging
 import random
 from typing import List, Any, Optional, Union
@@ -171,7 +172,6 @@ def semsim_phenopackets_comapre(hp_db_path: str,
     sim_keys = ["jaccard_similarity", "ancestor_information_content", "phenodigm_score"]
 
     # HPO termset similarity comparisons between base phenopacket terms and new
-    print('wooo', len(comparison_dirs))
     for i in range(1, len(comparison_dirs)):
         print("- Comparing directorie indices {}-->{}...".format(0, i))
         
@@ -241,7 +241,8 @@ def plot_semantic_similarity_results(res_files: List[str],
             if sim_metric == "filename":
                 continue
             
-            plot_vals = np.asarray(res_df[sim_metric].astype(float))
+            # Convert data to array and replace NaN values with 0
+            plot_vals = np.nan_to_num(copy.copy(np.asarray(res_df[sim_metric].astype(float))), 0)
             all_data[fpath].update({sim_metric:plot_vals})
             sim_keys.update({sim_metric:''})
             tot_comps = len(plot_vals)
@@ -261,7 +262,7 @@ def plot_semantic_similarity_results(res_files: List[str],
     if len(res_files) >= 2:
         fig = plt.figure().set_size_inches(12, 4)
         col = 0
-        
+        default_lab = 0
         for sim_metric in sim_keys:
             ax = plt.subplot2grid((1, 3), (0, col))
             vplot_data =[]
@@ -273,7 +274,7 @@ def plot_semantic_similarity_results(res_files: List[str],
                 fname = fpath.split('/')[-1]
                 plot_data = all_data[fpath][sim_metric]
                 vplot_data.append(plot_data)
-                vlabs.append(fname)
+                vlabs.append(default_lab)
                 dir_ind += 1
 
             
@@ -287,6 +288,7 @@ def plot_semantic_similarity_results(res_files: List[str],
             ax.set_title("{} similarity scores{}(N={})".format(sim_metric, "\n", format(len(vplot_data[0]), ',')))
         
         plt.tight_layout()
+        default_lab += 1
     
     # Save the plots to a PDF file
     if save_fig != False:
