@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List
 
 import matplotlib
+import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
@@ -368,9 +369,16 @@ class PlotGenerator:
         """
         plt.clf()
         for i, benchmark_result in enumerate(benchmarking_results):
+            y_score = np.array(benchmark_result.binary_classification_stats.scores)
+            y_score = np.nan_to_num(
+                y_score,
+                nan=0.0,
+                posinf=max(y_score[np.isfinite(y_score)]),
+                neginf=min(y_score[np.isfinite(y_score)]),
+            )
             fpr, tpr, thresh = roc_curve(
                 benchmark_result.binary_classification_stats.labels,
-                benchmark_result.binary_classification_stats.scores,
+                y_score,
                 pos_label=1,
             )
             roc_auc = auc(fpr, tpr)
@@ -411,9 +419,16 @@ class PlotGenerator:
         plt.clf()
         plt.figure()
         for i, benchmark_result in enumerate(benchmarking_results):
+            y_score = np.array(benchmark_result.binary_classification_stats.scores)
+            y_score = np.nan_to_num(
+                y_score,
+                nan=0.0,
+                posinf=max(y_score[np.isfinite(y_score)]),
+                neginf=min(y_score[np.isfinite(y_score)]),
+            )
             precision, recall, thresh = precision_recall_curve(
                 benchmark_result.binary_classification_stats.labels,
-                benchmark_result.binary_classification_stats.scores,
+                y_score,
             )
             precision_recall_auc = auc(recall, precision)
             plt.plot(
