@@ -1416,7 +1416,16 @@
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessVariantPrioritisation</span><span class="p">(</span><span class="n">AssessPrioritisationBase</span><span class="p">):</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessVariantPrioritisation</span><span class="p">(</span><span class="n">AssessPrioritisationBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for assessing variant prioritisation based on thresholds and scoring orders.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">assess_variant_prioritisation</span><span class="p">(</span>
@@ -1449,12 +1458,16 @@
             <span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;SELECT * FROM &#39;</span><span class="si">{</span><span class="n">standardised_variant_result_path</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;WHERE &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;chromosome == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">chrom</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;start == </span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2"> AND &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;ref == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">ref</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;alt == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                    <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;SELECT * FROM &#39;</span><span class="si">{</span><span class="n">standardised_variant_result_path</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;WHERE &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;chromosome == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">chrom</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;start == </span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2"> AND &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;ref == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">ref</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;alt == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">standardised_variant_result_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+                    <span class="k">else</span> <span class="s2">&quot;SELECT NULL WHERE FALSE&quot;</span>
                 <span class="p">)</span>
                 <span class="o">.</span><span class="n">fetchdf</span><span class="p">()</span>
                 <span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
@@ -1471,10 +1484,15 @@
                     <span class="sa">f</span><span class="s1">&#39;UPDATE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s1"> SET &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="si">}</span><span class="s1">&quot; = ? WHERE identifier = ?&#39;</span><span class="p">,</span>
                     <span class="p">(</span><span class="n">variant_match</span><span class="p">,</span> <span class="n">primary_key</span><span class="p">),</span>
                 <span class="p">)</span>
-
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">binary_classification_stats</span><span class="o">.</span><span class="n">add_classification</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span><span class="o">.</span><span class="n">parse_table_into_dataclass</span><span class="p">(</span>
-                <span class="nb">str</span><span class="p">(</span><span class="n">standardised_variant_result_path</span><span class="p">),</span> <span class="n">RankedPhEvalVariantResult</span>
+            <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span><span class="o">.</span><span class="n">parse_table_into_dataclass</span><span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">standardised_variant_result_path</span><span class="p">),</span> <span class="n">RankedPhEvalVariantResult</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">standardised_variant_result_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+                <span class="k">else</span> <span class="p">[]</span>
             <span class="p">),</span>
             <span class="n">relevant_ranks</span><span class="p">,</span>
         <span class="p">)</span>
@@ -1628,7 +1646,16 @@ and records ranks using a PrioritisationRankRecorder.</p>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_variant_prioritisation</span><span class="p">(</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_variant_prioritisation</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">standardised_variant_result_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -1658,12 +1685,16 @@ and records ranks using a PrioritisationRankRecorder.</p>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;SELECT * FROM &#39;</span><span class="si">{</span><span class="n">standardised_variant_result_path</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;WHERE &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;chromosome == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">chrom</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;start == </span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2"> AND &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;ref == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">ref</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;alt == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;SELECT * FROM &#39;</span><span class="si">{</span><span class="n">standardised_variant_result_path</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;WHERE &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;chromosome == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">chrom</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;start == </span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2"> AND &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;ref == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">ref</span><span class="si">}</span><span class="s2">&#39; AND &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;alt == &#39;</span><span class="si">{</span><span class="n">causative_variant</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">standardised_variant_result_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+                <span class="k">else</span> <span class="s2">&quot;SELECT NULL WHERE FALSE&quot;</span>
             <span class="p">)</span>
             <span class="o">.</span><span class="n">fetchdf</span><span class="p">()</span>
             <span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
@@ -1680,10 +1711,15 @@ and records ranks using a PrioritisationRankRecorder.</p>
                 <span class="sa">f</span><span class="s1">&#39;UPDATE </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s1"> SET &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="si">}</span><span class="s1">&quot; = ? WHERE identifier = ?&#39;</span><span class="p">,</span>
                 <span class="p">(</span><span class="n">variant_match</span><span class="p">,</span> <span class="n">primary_key</span><span class="p">),</span>
             <span class="p">)</span>
-
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">relevant_ranks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">binary_classification_stats</span><span class="o">.</span><span class="n">add_classification</span><span class="p">(</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span><span class="o">.</span><span class="n">parse_table_into_dataclass</span><span class="p">(</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">standardised_variant_result_path</span><span class="p">),</span> <span class="n">RankedPhEvalVariantResult</span>
+        <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span><span class="o">.</span><span class="n">parse_table_into_dataclass</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">standardised_variant_result_path</span><span class="p">),</span> <span class="n">RankedPhEvalVariantResult</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">standardised_variant_result_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">[]</span>
         <span class="p">),</span>
         <span class="n">relevant_ranks</span><span class="p">,</span>
     <span class="p">)</span>
@@ -1793,16 +1829,7 @@ against the recorded causative variants for a proband in the Phenopacket.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/analyse/variant_prioritisation_analysis.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
 <span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
@@ -1816,7 +1843,16 @@ against the recorded causative variants for a proband in the Phenopacket.</p>
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_variant_prioritisation</span><span class="p">(</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assess_phenopacket_variant_prioritisation</span><span class="p">(</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">run</span><span class="p">:</span> <span class="n">RunConfig</span><span class="p">,</span>
     <span class="n">variant_binary_classification_stats</span><span class="p">:</span> <span class="n">BinaryClassificationStats</span><span class="p">,</span>
@@ -1967,16 +2003,7 @@ against the recorded causative variants for a proband in the Phenopacket.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/analyse/variant_prioritisation_analysis.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
@@ -2013,7 +2040,16 @@ against the recorded causative variants for a proband in the Phenopacket.</p>
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
-<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_variant_prioritisation</span><span class="p">(</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">benchmark_variant_prioritisation</span><span class="p">(</span>
     <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">run</span><span class="p">:</span> <span class="n">RunConfig</span><span class="p">,</span>
     <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
