@@ -15,10 +15,10 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
     """Class for assessing variant prioritisation based on thresholds and scoring orders."""
 
     def assess_variant_prioritisation(
-            self,
-            standardised_variant_result_path: Path,
-            phenopacket_path: Path,
-            binary_classification_stats: BinaryClassificationStats,
+        self,
+        standardised_variant_result_path: Path,
+        phenopacket_path: Path,
+        binary_classification_stats: BinaryClassificationStats,
     ) -> None:
         """
         Assess variant prioritisation.
@@ -73,18 +73,22 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
             elif len(result) == 0:
                 relevant_ranks.append(0)
         binary_classification_stats.add_classification(
-            self.db_connection.parse_table_into_dataclass(
-                str(standardised_variant_result_path), RankedPhEvalVariantResult
-            ) if standardised_variant_result_path.exists() else [],
+            (
+                self.db_connection.parse_table_into_dataclass(
+                    str(standardised_variant_result_path), RankedPhEvalVariantResult
+                )
+                if standardised_variant_result_path.exists()
+                else []
+            ),
             relevant_ranks,
         )
 
 
 def assess_phenopacket_variant_prioritisation(
-        phenopacket_path: Path,
-        run: RunConfig,
-        variant_binary_classification_stats: BinaryClassificationStats,
-        variant_benchmarker: AssessVariantPrioritisation,
+    phenopacket_path: Path,
+    run: RunConfig,
+    variant_binary_classification_stats: BinaryClassificationStats,
+    variant_benchmarker: AssessVariantPrioritisation,
 ) -> None:
     """
     Assess variant prioritisation for a Phenopacket by comparing PhEval standardised variant results
@@ -107,10 +111,10 @@ def assess_phenopacket_variant_prioritisation(
 
 
 def benchmark_variant_prioritisation(
-        benchmark_name: str,
-        run: RunConfig,
-        score_order: str,
-        threshold: float,
+    benchmark_name: str,
+    run: RunConfig,
+    score_order: str,
+    threshold: float,
 ):
     """
     Benchmark a directory based on variant prioritisation results.

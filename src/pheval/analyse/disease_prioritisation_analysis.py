@@ -64,9 +64,13 @@ class AssessDiseasePrioritisation(AssessPrioritisationBase):
             elif len(result) == 0:
                 relevant_ranks.append(0)
         binary_classification_stats.add_classification(
-            self.db_connection.parse_table_into_dataclass(
-                str(standardised_disease_result_path), RankedPhEvalDiseaseResult
-            ) if standardised_disease_result_path.exists() else [],
+            (
+                self.db_connection.parse_table_into_dataclass(
+                    str(standardised_disease_result_path), RankedPhEvalDiseaseResult
+                )
+                if standardised_disease_result_path.exists()
+                else []
+            ),
             relevant_ranks,
         )
 

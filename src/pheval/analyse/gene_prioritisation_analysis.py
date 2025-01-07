@@ -61,9 +61,13 @@ class AssessGenePrioritisation(AssessPrioritisationBase):
             if not result:
                 relevant_ranks.append(0)
         binary_classification_stats.add_classification(
-            self.db_connection.parse_table_into_dataclass(
-                str(standardised_gene_result_path), RankedPhEvalGeneResult
-            ) if standardised_gene_result_path.exists() else [],
+            (
+                self.db_connection.parse_table_into_dataclass(
+                    str(standardised_gene_result_path), RankedPhEvalGeneResult
+                )
+                if standardised_gene_result_path.exists()
+                else []
+            ),
             relevant_ranks,
         )
 
