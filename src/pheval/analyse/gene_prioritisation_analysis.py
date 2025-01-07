@@ -36,11 +36,16 @@ class AssessGenePrioritisation(AssessPrioritisationBase):
         for _i, row in df.iterrows():
             result = (
                 self.conn.execute(
-                    f"SELECT * FROM '{standardised_gene_result_path}' "
-                    f"WHERE contains_entity_function(CAST(COALESCE(gene_identifier, '') AS VARCHAR),"
-                    f" '{row['gene_identifier']}') "
-                    f"OR contains_entity_function(CAST(COALESCE(gene_symbol, '') AS VARCHAR), "
-                    f"'{row['gene_symbol']}')"
+                    (
+                        f"SELECT * FROM '{standardised_gene_result_path}' "
+                        f"WHERE contains_entity_function(CAST(COALESCE(gene_identifier, '') AS VARCHAR), "
+                        f"'{row['gene_identifier']}') "
+                        f"OR contains_entity_function(CAST(COALESCE(gene_symbol, '') AS VARCHAR), "
+                        f"'{row['gene_symbol']}')"
+                    )
+                    if standardised_gene_result_path.exists()
+                    and standardised_gene_result_path.stat().st_size > 0
+                    else "SELECT NULL WHERE FALSE"
                 )
                 .fetchdf()
                 .to_dict(orient="records")
@@ -53,9 +58,15 @@ class AssessGenePrioritisation(AssessPrioritisationBase):
                     f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
                     (gene_match, primary_key),
                 )
+            if not result:
+                relevant_ranks.append(0)
         binary_classification_stats.add_classification(
-            self.db_connection.parse_table_into_dataclass(
-                str(standardised_gene_result_path), RankedPhEvalGeneResult
+            (
+                self.db_connection.parse_table_into_dataclass(
+                    str(standardised_gene_result_path), RankedPhEvalGeneResult
+                )
+                if standardised_gene_result_path.exists()
+                else []
             ),
             relevant_ranks,
         )

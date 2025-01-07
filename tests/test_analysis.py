@@ -1,7 +1,7 @@
 import unittest
 from copy import copy
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import duckdb
 
@@ -130,9 +130,13 @@ class TestAssessGenePrioritisation(unittest.TestCase):
         )
 
     def test_assess_gene_prioritisation_no_threshold(self):
+        mock_path = MagicMock(spec=Path)
+        mock_path.exists.return_value = True
+        mock_path.stat.return_value.st_size = 100
+        mock_path.__str__.return_value = "result"
         self.db_connector.add_contains_function()
         self.assess_gene_prioritisation.assess_gene_prioritisation(
-            "result",
+            mock_path,
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )
@@ -150,7 +154,7 @@ class TestAssessGenePrioritisation(unittest.TestCase):
                 true_positives=1,
                 true_negatives=3,
                 false_positives=0,
-                false_negatives=0,
+                false_negatives=1,
                 labels=[1, 0, 0, 0],
                 scores=[0.8764, 0.5777, 0.5777, 0.3765],
             ),
@@ -282,9 +286,13 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
         )
 
     def test_assess_variant_prioritisation(self):
+        mock_path = MagicMock(spec=Path)
+        mock_path.exists.return_value = True
+        mock_path.stat.return_value.st_size = 100
+        mock_path.__str__.return_value = "result"
         self.db_connector.add_contains_function()
         self.assess_variant_prioritisation.assess_variant_prioritisation(
-            "result",
+            mock_path,
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )
@@ -318,7 +326,7 @@ class TestAssessVariantPrioritisation(unittest.TestCase):
                 true_positives=0,
                 true_negatives=0,
                 false_positives=2,
-                false_negatives=1,
+                false_negatives=2,
                 labels=[0, 0, 1],
                 scores=[0.0484, 0.0484, 0.0484],
             ),
@@ -439,9 +447,13 @@ class TestAssessDiseasePrioritisation(unittest.TestCase):
         )
 
     def test_assess_disease_prioritisation(self):
+        mock_path = MagicMock(spec=Path)
+        mock_path.exists.return_value = True
+        mock_path.stat.return_value.st_size = 100
+        mock_path.__str__.return_value = "result"
         self.db_connector.add_contains_function()
         self.assess_disease_prioritisation.assess_disease_prioritisation(
-            "result",
+            mock_path,
             Path("/path/to/phenopacket_1.json"),
             self.binary_classification_stats,
         )

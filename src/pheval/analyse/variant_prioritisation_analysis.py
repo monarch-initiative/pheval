@@ -44,12 +44,16 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
             )
             result = (
                 self.conn.execute(
-                    f"SELECT * FROM '{standardised_variant_result_path}' "
-                    f"WHERE "
-                    f"chromosome == '{causative_variant.chrom}' AND "
-                    f"start == {causative_variant.pos} AND "
-                    f"ref == '{causative_variant.ref}' AND "
-                    f"alt == '{causative_variant.alt}'"
+                    (
+                        f"SELECT * FROM '{standardised_variant_result_path}' "
+                        f"WHERE "
+                        f"chromosome == '{causative_variant.chrom}' AND "
+                        f"start == {causative_variant.pos} AND "
+                        f"ref == '{causative_variant.ref}' AND "
+                        f"alt == '{causative_variant.alt}'"
+                    )
+                    if standardised_variant_result_path.exists()
+                    else "SELECT NULL WHERE FALSE"
                 )
                 .fetchdf()
                 .to_dict(orient="records")
@@ -66,10 +70,15 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
                     f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
                     (variant_match, primary_key),
                 )
-
+            elif len(result) == 0:
+                relevant_ranks.append(0)
         binary_classification_stats.add_classification(
-            self.db_connection.parse_table_into_dataclass(
-                str(standardised_variant_result_path), RankedPhEvalVariantResult
+            (
+                self.db_connection.parse_table_into_dataclass(
+                    str(standardised_variant_result_path), RankedPhEvalVariantResult
+                )
+                if standardised_variant_result_path.exists()
+                else []
             ),
             relevant_ranks,
         )
