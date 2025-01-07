@@ -75,6 +75,7 @@ class BenchmarkDBManager:
                 `False` otherwise.
         """
         list_pattern = re.compile(r"^\[\s*(?:[^\[\],\s]+(?:\s*,\s*[^\[\],\s]+)*)?\s*]$")
+        entity = entity.replace("nan", "None").replace("NaN", "None")
         if list_pattern.match(str(entity)):
             list_representation = ast.literal_eval(entity)
             if isinstance(list_representation, list):
