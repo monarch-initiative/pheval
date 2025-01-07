@@ -61,10 +61,12 @@ class AssessDiseasePrioritisation(AssessPrioritisationBase):
                     f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
                     (disease_match, primary_key),
                 )
+            elif len(result) == 0:
+                relevant_ranks.append(0)
         binary_classification_stats.add_classification(
             self.db_connection.parse_table_into_dataclass(
                 str(standardised_disease_result_path), RankedPhEvalDiseaseResult
-            ),
+            ) if standardised_disease_result_path.exists() else [],
             relevant_ranks,
         )
 
