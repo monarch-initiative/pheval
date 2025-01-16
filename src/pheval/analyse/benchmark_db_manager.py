@@ -47,9 +47,9 @@ class BenchmarkDBManager:
         """
         try:
             self.conn.execute(
-                f'ALTER TABLE {table_name} ADD COLUMN "{column}" INTEGER DEFAULT {default}'
+                f'ALTER TABLE "{table_name}" ADD COLUMN "{column}" INTEGER DEFAULT {default}'
             )
-            self.conn.execute(f'UPDATE {table_name} SET "{column}" = ?', (default,))
+            self.conn.execute(f'UPDATE "{table_name}" SET "{column}" = ?', (default,))
             self.conn.commit()
         except duckdb.CatalogException:
             pass

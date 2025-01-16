@@ -31,7 +31,7 @@ class AssessGenePrioritisation(AssessPrioritisationBase):
         """
         relevant_ranks = []
         df = self.conn.execute(
-            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'"""
+            f"""SELECT * FROM "{self.table_name}" WHERE phenopacket = '{phenopacket_path.name}'"""
         ).fetchdf()
         for _i, row in df.iterrows():
             result = (
@@ -55,7 +55,7 @@ class AssessGenePrioritisation(AssessPrioritisationBase):
                 relevant_ranks.append(gene_match)
                 primary_key = f"{phenopacket_path.name}-{row['gene_symbol']}"
                 self.conn.execute(
-                    f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
+                    f'UPDATE "{self.table_name}" SET "{self.column}" = ? WHERE identifier = ?',
                     (gene_match, primary_key),
                 )
             if not result:

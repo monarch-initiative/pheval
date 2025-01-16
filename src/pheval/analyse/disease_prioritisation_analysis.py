@@ -32,7 +32,7 @@ class AssessDiseasePrioritisation(AssessPrioritisationBase):
         """
         relevant_ranks = []
         df = self.conn.execute(
-            f"SELECT * FROM {self.table_name} WHERE phenopacket = ? ",
+            f"SELECT * FROM '{self.table_name}' WHERE phenopacket = ? ",
             (phenopacket_path.name,),
         ).fetchdf()
         for _i, row in df.iterrows():
@@ -58,7 +58,7 @@ class AssessDiseasePrioritisation(AssessPrioritisationBase):
                 relevant_ranks.append(disease_match)
                 primary_key = f"{phenopacket_path.name}-{row['disease_identifier']}"
                 self.conn.execute(
-                    f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
+                    f'UPDATE "{self.table_name}" SET "{self.column}" = ? WHERE identifier = ?',
                     (disease_match, primary_key),
                 )
             elif len(result) == 0:
