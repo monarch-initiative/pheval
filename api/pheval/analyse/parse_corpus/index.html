@@ -1512,7 +1512,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                    CREATE TABLE IF NOT EXISTS </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_gene (</span>
+<span class="s2">                    CREATE TABLE IF NOT EXISTS &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_gene&quot; (</span>
 <span class="s2">                        identifier VARCHAR(255) PRIMARY KEY,</span>
 <span class="s2">                        phenopacket VARCHAR,</span>
 <span class="s2">                        gene_symbol VARCHAR,</span>
@@ -1527,7 +1527,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                    CREATE TABLE IF NOT EXISTS </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_variant (</span>
+<span class="s2">                    CREATE TABLE IF NOT EXISTS &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_variant&quot; (</span>
 <span class="s2">                        identifier VARCHAR(255) PRIMARY KEY,</span>
 <span class="s2">                        phenopacket VARCHAR,</span>
 <span class="s2">                        chrom VARCHAR,</span>
@@ -1544,7 +1544,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                    CREATE TABLE IF NOT EXISTS </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_disease (</span>
+<span class="s2">                    CREATE TABLE IF NOT EXISTS &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_disease&quot; (</span>
 <span class="s2">                        identifier VARCHAR(255) PRIMARY KEY,</span>
 <span class="s2">                        phenopacket VARCHAR,</span>
 <span class="s2">                        disease_identifier VARCHAR,</span>
@@ -1578,7 +1578,7 @@
             <span class="n">identifier</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                INSERT OR IGNORE INTO </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_gene (identifier, phenopacket, gene_symbol, gene_identifier)</span>
+<span class="s2">                INSERT OR IGNORE INTO &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_gene&quot; (identifier, phenopacket, gene_symbol, gene_identifier)</span>
 <span class="s2">                VALUES (?, ?, ?, ?)</span>
 <span class="s2">                &quot;&quot;&quot;</span><span class="p">,</span>
                 <span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span> <span class="n">gene</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">),</span>
@@ -1597,7 +1597,7 @@
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                INSERT OR IGNORE INTO </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_variant (identifier, phenopacket, chrom, pos, &quot;ref&quot;, alt)</span>
+<span class="s2">                INSERT OR IGNORE INTO &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_variant&quot; (identifier, phenopacket, chrom, pos, &quot;ref&quot;, alt)</span>
 <span class="s2">                VALUES (?, ?, ?, ?, ?, ?)</span>
 <span class="s2">                &quot;&quot;&quot;</span><span class="p">,</span>
                 <span class="p">(</span>
@@ -1620,8 +1620,8 @@
         <span class="k">for</span> <span class="n">disease</span> <span class="ow">in</span> <span class="n">diseases</span><span class="p">:</span>
             <span class="n">identifier</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">disease</span><span class="o">.</span><span class="n">disease_identifier</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;INSERT OR IGNORE INTO </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_disease &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;(identifier, phenopacket, disease_identifier, disease_name) VALUES (?, ?, ?, ?)&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;INSERT OR IGNORE INTO &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">_disease&quot; &quot;&quot;&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;(identifier, phenopacket, disease_identifier, disease_name) VALUES (?, ?, ?, ?)&quot;&quot;&quot;</span><span class="p">,</span>
                 <span class="p">(</span>
                     <span class="n">identifier</span><span class="p">,</span>
                     <span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>

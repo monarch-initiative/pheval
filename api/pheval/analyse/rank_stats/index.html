@@ -2048,7 +2048,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            int: Count query result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT COUNT(*) FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1"> WHERE &quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot; </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT COUNT(*) FROM &quot;</span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1">&quot; WHERE &quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot; </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@staticmethod</span>
@@ -2065,7 +2065,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[float]: List of reciprocal ranks.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT &quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot; FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT &quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot; FROM &quot;</span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
         <span class="k">return</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">rank</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">rank</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
 
     <span class="nd">@staticmethod</span>
@@ -2083,7 +2083,7 @@
 <span class="sd">            List[List[int]]: List of relevant ranks.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;SELECT LIST(&quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot;) as values_list FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1"> GROUP BY phenopacket&#39;</span>
+            <span class="sa">f</span><span class="s1">&#39;SELECT LIST(&quot;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s1">&quot;) as values_list FROM &quot;</span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s1">&quot; GROUP BY phenopacket&#39;</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">rank</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
 
