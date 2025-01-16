@@ -68,7 +68,7 @@ class RankStats:
         Returns:
             int: Count query result.
         """
-        query = f'SELECT COUNT(*) FROM {table_name} WHERE "{column_name}" {condition}'
+        query = f'SELECT COUNT(*) FROM "{table_name}" WHERE "{column_name}" {condition}'
         return conn.execute(query).fetchone()[0]
 
     @staticmethod
@@ -85,7 +85,7 @@ class RankStats:
         Returns:
             List[float]: List of reciprocal ranks.
         """
-        query = f'SELECT "{column_name}" FROM {table_name}'
+        query = f'SELECT "{column_name}" FROM "{table_name}"'
         return [1 / rank[0] if rank[0] > 0 else 0 for rank in conn.execute(query).fetchall()]
 
     @staticmethod
@@ -103,7 +103,7 @@ class RankStats:
             List[List[int]]: List of relevant ranks.
         """
         query = (
-            f'SELECT LIST("{column_name}") as values_list FROM {table_name} GROUP BY phenopacket'
+            f'SELECT LIST("{column_name}") as values_list FROM "{table_name}" GROUP BY phenopacket'
         )
         return [rank[0] for rank in conn.execute(query).fetchall()]
 

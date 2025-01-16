@@ -81,7 +81,7 @@ class CorpusParser:
         """
         self.conn.execute(
             f"""
-                    CREATE TABLE IF NOT EXISTS {self.table_name}_gene (
+                    CREATE TABLE IF NOT EXISTS "{self.table_name}_gene" (
                         identifier VARCHAR(255) PRIMARY KEY,
                         phenopacket VARCHAR,
                         gene_symbol VARCHAR,
@@ -96,7 +96,7 @@ class CorpusParser:
         """
         self.conn.execute(
             f"""
-                    CREATE TABLE IF NOT EXISTS {self.table_name}_variant (
+                    CREATE TABLE IF NOT EXISTS "{self.table_name}_variant" (
                         identifier VARCHAR(255) PRIMARY KEY,
                         phenopacket VARCHAR,
                         chrom VARCHAR,
@@ -113,7 +113,7 @@ class CorpusParser:
         """
         self.conn.execute(
             f"""
-                    CREATE TABLE IF NOT EXISTS {self.table_name}_disease (
+                    CREATE TABLE IF NOT EXISTS "{self.table_name}_disease" (
                         identifier VARCHAR(255) PRIMARY KEY,
                         phenopacket VARCHAR,
                         disease_identifier VARCHAR,
@@ -147,7 +147,7 @@ class CorpusParser:
             identifier = f"{phenopacket_path.name}-{gene.gene_symbol}"
             self.conn.execute(
                 f"""
-                INSERT OR IGNORE INTO {self.table_name}_gene (identifier, phenopacket, gene_symbol, gene_identifier)
+                INSERT OR IGNORE INTO "{self.table_name}_gene" (identifier, phenopacket, gene_symbol, gene_identifier)
                 VALUES (?, ?, ?, ?)
                 """,
                 (identifier, phenopacket_path.name, gene.gene_symbol, gene.gene_identifier),
@@ -166,7 +166,7 @@ class CorpusParser:
             )
             self.conn.execute(
                 f"""
-                INSERT OR IGNORE INTO {self.table_name}_variant (identifier, phenopacket, chrom, pos, "ref", alt)
+                INSERT OR IGNORE INTO "{self.table_name}_variant" (identifier, phenopacket, chrom, pos, "ref", alt)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """,
                 (
@@ -189,8 +189,8 @@ class CorpusParser:
         for disease in diseases:
             identifier = f"{phenopacket_path.name}-{disease.disease_identifier}"
             self.conn.execute(
-                f"INSERT OR IGNORE INTO {self.table_name}_disease "
-                f"(identifier, phenopacket, disease_identifier, disease_name) VALUES (?, ?, ?, ?)",
+                f"""INSERT OR IGNORE INTO "{self.table_name}_disease" """
+                f"""(identifier, phenopacket, disease_identifier, disease_name) VALUES (?, ?, ?, ?)""",
                 (
                     identifier,
                     phenopacket_path.name,

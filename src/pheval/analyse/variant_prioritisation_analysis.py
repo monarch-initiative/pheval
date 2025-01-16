@@ -33,7 +33,7 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
         """
         relevant_ranks = []
         df = self.conn.execute(
-            f"""SELECT * FROM {self.table_name} WHERE phenopacket = '{phenopacket_path.name}'"""
+            f"""SELECT * FROM "{self.table_name}" WHERE phenopacket = '{phenopacket_path.name}'"""
         ).fetchdf()
         for _i, row in df.iterrows():
             causative_variant = GenomicVariant(
@@ -67,7 +67,7 @@ class AssessVariantPrioritisation(AssessPrioritisationBase):
                     f"{causative_variant.ref}-{causative_variant.alt}"
                 )
                 self.conn.execute(
-                    f'UPDATE {self.table_name} SET "{self.column}" = ? WHERE identifier = ?',
+                    f'UPDATE "{self.table_name}" SET "{self.column}" = ? WHERE identifier = ?',
                     (variant_match, primary_key),
                 )
             elif len(result) == 0:
