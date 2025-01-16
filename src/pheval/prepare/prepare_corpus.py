@@ -92,4 +92,4 @@ def prepare_corpus(
             # if not updating phenopacket gene identifiers then copy phenopacket as is to output directory
             shutil.copy(
                 phenopacket_path, output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
-            )
+            ) if phenopacket_path != output_dir.joinpath(f"phenopackets/{phenopacket_path.name}") else None
