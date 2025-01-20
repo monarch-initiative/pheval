@@ -1141,13 +1141,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-pheval-dependency" class="md-nav__link">
-    Add PhEval dependency
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#run-tox-to-see-if-the-setup-works" class="md-nav__link">
     Run tox to see if the setup works
   </a>
@@ -1167,18 +1160,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-add-pheval-plugins-section-to-the-pyprojecttoml-file" class="md-nav__link">
-    4. Add PhEval Plugins section to the pyproject.toml file
+  <a href="#4-implementing-pheval-helper-methods" class="md-nav__link">
+    4. Implementing PhEval helper methods
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-implementing-pheval-helper-methods" class="md-nav__link">
-    5. Implementing PhEval helper methods
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Implementing PhEval helper methods">
+    <nav class="md-nav" aria-label="4. Implementing PhEval helper methods">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1446,13 +1432,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-pheval-dependency" class="md-nav__link">
-    Add PhEval dependency
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#run-tox-to-see-if-the-setup-works" class="md-nav__link">
     Run tox to see if the setup works
   </a>
@@ -1472,18 +1451,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-add-pheval-plugins-section-to-the-pyprojecttoml-file" class="md-nav__link">
-    4. Add PhEval Plugins section to the pyproject.toml file
+  <a href="#4-implementing-pheval-helper-methods" class="md-nav__link">
+    4. Implementing PhEval helper methods
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-implementing-pheval-helper-methods" class="md-nav__link">
-    5. Implementing PhEval helper methods
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Implementing PhEval helper methods">
+    <nav class="md-nav" aria-label="4. Implementing PhEval helper methods">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1868,7 +1840,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 </div><hr />
 <h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
 <p>The plugin structure is derived from a <a href="https://cookiecutter.readthedocs.io/en/stable/">cookiecutter</a> template, <a href="https://github.com/hrshdhgd/sphintoxetry-cookiecutter">Sphintoxetry-cookiecutter</a>, and it uses <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, <a href="https://tox.wiki/en/latest/">tox</a> and <a href="https://python-poetry.org">poetry</a> as core dependencies.
-This allows PhEval extensibility to be standardized in terms of documentation and dependency management.</p>
+This allows PhEval extensibility to be standardised in terms of documentation and dependency management.</p>
 <h3 id="1-sphintoxetry-cookiecutter-scaffold">1. Sphintoxetry-cookiecutter scaffold</h3>
 <p>First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.</p>
 <p>Install the latest release of cruft from pip</p>
@@ -1878,7 +1850,7 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <p><strong><em>NOTE:</em></strong>  You may encounter an error with the naming of the project layout if using an older release of cruft. To avoid this, make sure you have installed the latest release version.</p>
 </blockquote>
 <p>Next, create a project using the sphintoxetry-cookiecutter template.</p>
-<div class="highlight"><pre><span></span><code>cruft create https://github.com/monarch-initiative/monarch-project-template
+<div class="highlight"><pre><span></span><code>cruft create https://github.com/monarch-initiative/pheval-runner-template
 </code></pre></div>
 <h3 id="2-further-setup">2. Further setup</h3>
 <h4 id="install-poetry-if-you-havent-already">Install poetry if you haven't already.</h4>
@@ -1887,25 +1859,22 @@ This allows PhEval extensibility to be standardized in terms of documentation an
 <h4 id="install-dependencies">Install dependencies</h4>
 <div class="highlight"><pre><span></span><code>poetry install
 </code></pre></div>
-<h4 id="add-pheval-dependency">Add PhEval dependency</h4>
-<div class="highlight"><pre><span></span><code>poetry add pheval
-</code></pre></div>
 <h4 id="run-tox-to-see-if-the-setup-works">Run tox to see if the setup works</h4>
 <div class="highlight"><pre><span></span><code>poetry run tox
 </code></pre></div>
 <h3 id="3-implement-pheval-custom-runner">3. Implement PhEval Custom Runner</h3>
-<p><em>The runner name is arbitrary and custom Runner name was chose by demonstrative purposes</em></p>
-<p>Create a runner file inside the plugin project, e.g:</p>
-<p><img alt="a" src="../imgs/plugin_example_folder_structure.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Custom Pheval Runner.&quot;&quot;&quot;</span>
+<p>In the project structure generated by Cookiecutter, you'll find <code>runner.py</code> located in the <code>src</code> directory. This is where you'll define the methods required to develop the plugin. Specifically, you'll implement the prepare, run, and post-process methods, which are essential for executing the pheval run command.
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Runner.&quot;&quot;&quot;</span>
+
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
 <span class="kn">from</span> <span class="nn">pheval.runners.runner</span> <span class="kn">import</span> <span class="n">PhEvalRunner</span>
 
 
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">CustomPhevalRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;CustomPhevalRunner Class.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">CustomRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runner class implementation.&quot;&quot;&quot;</span>
 
     <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span>
     <span class="n">testdata_dir</span><span class="p">:</span> <span class="n">Path</span>
@@ -1915,23 +1884,25 @@ This allows PhEval extensibility to be standardized in terms of documentation an
     <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>
 
     <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;prepare method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;preparing&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;run method.&quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running with custom pheval runner&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;post_process method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Post Process.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;post processing&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="4-add-pheval-plugins-section-to-the-pyprojecttoml-file">4. Add PhEval Plugins section to the pyproject.toml file</h3>
+</code></pre></div></p>
+<p>The Cookiecutter will automatically populate the plugins section in the <code>pyproject.toml</code> file. If you decide to modify the path of <code>runner.py</code> or rename its class, be sure to update the corresponding entries in this section accordingly:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.poetry.plugins.</span><span class="s2">&quot;pheval.plugins&quot;</span><span class="k">]</span>
-<span class="n">customrunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pheval_plugin_example.runner:CustomPhevalRunner&quot;</span>
+<span class="n">customrunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pheval_plugin_example.runner:CustomRunner&quot;</span>
 </code></pre></div>
-<p><mark>Replace the value above with the path to your custom runner plugin</mark></p>
-<h3 id="5-implementing-pheval-helper-methods">5. Implementing PhEval helper methods</h3>
+<blockquote>
+<p>Please Note that the path here and naming of the class is case sensitive.</p>
+</blockquote>
+<h3 id="4-implementing-pheval-helper-methods">4. Implementing PhEval helper methods</h3>
 <p>Streamlining the creation of your custom PhEval runner can be facilitated by leveraging PhEval's versatile helper methods, where applicable.</p>
 <p>Within PhEval, numerous public methods have been designed to assist in your runner methods. The utilisation of these helper methods is optional, yet they are crafted to enhance the overall implementation process.</p>
 <h4 id="utility-methods">Utility methods</h4>
