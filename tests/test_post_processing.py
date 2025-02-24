@@ -9,10 +9,10 @@ from pheval.post_processing.post_processing import (
     RankedPhEvalDiseaseResult,
     RankedPhEvalGeneResult,
     RankedPhEvalVariantResult,
+    ResultRanker,
     ResultSorter,
     SortOrder,
     _create_pheval_result,
-    _rank_pheval_result,
     _return_sort_order,
     calculate_end_pos,
 )
@@ -217,41 +217,145 @@ class TestResultSorter(unittest.TestCase):
         )
 
 
-class TestRankPhEvalResults(unittest.TestCase):
+class TestResultRanker(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.sorted_gene_result = [
-            PhEvalGeneResult(
-                gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
-            ),
-            PhEvalGeneResult(gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529),
-            PhEvalGeneResult(gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529),
-            PhEvalGeneResult(gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235),
-        ]
-        cls.sorted_variant_result = [
-            PhEvalVariantResult(
-                chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
-            ),
-            PhEvalVariantResult(
-                chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
-            ),
-            PhEvalVariantResult(
-                chromosome="5",
-                start=23457444233,
-                end=23457444234,
-                ref="A",
-                alt="C",
-                score=0.9348,
-            ),
-            PhEvalVariantResult(
-                chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
-            ),
-        ]
-        cls.sorted_disease_result = pheval_disease_result
+        cls.gene_result_ranker = ResultRanker(
+            [
+                PhEvalGeneResult(
+                    gene_symbol="MAP3K14", gene_identifier="ENSG00000006062", score=0.9234
+                ),
+                PhEvalGeneResult(
+                    gene_symbol="A4GNT", gene_identifier="ENSG00000118017", score=0.6529
+                ),
+                PhEvalGeneResult(
+                    gene_symbol="OR14J1", gene_identifier="ENSG00000204695", score=0.6529
+                ),
+                PhEvalGeneResult(
+                    gene_symbol="PAGE1", gene_identifier="ENSG00000068985", score=0.5235
+                ),
+            ],
+            SortOrder.DESCENDING,
+        )
+        cls.variant_result_ranker = ResultRanker(
+            [
+                PhEvalVariantResult(
+                    chromosome="X", start=93473023, end=93473024, ref="A", alt="G", score=0.1245
+                ),
+                PhEvalVariantResult(
+                    chromosome="8", start=532356, end=532357, ref="A", alt="C", score=0.4578
+                ),
+                PhEvalVariantResult(
+                    chromosome="5",
+                    start=23457444233,
+                    end=23457444234,
+                    ref="A",
+                    alt="C",
+                    score=0.9999,
+                ),
+                PhEvalVariantResult(
+                    chromosome="12", start=12754332, end=12754333, ref="T", alt="G", score=0.9999
+                ),
+            ],
+            sort_order=SortOrder.ASCENDING,
+        )
+        cls.variant_result_ranker_grouping_id = ResultRanker(
+            [
+                PhEvalVariantResult(
+                    chromosome="X",
+                    start=93473023,
+                    end=93473024,
+                    ref="A",
+                    alt="G",
+                    score=0.1245,
+                    grouping_id="4567",
+                ),
+                PhEvalVariantResult(
+                    chromosome="8",
+                    start=532356,
+                    end=532357,
+                    ref="A",
+                    alt="C",
+                    score=0.4578,
+                    grouping_id="789",
+                ),
+                PhEvalVariantResult(
+                    chromosome="5",
+                    start=23457444233,
+                    end=23457444234,
+                    ref="A",
+                    alt="C",
+                    score=0.9999,
+                    grouping_id="12345",
+                ),
+                PhEvalVariantResult(
+                    chromosome="12",
+                    start=12754332,
+                    end=12754333,
+                    ref="T",
+                    alt="G",
+                    score=0.9999,
+                    grouping_id="12345",
+                ),
+            ],
+            sort_order=SortOrder.DESCENDING,
+        )
+        cls.disease_result_ranker = ResultRanker(
+            pheval_disease_result, sort_order=SortOrder.DESCENDING
+        )
+
+    def test__has_valid_grouping_id(self):
+        df = pd.DataFrame({"score": [0.5, 0.7, 0.3], "grouping_id": ["A", "B", "C"]})
+        self.assertTrue(self.variant_result_ranker._has_valid_grouping_id(df))
+
+    def test__has_valid_grouping_id_present_with_none(self):
+        df = pd.DataFrame({"score": [0.5, 0.7, 0.3], "grouping_id": ["A", None, "C"]})
+        self.assertFalse(self.variant_result_ranker._has_valid_grouping_id(df))
+
+    def test__has_valid_grouping_id_not_present(self):
+        df = pd.DataFrame({"score": [0.5, 0.7, 0.3]})
+        self.assertFalse(self.variant_result_ranker._has_valid_grouping_id(df))
+
+    def test__rank_with_grouping_id(self):
+        df = pd.DataFrame(
+            {
+                "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
+                "grouping_id": ["A", "A", "B", "C", "D", "E", "F", "F", "G"],
+            }
+        )
+        self.assertTrue(
+            self.gene_result_ranker._rank_with_grouping_id(df).equals(
+                pd.DataFrame(
+                    {
+                        "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
+                        "grouping_id": ["A", "A", "B", "C", "D", "E", "F", "F", "G"],
+                        "min_rank": [1, 1, 2, 4, 3, 5, 6, 6, 7],
+                        "rank": [1, 1, 2, 4, 4, 5, 6, 6, 7],
+                    }
+                )
+            )
+        )
+
+    def test__rank_without_grouping_id(self):
+        df = pd.DataFrame(
+            {
+                "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
+            }
+        )
+        self.assertTrue(
+            self.gene_result_ranker._rank_without_grouping_id(df).equals(
+                pd.DataFrame(
+                    {
+                        "score": [0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4],
+                        "rank": [2, 2, 3, 5, 5, 6, 8, 8, 9],
+                    }
+                )
+            )
+        )
 
     def test_rank_pheval_results_gene(self):
         self.assertTrue(
-            _rank_pheval_result(self.sorted_gene_result, SortOrder.DESCENDING).equals(
+            self.gene_result_ranker.rank().equals(
                 pd.DataFrame(
                     {
                         "gene_symbol": ["MAP3K14", "A4GNT", "OR14J1", "PAGE1"],
@@ -262,7 +366,7 @@ class TestRankPhEvalResults(unittest.TestCase):
                             "ENSG00000068985",
                         ],
                         "score": [0.9234, 0.6529, 0.6529, 0.5235],
-                        "rank": [1.0, 3.0, 3.0, 4.0],
+                        "rank": [1, 3, 3, 4],
                     }
                 )
             )
@@ -270,7 +374,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_variant(self):
         self.assertTrue(
-            _rank_pheval_result(self.sorted_variant_result, SortOrder.ASCENDING).equals(
+            self.variant_result_ranker.rank().equals(
                 pd.DataFrame(
                     {
                         "chromosome": ["X", "8", "5", "12"],
@@ -278,8 +382,25 @@ class TestRankPhEvalResults(unittest.TestCase):
                         "end": [93473024, 532357, 23457444234, 12754333],
                         "ref": ["A", "A", "A", "T"],
                         "alt": ["G", "C", "C", "G"],
-                        "score": [0.1245, 0.4578, 0.9348, 0.9999],
-                        "rank": [1.0, 2.0, 3.0, 4.0],
+                        "score": [0.1245, 0.4578, 0.9999, 0.9999],
+                        "rank": [1, 2, 4, 4],
+                    }
+                )
+            )
+        )
+
+    def test_rank_pheval_results_variant_grouping_id(self):
+        self.assertTrue(
+            self.variant_result_ranker_grouping_id.rank().equals(
+                pd.DataFrame(
+                    {
+                        "chromosome": ["X", "8", "5", "12"],
+                        "start": [93473023, 532356, 23457444233, 12754332],
+                        "end": [93473024, 532357, 23457444234, 12754333],
+                        "ref": ["A", "A", "A", "T"],
+                        "alt": ["G", "C", "C", "G"],
+                        "score": [0.1245, 0.4578, 0.9999, 0.9999],
+                        "rank": [3, 2, 1, 1],
                     }
                 )
             )
@@ -287,7 +408,7 @@ class TestRankPhEvalResults(unittest.TestCase):
 
     def test_rank_pheval_results_disease(self):
         self.assertTrue(
-            _rank_pheval_result(self.sorted_disease_result, SortOrder.DESCENDING).equals(
+            self.disease_result_ranker.rank().equals(
                 pd.DataFrame(
                     {
                         "disease_name": {
@@ -301,7 +422,7 @@ class TestRankPhEvalResults(unittest.TestCase):
                             2: "OMIM:614483",
                         },
                         "score": {0: 4.284, 1: 4.284, 2: -1.871},
-                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                        "rank": {0: 2, 1: 2, 2: 3},
                     }
                 )
             )
@@ -322,7 +443,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                             "ENSG00000068985",
                         ],
                         "score": [0.9234, 0.6529, 0.6529, 0.5235],
-                        "rank": [1.0, 3.0, 3.0, 4.0],
+                        "rank": [1, 3, 3, 4],
                     }
                 )
             )
@@ -339,7 +460,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                         "ref": ["A", "A", "A", "T"],
                         "alt": ["G", "C", "C", "G"],
                         "score": [0.1245, 0.4578, 0.9348, 0.9999],
-                        "rank": [1.0, 2.0, 3.0, 4.0],
+                        "rank": [1, 2, 3, 4],
                     }
                 )
             )
@@ -361,7 +482,7 @@ class TestCreatePhEvalResult(unittest.TestCase):
                             2: "OMIM:614483",
                         },
                         "score": {0: 4.284, 1: 4.284, 2: -1.871},
-                        "rank": {0: 2.0, 1: 2.0, 2: 3.0},
+                        "rank": {0: 2, 1: 2, 2: 3},
                     }
                 )
             )
