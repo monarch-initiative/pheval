@@ -2755,6 +2755,8 @@ Notes:
 
 
 </div><hr />
+<p>For variant prioritisation results the <code>grouping_id</code> parameter is designed to handle compound heterozygous variants in ranking. Compound heterozygosity occurs when two or more variants, inherited together, contribute to a phenotype. For this purpose, variants that are part of the same compound heterozygous group (e.g., within the same gene) should be assigned the same <code>grouping_id</code>. This ensures they are ranked as a single entity, preserving their combined significance. Variants that are not part of any compound heterozygous group should each have a unique <code>grouping_id</code>. This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented.
+</p>
 
 
 <div class="doc doc-object doc-class">
@@ -2807,7 +2809,8 @@ Notes:
 <span class="normal">95</span>
 <span class="normal">96</span>
 <span class="normal">97</span>
-<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalVariantResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for variant prioritisation</span>
 <span class="sd">    Args:</span>
@@ -2831,6 +2834,7 @@ Notes:
     <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">alt</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">grouping_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -2878,8 +2882,7 @@ Notes:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
-<span class="normal">132</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
@@ -2893,7 +2896,8 @@ Notes:
 <span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
-<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PhEvalDiseaseResult</span><span class="p">(</span><span class="n">PhEvalResult</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal data required from tool-specific output for disease prioritisation</span>
 <span class="sd">    Args:</span>
