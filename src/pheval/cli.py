@@ -1,4 +1,4 @@
-"""PhEval CLI Module """
+"""PhEval CLI Module"""
 
 import logging
 

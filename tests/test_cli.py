@@ -1,4 +1,4 @@
-"""CLI Test """
+"""CLI Test"""
 
 import logging
 import shutil
