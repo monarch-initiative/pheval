@@ -13,15 +13,33 @@ class ResultSchema(Enum):
         VARIANT_RESULT_SCHEMA (pl.Schema): Schema for variant-based results.
         DISEASE_RESULT_SCHEMA (pl.Schema): Schema for disease-based results.
     """
+
     GENE_RESULT_SCHEMA = pl.Schema(
-        {"gene_symbol": pl.String, "gene_identifier": pl.String, "score": pl.Float64, "grouping_id": pl.Utf8}
+        {
+            "gene_symbol": pl.String,
+            "gene_identifier": pl.String,
+            "score": pl.Float64,
+            "grouping_id": pl.Utf8,
+        }
     )
     VARIANT_RESULT_SCHEMA = pl.Schema(
-        {"chrom": pl.String, "start": pl.Int64, "end": pl.Int64, "ref": pl.String, "alt": pl.String,
-         "score": pl.Float64, "grouping_id": pl.Utf8}
+        {
+            "chrom": pl.String,
+            "start": pl.Int64,
+            "end": pl.Int64,
+            "ref": pl.String,
+            "alt": pl.String,
+            "score": pl.Float64,
+            "grouping_id": pl.Utf8,
+        }
     )
     DISEASE_RESULT_SCHEMA = pl.Schema(
-        {"disease_name": pl.String, "disease_identifier": pl.String, "score": pl.Float64, "grouping_id": pl.Utf8}
+        {
+            "disease_name": pl.String,
+            "disease_identifier": pl.String,
+            "score": pl.Float64,
+            "grouping_id": pl.Utf8,
+        }
     )
 
     def validate(self, df: pl.DataFrame) -> bool:
@@ -37,6 +55,9 @@ class ResultSchema(Enum):
         """
         expected_schema = self.value
 
+        if "grouping_id" in df.columns and df["grouping_id"].null_count() > 0:
+            raise ValueError("'grouping_id' column should not contain null values if provided.")
+
         for col_name, expected_type in expected_schema.items():
             if col_name not in df.schema:
                 if col_name == "grouping_id":
@@ -47,8 +68,6 @@ class ResultSchema(Enum):
                 raise TypeError(
                     f"Column '{col_name}' has type {df.schema[col_name]}, expected {expected_type}"
                 )
-        if "grouping_id" in df.columns and df["grouping_id"].null_count() > 0:
-            raise ValueError("'grouping_id' column should not contain null values if provided.")
 
         return True
 
