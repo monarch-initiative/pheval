@@ -34,6 +34,7 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
         ).with_columns(
             pl.col("rank").cast(pl.Int64),
             pl.col("file_path").str.extract(r"([^/\\]+)$").alias("result_file"),
+            pl.col("true_positive").fill_null(False),
         )
     ).filter(
         (
