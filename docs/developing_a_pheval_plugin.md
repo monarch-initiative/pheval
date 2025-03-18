@@ -18,10 +18,10 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 ## Step-by-Step Plugin Development Process
 
-The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [Sphintoxetry-cookiecutter](https://github.com/hrshdhgd/sphintoxetry-cookiecutter), and it uses [Sphinx](https://www.sphinx-doc.org/en/master/), [tox](https://tox.wiki/en/latest/) and [poetry](https://python-poetry.org) as core dependencies.
+The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [cookiecutter](https://github.com/monarch-initiative/pheval-runner-template), and it uses [MkDocs](https://mkdocstrings.github.io), [tox](https://tox.wiki/en/latest/) and [poetry](https://python-poetry.org) as core dependencies.
 This allows PhEval extensibility to be standardised in terms of documentation and dependency management.
 
-### 1. Sphintoxetry-cookiecutter scaffold
+### 1. Cookiecutter scaffold
 
 First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.
 
@@ -33,7 +33,7 @@ pip install cruft
 
 > **_NOTE:_**  You may encounter an error with the naming of the project layout if using an older release of cruft. To avoid this, make sure you have installed the latest release version.
 
-Next, create a project using the sphintoxetry-cookiecutter template.
+Next, create a project using the cookiecutter template.
 
 ```
 cruft create https://github.com/monarch-initiative/pheval-runner-template
@@ -104,7 +104,7 @@ The Cookiecutter will automatically populate the plugins section in the `pyproje
 customrunner = "pheval_plugin_example.runner:CustomRunner"
 ```
 
-> Please Note that the path here and naming of the class is case sensitive.
+> Please Note that the path here and naming of the class is case-sensitive.
 
 
 ### 4. Implementing PhEval helper methods
