@@ -13,7 +13,7 @@ class TestCalculateRankChanges(unittest.TestCase):
     def setUp(self):
         self.mock_conn = MagicMock(spec=DuckDBPyConnection)
 
-        self.sample_true_positive_cases = pl.LazyFrame(
+        self.sample_true_positive_cases = pl.DataFrame(
             {
                 "result_file": ["file1", "file2", "file3", "file4"],
                 "gene_identifier": ["gene1", "gene2", "gene3", "gene4"],
