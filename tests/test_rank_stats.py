@@ -1,170 +1,208 @@
 import unittest
-from unittest.mock import patch
 
-import duckdb
+import numpy as np
+import polars as pl
 
-from pheval.analyse.rank_stats import RankStats
+from pheval.analyse.rank_stats import Ranks
 
 
-class TestRankStats(unittest.TestCase):
+class TestRanks(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.db_connection = duckdb.connect(":memory:")
-        cls.db_connection.execute(
-            "CREATE TABLE test_table_gene (identifier VARCHAR(255) PRIMARY KEY, "
-            "phenopacket VARCHAR, gene_symbol VARCHAR, gene_identifier VARCHAR, results_dir_1 INTEGER)"
+        """Set up test data."""
+        cls.test_df = pl.LazyFrame(
+            {
+                "file_path": [
+                    "file1",
+                    "file1",
+                    "file2",
+                    "file3",
+                    "file3",
+                    "file4",
+                    "file5",
+                    "file6",
+                ],
+                "rank": [1, 3, 4, 1, 6, 10, 12, 0],
+                "true_positive": [True, True, True, True, True, True, True, True],
+            }
         )
-        cls.db_connection.execute(
-            "INSERT INTO test_table_gene (identifier, phenopacket, gene_symbol, gene_identifier, results_dir_1) VALUES "
-            "('phenopacket_1.json-GENE1', 'phenopacket_1.json', 'GENE1', 'GENEID1', 1),"
-            "('phenopacket_2.json-GENE2', 'phenopacket_2.json', 'GENE2', 'GENEID2', 3),"
-            "('phenopacket_3.json-GENE3', 'phenopacket_3.json', 'GENE3', 'GENEID3', 5),"
-            "('phenopacket_4.json-GENE4', 'phenopacket_4.json', 'GENE4', 'GENEID4', 7),"
-            "('phenopacket_5.json-GENE5', 'phenopacket_5.json', 'GENE5', 'GENEID5', 10),"
-            "('phenopacket_2.json-GENE6', 'phenopacket_6.json', 'GENE6', 'GENEID6', 20),"
-        )
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.db_connection.close()
-
-    def setUp(self) -> None:
-        self.rank_stats = RankStats()
-        self.complete_rank_stats = RankStats(
-            top=0,
-            top3=8,
-            top5=10,
-            top10=15,
-            found=20,
-            total=40,
-            relevant_result_ranks=[[4], [3], [6, 7], [2], [9], [20]],
-        )
-
-    @patch(
-        "pheval.analyse.benchmark_db_manager.BenchmarkDBManager.get_connection",
-        return_value=duckdb.connect(":memory:"),
-    )
-    def test_add_ranks(self, mock_get_connection):
-        mock_get_connection.return_value = self.db_connection
-        self.rank_stats.add_ranks("None", "test_table_gene", "results_dir_1")
-        self.assertEqual(self.rank_stats.top, 1)
-        self.assertEqual(self.rank_stats.top3, 2)
-        self.assertEqual(self.rank_stats.top5, 3)
-        self.assertEqual(self.rank_stats.top10, 5)
-        self.assertEqual(self.rank_stats.found, 6)
-        self.assertEqual(self.rank_stats.total, 6)
-        self.assertEqual(
-            self.rank_stats.reciprocal_ranks,
-            [1.0, 0.3333333333333333, 0.2, 0.14285714285714285, 0.1, 0.05],
+        cls.result = pl.DataFrame(
+            [
+                {
+                    "top1": 2,
+                    "top3": 3,
+                    "top5": 4,
+                    "top10": 6,
+                    "found": 7,
+                    "total": 8,
+                    "number_of_samples": 6,
+                }
+            ]
         )
 
-    def test_percentage_rank(self):
-        self.rank_stats.total = 10
-        self.assertTrue(self.rank_stats.percentage_rank(3) == 30)
+    def test_top_k_counts(self):
+        result = self.test_df.select(
+            [
+                Ranks.TOP_1,
+                Ranks.TOP_3,
+                Ranks.TOP_5,
+                Ranks.TOP_10,
+                Ranks.FOUND,
+                Ranks.TOTAL,
+                Ranks.NUMBER_OF_SAMPLES,
+            ]
+        ).collect()
+        self.assertTrue((result.equals(self.result)))
 
-    def test_percentage_top(self):
-        self.rank_stats.top, self.rank_stats.total = 10, 20
-        self.assertEqual(self.rank_stats.percentage_top(), 50)
+    def test_mrr(self):
+        """Test Mean Reciprocal Rank (MRR) calculation."""
+        self.assertAlmostEqual(self.test_df.select(Ranks.MRR).collect().item(), 0.366667, places=6)
 
-    def test_percentage_top3(self):
-        self.rank_stats.top3, self.rank_stats.total = 30, 50
-        self.assertEqual(self.rank_stats.percentage_top3(), 60)
-
-    def test_percentage_top5(self):
-        self.rank_stats.top5, self.rank_stats.total = 70, 160
-        self.assertEqual(self.rank_stats.percentage_top5(), 43.75)
-
-    def test_percentage_top10(self):
-        self.rank_stats.top10, self.rank_stats.total = 100, 160
-        self.assertEqual(self.rank_stats.percentage_top10(), 62.5)
-
-    def test_percentage_found(self):
-        self.rank_stats.found, self.rank_stats.total = 100, 125
-        self.assertEqual(self.rank_stats.percentage_found(), 80)
-
-    def test_percentage_difference(self):
-        self.assertEqual(self.rank_stats.percentage_difference(54, 23), 31)
-
-    def test_mean_reciprocal_rank(self):
-        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
-        self.rank_stats.total = 5
-        self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.5)
-
-    def test_mean_reciprocal_rank_missing_cases(self):
-        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
-        self.rank_stats.total = 20
-        self.assertEqual(self.rank_stats.mean_reciprocal_rank(), 0.1)
-
-    def test_return_mean_reciprocal_rank(self):
-        self.rank_stats.reciprocal_ranks = [0.2, 0.4, 0.5, 0.6, 0.8]
-        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.5)
-
-    def test_return_mean_reciprocal_rank_from_mrr_variable(self):
-        self.rank_stats.mrr = 0.1
-        self.assertEqual(self.rank_stats.return_mean_reciprocal_rank(), 0.1)
-
-    def test_precision_at_k_1(self):
-        self.assertEqual(self.complete_rank_stats.precision_at_k(1), 0)
-
-    def test_precision_at_k_3(self):
-        self.assertEqual(self.complete_rank_stats.precision_at_k(3), 0.06666666666666667)
-
-    def test_precision_at_k_5(self):
-        self.assertEqual(self.complete_rank_stats.precision_at_k(5), 0.05)
-
-    def test_precision_at_k_10(self):
-        self.assertEqual(self.complete_rank_stats.precision_at_k(10), 0.0375)
-
-    def test__calculate_average_precision(self):
-        self.assertEqual(self.rank_stats._average_precision_at_k(3, 0.5), 0.16666666666666666)
-
-    def test__calculate_average_precision_0(self):
-        self.assertEqual(self.rank_stats._average_precision_at_k(0, 0), 0)
-
-    def test_mean_average_precision_at_k_1(self):
-        self.assertEqual(self.complete_rank_stats.mean_average_precision_at_k(1), 0.0)
-
-    def test_mean_average_precision_at_k_3(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_average_precision_at_k(3), 0.020833333333333332
+    def test_percentage_at_k(self):
+        """Test percentage calculations at K."""
+        result = self.result.select(
+            [
+                Ranks.percentage_at_k(1),
+                Ranks.percentage_at_k(3),
+                Ranks.percentage_at_k(5),
+                Ranks.percentage_at_k(10),
+            ]
         )
 
-    def test_mean_average_precision_at_k_5(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_average_precision_at_k(5), 0.027083333333333334
+        self.assertTrue(
+            result.equals(
+                pl.DataFrame(
+                    [
+                        {
+                            "percentage@1": 25.0,
+                            "percentage@3": 37.5,
+                            "percentage@5": 50.0,
+                            "percentage@10": 75.0,
+                        }
+                    ]
+                )
+            )
         )
 
-    def test_mean_average_precision_at_k_10(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_average_precision_at_k(10), 0.03968253968253968
+    def test_precision_at_k(self):
+        """Test precision calculations at K."""
+        result = self.result.select(
+            [
+                Ranks.precision_at_k(1),
+                Ranks.precision_at_k(3),
+                Ranks.precision_at_k(5),
+                Ranks.precision_at_k(10),
+            ]
         )
 
-    def test_f_beta_score_at_k_1(self):
-        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(0, 1), 0)
-
-    def test_f_beta_score_at_k_3(self):
-        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(20, 3), 0.1)
-
-    def test_f_beta_score_at_k_5(self):
-        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(25, 5), 0.08333333333333334)
-
-    def test_f_beta_score_at_k_10(self):
-        self.assertEqual(self.complete_rank_stats.f_beta_score_at_k(37.5, 10), 0.06818181818181818)
-
-    def test_mean_normalised_discounted_cumulative_gain_3(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(3),
-            0.09424414613095478,
+        self.assertTrue(
+            result.equals(
+                pl.DataFrame(
+                    [
+                        {
+                            "precision@1": 0.3333333333333333,
+                            "precision@3": 0.16666666666666666,
+                            "precision@5": 0.13333333333333333,
+                            "precision@10": 0.1,
+                        }
+                    ]
+                )
+            )
         )
 
-    def test_mean_normalised_discounted_cumulative_gain_5(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(5),
-            0.243557389859924,
+    def test_f_beta_score_at_k(self):
+        result = self.result.select(
+            [
+                Ranks.f_beta_score_at_k(1),
+                Ranks.f_beta_score_at_k(3),
+                Ranks.f_beta_score_at_k(5),
+                Ranks.f_beta_score_at_k(10),
+            ]
+        )
+        self.assertTrue(
+            result.equals(
+                pl.DataFrame(
+                    [
+                        {
+                            "f_beta@1": 0.28571428571428575,
+                            "f_beta@3": 0.23076923076923078,
+                            "f_beta@5": 0.2105263157894737,
+                            "f_beta@10": 0.17647058823529416,
+                        }
+                    ]
+                )
+            )
         )
 
-    def test_mean_normalised_discounted_cumulative_gain_10(self):
-        self.assertEqual(
-            self.complete_rank_stats.mean_normalised_discounted_cumulative_gain(10),
-            0.3368971541167727,
+    def test__average_precision_at_k(self):
+        self.assertTrue(
+            Ranks._average_precision_at_k(self.test_df, 1)
+            .collect()
+            .sort("file_path")
+            .equals(
+                pl.DataFrame(
+                    [{"file_path": "file1", "ap@1": 1.0}, {"file_path": "file3", "ap@1": 1.0}]
+                )
+            )
+        )
+        self.assertTrue(
+            Ranks._average_precision_at_k(self.test_df, 3)
+            .collect()
+            .sort("file_path")
+            .equals(
+                pl.DataFrame(
+                    [
+                        {"file_path": "file1", "ap@3": 0.8333333333333333},
+                        {"file_path": "file3", "ap@3": 1.0},
+                    ]
+                )
+            )
+        )
+        self.assertTrue(
+            Ranks._average_precision_at_k(self.test_df, 5)
+            .collect()
+            .sort("file_path")
+            .equals(
+                pl.DataFrame(
+                    [
+                        {"file_path": "file1", "ap@5": 0.8333333333333333},
+                        {"file_path": "file2", "ap@5": 0.25},
+                        {"file_path": "file3", "ap@5": 1.0},
+                    ]
+                )
+            )
+        )
+        self.assertTrue(
+            Ranks._average_precision_at_k(self.test_df, 10)
+            .collect()
+            .sort("file_path")
+            .equals(
+                pl.DataFrame(
+                    [
+                        {"file_path": "file1", "ap@10": 0.8333333333333333},
+                        {"file_path": "file2", "ap@10": 0.25},
+                        {"file_path": "file3", "ap@10": 0.6666666666666666},
+                        {"file_path": "file4", "ap@10": 0.1},
+                    ]
+                )
+            )
+        )
+
+    def test__compute_ap_k(self):
+        self.assertEqual(Ranks._compute_ap_k(np.array([1])), 1)
+        self.assertEqual(Ranks._compute_ap_k(np.array([1, 5])), 0.7)
+
+    def test_mean_average_precision_at_k(self):
+        self.assertAlmostEqual(Ranks.mean_average_precision_at_k(self.test_df, 1), 0.333, places=3)
+        self.assertAlmostEqual(Ranks.mean_average_precision_at_k(self.test_df, 3), 0.306, places=3)
+        self.assertAlmostEqual(Ranks.mean_average_precision_at_k(self.test_df, 5), 0.347, places=3)
+        self.assertAlmostEqual(Ranks.mean_average_precision_at_k(self.test_df, 10), 0.308, places=3)
+
+    def test__calculate_ndcg_at_k(self):
+        self.assertEqual(Ranks._calculate_ndcg_at_k([1], 3), 1)
+        self.assertAlmostEqual(Ranks._calculate_ndcg_at_k([1, 2, 4], 5), 0.858, places=3)
+
+    def test_mean_normalised_discounted_cumulative_gain(self):
+        self.assertAlmostEqual(
+            Ranks.mean_normalised_discounted_cumulative_gain(self.test_df, 3), 0.301, places=3
         )
