@@ -2648,20 +2648,6 @@ protobuf = ">=3.20.2,<4.0.0"
 test = ["pytest (>=7.0.0,<8.0.0)"]
 
 [[package]]
-name = "pheval-template"
-version = "0.1.2"
-description = ""
-optional = false
-python-versions = "<4.0.0,>=3.9"
-files = [
-    {file = "pheval_template-0.1.2-py3-none-any.whl", hash = "sha256:1f5b32a877048a2d717f97fa6f0eb8cc5b85932a97b1a6c72660ea2599d04446"},
-    {file = "pheval_template-0.1.2.tar.gz", hash = "sha256:accfc707f8e1f48f9c12be5d334d36c2df22cea57c52c2bb3a44799ecc2f8e43"},
-]
-
-[package.dependencies]
-pheval = ">=0.3.2,<0.5.0"
-
-[[package]]
 name = "pillow"
 version = "11.1.0"
 description = "Python Imaging Library (Fork)"
@@ -4778,4 +4764,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4.0.0"
-content-hash = "508a8bd25e32435e027ebcc5c737b50fabdd3ecbe07a37aab4670ae403bb767a"
+content-hash = "7e1a46ab42e6cfee1e6b80f711619f53cfe9f83b8875ee7638975f2ec4ea9ad1"
