@@ -1,13 +1,12 @@
 import json
 import logging
 import os
-from collections import defaultdict
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Union
 
-import pandas as pd
+import polars as pl
 from google.protobuf.json_format import MessageToJson, Parse
 from phenopackets import (
     Disease,
@@ -122,79 +121,65 @@ class ProbandDisease:
     disease_identifier: str
 
 
-def read_hgnc_data() -> pd.DataFrame:
+def parse_hgnc_data() -> pl.DataFrame:
     """
-    Read HGNC data from a file and return it as a Pandas DataFrame.
+    Read HGNC data from a file and return it as a Polars DataFrame.
 
     Returns:
-        pd.DataFrame: DataFrame containing the HGNC data.
+        pl.DataFrame: DataFrame containing the HGNC data.
     """
-    return pd.read_csv(
-        os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
-        delimiter="\t",
-        dtype=str,
+    return (
+        pl.read_csv(
+            os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
+            separator="\t",
+            infer_schema=10000000000,
+            dtypes={"omim_id": pl.Utf8},
+        )
+        .select(
+            [
+                pl.col("hgnc_id").alias("hgnc_id"),
+                pl.col("symbol").alias("gene_symbol"),
+                pl.col("ensembl_gene_id").alias("ensembl_id"),
+                pl.col("entrez_id").alias("entrez_id"),
+                pl.col("refseq_accession").alias("refseq_accession"),
+                pl.col("prev_symbol").alias("previous_symbol_raw"),
+            ]
+        )
+        .with_columns(
+            pl.col("previous_symbol_raw")
+            .str.split("|")
+            .list.eval(pl.element().str.strip_chars('"'))
+            .alias("prev_symbols")
+        )
     )
 
 
-def create_hgnc_dict() -> defaultdict:
-    """
-    Create a dictionary as a reference for updating gene symbols and identifiers based on HGNC data.
-
-
-    Returns:
-        defaultdict: A dictionary containing gene symbols as keys and their associated gene information.
-
-    Notes:
-        The dictionary structure:
-        {
-            'gene_symbol': {
-                'ensembl_id': str,
-                'hgnc_id': str,
-                'entrez_id': str,
-                'refseq_accession': str,
-                'previous_symbol': [str, ...]
-            },
-            ...
-        }
-    """
-    hgnc_df = read_hgnc_data()
-    hgnc_data = defaultdict(dict)
-    for _index, row in hgnc_df.iterrows():
-        previous_names = []
-        hgnc_data[row["symbol"]]["ensembl_id"] = row["ensembl_gene_id"]
-        hgnc_data[row["symbol"]]["hgnc_id"] = row["hgnc_id"]
-        hgnc_data[row["symbol"]]["entrez_id"] = row["entrez_id"]
-        hgnc_data[row["symbol"]]["refseq_accession"] = row["refseq_accession"]
-        previous = str(row["prev_symbol"]).split("|")
-        for p in previous:
-            previous_names.append(p.strip('"'))
-        hgnc_data[row["symbol"]]["previous_symbol"] = previous_names
-
-    return hgnc_data
-
-
-def create_gene_identifier_map() -> dict:
+def create_gene_identifier_map() -> pl.DataFrame:
     """
     Create a mapping of gene identifiers to gene symbols using HGNC data.
 
     Returns:
-        dict: A mapping of gene identifiers to gene symbols.
-
-    Notes:
-        The dictionary structure:
-        {
-            'identifier': 'gene_symbol',
-            ...
-        }
+        pl.DataFrame: A mapping of gene identifiers to gene symbols.
     """
-    hgnc_df = read_hgnc_data()
-    identifier_map = {}
-    for _index, row in hgnc_df.iterrows():
-        identifier_map[row["ensembl_gene_id"]] = row["symbol"]
-        identifier_map[row["hgnc_id"]] = row["symbol"]
-        identifier_map[row["entrez_id"]] = row["symbol"]
-        identifier_map[row["refseq_accession"]] = row["symbol"]
-    return identifier_map
+    hgnc_df = parse_hgnc_data()
+    return hgnc_df.melt(
+        id_vars=["gene_symbol", "prev_symbols"],
+        value_vars=["ensembl_id", "hgnc_id", "entrez_id", "refseq_accession"],
+        variable_name="identifier_type",
+        value_name="identifier",
+    ).with_columns(
+        pl.col("identifier_type")
+        .replace(
+            {
+                "ensembl_id": "ensembl:",
+                "hgnc_id": "",
+                "entrez_id": "ncbigene:",
+                "refseq_accession": "",
+            },
+            default="",
+        )
+        .alias("prefix")
+    )
 
 
 def phenopacket_reader(file: Path) -> Union[Phenopacket, Family]:
@@ -651,17 +636,19 @@ def write_phenopacket(phenopacket: Union[Phenopacket, Family], output_file: Path
 class GeneIdentifierUpdater:
     """Class for updating gene identifiers within genomic interpretations."""
 
-    def __init__(self, gene_identifier: str, hgnc_data: dict = None, identifier_map: dict = None):
+    def __init__(
+        self,
+        gene_identifier: str,
+        identifier_map: pl.DataFrame = None,
+    ):
         """
         Initialise the GeneIdentifierUpdater.
 
         Args:
             gene_identifier (str): The gene identifier to update to.
-            hgnc_data (dict): A dictionary containing HGNC data (default: None).
-            identifier_map (dict): A dictionary mapping gene identifiers (default: None).
+            identifier_map (dict): A polars dataframe mapping gene identifiers (default: None).
         """
 
-        self.hgnc_data = hgnc_data
         self.gene_identifier = gene_identifier
         self.identifier_map = identifier_map
 
@@ -675,13 +662,20 @@ class GeneIdentifierUpdater:
         Returns:
             str: The identified gene identifier.
         """
-        if gene_symbol in self.hgnc_data.keys():
-            return self.hgnc_data[gene_symbol][self.gene_identifier]
-        else:
-            for _symbol, data in self.hgnc_data.items():
-                for prev_symbol in data["previous_symbol"]:
-                    if prev_symbol == gene_symbol:
-                        return data[self.gene_identifier]
+        matches = self.identifier_map.filter(
+            (pl.col("gene_symbol") == gene_symbol)
+            & (pl.col("identifier_type") == self.gene_identifier)
+        )
+
+        if matches.height > 0:
+            return matches["identifier"][0]
+        prev_symbol_matches = self.identifier_map.filter(
+            (pl.col("identifier_type") == self.gene_identifier)
+            & (pl.col("prev_symbols").list.contains(gene_symbol))
+        )
+        if prev_symbol_matches.height > 0:
+            return prev_symbol_matches["identifier"][0]
+        return None
 
     def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
         """
@@ -693,7 +687,9 @@ class GeneIdentifierUpdater:
         Returns:
             str: The gene symbol corresponding to the identifier.
         """
-        return self.identifier_map[query_gene_identifier]
+        return self.identifier_map.filter(pl.col("identifier") == query_gene_identifier)[
+            "gene_symbol"
+        ][0]
 
     def _find_alternate_ids(self, gene_symbol: str) -> List[str]:
         """
@@ -705,23 +701,20 @@ class GeneIdentifierUpdater:
         Returns:
             List[str]: List of alternate IDs for the gene symbol.
         """
-        if gene_symbol in self.hgnc_data.keys():
-            return [
-                self.hgnc_data[gene_symbol]["hgnc_id"],
-                "ncbigene:" + self.hgnc_data[gene_symbol]["entrez_id"],
-                "ensembl:" + self.hgnc_data[gene_symbol]["ensembl_id"],
-                "symbol:" + gene_symbol,
+        matches = self.identifier_map.filter((pl.col("gene_symbol") == gene_symbol))
+        if matches.height > 0:
+            return [f"{row['prefix']}{row['identifier']}" for row in matches.rows(named=True)] + [
+                f"symbol:{gene_symbol}"
             ]
-        else:
-            for symbol, data in self.hgnc_data.items():
-                for prev_symbol in data["previous_symbol"]:
-                    if prev_symbol == gene_symbol:
-                        return [
-                            data["hgnc_id"],
-                            "ncbigene:" + data["entrez_id"],
-                            "ensembl:" + data["ensembl_id"],
-                            "symbol:" + symbol,
-                        ]
+        prev_symbol_matches = self.identifier_map.filter(
+            (pl.col("prev_symbols").list.contains(gene_symbol))
+        )
+        if prev_symbol_matches.height > 0:
+            return [
+                f"{row['prefix']}{row['identifier']}"
+                for row in prev_symbol_matches.rows(named=True)
+            ] + [f"symbol:{gene_symbol}"]
+        return None
 
     def update_genomic_interpretations_gene_identifier(
         self, interpretations: List[Interpretation], phenopacket_path: Path
@@ -731,6 +724,7 @@ class GeneIdentifierUpdater:
 
         Args:
             interpretations (List[Interpretation]): List of Interpretation objects.
+            phenopacket_path (Path): The Path to the Phenopacket.
 
         Returns:
             List[Interpretation]: Updated list of Interpretation objects.
