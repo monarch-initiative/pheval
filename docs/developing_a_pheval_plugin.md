@@ -140,7 +140,7 @@ phenopacket_util = PhenopacketUtil(phenopacket)
 observed_phenotypes = phenopacket_util.observed_phenotypic_features()
 # To extract just the HPO ID as a list
 observed_phenotypes_hpo_ids = [
-    observed_phenotype.id for observed_phenotype in observed_phenotypes
+    observed_phenotype.type.id for observed_phenotype in observed_phenotypes
 ]
 ```
 #### Additional tool-specific configurations
