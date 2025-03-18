@@ -5,9 +5,8 @@ from typing import List
 
 import click
 
-from pheval.analyse.analysis import benchmark_run_comparisons
-from pheval.analyse.generate_plots import generate_plots_from_benchmark_summary_db
-from pheval.analyse.run_data_parser import parse_run_config
+from pheval.analyse.benchmark import benchmark_runs
+from pheval.analyse.generate_plots import generate_plots_from_db
 from pheval.prepare.create_noisy_phenopackets import scramble_phenopackets
 from pheval.prepare.create_spiked_vcf import spike_vcfs
 from pheval.prepare.custom_exceptions import InputError, MutuallyExclusiveOptionError
@@ -353,12 +352,12 @@ def create_spiked_vcfs_command(
     help="Path to yaml configuration file for benchmarking.",
     type=Path,
 )
-def generate_benchmark_stats(
+def benchmark(
     run_yaml: Path,
 ):
     """Benchmark the gene/variant/disease prioritisation performance for runs."""
-    benchmark_run_comparisons(
-        parse_run_config(run_yaml),
+    benchmark_runs(
+        run_yaml,
     )
 
 
@@ -426,12 +425,12 @@ def semsim_to_exomiserdb_command(
     help="Path to yaml configuration file for benchmarking.",
     type=Path,
 )
-def generate_stats_plot(
+def generate_plots(
     benchmark_db: Path,
     run_data: Path,
 ):
     """Generate bar plot from benchmark db."""
-    generate_plots_from_benchmark_summary_db(benchmark_db, run_data)
+    generate_plots_from_db(benchmark_db, run_data)
 
 
 @click.command("prepare-corpus")
