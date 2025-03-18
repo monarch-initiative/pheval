@@ -12,7 +12,7 @@ from pheval.utils.logger import get_logger
 def calculate_rank_changes(
     conn: DuckDBPyConnection,
     run_identifiers: List[str],
-    true_positive_cases: pl.LazyFrame,
+    true_positive_cases: pl.DataFrame,
     benchmark_type: BenchmarkOutputType,
 ) -> None:
     """
@@ -33,12 +33,12 @@ def calculate_rank_changes(
                 .then(pl.lit("GAINED"))
                 .when((pl.col(col1) != 0) & (pl.col(col2) == 0))
                 .then(pl.lit("LOST"))
-                .otherwise((pl.col(col1) - pl.col(col2)).cast(pl.Int8))
+                .otherwise((pl.col(col1) - pl.col(col2)).cast(pl.Int64))
                 .alias("rank_change")
             ]
         ).select(["result_file", *benchmark_type.columns, col1, col2, "rank_change"])
         write_table(
             conn,
-            rank_change_lf.collect(),
+            rank_change_lf,
             f"{col1}_vs_{col2}_{benchmark_type.prioritisation_type_string}_rank_changes",
         )
