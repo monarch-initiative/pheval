@@ -246,9 +246,6 @@ Variants that are not part of any compound heterozygous group should each have a
 This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented. 
 The use of the `grouping_id` would also be suitable for the ranking and prioritisation of polygenic diseases.
 
-
-The `generate_pheval_result()` can be implemented in your runner to write out the PhEval TSV results.
-
 Depending on whether you need to generate gene, variant, and or disease results depends on the final method called to generate the results from the polars dataframe. The methods are outlined below:
 
 ::: src.pheval.post_processing.post_processing.generate_gene_result
