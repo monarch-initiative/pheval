@@ -349,7 +349,7 @@ def generate_plots_from_db(db_path: Path, config: Path) -> None:
     tables = {
         row[0]
         for row in conn.execute(
-            """SELECT table_name FROM duckdb_tables WHERE table_name"""
+            """SELECT table_name FROM duckdb_tables WHERE table_name """
             """LIKE '%_summary%' OR table_name LIKE '%_binary_classification_curves'"""
         ).fetchall()
     }
