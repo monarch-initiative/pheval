@@ -4,7 +4,7 @@ import logging
 
 import click
 
-from pheval.utils.logger import get_logger, print_ascii_banner
+from pheval.utils.logger import get_logger, initialise_context
 
 from .cli_pheval import run
 from .cli_pheval_utils import (
@@ -27,10 +27,7 @@ logger = get_logger()
 @click.pass_context
 def main(ctx, verbose=1, quiet=False):
     """Main CLI method for PhEval."""
-
-    if not getattr(ctx, "ascii_printed", False):
-        ctx.ascii_printed = True  # ✅ Mark as printed
-        print_ascii_banner()
+    initialise_context(ctx)
 
     if verbose >= 2:
         logger.setLevel(logging.DEBUG)
@@ -42,27 +39,18 @@ def main(ctx, verbose=1, quiet=False):
         logger.setLevel(logging.ERROR)
 
 
-def before_command(ctx, param, value):
-    """Runs before any Click command to ensure ASCII prints only once."""
-    if not getattr(ctx, "ascii_printed", False):
-        ctx.ascii_printed = True
-        print_ascii_banner()
-
-
 @main.group()
 @click.pass_context
-@click.option("--before", is_flag=True, callback=before_command, expose_value=False, is_eager=True)
 def pheval(ctx):
     """pheval"""
-    pass
+    initialise_context(ctx)
 
 
 @main.group()
 @click.pass_context
-@click.option("--before", is_flag=True, callback=before_command, expose_value=False, is_eager=True)
 def pheval_utils(ctx):
     """pheval_utils"""
-    pass
+    initialise_context(ctx)
 
 
 pheval.add_command(run)

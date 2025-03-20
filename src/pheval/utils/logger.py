@@ -26,3 +26,10 @@ def print_ascii_banner():
         A framework for the empirical evaluation of phenotype-driven prioritisation tools.
         """
         print(pheval_banner)
+
+
+def initialise_context(ctx):
+    ctx.ensure_object(dict)
+    if not getattr(ctx, "ascii_printed", False):
+        ctx.ascii_printed = True
+        print_ascii_banner()
