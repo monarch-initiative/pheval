@@ -495,22 +495,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../analyse/analysis/" class="md-nav__link">
-        Analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/assess_prioritisation_base/" class="md-nav__link">
-        Assess prioritisation base
+      <a href="../analyse/benchmark/" class="md-nav__link">
+        Benchmark
       </a>
     </li>
   
@@ -537,8 +523,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../analyse/benchmark_generator/" class="md-nav__link">
-        Benchmark generator
+      <a href="../analyse/benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
       </a>
     </li>
   
@@ -551,8 +537,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../analyse/benchmarking_data/" class="md-nav__link">
-        Benchmarking data
+      <a href="../analyse/binary_classification_curves/" class="md-nav__link">
+        Binary classification curves
       </a>
     </li>
   
@@ -579,34 +565,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../analyse/disease_prioritisation_analysis/" class="md-nav__link">
-        Disease prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/gene_prioritisation_analysis/" class="md-nav__link">
-        Gene prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../analyse/generate_plots/" class="md-nav__link">
         Generate plots
       </a>
@@ -621,50 +579,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../analyse/generate_summary_outputs/" class="md-nav__link">
-        Generate summary outputs
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/parse_benchmark_summary/" class="md-nav__link">
-        Parse benchmark summary
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/parse_corpus/" class="md-nav__link">
-        Parse corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/prioritisation_result_types/" class="md-nav__link">
-        Prioritisation result types
+      <a href="../analyse/generate_rank_comparisons/" class="md-nav__link">
+        Generate rank comparisons
       </a>
     </li>
   
@@ -693,20 +609,6 @@
     <li class="md-nav__item">
       <a href="../analyse/run_data_parser/" class="md-nav__link">
         Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../analyse/variant_prioritisation_analysis/" class="md-nav__link">
-        Variant prioritisation analysis
       </a>
     </li>
   
@@ -799,8 +701,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../post_processing/post_processing/" class="md-nav__link">
         Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
       </a>
     </li>
   
@@ -1012,6 +942,20 @@
     <li class="md-nav__item">
       <a href="../utils/file_utils/" class="md-nav__link">
         File utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/logger/" class="md-nav__link">
+        Logger
       </a>
     </li>
   
@@ -1439,7 +1383,7 @@
 <span class="normal">31</span>
 <span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@serde</span>
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">InputDirConfig</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">InputDirConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for defining the fields within the input directory config.</span>
 
@@ -1507,7 +1451,7 @@
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_input_dir_config</span><span class="p">(</span><span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InputDirConfig</span><span class="p">:</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_input_dir_config</span><span class="p">(</span><span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InputDirConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the config file.&quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">input_dir</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">config_file</span><span class="p">:</span>
         <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>

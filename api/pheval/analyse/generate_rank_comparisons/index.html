@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/generate_summary_outputs/">
+        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/generate_rank_comparisons/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Generate summary outputs - PhEval</title>
+        <title>Generate rank comparisons - PhEval</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.pheval.analyse.generate_summary_outputs" class="md-skip">
+        <a href="#src.pheval.analyse.generate_rank_comparisons" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Generate summary outputs
+              Generate rank comparisons
             
           </span>
         </div>
@@ -446,22 +446,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../analysis/" class="md-nav__link">
-        Analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../assess_prioritisation_base/" class="md-nav__link">
-        Assess prioritisation base
+      <a href="../benchmark/" class="md-nav__link">
+        Benchmark
       </a>
     </li>
   
@@ -488,8 +474,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../benchmark_generator/" class="md-nav__link">
-        Benchmark generator
+      <a href="../benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
       </a>
     </li>
   
@@ -502,8 +488,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../benchmarking_data/" class="md-nav__link">
-        Benchmarking data
+      <a href="../binary_classification_curves/" class="md-nav__link">
+        Binary classification curves
       </a>
     </li>
   
@@ -518,34 +504,6 @@
     <li class="md-nav__item">
       <a href="../binary_classification_stats/" class="md-nav__link">
         Binary classification stats
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../disease_prioritisation_analysis/" class="md-nav__link">
-        Disease prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gene_prioritisation_analysis/" class="md-nav__link">
-        Gene prioritisation analysis
       </a>
     </li>
   
@@ -580,12 +538,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Generate summary outputs
+          Generate rank comparisons
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Generate summary outputs
+        Generate rank comparisons
       </a>
       
         
@@ -602,29 +560,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs" class="md-nav__link">
-    generate_summary_outputs
+  <a href="#src.pheval.analyse.generate_rank_comparisons" class="md-nav__link">
+    generate_rank_comparisons
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.create_comparison_table" class="md-nav__link">
-    create_comparison_table
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.generate_benchmark_comparison_output" class="md-nav__link">
-    generate_benchmark_comparison_output
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.get_new_table_name" class="md-nav__link">
-    get_new_table_name
+  <a href="#src.pheval.analyse.generate_rank_comparisons.calculate_rank_changes" class="md-nav__link">
+    calculate_rank_changes
   </a>
   
 </li>
@@ -633,48 +577,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_benchmark_summary/" class="md-nav__link">
-        Parse benchmark summary
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_corpus/" class="md-nav__link">
-        Parse corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prioritisation_result_types/" class="md-nav__link">
-        Prioritisation result types
-      </a>
     </li>
   
 
@@ -702,20 +604,6 @@
     <li class="md-nav__item">
       <a href="../run_data_parser/" class="md-nav__link">
         Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../variant_prioritisation_analysis/" class="md-nav__link">
-        Variant prioritisation analysis
       </a>
     </li>
   
@@ -808,8 +696,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/post_processing/" class="md-nav__link">
         Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
       </a>
     </li>
   
@@ -1033,6 +949,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../utils/logger/" class="md-nav__link">
+        Logger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../utils/phenopacket_utils/" class="md-nav__link">
         Phenopacket utils
       </a>
@@ -1242,29 +1172,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs" class="md-nav__link">
-    generate_summary_outputs
+  <a href="#src.pheval.analyse.generate_rank_comparisons" class="md-nav__link">
+    generate_rank_comparisons
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.create_comparison_table" class="md-nav__link">
-    create_comparison_table
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.generate_benchmark_comparison_output" class="md-nav__link">
-    generate_benchmark_comparison_output
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.generate_summary_outputs.get_new_table_name" class="md-nav__link">
-    get_new_table_name
+  <a href="#src.pheval.analyse.generate_rank_comparisons.calculate_rank_changes" class="md-nav__link">
+    calculate_rank_changes
   </a>
   
 </li>
@@ -1283,19 +1199,19 @@
                 
                   
 
-  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/analyse/generate_summary_outputs.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/analyse/generate_rank_comparisons.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Generate summary outputs</h1>
+  <h1>Generate rank comparisons</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="src.pheval.analyse.generate_summary_outputs"></a>
+<a id="src.pheval.analyse.generate_rank_comparisons"></a>
   <div class="doc doc-contents first">
 
   
@@ -1315,26 +1231,35 @@
 
 
 
-<h2 id="src.pheval.analyse.generate_summary_outputs.create_comparison_table" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_comparison_table</span><span class="p">(</span><span class="n">comparison_table_name</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="n">drop_columns</span><span class="p">,</span> <span class="n">run_identifier_1</span><span class="p">,</span> <span class="n">run_identifier_2</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span></code>
+<h2 id="src.pheval.analyse.generate_rank_comparisons.calculate_rank_changes" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">run_identifiers</span><span class="p">,</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span></code>
 
 </h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Create rank comparison tables.
+      <p>Calculate rank changes between runs.
 Args:
-    comparison_table_name (str): Name of the comparison table to create.
-    connector (BenchmarkDBManager): DBConnector instance.
-    drop_columns (List[str]): List of columns to drop.
-    run_identifier_1 (str): The first run identifier.
-    run_identifier_2 (str): The second run identifier.
-    table_name (str): Name of the table to extract ranks from</p>
+    conn (DuckDBPyConnection): DuckDB connection.
+    run_identifiers (List[str]): List of run identifiers.
+    true_positive_cases (pl.LazyFrame): All true positive cases for a benchmark.
+    benchmark_type (BenchmarkOutputType): Type of benchmark output.</p>
 
           <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_summary_outputs.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+            <summary>Source code in <code>src/pheval/analyse/generate_rank_comparisons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
@@ -1355,308 +1280,39 @@ Args:
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_comparison_table</span><span class="p">(</span>
-    <span class="n">comparison_table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">connector</span><span class="p">:</span> <span class="n">BenchmarkDBManager</span><span class="p">,</span>
-    <span class="n">drop_columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-    <span class="n">run_identifier_1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">run_identifier_2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create rank comparison tables.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        comparison_table_name (str): Name of the comparison table to create.</span>
-<span class="sd">        connector (BenchmarkDBManager): DBConnector instance.</span>
-<span class="sd">        drop_columns (List[str]): List of columns to drop.</span>
-<span class="sd">        run_identifier_1 (str): The first run identifier.</span>
-<span class="sd">        run_identifier_2 (str): The second run identifier.</span>
-<span class="sd">        table_name (str): Name of the table to extract ranks from</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">connector</span><span class="o">.</span><span class="n">drop_table</span><span class="p">(</span><span class="n">comparison_table_name</span><span class="p">)</span>
-    <span class="n">excluded_columns</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">drop_columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">drop_columns</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,)</span>
-    <span class="n">connector</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s1">&#39;CREATE TABLE &quot;</span><span class="si">{</span><span class="n">comparison_table_name</span><span class="si">}</span><span class="s1">&quot; AS SELECT * &#39;</span>
-        <span class="sa">f</span><span class="s2">&quot;EXCLUDE </span><span class="si">{</span><span class="n">excluded_columns</span><span class="si">}</span><span class="s2"> FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="p">)</span>
-
-    <span class="n">connector</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;&quot;&quot;ALTER TABLE &quot;</span><span class="si">{</span><span class="n">comparison_table_name</span><span class="si">}</span><span class="s2">&quot; ADD COLUMN rank_change VARCHAR;&quot;&quot;&quot;</span>
-    <span class="p">)</span>
-    <span class="n">connector</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s1">&#39;UPDATE &quot;</span><span class="si">{</span><span class="n">comparison_table_name</span><span class="si">}</span><span class="s1">&quot; SET rank_change = CASE WHEN &quot;</span><span class="si">{</span><span class="n">run_identifier_1</span><span class="si">}</span><span class="s1">&quot; = 0 &#39;</span>
-        <span class="sa">f</span><span class="s1">&#39;AND &quot;</span><span class="si">{</span><span class="n">run_identifier_2</span><span class="si">}</span><span class="s1">&quot; != 0 &#39;</span>
-        <span class="sa">f</span><span class="s2">&quot;THEN &#39;GAINED&#39; WHEN </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">run_identifier_1</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> != 0 AND </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">run_identifier_2</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> = 0 THEN &#39;LOST&#39; ELSE &quot;</span>
-        <span class="sa">f</span><span class="s1">&#39;CAST (&quot;</span><span class="si">{</span><span class="n">run_identifier_1</span><span class="si">}</span><span class="s1">&quot; - &quot;</span><span class="si">{</span><span class="n">run_identifier_2</span><span class="si">}</span><span class="s1">&quot; AS VARCHAR) END;&#39;</span>
-    <span class="p">)</span>
-    <span class="n">connector</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.analyse.generate_summary_outputs.generate_benchmark_comparison_output" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_benchmark_comparison_output</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results</span><span class="p">,</span> <span class="n">run_identifiers</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Generate prioritisation outputs for benchmarking multiple runs.</p>
-<p>This function generates comparison outputs for benchmarking multiple runs. It compares the results
-between pairs of <code>BenchmarkRunResults</code> instances in <code>benchmarking_results</code> and generates rank
-comparison outputs using <code>RankComparisonGenerator</code> for each pair.</p>
-
-
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>benchmark_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Name of the benchmark.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>benchmarking_results</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="pheval.analyse.benchmarking_data.BenchmarkRunResults">BenchmarkRunResults</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A list containing BenchmarkRunResults instances
-representing the benchmarking results of multiple runs.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>run_identifiers</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A list of run identifiers.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>benchmark_generator</code></td>
-          <td>
-                <code><span title="pheval.analyse.benchmark_generator.BenchmarkRunOutputGenerator">BenchmarkRunOutputGenerator</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Object containing benchmarking output generation details.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>table_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The name of the table where ranks are stored.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_summary_outputs.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_benchmark_comparison_output</span><span class="p">(</span>
-    <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">benchmarking_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BenchmarkRunResults</span><span class="p">],</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_rank_changes</span><span class="p">(</span>
+    <span class="n">conn</span><span class="p">:</span> <span class="n">DuckDBPyConnection</span><span class="p">,</span>
     <span class="n">run_identifiers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-    <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkRunOutputGenerator</span><span class="p">,</span>
-    <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">true_positive_cases</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate prioritisation outputs for benchmarking multiple runs.</span>
-
-<span class="sd">    This function generates comparison outputs for benchmarking multiple runs. It compares the results</span>
-<span class="sd">    between pairs of `BenchmarkRunResults` instances in `benchmarking_results` and generates rank</span>
-<span class="sd">    comparison outputs using `RankComparisonGenerator` for each pair.</span>
-
+<span class="sd">    Calculate rank changes between runs.</span>
 <span class="sd">    Args:</span>
-<span class="sd">        benchmark_name (str): Name of the benchmark.</span>
-<span class="sd">        benchmarking_results (List[BenchmarkRunResults]): A list containing BenchmarkRunResults instances</span>
-<span class="sd">            representing the benchmarking results of multiple runs.</span>
-<span class="sd">        run_identifiers (List[str]): A list of run identifiers.</span>
-<span class="sd">        benchmark_generator (BenchmarkRunOutputGenerator): Object containing benchmarking output generation details.</span>
-<span class="sd">        table_name (str): The name of the table where ranks are stored.</span>
+<span class="sd">        conn (DuckDBPyConnection): DuckDB connection.</span>
+<span class="sd">        run_identifiers (List[str]): List of run identifiers.</span>
+<span class="sd">        true_positive_cases (pl.LazyFrame): All true positive cases for a benchmark.</span>
+<span class="sd">        benchmark_type (BenchmarkOutputType): Type of benchmark output.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output_prefix</span> <span class="o">=</span> <span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span>
-    <span class="n">connector</span> <span class="o">=</span> <span class="n">BenchmarkDBManager</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span>
-        <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">benchmark_name</span><span class="p">)</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">benchmarking_results</span><span class="p">],</span> <span class="mi">2</span>
-    <span class="p">):</span>
-        <span class="n">run_identifier_1</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">run_identifier_2</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">drop_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">run</span> <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">run_identifiers</span> <span class="k">if</span> <span class="n">run</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">]</span>
-        <span class="n">comparison_table_name</span> <span class="o">=</span> <span class="n">get_new_table_name</span><span class="p">(</span>
-            <span class="n">run_identifier_1</span><span class="p">,</span> <span class="n">run_identifier_2</span><span class="p">,</span> <span class="n">output_prefix</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+    <span class="n">pairwise_comparisons</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">run_identifiers</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="ow">in</span> <span class="n">pairwise_comparisons</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Comparing rank changes: </span><span class="si">{</span><span class="n">col1</span><span class="si">}</span><span class="s2"> vs. </span><span class="si">{</span><span class="n">col2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">rank_change_lf</span> <span class="o">=</span> <span class="n">true_positive_cases</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;GAINED&quot;</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">when</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;LOST&quot;</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">otherwise</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">col2</span><span class="p">))</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;rank_change&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;result_file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="s2">&quot;rank_change&quot;</span><span class="p">])</span>
+        <span class="n">write_table</span><span class="p">(</span>
+            <span class="n">conn</span><span class="p">,</span>
+            <span class="n">rank_change_lf</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col1</span><span class="si">}</span><span class="s2">_vs_</span><span class="si">{</span><span class="n">col2</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_rank_changes&quot;</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">create_comparison_table</span><span class="p">(</span>
-            <span class="n">comparison_table_name</span><span class="p">,</span>
-            <span class="n">connector</span><span class="p">,</span>
-            <span class="n">drop_columns</span><span class="p">,</span>
-            <span class="n">run_identifier_1</span><span class="p">,</span>
-            <span class="n">run_identifier_2</span><span class="p">,</span>
-            <span class="n">table_name</span><span class="p">,</span>
-        <span class="p">)</span>
-    <span class="n">generate_plots</span><span class="p">(</span>
-        <span class="n">benchmark_name</span><span class="p">,</span>
-        <span class="n">benchmarking_results</span><span class="p">,</span>
-        <span class="n">benchmark_generator</span><span class="p">,</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.analyse.generate_summary_outputs.get_new_table_name" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">get_new_table_name</span><span class="p">(</span><span class="n">run_identifier_1</span><span class="p">,</span> <span class="n">run_identifier_2</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Get the new table name for rank comparison tables.
-Args:
-    run_identifier_1: The first run identifier.
-    run_identifier_2: The second run identifier.
-    output_prefix: The output prefix of the table
-Returns:
-    The new table name.</p>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_summary_outputs.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_new_table_name</span><span class="p">(</span><span class="n">run_identifier_1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">run_identifier_2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the new table name for rank comparison tables.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        run_identifier_1: The first run identifier.</span>
-<span class="sd">        run_identifier_2: The second run identifier.</span>
-<span class="sd">        output_prefix: The output prefix of the table</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        The new table name.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">run_identifier_1</span><span class="si">}</span><span class="s2">_vs_&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">run_identifier_2</span><span class="si">}</span><span class="s2">_&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}</span><span class="s2">_rank_comparison&quot;</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1706,13 +1362,13 @@ Returns:
       
       
         
-        <a href="../parse_benchmark_summary/" class="md-footer__link md-footer__link--next" aria-label="Next: Parse benchmark summary" rel="next">
+        <a href="../rank_stats/" class="md-footer__link md-footer__link--next" aria-label="Next: Rank stats" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Parse benchmark summary
+              Rank stats
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -444,22 +444,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/analysis/" class="md-nav__link">
-        Analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/assess_prioritisation_base/" class="md-nav__link">
-        Assess prioritisation base
+      <a href="../../analyse/benchmark/" class="md-nav__link">
+        Benchmark
       </a>
     </li>
   
@@ -486,8 +472,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/benchmark_generator/" class="md-nav__link">
-        Benchmark generator
+      <a href="../../analyse/benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
       </a>
     </li>
   
@@ -500,8 +486,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/benchmarking_data/" class="md-nav__link">
-        Benchmarking data
+      <a href="../../analyse/binary_classification_curves/" class="md-nav__link">
+        Binary classification curves
       </a>
     </li>
   
@@ -528,34 +514,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/disease_prioritisation_analysis/" class="md-nav__link">
-        Disease prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/gene_prioritisation_analysis/" class="md-nav__link">
-        Gene prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../analyse/generate_plots/" class="md-nav__link">
         Generate plots
       </a>
@@ -570,50 +528,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/generate_summary_outputs/" class="md-nav__link">
-        Generate summary outputs
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/parse_benchmark_summary/" class="md-nav__link">
-        Parse benchmark summary
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/parse_corpus/" class="md-nav__link">
-        Parse corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/prioritisation_result_types/" class="md-nav__link">
-        Prioritisation result types
+      <a href="../../analyse/generate_rank_comparisons/" class="md-nav__link">
+        Generate rank comparisons
       </a>
     </li>
   
@@ -642,20 +558,6 @@
     <li class="md-nav__item">
       <a href="../../analyse/run_data_parser/" class="md-nav__link">
         Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/variant_prioritisation_analysis/" class="md-nav__link">
-        Variant prioritisation analysis
       </a>
     </li>
   
@@ -748,8 +650,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/post_processing/" class="md-nav__link">
         Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
       </a>
     </li>
   
@@ -1028,6 +958,20 @@
     <li class="md-nav__item">
       <a href="../../utils/file_utils/" class="md-nav__link">
         File utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/logger/" class="md-nav__link">
+        Logger
       </a>
     </li>
   
@@ -1420,7 +1364,9 @@
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopacket</span><span class="p">(</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_updated_phenopacket</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1435,8 +1381,10 @@
 <span class="sd">        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace</span>
 <span class="sd">        to describe the gene identifiers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">hgnc_data</span> <span class="o">=</span> <span class="n">create_hgnc_dict</span><span class="p">()</span>
-    <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span>
+    <span class="n">identifier_map</span> <span class="o">=</span> <span class="n">create_gene_identifier_map</span><span class="p">()</span>
+    <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span>
+        <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">identifier_map</span>
+    <span class="p">)</span>
     <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
           </details>
@@ -1524,9 +1472,7 @@ and writes the updated Phenopackets.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
@@ -1545,7 +1491,9 @@ and writes the updated Phenopackets.</p>
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_updated_phenopackets</span><span class="p">(</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_updated_phenopackets</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1561,10 +1509,10 @@ and writes the updated Phenopackets.</p>
 <span class="sd">        to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace</span>
 <span class="sd">        to describe the gene identifiers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">hgnc_data</span> <span class="o">=</span> <span class="n">create_hgnc_dict</span><span class="p">()</span>
+    <span class="n">identifier_map</span> <span class="o">=</span> <span class="n">create_gene_identifier_map</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
         <span class="n">updated_phenopacket</span> <span class="o">=</span> <span class="n">update_outdated_gene_context</span><span class="p">(</span>
-            <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span>
+            <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">identifier_map</span>
         <span class="p">)</span>
         <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
@@ -1579,7 +1527,7 @@ and writes the updated Phenopackets.</p>
 
 
 <h2 id="src.pheval.prepare.update_phenopacket.update_outdated_gene_context" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">update_outdated_gene_context</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">,</span> <span class="n">identifier_map</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1630,13 +1578,13 @@ and writes the updated Phenopackets.</p>
           </td>
         </tr>
         <tr>
-          <td><code>hgnc_data</code></td>
+          <td><code>identifier_map</code></td>
           <td>
-                <code><span title="collections.defaultdict">defaultdict</span></code>
+                <code><span title="polars.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>The HGNC data used for updating.</p>
+              <p>The gene identifier map used for updating.</p>
             </div>
           </td>
           <td>
@@ -1701,8 +1649,8 @@ and writes the updated Phenopackets.</p>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_outdated_gene_context</span><span class="p">(</span>
-    <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hgnc_data</span><span class="p">:</span> <span class="n">defaultdict</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_outdated_gene_context</span><span class="p">(</span>
+    <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">identifier_map</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update the gene context of the Phenopacket.</span>
@@ -1710,7 +1658,7 @@ and writes the updated Phenopackets.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        phenopacket_path (Path): The path to the Phenopacket file.</span>
 <span class="sd">        gene_identifier (str): Identifier to update the gene context.</span>
-<span class="sd">        hgnc_data (defaultdict): The HGNC data used for updating.</span>
+<span class="sd">        identifier_map (pl.DataFrame): The gene identifier map used for updating.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Union[Phenopacket, Family]: The updated Phenopacket or Family.</span>
@@ -1723,7 +1671,7 @@ and writes the updated Phenopackets.</p>
     <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="n">interpretations</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">interpretations</span><span class="p">()</span>
     <span class="n">updated_interpretations</span> <span class="o">=</span> <span class="n">GeneIdentifierUpdater</span><span class="p">(</span>
-        <span class="n">hgnc_data</span><span class="o">=</span><span class="n">hgnc_data</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="o">=</span><span class="n">gene_identifier</span>
+        <span class="n">identifier_map</span><span class="o">=</span><span class="n">identifier_map</span><span class="p">,</span> <span class="n">gene_identifier</span><span class="o">=</span><span class="n">gene_identifier</span>
     <span class="p">)</span><span class="o">.</span><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">update_interpretations</span><span class="p">(</span><span class="n">updated_interpretations</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1825,9 +1773,7 @@ and writes the updated Phenopackets.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/prepare/update_phenopacket.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
 <span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
@@ -1845,7 +1791,9 @@ and writes the updated Phenopackets.</p>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_phenopackets</span><span class="p">(</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_phenopackets</span><span class="p">(</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

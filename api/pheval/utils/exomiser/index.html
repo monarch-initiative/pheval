@@ -444,22 +444,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/analysis/" class="md-nav__link">
-        Analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/assess_prioritisation_base/" class="md-nav__link">
-        Assess prioritisation base
+      <a href="../../analyse/benchmark/" class="md-nav__link">
+        Benchmark
       </a>
     </li>
   
@@ -486,8 +472,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/benchmark_generator/" class="md-nav__link">
-        Benchmark generator
+      <a href="../../analyse/benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
       </a>
     </li>
   
@@ -500,8 +486,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/benchmarking_data/" class="md-nav__link">
-        Benchmarking data
+      <a href="../../analyse/binary_classification_curves/" class="md-nav__link">
+        Binary classification curves
       </a>
     </li>
   
@@ -528,34 +514,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/disease_prioritisation_analysis/" class="md-nav__link">
-        Disease prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/gene_prioritisation_analysis/" class="md-nav__link">
-        Gene prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../analyse/generate_plots/" class="md-nav__link">
         Generate plots
       </a>
@@ -570,50 +528,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analyse/generate_summary_outputs/" class="md-nav__link">
-        Generate summary outputs
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/parse_benchmark_summary/" class="md-nav__link">
-        Parse benchmark summary
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/parse_corpus/" class="md-nav__link">
-        Parse corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/prioritisation_result_types/" class="md-nav__link">
-        Prioritisation result types
+      <a href="../../analyse/generate_rank_comparisons/" class="md-nav__link">
+        Generate rank comparisons
       </a>
     </li>
   
@@ -642,20 +558,6 @@
     <li class="md-nav__item">
       <a href="../../analyse/run_data_parser/" class="md-nav__link">
         Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../analyse/variant_prioritisation_analysis/" class="md-nav__link">
-        Variant prioritisation analysis
       </a>
     </li>
   
@@ -748,8 +650,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/post_processing/" class="md-nav__link">
         Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
       </a>
     </li>
   
@@ -1007,6 +937,20 @@
     <li class="md-nav__item">
       <a href="../file_utils/" class="md-nav__link">
         File utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logger/" class="md-nav__link">
+        Logger
       </a>
     </li>
   
@@ -1381,7 +1325,7 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;ingests semsim file into exomiser phenotypic database</span>
 
 <span class="sd">    Args:</span>

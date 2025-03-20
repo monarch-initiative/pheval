@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/assess_prioritisation_base/">
+        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/analyse/binary_classification_curves/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Assess prioritisation base - PhEval</title>
+        <title>Binary classification curves - PhEval</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.pheval.analyse.assess_prioritisation_base" class="md-skip">
+        <a href="#src.pheval.analyse.binary_classification_curves" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Assess prioritisation base
+              Binary classification curves
             
           </span>
         </div>
@@ -446,80 +446,9 @@
   
   
     <li class="md-nav__item">
-      <a href="../analysis/" class="md-nav__link">
-        Analysis
+      <a href="../benchmark/" class="md-nav__link">
+        Benchmark
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Assess prioritisation base
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Assess prioritisation base
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base" class="md-nav__link">
-    assess_prioritisation_base
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase" class="md-nav__link">
-    AssessPrioritisationBase
-  </a>
-  
-    <nav class="md-nav" aria-label="AssessPrioritisationBase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase.__init__" class="md-nav__link">
-    __init__
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -545,8 +474,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../benchmark_generator/" class="md-nav__link">
-        Benchmark generator
+      <a href="../benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
       </a>
     </li>
   
@@ -557,11 +486,75 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../benchmarking_data/" class="md-nav__link">
-        Benchmarking data
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Binary classification curves
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Binary classification curves
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.binary_classification_curves" class="md-nav__link">
+    binary_classification_curves
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves" class="md-nav__link">
+    BinaryClassificationCurves
+  </a>
+  
+    <nav class="md-nav" aria-label="BinaryClassificationCurves">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves.process" class="md-nav__link">
+    process
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.binary_classification_curves.compute_curves" class="md-nav__link">
+    compute_curves
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -575,34 +568,6 @@
     <li class="md-nav__item">
       <a href="../binary_classification_stats/" class="md-nav__link">
         Binary classification stats
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../disease_prioritisation_analysis/" class="md-nav__link">
-        Disease prioritisation analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gene_prioritisation_analysis/" class="md-nav__link">
-        Gene prioritisation analysis
       </a>
     </li>
   
@@ -629,50 +594,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../generate_summary_outputs/" class="md-nav__link">
-        Generate summary outputs
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_benchmark_summary/" class="md-nav__link">
-        Parse benchmark summary
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_corpus/" class="md-nav__link">
-        Parse corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prioritisation_result_types/" class="md-nav__link">
-        Prioritisation result types
+      <a href="../generate_rank_comparisons/" class="md-nav__link">
+        Generate rank comparisons
       </a>
     </li>
   
@@ -701,20 +624,6 @@
     <li class="md-nav__item">
       <a href="../run_data_parser/" class="md-nav__link">
         Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../variant_prioritisation_analysis/" class="md-nav__link">
-        Variant prioritisation analysis
       </a>
     </li>
   
@@ -807,8 +716,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/post_processing/" class="md-nav__link">
         Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
       </a>
     </li>
   
@@ -1032,6 +969,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../utils/logger/" class="md-nav__link">
+        Logger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../utils/phenopacket_utils/" class="md-nav__link">
         Phenopacket utils
       </a>
@@ -1241,29 +1192,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base" class="md-nav__link">
-    assess_prioritisation_base
+  <a href="#src.pheval.analyse.binary_classification_curves" class="md-nav__link">
+    binary_classification_curves
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase" class="md-nav__link">
-    AssessPrioritisationBase
+  <a href="#src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves" class="md-nav__link">
+    BinaryClassificationCurves
   </a>
   
-    <nav class="md-nav" aria-label="AssessPrioritisationBase">
+    <nav class="md-nav" aria-label="BinaryClassificationCurves">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase.__init__" class="md-nav__link">
-    __init__
+  <a href="#src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves.process" class="md-nav__link">
+    process
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.analyse.binary_classification_curves.compute_curves" class="md-nav__link">
+    compute_curves
+  </a>
   
 </li>
       
@@ -1281,19 +1239,19 @@
                 
                   
 
-  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/analyse/assess_prioritisation_base.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/analyse/binary_classification_curves.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Assess prioritisation base</h1>
+  <h1>Binary classification curves</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="src.pheval.analyse.assess_prioritisation_base"></a>
+<a id="src.pheval.analyse.binary_classification_curves"></a>
   <div class="doc doc-contents first">
 
   
@@ -1311,8 +1269,8 @@
 
 
 
-<h2 id="src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase" class="doc doc-heading">
-          <code>AssessPrioritisationBase</code>
+<h2 id="src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves" class="doc doc-heading">
+          <code>BinaryClassificationCurves</code>
 
 
 </h2>
@@ -1320,10 +1278,13 @@
 
   <div class="doc doc-contents ">
 
+  
+      <p>Class for computing and storing ROC &amp; Precision-Recall curves in Polars.</p>
 
             <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/assess_prioritisation_base.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
+              <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
+<span class="normal"> 11</span>
 <span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
@@ -1420,104 +1381,125 @@
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssessPrioritisationBase</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">db_connection</span><span class="p">:</span> <span class="n">BenchmarkDBManager</span><span class="p">,</span>
-        <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-        <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">):</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BinaryClassificationCurves</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for computing and storing ROC &amp; Precision-Recall curves in Polars.&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_finite_bounds</span><span class="p">(</span><span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialise AssessPrioritisationBase class</span>
-
+<span class="sd">        Compute min and max finite values in the &#39;score&#39; column to handle NaN and Inf values.</span>
 <span class="sd">        Args:</span>
-<span class="sd">            db_connection (BenchmarkDBManager): DB connection.</span>
-<span class="sd">            table_name (str): Table name.</span>
-<span class="sd">            column (str): Column name.</span>
-<span class="sd">            threshold (float): Threshold for scores</span>
-<span class="sd">            score_order (str): Score order for results, either ascending or descending</span>
+<span class="sd">            result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.</span>
 
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[float, float]: The (max_finite, min_finite) values for normalising scores.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">score_order</span> <span class="o">=</span> <span class="n">score_order</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span> <span class="o">=</span> <span class="n">db_connection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">db_connection</span><span class="o">.</span><span class="n">conn</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="n">table_name</span>
-        <span class="n">db_connection</span><span class="o">.</span><span class="n">add_column_integer_default</span><span class="p">(</span>
-            <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">result_scan</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_finite</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;max_finite&quot;</span><span class="p">),</span>
+                    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_finite</span><span class="p">())</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;min_finite&quot;</span><span class="p">),</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_assess_with_threshold_ascending_order</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">result_entry</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
-            <span class="n">RankedPhEvalGeneResult</span><span class="p">,</span> <span class="n">RankedPhEvalDiseaseResult</span><span class="p">,</span> <span class="n">RankedPhEvalVariantResult</span>
-        <span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_clean_and_extract_data</span><span class="p">(</span>
+        <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">max_finite</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">min_finite</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Record the prioritisation rank if it meets the ascending order threshold.</span>
-
+<span class="sd">        Normalise the &#39;score&#39; column (handling NaNs and Inf values) and extract &#39;true_positive&#39; labels.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            result_entry (Union[RankedPhEvalGeneResult, RankedPhEvalDiseaseResult, RankedPhEvalVariantResult]):</span>
-<span class="sd">                Ranked PhEval result entry</span>
+<span class="sd">            result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.</span>
+<span class="sd">            max_finite (float): The maximum finite score value.</span>
+<span class="sd">            min_finite (float): The minimum finite score value.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            int: Recorded prioritisation rank</span>
+<span class="sd">            pl.LazyFrame: A LazyFrame with cleaned &#39;score&#39; and binary &#39;true_positive&#39; columns.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">result_entry</span><span class="o">.</span><span class="n">score</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">result_entry</span><span class="o">.</span><span class="n">rank</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">result_scan</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_nan</span><span class="p">())</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_infinite</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">max_finite</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_infinite</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">min_finite</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">),</span>
+                <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_null</span><span class="p">())</span>
+                <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int8</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_assess_with_threshold</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">result_entry</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
-            <span class="n">RankedPhEvalGeneResult</span><span class="p">,</span> <span class="n">RankedPhEvalDiseaseResult</span><span class="p">,</span> <span class="n">RankedPhEvalVariantResult</span>
-        <span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_roc_pr_curves</span><span class="p">(</span>
+        <span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Record the prioritisation rank if it meets the score threshold.</span>
+<span class="sd">        Compute ROC and Precision-Recall curves.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            result_entry (Union[RankedPhEvalGeneResult, RankedPhEvalDiseaseResult, RankedPhEvalVariantResult]):</span>
-<span class="sd">                Ranked PhEval result entry</span>
+<span class="sd">            labels (np.ndarray): Binary ground truth labels (0 or 1).</span>
+<span class="sd">            scores (np.ndarray): Prediction scores.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            int: Recorded prioritisation rank</span>
+<span class="sd">            pl.LazyFrame: A LazyFrame containing the computed FPR, TPR, Precision, Recall, and Thresholds.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">result_entry</span><span class="o">.</span><span class="n">score</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">result_entry</span><span class="o">.</span><span class="n">rank</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">roc_thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">pr_thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_record_matched_entity</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">standardised_result</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
-            <span class="n">RankedPhEvalGeneResult</span><span class="p">,</span> <span class="n">RankedPhEvalDiseaseResult</span><span class="p">,</span> <span class="n">RankedPhEvalVariantResult</span>
-        <span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;run_identifier&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">run_identifier</span><span class="p">],</span>
+                <span class="s2">&quot;fpr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">fpr</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+                <span class="s2">&quot;tpr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">tpr</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+                <span class="s2">&quot;threshold_roc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">roc_thresholds</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+                <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">precision</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+                <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">recall</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+                <span class="s2">&quot;threshold_pr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">pr_thresholds</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return the rank result - handling the specification of a threshold.</span>
+<span class="sd">        Process scores, extract true labels, compute ROC and Precision-Recall curves,</span>
+<span class="sd">        and store results in a Polars LazyFrame with NumPy arrays.</span>
+
 <span class="sd">        Args:</span>
-<span class="sd">            standardised_result (Union[RankedPhEvalGeneResult, RankedPhEvalDiseaseResult, RankedPhEvalVariantResult]):</span>
-<span class="sd">                Ranked PhEval disease result entry</span>
+<span class="sd">            result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.</span>
+<span class="sd">            run_identifier (str): Identifier for this run.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            int: Recorded entity prioritisation rank</span>
+<span class="sd">            pl.LazyFrame: A LazyFrame containing ROC &amp; PR curve data with NumPy arrays.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">standardised_result</span><span class="o">.</span><span class="n">rank</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_assess_with_threshold</span><span class="p">(</span><span class="n">standardised_result</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_order</span> <span class="o">!=</span> <span class="s2">&quot;ascending&quot;</span>
-                <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assess_with_threshold_ascending_order</span><span class="p">(</span>
-                    <span class="n">standardised_result</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
+        <span class="n">max_finite</span><span class="p">,</span> <span class="n">min_finite</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_compute_finite_bounds</span><span class="p">(</span><span class="n">result_scan</span><span class="p">)</span>
+        <span class="n">cleaned_data</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_clean_and_extract_data</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">max_finite</span><span class="p">,</span> <span class="n">min_finite</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;true_positive&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">])</span>
+            <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_compute_roc_pr_curves</span><span class="p">(</span>
+            <span class="n">run_identifier</span><span class="p">,</span>
+            <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;true_positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+            <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1538,15 +1520,20 @@
 
 
 
-<h3 id="src.pheval.analyse.assess_prioritisation_base.AssessPrioritisationBase.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">db_connection</span><span class="p">,</span> <span class="n">table_name</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">score_order</span><span class="p">)</span></code>
+<h3 id="src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves.process" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
 
 </h3>
 
 
   <div class="doc doc-contents ">
   
-      <p>Initialise AssessPrioritisationBase class</p>
+      <p>Process scores, extract true labels, compute ROC and Precision-Recall curves,
+and store results in a Polars LazyFrame with NumPy arrays.</p>
 
 
 
@@ -1562,13 +1549,13 @@
     </thead>
     <tbody>
         <tr>
-          <td><code>db_connection</code></td>
+          <td><code>result_scan</code></td>
           <td>
-                <code><span title="pheval.analyse.benchmark_db_manager.BenchmarkDBManager">BenchmarkDBManager</span></code>
+                <code><span title="polars.LazyFrame">LazyFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>DB connection.</p>
+              <p>The LazyFrame containing the results for the directory.</p>
             </div>
           </td>
           <td>
@@ -1576,55 +1563,13 @@
           </td>
         </tr>
         <tr>
-          <td><code>table_name</code></td>
+          <td><code>run_identifier</code></td>
           <td>
                 <code>str</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>Table name.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>column</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Column name.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>threshold</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Threshold for scores</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>score_order</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Score order for results, either ascending or descending</p>
+              <p>Identifier for this run.</p>
             </div>
           </td>
           <td>
@@ -1634,62 +1579,78 @@
     </tbody>
   </table>
 
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="polars.LazyFrame">LazyFrame</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>pl.LazyFrame: A LazyFrame containing ROC &amp; PR curve data with NumPy arrays.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
           <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/assess_prioritisation_base.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">db_connection</span><span class="p">:</span> <span class="n">BenchmarkDBManager</span><span class="p">,</span>
-    <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">score_order</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<span class="p">):</span>
+            <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialise AssessPrioritisationBase class</span>
+<span class="sd">    Process scores, extract true labels, compute ROC and Precision-Recall curves,</span>
+<span class="sd">    and store results in a Polars LazyFrame with NumPy arrays.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        db_connection (BenchmarkDBManager): DB connection.</span>
-<span class="sd">        table_name (str): Table name.</span>
-<span class="sd">        column (str): Column name.</span>
-<span class="sd">        threshold (float): Threshold for scores</span>
-<span class="sd">        score_order (str): Score order for results, either ascending or descending</span>
+<span class="sd">        result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.</span>
+<span class="sd">        run_identifier (str): Identifier for this run.</span>
 
+<span class="sd">    Returns:</span>
+<span class="sd">        pl.LazyFrame: A LazyFrame containing ROC &amp; PR curve data with NumPy arrays.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">score_order</span> <span class="o">=</span> <span class="n">score_order</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span> <span class="o">=</span> <span class="n">db_connection</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">db_connection</span><span class="o">.</span><span class="n">conn</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="n">table_name</span>
-    <span class="n">db_connection</span><span class="o">.</span><span class="n">add_column_integer_default</span><span class="p">(</span>
-        <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">max_finite</span><span class="p">,</span> <span class="n">min_finite</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_compute_finite_bounds</span><span class="p">(</span><span class="n">result_scan</span><span class="p">)</span>
+    <span class="n">cleaned_data</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_clean_and_extract_data</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">max_finite</span><span class="p">,</span> <span class="n">min_finite</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;true_positive&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_compute_roc_pr_curves</span><span class="p">(</span>
+        <span class="n">run_identifier</span><span class="p">,</span>
+        <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;true_positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
@@ -1706,6 +1667,57 @@
 
 </div>
 
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="src.pheval.analyse.binary_classification_curves.compute_curves" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">compute_curves</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Compute ROC and Precision-Recall curves.
+Args:
+    result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.
+    run_identifier (str): Identifier for this run.
+Returns:
+    pl.LazyFrame: LazyFrame containing the ROC &amp; Precision-Recall curve data with NumPy arrays.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_curves</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute ROC and Precision-Recall curves.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.</span>
+<span class="sd">        run_identifier (str): Identifier for this run.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pl.LazyFrame: LazyFrame containing the ROC &amp; Precision-Recall curve data with NumPy arrays.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calculating ROC and Precision-Recall metrics&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BinaryClassificationCurves</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
 
 
 
@@ -1734,7 +1746,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analysis" rel="prev">
+        <a href="../benchmark_output_type/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Benchmark output type" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1743,20 +1755,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Analysis
+              Benchmark output type
             </div>
           </div>
         </a>
       
       
         
-        <a href="../benchmark_db_manager/" class="md-footer__link md-footer__link--next" aria-label="Next: Benchmark db manager" rel="next">
+        <a href="../binary_classification_stats/" class="md-footer__link md-footer__link--next" aria-label="Next: Binary classification stats" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Benchmark db manager
+              Binary classification stats
             </div>
           </div>
           <div class="md-footer__button md-icon">
