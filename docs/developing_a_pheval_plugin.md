@@ -250,12 +250,14 @@ Depending on whether you need to generate gene, variant, and or disease results 
 
 ::: src.pheval.post_processing.post_processing.generate_gene_result
     handler: python
+    options:
       show_root_heading: false
       show_source: true
 ---
 
 ::: src.pheval.post_processing.post_processing.generate_variant_result
     handler: python
+    options:
       show_root_heading: false
       show_source: true
 ---
@@ -263,6 +265,7 @@ Depending on whether you need to generate gene, variant, and or disease results 
 
 ::: src.pheval.post_processing.post_processing.generate_disease_result
     handler: python
+    options:
       show_root_heading: false
       show_source: true
 ---
