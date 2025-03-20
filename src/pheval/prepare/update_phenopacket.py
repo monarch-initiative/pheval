@@ -1,7 +1,7 @@
-from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+import polars as pl
 from phenopackets import Family, Phenopacket
 
 from pheval.utils.file_utils import all_files
@@ -9,14 +9,14 @@ from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
     PhenopacketRebuilder,
     PhenopacketUtil,
-    create_hgnc_dict,
+    create_gene_identifier_map,
     phenopacket_reader,
     write_phenopacket,
 )
 
 
 def update_outdated_gene_context(
-    phenopacket_path: Path, gene_identifier: str, hgnc_data: defaultdict
+    phenopacket_path: Path, gene_identifier: str, identifier_map: pl.DataFrame
 ) -> Union[Phenopacket, Family]:
     """
     Update the gene context of the Phenopacket.
@@ -24,7 +24,7 @@ def update_outdated_gene_context(
     Args:
         phenopacket_path (Path): The path to the Phenopacket file.
         gene_identifier (str): Identifier to update the gene context.
-        hgnc_data (defaultdict): The HGNC data used for updating.
+        identifier_map (pl.DataFrame): The gene identifier map used for updating.
 
     Returns:
         Union[Phenopacket, Family]: The updated Phenopacket or Family.
@@ -37,7 +37,7 @@ def update_outdated_gene_context(
     phenopacket = phenopacket_reader(phenopacket_path)
     interpretations = PhenopacketUtil(phenopacket).interpretations()
     updated_interpretations = GeneIdentifierUpdater(
-        hgnc_data=hgnc_data, gene_identifier=gene_identifier
+        identifier_map=identifier_map, gene_identifier=gene_identifier
     ).update_genomic_interpretations_gene_identifier(interpretations, phenopacket_path)
     return PhenopacketRebuilder(phenopacket).update_interpretations(updated_interpretations)
 
@@ -57,8 +57,10 @@ def create_updated_phenopacket(
         to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
         to describe the gene identifiers.
     """
-    hgnc_data = create_hgnc_dict()
-    updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, hgnc_data)
+    identifier_map = create_gene_identifier_map()
+    updated_phenopacket = update_outdated_gene_context(
+        phenopacket_path, gene_identifier, identifier_map
+    )
     write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
@@ -78,10 +80,10 @@ def create_updated_phenopackets(
         to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
         to describe the gene identifiers.
     """
-    hgnc_data = create_hgnc_dict()
+    identifier_map = create_gene_identifier_map()
     for phenopacket_path in all_files(phenopacket_dir):
         updated_phenopacket = update_outdated_gene_context(
-            phenopacket_path, gene_identifier, hgnc_data
+            phenopacket_path, gene_identifier, identifier_map
         )
         write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 

@@ -2,7 +2,7 @@
 
 PhEval is designed for benchmarking algorithms across various datasets. To execute a benchmark using PhEval, you need to: 
 
-1. Execute your runner; generating the PhEval standardised TSV outputs for gene/variant/disease prioritisation.
+1. Execute your runner; generating the PhEval standardised parquet outputs for gene/variant/disease prioritisation.
 2. Configure the benchmarking parameters.
 3. Run the benchmark.
 
@@ -15,11 +15,11 @@ After executing a run, you may be left with an output directory structure like s
 ```tree
 .
 ├── pheval_disease_results
-│   ├── patient_1-pheval_disease_result.tsv
+│   ├── patient_1-disease_result.parquet
 ├── pheval_gene_results
-│   ├── patient_1-pheval_gene_result.tsv
+│   ├── patient_1-gene_result.parquet
 ├── pheval_variant_results
-│   ├── patient_1-pheval_variant_result.tsv
+│   ├── patient_1-variant_result.parquet
 ├── raw_results
 │   ├── patient_1.json
 ├── results.yml

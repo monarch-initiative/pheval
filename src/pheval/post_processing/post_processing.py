@@ -1,13 +1,25 @@
-import logging
-import operator
-from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import List, Union
+from typing import Callable, Tuple
 
-import pandas as pd
+import polars as pl
 
-info_log = logging.getLogger("info")
+from pheval.post_processing.phenopacket_truth_set import PhenopacketTruthSet
+from pheval.post_processing.validate_result_format import ResultSchema, validate_dataframe
+from pheval.utils.file_utils import all_files
+from pheval.utils.logger import get_logger
+
+logger = get_logger()
+
+executed_results = set()
+
+
+class ResultType(Enum):
+    """Enumeration of the possible result types."""
+
+    GENE = "gene"
+    DISEASE = "disease"
+    VARIANT = "variant"
 
 
 def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
@@ -22,158 +34,6 @@ def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
     return variant_start + len(variant_ref) - 1
 
 
-@dataclass
-class PhEvalResult:
-    """Base class for PhEval results."""
-
-
-@dataclass
-class PhEvalGeneResult(PhEvalResult):
-    """Minimal data required from tool-specific output for gene prioritisation result
-    Args:
-        gene_symbol (Union[List[str], str]): The gene symbol(s) for the result entry
-        gene_identifier (Union[List[str], str]): The ENSEMBL gene identifier(s) for the result entry
-        score (float): The score for the gene result entry
-    Notes:
-        While we recommend providing the gene identifier in the ENSEMBL namespace,
-        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-        in the analysis.
-    """
-
-    gene_symbol: Union[List[str], str]
-    gene_identifier: Union[List[str], str]
-    score: float
-
-
-@dataclass
-class RankedPhEvalGeneResult(PhEvalGeneResult):
-    """PhEval gene result with corresponding rank
-    Args:
-        rank (int): The rank for the result entry
-    """
-
-    rank: int
-
-    @staticmethod
-    def from_gene_result(pheval_gene_result: PhEvalGeneResult, rank: int):
-        """Return RankedPhEvalGeneResult from a PhEvalGeneResult and rank
-        Args:
-            pheval_gene_result (PhEvalGeneResult): The gene result entry
-            rank (int): The corresponding rank for the result entry
-
-        Returns:
-            RankedPhEvalGeneResult: The result as a RankedPhEvalGeneResult
-        """
-        return RankedPhEvalGeneResult(
-            gene_symbol=pheval_gene_result.gene_symbol,
-            gene_identifier=pheval_gene_result.gene_identifier,
-            score=pheval_gene_result.score,
-            rank=rank,
-        )
-
-
-@dataclass
-class PhEvalVariantResult(PhEvalResult):
-    """Minimal data required from tool-specific output for variant prioritisation
-    Args:
-        chromosome (str): The chromosome position of the variant recommended to be provided in the following format.
-        This includes numerical designations from 1 to 22 representing autosomal chromosomes,
-        as well as the sex chromosomes X and Y, and the mitochondrial chromosome MT.
-        start (int): The start position of the variant
-        end (int): The end position of the variant
-        ref (str): The reference allele of the variant
-        alt (str): The alternate allele of the variant
-        score (float): The score for the variant result entry
-    Notes:
-        While we recommend providing the variant's chromosome in the specified format,
-        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-        in the analysis.
-    """
-
-    chromosome: str
-    start: int
-    end: int
-    ref: str
-    alt: str
-    score: float
-    grouping_id: str = field(default=None)
-
-
-@dataclass
-class RankedPhEvalVariantResult(PhEvalVariantResult):
-    """PhEval variant result with corresponding rank
-    Args:
-        rank (int): The rank for the result entry
-    """
-
-    rank: int = 0
-
-    @staticmethod
-    def from_variant_result(pheval_variant_result: PhEvalVariantResult, rank: int):
-        """Return RankedPhEvalVariantResult from a PhEvalVariantResult and rank
-        Args:
-            pheval_variant_result (PhEvalVariantResult): The variant result entry
-            rank (int): The corresponding rank for the result entry
-
-        Returns:
-            RankedPhEvalVariantResult: The result as a RankedPhEvalVariantResult
-        """
-        return RankedPhEvalVariantResult(
-            chromosome=pheval_variant_result.chromosome,
-            start=pheval_variant_result.start,
-            end=pheval_variant_result.end,
-            ref=pheval_variant_result.ref,
-            alt=pheval_variant_result.alt,
-            score=pheval_variant_result.score,
-            rank=rank,
-        )
-
-
-@dataclass
-class PhEvalDiseaseResult(PhEvalResult):
-    """Minimal data required from tool-specific output for disease prioritisation
-    Args:
-        disease_name (str): Disease name for the result entry
-        disease_identifier (str): Identifier for the disease result entry in the OMIM namespace
-        score (str): Score for the disease result entry
-    Notes:
-        While we recommend providing the disease identifier in the OMIM namespace,
-        any matching format used in Phenopacket interpretations is acceptable for result matching purposes
-        in the analysis.
-    """
-
-    disease_name: str
-    disease_identifier: str
-    score: float
-
-
-@dataclass
-class RankedPhEvalDiseaseResult(PhEvalDiseaseResult):
-    """PhEval disease result with corresponding rank
-    Args:
-        rank (int): The rank for the result entry
-    """
-
-    rank: int
-
-    @staticmethod
-    def from_disease_result(pheval_disease_result: PhEvalDiseaseResult, rank: int):
-        """Return RankedPhEvalDiseaseResult from a PhEvalDiseaseResult and rank
-        Args:
-            pheval_disease_result (PhEvalDiseaseResult): The disease result entry
-            rank (int): The corresponding rank for the result entry
-
-        Returns:
-            RankedPhEvalDiseaseResult: The result as a RankedPhEvalDiseaseResult
-        """
-        return RankedPhEvalDiseaseResult(
-            disease_name=pheval_disease_result.disease_name,
-            disease_identifier=pheval_disease_result.disease_identifier,
-            score=pheval_disease_result.score,
-            rank=rank,
-        )
-
-
 class SortOrder(Enum):
     """Enumeration representing sorting orders."""
 
@@ -183,236 +43,224 @@ class SortOrder(Enum):
     """Descending sort order."""
 
 
-class ResultSorter:
-    """Class for sorting PhEvalResult instances based on a given sort order."""
-
-    def __init__(self, pheval_results: [PhEvalResult], sort_order: SortOrder):
-        """
-        Initialise ResultSorter
-
-        Args:
-            pheval_results ([PhEvalResult]): List of PhEvalResult instances to be sorted
-            sort_order (SortOrder): Sorting order to be applied
-        """
-        self.pheval_results = pheval_results
-        self.sort_order = sort_order
-
-    def _sort_by_decreasing_score(self) -> [PhEvalResult]:
-        """
-        Sort results in descending order based on the score
-
-        Returns:
-            [PhEvalResult]: Sorted list of PhEvalResult instances.
-        """
-        return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=True)
-
-    def _sort_by_increasing_score(self) -> [PhEvalResult]:
-        """
-        Sort results in ascending order based on the score
-
-        Returns:
-            [PhEvalResult]: Sorted list of PhEvalResult instances.
-        """
-        return sorted(self.pheval_results, key=operator.attrgetter("score"), reverse=False)
-
-    def sort_pheval_results(self) -> [PhEvalResult]:
-        """
-        Sort results based on the specified sort order.
-
-        Returns:
-            [PhEvalResult]: Sorted list of PhEvalResult instances.
-        """
-        return (
-            self._sort_by_increasing_score()
-            if self.sort_order == SortOrder.ASCENDING
-            else self._sort_by_decreasing_score()
-        )
-
-
-class ResultRanker:
-    def __init__(self, pheval_result: List[PhEvalResult], sort_order: SortOrder):
-        """
-        Initialise the PhEvalRanker.
-        Args:
-            pheval_result (List[PhEvalResult]): PhEval results to rank.
-            sort_order (SortOrder): Sorting order based on which ranking is performed.
-        """
-        self.pheval_result = pheval_result
-        self.sort_order = sort_order
-        self.ascending = sort_order == SortOrder.ASCENDING
-
-    def rank(self) -> pd.DataFrame:
-        """
-        Rank PhEval results, managing tied scores (ex aequo) and handling grouping_id if present.
-
-        Returns:
-            pd.DataFrame : Ranked PhEval results with tied scores managed.
-        """
-        pheval_result_df = pd.DataFrame([data.__dict__ for data in self.pheval_result])
-
-        if self._has_valid_grouping_id(pheval_result_df):
-            pheval_result_df = self._rank_with_grouping_id(pheval_result_df)
-        else:
-            pheval_result_df = self._rank_without_grouping_id(pheval_result_df)
-        return pheval_result_df.drop(columns=["min_rank", "grouping_id"], errors="ignore")
-
-    @staticmethod
-    def _has_valid_grouping_id(pheval_result_df: pd.DataFrame) -> bool:
-        """Check if grouping_id exists and has no None values."""
-        return (
-            "grouping_id" in pheval_result_df.columns
-            and not pheval_result_df["grouping_id"].isnull().any()
-        )
-
-    def _rank_with_grouping_id(self, pheval_result_df: pd.DataFrame) -> pd.DataFrame:
-        """Apply ranking when grouping_id is present and has no None values."""
-        pheval_result_df["min_rank"] = (
-            pheval_result_df.groupby(["score", "grouping_id"])
-            .ngroup()
-            .rank(method="dense", ascending=self.ascending)
-        ).astype(int)
-        pheval_result_df["rank"] = pheval_result_df.groupby("score")["min_rank"].transform("max")
-        return pheval_result_df
-
-    def _rank_without_grouping_id(self, pheval_result_df: pd.DataFrame) -> pd.DataFrame:
-        """Apply ranking without using grouping_id."""
-        pheval_result_df["rank"] = (
-            pheval_result_df["score"].rank(method="max", ascending=self.ascending).astype(int)
-        )
-        return pheval_result_df
-
-
-def _return_sort_order(sort_order_str: str) -> SortOrder:
+def _rank_results(results: pl.DataFrame, sort_order: SortOrder) -> pl.DataFrame:
     """
-    Convert a string derived from the config file into SortOrder Enum
-
+    Rank results with the given sort order.
     Args:
-        sort_order_str (str): String representation of the sorting order
-
+        results (pl.DataFrame): The results to rank.
+        sort_order (SortOrder): The sort order to use.
     Returns:
-        SortOrder: Enum representing the specified sorting order
-
-    Raises:
-        ValueError: If an incompatible or unknown sorting method is provided
+        pl.DataFrame: The ranked results.
     """
-    try:
-        return SortOrder[sort_order_str.upper()]
-    except KeyError:
-        raise ValueError("Incompatible ordering method specified.")
-
-
-def _create_pheval_result(pheval_result: [PhEvalResult], sort_order_str: str) -> pd.DataFrame:
-    """
-    Create PhEval results with corresponding ranks based on the specified sorting order.
-
-    Args:
-        pheval_result ([PhEvalResult]): List of PhEvalResult instances to be processed.
-        sort_order_str (str): String representation of the desired sorting order.
-
-    Returns:
-       pd.DataFrame: PhEval results with ranks assigned.
-    """
-    sort_order = _return_sort_order(sort_order_str)
-    sorted_pheval_result = ResultSorter(pheval_result, sort_order).sort_pheval_results()
-    return ResultRanker(sorted_pheval_result, sort_order).rank()
-
-
-def _write_pheval_gene_result(
-    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
-) -> None:
-    """
-    Write ranked PhEval gene results to a TSV file
-
-    Args:
-        ranked_pheval_result ([PhEvalResult]): List of ranked PhEval gene results
-        output_dir (Path): Path to the output directory
-        tool_result_path (Path): Path to the tool-specific result file
-    """
-    pheval_gene_output = ranked_pheval_result.loc[
-        :, ["rank", "score", "gene_symbol", "gene_identifier"]
-    ]
-    pheval_gene_output.to_csv(
-        output_dir.joinpath(
-            "pheval_gene_results/" + tool_result_path.stem + "-pheval_gene_result.tsv"
-        ),
-        sep="\t",
-        index=False,
-    )
-
-
-def _write_pheval_variant_result(
-    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
-) -> None:
-    """
-    Write ranked PhEval variant results to a TSV file
-
-    Args:
-        ranked_pheval_result ([PhEvalResult]): List of ranked PhEval gene results
-        output_dir (Path): Path to the output directory
-        tool_result_path (Path): Path to the tool-specific result file
-    """
-    pheval_variant_output = ranked_pheval_result.loc[
-        :, ["rank", "score", "chromosome", "start", "end", "ref", "alt"]
-    ]
-    pheval_variant_output.to_csv(
-        output_dir.joinpath(
-            "pheval_variant_results/" + tool_result_path.stem + "-pheval_variant_result.tsv"
-        ),
-        sep="\t",
-        index=False,
-    )
-
-
-def _write_pheval_disease_result(
-    ranked_pheval_result: pd.DataFrame, output_dir: Path, tool_result_path: Path
-) -> None:
-    """
-    Write ranked PhEval disease results to a TSV file
-
-    Args:
-        ranked_pheval_result ([PhEvalResult]): List of ranked PhEval gene results
-        output_dir (Path): Path to the output directory
-        tool_result_path (Path): Path to the tool-specific result file
-    """
-    pheval_disease_output = ranked_pheval_result.loc[
-        :, ["rank", "score", "disease_name", "disease_identifier"]
-    ]
-    pheval_disease_output.to_csv(
-        output_dir.joinpath(
-            "pheval_disease_results/" + tool_result_path.stem + "-pheval_disease_result.tsv"
-        ),
-        sep="\t",
-        index=False,
-    )
-
-
-def generate_pheval_result(
-    pheval_result: [PhEvalResult],
-    sort_order_str: str,
-    output_dir: Path,
-    tool_result_path: Path,
-) -> None:
-    """
-    Generate PhEval variant, gene or disease TSV result based on input results.
-
-    Args:
-        pheval_result ([PhEvalResult]): List of PhEvalResult instances to be processed.
-        sort_order_str (str): String representation of the desired sorting order.
-        output_dir (Path): Path to the output directory.
-        tool_result_path (Path): Path to the tool-specific result file.
-
-    Raises:
-        ValueError: If the results are not all the same type or an error occurs during file writing.
-    """
-    if not pheval_result:
-        info_log.warning(f"No results found for {tool_result_path.name}")
-        return
-    ranked_pheval_result = _create_pheval_result(pheval_result, sort_order_str)
-    if all(isinstance(result, PhEvalGeneResult) for result in pheval_result):
-        _write_pheval_gene_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, PhEvalVariantResult) for result in pheval_result):
-        _write_pheval_variant_result(ranked_pheval_result, output_dir, tool_result_path)
-    elif all(isinstance(result, PhEvalDiseaseResult) for result in pheval_result):
-        _write_pheval_disease_result(ranked_pheval_result, output_dir, tool_result_path)
+    sort_descending = True if sort_order == SortOrder.DESCENDING else False
+    has_grouping_id = "grouping_id" in results.columns
+    if has_grouping_id:
+        results = (
+            results.sort("score", descending=sort_descending)
+            .with_columns(
+                pl.struct(["score", "grouping_id"])
+                .rank(method="dense", descending=sort_descending)
+                .cast(pl.Int32)
+                .alias("min_rank")
+            )
+            .with_columns(pl.col("min_rank").max().over("score").alias("rank"))
+        )
     else:
-        raise ValueError("Results are not all of the same type.")
+        results = results.sort("score", descending=sort_descending).with_columns(
+            pl.col("score").rank(method="max", descending=sort_descending).alias("rank")
+        )
+
+    return results
+
+
+def _write_results_file(out_file: Path, output_df: pl.DataFrame) -> None:
+    """
+    Write results to compressed Parquet output.
+    Args:
+        out_file (Path): Output file to write to.
+        output_df (pl.DataFrame): Output dataframe.
+    """
+    output_df.write_parquet(out_file, compression="zstd")
+
+
+def _write_gene_result(ranked_results: pl.DataFrame, output_file: Path) -> None:
+    """
+    Write ranked PhEval gene results to a parquet file.
+
+    Args:
+        ranked_results ([PhEvalResult]): List of ranked PhEval gene results.
+        output_file (Path): Path to the output file.
+    """
+    gene_output = ranked_results.select(
+        ["rank", "score", "gene_symbol", "gene_identifier", "true_positive"]
+    )
+    _write_results_file(output_file, gene_output)
+
+
+def _write_variant_result(ranked_results: pl.DataFrame, output_file: Path) -> None:
+    """
+    Write ranked PhEval variant results to a parquet file.
+
+    Args:
+        ranked_results ([PhEvalResult]): List of ranked PhEval variant results.
+        output_file (Path): Path to the output file.
+    """
+    variant_output = ranked_results.select(
+        ["rank", "score", "chromosome", "start", "end", "ref", "alt", "variant_id", "true_positive"]
+    )
+    _write_results_file(output_file, variant_output)
+
+
+def _write_disease_result(ranked_results: pl.DataFrame, output_file: Path) -> None:
+    """
+    Write ranked PhEval disease results to a parquet file.
+
+    Args:
+        ranked_results ([PhEvalResult]): List of ranked PhEval disease results.
+        output_file (Path): Path to the output file.
+    """
+    disease_output = ranked_results.select(
+        ["rank", "score", "disease_name", "disease_identifier", "true_positive"]
+    )
+    _write_results_file(output_file, disease_output)
+
+
+def _get_result_type(
+    result_type: ResultType, phenopacket_truth_set: PhenopacketTruthSet
+) -> Tuple[Callable, Callable]:
+    """
+    Get the methods for extracting the entity and writing the result for a given result type.
+    Args:
+        result_type (ResultType): The result type.
+        phenopacket_truth_set (PhenopacketTruthSet): The phenotype truth set class instance.
+    Returns:
+        Tuple[Callable, Callable]: The methods for extracting the entity and the write method.
+    """
+    match result_type:
+        case ResultType.GENE:
+            return phenopacket_truth_set.classified_gene, _write_gene_result
+        case ResultType.VARIANT:
+            return phenopacket_truth_set.classified_variant, _write_variant_result
+        case ResultType.DISEASE:
+            return phenopacket_truth_set.classified_disease, _write_disease_result
+
+
+def create_empty_pheval_result(
+    phenopacket_dir: Path, output_dir: Path, result_type: ResultType
+) -> None:
+    """
+    Create an empty PhEval result for a given result type (gene, variant, or disease).
+
+    Notes:
+        This is necessary because some tools may not generate a result output for certain cases.
+        By explicitly creating an empty result, which will contain the known entity with a rank and score of 0,
+        we can track and identify false negatives  during benchmarking,
+        ensuring that missing predictions are accounted for in the evaluation.
+
+    Args:
+        phenopacket_dir (Path): The directory containing the phenopackets.
+        output_dir (Path): The output directory.
+        result_type (ResultType): The result type.
+
+    """
+    if result_type in executed_results:
+        return
+    executed_results.add(result_type)
+    phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir)
+    classify_method, write_method = _get_result_type(result_type, phenopacket_truth_set)
+    for file in all_files(phenopacket_dir):
+        classified_results = classify_method(file.stem)
+        write_method(
+            classified_results,
+            output_dir.joinpath(f"{file.stem}-{result_type.value}_result.parquet"),
+        )
+
+
+@validate_dataframe(ResultSchema.GENE_RESULT_SCHEMA)
+def generate_gene_result(
+    results: pl.DataFrame,
+    sort_order: SortOrder,
+    output_dir: Path,
+    result_path: Path,
+    phenopacket_dir: Path,
+) -> None:
+    """
+    Generate PhEval gene results to a compressed Parquet output.
+    Args:
+        results (pl.DataFrame): The gene results.
+        sort_order (SortOrder): The sort order to use.
+        output_dir (Path): Path to the output directory
+        result_path (Path): Path to the tool-specific result file.
+        phenopacket_dir (Path): Path to the Phenopacket directory
+    """
+    output_file = output_dir.joinpath(f"pheval_gene_results/{result_path.stem}-gene_result.parquet")
+    create_empty_pheval_result(
+        phenopacket_dir, output_dir.joinpath("pheval_gene_results"), ResultType.GENE
+    )
+    ranked_results = _rank_results(results, sort_order)
+    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_gene_results(
+        ranked_results, output_file
+    )
+    _write_gene_result(classified_results, output_file)
+
+
+@validate_dataframe(ResultSchema.VARIANT_RESULT_SCHEMA)
+def generate_variant_result(
+    results: pl.DataFrame,
+    sort_order: SortOrder,
+    output_dir: Path,
+    result_path: Path,
+    phenopacket_dir: Path,
+) -> None:
+    """
+    Generate PhEval variant results to a compressed Parquet output.
+    Args:
+        results (pl.DataFrame): The variant results.
+        sort_order (SortOrder): The sort order to use.
+        output_dir (Path): Path to the output directory
+        result_path (Path): Path to the tool-specific result file.
+        phenopacket_dir (Path): Path to the Phenopacket directory
+    """
+    output_file = output_dir.joinpath(
+        f"pheval_variant_results/{result_path.stem}-variant_result.parquet"
+    )
+    create_empty_pheval_result(
+        phenopacket_dir, output_dir.joinpath("pheval_variant_results"), ResultType.VARIANT
+    )
+    ranked_results = _rank_results(results, sort_order).with_columns(
+        pl.concat_str(["chrom", "pos", "ref", "alt"], separator="-").alias("variant_id")
+    )
+    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_variant_results(
+        ranked_results, output_file
+    )
+    _write_variant_result(classified_results, output_file)
+
+
+@validate_dataframe(ResultSchema.DISEASE_RESULT_SCHEMA)
+def generate_disease_result(
+    results: pl.DataFrame,
+    sort_order: SortOrder,
+    output_dir: Path,
+    result_path: Path,
+    phenopacket_dir: Path,
+) -> None:
+    """
+    Generate PhEval disease results to a compressed Parquet output.
+    Args:
+        results (pl.DataFrame): The disease results.
+        sort_order (SortOrder): The sort order to use.
+        output_dir (Path): Path to the output directory
+        result_path (Path): Path to the tool-specific result file.
+        phenopacket_dir (Path): Path to the Phenopacket directory
+    """
+    output_file = output_dir.joinpath(
+        f"pheval_disease_results/{result_path.stem}-disease_result.parquet"
+    )
+    create_empty_pheval_result(
+        phenopacket_dir, output_dir.joinpath("pheval_disease_results"), ResultType.DISEASE
+    )
+    ranked_results = _rank_results(results, sort_order)
+    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_disease_results(
+        ranked_results, output_file
+    )
+    _write_disease_result(classified_results, output_file)

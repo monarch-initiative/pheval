@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pheval"
-version = "0.4.7"
+version = "0.5.0"
 description = ""
 authors = ["Yasemin Bridges <y.bridges@qmul.ac.uk>",
   "Julius Jacobsen <j.jacobsen@qmul.ac.uk>",
@@ -10,7 +10,7 @@ readme = "README.md"
 packages = [{include = "pheval", from = "src"}]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4.0.0"
+python = ">=3.10,<4.0.0"
 jaydebeapi = ">=1.2.3"
 tqdm = ">=4.64.1"
 pandas = ">=1.5.1"
@@ -25,14 +25,14 @@ plotly = "^5.13.0"
 seaborn = "^0.12.2"
 matplotlib = "^3.7.0"
 pyserde = "^0.9.8"
-polars = "^0.19.15"
+polars = "^1.23"
 scikit-learn = "^1.4.0"
 duckdb = "^1.0.0"
+pyarrow = "^19.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
 coverage = "^6.5.0"
-pheval-template = "^0.1.2"
 pytest-workflow = "^2.0.1"
 
 [tool.poetry.scripts]

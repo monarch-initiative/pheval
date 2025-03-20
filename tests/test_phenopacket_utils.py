@@ -33,7 +33,6 @@ from pheval.utils.phenopacket_utils import (
     ProbandCausativeVariant,
     ProbandDisease,
     create_gene_identifier_map,
-    create_hgnc_dict,
 )
 
 interpretations = [
@@ -141,9 +140,10 @@ updated_interpretations = [
                                 value_id="ENSG00000102302",
                                 symbol="FGD1",
                                 alternate_ids=[
+                                    "ensembl:ENSG00000102302",
                                     "HGNC:3663",
                                     "ncbigene:2245",
-                                    "ensembl:ENSG00000102302",
+                                    "NM_004463",
                                     "symbol:FGD1",
                                 ],
                             ),
@@ -172,9 +172,10 @@ updated_interpretations = [
                                 value_id="ENSG00000176225",
                                 symbol="RTTN",
                                 alternate_ids=[
+                                    "ensembl:ENSG00000176225",
                                     "HGNC:18654",
                                     "ncbigene:25914",
-                                    "ensembl:ENSG00000176225",
+                                    "NM_173630",
                                     "symbol:RTTN",
                                 ],
                             ),
@@ -688,15 +689,13 @@ class TestPhenopacketRebuilder(unittest.TestCase):
 class TestGeneIdentifierUpdater(unittest.TestCase):
     @classmethod
     def setUpClass(cls, hgnc_dict=None, identifier_map=None) -> None:
-        if hgnc_dict is None:
-            hgnc_dict = create_hgnc_dict()
         if identifier_map is None:
             identifier_map = create_gene_identifier_map()
         cls.gene_identifier_updater_ens = GeneIdentifierUpdater(
-            hgnc_data=hgnc_dict, gene_identifier="ensembl_id"
+            gene_identifier="ensembl_id", identifier_map=identifier_map
         )
         cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(
-            hgnc_data=hgnc_dict, gene_identifier="entrez_id"
+            gene_identifier="entrez_id", identifier_map=identifier_map
         )
         cls.find_symbol = GeneIdentifierUpdater(
             gene_identifier="hgnc_id", identifier_map=identifier_map
@@ -704,9 +703,11 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
 
     def test_find_identifier(self):
         self.assertEqual(self.gene_identifier_updater_ens.find_identifier("A2M"), "ENSG00000175899")
-        self.assertEqual(self.gene_identifier_updater_ens.find_identifier("GBA"), "ENSG00000177628")
+        self.assertEqual(
+            self.gene_identifier_updater_ens.find_identifier("GBA1"), "ENSG00000177628"
+        )
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
-        self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA"), "2629")
+        self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA1"), "2629")
 
     def test_obtain_gene_symbol_from_identifier_hgnc(self):
         self.assertEqual(
@@ -726,11 +727,11 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
 
     def test_find_alternate_ids(self):
         self.assertEqual(
-            ["HGNC:4177", "ncbigene:2629", "ensembl:ENSG00000177628", "symbol:GBA1"],
-            self.gene_identifier_updater_ens._find_alternate_ids("GBA"),
+            ["ensembl:ENSG00000177628", "HGNC:4177", "ncbigene:2629", "NM_000157", "symbol:GBA1"],
+            self.gene_identifier_updater_ens._find_alternate_ids("GBA1"),
         )
         self.assertEqual(
-            ["HGNC:7", "ncbigene:2", "ensembl:ENSG00000175899", "symbol:A2M"],
+            ["ensembl:ENSG00000175899", "HGNC:7", "ncbigene:2", "NM_000014", "symbol:A2M"],
             self.gene_identifier_updater_entrez._find_alternate_ids("A2M"),
         )
 

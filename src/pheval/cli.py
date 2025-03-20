@@ -4,11 +4,13 @@ import logging
 
 import click
 
+from pheval.utils.logger import get_logger, print_ascii_banner
+
 from .cli_pheval import run
 from .cli_pheval_utils import (
+    benchmark,
     create_spiked_vcfs_command,
-    generate_benchmark_stats,
-    generate_stats_plot,
+    generate_plots,
     prepare_corpus_command,
     scramble_phenopackets_command,
     semsim_scramble_command,
@@ -16,50 +18,63 @@ from .cli_pheval_utils import (
     update_phenopackets_command,
 )
 
-info_log = logging.getLogger("info")
+logger = get_logger()
 
 
 @click.group()
 @click.option("-v", "--verbose", count=True)
-@click.option("-q", "--quiet")
-def main(verbose=1, quiet=False) -> None:
-    """main CLI method for PhEval
+@click.option("-q", "--quiet", is_flag=True)
+@click.pass_context
+def main(ctx, verbose=1, quiet=False):
+    """Main CLI method for PhEval."""
 
-    Args:
-        verbose (int, optional): Verbose flag.
-        quiet (bool, optional): Queit Flag.
-    """
+    if not getattr(ctx, "ascii_printed", False):
+        ctx.ascii_printed = True  # ✅ Mark as printed
+        print_ascii_banner()
+
     if verbose >= 2:
-        info_log.setLevel(level=logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
     elif verbose == 1:
-        info_log.setLevel(level=logging.INFO)
+        logger.setLevel(logging.INFO)
     else:
-        info_log.setLevel(level=logging.WARNING)
+        logger.setLevel(logging.WARNING)
     if quiet:
-        info_log.setLevel(level=logging.ERROR)
+        logger.setLevel(logging.ERROR)
 
 
-@click.group()
-def pheval():
+def before_command(ctx, param, value):
+    """Runs before any Click command to ensure ASCII prints only once."""
+    if not getattr(ctx, "ascii_printed", False):
+        ctx.ascii_printed = True
+        print_ascii_banner()
+
+
+@main.group()
+@click.pass_context
+@click.option("--before", is_flag=True, callback=before_command, expose_value=False, is_eager=True)
+def pheval(ctx):
     """pheval"""
+    pass
+
+
+@main.group()
+@click.pass_context
+@click.option("--before", is_flag=True, callback=before_command, expose_value=False, is_eager=True)
+def pheval_utils(ctx):
+    """pheval_utils"""
+    pass
 
 
 pheval.add_command(run)
-
-
-@click.group()
-def pheval_utils():
-    """pheval_utils"""
-
 
 pheval_utils.add_command(semsim_scramble_command)
 pheval_utils.add_command(scramble_phenopackets_command)
 pheval_utils.add_command(update_phenopackets_command)
 pheval_utils.add_command(create_spiked_vcfs_command)
-pheval_utils.add_command(generate_benchmark_stats)
+pheval_utils.add_command(benchmark)
 pheval_utils.add_command(semsim_to_exomiserdb_command)
-pheval_utils.add_command(generate_stats_plot)
 pheval_utils.add_command(prepare_corpus_command)
+pheval_utils.add_command(generate_plots)
 
 if __name__ == "__main__":
     main()

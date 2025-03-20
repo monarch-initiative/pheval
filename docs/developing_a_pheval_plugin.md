@@ -18,10 +18,10 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 ## Step-by-Step Plugin Development Process
 
-The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [Sphintoxetry-cookiecutter](https://github.com/hrshdhgd/sphintoxetry-cookiecutter), and it uses [Sphinx](https://www.sphinx-doc.org/en/master/), [tox](https://tox.wiki/en/latest/) and [poetry](https://python-poetry.org) as core dependencies.
+The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [cookiecutter](https://github.com/monarch-initiative/pheval-runner-template), and it uses [MkDocs](https://mkdocstrings.github.io), [tox](https://tox.wiki/en/latest/) and [poetry](https://python-poetry.org) as core dependencies.
 This allows PhEval extensibility to be standardised in terms of documentation and dependency management.
 
-### 1. Sphintoxetry-cookiecutter scaffold
+### 1. Cookiecutter scaffold
 
 First, install the cruft package. Cruft enables keeping projects up-to-date with future updates made to this original template.
 
@@ -33,7 +33,7 @@ pip install cruft
 
 > **_NOTE:_**  You may encounter an error with the naming of the project layout if using an older release of cruft. To avoid this, make sure you have installed the latest release version.
 
-Next, create a project using the sphintoxetry-cookiecutter template.
+Next, create a project using the cookiecutter template.
 
 ```
 cruft create https://github.com/monarch-initiative/pheval-runner-template
@@ -104,7 +104,7 @@ The Cookiecutter will automatically populate the plugins section in the `pyproje
 customrunner = "pheval_plugin_example.runner:CustomRunner"
 ```
 
-> Please Note that the path here and naming of the class is case sensitive.
+> Please Note that the path here and naming of the class is case-sensitive.
 
 
 ### 4. Implementing PhEval helper methods
@@ -140,7 +140,7 @@ phenopacket_util = PhenopacketUtil(phenopacket)
 observed_phenotypes = phenopacket_util.observed_phenotypic_features()
 # To extract just the HPO ID as a list
 observed_phenotypes_hpo_ids = [
-    observed_phenotype.id for observed_phenotype in observed_phenotypes
+    observed_phenotype.type.id for observed_phenotype in observed_phenotypes
 ]
 ```
 #### Additional tool-specific configurations
@@ -220,52 +220,64 @@ class CustomPhevalRunner(PhEvalRunner):
 
 PhEval currently supports the benchmarking of gene, variant, and disease prioritisation results. 
 
-To benchmark these result types, PhEval TSV result files need to be generated. 
+To benchmark these result types, PhEval parquet result files need to be generated. 
 
-PhEval can deal with the ranking and generation of these files to the correct location. However, the runner implementation must handle the extraction of essential data from the tool-specific raw results. This involves transforming them into a list comprising PhEval data classes, with each instance representing a result entry.
+PhEval can deal with the ranking and generation of these files to the correct location. However, the runner implementation must handle the extraction of essential data from the tool-specific raw results. This involves transforming them into a polars dataframe with the required columns for the benchmark type.
 
-The dataclasses representing essential information extracted from tool-specific output for gene, variant, and disease prioritisation are defined as follows:
+The columns representing essential information extracted from tool-specific output for gene, variant, and disease prioritisation are defined as follows:
 
-::: src.pheval.post_processing.post_processing.PhEvalGeneResult
+::: src.pheval.post_processing.validate_result_format.ResultSchema
     handler: python
     options:
       members:
-        - PhEvalGeneResult
+        - GENE_RESULT_SCHEMA
+        - VARIANT_RESULT_SCHEMA
+        - DISEASE_RESULT_SCHEMA
       show_root_heading: false
       show_source: true
 ---
 
-For variant prioritisation results the `grouping_id` parameter is designed to handle compound heterozygous variants in ranking. Compound heterozygosity occurs when two or more variants, inherited together, contribute to a phenotype. For this purpose, variants that are part of the same compound heterozygous group (e.g., within the same gene) should be assigned the same `grouping_id`. This ensures they are ranked as a single entity, preserving their combined significance. Variants that are not part of any compound heterozygous group should each have a unique `grouping_id`. This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented.
-::: src.pheval.post_processing.post_processing.PhEvalVariantResult
+The `grouping_id` column is _**optional**_ and is designed to handle cases where entities should be jointly ranked without being penalised. 
+For example, in the ranking of compound heterozygous variant which occurs when two or more variants, inherited together, 
+contribute to a phenotype. For this purpose, variants that are part of the same compound heterozygous group 
+(e.g., within the same gene) should be assigned the same `grouping_id`. 
+This ensures they are ranked as a single entity, preserving their combined significance.
+Variants that are not part of any compound heterozygous group should each have a unique `grouping_id`. 
+This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented. 
+The use of the `grouping_id` would also be suitable for the ranking and prioritisation of polygenic diseases.
+
+Depending on whether you need to generate gene, variant, and or disease results depends on the final method called to generate the results from the polars dataframe. The methods are outlined below:
+
+::: src.pheval.post_processing.post_processing.generate_gene_result
     handler: python
-    options:
-      members:
-        - PhEvalVariantResult
       show_root_heading: false
       show_source: true
 ---
 
-::: src.pheval.post_processing.post_processing.PhEvalDiseaseResult
+::: src.pheval.post_processing.post_processing.generate_variant_result
     handler: python
-    options:
-      members:
-        - PhEvalDiseaseResult
       show_root_heading: false
       show_source: true
 ---
 
-The `generate_pheval_result()` can be implemented in your runner to write out the PhEval TSV results.
+
+::: src.pheval.post_processing.post_processing.generate_disease_result
+    handler: python
+      show_root_heading: false
+      show_source: true
+---
 
 An example of how the method can be called is outlined here:
 
 ```python
-from pheval.post_processing.post_processing import generate_pheval_result
+from pheval.post_processing.post_processing import generate_gene_result, SortOrder
 
-generate_pheval_result(
-    pheval_result=pheval_gene_result, # this is the list of extracted PhEval result requirements
-    sort_order_str="descending", # or can be ascending - this determines in which order the scores will be ranked
-    output_dir=output_directory, # this can be accessed from the runner instance e.g., self.output_dir
-    tool_result_path=tool_result_json # this is the path to the tool-specific raw results file
+generate_gene_result(
+    results=pheval_gene_result,  # this is the polars dataframe containing extracted PhEval result requirements
+    sort_order=SortOrder.DESCENDING,  # or can be ASCENDING - this determines in which order the scores will be ranked
+    output_dir=output_directory,  # this can be accessed from the runner instance e.g., self.output_dir
+    result_path=result_path  # this is the path to the tool-specific raw results file
+    phenopacket_dir=phenopacket_dir # this is the path to the directory containing the phenopackets
 )
 ```
 
@@ -346,8 +358,7 @@ Output:
 
 ```
 preparing
-running with custom pheval Runner
+running
 post processing
 ```
 
-Pay attention to "_==running with custom pheval Runner==_" line, this is exactly what we had implemented in the **CustomPhevalRunner** Example

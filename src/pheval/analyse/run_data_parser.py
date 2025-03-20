@@ -2,7 +2,9 @@ from pathlib import Path
 from typing import List, Optional
 
 import yaml
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, field_validator
+
+from pheval.utils.logger import get_logger
 
 
 class RunConfig(BaseModel):
@@ -12,10 +14,10 @@ class RunConfig(BaseModel):
     Attributes:
         run_identifier (str): The run identifier.
         phenopacket_dir (str): The path to the phenopacket directory used for generating the results.
-        results_dir (str): The path to the results directory.
-        gene_analysis (bool): Whether or not to benchmark gene analysis results.
-        variant_analysis (bool): Whether or not to benchmark variant analysis results.
-        disease_analysis (bool): Whether or not to benchmark disease analysis results.
+        results_dir (str): The path to the result directory.
+        gene_analysis (bool): Whether to benchmark gene analysis results.
+        variant_analysis (bool): Whether to benchmark variant analysis results.
+        disease_analysis (bool): Whether to benchmark disease analysis results.
         threshold (Optional[float]): The threshold to consider for benchmarking.
         score_order (Optional[str]): The order of scores to consider for benchmarking, either ascending or descending.
     """
@@ -29,25 +31,15 @@ class RunConfig(BaseModel):
     threshold: Optional[float]
     score_order: Optional[str]
 
-    @root_validator(pre=True)
-    def handle_blank_fields(cls, values: dict) -> dict:  # noqa: N805
-        """
-        Root validator to handle fields that may be explicitly set to None.
+    @field_validator("threshold", mode="before")
+    @classmethod
+    def set_threshold(cls, threshold):
+        return threshold or None
 
-        This method checks if 'threshold' and 'score_order' are None and assigns default values if so.
-
-        Args:
-            values (dict): The input values provided to the model.
-
-        Returns:
-            dict: The updated values with defaults applied where necessary.
-        """
-        if values.get("threshold") is None:
-            values["threshold"] = 0
-            print("setting default threshold")
-        if values.get("score_order") is None:
-            values["score_order"] = "descending"
-        return values
+    @field_validator("score_order", mode="before")
+    @classmethod
+    def set_score_order(cls, score_order):
+        return score_order or "descending"
 
 
 class SinglePlotCustomisation(BaseModel):
@@ -66,22 +58,10 @@ class SinglePlotCustomisation(BaseModel):
     roc_curve_title: Optional[str]
     precision_recall_title: Optional[str]
 
-    @root_validator(pre=True)
-    def handle_blank_fields(cls, values: dict) -> dict:  # noqa: N805
-        """
-        Root validator to handle fields that may be explicitly set to None.
-
-        This method checks if 'plot_type' is None and assigns default value if so.
-
-        Args:
-            values (dict): The input values provided to the model.
-
-        Returns:
-            dict: The updated values with defaults applied where necessary.
-        """
-        if values.get("plot_type") is None:
-            values["plot_type"] = "bar_cumulative"
-        return values
+    @field_validator("plot_type", mode="before")
+    @classmethod
+    def set_plot_type(cls, plot_type):
+        return plot_type or "bar_cumulative"
 
 
 class PlotCustomisation(BaseModel):
@@ -118,6 +98,8 @@ def parse_run_config(run_config: Path) -> Config:
     Returns:
         Config: The parsed run configurations.
     """
+    logger = get_logger()
+    logger.info(f"Loading benchmark configuration from {run_config}")
     with open(run_config, "r") as f:
         config_data = yaml.safe_load(f)
     f.close()
