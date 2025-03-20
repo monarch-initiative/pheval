@@ -19,8 +19,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.highlight
-  - mkdocs-click:
-      filter: "callable(obj) and isinstance(obj, click.BaseCommand)"
+  - mkdocs-click
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
