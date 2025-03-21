@@ -4,6 +4,7 @@ from functools import cache
 
 from class_resolver import ClassResolver
 
+from pheval.implementations.custom_class_resolver import PhevalClassResolver
 from pheval.runners.runner import PhEvalRunner
 
 
@@ -14,9 +15,11 @@ def get_implementation_resolver() -> ClassResolver[PhEvalRunner]:
     Returns:
         ClassResolver[PhEvalRunner]: _description_
     """
-    implementation_resolver: ClassResolver[PhEvalRunner] = ClassResolver.from_subclasses(
-        PhEvalRunner,
-        suffix="Implementation",
+    implementation_resolver: PhevalClassResolver[PhEvalRunner] = (
+        PhevalClassResolver.from_subclasses(
+            PhEvalRunner,
+            suffix="Implementation",
+        )
     )
 
     # implementation_resolver.synonyms.update(
@@ -34,5 +37,10 @@ def get_implementation_resolver() -> ClassResolver[PhEvalRunner]:
     # See also:
     # https://packaging.python.org/en/latest/specifications/entry-points/
     # https://class-resolver.readthedocs.io/en/latest/api/class_resolver.ClassResolver.html#class_resolver.ClassResolver.register_entrypoint
-    implementation_resolver.register_entrypoint("pheval.plugins")
-    return implementation_resolver
+    try:
+        implementation_resolver._from_entrypoint_custom("pheval.plugins")
+    except Exception as e:
+        raise
+    else:
+        implementation_resolver.register_entrypoint("pheval.plugins")
+        return implementation_resolver
