@@ -35,7 +35,6 @@ class ResultSchema(Enum):
     )
     DISEASE_RESULT_SCHEMA = pl.Schema(
         {
-            "disease_name": pl.String,
             "disease_identifier": pl.String,
             "score": pl.Float64,
             "grouping_id": pl.Utf8,

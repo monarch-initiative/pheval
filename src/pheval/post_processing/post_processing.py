@@ -120,7 +120,7 @@ def _write_disease_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         output_file (Path): Path to the output file.
     """
     disease_output = ranked_results.select(
-        ["rank", "score", "disease_name", "disease_identifier", "true_positive"]
+        ["rank", "score", "disease_identifier", "true_positive"]
     )
     _write_results_file(output_file, disease_output)
 
