@@ -106,7 +106,7 @@ def _write_variant_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         output_file (Path): Path to the output file.
     """
     variant_output = ranked_results.select(
-        ["rank", "score", "chromosome", "start", "end", "ref", "alt", "variant_id", "true_positive"]
+        ["rank", "score", "chrom", "start", "end", "ref", "alt", "variant_id", "true_positive"]
     )
     _write_results_file(output_file, variant_output)
 
@@ -226,7 +226,7 @@ def generate_variant_result(
         phenopacket_dir, output_dir.joinpath("pheval_variant_results"), ResultType.VARIANT
     )
     ranked_results = _rank_results(results, sort_order).with_columns(
-        pl.concat_str(["chrom", "pos", "ref", "alt"], separator="-").alias("variant_id")
+        pl.concat_str(["chrom", "start", "ref", "alt"], separator="-").alias("variant_id")
     )
     classified_results = PhenopacketTruthSet(phenopacket_dir).merge_variant_results(
         ranked_results, output_file
