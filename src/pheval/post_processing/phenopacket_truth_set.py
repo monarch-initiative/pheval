@@ -11,6 +11,7 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
 )
 
+
 def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
     """Calculate the end position for a variant
     Args:
@@ -21,6 +22,7 @@ def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
         int: The end position of the variant
     """
     return variant_start + len(variant_ref) - 1
+
 
 class PhenopacketTruthSet:
     """Class for finding the causative gene/disease/variant from a phenopacket"""
@@ -124,8 +126,8 @@ class PhenopacketTruthSet:
         return (
             ranked_results.with_columns(
                 (
-                        pl.col("gene_symbol").is_in(classified_results["gene_symbol"])
-                        | pl.col("gene_identifier").is_in(classified_results["gene_identifier"])
+                    pl.col("gene_symbol").is_in(classified_results["gene_symbol"])
+                    | pl.col("gene_identifier").is_in(classified_results["gene_identifier"])
                 ).alias("true_positive")
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
@@ -191,7 +193,9 @@ class PhenopacketTruthSet:
             .vstack(
                 classified_results.filter(
                     ~pl.struct(["chrom", "start", "end", "ref", "alt"]).is_in(
-                        ranked_results.select(pl.struct(["chrom", "start", "end", "ref", "alt"])).to_series()
+                        ranked_results.select(
+                            pl.struct(["chrom", "start", "end", "ref", "alt"])
+                        ).to_series()
                     )
                 )
             )
