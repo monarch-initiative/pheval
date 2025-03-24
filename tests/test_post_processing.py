@@ -2,7 +2,8 @@ import unittest
 
 import polars as pl
 
-from pheval.post_processing.post_processing import SortOrder, _rank_results, calculate_end_pos
+from pheval.post_processing.phenopacket_truth_set import calculate_end_pos
+from pheval.post_processing.post_processing import SortOrder, _rank_results
 
 gene_results = pl.DataFrame(
     [

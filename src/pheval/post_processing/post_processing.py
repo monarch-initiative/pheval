@@ -22,18 +22,6 @@ class ResultType(Enum):
     VARIANT = "variant"
 
 
-def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
-    """Calculate the end position for a variant
-    Args:
-        variant_start (int): The start position of the variant
-        variant_ref (str): The reference allele of the variant
-
-    Returns:
-        int: The end position of the variant
-    """
-    return variant_start + len(variant_ref) - 1
-
-
 class SortOrder(Enum):
     """Enumeration representing sorting orders."""
 
@@ -106,7 +94,7 @@ def _write_variant_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         output_file (Path): Path to the output file.
     """
     variant_output = ranked_results.select(
-        ["rank", "score", "chromosome", "start", "end", "ref", "alt", "variant_id", "true_positive"]
+        ["rank", "score", "chrom", "start", "end", "ref", "alt", "variant_id", "true_positive"]
     )
     _write_results_file(output_file, variant_output)
 
@@ -119,9 +107,7 @@ def _write_disease_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         ranked_results ([PhEvalResult]): List of ranked PhEval disease results.
         output_file (Path): Path to the output file.
     """
-    disease_output = ranked_results.select(
-        ["rank", "score", "disease_name", "disease_identifier", "true_positive"]
-    )
+    disease_output = ranked_results.select(["rank", "score", "disease_identifier", "true_positive"])
     _write_results_file(output_file, disease_output)
 
 
@@ -228,7 +214,7 @@ def generate_variant_result(
         phenopacket_dir, output_dir.joinpath("pheval_variant_results"), ResultType.VARIANT
     )
     ranked_results = _rank_results(results, sort_order).with_columns(
-        pl.concat_str(["chrom", "pos", "ref", "alt"], separator="-").alias("variant_id")
+        pl.concat_str(["chrom", "start", "ref", "alt"], separator="-").alias("variant_id")
     )
     classified_results = PhenopacketTruthSet(phenopacket_dir).merge_variant_results(
         ranked_results, output_file

@@ -57,7 +57,8 @@ class TestPhenopacketTruthSet(unittest.TestCase):
             [
                 {
                     "chrom": "18",
-                    "pos": 67691994,
+                    "start": 67691994,
+                    "end": 67691994,
                     "ref": "G",
                     "alt": "A",
                     "variant_id": "18-67691994-G-A",
@@ -67,7 +68,8 @@ class TestPhenopacketTruthSet(unittest.TestCase):
                 },
                 {
                     "chrom": "X",
-                    "pos": 54492285,
+                    "start": 54492285,
+                    "end": 54492285,
                     "ref": "C",
                     "alt": "T",
                     "variant_id": "X-54492285-C-T",
@@ -81,7 +83,8 @@ class TestPhenopacketTruthSet(unittest.TestCase):
             [
                 {
                     "chrom": "X",
-                    "pos": 54492285,
+                    "start": 54492285,
+                    "end": 54492285,
                     "ref": "C",
                     "alt": "T",
                     "variant_id": "X-54492285-C-T",
@@ -90,7 +93,8 @@ class TestPhenopacketTruthSet(unittest.TestCase):
                 },
                 {
                     "chrom": "19",
-                    "pos": 67691994,
+                    "start": 67691994,
+                    "end": 67691994,
                     "ref": "G",
                     "alt": "A",
                     "variant_id": "18-67691994-G-A",
@@ -173,18 +177,20 @@ class TestPhenopacketTruthSet(unittest.TestCase):
                 pl.DataFrame(
                     [
                         {
-                            "chrom": "X",
-                            "pos": 54492285,
-                            "ref": "C",
-                            "alt": "T",
-                            "variant_id": "X-54492285-C-T",
-                            "score": 1.0,
-                            "rank": 1,
+                            "chrom": "18",
+                            "start": 67691994,
+                            "end": 67691994,
+                            "ref": "G",
+                            "alt": "A",
+                            "variant_id": "18-67691994-G-A",
+                            "score": 0.0,
+                            "rank": 0,
                             "true_positive": True,
                         },
                         {
                             "chrom": "19",
-                            "pos": 67691994,
+                            "start": 67691994,
+                            "end": 67691994,
                             "ref": "G",
                             "alt": "A",
                             "variant_id": "18-67691994-G-A",
@@ -193,13 +199,14 @@ class TestPhenopacketTruthSet(unittest.TestCase):
                             "true_positive": False,
                         },
                         {
-                            "chrom": "18",
-                            "pos": 67691994,
-                            "ref": "G",
-                            "alt": "A",
-                            "variant_id": "18-67691994-G-A",
-                            "score": 0.0,
-                            "rank": 0,
+                            "chrom": "X",
+                            "start": 54492285,
+                            "end": 54492285,
+                            "ref": "C",
+                            "alt": "T",
+                            "variant_id": "X-54492285-C-T",
+                            "score": 1.0,
+                            "rank": 1,
                             "true_positive": True,
                         },
                     ]
