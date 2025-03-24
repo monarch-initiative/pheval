@@ -22,18 +22,6 @@ class ResultType(Enum):
     VARIANT = "variant"
 
 
-def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
-    """Calculate the end position for a variant
-    Args:
-        variant_start (int): The start position of the variant
-        variant_ref (str): The reference allele of the variant
-
-    Returns:
-        int: The end position of the variant
-    """
-    return variant_start + len(variant_ref) - 1
-
-
 class SortOrder(Enum):
     """Enumeration representing sorting orders."""
 
