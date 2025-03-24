@@ -1352,8 +1352,7 @@ Attributes:
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enum for different result schema formats.</span>
 <span class="sd">    Attributes:</span>
@@ -1383,18 +1382,17 @@ Attributes:
     <span class="p">)</span>
     <span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
         <span class="p">{</span>
-            <span class="s2">&quot;disease_name&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
             <span class="s2">&quot;disease_identifier&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
             <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>
             <span class="s2">&quot;grouping_id&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate that a DataFrame follows the expected schema.</span>
 <span class="sd">        Args:</span>
-<span class="sd">            df (pl.DataFrame): The DataFrame to validate.</span>
+<span class="sd">            results (pl.DataFrame): The DataFrame to validate.</span>
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If a required column is missing or the grouping_id column contains a null value.</span>
 <span class="sd">            TypeError: If a column exists but has an incorrect data type.</span>
@@ -1403,18 +1401,18 @@ Attributes:
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">expected_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
 
-        <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;grouping_id&#39; column should not contain null values if provided.&quot;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">expected_type</span> <span class="ow">in</span> <span class="n">expected_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">col_name</span> <span class="o">==</span> <span class="s2">&quot;grouping_id&quot;</span><span class="p">:</span>
                     <span class="k">continue</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required column: </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
         <span class="k">return</span> <span class="kc">True</span>
@@ -1439,7 +1437,7 @@ Attributes:
 
 
 <h3 id="src.pheval.post_processing.validate_result_format.ResultSchema.validate" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">validate</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">validate</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1448,7 +1446,7 @@ Attributes:
   
       <p>Validate that a DataFrame follows the expected schema.
 Args:
-    df (pl.DataFrame): The DataFrame to validate.
+    results (pl.DataFrame): The DataFrame to validate.
 Raises:
     ValueError: If a required column is missing or the grouping_id column contains a null value.
     TypeError: If a column exists but has an incorrect data type.
@@ -1457,7 +1455,8 @@ Returns:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+<span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
@@ -1483,12 +1482,11 @@ Returns:
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate that a DataFrame follows the expected schema.</span>
 <span class="sd">    Args:</span>
-<span class="sd">        df (pl.DataFrame): The DataFrame to validate.</span>
+<span class="sd">        results (pl.DataFrame): The DataFrame to validate.</span>
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If a required column is missing or the grouping_id column contains a null value.</span>
 <span class="sd">        TypeError: If a column exists but has an incorrect data type.</span>
@@ -1497,18 +1495,18 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">expected_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
 
-    <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;grouping_id&#39; column should not contain null values if provided.&quot;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">expected_type</span> <span class="ow">in</span> <span class="n">expected_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">col_name</span> <span class="o">==</span> <span class="s2">&quot;grouping_id&quot;</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required column: </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
     <span class="k">return</span> <span class="kc">True</span>
@@ -1549,7 +1547,8 @@ Returns:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
+<span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
@@ -1565,8 +1564,7 @@ Returns:
 <span class="normal">88</span>
 <span class="normal">89</span>
 <span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_dataframe</span><span class="p">(</span><span class="n">schema</span><span class="p">:</span> <span class="n">ResultSchema</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_dataframe</span><span class="p">(</span><span class="n">schema</span><span class="p">:</span> <span class="n">ResultSchema</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decorator to validate DataFrame input based on a ResultSchema.</span>
 <span class="sd">    Args:</span>
@@ -1577,9 +1575,9 @@ Returns:
 
     <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">wrapper</span>
 

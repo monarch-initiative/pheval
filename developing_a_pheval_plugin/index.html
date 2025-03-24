@@ -2760,8 +2760,7 @@ Attributes:
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enum for different result schema formats.</span>
 <span class="sd">    Attributes:</span>
@@ -2791,18 +2790,17 @@ Attributes:
     <span class="p">)</span>
     <span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
         <span class="p">{</span>
-            <span class="s2">&quot;disease_name&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
             <span class="s2">&quot;disease_identifier&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
             <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span>
             <span class="s2">&quot;grouping_id&quot;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate that a DataFrame follows the expected schema.</span>
 <span class="sd">        Args:</span>
-<span class="sd">            df (pl.DataFrame): The DataFrame to validate.</span>
+<span class="sd">            results (pl.DataFrame): The DataFrame to validate.</span>
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If a required column is missing or the grouping_id column contains a null value.</span>
 <span class="sd">            TypeError: If a column exists but has an incorrect data type.</span>
@@ -2811,18 +2809,18 @@ Attributes:
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">expected_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
 
-        <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;grouping_id&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;grouping_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">null_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;grouping_id&#39; column should not contain null values if provided.&quot;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">expected_type</span> <span class="ow">in</span> <span class="n">expected_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">col_name</span> <span class="o">==</span> <span class="s2">&quot;grouping_id&quot;</span><span class="p">:</span>
                     <span class="k">continue</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required column: </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
         <span class="k">return</span> <span class="kc">True</span>
@@ -2884,7 +2882,7 @@ Attributes:
 
 
 <h2 id="src.pheval.post_processing.validate_result_format.ResultSchema.DISEASE_RESULT_SCHEMA" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;disease_name&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;disease_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
+          <code class="highlight language-python"><span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;disease_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
@@ -2939,7 +2937,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
@@ -2950,21 +2962,7 @@ Args:
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_gene_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3016,7 +3014,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -3031,21 +3043,7 @@ Args:
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_variant_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3069,7 +3067,7 @@ Args:
         <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_variant_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">VARIANT</span>
     <span class="p">)</span>
     <span class="n">ranked_results</span> <span class="o">=</span> <span class="n">_rank_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">sort_order</span><span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-        <span class="n">pl</span><span class="o">.</span><span class="n">concat_str</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">],</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;variant_id&quot;</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">concat_str</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">],</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;variant_id&quot;</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_variant_results</span><span class="p">(</span>
         <span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span>
@@ -3101,7 +3099,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
 <span class="normal">242</span>
@@ -3114,21 +3126,7 @@ Args:
 <span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_disease_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>

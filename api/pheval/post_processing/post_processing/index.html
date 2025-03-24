@@ -737,13 +737,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.post_processing.post_processing.calculate_end_pos" class="md-nav__link">
-    calculate_end_pos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.create_empty_pheval_result" class="md-nav__link">
     create_empty_pheval_result
   </a>
@@ -1275,13 +1268,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.post_processing.post_processing.calculate_end_pos" class="md-nav__link">
-    calculate_end_pos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#src.pheval.post_processing.post_processing.create_empty_pheval_result" class="md-nav__link">
     create_empty_pheval_result
   </a>
@@ -1424,13 +1410,13 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SortOrder</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SortOrder</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration representing sorting orders.&quot;&quot;&quot;</span>
 
     <span class="n">ASCENDING</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1505,75 +1491,6 @@
 
 </div>
 
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="src.pheval.post_processing.post_processing.calculate_end_pos" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Calculate the end position for a variant
-Args:
-    variant_start (int): The start position of the variant
-    variant_ref (str): The reference allele of the variant</p>
-
-
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-<td><code>int</code></td>          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The end position of the variant</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the end position for a variant</span>
-<span class="sd">    Args:</span>
-<span class="sd">        variant_start (int): The start position of the variant</span>
-<span class="sd">        variant_ref (str): The reference allele of the variant</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        int: The end position of the variant</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">variant_start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">variant_ref</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
 
 
 <div class="doc doc-object doc-function">
@@ -1657,7 +1574,21 @@ ensuring that missing predictions are accounted for in the evaluation.</p>
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
@@ -1671,21 +1602,7 @@ ensuring that missing predictions are accounted for in the evaluation.</p>
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_empty_pheval_result</span><span class="p">(</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_empty_pheval_result</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">result_type</span><span class="p">:</span> <span class="n">ResultType</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1743,7 +1660,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
 <span class="normal">242</span>
@@ -1756,21 +1687,7 @@ Args:
 <span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_disease_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -1827,7 +1744,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
@@ -1838,21 +1769,7 @@ Args:
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_gene_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -1907,7 +1824,21 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -1922,21 +1853,7 @@ Args:
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_variant_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -1960,7 +1877,7 @@ Args:
         <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_variant_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">VARIANT</span>
     <span class="p">)</span>
     <span class="n">ranked_results</span> <span class="o">=</span> <span class="n">_rank_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">sort_order</span><span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-        <span class="n">pl</span><span class="o">.</span><span class="n">concat_str</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">],</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;variant_id&quot;</span><span class="p">)</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">concat_str</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">],</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;variant_id&quot;</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_variant_results</span><span class="p">(</span>
         <span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span>
