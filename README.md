@@ -1,9 +1,9 @@
 # PhEval - Phenotypic Inference Evaluation Framework
 
-![PyPI](https://img.shields.io/pypi/v/pheval)
+[![PyPI](https://img.shields.io/pypi/v/pheval)](https://pypi.org/project/pheval/)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/monarch-initiative/pheval/pypi-publish.yml?branch=main)
 ![License](https://img.shields.io/github/license/monarch-initiative/pheval)
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Issues](https://img.shields.io/github/issues/monarch-initiative/pheval)
 
 ## Overview
@@ -21,7 +21,7 @@ For more information please see the full [documentation](https://monarch-initiat
 
 ## Download and Installation
 
-1. Ensure you have Python 3.8 or greater installed.
+1. Ensure you have Python 3.10 or greater installed.
 2. Install with `pip`:
 ```bash
 pip install pheval
