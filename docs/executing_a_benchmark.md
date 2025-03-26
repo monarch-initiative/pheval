@@ -101,7 +101,7 @@ The `plot_customisation` section specifies any additional customisation to the p
 After configuring the benchmarking YAML, executing the benchmark is relatively simple.
 
 ```bash
-pheval-utils generate-benchmark-stats --run-yaml benchmarking_config.yaml
+pheval-utils benchmark --run-yaml benchmarking_config.yaml
 ```
 
 
