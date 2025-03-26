@@ -2916,6 +2916,14 @@ Variants that are not part of any compound heterozygous group should each have a
 This approach prevents any unintended overlap in ranking and ensures that each group or individual variant is accurately represented. 
 The use of the <code>grouping_id</code> would also be suitable for the ranking and prioritisation of polygenic diseases.</p>
 <p>Depending on whether you need to generate gene, variant, and or disease results depends on the final method called to generate the results from the polars dataframe. The methods are outlined below:</p>
+<blockquote>
+<p>⚠️ <strong>Breaking Change (v0.5.0):</strong><br />
+The helper method <code>generate_pheval_result</code> has been <strong>replaced with three separate methods</strong> for each result type:<br />
+- <code>generate_gene_result</code><br />
+- <code>generate_variant_result</code><br />
+- <code>generate_disease_result</code><br />
+Update your runner implementation to call the appropriate method based on the type of result your tool produces.</p>
+</blockquote>
 
 
 
