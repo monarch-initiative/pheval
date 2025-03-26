@@ -23,27 +23,32 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
         run (RunConfig): RunConfig object.
         benchmark_type (BenchmarkOutputTypeEnum): Benchmark output type.
     Returns:
-        pl.LazyFrame: LazyFrame object containing all the results in the directory..
+        pl.LazyFrame: LazyFrame object containing all the results in the directory.
     """
     logger = get_logger()
     logger.info(f"Analysing results in {run.results_dir.joinpath(benchmark_type.result_directory)}")
     return (
-        pl.scan_parquet(
-            run.results_dir.joinpath(benchmark_type.result_directory),
-            include_file_paths="file_path",
-        ).with_columns(
-            pl.col("rank").cast(pl.Int64),
-            pl.col("file_path").str.extract(r"([^/\\]+)$").alias("result_file"),
-            pl.col("true_positive").fill_null(False),
-        )
-    ).filter(
         (
-            pl.col("score") >= run.threshold
-            if run.score_order.lower() == "descending"
-            else pl.col("score") <= run.threshold
+            pl.scan_parquet(
+                run.results_dir.joinpath(benchmark_type.result_directory),
+                include_file_paths="file_path",
+            ).with_columns(
+                pl.col("rank").cast(pl.Int64),
+                pl.col("file_path").str.extract(r"([^/\\]+)$").alias("result_file"),
+                pl.col("true_positive").fill_null(False),
+            )
         )
-        if run.threshold is not None
-        else True
+        .filter(
+            (
+                pl.col("score") >= run.threshold
+                if run.score_order.lower() == "descending"
+                else pl.col("score") <= run.threshold
+            )
+            if run.threshold is not None
+            else True
+        )
+        .sort("rank")
+        .unique(subset=["file_path", *benchmark_type.columns], keep="first")
     )
 
 
@@ -68,14 +73,29 @@ def process_stats(
         )
         curve_results.append(compute_curves(run.run_identifier, result_scan))
         true_positive_cases.append(
-            result_scan.filter(pl.col("true_positive")).select(
+            result_scan.filter(pl.col("true_positive"))
+            .select(
                 ["result_file", *benchmark_type.columns, pl.col("rank").alias(run.run_identifier)]
             )
+            .sort(["result_file", *benchmark_type.columns])
         )
     return (
         pl.concat(stats, how="vertical").collect(),
         pl.concat(curve_results, how="vertical").collect(),
-        pl.concat(true_positive_cases, how="align_inner").collect(),
+        pl.concat(
+            [true_positive_cases[0]]
+            + [
+                df.select(
+                    [
+                        col
+                        for col in df.collect_schema().keys()
+                        if col not in ["result_file", *benchmark_type.columns]
+                    ]
+                )
+                for df in true_positive_cases[1:]
+            ],
+            how="horizontal",
+        ).collect(),
     )
 
 
