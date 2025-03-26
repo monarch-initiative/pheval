@@ -248,6 +248,14 @@ The use of the `grouping_id` would also be suitable for the ranking and prioriti
 
 Depending on whether you need to generate gene, variant, and or disease results depends on the final method called to generate the results from the polars dataframe. The methods are outlined below:
 
+> ⚠️ **Breaking Change (v0.5.0):**  
+> The helper method `generate_pheval_result` has been **replaced with three separate methods** for each result type:  
+> - `generate_gene_result`  
+> - `generate_variant_result`  
+> - `generate_disease_result`  
+> Update your runner implementation to call the appropriate method based on the type of result your tool produces.
+
+
 ::: src.pheval.post_processing.post_processing.generate_gene_result
     handler: python
     options:
