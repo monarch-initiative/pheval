@@ -28,3 +28,11 @@ class PhevalClassResolver(ClassResolver):
             except (ImportError, AttributeError) as e:
                 warnings.warn(f"could not load {entry.name}. See error message below.", Warning)
                 raise
+            else:
+                elements.add(element)
+        return elements
+
+    def register_entrypoint(self, group: str) -> None:
+        """Register additional entries from an entrypoint."""
+        for element in self._from_entrypoint_custom(group).difference(self.lookup_dict.values()):
+            self.register(element)
