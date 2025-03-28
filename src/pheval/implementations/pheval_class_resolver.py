@@ -16,7 +16,7 @@ class PhevalClassResolver(ClassResolver):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-    # Overload the _from_entrypoint method.
+    # Modified _from_entrypoint method to raise error instead of warning
     @staticmethod
     def _from_entrypoint_custom(group: str) -> set[X]:
         elements: set[X] = set()
