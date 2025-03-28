@@ -37,10 +37,6 @@ def get_implementation_resolver() -> ClassResolver[PhEvalRunner]:
     # See also:
     # https://packaging.python.org/en/latest/specifications/entry-points/
     # https://class-resolver.readthedocs.io/en/latest/api/class_resolver.ClassResolver.html#class_resolver.ClassResolver.register_entrypoint
-    try:
-        implementation_resolver._from_entrypoint_custom("pheval.plugins")
-    except Exception as e:
-        raise
-    else:
-        implementation_resolver.register_entrypoint("pheval.plugins")
-        return implementation_resolver
+
+    implementation_resolver.register_entrypoint("pheval.plugins")
+    return implementation_resolver
