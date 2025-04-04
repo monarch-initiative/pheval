@@ -6,6 +6,10 @@ import yaml
 from serde import serde
 from serde.yaml import from_yaml
 
+from pheval.utils.logger import get_logger
+
+logger = get_logger()
+
 
 @serde
 @dataclass
@@ -34,6 +38,7 @@ class InputDirConfig:
 
 def parse_input_dir_config(input_dir: Path) -> InputDirConfig:
     """Reads the config file."""
+    logger.info(f"Parsing config.yaml located in {input_dir}.")
     with open(Path(input_dir).joinpath("config.yaml"), "r") as config_file:
         config = yaml.safe_load(config_file)
     config_file.close()

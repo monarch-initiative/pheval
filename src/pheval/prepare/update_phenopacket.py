@@ -1,3 +1,4 @@
+import time
 from pathlib import Path
 from typing import Union
 
@@ -5,6 +6,7 @@ import polars as pl
 from phenopackets import Family, Phenopacket
 
 from pheval.utils.file_utils import all_files
+from pheval.utils.logger import get_logger
 from pheval.utils.phenopacket_utils import (
     GeneIdentifierUpdater,
     PhenopacketRebuilder,
@@ -13,6 +15,8 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
     write_phenopacket,
 )
+
+logger = get_logger()
 
 
 def update_outdated_gene_context(
@@ -43,7 +47,10 @@ def update_outdated_gene_context(
 
 
 def create_updated_phenopacket(
-    gene_identifier: str, phenopacket_path: Path, output_dir: Path
+    gene_identifier: str,
+    phenopacket_path: Path,
+    output_dir: Path,
+    identifier_map: pl.DataFrame = None,
 ) -> None:
     """
     Update the gene context within the interpretations for a Phenopacket and writes the updated Phenopacket.
@@ -52,12 +59,13 @@ def create_updated_phenopacket(
         gene_identifier (str): Identifier used to update the gene context.
         phenopacket_path (Path): The path to the input Phenopacket file.
         output_dir (Path): The directory where the updated Phenopacket will be written.
+        identifier_map (pl.DataFrame): The gene identifier map used for updating.
     Notes:
         The gene_identifier parameter should be chosen from ensembl_id, hgnc_id, or entrez_id
         to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
         to describe the gene identifiers.
     """
-    identifier_map = create_gene_identifier_map()
+    identifier_map = create_gene_identifier_map() if identifier_map is None else identifier_map
     updated_phenopacket = update_outdated_gene_context(
         phenopacket_path, gene_identifier, identifier_map
     )
@@ -82,6 +90,7 @@ def create_updated_phenopackets(
     """
     identifier_map = create_gene_identifier_map()
     for phenopacket_path in all_files(phenopacket_dir):
+        logger.info(f"Updating gene context for: {phenopacket_path.name}")
         updated_phenopacket = update_outdated_gene_context(
             phenopacket_path, gene_identifier, identifier_map
         )
@@ -104,8 +113,17 @@ def update_phenopackets(
         to update to the current gene identifier in the Phenopacket. We recommend using the ENSEMBL namespace
         to describe the gene identifiers.
     """
+    start_time = time.perf_counter()
+    logger.info("Updating phenopackets.")
     output_dir.mkdir(exist_ok=True)
+    logger.info(f"Created directory {output_dir}.")
+    logger.info(f"Gene identifier set to: {gene_identifier}.")
     if phenopacket_path is not None:
+        logger.info(f"Updating {phenopacket_path}.")
         create_updated_phenopacket(gene_identifier, phenopacket_path, output_dir)
     elif phenopacket_dir is not None:
+        logger.info(
+            f"Updating {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
+        )
         create_updated_phenopackets(gene_identifier, phenopacket_dir, output_dir)
+    logger.info(f"Updating finished! Total time: {time.perf_counter() - start_time:.2f} seconds.")

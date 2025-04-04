@@ -1,13 +1,18 @@
-import logging
 import shutil
+import time
 from pathlib import Path
 
 from pheval.prepare.create_spiked_vcf import create_spiked_vcf
 from pheval.prepare.update_phenopacket import create_updated_phenopacket
 from pheval.utils.file_utils import all_files
-from pheval.utils.phenopacket_utils import PhenopacketUtil, phenopacket_reader
+from pheval.utils.logger import get_logger
+from pheval.utils.phenopacket_utils import (
+    PhenopacketUtil,
+    create_gene_identifier_map,
+    phenopacket_reader,
+)
 
-info_log = logging.getLogger("info")
+logger = get_logger()
 
 
 def prepare_corpus(
@@ -43,39 +48,46 @@ def prepare_corpus(
         To spike variants into VCFs for variant-based analysis at least one of hg19_template_vcf, hg38_template_vcf,
         hg19_vcf_dir or hg38_vcf_dir is required.
     """
+    start_time = time.perf_counter()
+    logger.info(f"Preparing corpus for {phenopacket_dir}")
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
+    logger.info(f" Created output directory: {output_dir.joinpath('phenopackets')}")
+    identifier_map = create_gene_identifier_map()
     for phenopacket_path in all_files(phenopacket_dir):
         phenopacket_util = PhenopacketUtil(phenopacket_reader(phenopacket_path))
         if not phenopacket_util.observed_phenotypic_features():
-            info_log.warning(
+            logger.warning(
                 f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features."
             )
             continue
         if variant_analysis:
             if phenopacket_util.check_incomplete_variant_record():
-                info_log.warning(
+                logger.warning(
                     f"Removed {phenopacket_path.name} from the corpus due to missing variant fields."
                 )
                 continue
             elif phenopacket_util.check_variant_alleles():
-                info_log.warning(
+                logger.warning(
                     f"Removed {phenopacket_path.name} from the corpus due to identical "
                     "reference and alternate allele fields."
                 )
         if gene_analysis:
             if phenopacket_util.check_incomplete_gene_record():
-                info_log.warning(
+                logger.warning(
                     f"Removed {phenopacket_path.name} from the corpus due to missing gene fields."
                 )
                 continue
         if disease_analysis:
             if phenopacket_util.check_incomplete_disease_record():
-                info_log.warning(
+                logger.warning(
                     f"Removed {phenopacket_path.name} from the corpus due to missing disease fields."
                 )
                 continue
+        logger.info(f"{phenopacket_path.name} OK!")
         if hg19_template_vcf or hg38_template_vcf:
             output_dir.joinpath("vcf").mkdir(exist_ok=True)
+            logger.info(f" Created output directory: {output_dir.joinpath('vcf')}")
+            logger.info(f"Spiking VCF for {phenopacket_path}.")
             create_spiked_vcf(
                 output_dir.joinpath("vcf"),
                 phenopacket_path,
@@ -85,8 +97,12 @@ def prepare_corpus(
                 hg38_vcf_dir,
             )
         if gene_identifier:
+            logger.info(f"Updating gene identifiers to {gene_identifier} for {phenopacket_dir}")
             create_updated_phenopacket(
-                gene_identifier, phenopacket_path, output_dir.joinpath("phenopackets")
+                gene_identifier,
+                phenopacket_path,
+                output_dir.joinpath("phenopackets"),
+                identifier_map,
             )
         else:
             # if not updating phenopacket gene identifiers then copy phenopacket as is to output directory
@@ -97,3 +113,7 @@ def prepare_corpus(
                 if phenopacket_path != output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
                 else None
             )
+    logger.info(
+        f"Finished preparing corpus for {phenopacket_dir}. "
+        f"Total time: {time.perf_counter() - start_time:.2f} seconds."
+    )

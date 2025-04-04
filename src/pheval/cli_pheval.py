@@ -2,12 +2,16 @@
 Monarch Initiative
 """
 
+import time
 from pathlib import Path
 
 import click
 
 from pheval.implementations import get_implementation_resolver
 from pheval.utils.file_utils import write_metadata
+from pheval.utils.logger import get_logger
+
+logger = get_logger()
 
 
 @click.command()
@@ -84,11 +88,18 @@ def run(
         config (Path): The path of the configuration file (optional e.g., config.yaml)
         version (str): The version of the tool implementation
     """
+    logger.info(f"Executing {runner}.")
+    start_time = time.perf_counter()
     runner_class = get_implementation_resolver().lookup(runner)
     runner_instance = runner_class(input_dir, testdata_dir, tmp_dir, output_dir, config, version)
     runner_instance.build_output_directory_structure()
+    logger.info("Executing prepare phase.")
     runner_instance.prepare()
+    logger.info("Executing run phase.")
     runner_instance.run()
+    logger.info("Executing post-processing phase.")
     runner_instance.post_process()
     run_metadata = runner_instance.construct_meta_data()
+    logger.info(f"Writing metadata for run to {output_dir}.")
     write_metadata(output_dir, run_metadata)
+    logger.info(f"Run completed! Total time: {time.perf_counter() - start_time:.2f} seconds.")
