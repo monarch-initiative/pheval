@@ -1373,14 +1373,7 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
@@ -1394,7 +1387,14 @@
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
-<span class="normal">151</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DefaultPhEvalRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DefaultPhEvalRunner</span><span class="p">(</span><span class="n">PhEvalRunner</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;DefaultPhEvalRunner</span>
 
 <span class="sd">    Args:</span>
@@ -1464,10 +1464,7 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 15</span>
 <span class="normal"> 16</span>
 <span class="normal"> 17</span>
 <span class="normal"> 18</span>
@@ -1579,7 +1576,14 @@
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhEvalRunner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhEvalRunner Class&quot;&quot;&quot;</span>
 
@@ -1656,6 +1660,10 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">build_output_directory_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;build output directory structure&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Building output directory structure for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">tool</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;version </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">tool_version</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tool_input_commands_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_variant_analysis</span><span class="p">():</span>
@@ -1727,17 +1735,25 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_output_directory_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_output_directory_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;build output directory structure&quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Building output directory structure for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">tool</span><span class="si">}</span><span class="s2"> &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;version </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dir_config</span><span class="o">.</span><span class="n">tool_version</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">tool_input_commands_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">raw_results_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_variant_analysis</span><span class="p">():</span>
@@ -1769,9 +1785,9 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">construct_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">construct_meta_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct run output meta data&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_data</span>
 </code></pre></div></td></tr></table></div>
@@ -1801,9 +1817,9 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;post_process&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
@@ -1833,9 +1849,9 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;prepare&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
@@ -1865,9 +1881,9 @@
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;run&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
