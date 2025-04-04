@@ -1,7 +1,7 @@
 import gzip
-import logging
 import random
 import re
+import time
 import urllib.parse
 from copy import copy
 from dataclasses import dataclass
@@ -12,6 +12,7 @@ from phenopackets import Family, File, Phenopacket
 
 from pheval.prepare.custom_exceptions import InputError
 from pheval.utils.file_utils import all_files, files_with_suffix, is_gzipped
+from pheval.utils.logger import get_logger
 from pheval.utils.phenopacket_utils import (
     IncompatibleGenomeAssemblyError,
     PhenopacketRebuilder,
@@ -21,8 +22,7 @@ from pheval.utils.phenopacket_utils import (
     write_phenopacket,
 )
 
-info_log = logging.getLogger("info")
-
+logger = get_logger()
 genome_assemblies = {
     "GRCh38": {
         "1": 248956422,
@@ -357,9 +357,13 @@ class VcfSpiker:
                 and int(val.split("\t")[1]) < int(variant_entry[1])
             ]
             if matching_indices:
+                logger.info(
+                    f"Successfully spiked variant {variant.variant.chrom}-{variant.variant.pos}-"
+                    f"{variant.variant.ref}-{variant.variant.alt} in {template_vcf_name}"
+                )
                 variant_entry_position = matching_indices[-1] + 1
             else:
-                info_log.warning(
+                logger.warning(
                     f"Could not find entry position for {variant.variant.chrom}-{variant.variant.pos}-"
                     f"{variant.variant.ref}-{variant.variant.alt} in {template_vcf_name}, "
                     "inserting at end of VCF contents."
@@ -518,8 +522,6 @@ def generate_spiked_vcf_file(
     Returns:
         File: The generated File object representing the newly created spiked VCF file.
     """
-    output_dir.mkdir(exist_ok=True)
-    info_log.info(f" Created a directory {output_dir}")
     vcf_assembly, spiked_vcf = spike_vcf_contents(
         phenopacket, phenopacket_path, hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir
     )
@@ -633,6 +635,7 @@ def create_spiked_vcfs(
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
+        logger.info(f"Creating spiked VCF for: {phenopacket_path.name}")
         spike_and_update_phenopacket(
             hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path
         )
@@ -659,7 +662,12 @@ def spike_vcfs(
         hg19_vcf_dir (Path): The directory containing the hg19 VCF files (optional).
         hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
     """
+    start_time = time.perf_counter()
+    logger.info("Creating spiked VCFs.")
+    output_dir.mkdir(exist_ok=True)
+    logger.info(f" Created output directory: {output_dir}")
     if phenopacket_path is not None:
+        logger.info(f"Spiking variants from {phenopacket_path}.")
         create_spiked_vcf(
             output_dir,
             phenopacket_path,
@@ -669,6 +677,9 @@ def spike_vcfs(
             hg38_vcf_dir,
         )
     elif phenopacket_dir is not None:
+        logger.info(
+            f"Spiking variants from {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
+        )
         create_spiked_vcfs(
             output_dir,
             phenopacket_dir,
@@ -677,3 +688,4 @@ def spike_vcfs(
             hg19_vcf_dir,
             hg38_vcf_dir,
         )
+    logger.info(f"Finished spiking! Total time: {time.perf_counter() - start_time:.2f} seconds.")

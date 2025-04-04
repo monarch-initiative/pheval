@@ -180,6 +180,10 @@ def generate_gene_result(
         phenopacket_dir (Path): Path to the Phenopacket directory
     """
     output_file = output_dir.joinpath(f"pheval_gene_results/{result_path.stem}-gene_result.parquet")
+    logger.info(
+        f"Writing classified results for {len(all_files(phenopacket_dir))} "
+        f"phenopackets to {output_dir.joinpath('pheval_gene_results')}"
+    )
     create_empty_pheval_result(
         phenopacket_dir, output_dir.joinpath("pheval_gene_results"), ResultType.GENE
     )
@@ -209,6 +213,10 @@ def generate_variant_result(
     """
     output_file = output_dir.joinpath(
         f"pheval_variant_results/{result_path.stem}-variant_result.parquet"
+    )
+    logger.info(
+        f"Writing classified results for {len(all_files(phenopacket_dir))} "
+        f"phenopackets to {output_dir.joinpath('pheval_variant_results')}"
     )
     create_empty_pheval_result(
         phenopacket_dir, output_dir.joinpath("pheval_variant_results"), ResultType.VARIANT
@@ -241,6 +249,10 @@ def generate_disease_result(
     """
     output_file = output_dir.joinpath(
         f"pheval_disease_results/{result_path.stem}-disease_result.parquet"
+    )
+    logger.info(
+        f"Writing classified results for {len(all_files(phenopacket_dir))} "
+        f"phenopackets to {output_dir.joinpath('pheval_disease_results')}"
     )
     create_empty_pheval_result(
         phenopacket_dir, output_dir.joinpath("pheval_disease_results"), ResultType.DISEASE
