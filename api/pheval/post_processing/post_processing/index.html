@@ -1602,7 +1602,11 @@ ensuring that missing predictions are accounted for in the evaluation.</p>
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_empty_pheval_result</span><span class="p">(</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_empty_pheval_result</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">result_type</span><span class="p">:</span> <span class="n">ResultType</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1622,6 +1626,10 @@ ensuring that missing predictions are accounted for in the evaluation.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">result_type</span> <span class="ow">in</span> <span class="n">executed_results</span><span class="p">:</span>
         <span class="k">return</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Writing classified results for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;phenopackets to </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
     <span class="n">executed_results</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result_type</span><span class="p">)</span>
     <span class="n">phenopacket_truth_set</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span>
     <span class="n">classify_method</span><span class="p">,</span> <span class="n">write_method</span> <span class="o">=</span> <span class="n">_get_result_type</span><span class="p">(</span><span class="n">result_type</span><span class="p">,</span> <span class="n">phenopacket_truth_set</span><span class="p">)</span>
@@ -1660,7 +1668,11 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">233</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
@@ -1683,15 +1695,7 @@ Args:
 <span class="normal">253</span>
 <span class="normal">254</span>
 <span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_disease_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -1710,10 +1714,6 @@ Args:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;pheval_disease_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-disease_result.parquet&quot;</span>
-    <span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Writing classified results for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;phenopackets to </span><span class="si">{</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;pheval_disease_results&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="p">)</span>
     <span class="n">create_empty_pheval_result</span><span class="p">(</span>
         <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_disease_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">DISEASE</span>
@@ -1752,11 +1752,7 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -1799,10 +1795,6 @@ Args:
 <span class="sd">        phenopacket_dir (Path): Path to the Phenopacket directory</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pheval_gene_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-gene_result.parquet&quot;</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Writing classified results for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;phenopackets to </span><span class="si">{</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;pheval_gene_results&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="p">)</span>
     <span class="n">create_empty_pheval_result</span><span class="p">(</span>
         <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_gene_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">GENE</span>
     <span class="p">)</span>
@@ -1869,11 +1861,7 @@ Args:
 <span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_variant_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -1892,10 +1880,6 @@ Args:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;pheval_variant_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-variant_result.parquet&quot;</span>
-    <span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Writing classified results for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;phenopackets to </span><span class="si">{</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;pheval_variant_results&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="p">)</span>
     <span class="n">create_empty_pheval_result</span><span class="p">(</span>
         <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_variant_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">VARIANT</span>
