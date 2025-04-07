@@ -153,7 +153,7 @@ def create_empty_pheval_result(
         return
     logger.info(
         f"Writing classified results for {len(all_files(phenopacket_dir))} "
-        f"phenopackets to {output_dir.joinpath(f'pheval_{result_type.value}_results')}"
+        f"phenopackets to {output_dir}"
     )
     executed_results.add(result_type)
     phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir)
