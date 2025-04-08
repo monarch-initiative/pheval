@@ -1,0 +1,135 @@
+{
+  "id": "onychodystrophy,_osteodystrophy,_impaired_intellectual_development,_and_seizures_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002421",
+        "label": "Poor head control"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001800",
+        "label": "Hypoplastic toenails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000696",
+        "label": "Delayed eruption of permanent teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002069",
+        "label": "Bilateral tonic-clonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031061",
+        "label": "Impaired toileting ability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005707",
+        "label": "Bilateral triphalangeal thumbs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008398",
+        "label": "Hypoplastic fifth fingernail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001857",
+        "label": "Short distal phalanx of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012553",
+        "label": "Hypoplastic thumbnail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010445",
+        "label": "Primum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008398",
+        "label": "Hypoplastic fifth fingernail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619356",
+        "label": "Onychodystrophy, osteodystrophy, impaired intellectual development, and seizures syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:32:12.010308Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

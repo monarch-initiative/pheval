@@ -1,0 +1,75 @@
+{
+  "id": "hypoaldosteronism,_congenital,_due_to_cmo_ii_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012112",
+        "label": "Abnormal circulating corticosterone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010930",
+        "label": "Abnormal blood monovalent inorganic cation concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032362",
+        "label": "Increased circulating corticosterone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010930",
+        "label": "Abnormal blood monovalent inorganic cation concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004319",
+        "label": "Decreased circulating aldosterone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008866",
+        "label": "Failure to thrive secondary to recurrent infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610600",
+        "label": "Hypoaldosteronism, congenital, due to CMO II deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:45:55.064362Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

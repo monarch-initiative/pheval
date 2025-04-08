@@ -1,0 +1,99 @@
+{
+  "id": "basal_cell_nevus_syndrome_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010615",
+        "label": "Angiofibromas"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002321",
+        "label": "Vertigo"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003764",
+        "label": "Nevus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040098",
+        "label": "Basalioma of the outer ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025507",
+        "label": "Yellow papule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040194",
+        "label": "Increased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010612",
+        "label": "Plantar pits"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010610",
+        "label": "Palmar pits"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007129",
+        "label": "Cerebellar medulloblastoma"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620343",
+        "label": "Basal cell nevus syndrome 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:28:00.492348Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

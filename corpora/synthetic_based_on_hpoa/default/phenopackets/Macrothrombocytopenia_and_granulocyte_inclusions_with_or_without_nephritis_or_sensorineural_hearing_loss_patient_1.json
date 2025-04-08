@@ -1,0 +1,93 @@
+{
+  "id": "macrothrombocytopenia_and_granulocyte_inclusions_with_or_without_nephritis_or_sensorineural_hearing_loss",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008264",
+        "label": "Neutrophil inclusion bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003010",
+        "label": "Prolonged bleeding time"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031689",
+        "label": "Megakaryocyte dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040185",
+        "label": "Macrothrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004866",
+        "label": "Impaired ADP-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001902",
+        "label": "Giant platelets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011992",
+        "label": "Abnormal neutrophil morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:155100",
+        "label": "Macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:52:52.296023Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

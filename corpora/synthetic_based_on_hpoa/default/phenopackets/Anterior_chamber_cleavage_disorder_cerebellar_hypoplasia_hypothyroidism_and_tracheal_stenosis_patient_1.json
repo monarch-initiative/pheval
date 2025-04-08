@@ -1,0 +1,81 @@
+{
+  "id": "anterior_chamber_cleavage_disorder,_cerebellar_hypoplasia,_hypothyroidism,_and_tracheal_stenosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008736",
+        "label": "Hypoplasia of penis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000164",
+        "label": "Abnormality of the dentition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000612",
+        "label": "Iris coloboma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008240",
+        "label": "Secondary growth hormone deficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003272",
+        "label": "Abnormal hip bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025469",
+        "label": "Anagen effluvium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040103",
+        "label": "Cutaneous stenosis of the external auditory canal"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601427",
+        "label": "Anterior chamber cleavage disorder, cerebellar hypoplasia, hypothyroidism, and tracheal stenosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:57:55.598065Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

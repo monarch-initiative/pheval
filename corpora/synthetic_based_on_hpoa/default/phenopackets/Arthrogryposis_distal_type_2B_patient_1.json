@@ -1,0 +1,117 @@
+{
+  "id": "arthrogryposis,_distal,_type_2b",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005272",
+        "label": "Prominent nasolabial fold"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001193",
+        "label": "Ulnar deviation of the hand or of fingers of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007627",
+        "label": "Mandibular condyle aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005612",
+        "label": "Arthrogryposis-like hand anomaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000598",
+        "label": "Abnormality of the ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003049",
+        "label": "Ulnar deviation of the wrist"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006077",
+        "label": "Absent proximal finger flexion creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008365",
+        "label": "Abnormal talus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001848",
+        "label": "Calcaneovalgus deformity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025668",
+        "label": "Abnormal neck morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601680",
+        "label": "Arthrogryposis, distal, type 2B"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:40:23.871930Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

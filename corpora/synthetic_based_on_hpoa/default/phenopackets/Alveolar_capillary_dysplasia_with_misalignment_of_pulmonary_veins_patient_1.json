@@ -1,0 +1,189 @@
+{
+  "id": "alveolar_capillary_dysplasia_with_misalignment_of_pulmonary_veins",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002643",
+        "label": "Neonatal respiratory distress"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001643",
+        "label": "Patent ductus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033186",
+        "label": "Misalignment of the pulmonary veins"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034058",
+        "label": "Abnormal fetal morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025487",
+        "label": "Abnormal bladder morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005790",
+        "label": "Short mandibular condyles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012090",
+        "label": "Abnormal pancreas morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011403",
+        "label": "Abnormal umbilical cord blood vessel morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031105",
+        "label": "Abnormal uterus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002190",
+        "label": "Choroid plexus cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011626",
+        "label": "Scimitar anomaly"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030966",
+        "label": "Abnormal pulmonary artery morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033208",
+        "label": "Alveolar capillary dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031054",
+        "label": "Long segment coarctation of the aorta"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004403",
+        "label": "Proximal esophageal atresia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033255",
+        "label": "Congenital lobar overinflation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003316",
+        "label": "Butterfly vertebrae"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:265380",
+        "label": "Alveolar capillary dysplasia with misalignment of pulmonary veins"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:00:18.479740Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
