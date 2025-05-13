@@ -596,20 +596,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#src.pheval.analyse.rank_stats.Ranks.mean_average_precision_at_k" class="md-nav__link">
-    mean_average_precision_at_k
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.pheval.analyse.rank_stats.Ranks.mean_normalised_discounted_cumulative_gain" class="md-nav__link">
-    mean_normalised_discounted_cumulative_gain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#src.pheval.analyse.rank_stats.Ranks.percentage_at_k" class="md-nav__link">
     percentage_at_k
   </a>
@@ -1249,20 +1235,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#src.pheval.analyse.rank_stats.Ranks.mean_average_precision_at_k" class="md-nav__link">
-    mean_average_precision_at_k
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.pheval.analyse.rank_stats.Ranks.mean_normalised_discounted_cumulative_gain" class="md-nav__link">
-    mean_normalised_discounted_cumulative_gain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#src.pheval.analyse.rank_stats.Ranks.percentage_at_k" class="md-nav__link">
     percentage_at_k
   </a>
@@ -1512,31 +1484,7 @@
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Ranks</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for calculating ranking statistics.</span>
@@ -1652,24 +1600,11 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">precision_at_k</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mean_average_precision_at_k</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute Mean Average Precision at K (MAP@K) by averaging AP@K scores.</span>
-<span class="sd">        Args:</span>
-<span class="sd">            df (pl.LazyFrame): The dataframe calculate MAP@K for each query.</span>
-<span class="sd">            k (int): The upper rank limit.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            pl.LazyFrame: The dataframe with MAP@K for each query.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mean_average_precision_at_k</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="n">ap_at_k_df</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_average_precision_at_k</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">ap_at_k_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-                <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ap@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-            <span class="p">)</span>
-            <span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">item</span><span class="p">()</span>
-        <span class="p">)</span>
+        <span class="n">ap_sum</span> <span class="o">=</span> <span class="n">ap_at_k_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ap@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">num_samples</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ap_sum</span> <span class="o">/</span> <span class="n">num_samples</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_ndcg_at_k</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ranks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -1693,29 +1628,18 @@
         <span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mean_normalised_discounted_cumulative_gain</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute mean normalised discounted cumulative gain.</span>
-<span class="sd">        Args:</span>
-<span class="sd">            df (pl.LazyFrame): The dataframe to calculate mean normalised cumulative gain.</span>
-<span class="sd">            k (int): The upper rank limit.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            pl.LazyFrame: The dataframe with mean normalised cumulative gain.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mean_normalised_discounted_cumulative_gain</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="n">filtered_df</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_filter_results</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">filtered_df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-                <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">(</span><span class="s2">&quot;ranks&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
-                    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_calculate_ndcg_at_k</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">],</span> <span class="n">k</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span>
-                <span class="p">)</span>
-                <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ndcg_df</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+            <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">(</span><span class="s2">&quot;ranks&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_calculate_ndcg_at_k</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">],</span> <span class="n">k</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span>
             <span class="p">)</span>
-            <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
-            <span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="p">)</span>
+        <span class="n">ndcg_sum</span> <span class="o">=</span> <span class="n">ndcg_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">num_samples</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ndcg_sum</span> <span class="o">/</span> <span class="n">num_samples</span>
 </code></pre></div></td></tr></table></div>
             </details>
 
@@ -1786,154 +1710,6 @@ Returns:
         <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">precision_expr</span> <span class="o">*</span> <span class="n">recall_expr</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precision_expr</span> <span class="o">+</span> <span class="n">recall_expr</span><span class="p">))</span>
         <span class="o">.</span><span class="n">fill_nan</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;f_beta@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="src.pheval.analyse.rank_stats.Ranks.mean_average_precision_at_k" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">mean_average_precision_at_k</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
-  </span>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Compute Mean Average Precision at K (MAP@K) by averaging AP@K scores.
-Args:
-    df (pl.LazyFrame): The dataframe calculate MAP@K for each query.
-    k (int): The upper rank limit.
-Returns:
-    pl.LazyFrame: The dataframe with MAP@K for each query.</p>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">mean_average_precision_at_k</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute Mean Average Precision at K (MAP@K) by averaging AP@K scores.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        df (pl.LazyFrame): The dataframe calculate MAP@K for each query.</span>
-<span class="sd">        k (int): The upper rank limit.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        pl.LazyFrame: The dataframe with MAP@K for each query.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ap_at_k_df</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_average_precision_at_k</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="n">ap_at_k_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-            <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ap@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">item</span><span class="p">()</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="src.pheval.analyse.rank_stats.Ranks.mean_normalised_discounted_cumulative_gain" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">mean_normalised_discounted_cumulative_gain</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
-  </span>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Compute mean normalised discounted cumulative gain.
-Args:
-    df (pl.LazyFrame): The dataframe to calculate mean normalised cumulative gain.
-    k (int): The upper rank limit.
-Returns:
-    pl.LazyFrame: The dataframe with mean normalised cumulative gain.</p>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">mean_normalised_discounted_cumulative_gain</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute mean normalised discounted cumulative gain.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        df (pl.LazyFrame): The dataframe to calculate mean normalised cumulative gain.</span>
-<span class="sd">        k (int): The upper rank limit.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        pl.LazyFrame: The dataframe with mean normalised cumulative gain.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">filtered_df</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_filter_results</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="n">filtered_df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-            <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">(</span><span class="s2">&quot;ranks&quot;</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
-                <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_calculate_ndcg_at_k</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">],</span> <span class="n">k</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span>
-            <span class="p">)</span>
-            <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NDCG@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
-        <span class="o">.</span><span class="n">fill_null</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
@@ -2115,7 +1891,31 @@ Args:
 
           <details class="quote">
             <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
@@ -2153,31 +1953,7 @@ Args:
 <span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_rank_stats</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
+<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_rank_stats</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes ranking statistics for a given benchmarking run.</span>
 <span class="sd">    Args:</span>
