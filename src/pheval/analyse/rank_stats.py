@@ -124,24 +124,11 @@ class Ranks:
         return np.mean(precision_at_k)
 
     @classmethod
-    def mean_average_precision_at_k(cls, df: pl.LazyFrame, k: int) -> pl.LazyFrame:
-        """
-        Compute Mean Average Precision at K (MAP@K) by averaging AP@K scores.
-        Args:
-            df (pl.LazyFrame): The dataframe calculate MAP@K for each query.
-            k (int): The upper rank limit.
-        Returns:
-            pl.LazyFrame: The dataframe with MAP@K for each query.
-        """
+    def mean_average_precision_at_k(cls, df: pl.LazyFrame, k: int) -> float:
         ap_at_k_df = cls._average_precision_at_k(df, k)
-        return (
-            ap_at_k_df.select(
-                pl.col(f"ap@{k}").sum() / df.select(Ranks.NUMBER_OF_SAMPLES).collect()
-            )
-            .fill_null(0.0)
-            .collect()
-            .item()
-        )
+        ap_sum = ap_at_k_df.select(pl.col(f"ap@{k}").sum()).collect().item()
+        num_samples = df.select(Ranks.NUMBER_OF_SAMPLES).collect().item()
+        return ap_sum / num_samples
 
     @classmethod
     def _calculate_ndcg_at_k(cls, ranks: List[int], k: int) -> float:
@@ -165,29 +152,18 @@ class Ranks:
         )
 
     @classmethod
-    def mean_normalised_discounted_cumulative_gain(cls, df: pl.LazyFrame, k: int) -> pl.Float64:
-        """
-        Compute mean normalised discounted cumulative gain.
-        Args:
-            df (pl.LazyFrame): The dataframe to calculate mean normalised cumulative gain.
-            k (int): The upper rank limit.
-        Returns:
-            pl.LazyFrame: The dataframe with mean normalised cumulative gain.
-        """
+    def mean_normalised_discounted_cumulative_gain(cls, df: pl.LazyFrame, k: int) -> float:
         filtered_df = cls._filter_results(df, k)
-        return (
-            filtered_df.with_columns(
-                pl.struct("ranks")
-                .map_elements(
-                    lambda row: cls._calculate_ndcg_at_k(row["ranks"], k), return_dtype=pl.Float64
-                )
-                .alias(f"NDCG@{k}")
+        ndcg_df = filtered_df.with_columns(
+            pl.struct("ranks")
+            .map_elements(
+                lambda row: cls._calculate_ndcg_at_k(row["ranks"], k), return_dtype=pl.Float64
             )
-            .select(pl.col(f"NDCG@{k}").sum() / df.select(Ranks.NUMBER_OF_SAMPLES).collect())
-            .fill_null(0.0)
-            .collect()
-            .item()
+            .alias(f"NDCG@{k}")
         )
+        ndcg_sum = ndcg_df.select(pl.col(f"NDCG@{k}").sum()).collect().item()
+        num_samples = df.select(Ranks.NUMBER_OF_SAMPLES).collect().item()
+        return ndcg_sum / num_samples
 
 
 def compute_rank_stats(run_identifier: str, result_scan: pl.LazyFrame) -> pl.LazyFrame:
