@@ -1,0 +1,123 @@
+{
+  "id": "intellectual_developmental_disorder,_autosomal_recessive_75,_with_neuropsychiatric_features_and_variant_lissencephaly",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002197",
+        "label": "Generalized-onset seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002067",
+        "label": "Bradykinesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012471",
+        "label": "Thick vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000752",
+        "label": "Hyperactivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000953",
+        "label": "Hyperpigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007164",
+        "label": "Slowed slurred speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012170",
+        "label": "Nail-biting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007017",
+        "label": "Progressive forgetfulness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032661",
+        "label": "Generalized convulsive status epilepticus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010865",
+        "label": "Oppositional defiant disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619827",
+        "label": "Intellectual developmental disorder, autosomal recessive 75, with neuropsychiatric features and variant lissencephaly"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T00:30:37.046959Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

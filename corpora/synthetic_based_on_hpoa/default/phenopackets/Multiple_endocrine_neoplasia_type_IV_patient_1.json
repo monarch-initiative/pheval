@@ -1,0 +1,87 @@
+{
+  "id": "multiple_endocrine_neoplasia,_type_iv",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0006772",
+        "label": "Renal angiomyolipoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000843",
+        "label": "Hyperparathyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100570",
+        "label": "Carcinoid tumor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008200",
+        "label": "Primary hyperparathyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030405",
+        "label": "Pancreatic endocrine tumor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000821",
+        "label": "Hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030731",
+        "label": "Carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100568",
+        "label": "Neoplasm of the endocrine system"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610755",
+        "label": "Multiple endocrine neoplasia, type IV"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:47:14.581130Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

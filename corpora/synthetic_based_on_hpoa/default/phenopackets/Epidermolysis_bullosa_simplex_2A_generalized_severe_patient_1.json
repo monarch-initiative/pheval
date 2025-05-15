@@ -1,0 +1,63 @@
+{
+  "id": "epidermolysis_bullosa_simplex_2a,_generalized_severe",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007530",
+        "label": "Punctate palmoplantar hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034366",
+        "label": "Fracture blister"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034193",
+        "label": "Stratum basale cleavage"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619555",
+        "label": "Epidermolysis bullosa simplex 2A, generalized severe"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:46:10.262119Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "deafness,_nerve_type,_with_mesenteric_diverticula_of_small_bowel_andprogressive_sensory_neuropathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005229",
+        "label": "Jejunoileal ulceration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025033",
+        "label": "Abnormal digestive system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:221400",
+        "label": "Deafness, nerve type, with mesenteric diverticula of small bowel andprogressive sensory neuropathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:43:40.759969Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

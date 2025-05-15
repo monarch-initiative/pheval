@@ -1,0 +1,129 @@
+{
+  "id": "mucopolysaccharidosis_type_iiia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001387",
+        "label": "Joint stiffness"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011344",
+        "label": "Severe global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000900",
+        "label": "Thickened ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002219",
+        "label": "Facial hypertrichosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:4000193",
+        "label": "Reduced leukocyte N-sulfoglucosamine sulfohydrolase activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002159",
+        "label": "Heparan sulfate excretion in urine"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006887",
+        "label": "Intellectual disability, progressive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000339",
+        "label": "Pugilistic facies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001637",
+        "label": "Abnormal myocardium morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008625",
+        "label": "Severe sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002208",
+        "label": "Coarse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003309",
+        "label": "Ovoid thoracolumbar vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:252900",
+        "label": "Mucopolysaccharidosis type IIIA"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:42:08.992374Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

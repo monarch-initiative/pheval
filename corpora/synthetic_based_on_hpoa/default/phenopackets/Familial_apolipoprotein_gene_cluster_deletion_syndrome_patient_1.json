@@ -1,0 +1,63 @@
+{
+  "id": "familial_apolipoprotein_gene_cluster_deletion_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012153",
+        "label": "Hypotriglyceridemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031799",
+        "label": "Decreased circulating apolipoprotein A-I concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001084",
+        "label": "Corneal arcus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025015",
+        "label": "Abnormal vascular morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620058",
+        "label": "Familial apolipoprotein gene cluster deletion syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:25:42.837649Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "paragangliomas_4",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007378",
+        "label": "Neoplasm of the gastrointestinal tract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006742",
+        "label": "Congenital neuroblastoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000759",
+        "label": "Abnormal peripheral nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002666",
+        "label": "Pheochromocytoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006737",
+        "label": "Extraadrenal pheochromocytoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000740",
+        "label": "Episodic paroxysmal anxiety"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004308",
+        "label": "Ventricular arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031704",
+        "label": "Abnormal ear physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001962",
+        "label": "Palpitations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009726",
+        "label": "Renal neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007550",
+        "label": "Hypohidrosis or hyperhidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:115310",
+        "label": "Paragangliomas 4"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:47:42.344044Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

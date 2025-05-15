@@ -1,0 +1,93 @@
+{
+  "id": "immunodeficiency_80_with_or_without_cardiomyopathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001790",
+        "label": "Nonimmune hydrops fetalis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040218",
+        "label": "Reduced natural killer cell count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003077",
+        "label": "Hyperlipidemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001955",
+        "label": "Unexplained fevers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011900",
+        "label": "Hypofibrinogenemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001706",
+        "label": "Endocardial fibroelastosis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619313",
+        "label": "Immunodeficiency 80 with or without cardiomyopathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:17:29.307320Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

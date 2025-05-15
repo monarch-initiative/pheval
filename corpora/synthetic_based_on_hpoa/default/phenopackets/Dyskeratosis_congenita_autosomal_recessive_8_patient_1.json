@@ -1,0 +1,117 @@
+{
+  "id": "dyskeratosis_congenita,_autosomal_recessive_8",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001344",
+        "label": "Absent speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010975",
+        "label": "Abnormal B cell count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010450",
+        "label": "Esophageal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001915",
+        "label": "Aplastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004768",
+        "label": "Sparse anterior scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004386",
+        "label": "Gastrointestinal inflammation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033165",
+        "label": "Necrotizing enterocolitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008846",
+        "label": "Severe intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001881",
+        "label": "Abnormal leukocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005267",
+        "label": "Premature delivery because of cervical insufficiency or membrane fragility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000163",
+        "label": "Abnormal oral cavity morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620133",
+        "label": "Dyskeratosis congenita, autosomal recessive 8"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:49:10.546261Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

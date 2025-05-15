@@ -1,0 +1,69 @@
+{
+  "id": "paroxysmal_extreme_pain_disorder",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007328",
+        "label": "Impaired pain sensation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001649",
+        "label": "Tachycardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200026",
+        "label": "Ocular pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000632",
+        "label": "Lacrimation abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001662",
+        "label": "Bradycardia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:167400",
+        "label": "Paroxysmal extreme pain disorder"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:35:23.100811Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

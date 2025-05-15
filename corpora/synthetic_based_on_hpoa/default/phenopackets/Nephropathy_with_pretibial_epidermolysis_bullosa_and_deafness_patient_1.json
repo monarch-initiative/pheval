@@ -1,0 +1,63 @@
+{
+  "id": "nephropathy_with_pretibial_epidermolysis_bullosa_and_deafness",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007678",
+        "label": "Lacrimal duct stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033485",
+        "label": "Glomerular basement membrane disruption"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004722",
+        "label": "Thickened glomerular basement membrane"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012221",
+        "label": "Pretibial blistering"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:609057",
+        "label": "Nephropathy with pretibial epidermolysis bullosa and deafness"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:28:41.517675Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

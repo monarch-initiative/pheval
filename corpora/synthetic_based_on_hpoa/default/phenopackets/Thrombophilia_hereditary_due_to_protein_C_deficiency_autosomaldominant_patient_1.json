@@ -1,0 +1,75 @@
+{
+  "id": "thrombophilia,_hereditary,_due_to_protein_c_deficiency,_autosomaldominant",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002638",
+        "label": "Superficial thrombophlebitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005305",
+        "label": "Cerebral venous thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002204",
+        "label": "Pulmonary embolism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100724",
+        "label": "Hypercoagulability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001038",
+        "label": "Warfarin-induced skin necrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005543",
+        "label": "Reduced protein C activity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:176860",
+        "label": "Thrombophilia, hereditary, due to protein C deficiency, autosomaldominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:39:46.142012Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

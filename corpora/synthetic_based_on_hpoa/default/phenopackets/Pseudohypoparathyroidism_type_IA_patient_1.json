@@ -1,0 +1,141 @@
+{
+  "id": "pseudohypoparathyroidism,_type_ia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000852",
+        "label": "Pseudohypoparathyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000293",
+        "label": "Full cheeks"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000135",
+        "label": "Hypogonadism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000821",
+        "label": "Hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010049",
+        "label": "Short metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010697",
+        "label": "Anterior pyramidal cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011927",
+        "label": "Short digit"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003456",
+        "label": "Low urinary cyclic AMP response to PTH administration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012547",
+        "label": "Abnormal involuntary eye movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011927",
+        "label": "Short digit"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006960",
+        "label": "Choroid plexus calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034282",
+        "label": "Subcutaneous ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002684",
+        "label": "Thickened calvaria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009439",
+        "label": "Short middle phalanx of the 3rd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033331",
+        "label": "Acute phase response"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:103580",
+        "label": "Pseudohypoparathyroidism, type IA"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:15:41.214057Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
