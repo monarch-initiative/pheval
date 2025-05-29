@@ -40,6 +40,9 @@ pytest-workflow = "^2.0.1"
 pheval = "pheval.cli:pheval"
 pheval-utils = "pheval.cli:pheval_utils"
 
+[tool.poetry.group.docs]
+optional = true
+
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
 mkdocs-material = "^8.5.11"
