@@ -1268,9 +1268,15 @@
 
 
 <a id="src.pheval.analyse.run_data_parser"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1286,24 +1292,30 @@
 
 
 <h2 id="src.pheval.analyse.run_data_parser.Config" class="doc doc-heading">
-          <code>Config</code>
+            <code>Config</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
-  
-      <p>Store configurations for a runs.
+
+        <p>Store configurations for a runs.
 Attributes:
     runs (List[RunConfig]): The list of run configurations.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
@@ -1323,9 +1335,9 @@ Attributes:
     <span class="n">runs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RunConfig</span><span class="p">]</span>
     <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">PlotCustomisation</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1341,8 +1353,7 @@ Attributes:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1351,26 +1362,32 @@ Attributes:
 
 
 <h2 id="src.pheval.analyse.run_data_parser.PlotCustomisation" class="doc doc-heading">
-          <code>PlotCustomisation</code>
+            <code>PlotCustomisation</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
-  
-      <p>Store customisations for all plots.
+
+        <p>Store customisations for all plots.
 Attributes:
     gene_plots (SinglePlotCustomisation): Customisation for all gene benchmarking plots.
     disease_plots (SinglePlotCustomisation): Customisation for all disease benchmarking plots.
     variant_plots (SinglePlotCustomisation): Customisation for all variant benchmarking plots.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
@@ -1394,9 +1411,9 @@ Attributes:
     <span class="n">disease_plots</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span>
     <span class="n">variant_plots</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1412,8 +1429,7 @@ Attributes:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1422,125 +1438,130 @@ Attributes:
 
 
 <h2 id="src.pheval.analyse.run_data_parser.RunConfig" class="doc doc-heading">
-          <code>RunConfig</code>
+            <code>RunConfig</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
-
-  
-      <p>Store configurations for a run.</p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
 
+        <p>Store configurations for a run.</p>
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.run_identifier">run_identifier</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The run identifier.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.phenopacket_dir">phenopacket_dir</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the phenopacket directory used for generating the results.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.results_dir">results_dir</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the result directory.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.gene_analysis">gene_analysis</span></code></td>
-          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Whether to benchmark gene analysis results.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.variant_analysis">variant_analysis</span></code></td>
-          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Whether to benchmark variant analysis results.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.disease_analysis">disease_analysis</span></code></td>
-          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Whether to benchmark disease analysis results.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.threshold">threshold</span></code></td>
-          <td>
-                <code><span title="typing.Optional">Optional</span>[float]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The threshold to consider for benchmarking.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.score_order">score_order</span></code></td>
-          <td>
-                <code><span title="typing.Optional">Optional</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The order of scores to consider for benchmarking, either ascending or descending.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.run_identifier">run_identifier</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The run identifier.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.phenopacket_dir">phenopacket_dir</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the phenopacket directory used for generating the results.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.results_dir">results_dir</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the result directory.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.gene_analysis">gene_analysis</span></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to benchmark gene analysis results.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.variant_analysis">variant_analysis</span></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to benchmark variant analysis results.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.disease_analysis">disease_analysis</span></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to benchmark disease analysis results.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.threshold">threshold</span></code></td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The threshold to consider for benchmarking.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.RunConfig.score_order">score_order</span></code></td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The order of scores to consider for benchmarking, either ascending or descending.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -1606,9 +1627,9 @@ Attributes:
     <span class="k">def</span><span class="w"> </span><span class="nf">set_score_order</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">score_order</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">score_order</span> <span class="ow">or</span> <span class="s2">&quot;descending&quot;</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1624,8 +1645,7 @@ Attributes:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1634,81 +1654,86 @@ Attributes:
 
 
 <h2 id="src.pheval.analyse.run_data_parser.SinglePlotCustomisation" class="doc doc-heading">
-          <code>SinglePlotCustomisation</code>
+            <code>SinglePlotCustomisation</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
-
-  
-      <p>Store customisations for plots.</p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
 
+        <p>Store customisations for plots.</p>
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.plot_type">plot_type</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The plot type.</p>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.rank_plot_title">rank_plot_title</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The title for the rank summary plot.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.roc_curve_title">roc_curve_title</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The title for the roc curve plot.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.precision_recall_title">precision_recall_title</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The title for the precision-recall plot.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.plot_type">plot_type</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The plot type.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.rank_plot_title">rank_plot_title</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The title for the rank summary plot.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.roc_curve_title">roc_curve_title</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The title for the roc curve plot.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.run_data_parser.SinglePlotCustomisation.precision_recall_title">precision_recall_title</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The title for the precision-recall plot.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
@@ -1748,9 +1773,9 @@ Attributes:
     <span class="k">def</span><span class="w"> </span><span class="nf">set_plot_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">plot_type</span> <span class="ow">or</span> <span class="s2">&quot;bar_cumulative&quot;</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1766,34 +1791,32 @@ Attributes:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.run_data_parser.parse_run_config" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">parse_run_config</span><span class="p">(</span><span class="n">run_config</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">parse_run_config</span><span class="p">(</span><span class="n">run_config</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Parse a run configuration yaml file.
+    <div class="doc doc-contents ">
+
+        <p>Parse a run configuration yaml file.
 Args:
     run_config (Path): The path to the run data yaml configuration.
 Returns:
     Config: The parsed run configurations.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/run_data_parser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
@@ -1823,8 +1846,8 @@ Returns:
     <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">config_data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">config</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1832,7 +1855,7 @@ Returns:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

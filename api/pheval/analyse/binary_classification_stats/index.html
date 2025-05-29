@@ -1240,9 +1240,15 @@
 
 
 <a id="src.pheval.analyse.binary_classification_stats"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1258,9 +1264,9 @@
 
 
 <h2 id="src.pheval.analyse.binary_classification_stats.BinaryClassificationStats" class="doc doc-heading">
-          <code>BinaryClassificationStats</code>
+            <code>BinaryClassificationStats</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -1268,14 +1274,20 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Binary classification statistic expressions.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 29</span>
+        <p>Binary classification statistic expressions.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 29</span>
 <span class="normal"> 30</span>
 <span class="normal"> 31</span>
 <span class="normal"> 32</span>
@@ -1505,9 +1517,9 @@
         <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;matthews_correlation_coefficient&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1523,8 +1535,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1533,9 +1544,9 @@
 
 
 <h2 id="src.pheval.analyse.binary_classification_stats.ConfusionMatrix" class="doc doc-heading">
-          <code>ConfusionMatrix</code>
+            <code>ConfusionMatrix</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -1543,77 +1554,82 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
-
-  
-      <p>Define logical conditions for computing a confusion matrix using Polars expressions.</p>
+    <div class="doc doc-contents ">
 
 
+        <p>Define logical conditions for computing a confusion matrix using Polars expressions.</p>
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.TRUE_POSITIVES">TRUE_POSITIVES</span></code></td>
-          <td>
-                <code><span title="polars.Expr">Expr</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Condition identifying true positive cases,
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.TRUE_POSITIVES">TRUE_POSITIVES</span></code></td>
+            <td>
+                  <code><span title="polars.Expr">Expr</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Condition identifying true positive cases,
 where <code>rank == 1</code> and <code>true_positive</code> is <code>True</code>.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.FALSE_POSITIVES">FALSE_POSITIVES</span></code></td>
-          <td>
-                <code><span title="polars.Expr">Expr</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Condition identifying false positive cases,
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.FALSE_POSITIVES">FALSE_POSITIVES</span></code></td>
+            <td>
+                  <code><span title="polars.Expr">Expr</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Condition identifying false positive cases,
 where <code>rank == 1</code> and <code>true_positive</code> is <code>False</code>.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.TRUE_NEGATIVES">TRUE_NEGATIVES</span></code></td>
-          <td>
-                <code><span title="polars.Expr">Expr</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Condition identifying true negative cases,
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.TRUE_NEGATIVES">TRUE_NEGATIVES</span></code></td>
+            <td>
+                  <code><span title="polars.Expr">Expr</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Condition identifying true negative cases,
 where <code>rank != 1</code> and <code>true_positive</code> is <code>False</code>.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.FALSE_NEGATIVES">FALSE_NEGATIVES</span></code></td>
-          <td>
-                <code><span title="polars.Expr">Expr</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Condition identifying false negative cases,
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.binary_classification_stats.ConfusionMatrix.FALSE_NEGATIVES">FALSE_NEGATIVES</span></code></td>
+            <td>
+                  <code><span title="polars.Expr">Expr</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Condition identifying false negative cases,
 where <code>rank != 1</code> and <code>true_positive</code> is <code>True</code>.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
@@ -1653,9 +1669,9 @@ where <code>rank != 1</code> and <code>true_positive</code> is <code>True</code>
     <span class="n">TRUE_NEGATIVES</span> <span class="o">=</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">))</span>
     <span class="n">FALSE_NEGATIVES</span> <span class="o">=</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1671,98 +1687,98 @@ where <code>rank != 1</code> and <code>true_positive</code> is <code>True</code>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.binary_classification_stats.compute_confusion_matrix" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">compute_confusion_matrix</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">compute_confusion_matrix</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Computes binary classification statistics.</p>
+    <div class="doc doc-contents ">
+
+        <p>Computes binary classification statistics.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>run_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The identifier for the run.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>run_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The identifier for the run.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>result_scan</code>
+            </td>
+            <td>
+                  <code><span title="polars.LazyFrame">LazyFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The LazyFrame containing the results for the directory.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>result_scan</code></td>
-          <td>
-                <code><span title="polars.LazyFrame">LazyFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The LazyFrame containing the results for the directory.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="polars.LazyFrame">LazyFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pl.LazyFrame: The LazyFrame containing the binary classification statistics.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="polars.LazyFrame">LazyFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>pl.LazyFrame: The LazyFrame containing the binary classification statistics.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/binary_classification_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
@@ -1844,8 +1860,8 @@ where <code>rank != 1</code> and <code>true_positive</code> is <code>True</code>
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1853,7 +1869,7 @@ where <code>rank != 1</code> and <code>true_positive</code> is <code>True</code>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

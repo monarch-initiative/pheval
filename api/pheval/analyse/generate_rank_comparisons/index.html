@@ -1212,12 +1212,17 @@
 
 
 <a id="src.pheval.analyse.generate_rank_comparisons"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1230,25 +1235,25 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.generate_rank_comparisons.calculate_rank_changes" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">run_identifiers</span><span class="p">,</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">run_identifiers</span><span class="p">,</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate rank changes between runs.
+    <div class="doc doc-contents ">
+
+        <p>Calculate rank changes between runs.
 Args:
     conn (DuckDBPyConnection): DuckDB connection.
     run_identifiers (List[str]): List of run identifiers.
     true_positive_cases (pl.LazyFrame): All true positive cases for a benchmark.
     benchmark_type (BenchmarkOutputType): Type of benchmark output.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_rank_comparisons.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_rank_comparisons.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -1314,8 +1319,8 @@ Args:
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col1</span><span class="si">}</span><span class="s2">_vs_</span><span class="si">{</span><span class="n">col2</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_rank_changes&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1323,7 +1328,7 @@ Args:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

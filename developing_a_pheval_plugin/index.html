@@ -1575,16 +1575,22 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 
 <a id="src.pheval.runners.runner.PhEvalRunner"></a>
-  <div class="doc doc-contents first">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="abc.ABC">ABC</span></code></p>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
-  
-      <p>PhEvalRunner Class</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 15</span>
+        <p>PhEvalRunner Class</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/runners/runner.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 15</span>
 <span class="normal"> 16</span>
 <span class="normal"> 17</span>
 <span class="normal"> 18</span>
@@ -1824,9 +1830,9 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct run output meta data&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_data</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1842,8 +1848,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
   </div>
 
-  </div>
-
+    </div>
 
 </div><hr />
 <h2 id="step-by-step-plugin-development-process">Step-by-Step Plugin Development Process</h2>
@@ -1922,14 +1927,20 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 
 
 <a id="src.pheval.utils.phenopacket_utils.PhenopacketUtil"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
-      <p>Class for retrieving data from a Phenopacket or Family object</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+        <p>Class for retrieving data from a Phenopacket or Family object</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
@@ -2587,9 +2598,9 @@ This allows PhEval extensibility to be standardised in terms of documentation an
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -2605,8 +2616,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 
   </div>
 
-  </div>
-
+    </div>
 
 </div><hr />
 <p><code>PhenopacketUtil</code> proves particularly beneficial in scenarios where the tool for which you're crafting a runner implementation does not directly accept Phenopackets as inputs. Instead, it might require elements—such as HPO IDs— via the command-line interface (CLI). In this context, leveraging PhenopacketUtil within the runner's preparation phase enables the extraction of observed phenotypic features from the Phenopacket input, facilitating seamless processing.</p>
@@ -2692,20 +2702,26 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 
 
 <a id="src.pheval.post_processing.validate_result_format.ResultSchema"></a>
-  <div class="doc doc-contents first">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="enum.Enum">Enum</span></code></p>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
 
-  
-      <p>Enum for different result schema formats.
+
+        <p>Enum for different result schema formats.
 Attributes:
     GENE_RESULT_SCHEMA (pl.Schema): Schema for gene-based results.
     VARIANT_RESULT_SCHEMA (pl.Schema): Schema for variant-based results.
     DISEASE_RESULT_SCHEMA (pl.Schema): Schema for disease-based results.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -2833,9 +2849,9 @@ Attributes:
 
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -2850,8 +2866,8 @@ Attributes:
 
 
 <h2 id="src.pheval.post_processing.validate_result_format.ResultSchema.GENE_RESULT_SCHEMA" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">GENE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;gene_symbol&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;gene_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
-  
+            <code class="highlight language-python"><span class="n">GENE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;gene_symbol&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;gene_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
@@ -2860,8 +2876,9 @@ Attributes:
 </h2>
 
 
-  <div class="doc doc-contents ">
-  </div>
+    <div class="doc doc-contents ">
+
+    </div>
 
 </div>
 
@@ -2870,8 +2887,8 @@ Attributes:
 
 
 <h2 id="src.pheval.post_processing.validate_result_format.ResultSchema.VARIANT_RESULT_SCHEMA" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">VARIANT_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;chrom&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;alt&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
-  
+            <code class="highlight language-python"><span class="n">VARIANT_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;chrom&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">,</span> <span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;alt&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
@@ -2880,8 +2897,9 @@ Attributes:
 </h2>
 
 
-  <div class="doc doc-contents ">
-  </div>
+    <div class="doc doc-contents ">
+
+    </div>
 
 </div>
 
@@ -2890,8 +2908,8 @@ Attributes:
 
 
 <h2 id="src.pheval.post_processing.validate_result_format.ResultSchema.DISEASE_RESULT_SCHEMA" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;disease_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
-  
+            <code class="highlight language-python"><span class="n">DISEASE_RESULT_SCHEMA</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Schema</span><span class="p">({</span><span class="s1">&#39;disease_identifier&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">,</span> <span class="s1">&#39;grouping_id&#39;</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">})</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
@@ -2900,8 +2918,9 @@ Attributes:
 </h2>
 
 
-  <div class="doc doc-contents ">
-  </div>
+    <div class="doc doc-contents ">
+
+    </div>
 
 </div>
 
@@ -2911,8 +2930,7 @@ Attributes:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div><hr />
 <p>The <code>grouping_id</code> column is <em><strong>optional</strong></em> and is designed to handle cases where entities should be jointly ranked without being penalised. 
@@ -2934,16 +2952,14 @@ Update your runner implementation to call the appropriate method based on the ty
 </blockquote>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
-
 <a id="src.pheval.post_processing.post_processing.generate_gene_result"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Generate PhEval gene results to a compressed Parquet output.
+    <div class="doc doc-contents first">
+
+        <p>Generate PhEval gene results to a compressed Parquet output.
 Args:
     results (pl.DataFrame): The gene results.
     sort_order (SortOrder): The sort order to use.
@@ -2951,9 +2967,10 @@ Args:
     result_path (Path): Path to the tool-specific result file.
     phenopacket_dir (Path): Path to the Phenopacket directory</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -3005,22 +3022,20 @@ Args:
     <span class="p">)</span>
     <span class="n">_write_gene_result</span><span class="p">(</span><span class="n">classified_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div><hr />
-
 
 
 <div class="doc doc-object doc-function">
 
 
 
-
 <a id="src.pheval.post_processing.post_processing.generate_variant_result"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Generate PhEval variant results to a compressed Parquet output.
+    <div class="doc doc-contents first">
+
+        <p>Generate PhEval variant results to a compressed Parquet output.
 Args:
     results (pl.DataFrame): The variant results.
     sort_order (SortOrder): The sort order to use.
@@ -3028,9 +3043,10 @@ Args:
     result_path (Path): Path to the tool-specific result file.
     phenopacket_dir (Path): Path to the Phenopacket directory</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
@@ -3090,22 +3106,20 @@ Args:
     <span class="p">)</span>
     <span class="n">_write_variant_result</span><span class="p">(</span><span class="n">classified_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div><hr />
-
 
 
 <div class="doc doc-object doc-function">
 
 
 
-
 <a id="src.pheval.post_processing.post_processing.generate_disease_result"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Generate PhEval disease results to a compressed Parquet output.
+    <div class="doc doc-contents first">
+
+        <p>Generate PhEval disease results to a compressed Parquet output.
 Args:
     results (pl.DataFrame): The disease results.
     sort_order (SortOrder): The sort order to use.
@@ -3113,9 +3127,10 @@ Args:
     result_path (Path): Path to the tool-specific result file.
     phenopacket_dir (Path): Path to the Phenopacket directory</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
@@ -3171,8 +3186,8 @@ Args:
     <span class="p">)</span>
     <span class="n">_write_disease_result</span><span class="p">(</span><span class="n">classified_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div><hr />
 <p>An example of how the method can be called is outlined here:</p>

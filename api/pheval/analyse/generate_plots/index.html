@@ -1336,9 +1336,15 @@
 
 
 <a id="src.pheval.analyse.generate_plots"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1354,20 +1360,26 @@
 
 
 <h2 id="src.pheval.analyse.generate_plots.PlotGenerator" class="doc doc-heading">
-          <code>PlotGenerator</code>
+            <code>PlotGenerator</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class to generate plots.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 32</span>
+        <p>Class to generate plots.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 32</span>
 <span class="normal"> 33</span>
 <span class="normal"> 34</span>
 <span class="normal"> 35</span>
@@ -1897,12 +1909,11 @@
             <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1915,23 +1926,23 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise the PlotGenerator class.
+    <div class="doc doc-contents ">
+
+        <p>Initialise the PlotGenerator class.
 Note:
     Matplotlib settings are configured to remove the right and top axes spines
     for generated plots.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
@@ -1951,29 +1962,28 @@ Note:
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.top&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.generate_cumulative_bar" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_cumulative_bar</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_cumulative_bar</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate a cumulative bar plot.</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
+        <p>Generate a cumulative bar plot.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
@@ -1997,29 +2007,28 @@ Note:
     <span class="n">stats_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_cumulative_bar_plot_data</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_plot_bar_plot</span><span class="p">(</span><span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.generate_non_cumulative_bar" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_non_cumulative_bar</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_non_cumulative_bar</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate a non-cumulative bar plot.</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
+        <p>Generate a non-cumulative bar plot.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
@@ -2043,29 +2052,28 @@ Note:
     <span class="n">stats_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_non_cumulative_bar_plot_data</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_plot_bar_plot</span><span class="p">(</span><span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.generate_precision_recall" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_precision_recall</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_precision_recall</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate and plot Precision-Recall curves for binary classification benchmark results.</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">265</span>
+        <p>Generate and plot Precision-Recall curves for binary classification benchmark results.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
 <span class="normal">268</span>
@@ -2129,30 +2137,29 @@ Note:
         <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.generate_roc_curve" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_roc_curve</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_roc_curve</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.</p>
+    <div class="doc doc-contents ">
+
+        <p>Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.</p>
 <p>Args:</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">231</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span>
 <span class="normal">234</span>
@@ -2218,33 +2225,32 @@ Note:
         <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.generate_stacked_bar_plot" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_stacked_bar_plot</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_stacked_bar_plot</span><span class="p">(</span><span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
+    <div class="doc doc-contents ">
+
+        <p>Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
 Args:
     benchmarking_results_df (pl.DataFrame): benchmarking stats dataframe.
     benchmark_output_type (BenchmarkOutputType): Benchmark output type.
     plot_customisation (SinglePlotCustomisation): Plotting customisation.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -2316,8 +2322,8 @@ Args:
     <span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_save_fig</span><span class="p">(</span><span class="n">benchmark_output_type</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2325,31 +2331,29 @@ Args:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.generate_plots.generate_plots" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate summary statistics bar plots for prioritisation.</p>
+    <div class="doc doc-contents ">
+
+        <p>Generate summary statistics bar plots for prioritisation.</p>
 <p>This method generates summary statistics bar plots based on the provided benchmarking results and plot type.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">299</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">299</span>
 <span class="normal">300</span>
 <span class="normal">301</span>
 <span class="normal">302</span>
@@ -2423,32 +2427,31 @@ Args:
                 <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span>
             <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.generate_plots.generate_plots_from_db" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate plots from database file.
+    <div class="doc doc-contents ">
+
+        <p>Generate plots from database file.
 Args:
     db_path (Path): Path to the database file.
     config (Path): Path to the benchmarking config file.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">338</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">338</span>
 <span class="normal">339</span>
 <span class="normal">340</span>
 <span class="normal">341</span>
@@ -2532,8 +2535,8 @@ Args:
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished generating plots.&quot;</span><span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2541,7 +2544,7 @@ Args:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

@@ -1638,9 +1638,15 @@
 
 
 <a id="src.pheval.prepare.create_spiked_vcf"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1656,9 +1662,9 @@
 
 
 <h2 id="src.pheval.prepare.create_spiked_vcf.VcfFile" class="doc doc-heading">
-          <code>VcfFile</code>
+            <code>VcfFile</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -1666,62 +1672,72 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+
+        <p>Represents a VCF file with its name, contents, and header information.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_file_name">vcf_file_name</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The name of the VCF file.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_contents">vcf_contents</span></code></td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The contents of the VCF file.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_header">vcf_header</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfHeader
+
 
   
-      <p>Represents a VCF file with its name, contents, and header information.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfHeader)" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parsed header information of the VCF file.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_file_name">vcf_file_name</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The name of the VCF file.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_contents">vcf_contents</span></code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The contents of the VCF file.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.prepare.create_spiked_vcf.VcfFile.vcf_header">vcf_header</span></code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfHeader" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The parsed header information of the VCF file.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
@@ -1779,12 +1795,11 @@
         <span class="n">contents</span> <span class="o">=</span> <span class="n">read_vcf</span><span class="p">(</span><span class="n">template_vcf</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">VcfFile</span><span class="p">(</span><span class="n">template_vcf</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">VcfHeaderParser</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span><span class="o">.</span><span class="n">parse_vcf_header</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1797,10 +1812,9 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfFile.populate_fields" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">populate_fields</span><span class="p">(</span><span class="n">template_vcf</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">populate_fields</span><span class="p">(</span><span class="n">template_vcf</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
@@ -1808,66 +1822,67 @@
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Populate the fields of the VcfFile instance using the contents of a template VCF file.</p>
+    <div class="doc doc-contents ">
+
+        <p>Populate the fields of the VcfFile instance using the contents of a template VCF file.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the template VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the template VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>VcfFile</code></td>          <td>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>An instance of VcfFile with populated fields.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>VcfFile</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An instance of VcfFile with populated fields.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
 <span class="normal">193</span>
@@ -1895,8 +1910,8 @@
     <span class="n">contents</span> <span class="o">=</span> <span class="n">read_vcf</span><span class="p">(</span><span class="n">template_vcf</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">VcfFile</span><span class="p">(</span><span class="n">template_vcf</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">VcfHeaderParser</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span><span class="o">.</span><span class="n">parse_vcf_header</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1904,8 +1919,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1914,9 +1928,9 @@
 
 
 <h2 id="src.pheval.prepare.create_spiked_vcf.VcfHeader" class="doc doc-heading">
-          <code>VcfHeader</code>
+            <code>VcfHeader</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -1924,72 +1938,83 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
-
-  
-      <p>Data obtained from VCF header.</p>
+    <div class="doc doc-contents ">
 
 
+        <p>Data obtained from VCF header.</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>sample_id</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The sample identifier from the VCF header.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>assembly</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The assembly information obtained from the VCF header.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>chr_status</code></td>
-          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A boolean indicating whether the VCF denotes chromosomes as chr or not.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>sample_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The sample identifier from the VCF header.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>assembly</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The assembly information obtained from the VCF header.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chr_status</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A boolean indicating whether the VCF denotes chromosomes as chr or not.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
@@ -2015,9 +2040,9 @@
     <span class="n">assembly</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">chr_status</span><span class="p">:</span> <span class="nb">bool</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -2033,8 +2058,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -2043,20 +2067,26 @@
 
 
 <h2 id="src.pheval.prepare.create_spiked_vcf.VcfHeaderParser" class="doc doc-heading">
-          <code>VcfHeaderParser</code>
+            <code>VcfHeaderParser</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for parsing the header of a VCF file.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+        <p>Class for parsing the header of a VCF file.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
@@ -2178,12 +2208,11 @@
         <span class="n">sample_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_sample_id</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">VcfHeader</span><span class="p">(</span><span class="n">sample_id</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">chr_status</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -2196,50 +2225,51 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfHeaderParser.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise the VcfHeaderParser.</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise the VcfHeaderParser.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>vcf_contents</code></td>
-          <td>
-                <code>list[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The contents of the VCF file as a list of strings.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_contents</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The contents of the VCF file as a list of strings.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
@@ -2255,53 +2285,51 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">vcf_contents</span> <span class="o">=</span> <span class="n">vcf_contents</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfHeaderParser.parse_assembly" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">parse_assembly</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">parse_assembly</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Parse the genome assembly and format of vcf_records.</p>
+    <div class="doc doc-contents ">
+
+        <p>Parse the genome assembly and format of vcf_records.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code>tuple[str, bool]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Tuple[str, bool]: A tuple containing the assembly and chromosome status (True/False).</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="tuple">tuple</span>[<span title="str">str</span>, <span title="bool">bool</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tuple[str, bool]: A tuple containing the assembly and chromosome status (True/False).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
@@ -2355,53 +2383,51 @@
     <span class="n">assembly</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">genome_assemblies</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">vcf_assembly</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">chr_status</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfHeaderParser.parse_sample_id" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">parse_sample_id</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">parse_sample_id</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Parse the sample ID of the VCF.</p>
+    <div class="doc doc-contents ">
+
+        <p>Parse the sample ID of the VCF.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>str</code></td>          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The sample ID extracted from the VCF header.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The sample ID extracted from the VCF header.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
@@ -2421,53 +2447,56 @@
         <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#CHROM&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfHeaderParser.parse_vcf_header" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">parse_vcf_header</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">parse_vcf_header</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Parse the header of the VCF.</p>
+    <div class="doc doc-contents ">
+
+        <p>Parse the header of the VCF.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>VcfHeader</code></td>          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfHeader" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>An instance of VcfHeader containing sample ID, assembly, and chromosome status.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>VcfHeader</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfHeader
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfHeader)" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An instance of VcfHeader containing sample ID, assembly, and chromosome status.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span>
@@ -2487,8 +2516,8 @@
     <span class="n">sample_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_sample_id</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">VcfHeader</span><span class="p">(</span><span class="n">sample_id</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">chr_status</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2496,8 +2525,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -2506,20 +2534,26 @@
 
 
 <h2 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker" class="doc doc-heading">
-          <code>VcfSpiker</code>
+            <code>VcfSpiker</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for spiking proband variants into template VCF file contents.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
+        <p>Class for spiking proband variants into template VCF file contents.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
 <span class="normal">285</span>
 <span class="normal">286</span>
 <span class="normal">287</span>
@@ -2767,12 +2801,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">construct_header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">construct_vcf_records</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -2785,78 +2818,88 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">,</span> <span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">vcf_header</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">,</span> <span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">vcf_header</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+        <p>Initialise the VcfSpiker.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_contents</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contents of the template VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>proband_causative_variants</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of proband causative variants.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_header</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfHeader
+
+
   
-      <p>Initialise the VcfSpiker.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfHeader)" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The VCF header information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>vcf_contents</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Contents of the template VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>proband_causative_variants</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of proband causative variants.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>vcf_header</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfHeader" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The VCF header information.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
 <span class="normal">288</span>
 <span class="normal">289</span>
 <span class="normal">290</span>
@@ -2890,83 +2933,82 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">proband_causative_variants</span> <span class="o">=</span> <span class="n">proband_causative_variants</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">vcf_header</span> <span class="o">=</span> <span class="n">vcf_header</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker.construct_header" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">construct_header</span><span class="p">(</span><span class="n">updated_vcf_records</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">construct_header</span><span class="p">(</span><span class="n">updated_vcf_records</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Construct the header of the VCF.</p>
+    <div class="doc doc-contents ">
+
+        <p>Construct the header of the VCF.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>updated_vcf_records</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Updated VCF records.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>updated_vcf_records</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Updated VCF records.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[str]: Constructed header as a list of strings.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[str]: Constructed header as a list of strings.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">375</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">375</span>
 <span class="normal">376</span>
 <span class="normal">377</span>
 <span class="normal">378</span>
@@ -3008,83 +3050,82 @@
         <span class="n">updated_vcf_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">updated_vcf_file</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker.construct_variant_entry" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">construct_variant_entry</span><span class="p">(</span><span class="n">proband_variant_data</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">construct_variant_entry</span><span class="p">(</span><span class="n">proband_variant_data</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Construct variant entries.</p>
+    <div class="doc doc-contents ">
+
+        <p>Construct variant entries.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>proband_variant_data</code></td>
-          <td>
-                <code><span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Data for the proband variant.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>proband_variant_data</code>
+            </td>
+            <td>
+                  <code><span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Data for the proband variant.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[str]: Constructed variant entry as a list of strings.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[str]: Constructed variant entry as a list of strings.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">305</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">305</span>
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
@@ -3152,83 +3193,82 @@
         <span class="n">genotype_codes</span><span class="p">[</span><span class="n">proband_variant_data</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker.construct_vcf" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">construct_vcf</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">construct_vcf</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.</p>
+    <div class="doc doc-contents ">
+
+        <p>Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>template_vcf_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Name of the template VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>template_vcf_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the template VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[str]: The complete spiked VCF file content as a list of strings.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[str]: The complete spiked VCF file content as a list of strings.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
 <span class="normal">400</span>
@@ -3250,83 +3290,82 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">construct_header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">construct_vcf_records</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfSpiker.construct_vcf_records" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">construct_vcf_records</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">construct_vcf_records</span><span class="p">(</span><span class="n">template_vcf_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.</p>
+    <div class="doc doc-contents ">
+
+        <p>Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>template_vcf_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Name of the template VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>template_vcf_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the template VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[str]: Updated VCF records containing the spiked variants.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[str]: Updated VCF records containing the spiked variants.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">340</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
@@ -3394,8 +3433,8 @@
         <span class="n">updated_vcf_records</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">variant_entry_position</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">variant_entry</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">updated_vcf_records</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -3403,8 +3442,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -3413,20 +3451,26 @@
 
 
 <h2 id="src.pheval.prepare.create_spiked_vcf.VcfWriter" class="doc doc-heading">
-          <code>VcfWriter</code>
+            <code>VcfWriter</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for writing VCF file.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
+        <p>Class for writing VCF file.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
 <span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span>
@@ -3514,12 +3558,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_gzip</span><span class="p">()</span> <span class="k">if</span> <span class="n">is_gzipped</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spiked_vcf_file_path</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_uncompressed</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -3532,64 +3575,67 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfWriter.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">,</span> <span class="n">spiked_vcf_file_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vcf_contents</span><span class="p">,</span> <span class="n">spiked_vcf_file_path</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise the VcfWriter class.</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise the VcfWriter class.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>vcf_contents</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Contents of the VCF file to be written.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>spiked_vcf_file_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the spiked VCF file to be created.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_contents</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contents of the VCF file to be written.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>spiked_vcf_file_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the spiked VCF file to be created.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">413</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">413</span>
 <span class="normal">414</span>
 <span class="normal">415</span>
 <span class="normal">416</span>
@@ -3617,29 +3663,28 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">vcf_contents</span> <span class="o">=</span> <span class="n">vcf_contents</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">spiked_vcf_file_path</span> <span class="o">=</span> <span class="n">spiked_vcf_file_path</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfWriter.write_gzip" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">write_gzip</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">write_gzip</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Write the VCF contents to a gzipped VCF file.</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">428</span>
+        <p>Write the VCF contents to a gzipped VCF file.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">428</span>
 <span class="normal">429</span>
 <span class="normal">430</span>
 <span class="normal">431</span>
@@ -3657,29 +3702,28 @@
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfWriter.write_uncompressed" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">write_uncompressed</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">write_uncompressed</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Write the VCF contents to an uncompressed VCF file.</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
+        <p>Write the VCF contents to an uncompressed VCF file.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
 <span class="normal">439</span>
 <span class="normal">440</span>
 <span class="normal">441</span>
@@ -3693,31 +3737,30 @@
         <span class="n">file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vcf_contents</span><span class="p">)</span>
     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_spiked_vcf.VcfWriter.write_vcf_file" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">write_vcf_file</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">write_vcf_file</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Write the VCF file based on compression type.</p>
+    <div class="doc doc-contents ">
+
+        <p>Write the VCF file based on compression type.</p>
 <p>Determines the file writing method based on the compression type of the spiked VCF file path.
 Writes the VCF contents to the corresponding file format (gzip or uncompressed).</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
 <span class="normal">447</span>
 <span class="normal">448</span>
 <span class="normal">449</span>
@@ -3733,8 +3776,8 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">write_gzip</span><span class="p">()</span> <span class="k">if</span> <span class="n">is_gzipped</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spiked_vcf_file_path</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_uncompressed</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -3742,122 +3785,129 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.check_variant_assembly" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">check_variant_assembly</span><span class="p">(</span><span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">vcf_header</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">check_variant_assembly</span><span class="p">(</span><span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">vcf_header</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+        <p>Check the assembly of the variant assembly against the VCF.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>proband_causative_variants</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of causative variants from the proband.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_header</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfHeader
+
+
   
-      <p>Check the assembly of the variant assembly against the VCF.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfHeader)" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An instance of VcfHeader representing the VCF file's header.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>proband_causative_variants</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A list of causative variants from the proband.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code>vcf_header</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfHeader" href="#src.pheval.prepare.create_spiked_vcf.VcfHeader">VcfHeader</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>An instance of VcfHeader representing the VCF file's header.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If there are too many or incompatible genome assemblies found.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError">IncompatibleGenomeAssemblyError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the assembly in the Phenopacket does not match the VCF assembly.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Raises:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code>ValueError</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If there are too many or incompatible genome assemblies found.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-                <code><span title="pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError">IncompatibleGenomeAssemblyError</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If the assembly in the Phenopacket does not match the VCF assembly.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">249</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
 <span class="normal">252</span>
@@ -3923,153 +3973,162 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
             <span class="n">assembly</span><span class="o">=</span><span class="n">phenopacket_assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="o">=</span><span class="n">phenopacket_path</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.create_spiked_vcf" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_spiked_vcf</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_spiked_vcf</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create a spiked VCF for a Phenopacket.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create a spiked VCF for a Phenopacket.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the generated spiked VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the hg19 template VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the hg38 template VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the generated spiked VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the hg19 template VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the hg38 template VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pheval.prepare.custom_exceptions.InputError">InputError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If both hg19_template_vcf and hg38_template_vcf are None.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Raises:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="pheval.prepare.custom_exceptions.InputError">InputError</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If both hg19_template_vcf and hg38_template_vcf are None.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">575</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">575</span>
 <span class="normal">576</span>
 <span class="normal">577</span>
 <span class="normal">578</span>
@@ -4127,153 +4186,162 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
         <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.create_spiked_vcfs" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_spiked_vcfs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_spiked_vcfs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create a spiked VCF for a directory of Phenopackets.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create a spiked VCF for a directory of Phenopackets.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the generated spiked VCF file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket directory.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the template hg19 VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the template hg19 VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the generated spiked VCF file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code>phenopacket_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket directory.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the template hg19 VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the template hg19 VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pheval.prepare.custom_exceptions.InputError">InputError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If both hg19_template_vcf and hg38_template_vcf are None.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Raises:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="pheval.prepare.custom_exceptions.InputError">InputError</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If both hg19_template_vcf and hg38_template_vcf are None.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">606</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">606</span>
 <span class="normal">607</span>
 <span class="normal">608</span>
 <span class="normal">609</span>
@@ -4345,145 +4413,167 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
             <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.generate_spiked_vcf_file" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">generate_spiked_vcf_file</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_spiked_vcf_file</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+        <p>Write spiked VCF contents to a new file.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the directory to store the generated file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenopacket or Family containing causative variants.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
+
+
   
-      <p>Write spiked VCF contents to a new file.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg19 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the directory to store the generated file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Phenopacket or Family containing causative variants.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg19 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg38 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-      <p>Returns:
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg38 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:
     File: The generated File object representing the newly created spiked VCF file.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">502</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">502</span>
 <span class="normal">503</span>
 <span class="normal">504</span>
 <span class="normal">505</span>
@@ -4547,83 +4637,82 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
         <span class="n">file_attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;vcf&quot;</span><span class="p">,</span> <span class="s2">&quot;genomeAssembly&quot;</span><span class="p">:</span> <span class="n">vcf_assembly</span><span class="p">},</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.read_vcf" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">read_vcf</span><span class="p">(</span><span class="n">vcf_file</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">read_vcf</span><span class="p">(</span><span class="n">vcf_file</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Read the contents of a VCF file into memory, handling both uncompressed and gzipped files.</p>
+    <div class="doc doc-contents ">
+
+        <p>Read the contents of a VCF file into memory, handling both uncompressed and gzipped files.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>vcf_file</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the VCF file to be read.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_file</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the VCF file to be read.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[str]: A list containing the lines of the VCF file.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[str]: A list containing the lines of the VCF file.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
@@ -4657,153 +4746,177 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
     <span class="n">vcf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">vcf_contents</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.select_vcf_template" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">select_vcf_template</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_vcf_template</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">proband_causative_variants</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+        <p>Select the appropriate VCF template based on the assembly information of the proband causative variants.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>proband_causative_variants</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of causative variants from the proband.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
+
+
   
-      <p>Select the appropriate VCF template based on the assembly information of the proband causative variants.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg19 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>proband_causative_variants</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A list of causative variants from the proband.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg19 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>CF file info for hg38 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>CF file info for hg38 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>VcfFile</code></td>          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The selected VCF template file based on the assembly information of the proband causative variants.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>VcfFile</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The selected VCF template file based on the assembly information of the proband causative variants.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
@@ -4885,154 +4998,173 @@ Writes the VCF contents to the corresponding file format (gzip or uncompressed).
             <span class="n">proband_causative_variants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket_path</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.spike_and_update_phenopacket" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">spike_and_update_phenopacket</span><span class="p">(</span><span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">spike_and_update_phenopacket</span><span class="p">(</span><span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Spike the VCF files with genetic variants relevant to the provided Phenopacket, update the Phenopacket
+    <div class="doc doc-contents ">
+
+        <p>Spike the VCF files with genetic variants relevant to the provided Phenopacket, update the Phenopacket
 accordingly, and write the updated Phenopacket to the specified output directory.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>hg19_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg19 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>hg38_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg38 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Directory where the updated Phenopacket will be saved.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the original Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
 
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg19 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg38 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Directory where the updated Phenopacket will be saved.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the original Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code>None</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>None</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>None</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">536</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">536</span>
 <span class="normal">537</span>
 <span class="normal">538</span>
 <span class="normal">539</span>
@@ -5106,155 +5238,174 @@ accordingly, and write the updated Phenopacket to the specified output directory
     <span class="p">)</span>
     <span class="n">write_phenopacket</span><span class="p">(</span><span class="n">updated_phenopacket</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.spike_vcf_contents" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">spike_vcf_contents</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">spike_vcf_contents</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">hg19_vcf_info</span><span class="p">,</span> <span class="n">hg38_vcf_info</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+        <p>Spike VCF records with variants obtained from a Phenopacket or Family.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenopacket or Family containing causative variants.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
+
+
   
-      <p>Spike VCF records with variants obtained from a Phenopacket or Family.</p>
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg19 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_info</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="VcfFile
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>phenopacket</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Phenopacket or Family containing causative variants.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg19 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_info</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.prepare.create_spiked_vcf.VcfFile" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>VCF file info for hg38 template vcf.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+  
+      dataclass
+   (src.pheval.prepare.create_spiked_vcf.VcfFile)" href="#src.pheval.prepare.create_spiked_vcf.VcfFile">VcfFile</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VCF file info for hg38 template vcf.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code>tuple[str, <span title="typing.List">List</span>[str]]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A tuple containing:
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="tuple">tuple</span>[<span title="str">str</span>, <span title="typing.List">List</span>[<span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A tuple containing:
 assembly (str): The genome assembly information extracted from VCF header.
 modified_vcf_contents (List[str]): Modified VCF records with spiked variants.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
 <span class="normal">457</span>
 <span class="normal">458</span>
 <span class="normal">459</span>
@@ -5342,143 +5493,155 @@ modified_vcf_contents (List[str]): Modified VCF records with spiked variants.</p
         <span class="p">)</span><span class="o">.</span><span class="n">construct_vcf</span><span class="p">(</span><span class="n">chosen_template_vcf</span><span class="o">.</span><span class="n">vcf_file_name</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_spiked_vcf.spike_vcfs" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">spike_vcfs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">spike_vcfs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">hg19_template_vcf</span><span class="p">,</span> <span class="n">hg38_template_vcf</span><span class="p">,</span> <span class="n">hg19_vcf_dir</span><span class="p">,</span> <span class="n">hg38_vcf_dir</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create spiked VCF from either a Phenopacket or a Phenopacket directory.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create spiked VCF from either a Phenopacket or a Phenopacket directory.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the generated spiked VCF file(s).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to a single Phenopacket file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to a directory containing Phenopacket files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the hg19 template VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_template_vcf</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the hg38 template VCF file (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg19_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg19 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>hg38_vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the hg38 VCF files (optional).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the generated spiked VCF file(s).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to a single Phenopacket file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to a directory containing Phenopacket files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the hg19 template VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_template_vcf</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the hg38 template VCF file (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg19_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg19 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>hg38_vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the hg38 VCF files (optional).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">644</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_spiked_vcf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">644</span>
 <span class="normal">645</span>
 <span class="normal">646</span>
 <span class="normal">647</span>
@@ -5574,8 +5737,8 @@ modified_vcf_contents (List[str]): Modified VCF records with spiked variants.</p
         <span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished spiking! Total time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -5583,7 +5746,7 @@ modified_vcf_contents (List[str]): Modified VCF records with spiked variants.</p
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

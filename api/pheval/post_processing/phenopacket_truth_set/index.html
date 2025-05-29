@@ -1322,9 +1322,15 @@
 
 
 <a id="src.pheval.post_processing.phenopacket_truth_set"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1340,20 +1346,26 @@
 
 
 <h2 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet" class="doc doc-heading">
-          <code>PhenopacketTruthSet</code>
+            <code>PhenopacketTruthSet</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for finding the causative gene/disease/variant from a phenopacket</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 27</span>
+        <p>Class for finding the causative gene/disease/variant from a phenopacket</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 27</span>
 <span class="normal"> 28</span>
 <span class="normal"> 29</span>
 <span class="normal"> 30</span>
@@ -1801,12 +1813,11 @@
             <span class="p">)</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1819,24 +1830,24 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.classified_disease" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">classified_disease</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">classified_disease</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Classify disease results for a given phenopacket.
+    <div class="doc doc-contents ">
+
+        <p>Classify disease results for a given phenopacket.
 Args:
     result_name (str): Name of the result file.
 Returns:
     pl.DataFrame: Classified ranked disease results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
@@ -1878,33 +1889,32 @@ Returns:
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.classified_gene" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">classified_gene</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">classified_gene</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Classify gene results for a given phenopacket.
+    <div class="doc doc-contents ">
+
+        <p>Classify gene results for a given phenopacket.
 Args:
     result_name (str): Name of the result file.
 Returns:
     pl.DataFrame: Classified ranked gene results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
 <span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
@@ -1950,33 +1960,32 @@ Returns:
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.classified_variant" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">classified_variant</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">classified_variant</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Classified variant results for a given phenopacket.
+    <div class="doc doc-contents ">
+
+        <p>Classified variant results for a given phenopacket.
 Args:
     result_name (str): Name of the result file.
 Returns:
     pl.DataFrame: Classified ranked variant results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">142</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
@@ -2026,19 +2035,17 @@ Returns:
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.merge_disease_results" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">merge_disease_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">merge_disease_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
@@ -2046,18 +2053,19 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Merge ranked disease results with the classified diseases.
+    <div class="doc doc-contents ">
+
+        <p>Merge ranked disease results with the classified diseases.
 Args:
     ranked_results (pl.DataFrame): Ranked disease results.
     output_file (Path): Path to the output file.
 Returns:
     pl.DataFrame: Merged ranked disease results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">226</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">226</span>
 <span class="normal">227</span>
 <span class="normal">228</span>
 <span class="normal">229</span>
@@ -2107,19 +2115,17 @@ Returns:
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.merge_gene_results" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">merge_gene_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">merge_gene_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
@@ -2127,18 +2133,19 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Merge ranked gene results with the classified genes.
+    <div class="doc doc-contents ">
+
+        <p>Merge ranked gene results with the classified genes.
 Args:
     ranked_results (pl.DataFrame): Ranked gene results.
     output_file (Path): Path to the output file.
 Returns:
     pl.DataFrame: Merged ranked gene results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
@@ -2190,19 +2197,17 @@ Returns:
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.phenopacket_truth_set.PhenopacketTruthSet.merge_variant_results" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">merge_variant_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">merge_variant_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
@@ -2210,18 +2215,19 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Merge ranked variant results with the classified variants.
+    <div class="doc doc-contents ">
+
+        <p>Merge ranked variant results with the classified variants.
 Args:
     ranked_results (pl.DataFrame): Ranked variant results.
     output_file (Path): Path to the output file.
 Returns:
     pl.DataFrame: Merged ranked variant results.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -2291,8 +2297,8 @@ Returns:
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2300,57 +2306,54 @@ Returns:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.post_processing.phenopacket_truth_set.calculate_end_pos" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate the end position for a variant
+    <div class="doc doc-contents ">
+
+        <p>Calculate the end position for a variant
 Args:
     variant_start (int): The start position of the variant
     variant_ref (str): The reference allele of the variant</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>int</code></td>          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The end position of the variant</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>int</code></td>            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The end position of the variant</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
@@ -2370,8 +2373,8 @@ Args:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">variant_start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">variant_ref</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2379,7 +2382,7 @@ Args:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

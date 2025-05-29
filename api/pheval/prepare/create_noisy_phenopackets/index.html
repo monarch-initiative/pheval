@@ -1392,9 +1392,15 @@
 
 
 <a id="src.pheval.prepare.create_noisy_phenopackets"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1410,20 +1416,26 @@
 
 
 <h2 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser" class="doc doc-heading">
-          <code>HpoRandomiser</code>
+            <code>HpoRandomiser</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO).</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 40</span>
+        <p>Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO).</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 40</span>
 <span class="normal"> 41</span>
 <span class="normal"> 42</span>
 <span class="normal"> 43</span>
@@ -1861,12 +1873,11 @@
                 <span class="p">),</span>
             <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1879,64 +1890,67 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">hpo_ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">hpo_ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise the HpoRandomiser.</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise the HpoRandomiser.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>hpo_ontology</code></td>
-          <td>
-                <code><span title="oaklib.implementations.pronto.pronto_implementation.ProntoImplementation">ProntoImplementation</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The instance of the HPO ontology.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>scramble_factor</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A factor for scrambling phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>hpo_ontology</code>
+            </td>
+            <td>
+                  <code><span title="oaklib.implementations.pronto.pronto_implementation.ProntoImplementation">ProntoImplementation</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The instance of the HPO ontology.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scramble_factor</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A factor for scrambling phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -1958,83 +1972,82 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">predicates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;HP:0000118&quot;</span><span class="p">]))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">scramble_factor</span> <span class="o">=</span> <span class="n">scramble_factor</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.add_noise_to_phenotypic_profile" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">add_noise_to_phenotypic_profile</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Randomise the phenotypic profile of a Phenopacket or Family.</p>
+    <div class="doc doc-contents ">
+
+        <p>Randomise the phenotypic profile of a Phenopacket or Family.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenopacket</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The Phenopacket or Family to be randomised.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Phenopacket or Family to be randomised.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Union[Phenopacket, Family]: The randomised Phenopacket or Family.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Union[Phenopacket, Family]: The randomised Phenopacket or Family.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
@@ -2072,107 +2085,110 @@
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">randomised_phenopacket</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.convert_patient_terms_to_parent" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">convert_patient_terms_to_parent</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">retained_phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">convert_patient_terms_to_parent</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">retained_phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Convert a subset of patient HPO terms to their respective parent terms.</p>
+    <div class="doc doc-contents ">
+
+        <p>Convert a subset of patient HPO terms to their respective parent terms.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenotypic_features</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of all phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>retained_phenotypic_features</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of retained non-scrambled phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>number_of_scrambled_terms</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The count of scrambled HPO terms.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenotypic_features</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of all phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>retained_phenotypic_features</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of retained non-scrambled phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>number_of_scrambled_terms</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The count of scrambled HPO terms.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: A list of HPO terms converted to their parent terms.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: A list of HPO terms converted to their parent terms.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 <details class="note" open>
   <summary>Note</summary>
@@ -2181,9 +2197,10 @@ non-scrambled phenotypic features and converts them to their respective parent t
 It then returns a list of parent HPO terms based on the provided scrambled terms count.
 If no remaining HPO terms are available for conversion, no parent terms are returned.</p>
 </details>
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -2263,83 +2280,82 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
             <span class="n">parent_terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">parents</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">parent_terms</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_random_hpo_terms" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_random_hpo_terms</span><span class="p">(</span><span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_random_hpo_terms</span><span class="p">(</span><span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Generate a list of random HPO terms.</p>
+    <div class="doc doc-contents ">
+
+        <p>Generate a list of random HPO terms.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>number_of_scrambled_terms</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The count of random HPO terms to be generated.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>number_of_scrambled_terms</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The count of random HPO terms to be generated.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: A list of randomly selected HPO terms.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: A list of randomly selected HPO terms.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
@@ -2367,73 +2383,75 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
     <span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">random_id</span> <span class="ow">in</span> <span class="n">random_ids</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopacket" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create a scrambled version of a Phenopacket.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create a scrambled version of a Phenopacket.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the output scrambled Phenopacket.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the original Phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the output scrambled Phenopacket.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the original Phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
@@ -2473,73 +2491,75 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
         <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.create_scrambled_phenopackets" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_scrambled_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_scrambled_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create scrambled versions of Phenopackets within a directory.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create scrambled versions of Phenopackets within a directory.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the output scrambled Phenopackets.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>phenopacket_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing the original Phenopacket files.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the output scrambled Phenopackets.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing the original Phenopacket files.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
@@ -2585,79 +2605,78 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
             <span class="p">),</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.randomise_hpo_terms" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.</p>
+    <div class="doc doc-contents ">
+
+        <p>Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenotypic_features</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of phenotypic features to be randomised.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenotypic_features</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of phenotypic features to be randomised.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: A list of randomised HPO terms.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: A list of randomised HPO terms.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 <details class="note" open>
   <summary>Note</summary>
@@ -2668,9 +2687,10 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <p>The method determines the count of terms for each category and combines them to form a final list
 of randomised HPO terms to be used in the phenotypic features.</p>
 </details>
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
@@ -2736,19 +2756,17 @@ of randomised HPO terms to be used in the phenotypic features.</p>
         <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_random_hpo_terms</span><span class="p">(</span><span class="n">number_of_scrambled_terms</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.retain_real_patient_terms" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">retain_real_patient_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">retain_real_patient_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
@@ -2756,81 +2774,84 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.</p>
+    <div class="doc doc-contents ">
+
+        <p>Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenotypic_features</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenotypic_features</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>number_of_scrambled_terms</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The count of scrambled HPO terms.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>number_of_scrambled_terms</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The count of scrambled HPO terms.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: A list of non-scrambled (real patient) HPO terms.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: A list of non-scrambled (real patient) HPO terms.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
 <span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
@@ -2870,83 +2891,82 @@ of randomised HPO terms to be used in the phenotypic features.</p>
         <span class="n">number_of_real_id</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_real_id</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.retrieve_hpo_term" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve an HPO term based on the provided HPO ID.</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve an HPO term based on the provided HPO ID.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>hpo_id</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The HPO ID of the term to retrieve.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>hpo_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The HPO ID of the term to retrieve.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>PhenotypicFeature</code></td>          <td>
-                <code><span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The PhenotypicFeature object representing the retrieved HPO term.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>PhenotypicFeature</code></td>            <td>
+                  <code><span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The PhenotypicFeature object representing the retrieved HPO term.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
@@ -2972,83 +2992,82 @@ of randomised HPO terms to be used in the phenotypic features.</p>
     <span class="n">hpo_term</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rels</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="n">rels</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">])])</span>
     <span class="k">return</span> <span class="n">PhenotypicFeature</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">OntologyClass</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hpo_id</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">hpo_term</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.prepare.create_noisy_phenopackets.HpoRandomiser.scramble_factor_proportions" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">scramble_factor_proportions</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">scramble_factor_proportions</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate the proportion of scrambled HPO terms based on the scramble factor.</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate the proportion of scrambled HPO terms based on the scramble factor.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenotypic_features</code></td>
-          <td>
-                <code>list[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenotypic_features</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>int</code></td>          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The calculated number of phenotypic features to be scrambled.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>int</code></td>            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The calculated number of phenotypic features to be scrambled.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
@@ -3076,8 +3095,8 @@ of randomised HPO terms to be used in the phenotypic features.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scramble_factor</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -3085,34 +3104,32 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_noisy_phenopackets.load_ontology" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Load the Human Phenotype Ontology (HPO).
+    <div class="doc doc-contents ">
+
+        <p>Load the Human Phenotype Ontology (HPO).
 Args:
     local_cached_ontology(Path): Path to the local cached ontology.
 Returns:
     ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -3144,115 +3161,123 @@ Returns:
         <span class="n">resource</span> <span class="o">=</span> <span class="n">OntologyResource</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">local_cached_ontology</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ProntoImplementation</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.prepare.create_noisy_phenopackets.scramble_phenopackets" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">scramble_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">,</span> <span class="n">local_cached_ontology</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">scramble_phenopackets</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">,</span> <span class="n">local_cached_ontology</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory to store the output scrambled Phenopackets.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to a single Phenopacket file (if applicable).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory containing multiple Phenopacket files (if applicable).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scramble_factor</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A factor determining the level of scrambling for phenotypic features.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>local_cached_ontology</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the local cached ontology.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>output_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory to store the output scrambled Phenopackets.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to a single Phenopacket file (if applicable).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>phenopacket_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory containing multiple Phenopacket files (if applicable).</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>scramble_factor</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A factor determining the level of scrambling for phenotypic features.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>local_cached_ontology</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the local cached ontology.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">261</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">261</span>
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
@@ -3326,8 +3351,8 @@ Returns:
         <span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished scrambling! Total time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -3335,7 +3360,7 @@ Returns:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

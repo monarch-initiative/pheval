@@ -1252,9 +1252,15 @@
 
 
 <a id="src.pheval.analyse.binary_classification_curves"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1270,20 +1276,26 @@
 
 
 <h2 id="src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves" class="doc doc-heading">
-          <code>BinaryClassificationCurves</code>
+            <code>BinaryClassificationCurves</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for computing and storing ROC &amp; Precision-Recall curves in Polars.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
+        <p>Class for computing and storing ROC &amp; Precision-Recall curves in Polars.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
 <span class="normal"> 11</span>
 <span class="normal"> 12</span>
 <span class="normal"> 13</span>
@@ -1501,12 +1513,11 @@
             <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1519,10 +1530,9 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.binary_classification_curves.BinaryClassificationCurves.process" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1530,82 +1540,85 @@
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Process scores, extract true labels, compute ROC and Precision-Recall curves,
+    <div class="doc doc-contents ">
+
+        <p>Process scores, extract true labels, compute ROC and Precision-Recall curves,
 and store results in a Polars LazyFrame with NumPy arrays.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>result_scan</code></td>
-          <td>
-                <code><span title="polars.LazyFrame">LazyFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The LazyFrame containing the results for the directory.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>result_scan</code>
+            </td>
+            <td>
+                  <code><span title="polars.LazyFrame">LazyFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The LazyFrame containing the results for the directory.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>run_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identifier for this run.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>run_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Identifier for this run.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="polars.LazyFrame">LazyFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pl.LazyFrame: A LazyFrame containing ROC &amp; PR curve data with NumPy arrays.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="polars.LazyFrame">LazyFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>pl.LazyFrame: A LazyFrame containing ROC &amp; PR curve data with NumPy arrays.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
@@ -1653,8 +1666,8 @@ and store results in a Polars LazyFrame with NumPy arrays.</p>
         <span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1662,35 +1675,33 @@ and store results in a Polars LazyFrame with NumPy arrays.</p>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.binary_classification_curves.compute_curves" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">compute_curves</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">compute_curves</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Compute ROC and Precision-Recall curves.
+    <div class="doc doc-contents ">
+
+        <p>Compute ROC and Precision-Recall curves.
 Args:
     result_scan (pl.LazyFrame): The LazyFrame containing the results for the directory.
     run_identifier (str): Identifier for this run.
 Returns:
     pl.LazyFrame: LazyFrame containing the ROC &amp; Precision-Recall curve data with NumPy arrays.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/binary_classification_curves.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
@@ -1714,8 +1725,8 @@ Returns:
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calculating ROC and Precision-Recall metrics&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">BinaryClassificationCurves</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">result_scan</span><span class="p">,</span> <span class="n">run_identifier</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1723,7 +1734,7 @@ Returns:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

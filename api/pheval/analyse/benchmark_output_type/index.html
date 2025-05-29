@@ -1226,9 +1226,15 @@
 
 
 <a id="src.pheval.analyse.benchmark_output_type"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1244,81 +1250,86 @@
 
 
 <h2 id="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType" class="doc doc-heading">
-          <code>BenchmarkOutputType</code>
+            <code>BenchmarkOutputType</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="typing.NamedTuple">NamedTuple</span></code></p>
-
-  
-      <p>Represents the structure of benchmark output types.</p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="typing.NamedTuple">NamedTuple</span></code></p>
 
 
+        <p>Represents the structure of benchmark output types.</p>
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.prioritisation_type_string">prioritisation_type_string</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The type of prioritisation being performed.</p>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.y_label">y_label</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The label for the y-axis in performance evaluation plots.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.columns">columns</span></code></td>
-          <td>
-                <code><span title="typing.List">List</span>[str]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The list of column names relevant to the benchmark output.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.result_directory">result_directory</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory where benchmark results are stored.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.prioritisation_type_string">prioritisation_type_string</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The type of prioritisation being performed.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.y_label">y_label</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The label for the y-axis in performance evaluation plots.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.columns">columns</span></code></td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The list of column names relevant to the benchmark output.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.result_directory">result_directory</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory where benchmark results are stored.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/benchmark_output_type.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/benchmark_output_type.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
 <span class="normal"> 6</span>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
@@ -1348,9 +1359,9 @@
     <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">result_directory</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1366,8 +1377,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1376,70 +1386,75 @@
 
 
 <h2 id="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum" class="doc doc-heading">
-          <code>BenchmarkOutputTypeEnum</code>
+            <code>BenchmarkOutputTypeEnum</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="enum.Enum">Enum</span></code></p>
-
-  
-      <p>Enumeration of benchmark output types, representing different entities.</p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
 
 
+        <p>Enumeration of benchmark output types, representing different entities.</p>
 
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.GENE">GENE</span></code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Benchmark output type for gene prioritisation.</p>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.VARIANT">VARIANT</span></code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Benchmark output type for variant prioritisation.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.DISEASE">DISEASE</span></code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Benchmark output type for disease prioritisation.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.GENE">GENE</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="BenchmarkOutputType (src.pheval.analyse.benchmark_output_type.BenchmarkOutputType)" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Benchmark output type for gene prioritisation.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.VARIANT">VARIANT</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="BenchmarkOutputType (src.pheval.analyse.benchmark_output_type.BenchmarkOutputType)" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Benchmark output type for variant prioritisation.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputTypeEnum.DISEASE">DISEASE</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="BenchmarkOutputType (src.pheval.analyse.benchmark_output_type.BenchmarkOutputType)" href="#src.pheval.analyse.benchmark_output_type.BenchmarkOutputType">BenchmarkOutputType</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Benchmark output type for disease prioritisation.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/benchmark_output_type.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/benchmark_output_type.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -1483,9 +1498,9 @@
         <span class="s2">&quot;disease&quot;</span><span class="p">,</span> <span class="s2">&quot;Known diseases (%)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">],</span> <span class="s2">&quot;pheval_disease_results&quot;</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1501,8 +1516,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1511,7 +1525,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

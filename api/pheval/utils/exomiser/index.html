@@ -1212,12 +1212,17 @@
 
 
 <a id="src.pheval.utils.exomiser"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1230,92 +1235,99 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.exomiser.semsim_to_exomiserdb" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">db_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">semsim_to_exomiserdb</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">db_path</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>ingests semsim file into exomiser phenotypic database</p>
+    <div class="doc doc-contents ">
+
+        <p>ingests semsim file into exomiser phenotypic database</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>object_prefix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>object prefix. e.g. MP</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>subject_prefix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>subject prefix e.g HP</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>db_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>input_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>semsim input file. e.g phenio-plus-hp-mp.0.semsimian.tsv</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>object_prefix</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>object prefix. e.g. MP</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>subject_prefix</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>subject prefix e.g HP</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>db_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/exomiser.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/exomiser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
@@ -1337,8 +1349,8 @@
     <span class="n">exomiserdb</span> <span class="o">=</span> <span class="n">ExomiserDB</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
     <span class="n">exomiserdb</span><span class="o">.</span><span class="n">import_from_semsim_file</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1346,7 +1358,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

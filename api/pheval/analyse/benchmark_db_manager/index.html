@@ -1212,12 +1212,17 @@
 
 
 <a id="src.pheval.analyse.benchmark_db_manager"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1230,24 +1235,24 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.benchmark_db_manager.write_table" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">write_table</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">write_table</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Write table to DuckDB database.
+    <div class="doc doc-contents ">
+
+        <p>Write table to DuckDB database.
 Args:
     conn (DuckDBPyConnection): DuckDB connection.
     df (pl.DataFrame): DuckDB dataframe.
     table_name (str): Table name.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/benchmark_db_manager.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/benchmark_db_manager.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -1267,8 +1272,8 @@ Args:
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Storing results in </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;CREATE TABLE &quot;</span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">&quot; AS SELECT * FROM df&quot;&quot;&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1276,7 +1281,7 @@ Args:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

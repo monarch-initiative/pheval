@@ -1318,9 +1318,15 @@
 
 
 <a id="src.pheval.infra.exomiserdb"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1336,18 +1342,24 @@
 
 
 <h2 id="src.pheval.infra.exomiserdb.DBConnection" class="doc doc-heading">
-          <code>DBConnection</code>
+            <code>DBConnection</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -1383,12 +1395,11 @@
         <span class="n">connection</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_connection</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1401,10 +1412,9 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.infra.exomiserdb.DBConnection.get_connection" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">get_connection</span><span class="p">()</span></code>
-  
+            <code class="highlight language-python"><span class="n">get_connection</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1412,13 +1422,14 @@
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Creates return new Singleton database connection</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+        <p>Creates return new Singleton database connection</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
@@ -1426,8 +1437,8 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates return new Singleton database connection&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">DBConnection</span><span class="o">.</span><span class="n">connection</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1435,8 +1446,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1445,18 +1455,24 @@
 
 
 <h2 id="src.pheval.infra.exomiserdb.DBConnector" class="doc doc-heading">
-          <code>DBConnector</code>
+            <code>DBConnector</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -1510,12 +1526,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dbconn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1528,20 +1543,20 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.infra.exomiserdb.DBConnector.create_connection" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_connection</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">create_connection</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>creates h2 database connection</p>
+    <div class="doc doc-contents ">
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+        <p>creates h2 database connection</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -1557,8 +1572,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">jar</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1566,8 +1581,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1576,18 +1590,24 @@
 
 
 <h2 id="src.pheval.infra.exomiserdb.ExomiserDB" class="doc doc-heading">
-          <code>ExomiserDB</code>
+            <code>ExomiserDB</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 63</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 63</span>
 <span class="normal"> 64</span>
 <span class="normal"> 65</span>
 <span class="normal"> 66</span>
@@ -1671,12 +1691,11 @@
 
                 <span class="n">batches</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">next_batches</span><span class="p">(</span><span class="n">batch_length</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1689,78 +1708,83 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.infra.exomiserdb.ExomiserDB.import_from_semsim_file" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">import_from_semsim_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">import_from_semsim_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">subject_prefix</span><span class="p">,</span> <span class="n">object_prefix</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>imports semsim tsv profile into exomiser phenotype database</p>
+    <div class="doc doc-contents ">
+
+        <p>imports semsim tsv profile into exomiser phenotype database</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>input_file</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>semsim profile</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>subject_prefix</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Subject Prefix. e.g HP</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>object_prefix</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Object Prefix. e.g MP</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_file</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>semsim profile</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>subject_prefix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Subject Prefix. e.g HP</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>object_prefix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Object Prefix. e.g MP</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 77</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/infra/exomiserdb.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 77</span>
 <span class="normal"> 78</span>
 <span class="normal"> 79</span>
 <span class="normal"> 80</span>
@@ -1816,8 +1840,8 @@
 
             <span class="n">batches</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">next_batches</span><span class="p">(</span><span class="n">batch_length</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1825,8 +1849,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1835,7 +1858,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

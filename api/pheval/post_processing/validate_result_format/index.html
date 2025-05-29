@@ -1252,9 +1252,15 @@
 
 
 <a id="src.pheval.post_processing.validate_result_format"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1270,26 +1276,32 @@
 
 
 <h2 id="src.pheval.post_processing.validate_result_format.ResultSchema" class="doc doc-heading">
-          <code>ResultSchema</code>
+            <code>ResultSchema</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="enum.Enum">Enum</span></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
 
-  
-      <p>Enum for different result schema formats.
+
+        <p>Enum for different result schema formats.
 Attributes:
     GENE_RESULT_SCHEMA (pl.Schema): Schema for gene-based results.
     VARIANT_RESULT_SCHEMA (pl.Schema): Schema for variant-based results.
     DISEASE_RESULT_SCHEMA (pl.Schema): Schema for disease-based results.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -1417,12 +1429,11 @@ Attributes:
 
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1435,16 +1446,15 @@ Attributes:
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.post_processing.validate_result_format.ResultSchema.validate" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">validate</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">validate</span><span class="p">(</span><span class="n">results</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Validate that a DataFrame follows the expected schema.
+    <div class="doc doc-contents ">
+
+        <p>Validate that a DataFrame follows the expected schema.
 Args:
     results (pl.DataFrame): The DataFrame to validate.
 Raises:
@@ -1453,9 +1463,10 @@ Raises:
 Returns:
     bool: True if the DataFrame is valid according to the schema.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
@@ -1511,8 +1522,8 @@ Returns:
 
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1520,34 +1531,32 @@ Returns:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.post_processing.validate_result_format.validate_dataframe" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">validate_dataframe</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">validate_dataframe</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Decorator to validate DataFrame input based on a ResultSchema.
+    <div class="doc doc-contents ">
+
+        <p>Decorator to validate DataFrame input based on a ResultSchema.
 Args:
     schema (ResultSchema): The expected schema from the <code>ResultSchema</code> enum.
 Returns:
     Callable: A wrapped function that validates the DataFrame before execution.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/validate_result_format.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
 <span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
@@ -1583,8 +1592,8 @@ Returns:
 
     <span class="k">return</span> <span class="n">decorator</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1592,7 +1601,7 @@ Returns:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

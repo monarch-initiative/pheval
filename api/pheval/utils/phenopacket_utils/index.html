@@ -1792,9 +1792,15 @@
 
 
 <a id="src.pheval.utils.phenopacket_utils"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1810,20 +1816,26 @@
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.GeneIdentifierUpdater" class="doc doc-heading">
-          <code>GeneIdentifierUpdater</code>
+            <code>GeneIdentifierUpdater</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for updating gene identifiers within genomic interpretations.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">640</span>
+        <p>Class for updating gene identifiers within genomic interpretations.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">640</span>
 <span class="normal">641</span>
 <span class="normal">642</span>
 <span class="normal">643</span>
@@ -2059,12 +2071,11 @@
                 <span class="p">)</span>
         <span class="k">return</span> <span class="n">updated_interpretations</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -2077,64 +2088,67 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.GeneIdentifierUpdater.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">identifier_map</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">gene_identifier</span><span class="p">,</span> <span class="n">identifier_map</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise the GeneIdentifierUpdater.</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise the GeneIdentifierUpdater.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>gene_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The gene identifier to update to.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>identifier_map</code></td>
-          <td>
-                <code>dict</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>A polars dataframe mapping gene identifiers (default: None).</p>
-            </div>
-          </td>
-          <td>
-                <code>None</code>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>gene_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The gene identifier to update to.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>identifier_map</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A polars dataframe mapping gene identifiers (default: None).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">643</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">643</span>
 <span class="normal">644</span>
 <span class="normal">645</span>
 <span class="normal">646</span>
@@ -2164,83 +2178,82 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span> <span class="o">=</span> <span class="n">gene_identifier</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span> <span class="o">=</span> <span class="n">identifier_map</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.GeneIdentifierUpdater.find_identifier" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">find_identifier</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">find_identifier</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Find the specified gene identifier for a gene symbol.</p>
+    <div class="doc doc-contents ">
+
+        <p>Find the specified gene identifier for a gene symbol.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>gene_symbol</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The gene symbol to find the identifier for.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>gene_symbol</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The gene symbol to find the identifier for.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>str</code></td>          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The identified gene identifier.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The identified gene identifier.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">659</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">659</span>
 <span class="normal">660</span>
 <span class="normal">661</span>
 <span class="normal">662</span>
@@ -2290,83 +2303,82 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">gene_symbol</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.GeneIdentifierUpdater.obtain_gene_symbol_from_identifier" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">obtain_gene_symbol_from_identifier</span><span class="p">(</span><span class="n">query_gene_identifier</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">obtain_gene_symbol_from_identifier</span><span class="p">(</span><span class="n">query_gene_identifier</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Obtain gene symbol from a gene identifier.</p>
+    <div class="doc doc-contents ">
+
+        <p>Obtain gene symbol from a gene identifier.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>query_gene_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The gene identifier.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>query_gene_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The gene identifier.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>str</code></td>          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The gene symbol corresponding to the identifier.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The gene symbol corresponding to the identifier.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">685</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">685</span>
 <span class="normal">686</span>
 <span class="normal">687</span>
 <span class="normal">688</span>
@@ -2392,97 +2404,98 @@
         <span class="s2">&quot;gene_symbol&quot;</span>
     <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.GeneIdentifierUpdater.update_genomic_interpretations_gene_identifier" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">update_genomic_interpretations_gene_identifier</span><span class="p">(</span><span class="n">interpretations</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Update the genomic interpretations of a Phenopacket.</p>
+    <div class="doc doc-contents ">
+
+        <p>Update the genomic interpretations of a Phenopacket.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>interpretations</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List of Interpretation objects.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>interpretations</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of Interpretation objects.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Path to the Phenopacket.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The Path to the Phenopacket.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[Interpretation]: Updated list of Interpretation objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[Interpretation]: Updated list of Interpretation objects.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">724</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">724</span>
 <span class="normal">725</span>
 <span class="normal">726</span>
 <span class="normal">727</span>
@@ -2550,8 +2563,8 @@
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">updated_interpretations</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2559,8 +2572,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -2569,9 +2581,9 @@
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.GenomicVariant" class="doc doc-heading">
-          <code>GenomicVariant</code>
+            <code>GenomicVariant</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -2579,86 +2591,99 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
-
-  
-      <p>Represents a genomic variant.</p>
+    <div class="doc doc-contents ">
 
 
+        <p>Represents a genomic variant.</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>chrom</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The chromosome position of the variant recommended to be provided in the following format.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>pos</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Position of the variant following VCF convention.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>ref</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Reference allele following VCF convention.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>alt</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Alternate allele following VCF convention.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chrom</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chromosome position of the variant recommended to be provided in the following format.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pos</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Position of the variant following VCF convention.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ref</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Reference allele following VCF convention.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>alt</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Alternate allele following VCF convention.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">47</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
@@ -2694,9 +2719,9 @@
     <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">alt</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -2712,8 +2737,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -2722,22 +2746,28 @@
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError" class="doc doc-heading">
-          <code>IncompatibleGenomeAssemblyError</code>
+            <code>IncompatibleGenomeAssemblyError</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code>Exception</code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
 
-  
-      <p>Exception raised for incompatible genome assembly.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+        <p>Exception raised for incompatible genome assembly.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -2775,12 +2805,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">assembly</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -2793,68 +2822,67 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Incompatible Genome Assembly&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Incompatible Genome Assembly&#39;</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise IncompatibleGenomeAssemblyError.</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise IncompatibleGenomeAssemblyError.</p>
 
 
-
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.assembly">assembly</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Incompatible genome assembly encountered.</p>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.phenopacket">phenopacket</span></code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket associated with the error.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.message">message</span></code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Custom error message (default is "Incompatible Genome Assembly").</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.assembly">assembly</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Incompatible genome assembly encountered.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.phenopacket">phenopacket</span></code></td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket associated with the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError.__init__.message">message</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Custom error message (default is "Incompatible Genome Assembly").</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
@@ -2880,8 +2908,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">message</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2889,8 +2917,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -2899,20 +2926,26 @@
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder" class="doc doc-heading">
-          <code>PhenopacketRebuilder</code>
+            <code>PhenopacketRebuilder</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for rebuilding a Phenopacket</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">537</span>
+        <p>Class for rebuilding a Phenopacket</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">537</span>
 <span class="normal">538</span>
 <span class="normal">539</span>
 <span class="normal">540</span>
@@ -3052,12 +3085,11 @@
         <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">phenopacket_files</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenopacket</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -3070,46 +3102,45 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise PhenopacketUtil</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise PhenopacketUtil</p>
 
 
-
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code><span title="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.__init__.phenopacket">phenopacket</span></code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Phenopacket or Family object</p>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.__init__.phenopacket">phenopacket</span></code></td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenopacket or Family object</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">540</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">540</span>
 <span class="normal">541</span>
 <span class="normal">542</span>
 <span class="normal">543</span>
@@ -3123,83 +3154,82 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.add_randomised_hpo" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">add_randomised_hpo</span><span class="p">(</span><span class="n">randomised_hpo</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">add_randomised_hpo</span><span class="p">(</span><span class="n">randomised_hpo</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Add randomised phenotypic profiles to a Phenopacket or Family.</p>
+    <div class="doc doc-contents ">
+
+        <p>Add randomised phenotypic profiles to a Phenopacket or Family.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>randomised_hpo</code></td>
-          <td>
-                <code>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The randomised phenotypic profiles to be added.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>randomised_hpo</code>
+            </td>
+            <td>
+                  <code>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The randomised phenotypic profiles to be added.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Union[Phenopacket, Family] The Phenopacket or Family object with added randomised profiles.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Union[Phenopacket, Family] The Phenopacket or Family object with added randomised profiles.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">569</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">569</span>
 <span class="normal">570</span>
 <span class="normal">571</span>
 <span class="normal">572</span>
@@ -3235,33 +3265,32 @@
         <span class="n">phenopacket</span><span class="o">.</span><span class="n">phenotypic_features</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">randomised_hpo</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phenopacket</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.add_spiked_vcf_path" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">add_spiked_vcf_path</span><span class="p">(</span><span class="n">spiked_vcf_file_data</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">add_spiked_vcf_path</span><span class="p">(</span><span class="n">spiked_vcf_file_data</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Add a spiked VCF path to a Phenopacket or Family.</p>
+    <div class="doc doc-contents ">
+
+        <p>Add a spiked VCF path to a Phenopacket or Family.</p>
 <p>Args:
 - spiked_vcf_file_data (File): The VCF file data to be added.</p>
 <p>Returns:
 - Phenopacket or Family: The Phenopacket or Family object with the added spiked VCF path.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">588</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">588</span>
 <span class="normal">589</span>
 <span class="normal">590</span>
 <span class="normal">591</span>
@@ -3299,83 +3328,82 @@
     <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">phenopacket_files</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phenopacket</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.update_interpretations" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">update_interpretations</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">update_interpretations</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Add the updated interpretations to a Phenopacket or Family.</p>
+    <div class="doc doc-contents ">
+
+        <p>Add the updated interpretations to a Phenopacket or Family.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>interpretations</code></td>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The updated interpretations to be added.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>interpretations</code>
+            </td>
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The updated interpretations to be added.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Union[Phenopacket, Family]: The Phenopacket or Family object with updated interpretations.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Union[Phenopacket, Family]: The Phenopacket or Family object with updated interpretations.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">548</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">548</span>
 <span class="normal">549</span>
 <span class="normal">550</span>
 <span class="normal">551</span>
@@ -3415,8 +3443,8 @@
         <span class="n">phenopacket</span><span class="o">.</span><span class="n">interpretations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phenopacket</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -3424,8 +3452,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -3434,20 +3461,26 @@
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil" class="doc doc-heading">
-          <code>PhenopacketUtil</code>
+            <code>PhenopacketUtil</code>
 
 
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for retrieving data from a Phenopacket or Family object</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+        <p>Class for retrieving data from a Phenopacket or Family object</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
@@ -4105,12 +4138,11 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -4123,50 +4155,51 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.__init__" class="doc doc-heading">
-          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">phenopacket_contents</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">phenopacket_contents</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Initialise PhenopacketUtil</p>
+    <div class="doc doc-contents ">
+
+        <p>Initialise PhenopacketUtil</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenopacket_contents</code></td>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Phenopacket or Family object</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_contents</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenopacket or Family object</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
@@ -4180,53 +4213,56 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span> <span class="o">=</span> <span class="n">phenopacket_contents</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.causative_variants" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">causative_variants</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">causative_variants</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of causative variants listed in a Phenopacket</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of causative variants listed in a Phenopacket</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="src.pheval.utils.phenopacket_utils.ProbandCausativeVariant" href="#src.pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</a>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[ProbandCausativeVariant]: List of proband causative variants</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="ProbandCausativeVariant
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">339</span>
+
+  
+      dataclass
+   (src.pheval.utils.phenopacket_utils.ProbandCausativeVariant)" href="#src.pheval.utils.phenopacket_utils.ProbandCausativeVariant">ProbandCausativeVariant</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[ProbandCausativeVariant]: List of proband causative variants</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">339</span>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
@@ -4280,55 +4316,53 @@
             <span class="n">all_variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variant_data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">all_variants</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.check_incomplete_disease_record" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">check_incomplete_disease_record</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">check_incomplete_disease_record</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Check if any disease record in the phenopacket has incomplete information.</p>
+    <div class="doc doc-contents ">
+
+        <p>Check if any disease record in the phenopacket has incomplete information.</p>
 <p>This method iterates through the diagnosed disease records and checks if any of them
 have missing or incomplete information such as empty disease name, or disease identifier.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>bool</code></td>          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>True if any disease record is incomplete, False otherwise.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>bool</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if any disease record is incomplete, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">522</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">522</span>
 <span class="normal">523</span>
 <span class="normal">524</span>
 <span class="normal">525</span>
@@ -4354,55 +4388,53 @@ have missing or incomplete information such as empty disease name, or disease id
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.check_incomplete_gene_record" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">check_incomplete_gene_record</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">check_incomplete_gene_record</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Check if any gene record in the phenopacket has incomplete information.</p>
+    <div class="doc doc-contents ">
+
+        <p>Check if any gene record in the phenopacket has incomplete information.</p>
 <p>This method iterates through the diagnosed gene records and checks if any of them
 have missing or incomplete information such as gene name, or gene identifier.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>bool</code></td>          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>True if any gene record is incomplete, False otherwise.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>bool</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if any gene record is incomplete, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">506</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">506</span>
 <span class="normal">507</span>
 <span class="normal">508</span>
 <span class="normal">509</span>
@@ -4432,56 +4464,54 @@ have missing or incomplete information such as gene name, or gene identifier.</p
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.check_incomplete_variant_record" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">check_incomplete_variant_record</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">check_incomplete_variant_record</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Check if any variant record in the phenopacket has incomplete information.</p>
+    <div class="doc doc-contents ">
+
+        <p>Check if any variant record in the phenopacket has incomplete information.</p>
 <p>This method iterates through the diagnosed variant records and checks if any of them
 have missing or incomplete information such as empty chromosome, position, reference,
 or alternate allele.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>bool</code></td>          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>True if any variant record is incomplete, False otherwise.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>bool</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if any variant record is incomplete, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">470</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">470</span>
 <span class="normal">471</span>
 <span class="normal">472</span>
 <span class="normal">473</span>
@@ -4525,53 +4555,51 @@ or alternate allele.</p>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.check_variant_alleles" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">check_variant_alleles</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">check_variant_alleles</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Check if any variant record in the phenopacket has identical reference and alternate alleles.</p>
+    <div class="doc doc-contents ">
+
+        <p>Check if any variant record in the phenopacket has identical reference and alternate alleles.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>bool</code></td>          <td>
-                <code>bool</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>True if the reference and alternate alleles are identical, False otherwise.</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>bool</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the reference and alternate alleles are identical, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">493</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">493</span>
 <span class="normal">494</span>
 <span class="normal">495</span>
 <span class="normal">496</span>
@@ -4595,31 +4623,30 @@ or alternate allele.</p>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.diagnosed_genes" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">diagnosed_genes</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">diagnosed_genes</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve the disease causing genes from a phenopacket.
+    <div class="doc doc-contents ">
+
+        <p>Retrieve the disease causing genes from a phenopacket.
 Returns:
     List[ProbandCausativeGene]: List of causative genes</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">433</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">433</span>
 <span class="normal">434</span>
 <span class="normal">435</span>
 <span class="normal">436</span>
@@ -4645,31 +4672,30 @@ Returns:
             <span class="n">genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">:</span> <span class="n">gene</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span><span class="p">}</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">genes</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.diagnosed_variants" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">diagnosed_variants</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">diagnosed_variants</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of all known causative variants from a phenopacket.
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of all known causative variants from a phenopacket.
 Returns:
     List[GenomicVariant]: List of causative variants</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">447</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">447</span>
 <span class="normal">448</span>
 <span class="normal">449</span>
 <span class="normal">450</span>
@@ -4713,53 +4739,56 @@ Returns:
             <span class="n">variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">variants</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.diagnoses" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">diagnoses</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">diagnoses</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a unique list of disease diagnoses associated with the proband from a Phenopacket</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a unique list of disease diagnoses associated with the proband from a Phenopacket</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="src.pheval.utils.phenopacket_utils.ProbandDisease" href="#src.pheval.utils.phenopacket_utils.ProbandDisease">ProbandDisease</a>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[ProbandDisease]: List of diagnosed diseases</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="ProbandDisease
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
+
+  
+      dataclass
+   (src.pheval.utils.phenopacket_utils.ProbandDisease)" href="#src.pheval.utils.phenopacket_utils.ProbandDisease">ProbandDisease</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[ProbandDisease]: List of diagnosed diseases</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
@@ -4775,53 +4804,51 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_interpretations</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_disease</span><span class="p">()))</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.diseases" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">diseases</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">diseases</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of Diseases associated with the proband</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of Diseases associated with the proband</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.Disease">Disease</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[Disease]: List of diseases</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.Disease">Disease</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[Disease]: List of diseases</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
@@ -4843,53 +4870,51 @@ Returns:
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">diseases</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.files" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">files</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">files</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of files associated with a phenopacket</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of files associated with a phenopacket</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.File">File</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[File]: List of files associated with a phenopacket</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.File">File</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[File]: List of files associated with a phenopacket</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">367</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">367</span>
 <span class="normal">368</span>
 <span class="normal">369</span>
 <span class="normal">370</span>
@@ -4905,53 +4930,51 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">files</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.interpretations" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">interpretations</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">interpretations</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of interpretations from a Phenopacket</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of interpretations from a Phenopacket</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[Interpretation]: List of interpretations</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[Interpretation]: List of interpretations</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">327</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">327</span>
 <span class="normal">328</span>
 <span class="normal">329</span>
 <span class="normal">330</span>
@@ -4973,53 +4996,51 @@ Returns:
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">interpretations</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.negated_phenotypic_features" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">negated_phenotypic_features</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">negated_phenotypic_features</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of all negated HPO terms</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of all negated HPO terms</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: List of negated HPO terms</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: List of negated HPO terms</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
@@ -5045,53 +5066,51 @@ Returns:
             <span class="n">negated_phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">negated_phenotypic_features</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.observed_phenotypic_features" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">observed_phenotypic_features</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">observed_phenotypic_features</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of all observed HPO terms</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of all observed HPO terms</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: List of observed HPO terms</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: List of observed HPO terms</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
@@ -5119,53 +5138,51 @@ Returns:
         <span class="n">phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phenotypic_features</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.phenotypic_features" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">phenotypic_features</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">phenotypic_features</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve a list of all HPO terms</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve a list of all HPO terms</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>List[PhenotypicFeature]: List of HPO terms</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List[PhenotypicFeature]: List of HPO terms</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
@@ -5187,53 +5204,51 @@ Returns:
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">phenotypic_features</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.sample_id" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">sample_id</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">sample_id</span><span class="p">()</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve the sample ID from a Phenopacket or proband of a Family</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve the sample ID from a Phenopacket or proband of a Family</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>str</code></td>          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Sample ID</p>
-            </div>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sample ID</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
@@ -5255,127 +5270,127 @@ Returns:
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">id</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.utils.phenopacket_utils.PhenopacketUtil.vcf_file_data" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">vcf_file_data</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">vcf_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">vcf_file_data</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">vcf_dir</span><span class="p">)</span></code>
 
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Retrieve the genome assembly and VCF file name from a phenopacket.</p>
+    <div class="doc doc-contents ">
+
+        <p>Retrieve the genome assembly and VCF file name from a phenopacket.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenopacket_path</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The path to the phenopacket file.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket_path</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the phenopacket file.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>vcf_dir</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The directory path where the VCF file is stored.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>vcf_dir</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The directory path where the VCF file is stored.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>File</code></td>            <td>
+                  <code><span title="phenopackets.File">File</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The VCF file with updated URI pointing to the specified directory.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
         <tr>
-<td><code>File</code></td>          <td>
-                <code><span title="phenopackets.File">File</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The VCF file with updated URI pointing to the specified directory.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pheval.prepare.custom_exceptions.IncorrectFileFormatError">IncorrectFileFormatError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the provided file is not in .vcf or .vcf.gz format.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="IncompatibleGenomeAssemblyError (src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError)" href="#src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError">IncompatibleGenomeAssemblyError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the genome assembly of the VCF file is not compatible.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-
-
-  <p><strong>Raises:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="pheval.prepare.custom_exceptions.IncorrectFileFormatError">IncorrectFileFormatError</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If the provided file is not in .vcf or .vcf.gz format.</p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError" href="#src.pheval.utils.phenopacket_utils.IncompatibleGenomeAssemblyError">IncompatibleGenomeAssemblyError</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>If the genome assembly of the VCF file is not compatible.</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
 <details class="note" open>
   <summary>Note</summary>
@@ -5383,9 +5398,10 @@ Returns:
 and checks if the genome assembly is compatible. If the conditions are met, it updates the
 URI of the VCF file to the specified directory and returns the modified file object.</p>
 </details>
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">376</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">376</span>
 <span class="normal">377</span>
 <span class="normal">378</span>
 <span class="normal">379</span>
@@ -5449,8 +5465,8 @@ URI of the VCF file to the specified directory and returns the modified file obj
     <span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vcf_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">vcf_data</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -5458,8 +5474,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -5468,9 +5483,9 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.ProbandCausativeGene" class="doc doc-heading">
-          <code>ProbandCausativeGene</code>
+            <code>ProbandCausativeGene</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -5478,62 +5493,71 @@ URI of the VCF file to the specified directory and returns the modified file obj
 </h2>
 
 
-  <div class="doc doc-contents ">
-
-  
-      <p>Represents a causative gene associated with a proband</p>
+    <div class="doc doc-contents ">
 
 
+        <p>Represents a causative gene associated with a proband</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>gene_symbol</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Symbol representing the gene</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>gene_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The ENSEMBL gene identifier for the result entry</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-      <p>Notes:
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>gene_symbol</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Symbol representing the gene</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>gene_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The ENSEMBL gene identifier for the result entry</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Notes:
      While we recommend providing the gene identifier in the ENSEMBL namespace,
      any matching format used in Phenopacket interpretations and result output is acceptable
      for result matching purposes in the analysis.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
 <span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
@@ -5565,9 +5589,9 @@ URI of the VCF file to the specified directory and returns the modified file obj
     <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -5583,8 +5607,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -5593,9 +5616,9 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.ProbandCausativeVariant" class="doc doc-heading">
-          <code>ProbandCausativeVariant</code>
+            <code>ProbandCausativeVariant</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -5603,100 +5626,120 @@ URI of the VCF file to the specified directory and returns the modified file obj
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
+
+
+        <p>Represents a causative variant associated with a proband</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>proband_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ID of the proband</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>assembly</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Genome assembly</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>variant</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GenomicVariant
+
 
   
-      <p>Represents a causative variant associated with a proband</p>
+      dataclass
+   (src.pheval.utils.phenopacket_utils.GenomicVariant)" href="#src.pheval.utils.phenopacket_utils.GenomicVariant">GenomicVariant</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Genomic variant associated with the proband</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>genotype</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Genotype information for the variant</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>info</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional information about the variant (default is an empty string)</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>proband_id</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>ID of the proband</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>assembly</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Genome assembly</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>variant</code></td>
-          <td>
-                <code><a class="autorefs autorefs-internal" title="src.pheval.utils.phenopacket_utils.GenomicVariant" href="#src.pheval.utils.phenopacket_utils.GenomicVariant">GenomicVariant</a></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Genomic variant associated with the proband</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>genotype</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Genotype information for the variant</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>info</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Additional information about the variant (default is an empty string)</p>
-            </div>
-          </td>
-          <td>
-                <code>&#39;&#39;</code>
-          </td>
-        </tr>
-    </tbody>
-  </table>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
@@ -5732,9 +5775,9 @@ URI of the VCF file to the specified directory and returns the modified file obj
     <span class="n">genotype</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -5750,8 +5793,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -5760,9 +5802,9 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
 
 <h2 id="src.pheval.utils.phenopacket_utils.ProbandDisease" class="doc doc-heading">
-          <code>ProbandDisease</code>
+            <code>ProbandDisease</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -5770,54 +5812,58 @@ URI of the VCF file to the specified directory and returns the modified file obj
 </h2>
 
 
-  <div class="doc doc-contents ">
-
-  
-      <p>Represents a disease associated with a proband</p>
+    <div class="doc doc-contents ">
 
 
+        <p>Represents a disease associated with a proband</p>
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>disease_name</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Name of the disease</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-        <tr>
-          <td><code>disease_identifier</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Identifier for the disease result entry in the OMIM namespace</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>disease_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the disease</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>disease_identifier</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identifier for the disease result entry in the OMIM namespace</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 <details class="notes" open>
   <summary>Notes</summary>
@@ -5825,9 +5871,15 @@ URI of the VCF file to the specified directory and returns the modified file obj
 any matching format used in Phenopacket interpretations and result output is acceptable
 for result matching purposes in the analysis.</p>
 </details>
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -5861,9 +5913,9 @@ for result matching purposes in the analysis.</p>
     <span class="n">disease_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">disease_identifier</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -5879,54 +5931,51 @@ for result matching purposes in the analysis.</p>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.phenopacket_utils.create_gene_identifier_map" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_gene_identifier_map</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">create_gene_identifier_map</span><span class="p">()</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create a mapping of gene identifiers to gene symbols using HGNC data.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create a mapping of gene identifiers to gene symbols using HGNC data.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="polars.DataFrame">DataFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>pl.DataFrame: A mapping of gene identifiers to gene symbols.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pl.DataFrame: A mapping of gene identifiers to gene symbols.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
@@ -5980,33 +6029,32 @@ for result matching purposes in the analysis.</p>
         <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.phenopacket_utils.create_json_message" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_json_message</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_json_message</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Create a JSON message for writing to a file.</p>
+    <div class="doc doc-contents ">
+
+        <p>Create a JSON message for writing to a file.</p>
 <p>Args:
 - phenopacket (Union[Phenopacket, Family]): The Phenopacket or Family object to convert to JSON.</p>
 <p>Returns:
 - str: A JSON-formatted string representation of the Phenopacket or Family object.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">609</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">609</span>
 <span class="normal">610</span>
 <span class="normal">611</span>
 <span class="normal">612</span>
@@ -6028,53 +6076,51 @@ for result matching purposes in the analysis.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">MessageToJson</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.phenopacket_utils.parse_hgnc_data" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">parse_hgnc_data</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">parse_hgnc_data</span><span class="p">()</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Read HGNC data from a file and return it as a Polars DataFrame.</p>
+    <div class="doc doc-contents ">
+
+        <p>Read HGNC data from a file and return it as a Polars DataFrame.</p>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="polars.DataFrame">DataFrame</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>pl.DataFrame: DataFrame containing the HGNC data.</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pl.DataFrame: DataFrame containing the HGNC data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
@@ -6136,83 +6182,82 @@ for result matching purposes in the analysis.</p>
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.phenopacket_utils.phenopacket_reader" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Read a Phenopacket file and returns its contents as a Phenopacket or Family object</p>
+    <div class="doc doc-contents ">
+
+        <p>Read a Phenopacket file and returns its contents as a Phenopacket or Family object</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>file</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Path to the Phenopacket file</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>file</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Phenopacket file</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td>
-                <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object</p>
-            </div>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
@@ -6248,97 +6293,98 @@ for result matching purposes in the analysis.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Parse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">),</span> <span class="n">Phenopacket</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.utils.phenopacket_utils.write_phenopacket" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">write_phenopacket</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">write_phenopacket</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Write a Phenopacket or Family object to a file in JSON format.</p>
+    <div class="doc doc-contents ">
+
+        <p>Write a Phenopacket or Family object to a file in JSON format.</p>
 
 
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>phenopacket</code></td>
-          <td>
-                <code><span title="phenopackets.Phenopacket">Phenopacket</span> or <span title="phenopackets.Family">Family</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The Phenopacket or Family object to be written.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
         </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>phenopacket</code>
+            </td>
+            <td>
+                  <code><span title="phenopackets.Phenopacket">Phenopacket</span> or <span title="phenopackets.Family">Family</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Phenopacket or Family object to be written.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>output_file</code>
+            </td>
+            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Path object representing the file to write the Phenopacket data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
         <tr>
-          <td><code>output_file</code></td>
-          <td>
-                <code><span title="pathlib.Path">Path</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>The Path object representing the file to write the Phenopacket data.</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
+          <th>Type</th>
+          <th>Description</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>None</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code>None</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>None</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">622</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">622</span>
 <span class="normal">623</span>
 <span class="normal">624</span>
 <span class="normal">625</span>
@@ -6370,8 +6416,8 @@ for result matching purposes in the analysis.</p>
         <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phenopacket_json</span><span class="p">)</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -6379,7 +6425,7 @@ for result matching purposes in the analysis.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

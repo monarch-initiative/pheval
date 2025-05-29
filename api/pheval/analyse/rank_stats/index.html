@@ -1294,9 +1294,15 @@
 
 
 <a id="src.pheval.analyse.rank_stats"></a>
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -1312,9 +1318,9 @@
 
 
 <h2 id="src.pheval.analyse.rank_stats.Ranks" class="doc doc-heading">
-          <code>Ranks</code>
+            <code>Ranks</code>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -1322,14 +1328,20 @@
 </h2>
 
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
-      <p>Class for calculating ranking statistics.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
+        <p>Class for calculating ranking statistics.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
 <span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
@@ -1641,12 +1653,11 @@
         <span class="n">num_samples</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Ranks</span><span class="o">.</span><span class="n">NUMBER_OF_SAMPLES</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ndcg_sum</span> <span class="o">/</span> <span class="n">num_samples</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+              </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1659,10 +1670,9 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.rank_stats.Ranks.f_beta_score_at_k" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">f_beta_score_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">f_beta_score_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1670,17 +1680,18 @@
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Compute f_beta_score at k.
+    <div class="doc doc-contents ">
+
+        <p>Compute f_beta_score at k.
 Args:
     k (int): The upper rank limit.
 Returns:
     pl.Expr: The expression for calculating f_beta_score at k.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">73</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
 <span class="normal">76</span>
@@ -1712,19 +1723,17 @@ Returns:
         <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;f_beta@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.rank_stats.Ranks.percentage_at_k" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">percentage_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">percentage_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1732,17 +1741,18 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Compute percentage at k dynamically.
+    <div class="doc doc-contents ">
+
+        <p>Compute percentage at k dynamically.
 Args:
     k (int): The upper rank limit.
 Returns:
     pl.Expr: The expression for calculating percentage at k.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
@@ -1762,19 +1772,17 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;top</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;total&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;percentage@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.rank_stats.Ranks.percentage_found" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">percentage_found</span><span class="p">()</span></code>
-  
+            <code class="highlight language-python"><span class="n">percentage_found</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1782,15 +1790,16 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Compute the percentage of found items.
+    <div class="doc doc-contents ">
+
+        <p>Compute the percentage of found items.
 Returns:
     pl.Expr: The expression for calculating percentage of found items.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
@@ -1806,19 +1815,17 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;found&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;total&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;percentage_found&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="src.pheval.analyse.rank_stats.Ranks.precision_at_k" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">precision_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
-  
+            <code class="highlight language-python"><span class="n">precision_at_k</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
   </span>
@@ -1826,17 +1833,18 @@ Returns:
 </h3>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Compute precision at k dynamically.
+    <div class="doc doc-contents ">
+
+        <p>Compute precision at k dynamically.
 Args:
     k (int): The upper rank limit.
 Returns:
     pl.Expr: The expression for calculating precision at k.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
@@ -1856,8 +1864,8 @@ Returns:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;top</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;number_of_samples&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;precision@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1865,33 +1873,31 @@ Returns:
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="src.pheval.analyse.rank_stats.compute_rank_stats" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">compute_rank_stats</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">compute_rank_stats</span><span class="p">(</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Computes ranking statistics for a given benchmarking run.
+    <div class="doc doc-contents ">
+
+        <p>Computes ranking statistics for a given benchmarking run.
 Args:
     run_identifier (str): The identifier of the benchmarking run.
     result_scan (pl.LazyFrame): The scan of the directory to compute ranking statistics for.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/analyse/rank_stats.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -2017,8 +2023,8 @@ Args:
         <span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -2026,7 +2032,7 @@ Args:
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 
