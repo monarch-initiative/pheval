@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pheval"
-version = "0.5.5"
+version = "0.5.6"
 description = ""
 authors = ["Yasemin Bridges <y.bridges@qmul.ac.uk>",
   "Julius Jacobsen <j.jacobsen@qmul.ac.uk>",
@@ -30,6 +30,7 @@ scikit-learn = "^1.4.0"
 duckdb = "^1.0.0"
 pyarrow = "^19.0.1"
 
+
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
 coverage = "^6.5.0"
@@ -47,7 +48,8 @@ mkdocstrings-python = "^1.8.0"
 pymdown-extensions = "^9.9"
 mkdocs-include-dir-to-nav = "^1.2.0"
 mkdocs-click = "^0.8.0"
-griffe = "0.38.1"
+griffe = ">=1.3.2,<2.0.0"
+
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
 
