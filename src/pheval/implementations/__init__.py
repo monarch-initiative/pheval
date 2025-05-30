@@ -6,7 +6,7 @@ from class_resolver import ClassResolver
 
 from pheval.runners.runner import PhEvalRunner
 
-from src.pheval.implementations.pheval_class_resolver import PhevalClassResolver
+from pheval.implementations.pheval_class_resolver import PhevalClassResolver
 
 
 @cache
