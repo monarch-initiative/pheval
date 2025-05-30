@@ -1,4 +1,5 @@
 import random
+import time
 from pathlib import Path
 from typing import List, Union
 
@@ -6,13 +7,16 @@ from oaklib.implementations.pronto.pronto_implementation import ProntoImplementa
 from oaklib.resource import OntologyResource
 from phenopackets import Family, OntologyClass, Phenopacket, PhenotypicFeature
 
-from pheval.utils.file_utils import files_with_suffix
+from pheval.utils.file_utils import all_files, files_with_suffix
+from pheval.utils.logger import get_logger
 from pheval.utils.phenopacket_utils import (
     PhenopacketRebuilder,
     PhenopacketUtil,
     phenopacket_reader,
     write_phenopacket,
 )
+
+logger = get_logger()
 
 
 def load_ontology(local_cached_ontology: Path = None) -> ProntoImplementation:
@@ -24,9 +28,11 @@ def load_ontology(local_cached_ontology: Path = None) -> ProntoImplementation:
         ProntoImplementation: An instance of ProntoImplementation containing the loaded HPO.
     """
     if local_cached_ontology is None:
+        logger.warning("No local cached ontology found, using default ontology.")
         resource = OntologyResource(slug="hp.obo", local=False)
         return ProntoImplementation(resource)
     else:
+        logger.info(f"Loading local ontology from {local_cached_ontology}.")
         resource = OntologyResource(slug=local_cached_ontology, local=True)
         return ProntoImplementation(resource)
 
@@ -241,6 +247,7 @@ class HpoRandomiser:
         """
         phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
         for phenopacket_path in phenopacket_files:
+            logger.info(f"Scrambling {phenopacket_path.name}.")
             phenopacket = phenopacket_reader(phenopacket_path)
             created_noisy_phenopacket = self.add_noise_to_phenotypic_profile(phenopacket)
             write_phenopacket(
@@ -268,14 +275,23 @@ def scramble_phenopackets(
         scramble_factor (float): A factor determining the level of scrambling for phenotypic features.
         local_cached_ontology (Path): The path to the local cached ontology.
     """
+    start_time = time.perf_counter()
+    logger.info("Initiating scrambling.")
+    logger.info(f"Created directory {output_dir}.")
+    logger.info(f"Scramble factor set to {scramble_factor}.")
     output_dir.mkdir(exist_ok=True)
     ontology = load_ontology(local_cached_ontology)
     if phenopacket_path is not None:
+        logger.info(f"Scrambling {phenopacket_path}.")
         HpoRandomiser(ontology, scramble_factor).create_scrambled_phenopacket(
             output_dir, phenopacket_path
         )
     elif phenopacket_dir is not None:
+        logger.info(
+            f"Scrambling {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
+        )
         HpoRandomiser(ontology, scramble_factor).create_scrambled_phenopackets(
             output_dir,
             phenopacket_dir,
         )
+    logger.info(f"Finished scrambling! Total time: {time.perf_counter() - start_time:.2f} seconds.")

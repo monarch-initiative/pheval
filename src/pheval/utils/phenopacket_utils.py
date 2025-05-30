@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 from copy import copy
 from dataclasses import dataclass
@@ -19,8 +18,9 @@ from phenopackets import (
 )
 
 from pheval.prepare.custom_exceptions import IncorrectFileFormatError
+from pheval.utils.logger import get_logger
 
-info_log = logging.getLogger("info")
+logger = get_logger()
 
 
 class IncompatibleGenomeAssemblyError(Exception):
@@ -161,6 +161,7 @@ def create_gene_identifier_map() -> pl.DataFrame:
     Returns:
         pl.DataFrame: A mapping of gene identifiers to gene symbols.
     """
+    logger.info("Creating gene identifier map.")
     hgnc_df = parse_hgnc_data()
     return hgnc_df.melt(
         id_vars=["gene_symbol", "prev_symbols"],
@@ -192,6 +193,7 @@ def phenopacket_reader(file: Path) -> Union[Phenopacket, Family]:
     Returns:
         Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object
     """
+    logger.info(f"Parsing Phenopacket: {file.name}")
     file = open(file, "r")
     phenopacket = json.load(file)
     file.close()
@@ -593,6 +595,7 @@ class PhenopacketRebuilder:
         Returns:
         - Phenopacket or Family: The Phenopacket or Family object with the added spiked VCF path.
         """
+        logger.info(f"Adding spiked VCF path {spiked_vcf_file_data.uri} to phenopacket.")
         phenopacket = copy(self.phenopacket)
         phenopacket_files = [
             file for file in phenopacket.files if file.file_attributes["fileFormat"] != "vcf"
@@ -627,6 +630,7 @@ def write_phenopacket(phenopacket: Union[Phenopacket, Family], output_file: Path
     Returns:
         None
     """
+    logger.info(f"Writing Phenopacket to {output_file}.")
     phenopacket_json = create_json_message(phenopacket)
     with open(output_file, "w") as outfile:
         outfile.write(phenopacket_json)
@@ -675,6 +679,7 @@ class GeneIdentifierUpdater:
         )
         if prev_symbol_matches.height > 0:
             return prev_symbol_matches["identifier"][0]
+        logger.warn(f"Could not find {self.gene_identifier} for {gene_symbol}.")
         return None
 
     def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
@@ -735,10 +740,10 @@ class GeneIdentifierUpdater:
                 updated_gene_identifier = self.find_identifier(
                     g.variant_interpretation.variation_descriptor.gene_context.symbol
                 )
-                info_log.info(
-                    f"Updating gene identifier in {phenopacket_path} from "
+                logger.info(
+                    f"Updating gene identifier in {phenopacket_path.name} from "
                     f"{g.variant_interpretation.variation_descriptor.gene_context.value_id}"
-                    f"to {updated_gene_identifier}"
+                    f" to {updated_gene_identifier}"
                 )
                 g.variant_interpretation.variation_descriptor.gene_context.value_id = (
                     updated_gene_identifier

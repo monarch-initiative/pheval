@@ -12,6 +12,18 @@ from pheval.utils.phenopacket_utils import (
 )
 
 
+def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
+    """Calculate the end position for a variant
+    Args:
+        variant_start (int): The start position of the variant
+        variant_ref (str): The reference allele of the variant
+
+    Returns:
+        int: The end position of the variant
+    """
+    return variant_start + len(variant_ref) - 1
+
+
 class PhenopacketTruthSet:
     """Class for finding the causative gene/disease/variant from a phenopacket"""
 
@@ -139,13 +151,14 @@ class PhenopacketTruthSet:
         return pl.DataFrame(
             {
                 "chrom": [v.chrom for v in variants],
-                "pos": [v.pos for v in variants],
+                "start": [v.pos for v in variants],
+                "end": [calculate_end_pos(v.pos, v.ref) for v in variants],
                 "ref": [v.ref for v in variants],
                 "alt": [v.alt for v in variants],
             }
         ).with_columns(
             [
-                pl.concat_str(["chrom", "pos", "ref", "alt"], separator="-").alias("variant_id"),
+                pl.concat_str(["chrom", "start", "ref", "alt"], separator="-").alias("variant_id"),
                 pl.lit(0.0).cast(pl.Float64).alias("score"),
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
@@ -166,10 +179,10 @@ class PhenopacketTruthSet:
         return (
             ranked_results.with_columns(
                 [
-                    pl.struct(["chrom", "pos", "ref", "alt"])
+                    pl.struct(["chrom", "start", "end", "ref", "alt"])
                     .is_in(
                         classified_results.select(
-                            pl.struct(["chrom", "pos", "ref", "alt"])
+                            pl.struct(["chrom", "start", "end", "ref", "alt"])
                         ).to_series()
                     )
                     .alias("true_positive")
@@ -179,8 +192,10 @@ class PhenopacketTruthSet:
             .select(classified_results.columns)
             .vstack(
                 classified_results.filter(
-                    ~pl.struct(["chrom", "pos", "ref", "alt"]).is_in(
-                        ranked_results.select(pl.struct(["chrom", "pos", "ref", "alt"])).to_series()
+                    ~pl.struct(["chrom", "start", "end", "ref", "alt"]).is_in(
+                        ranked_results.select(
+                            pl.struct(["chrom", "start", "end", "ref", "alt"])
+                        ).to_series()
                     )
                 )
             )

@@ -101,7 +101,10 @@ The `plot_customisation` section specifies any additional customisation to the p
 After configuring the benchmarking YAML, executing the benchmark is relatively simple.
 
 ```bash
-pheval-utils generate-benchmark-stats --run-yaml benchmarking_config.yaml
+pheval-utils benchmark --run-yaml benchmarking_config.yaml
 ```
 
+> **Note:** As of `pheval-utils` version **0.5.0** onwards, the command is `benchmark`.  
+> In earlier versions, the equivalent command was `generate-benchmark-stats`.
+> See the [v0.5.1 release notes](https://github.com/monarch-initiative/pheval/releases/tag/0.5.1) for more details.
 

@@ -35,18 +35,17 @@ class ResultSchema(Enum):
     )
     DISEASE_RESULT_SCHEMA = pl.Schema(
         {
-            "disease_name": pl.String,
             "disease_identifier": pl.String,
             "score": pl.Float64,
             "grouping_id": pl.Utf8,
         }
     )
 
-    def validate(self, df: pl.DataFrame) -> bool:
+    def validate(self, results: pl.DataFrame) -> bool:
         """
         Validate that a DataFrame follows the expected schema.
         Args:
-            df (pl.DataFrame): The DataFrame to validate.
+            results (pl.DataFrame): The DataFrame to validate.
         Raises:
             ValueError: If a required column is missing or the grouping_id column contains a null value.
             TypeError: If a column exists but has an incorrect data type.
@@ -55,18 +54,18 @@ class ResultSchema(Enum):
         """
         expected_schema = self.value
 
-        if "grouping_id" in df.columns and df["grouping_id"].null_count() > 0:
+        if "grouping_id" in results.columns and results["grouping_id"].null_count() > 0:
             raise ValueError("'grouping_id' column should not contain null values if provided.")
 
         for col_name, expected_type in expected_schema.items():
-            if col_name not in df.schema:
+            if col_name not in results.schema:
                 if col_name == "grouping_id":
                     continue
                 raise ValueError(f"Missing required column: {col_name}")
 
-            if df.schema[col_name] != expected_type:
+            if results.schema[col_name] != expected_type:
                 raise TypeError(
-                    f"Column '{col_name}' has type {df.schema[col_name]}, expected {expected_type}"
+                    f"Column '{col_name}' has type {results.schema[col_name]}, expected {expected_type}"
                 )
 
         return True
@@ -83,9 +82,9 @@ def validate_dataframe(schema: ResultSchema) -> Callable:
 
     def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def wrapper(df: pl.DataFrame, *args, **kwargs):
-            schema.validate(df)
-            return func(df, *args, **kwargs)
+        def wrapper(results: pl.DataFrame, *args, **kwargs):
+            schema.validate(results)
+            return func(results, *args, **kwargs)
 
         return wrapper
 

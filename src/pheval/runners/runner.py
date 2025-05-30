@@ -7,6 +7,9 @@ from pathlib import Path
 
 from pheval.config_parser import parse_input_dir_config
 from pheval.run_metadata import BasicOutputRunMetaData
+from pheval.utils.logger import get_logger
+
+logger = get_logger()
 
 
 @dataclass
@@ -86,6 +89,10 @@ class PhEvalRunner(ABC):
 
     def build_output_directory_structure(self):
         """build output directory structure"""
+        logger.info(
+            f"Building output directory structure for {self.input_dir_config.tool} "
+            f"version {self.input_dir_config.tool_version}"
+        )
         self.tool_input_commands_dir.mkdir(exist_ok=True)
         self.raw_results_dir.mkdir(exist_ok=True)
         if self._get_variant_analysis():

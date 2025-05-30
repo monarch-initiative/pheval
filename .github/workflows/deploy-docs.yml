@@ -29,7 +29,7 @@ jobs:
         mkdir gh-pages
         touch gh-pages/.nojekyll
         python ./src/pheval/utils/docs_gen.py
-        export PYTHONPATH=$(pwd)
+        export PYTHONPATH=$(pwd)/src
         poetry run mkdocs build
         mv site/* ./gh-pages/
 
