@@ -4,9 +4,8 @@ from functools import cache
 
 from class_resolver import ClassResolver
 
-from pheval.runners.runner import PhEvalRunner
-
 from pheval.implementations.pheval_class_resolver import PhevalClassResolver
+from pheval.runners.runner import PhEvalRunner
 
 
 @cache
