@@ -8,7 +8,10 @@ from typing import TypeVar
 
 from class_resolver import ClassResolver
 
+from pheval.utils.logger import get_logger
+
 X = TypeVar("X")
+logger = get_logger()
 
 
 # Create a custom ClassResolver class to modify the _from_entrypoint method.
@@ -23,8 +26,7 @@ class PhevalClassResolver(ClassResolver):
         for entry in entry_points(group=group):
             try:
                 element = entry.load()
-                # TODO: maybe display this with a logger?
-                print(f"Loaded {entry.name} correctly")
+                logger.info(f"Loaded {entry.name} correctly")
             except (ImportError, AttributeError) as e:
                 warnings.warn(f"could not load {entry.name}. See error message below.", Warning)
                 raise
