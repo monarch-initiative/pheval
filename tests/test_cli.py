@@ -18,7 +18,7 @@ class TestCommandLineInterface(unittest.TestCase):
     """
 
     def setUp(self) -> None:
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         self.runner = runner
         self.test_dir = tempfile.mkdtemp()
 
