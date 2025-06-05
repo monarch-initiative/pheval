@@ -1,9 +1,11 @@
 import warnings
 
-# Dependencies taken from class_resolver: https://github.com/cthoyt/class-resolver/blob/5e51b41d08381e1754f3445c5ce4fcea4f6612d6/src/class_resolver/base.py#L276
+# Dependencies taken from class_resolver:
+# https://github.com/cthoyt/class-resolver/blob/5e51b41d08381e1754f3445c5ce4fcea4f6612d6/src/class_resolver/base.py#L276
 from importlib.metadata import entry_points
 
-# Dependency from importlib.metadata: https://github.com/cthoyt/class-resolver/blob/5e51b41d08381e1754f3445c5ce4fcea4f6612d6/src/class_resolver/utils.py#L45
+# Dependency from importlib.metadata:
+# https://github.com/cthoyt/class-resolver/blob/5e51b41d08381e1754f3445c5ce4fcea4f6612d6/src/class_resolver/utils.py#L45
 from typing import TypeVar
 
 from class_resolver import ClassResolver
