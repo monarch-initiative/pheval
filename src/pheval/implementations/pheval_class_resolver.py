@@ -1,5 +1,3 @@
-import warnings
-
 # Dependencies taken from class_resolver:
 # https://github.com/cthoyt/class-resolver/blob/5e51b41d08381e1754f3445c5ce4fcea4f6612d6/src/class_resolver/base.py#L276
 from importlib.metadata import entry_points
@@ -29,8 +27,8 @@ class PhevalClassResolver(ClassResolver):
             try:
                 element = entry.load()
                 logger.info(f"Loaded {entry.name} correctly")
-            except (ImportError, AttributeError) as e:
-                warnings.warn(f"could not load {entry.name}. See error message below.", Warning)
+            except (ImportError, AttributeError):
+                logger.warn(f"could not load {entry.name}. See error message below.")
                 raise
             else:
                 elements.add(element)
