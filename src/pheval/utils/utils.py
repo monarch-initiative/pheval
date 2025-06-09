@@ -1,13 +1,24 @@
 """Contains all pheval utility methods"""
 
-import logging
+import json
 import random
+from datetime import datetime
 from pathlib import Path
 from typing import List
 
 import pandas as pd
+import requests
 
-info_log = logging.getLogger("info")
+from pheval.utils.logger import get_logger
+
+logger = get_logger()
+
+
+RESOURCES_DIR = Path(__file__).parent.parent / "resources"
+MONDO_URL = "https://data.monarchinitiative.org/mappings/latest/mondo.sssom.tsv"
+HGNC_URL = "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt"
+
+METADATA_PATH = RESOURCES_DIR / "metadata.json"
 
 
 def rand(df: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -> float:
@@ -24,7 +35,7 @@ def rand(df: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -
     try:
         return df + (random.uniform(min_num, max_num) * scramble_factor)
     except TypeError as err:
-        info_log.error(df, exc_info=err)
+        logger.error(df, exc_info=err)
         return df
 
 
@@ -71,3 +82,39 @@ def semsim_scramble_df(
         max_num = dataframe[col].max()
         dataframe[col] = dataframe[col].apply(rand, args=(min_num, max_num, scramble_factor))
     return dataframe
+
+
+def _update_metadata(file_name: str) -> None:
+    """Update metadata.json with the current UTC timestamp for a file."""
+    timestamp = datetime.utcnow().isoformat() + "Z"
+    metadata = {}
+    if METADATA_PATH.exists():
+        metadata = json.loads(METADATA_PATH.read_text())
+    metadata[file_name] = timestamp
+    METADATA_PATH.write_text(json.dumps(metadata, indent=2))
+    logger.info(f"Updated metadata for {file_name}")
+
+
+def _download_file(url: str, target_path: Path) -> None:
+    """Helper to download a file from a URL to a target path."""
+    try:
+        logger.info(f"Downloading: {url}")
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+        RESOURCES_DIR.mkdir(parents=True, exist_ok=True)
+        target_path.write_bytes(response.content)
+        logger.info(f"Saved to: {target_path}")
+        _update_metadata(target_path.name)
+    except requests.RequestException as e:
+        logger.error(f"Failed to download {url}: {e}")
+        raise
+
+
+def download_mondo_mapping() -> None:
+    """Download latest MONDO SSSOM mapping file."""
+    _download_file(MONDO_URL, RESOURCES_DIR / "mondo.sssom.tsv")
+
+
+def download_hgnc_data() -> None:
+    """Download latest HGNC complete set file."""
+    _download_file(HGNC_URL, RESOURCES_DIR / "hgnc_complete_set.txt")
