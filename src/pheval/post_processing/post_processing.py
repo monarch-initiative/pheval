@@ -44,12 +44,16 @@ def _rank_results(results: pl.DataFrame, sort_order: SortOrder) -> pl.DataFrame:
         pl.DataFrame: The ranked results.
     """
     sort_descending = True if sort_order == SortOrder.DESCENDING else False
-    has_grouping_id = "grouping_id" in results.columns
-    if has_grouping_id:
+    group_by = []
+    if "grouping_id" in results.columns:
+        group_by.append("grouping_id")
+    if "mondo_identifier" in results.columns:
+        group_by.append("mondo_identifier")
+    if group_by:
         results = (
             results.sort("score", descending=sort_descending)
             .with_columns(
-                pl.struct(["score", "grouping_id"])
+                pl.struct(["score"] + group_by)
                 .rank(method="dense", descending=sort_descending)
                 .cast(pl.Int32)
                 .alias("min_rank")
@@ -60,7 +64,6 @@ def _rank_results(results: pl.DataFrame, sort_order: SortOrder) -> pl.DataFrame:
         results = results.sort("score", descending=sort_descending).with_columns(
             pl.col("score").rank(method="max", descending=sort_descending).alias("rank")
         )
-
     return results
 
 
