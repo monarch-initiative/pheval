@@ -4,6 +4,7 @@ from typing import Callable, Tuple
 
 import polars as pl
 
+from pheval.post_processing.mondo_mapping import parse_mondo_mapping_table
 from pheval.post_processing.phenopacket_truth_set import PhenopacketTruthSet
 from pheval.post_processing.validate_result_format import ResultSchema, validate_dataframe
 from pheval.utils.file_utils import all_files
@@ -12,6 +13,8 @@ from pheval.utils.logger import get_logger
 logger = get_logger()
 
 executed_results = set()
+
+mondo_mapping_table = parse_mondo_mapping_table()
 
 
 class ResultType(Enum):
@@ -94,7 +97,17 @@ def _write_variant_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         output_file (Path): Path to the output file.
     """
     variant_output = ranked_results.select(
-        ["rank", "score", "chrom", "start", "end", "ref", "alt", "variant_id", "true_positive"]
+        [
+            "rank",
+            "score",
+            "chrom",
+            "start",
+            "end",
+            "ref",
+            "alt",
+            "variant_id",
+            "true_positive",
+        ]
     )
     _write_results_file(output_file, variant_output)
 
@@ -107,7 +120,9 @@ def _write_disease_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         ranked_results ([PhEvalResult]): List of ranked PhEval disease results.
         output_file (Path): Path to the output file.
     """
-    disease_output = ranked_results.select(["rank", "score", "disease_identifier", "true_positive"])
+    disease_output = ranked_results.select(
+        ["rank", "score", "disease_identifier", "mondo_identifier", "true_positive"]
+    )
     _write_results_file(output_file, disease_output)
 
 
@@ -156,7 +171,7 @@ def create_empty_pheval_result(
         f"phenopackets to {output_dir}"
     )
     executed_results.add(result_type)
-    phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir)
+    phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir, mondo_mapping_table)
     classify_method, write_method = _get_result_type(result_type, phenopacket_truth_set)
     for file in all_files(phenopacket_dir):
         classified_results = classify_method(file.stem)
@@ -215,7 +230,9 @@ def generate_variant_result(
         f"pheval_variant_results/{result_path.stem}-variant_result.parquet"
     )
     create_empty_pheval_result(
-        phenopacket_dir, output_dir.joinpath("pheval_variant_results"), ResultType.VARIANT
+        phenopacket_dir,
+        output_dir.joinpath("pheval_variant_results"),
+        ResultType.VARIANT,
     )
     ranked_results = _rank_results(results, sort_order).with_columns(
         pl.concat_str(["chrom", "start", "ref", "alt"], separator="-").alias("variant_id")
@@ -247,10 +264,13 @@ def generate_disease_result(
         f"pheval_disease_results/{result_path.stem}-disease_result.parquet"
     )
     create_empty_pheval_result(
-        phenopacket_dir, output_dir.joinpath("pheval_disease_results"), ResultType.DISEASE
+        phenopacket_dir,
+        output_dir.joinpath("pheval_disease_results"),
+        ResultType.DISEASE,
     )
     ranked_results = _rank_results(results, sort_order)
     classified_results = PhenopacketTruthSet(phenopacket_dir).merge_disease_results(
-        ranked_results, output_file
+        ranked_results, output_file, mondo_mapping_table
     )
+
     _write_disease_result(classified_results, output_file)
