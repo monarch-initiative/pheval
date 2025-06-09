@@ -39,5 +39,8 @@ class BenchmarkOutputTypeEnum(Enum):
         "variant", "Disease-causing variants (%)", ["variant_id"], "pheval_variant_results"
     )
     DISEASE = BenchmarkOutputType(
-        "disease", "Known diseases (%)", ["disease_identifier", "mondo_identifier"], "pheval_disease_results"
+        "disease",
+        "Known diseases (%)",
+        ["disease_identifier", "mondo_identifier"],
+        "pheval_disease_results",
     )
