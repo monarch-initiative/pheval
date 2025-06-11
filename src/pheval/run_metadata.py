@@ -15,6 +15,8 @@ class BasicOutputRunMetaData:
         config (Path): Path to the config file located in the input directory
         run_timestamp (int): Time taken for run to complete
         corpus (Path): Path to corpus used in pheval run
+        mondo_download_date (Optional[str]): ISO timestamp for MONDO file
+        hgnc_download_date (Optional[str]): ISO timestamp for HGNC file
         tool_specific_configuration_options (Any): Special field that can be overwritten by tool implementations to
                                                    contain any extra tool specific configurations used in the run
     """
@@ -24,4 +26,6 @@ class BasicOutputRunMetaData:
     config: Path
     run_timestamp: int
     corpus: Path
+    mondo_download_date: str
+    hgnc_download_date: str
     tool_specific_configuration_options: Any = None
