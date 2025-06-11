@@ -85,7 +85,11 @@ def semsim_scramble_df(
 
 
 def _update_metadata(file_name: str) -> None:
-    """Update metadata.json with the current UTC timestamp for a file."""
+    """
+    Update metadata.json with the current UTC timestamp for a file.
+    Args:
+        file_name (str): The file name.
+    """
     timestamp = datetime.utcnow().isoformat() + "Z"
     metadata = {}
     if METADATA_PATH.exists():
@@ -96,7 +100,12 @@ def _update_metadata(file_name: str) -> None:
 
 
 def _download_file(url: str, target_path: Path) -> None:
-    """Helper to download a file from a URL to a target path."""
+    """
+    Helper to download a file from a URL to a target path.
+    Args:
+        url (str): url to download.
+        target_path (Path): Path to download to.
+    """
     try:
         logger.info(f"Downloading: {url}")
         response = requests.get(url, timeout=30)
@@ -118,3 +127,15 @@ def download_mondo_mapping() -> None:
 def download_hgnc_data() -> None:
     """Download latest HGNC complete set file."""
     _download_file(HGNC_URL, RESOURCES_DIR / "hgnc_complete_set.txt")
+
+
+def get_resource_timestamp(file_name: str) -> str | None:
+    """
+    Return the ISO timestamp when the resource file was last updated.
+    Args:
+        file_name (str): The file name.
+    """
+    if METADATA_PATH.exists():
+        with open(METADATA_PATH, "r") as f:
+            return json.load(f).get(file_name)
+    return None
