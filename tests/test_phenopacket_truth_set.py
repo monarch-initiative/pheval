@@ -4,6 +4,7 @@ from unittest.mock import MagicMock, patch
 
 import polars as pl
 
+from pheval.post_processing.mondo_mapping import parse_mondo_mapping_table
 from pheval.post_processing.phenopacket_truth_set import PhenopacketTruthSet
 from pheval.utils.phenopacket_utils import GenomicVariant, ProbandCausativeGene, ProbandDisease
 
@@ -18,6 +19,8 @@ variants = [
 ]
 
 diseases = [ProbandDisease(disease_name="Cystic Fibrosis", disease_identifier="OMIM:219700")]
+
+mondo_mapping_table = parse_mondo_mapping_table()
 
 
 class TestPhenopacketTruthSet(unittest.TestCase):
@@ -104,7 +107,15 @@ class TestPhenopacketTruthSet(unittest.TestCase):
             ]
         )
         cls.mock_disease_classified_results = pl.DataFrame(
-            [{"disease_identifier": "OMIM:219700", "score": 0.0, "rank": 0, "true_positive": True}]
+            [
+                {
+                    "disease_identifier": "OMIM:219700",
+                    "score": 0.0,
+                    "rank": 0,
+                    "true_positive": True,
+                    "mondo_identifier": "MONDO:0009061",
+                }
+            ]
         )
         cls.mock_disease_ranked_results = pl.DataFrame(
             {
@@ -216,7 +227,7 @@ class TestPhenopacketTruthSet(unittest.TestCase):
 
     def test_classified_disease(self):
         self.assertTrue(
-            self.phenopacket_truth_set.classified_disease("dummy_result_name")
+            self.phenopacket_truth_set.classified_disease("dummy_result_name", mondo_mapping_table)
             .sort("disease_identifier")
             .equals(self.mock_disease_classified_results.sort("disease_identifier"))
         )
@@ -224,9 +235,14 @@ class TestPhenopacketTruthSet(unittest.TestCase):
     @patch("polars.read_parquet")
     def test_merge_disease_results(self, mock_read_parquet):
         mock_read_parquet.return_value = self.mock_disease_classified_results
+        print(
+            self.phenopacket_truth_set.merge_disease_results(
+                self.mock_disease_ranked_results, "output_file", mondo_mapping_table
+            ).sort("disease_identifier")
+        )
         self.assertTrue(
             self.phenopacket_truth_set.merge_disease_results(
-                self.mock_disease_ranked_results, "output_file"
+                self.mock_disease_ranked_results, "output_file", mondo_mapping_table
             )
             .sort("disease_identifier")
             .equals(
@@ -237,18 +253,21 @@ class TestPhenopacketTruthSet(unittest.TestCase):
                             "score": 0.9,
                             "rank": 1,
                             "true_positive": False,
+                            "mondo_identifier": "OMIM:12345",
                         },
                         {
                             "disease_identifier": "OMIM:6789",
                             "score": 0.8,
                             "rank": 2,
                             "true_positive": False,
+                            "mondo_identifier": "OMIM:6789",
                         },
                         {
                             "disease_identifier": "OMIM:219700",
                             "score": 0.0,
                             "rank": 0,
                             "true_positive": True,
+                            "mondo_identifier": "MONDO:0009061",
                         },
                     ]
                 ).sort("disease_identifier")

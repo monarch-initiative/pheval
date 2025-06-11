@@ -73,6 +73,20 @@ variant_results = pl.DataFrame(
     ]
 )
 
+disease_results = pl.DataFrame(
+    [
+        {"disease_identifier": "OMIM:604131", "mondo_identifier": "MONDO:0015264", "score": 0.9123},
+        {"disease_identifier": "ORPHA:84", "mondo_identifier": "MONDO:0009825", "score": 0.8021},
+        {
+            "disease_identifier": "ORPHA:604131",
+            "mondo_identifier": "MONDO:0015264",
+            "score": 0.9123,
+        },
+        {"disease_identifier": "DOID:14330", "mondo_identifier": "MONDO:0007254", "score": 0.6734},
+        {"disease_identifier": "OMIM:114480", "mondo_identifier": "MONDO:0011783", "score": 0.4312},
+    ]
+)
+
 
 class TestCalculateEndPos(unittest.TestCase):
     def test_calculate_end_pos_single_ref_length(self):
@@ -187,6 +201,51 @@ class TestRankResults(unittest.TestCase):
                             "grouping_id": "DCBOASX",
                             "min_rank": 5,
                             "rank": 5,
+                        },
+                    ]
+                )
+            )
+        )
+
+    def test__rank_results_mondo_id(self):
+        self.assertTrue(
+            _rank_results(disease_results, SortOrder.DESCENDING).equals(
+                pl.DataFrame(
+                    [
+                        {
+                            "disease_identifier": "OMIM:604131",
+                            "mondo_identifier": "MONDO:0015264",
+                            "score": 0.9123,
+                            "min_rank": 1,
+                            "rank": 1,
+                        },
+                        {
+                            "disease_identifier": "ORPHA:604131",
+                            "mondo_identifier": "MONDO:0015264",
+                            "score": 0.9123,
+                            "min_rank": 1,
+                            "rank": 1,
+                        },
+                        {
+                            "disease_identifier": "ORPHA:84",
+                            "mondo_identifier": "MONDO:0009825",
+                            "score": 0.8021,
+                            "min_rank": 2,
+                            "rank": 2,
+                        },
+                        {
+                            "disease_identifier": "DOID:14330",
+                            "mondo_identifier": "MONDO:0007254",
+                            "score": 0.6734,
+                            "min_rank": 3,
+                            "rank": 3,
+                        },
+                        {
+                            "disease_identifier": "OMIM:114480",
+                            "mondo_identifier": "MONDO:0011783",
+                            "score": 0.4312,
+                            "min_rank": 4,
+                            "rank": 4,
                         },
                     ]
                 )

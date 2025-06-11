@@ -10,6 +10,7 @@ import click
 from pheval.implementations import get_implementation_resolver
 from pheval.utils.file_utils import write_metadata
 from pheval.utils.logger import get_logger
+from pheval.utils.utils import download_hgnc_data, download_mondo_mapping
 
 logger = get_logger()
 
@@ -103,3 +104,23 @@ def run(
     logger.info(f"Writing metadata for run to {output_dir}.")
     write_metadata(output_dir, run_metadata)
     logger.info(f"Run completed! Total time: {time.perf_counter() - start_time:.2f} seconds.")
+
+
+@click.command()
+def update():
+    """
+    Download the latest MONDO and HGNC mapping files.
+
+    This command fetches the most recent versions of:
+
+    * The MONDO SSSOM mapping file from the Monarch Initiative
+
+    * The HGNC complete gene set from the HGNC download site
+
+    These files are saved to the `resources/` directory and will
+    overwrite any existing versions. This ensures that PhEval has
+    access to the most up-to-date identifier mappings for disease
+    and gene normalisation.
+    """
+    download_mondo_mapping()
+    download_hgnc_data()
