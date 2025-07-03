@@ -45,6 +45,10 @@ def _rank_results(results: pl.DataFrame, sort_order: SortOrder) -> pl.DataFrame:
     """
     sort_descending = True if sort_order == SortOrder.DESCENDING else False
     group_by = []
+    # group by either `grouping_id` or `mondo_identifier` column to implement ranking logic where equal ranks are not
+    # penalised. `grouping_id` and `mondo_identifier` cannot be grouped together as ranking logic fails so
+    # `grouping_id` was removed from the disease results schema.
+    # TODO: allow both `grouping_id` and `mondo_identifier` for disease results to account for blended phenotypes.
     if "grouping_id" in results.columns:
         group_by.append("grouping_id")
     if "mondo_identifier" in results.columns:
