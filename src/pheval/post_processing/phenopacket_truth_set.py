@@ -3,6 +3,7 @@ from typing import List
 
 import polars as pl
 
+from pheval.post_processing.mondo_mapping import map_disease_id
 from pheval.utils.phenopacket_utils import (
     GenomicVariant,
     PhenopacketUtil,
@@ -201,11 +202,14 @@ class PhenopacketTruthSet:
             )
         )
 
-    def classified_disease(self, result_name: str) -> pl.DataFrame:
+    def classified_disease(
+        self, result_name: str, mondo_mapping_table: pl.DataFrame
+    ) -> pl.DataFrame:
         """
         Classify disease results for a given phenopacket.
         Args:
             result_name (str): Name of the result file.
+            mondo_mapping_table (pl.DataFrame): Mondo mapping table.
         Returns:
             pl.DataFrame: Classified ranked disease results.
         """
@@ -220,20 +224,38 @@ class PhenopacketTruthSet:
                 pl.lit(0).cast(pl.Float64).alias("score"),
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
+                pl.col("disease_identifier")
+                .map_elements(lambda x: map_disease_id(x, mondo_mapping_table))
+                .alias("mondo_identifier"),
             ]
         )
 
     @staticmethod
-    def merge_disease_results(ranked_results: pl.DataFrame, output_file: Path) -> pl.DataFrame:
+    def merge_disease_results(
+        ranked_results: pl.DataFrame,
+        output_file: Path,
+        mondo_mapping_table: pl.DataFrame,
+    ) -> pl.DataFrame:
         """
         Merge ranked disease results with the classified diseases.
         Args:
             ranked_results (pl.DataFrame): Ranked disease results.
             output_file (Path): Path to the output file.
+            mondo_mapping_table (pl.DataFrame): Mondo mapping table.
         Returns:
             pl.DataFrame: Merged ranked disease results.
         """
         classified_results = pl.read_parquet(output_file)
+        ranked_results = ranked_results.with_columns(
+            [
+                pl.col("disease_identifier")
+                .map_elements(
+                    lambda x: map_disease_id(x, mondo_mapping_table),
+                    return_dtype=pl.String,
+                )
+                .alias("mondo_identifier")
+            ]
+        )
         return (
             ranked_results.with_columns(
                 (

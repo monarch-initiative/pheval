@@ -6,7 +6,7 @@ import click
 
 from pheval.utils.logger import get_logger, initialise_context
 
-from .cli_pheval import run
+from .cli_pheval import run, update
 from .cli_pheval_utils import (
     benchmark,
     create_spiked_vcfs_command,
@@ -54,6 +54,7 @@ def pheval_utils(ctx):
 
 
 pheval.add_command(run)
+pheval.add_command(update)
 
 pheval_utils.add_command(semsim_scramble_command)
 pheval_utils.add_command(scramble_phenopackets_command)

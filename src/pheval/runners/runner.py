@@ -8,6 +8,7 @@ from pathlib import Path
 from pheval.config_parser import parse_input_dir_config
 from pheval.run_metadata import BasicOutputRunMetaData
 from pheval.utils.logger import get_logger
+from pheval.utils.utils import get_resource_timestamp
 
 logger = get_logger()
 
@@ -110,6 +111,8 @@ class PhEvalRunner(ABC):
             config=f"{Path(self.input_dir).parent.name}/{Path(self.input_dir).name}",
             run_timestamp=datetime.now().timestamp(),
             corpus=f"{Path(self.testdata_dir).parent.name}/{Path(self.testdata_dir).name}",
+            mondo_download_date=get_resource_timestamp("mondo.sssom.tsv"),
+            hgnc_download_date=get_resource_timestamp("hgnc_complete_set.txt"),
         )
         return self._meta_data
 
