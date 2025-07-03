@@ -635,6 +635,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/mondo_mapping/" class="md-nav__link">
+        Mondo mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
         Phenopacket truth set
       </a>
@@ -969,6 +983,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.download_hgnc_data" class="md-nav__link">
+    download_hgnc_data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.download_mondo_mapping" class="md-nav__link">
+    download_mondo_mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.get_resource_timestamp" class="md-nav__link">
+    get_resource_timestamp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.rand" class="md-nav__link">
     rand
   </a>
@@ -1178,6 +1213,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.download_hgnc_data" class="md-nav__link">
+    download_hgnc_data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.download_mondo_mapping" class="md-nav__link">
+    download_mondo_mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.utils.utils.get_resource_timestamp" class="md-nav__link">
+    get_resource_timestamp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.pheval.utils.utils.rand" class="md-nav__link">
     rand
   </a>
@@ -1250,6 +1306,103 @@
 <div class="doc doc-object doc-function">
 
 
+<h2 id="src.pheval.utils.utils.download_hgnc_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">download_hgnc_data</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Download latest HGNC complete set file.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">download_hgnc_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download latest HGNC complete set file.&quot;&quot;&quot;</span>
+    <span class="n">_download_file</span><span class="p">(</span><span class="n">HGNC_URL</span><span class="p">,</span> <span class="n">RESOURCES_DIR</span> <span class="o">/</span> <span class="s2">&quot;hgnc_complete_set.txt&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="src.pheval.utils.utils.download_mondo_mapping" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">download_mondo_mapping</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Download latest MONDO SSSOM mapping file.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">download_mondo_mapping</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download latest MONDO SSSOM mapping file.&quot;&quot;&quot;</span>
+    <span class="n">_download_file</span><span class="p">(</span><span class="n">MONDO_URL</span><span class="p">,</span> <span class="n">RESOURCES_DIR</span> <span class="o">/</span> <span class="s2">&quot;mondo.sssom.tsv&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="src.pheval.utils.utils.get_resource_timestamp" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_resource_timestamp</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the ISO timestamp when the resource file was last updated.
+Args:
+    file_name (str): The file name.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_resource_timestamp</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the ISO timestamp when the resource file was last updated.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_name (str): The file name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">METADATA_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">METADATA_PATH</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="src.pheval.utils.utils.rand" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">min_num</span><span class="p">,</span> <span class="n">max_num</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span></code>
 
@@ -1270,22 +1423,22 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rand</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">min_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rand</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">min_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Numeric scrambling</span>
 <span class="sd">    Args:</span>
@@ -1299,7 +1452,7 @@ Returns:
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">df</span> <span class="o">+</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">min_num</span><span class="p">,</span> <span class="n">max_num</span><span class="p">)</span> <span class="o">*</span> <span class="n">scramble_factor</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-        <span class="n">info_log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="n">err</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="n">err</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1334,18 +1487,7 @@ and returns a scrambles pandas dataframe.
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
@@ -1356,7 +1498,18 @@ and returns a scrambles pandas dataframe.
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_scramble</span><span class="p">(</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_scramble</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">output</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">columns_to_be_scrambled</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -1407,24 +1560,24 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_scramble_df</span><span class="p">(</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_scramble_df</span><span class="p">(</span>
     <span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">columns_to_be_scrambled</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>

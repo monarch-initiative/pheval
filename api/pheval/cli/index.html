@@ -366,6 +366,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    # update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pheval-utils" class="md-nav__link">
     pheval-utils
   </a>
@@ -444,6 +451,13 @@
           <li class="md-nav__item">
   <a href="#run_1" class="md-nav__link">
     run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    update
   </a>
   
 </li>
@@ -837,6 +851,20 @@
           post_processing
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../post_processing/mondo_mapping/" class="md-nav__link">
+        Mondo mapping
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1342,6 +1370,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    # update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pheval-utils" class="md-nav__link">
     pheval-utils
   </a>
@@ -1420,6 +1455,13 @@
           <li class="md-nav__item">
   <a href="#run_1" class="md-nav__link">
     run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    update
   </a>
   
 </li>
@@ -1588,6 +1630,7 @@
 <p><strong>Subcommands</strong></p>
 <ul>
 <li><em>run</em>: PhEval Runner Command Line Interface</li>
+<li><em>update</em>: </li>
 </ul>
 <h6 id="run"># run</h6>
 <p>PhEval Runner Command Line Interface
@@ -1655,6 +1698,43 @@ Args:
 <td>Version of the tool implementation.</td>
 <td>None</td>
 </tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h6 id="update"># update</h6>
+<p>Download the latest MONDO and HGNC mapping files.</p>
+<p>This command fetches the most recent versions of:</p>
+<ul>
+<li>
+<p>The MONDO SSSOM mapping file from the Monarch Initiative</p>
+</li>
+<li>
+<p>The HGNC complete gene set from the HGNC download site</p>
+</li>
+</ul>
+<p>These files are saved to the <code>resources/</code> directory and will
+overwrite any existing versions. This ensures that PhEval has
+access to the most up-to-date identifier mappings for disease
+and gene normalisation.</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight"><pre><span></span><code>main pheval update [OPTIONS]
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><code>--help</code></td>
 <td>boolean</td>
@@ -2190,6 +2270,7 @@ Args:
 <p><strong>Subcommands</strong></p>
 <ul>
 <li><em>run</em>: PhEval Runner Command Line Interface</li>
+<li><em>update</em>: </li>
 </ul>
 <h6 id="run_1">run</h6>
 <p>PhEval Runner Command Line Interface
@@ -2257,6 +2338,43 @@ Args:
 <td>Version of the tool implementation.</td>
 <td>None</td>
 </tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h6 id="update_1">update</h6>
+<p>Download the latest MONDO and HGNC mapping files.</p>
+<p>This command fetches the most recent versions of:</p>
+<ul>
+<li>
+<p>The MONDO SSSOM mapping file from the Monarch Initiative</p>
+</li>
+<li>
+<p>The HGNC complete gene set from the HGNC download site</p>
+</li>
+</ul>
+<p>These files are saved to the <code>resources/</code> directory and will
+overwrite any existing versions. This ensures that PhEval has
+access to the most up-to-date identifier mappings for disease
+and gene normalisation.</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight"><pre><span></span><code>pheval update [OPTIONS]
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><code>--help</code></td>
 <td>boolean</td>

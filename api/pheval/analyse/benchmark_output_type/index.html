@@ -688,6 +688,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../post_processing/mondo_mapping/" class="md-nav__link">
+        Mondo mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
         Phenopacket truth set
       </a>
@@ -1460,7 +1474,10 @@
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BenchmarkOutputTypeEnum</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BenchmarkOutputTypeEnum</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enumeration of benchmark output types, representing different entities.</span>
 
@@ -1480,7 +1497,10 @@
         <span class="s2">&quot;variant&quot;</span><span class="p">,</span> <span class="s2">&quot;Disease-causing variants (%)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;variant_id&quot;</span><span class="p">],</span> <span class="s2">&quot;pheval_variant_results&quot;</span>
     <span class="p">)</span>
     <span class="n">DISEASE</span> <span class="o">=</span> <span class="n">BenchmarkOutputType</span><span class="p">(</span>
-        <span class="s2">&quot;disease&quot;</span><span class="p">,</span> <span class="s2">&quot;Known diseases (%)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">],</span> <span class="s2">&quot;pheval_disease_results&quot;</span>
+        <span class="s2">&quot;disease&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Known diseases (%)&quot;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;mondo_identifier&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;pheval_disease_results&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>

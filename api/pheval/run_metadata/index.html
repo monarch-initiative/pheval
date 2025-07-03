@@ -679,6 +679,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../post_processing/mondo_mapping/" class="md-nav__link">
+        Mondo mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../post_processing/phenopacket_truth_set/" class="md-nav__link">
         Phenopacket truth set
       </a>
@@ -1239,6 +1253,8 @@ Args:
     config (Path): Path to the config file located in the input directory
     run_timestamp (int): Time taken for run to complete
     corpus (Path): Path to corpus used in pheval run
+    mondo_download_date (Optional[str]): ISO timestamp for MONDO file
+    hgnc_download_date (Optional[str]): ISO timestamp for HGNC file
     tool_specific_configuration_options (Any): Special field that can be overwritten by tool implementations to
                                                contain any extra tool specific configurations used in the run</p>
 
@@ -1269,7 +1285,11 @@ Args:
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@serde</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@serde</span>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">BasicOutputRunMetaData</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for defining variables for the run metadata.</span>
@@ -1279,6 +1299,8 @@ Args:
 <span class="sd">        config (Path): Path to the config file located in the input directory</span>
 <span class="sd">        run_timestamp (int): Time taken for run to complete</span>
 <span class="sd">        corpus (Path): Path to corpus used in pheval run</span>
+<span class="sd">        mondo_download_date (Optional[str]): ISO timestamp for MONDO file</span>
+<span class="sd">        hgnc_download_date (Optional[str]): ISO timestamp for HGNC file</span>
 <span class="sd">        tool_specific_configuration_options (Any): Special field that can be overwritten by tool implementations to</span>
 <span class="sd">                                                   contain any extra tool specific configurations used in the run</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1288,6 +1310,8 @@ Args:
     <span class="n">config</span><span class="p">:</span> <span class="n">Path</span>
     <span class="n">run_timestamp</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">corpus</span><span class="p">:</span> <span class="n">Path</span>
+    <span class="n">mondo_download_date</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">hgnc_download_date</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">tool_specific_configuration_options</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
               </details>

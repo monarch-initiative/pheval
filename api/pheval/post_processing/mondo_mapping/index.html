@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/prepare/custom_exceptions/">
+        <link rel="canonical" href="https://monarch-initiative.github.io/pheval/api/pheval/post_processing/mondo_mapping/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Custom exceptions - PhEval</title>
+        <title>Mondo mapping - PhEval</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.pheval.prepare.custom_exceptions" class="md-skip">
+        <a href="#src.pheval.post_processing.mondo_mapping" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom exceptions
+              Mondo mapping
             
           </span>
         </div>
@@ -607,12 +607,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" checked>
       
       
       
@@ -633,11 +635,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../post_processing/mondo_mapping/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mondo mapping
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Mondo mapping
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.post_processing.mondo_mapping" class="md-nav__link">
+    mondo_mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.post_processing.mondo_mapping.map_disease_id" class="md-nav__link">
+    map_disease_id
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.pheval.post_processing.mondo_mapping.parse_mondo_mapping_table" class="md-nav__link">
+    parse_mondo_mapping_table
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -649,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../post_processing/phenopacket_truth_set/" class="md-nav__link">
+      <a href="../phenopacket_truth_set/" class="md-nav__link">
         Phenopacket truth set
       </a>
     </li>
@@ -663,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../post_processing/post_processing/" class="md-nav__link">
+      <a href="../post_processing/" class="md-nav__link">
         Post processing
       </a>
     </li>
@@ -677,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../post_processing/validate_result_format/" class="md-nav__link">
+      <a href="../validate_result_format/" class="md-nav__link">
         Validate result format
       </a>
     </li>
@@ -696,14 +749,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
       
       
       
@@ -726,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_noisy_phenopackets/" class="md-nav__link">
+      <a href="../../prepare/create_noisy_phenopackets/" class="md-nav__link">
         Create noisy phenopackets
       </a>
     </li>
@@ -740,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_spiked_vcf/" class="md-nav__link">
+      <a href="../../prepare/create_spiked_vcf/" class="md-nav__link">
         Create spiked vcf
       </a>
     </li>
@@ -752,62 +803,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Custom exceptions
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../prepare/custom_exceptions/" class="md-nav__link">
         Custom exceptions
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions" class="md-nav__link">
-    custom_exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions.InputError" class="md-nav__link">
-    InputError
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions.MutuallyExclusiveOptionError" class="md-nav__link">
-    MutuallyExclusiveOptionError
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -819,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../prepare_corpus/" class="md-nav__link">
+      <a href="../../prepare/prepare_corpus/" class="md-nav__link">
         Prepare corpus
       </a>
     </li>
@@ -833,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../update_phenopacket/" class="md-nav__link">
+      <a href="../../prepare/update_phenopacket/" class="md-nav__link">
         Update phenopacket
       </a>
     </li>
@@ -1178,22 +1178,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions" class="md-nav__link">
-    custom_exceptions
+  <a href="#src.pheval.post_processing.mondo_mapping" class="md-nav__link">
+    mondo_mapping
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions.InputError" class="md-nav__link">
-    InputError
+  <a href="#src.pheval.post_processing.mondo_mapping.map_disease_id" class="md-nav__link">
+    map_disease_id
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.pheval.prepare.custom_exceptions.MutuallyExclusiveOptionError" class="md-nav__link">
-    MutuallyExclusiveOptionError
+  <a href="#src.pheval.post_processing.mondo_mapping.parse_mondo_mapping_table" class="md-nav__link">
+    parse_mondo_mapping_table
   </a>
   
 </li>
@@ -1212,19 +1212,19 @@
                 
                   
 
-  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/prepare/custom_exceptions.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/api/pheval/post_processing/mondo_mapping.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Custom exceptions</h1>
+  <h1>Mondo mapping</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="src.pheval.prepare.custom_exceptions"></a>
+<a id="src.pheval.post_processing.mondo_mapping"></a>
     <div class="doc doc-contents first">
 
 
@@ -1244,104 +1244,29 @@
 
 
 
-<div class="doc doc-object doc-class">
+
+<div class="doc doc-object doc-function">
 
 
-
-<h2 id="src.pheval.prepare.custom_exceptions.InputError" class="doc doc-heading">
-            <code>InputError</code>
-
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="Exception">Exception</span></code></p>
-
-
-        <p>Exception raised for missing required inputs.</p>
-
-
-
-
-
-
-
-              <details class="quote">
-                <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">InputError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised for missing required inputs.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Missing required input&quot;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">file</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">message</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="si">}</span><span class="s2"> &quot;</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="src.pheval.prepare.custom_exceptions.MutuallyExclusiveOptionError" class="doc doc-heading">
-            <code>MutuallyExclusiveOptionError</code>
-
+<h2 id="src.pheval.post_processing.mondo_mapping.map_disease_id" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">map_disease_id</span><span class="p">(</span><span class="n">disease_identifier</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">)</span></code>
 
 </h2>
 
 
     <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="click.Option">Option</span></code></p>
+
+        <p>Map a disease identifier to MONDO ID using the Mondo SSSOM mapping.
+Args:
+    disease_identifier (str): The disease identifier to map to MONDO.
+    mondo_mapping_table (pl.DataFrame): The Mondo SSSOM table.
+Returns:
+    str: The MONDO ID.</p>
 
 
-        <p>Exception raised for when</p>
-
-
-
-
-
-
-
-              <details class="quote">
-                <summary>Source code in <code>src/pheval/prepare/custom_exceptions.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/mondo_mapping.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
@@ -1353,55 +1278,69 @@
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MutuallyExclusiveOptionError</span><span class="p">(</span><span class="n">Option</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised for when&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mutually_exclusive</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;mutually_exclusive&quot;</span><span class="p">,</span> <span class="p">[]))</span>
-        <span class="n">help_</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutually_exclusive</span><span class="p">:</span>
-            <span class="n">ex_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mutually_exclusive</span><span class="p">)</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;help&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">help_</span> <span class="o">+</span> <span class="p">(</span>
-                <span class="s2">&quot; NOTE: This argument is mutually exclusive with &quot;</span> <span class="s2">&quot; arguments: [&quot;</span> <span class="o">+</span> <span class="n">ex_str</span> <span class="o">+</span> <span class="s2">&quot;].&quot;</span>
-            <span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MutuallyExclusiveOptionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">handle_parse_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutually_exclusive</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span>
-                <span class="s2">&quot;Illegal usage: `</span><span class="si">{}</span><span class="s2">` is mutually exclusive with &quot;</span>
-                <span class="s2">&quot;arguments `</span><span class="si">{}</span><span class="s2">`.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mutually_exclusive</span><span class="p">))</span>
-            <span class="p">)</span>
-
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MutuallyExclusiveOptionError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">handle_parse_result</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">map_disease_id</span><span class="p">(</span><span class="n">disease_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map a disease identifier to MONDO ID using the Mondo SSSOM mapping.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        disease_identifier (str): The disease identifier to map to MONDO.</span>
+<span class="sd">        mondo_mapping_table (pl.DataFrame): The Mondo SSSOM table.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The MONDO ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mapped_identifier</span> <span class="o">=</span> <span class="n">mondo_mapping_table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;object_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">disease_identifier</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mapped_identifier</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">mapped_identifier</span><span class="p">[</span><span class="s2">&quot;subject_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">disease_identifier</span>
 </code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
+            </details>
     </div>
 
 </div>
 
+<div class="doc doc-object doc-function">
+
+
+<h2 id="src.pheval.post_processing.mondo_mapping.parse_mondo_mapping_table" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_mondo_mapping_table</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parse the Mondo SSSOM table.
+Returns:
+    pl.DataFrame: Mondo SSSOM table.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/pheval/post_processing/mondo_mapping.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_mondo_mapping_table</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse the Mondo SSSOM table.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pl.DataFrame: Mondo SSSOM table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;resources&quot;</span> <span class="o">/</span> <span class="s2">&quot;mondo.sssom.tsv&quot;</span><span class="p">,</span>
+        <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">comment_prefix</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
 
 
 
@@ -1430,7 +1369,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../create_spiked_vcf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Create spiked vcf" rel="prev">
+        <a href="../../infra/exomiserdb/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exomiserdb" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1439,20 +1378,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Create spiked vcf
+              Exomiserdb
             </div>
           </div>
         </a>
       
       
         
-        <a href="../prepare_corpus/" class="md-footer__link md-footer__link--next" aria-label="Next: Prepare corpus" rel="next">
+        <a href="../phenopacket_truth_set/" class="md-footer__link md-footer__link--next" aria-label="Next: Phenopacket truth set" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Prepare corpus
+              Phenopacket truth set
             </div>
           </div>
           <div class="md-footer__button md-icon">
