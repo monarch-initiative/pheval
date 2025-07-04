@@ -1653,7 +1653,7 @@ ensuring that missing predictions are accounted for in the evaluation.</p>
         <span class="sa">f</span><span class="s2">&quot;phenopackets to </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="p">)</span>
     <span class="n">executed_results</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result_type</span><span class="p">)</span>
-    <span class="n">phenopacket_truth_set</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">)</span>
+    <span class="n">phenopacket_truth_set</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span>
     <span class="n">classify_method</span><span class="p">,</span> <span class="n">write_method</span> <span class="o">=</span> <span class="n">_get_result_type</span><span class="p">(</span><span class="n">result_type</span><span class="p">,</span> <span class="n">phenopacket_truth_set</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
         <span class="n">classified_results</span> <span class="o">=</span> <span class="n">classify_method</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
