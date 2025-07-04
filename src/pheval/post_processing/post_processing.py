@@ -178,7 +178,7 @@ def create_empty_pheval_result(
         f"phenopackets to {output_dir}"
     )
     executed_results.add(result_type)
-    phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir, mondo_mapping_table)
+    phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir)
     classify_method, write_method = _get_result_type(result_type, phenopacket_truth_set)
     for file in all_files(phenopacket_dir):
         classified_results = classify_method(file.stem)
