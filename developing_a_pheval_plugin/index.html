@@ -2971,10 +2971,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
@@ -2996,7 +2993,10 @@ Args:
 <span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
-<span class="normal">216</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_gene_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3047,10 +3047,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">222</span>
 <span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
@@ -3078,7 +3075,10 @@ Args:
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
-<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_variant_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3135,10 +3135,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
@@ -3165,7 +3162,10 @@ Args:
 <span class="normal">280</span>
 <span class="normal">281</span>
 <span class="normal">282</span>
-<span class="normal">283</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_disease_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
