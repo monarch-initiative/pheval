@@ -150,7 +150,10 @@ def _get_result_type(
         case ResultType.VARIANT:
             return phenopacket_truth_set.classified_variant, _write_variant_result
         case ResultType.DISEASE:
-            return phenopacket_truth_set.classified_disease, _write_disease_result
+            return (
+                lambda id_: phenopacket_truth_set.classified_disease(id_, mondo_mapping_table),
+                _write_disease_result,
+            )
 
 
 def create_empty_pheval_result(
