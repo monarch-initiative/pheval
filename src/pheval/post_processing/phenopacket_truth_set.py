@@ -225,7 +225,9 @@ class PhenopacketTruthSet:
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
                 pl.col("disease_identifier")
-                .map_elements(lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.Utf8)
+                .map_elements(
+                    lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.Utf8
+                )
                 .alias("mondo_identifier"),
             ]
         )
