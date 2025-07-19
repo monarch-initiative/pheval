@@ -1,0 +1,51 @@
+{
+  "id": "retinitis_pigmentosa,_x-linked,_and_sinorespiratory_infections,_withor_without_deafness",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005101",
+        "label": "High-frequency hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005376",
+        "label": "Recurrent Haemophilus influenzae infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:300455",
+        "label": "Retinitis pigmentosa, X-linked, and sinorespiratory infections, withor without deafness"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:36:38.534762Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

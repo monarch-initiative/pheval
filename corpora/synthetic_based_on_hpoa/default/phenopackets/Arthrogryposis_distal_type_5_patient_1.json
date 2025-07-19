@@ -1,0 +1,153 @@
+{
+  "id": "arthrogryposis,_distal,_type_5",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003199",
+        "label": "Decreased muscle mass"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005684",
+        "label": "Distal arthrogryposis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000508",
+        "label": "Ptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000490",
+        "label": "Deeply set eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012392",
+        "label": "Jaw hyporeflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005346",
+        "label": "Abnormal facial expression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005001",
+        "label": "Recurrent patellar dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006251",
+        "label": "Limited wrist extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010488",
+        "label": "Aplasia/Hypoplasia of the palmar creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032358",
+        "label": "Decreased post-bronchodilator forced expiratory volume in one second"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006077",
+        "label": "Absent proximal finger flexion creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040018",
+        "label": "Clinodactyly of hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031770",
+        "label": "Epicanthus palpebralis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000479",
+        "label": "Abnormal retinal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011805",
+        "label": "Abnormal skeletal muscle morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:108145",
+        "label": "Arthrogryposis, distal, type 5"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:39:46.714474Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

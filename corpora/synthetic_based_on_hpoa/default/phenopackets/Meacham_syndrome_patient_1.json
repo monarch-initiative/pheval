@@ -1,0 +1,141 @@
+{
+  "id": "meacham_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0033210",
+        "label": "Congenital alveolar dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001195",
+        "label": "Single umbilical artery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008656",
+        "label": "Incomplete male pseudohermaphroditism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011681",
+        "label": "Subarterial ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011720",
+        "label": "Cardiac total anomalous pulmonary venous connection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011565",
+        "label": "Common atrium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009110",
+        "label": "Diaphragmatic eventration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032592",
+        "label": "Aplasia of the right hemidiaphragm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040045",
+        "label": "Abnormal hemidiaphragm morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012243",
+        "label": "Abnormal reproductive system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004383",
+        "label": "Hypoplastic left heart"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033353",
+        "label": "Abnormal blood vessel morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608978",
+        "label": "Meacham syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:40:11.001853Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

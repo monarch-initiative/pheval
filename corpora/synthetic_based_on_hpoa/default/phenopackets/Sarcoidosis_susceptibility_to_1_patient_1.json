@@ -1,0 +1,213 @@
+{
+  "id": "sarcoidosis,_susceptibility_to,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0010286",
+        "label": "Abnormal salivary gland morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100749",
+        "label": "Chest pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007734",
+        "label": "Enlarged lacrimal glands"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004890",
+        "label": "Elevated pulmonary artery pressure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002207",
+        "label": "Diffuse reticular or finely nodular infiltrations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031246",
+        "label": "Nonproductive cough"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004326",
+        "label": "Cachexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012064",
+        "label": "Unicameral bone cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033165",
+        "label": "Necrotizing enterocolitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002103",
+        "label": "Abnormal pleura morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005059",
+        "label": "Arthralgia/arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012252",
+        "label": "Abnormal respiratory system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002150",
+        "label": "Hypercalciuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002091",
+        "label": "Restrictive ventilatory defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000553",
+        "label": "Abnormal uvea morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410246",
+        "label": "Increased circulating IgD level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032976",
+        "label": "Elevated bronchoalveolar lavage fluid lymphocyte proportion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001094",
+        "label": "Iridocyclitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:181000",
+        "label": "Sarcoidosis, susceptibility to, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:56:14.290262Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "cardiac_valvular_dysplasia_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100749",
+        "label": "Chest pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005176",
+        "label": "Dysplastic aortic valve"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010444",
+        "label": "Pulmonary insufficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001642",
+        "label": "Pulmonic stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033755",
+        "label": "Increased left ventricular end-diastolic volume"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001659",
+        "label": "Aortic regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001962",
+        "label": "Palpitations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030148",
+        "label": "Heart murmur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005180",
+        "label": "Tricuspid regurgitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030872",
+        "label": "Abnormal cardiac ventricular function"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033353",
+        "label": "Abnormal blood vessel morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620067",
+        "label": "Cardiac valvular dysplasia 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:03:09.832644Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

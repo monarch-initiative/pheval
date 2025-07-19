@@ -1,0 +1,105 @@
+{
+  "id": "immunodeficiency_58",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025526",
+        "label": "Psoriasiform lesion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000009",
+        "label": "Functional abnormality of the bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012432",
+        "label": "Chronic fatigue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410152",
+        "label": "Eosinophilic microabscess formation in the esophagus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002068",
+        "label": "Neuromuscular dysphagia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011107",
+        "label": "Recurrent aphthous stomatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100838",
+        "label": "Recurrent cutaneous abscess formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011368",
+        "label": "Epidermal thickening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100776",
+        "label": "Recurrent pharyngitis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618131",
+        "label": "Immunodeficiency 58"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:39:12.432581Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

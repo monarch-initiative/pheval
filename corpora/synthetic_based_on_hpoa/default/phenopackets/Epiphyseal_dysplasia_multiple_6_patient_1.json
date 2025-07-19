@@ -1,0 +1,92 @@
+{
+  "id": "epiphyseal_dysplasia,_multiple,_6",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P9Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005645",
+        "label": "Intervertebral disk calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030041",
+        "label": "Schmorl's node"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032102",
+        "label": "Wilson sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006407",
+        "label": "Irregular distal femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003066",
+        "label": "Limited knee extension"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614135",
+        "label": "Epiphyseal dysplasia, multiple, 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:30:01.019144Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

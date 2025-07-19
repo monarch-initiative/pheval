@@ -1,0 +1,75 @@
+{
+  "id": "multiple_endocrine_neoplasia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100031",
+        "label": "Neoplasm of the thyroid gland"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012342",
+        "label": "Macroprolactinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002044",
+        "label": "Zollinger-Ellison syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000516",
+        "label": "Elevated circulating 21-deoxycortisol concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002592",
+        "label": "Gastric ulcer"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:131100",
+        "label": "Multiple endocrine neoplasia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:53:11.974328Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
