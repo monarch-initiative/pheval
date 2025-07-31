@@ -41,6 +41,13 @@ class RunConfig(BaseModel):
     def set_score_order(cls, score_order):
         return score_order or "descending"
 
+    @field_validator("results_dir", mode="after")
+    @classmethod
+    def check_results_dir_exists(cls, results_dir: Path):
+        if not results_dir.exists():
+            raise FileNotFoundError(f"The specified results directory does not exist: {results_dir}")
+        return results_dir
+
 
 class SinglePlotCustomisation(BaseModel):
     """
