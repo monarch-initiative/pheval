@@ -1,3 +1,4 @@
+import sys
 import time
 from pathlib import Path
 from typing import List, Tuple
@@ -135,6 +136,9 @@ def benchmark_runs(benchmark_config_file: Path) -> None:
     start_time = time.perf_counter()
     logger.info("Initiated benchmarking process.")
     config = parse_run_config(benchmark_config_file)
+    if Path(f"{config.benchmark_name}.duckdb").exists():
+        logger.error(f"{config.benchmark_name}.duckdb already exists! Exiting.")
+        sys.exit(1)
     gene_analysis_runs = [run for run in config.runs if run.gene_analysis]
     variant_analysis_runs = [run for run in config.runs if run.variant_analysis]
     disease_analysis_runs = [run for run in config.runs if run.disease_analysis]
