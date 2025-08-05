@@ -54,23 +54,49 @@ mkdocstrings-python = "^1.16.11"
 mkdocstrings = "^0.29.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.12.0"
+ruff = "^0.4.6"
 
 [tool.pytest.ini_options]
 pythonpath = [
   "src"
 ]
 
-[tool.black]
-line-length = 100
-target-version = ["py39", "py310"]
+[tool.ruff]
+line-length = 120
+target-version = "py311"
 
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 100
-include_trailing_comma = true
-reverse_relative = true
+src = ["src", "tests"]
+respect-gitignore = true
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "B",  # flake8-bugbear
+    "I",  # isort
+    "N",  # pep8-naming
+    "S",  # flake8-bandit
+    "C90",  # mccabe complexity
+    "PL",  # pylint
+    "RUF",  # Ruff-specific rules
+    "UP",  # pyupgrade
+    "NPY",  # NumPy-specific
+]
+ignore = [
+    "E203", "S311", "S101", "S106", "S404", "S108", "S307", "S603", "S607", "S608",
+    "B024", "B027", "N801", "N803", "N806", "N815", "E731", "C901", "B019", "PLR0913", "PLW0211"
+]
+fixable = ["ALL"]
+unfixable = ["B"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 13
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
 
 [build-system]
 requires = ["poetry-core"]
