@@ -24,9 +24,7 @@ class TestBinaryClassificationCurves(unittest.TestCase):
     def test_clean_and_extract_data(self):
         """Test that scores are properly cleaned and NaNs/Inf are replaced."""
         max_finite, min_finite = BinaryClassificationCurves._compute_finite_bounds(self.test_data)
-        cleaned = BinaryClassificationCurves._clean_and_extract_data(
-            self.test_data, max_finite, min_finite
-        ).collect()
+        cleaned = BinaryClassificationCurves._clean_and_extract_data(self.test_data, max_finite, min_finite).collect()
 
         expected_cleaned_scores = [0.5, 0.0, 0.8, 0.8, 0.3, 0.3]
         expected_true_positive = [1, 0, 1, 1, 0, 0]
@@ -39,9 +37,7 @@ class TestBinaryClassificationCurves(unittest.TestCase):
         labels = np.array([1, 0, 1, 1, 0])
         scores = np.array([0.9, 0.1, 0.8, 0.4, 0.2])
 
-        curves = BinaryClassificationCurves._compute_roc_pr_curves(
-            "test_run", labels, scores
-        ).collect()
+        curves = BinaryClassificationCurves._compute_roc_pr_curves("test_run", labels, scores).collect()
         self.assertTrue(
             curves.equals(
                 pl.DataFrame(

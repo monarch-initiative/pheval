@@ -1,5 +1,4 @@
 from itertools import combinations
-from typing import List
 
 import polars as pl
 from duckdb.duckdb import DuckDBPyConnection
@@ -11,7 +10,7 @@ from pheval.utils.logger import get_logger
 
 def calculate_rank_changes(
     conn: DuckDBPyConnection,
-    run_identifiers: List[str],
+    run_identifiers: list[str],
     true_positive_cases: pl.DataFrame,
     benchmark_type: BenchmarkOutputType,
 ) -> None:

@@ -141,7 +141,7 @@ class TestReadVcf(unittest.TestCase):
 
     def test_read_vcf_gzipped(self):
         for line in read_vcf(self.gzipped_vcf_file):
-            self.assertFalse(isinstance(line, (bytes, bytearray)))
+            self.assertFalse(isinstance(line, (bytes | bytearray)))
 
 
 class TestVcfHeaderParser(unittest.TestCase):
@@ -201,23 +201,17 @@ class TestCheckVariantAssembly(unittest.TestCase):
 
     def test_check_variant_assembly(self):
         self.assertEqual(
-            check_variant_assembly(
-                self.causative_variants, self.vcf_header_compatible, Path("/path/to/phenopacket")
-            ),
+            check_variant_assembly(self.causative_variants, self.vcf_header_compatible, Path("/path/to/phenopacket")),
             None,
         )
 
     def test_check_variant_assembly_phenopacket_assemblies(self):
         with self.assertRaises(ValueError):
-            check_variant_assembly(
-                self.multiple_assemblies, self.vcf_header_compatible, Path("/path/to/phenopacket")
-            )
+            check_variant_assembly(self.multiple_assemblies, self.vcf_header_compatible, Path("/path/to/phenopacket"))
 
     def test_check_variant_assembly_incompatible_vcf(self):
         with self.assertRaises(IncompatibleGenomeAssemblyError):
-            check_variant_assembly(
-                self.causative_variants, self.vcf_header_incompatible, Path("/path/to/phenopacket")
-            )
+            check_variant_assembly(self.causative_variants, self.vcf_header_incompatible, Path("/path/to/phenopacket"))
 
     def test_check_variant_assembly_incorrect_variant_assembly(self):
         with self.assertRaises(IncompatibleGenomeAssemblyError):
@@ -337,18 +331,18 @@ class TestVcfSpiker(unittest.TestCase):
     def test_construct_vcf_records_single_variant(self):
         self.assertEqual(
             self.vcf_spiker.construct_vcf_records("template.vcf")[40],
-            "chr1\t886190\t.\tG\tA\t100\tPASS\t.\t" "GT\t0/1\n",
+            "chr1\t886190\t.\tG\tA\t100\tPASS\t.\tGT\t0/1\n",
         )
 
     def test_construct_vcf_records_multiple_variants(self):
         updated_records = self.vcf_spiker_multiple_variants.construct_vcf_records("template.vcf")
         self.assertEqual(
             updated_records[40],
-            "chr1\t886190\t.\tG\tA\t100\tPASS\t.\t" "GT\t0/1\n",
+            "chr1\t886190\t.\tG\tA\t100\tPASS\t.\tGT\t0/1\n",
         )
         self.assertEqual(
             updated_records[45],
-            "chr3\t61580860\t.\tG\tA\t100\tPASS\t.\t" "GT\t1/1\n",
+            "chr3\t61580860\t.\tG\tA\t100\tPASS\t.\tGT\t1/1\n",
         )
 
     def test_construct_vcf_records_new_variant_pos(self):
@@ -360,10 +354,6 @@ class TestVcfSpiker(unittest.TestCase):
 
     def test_construct_header(self):
         self.assertEqual(
-            [
-                line
-                for line in self.vcf_spiker.construct_header(hg19_vcf)
-                if line.startswith("#CHROM")
-            ],
+            [line for line in self.vcf_spiker.construct_header(hg19_vcf) if line.startswith("#CHROM")],
             ["#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tTEST1\n"],
         )

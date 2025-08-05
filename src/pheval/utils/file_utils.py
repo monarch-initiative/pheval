@@ -3,7 +3,6 @@ import re
 import unicodedata
 from os import path
 from pathlib import Path
-from typing import List
 
 import pandas as pd
 import yaml
@@ -80,7 +79,7 @@ def ensure_file_exists(*files: str):
             raise FileNotFoundError(f"File {file} not found")
 
 
-def ensure_columns_exists(cols: list, dataframes: List[pd.DataFrame], err_message: str = ""):
+def ensure_columns_exists(cols: list, dataframes: list[pd.DataFrame], err_message: str = ""):
     """Ensures the columns exist in dataframes passed as argument (e.g)
 
     "

@@ -57,9 +57,7 @@ class TestResultSchema(unittest.TestCase):
     def test_null_grouping_id(self):
         """Test that null values in `grouping_id` raise ValueError."""
         invalid_df = self.valid_gene_df.with_columns(pl.lit(None).alias("grouping_id"))
-        with self.assertRaises(
-            ValueError, msg="'grouping_id' column should not contain null values if provided."
-        ):
+        with self.assertRaises(ValueError, msg="'grouping_id' column should not contain null values if provided."):
             ResultSchema.GENE_RESULT_SCHEMA.validate(invalid_df)
 
     def test_missing_grouping_id_column(self):

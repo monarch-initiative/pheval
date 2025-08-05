@@ -1,6 +1,5 @@
 import time
 from pathlib import Path
-from typing import Union
 
 import polars as pl
 from phenopackets import Family, Phenopacket
@@ -21,7 +20,7 @@ logger = get_logger()
 
 def update_outdated_gene_context(
     phenopacket_path: Path, gene_identifier: str, identifier_map: pl.DataFrame
-) -> Union[Phenopacket, Family]:
+) -> Phenopacket | Family:
     """
     Update the gene context of the Phenopacket.
 
@@ -66,15 +65,11 @@ def create_updated_phenopacket(
         to describe the gene identifiers.
     """
     identifier_map = create_gene_identifier_map() if identifier_map is None else identifier_map
-    updated_phenopacket = update_outdated_gene_context(
-        phenopacket_path, gene_identifier, identifier_map
-    )
+    updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, identifier_map)
     write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
-def create_updated_phenopackets(
-    gene_identifier: str, phenopacket_dir: Path, output_dir: Path
-) -> None:
+def create_updated_phenopackets(gene_identifier: str, phenopacket_dir: Path, output_dir: Path) -> None:
     """
     Update the gene context within the interpretations for a directory of Phenopackets
     and writes the updated Phenopackets.
@@ -91,15 +86,11 @@ def create_updated_phenopackets(
     identifier_map = create_gene_identifier_map()
     for phenopacket_path in all_files(phenopacket_dir):
         logger.info(f"Updating gene context for: {phenopacket_path.name}")
-        updated_phenopacket = update_outdated_gene_context(
-            phenopacket_path, gene_identifier, identifier_map
-        )
+        updated_phenopacket = update_outdated_gene_context(phenopacket_path, gene_identifier, identifier_map)
         write_phenopacket(updated_phenopacket, output_dir.joinpath(phenopacket_path.name))
 
 
-def update_phenopackets(
-    gene_identifier: str, phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path
-) -> None:
+def update_phenopackets(gene_identifier: str, phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path) -> None:
     """
     Update the gene identifiers in either a single phenopacket or a directory of phenopackets.
 
@@ -122,8 +113,6 @@ def update_phenopackets(
         logger.info(f"Updating {phenopacket_path}.")
         create_updated_phenopacket(gene_identifier, phenopacket_path, output_dir)
     elif phenopacket_dir is not None:
-        logger.info(
-            f"Updating {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
-        )
+        logger.info(f"Updating {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}.")
         create_updated_phenopackets(gene_identifier, phenopacket_dir, output_dir)
     logger.info(f"Updating finished! Total time: {time.perf_counter() - start_time:.2f} seconds.")

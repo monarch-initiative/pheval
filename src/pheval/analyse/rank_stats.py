@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import List
 
 import numpy as np
 import polars as pl
@@ -81,11 +80,7 @@ class Ranks:
         """
         precision_expr = pl.col(f"top{k}") / (pl.col("number_of_samples") * k)
         recall_expr = pl.col(f"top{k}") / pl.col("total")
-        return (
-            ((2 * precision_expr * recall_expr) / (precision_expr + recall_expr))
-            .fill_nan(0)
-            .alias(f"f_beta@{k}")
-        )
+        return ((2 * precision_expr * recall_expr) / (precision_expr + recall_expr)).fill_nan(0).alias(f"f_beta@{k}")
 
     @classmethod
     def _average_precision_at_k(cls, df: pl.LazyFrame, k: int) -> pl.LazyFrame:
@@ -103,9 +98,7 @@ class Ranks:
         filtered_df = cls._filter_results(df, k)
         df_grouped = filtered_df.with_columns(
             pl.struct("ranks")
-            .map_elements(
-                lambda row: cls._compute_ap_k(np.array(row["ranks"])), return_dtype=pl.Float64
-            )
+            .map_elements(lambda row: cls._compute_ap_k(np.array(row["ranks"])), return_dtype=pl.Float64)
             .alias(f"ap@{k}")
         )
         return df_grouped.select(["file_path", f"ap@{k}"])
@@ -131,7 +124,7 @@ class Ranks:
         return ap_sum / num_samples
 
     @classmethod
-    def _calculate_ndcg_at_k(cls, ranks: List[int], k: int) -> float:
+    def _calculate_ndcg_at_k(cls, ranks: list[int], k: int) -> float:
         """
         Compute NDCG@K for a single query.
         Args:
@@ -146,9 +139,7 @@ class Ranks:
         result_ranks[valid_indices] = 3
         ideal_ranking = np.sort(result_ranks)[::-1]
         return (
-            ndcg_score(result_ranks.reshape(1, -1), ideal_ranking.reshape(1, -1))
-            if np.sum(result_ranks) > 0
-            else 0.0
+            ndcg_score(result_ranks.reshape(1, -1), ideal_ranking.reshape(1, -1)) if np.sum(result_ranks) > 0 else 0.0
         )
 
     @classmethod
@@ -156,9 +147,7 @@ class Ranks:
         filtered_df = cls._filter_results(df, k)
         ndcg_df = filtered_df.with_columns(
             pl.struct("ranks")
-            .map_elements(
-                lambda row: cls._calculate_ndcg_at_k(row["ranks"], k), return_dtype=pl.Float64
-            )
+            .map_elements(lambda row: cls._calculate_ndcg_at_k(row["ranks"], k), return_dtype=pl.Float64)
             .alias(f"NDCG@{k}")
         )
         ndcg_sum = ndcg_df.select(pl.col(f"NDCG@{k}").sum()).collect().item()
@@ -218,14 +207,8 @@ def compute_rank_stats(run_identifier: str, result_scan: pl.LazyFrame) -> pl.Laz
             pl.lit(Ranks.mean_average_precision_at_k(true_positive_scan, 3)).alias("MAP@3"),
             pl.lit(Ranks.mean_average_precision_at_k(true_positive_scan, 5)).alias("MAP@5"),
             pl.lit(Ranks.mean_average_precision_at_k(true_positive_scan, 10)).alias("MAP@10"),
-            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 3)).alias(
-                "NDCG@3"
-            ),
-            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 5)).alias(
-                "NDCG@5"
-            ),
-            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 10)).alias(
-                "NDCG@10"
-            ),
+            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 3)).alias("NDCG@3"),
+            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 5)).alias("NDCG@5"),
+            pl.lit(Ranks.mean_normalised_discounted_cumulative_gain(true_positive_scan, 10)).alias("NDCG@10"),
         ]
     )
