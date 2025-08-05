@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install tox
-      - name: Check code quality with flake8
-        run: tox -e flake8
+      - name: Check code quality with ruff
+        run: tox -e ruff-check
 
   test:
     strategy:
