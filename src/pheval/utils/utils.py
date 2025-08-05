@@ -4,7 +4,6 @@ import json
 import random
 from datetime import datetime
 from pathlib import Path
-from typing import List
 
 import pandas as pd
 import requests
@@ -42,7 +41,7 @@ def rand(df: pd.DataFrame, min_num: int, max_num: int, scramble_factor: float) -
 def semsim_scramble(
     input: Path,
     output: Path,
-    columns_to_be_scrambled: List[str],
+    columns_to_be_scrambled: list[str],
     scramble_factor: float = 0.5,
 ) -> pd.DataFrame:
     """
@@ -66,7 +65,7 @@ def semsim_scramble(
 
 def semsim_scramble_df(
     dataframe: pd.DataFrame,
-    columns_to_be_scrambled: List[str],
+    columns_to_be_scrambled: list[str],
     scramble_factor: float,
 ) -> pd.DataFrame:
     """scramble_semsim_df
@@ -136,6 +135,6 @@ def get_resource_timestamp(file_name: str) -> str | None:
         file_name (str): The file name.
     """
     if METADATA_PATH.exists():
-        with open(METADATA_PATH, "r") as f:
+        with open(METADATA_PATH) as f:
             return json.load(f).get(file_name)
     return None

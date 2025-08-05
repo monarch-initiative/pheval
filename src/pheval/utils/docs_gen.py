@@ -13,7 +13,7 @@ def find_methods_in_python_file(file_path):
         file_path ([type]): [description]
     """
     methods = []
-    with open(file_path, "r", encoding="utf-8") as file:
+    with open(file_path, encoding="utf-8") as file:
         text = file.read()
         parsed = ast.parse(text)
         for node in ast.walk(parsed):
@@ -73,8 +73,8 @@ def print_cli_doc(file_item):
     for method in methods:
         content = f"""
 ::: mkdocs-click
-    :package: {file_item['folder'].replace("./", '').replace('/', '.')}.{file_item['basename']}
-    :module: {file_item['folder'].replace("./", '').replace('/', '.').replace('src.', '')}.{file_item['basename']}
+    :package: {file_item["folder"].replace("./", "").replace("/", ".")}.{file_item["basename"]}
+    :module: {file_item["folder"].replace("./", "").replace("/", ".").replace("src.", "")}.{file_item["basename"]}
     :command: {method}
     :depth: 4
     :style: table

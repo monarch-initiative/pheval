@@ -1,6 +1,6 @@
+from collections.abc import Callable
 from enum import Enum
 from functools import wraps
-from typing import Callable
 
 import polars as pl
 
@@ -63,9 +63,7 @@ class ResultSchema(Enum):
                 raise ValueError(f"Missing required column: {col_name}")
 
             if results.schema[col_name] != expected_type:
-                raise TypeError(
-                    f"Column '{col_name}' has type {results.schema[col_name]}, expected {expected_type}"
-                )
+                raise TypeError(f"Column '{col_name}' has type {results.schema[col_name]}, expected {expected_type}")
 
         return True
 

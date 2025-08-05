@@ -56,15 +56,11 @@ def prepare_corpus(
     for phenopacket_path in all_files(phenopacket_dir):
         phenopacket_util = PhenopacketUtil(phenopacket_reader(phenopacket_path))
         if not phenopacket_util.observed_phenotypic_features():
-            logger.warning(
-                f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features."
-            )
+            logger.warning(f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features.")
             continue
         if variant_analysis:
             if phenopacket_util.check_incomplete_variant_record():
-                logger.warning(
-                    f"Removed {phenopacket_path.name} from the corpus due to missing variant fields."
-                )
+                logger.warning(f"Removed {phenopacket_path.name} from the corpus due to missing variant fields.")
                 continue
             elif phenopacket_util.check_variant_alleles():
                 logger.warning(
@@ -73,15 +69,11 @@ def prepare_corpus(
                 )
         if gene_analysis:
             if phenopacket_util.check_incomplete_gene_record():
-                logger.warning(
-                    f"Removed {phenopacket_path.name} from the corpus due to missing gene fields."
-                )
+                logger.warning(f"Removed {phenopacket_path.name} from the corpus due to missing gene fields.")
                 continue
         if disease_analysis:
             if phenopacket_util.check_incomplete_disease_record():
-                logger.warning(
-                    f"Removed {phenopacket_path.name} from the corpus due to missing disease fields."
-                )
+                logger.warning(f"Removed {phenopacket_path.name} from the corpus due to missing disease fields.")
                 continue
         logger.info(f"{phenopacket_path.name} OK!")
         if hg19_template_vcf or hg38_template_vcf:
@@ -107,13 +99,10 @@ def prepare_corpus(
         else:
             # if not updating phenopacket gene identifiers then copy phenopacket as is to output directory
             (
-                shutil.copy(
-                    phenopacket_path, output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
-                )
+                shutil.copy(phenopacket_path, output_dir.joinpath(f"phenopackets/{phenopacket_path.name}"))
                 if phenopacket_path != output_dir.joinpath(f"phenopackets/{phenopacket_path.name}")
                 else None
             )
     logger.info(
-        f"Finished preparing corpus for {phenopacket_dir}. "
-        f"Total time: {time.perf_counter() - start_time:.2f} seconds."
+        f"Finished preparing corpus for {phenopacket_dir}. Total time: {time.perf_counter() - start_time:.2f} seconds."
     )

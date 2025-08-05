@@ -12,9 +12,7 @@ info_debug = log.getLogger("debug")
 
 
 class DBConnector:
-    def __init__(
-        self, jar: Path, driver: str, server: str, database: str, user: str, password: str
-    ):
+    def __init__(self, jar: Path, driver: str, server: str, database: str, user: str, password: str):
         self.jar = jar
         self.driver = driver
         self.server = server
@@ -63,7 +61,7 @@ class DBConnection:
 class ExomiserDB:
     def __init__(self, db_path: Path):
         try:
-            self.connector = DBConnector(  # noqa
+            self.connector = DBConnector(
                 jar=os.path.join(os.path.dirname(__file__), "../../../lib/h2-1.4.199.jar"),
                 driver="org.h2.Driver",
                 server=f"jdbc:h2:{db_path}",
@@ -89,7 +87,7 @@ class ExomiserDB:
             batches = reader.next_batches(batch_length)
             cursor = conn.get_cursor()
             # # TODO: Refactor this
-            with open(input_file, "r") as f:
+            with open(input_file) as f:
                 total = sum(1 for line in f)
             pbar = tqdm(total=total - 1)
             mapping_id = 1
@@ -112,12 +110,10 @@ def _format_row(mapping_id, data):
         data (_type_): row data
     """
     # TODO:Improve string escaping. Replace this code with parametrised query
-    return f"""({mapping_id}, '{data['subject_id']}', '{data['subject_label'].replace("'", "")}', '{data['object_id']}', '{data['object_label'].replace("'", "")}', {data['jaccard_similarity']}, {data['ancestor_information_content']}, {data['phenodigm_score']}, '{data['ancestor_id'].split(",")[0]}', '{data['ancestor_label'].replace("'", "")}')"""  # noqa
+    return f"""({mapping_id}, '{data["subject_id"]}', '{data["subject_label"].replace("'", "")}', '{data["object_id"]}', '{data["object_label"].replace("'", "")}', {data["jaccard_similarity"]}, {data["ancestor_information_content"]}, {data["phenodigm_score"]}, '{data["ancestor_id"].split(",")[0]}', '{data["ancestor_label"].replace("'", "")}')"""  # noqa
 
 
-def _semsim2h2(
-    input_data: pl.DataFrame, subject_prefix: str, object_prefix: str, mapping_id=1
-) -> None:
+def _semsim2h2(input_data: pl.DataFrame, subject_prefix: str, object_prefix: str, mapping_id=1) -> None:
     """This function is responsible for generate sql insertion query for each semsim profile row
 
     Args:
@@ -130,12 +126,8 @@ def _semsim2h2(
     if mapping_id == 1:
         sql += f"TRUNCATE TABLE EXOMISER.{subject_prefix}_{object_prefix}_MAPPINGS;\n"
 
-    object_id = (
-        f"{object_prefix}_ID_HIT" if subject_prefix == object_prefix else f"{object_prefix}_ID"
-    )
-    object_term = (
-        f"{object_prefix}_HIT_TERM" if subject_prefix == object_prefix else f"{object_prefix}_TERM"
-    )
+    object_id = f"{object_prefix}_ID_HIT" if subject_prefix == object_prefix else f"{object_prefix}_ID"
+    object_term = f"{object_prefix}_HIT_TERM" if subject_prefix == object_prefix else f"{object_prefix}_TERM"
     sql += f"""INSERT INTO EXOMISER.{subject_prefix}_{object_prefix}_MAPPINGS
 (MAPPING_ID, {subject_prefix}_ID, {subject_prefix}_TERM, {object_id}, {object_term}, SIMJ, IC, SCORE, LCS_ID, LCS_TERM)
 VALUES"""

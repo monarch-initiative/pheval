@@ -136,9 +136,7 @@ class TestPhenopacketTruthSet(unittest.TestCase):
     def test_merge_gene_results(self, mock_read_parquet):
         mock_read_parquet.return_value = self.mock_gene_classified_results
         self.assertTrue(
-            self.phenopacket_truth_set.merge_gene_results(
-                self.mock_gene_ranked_results, "output_file"
-            )
+            self.phenopacket_truth_set.merge_gene_results(self.mock_gene_ranked_results, "output_file")
             .sort("gene_identifier")
             .equals(
                 pl.DataFrame(
@@ -180,9 +178,7 @@ class TestPhenopacketTruthSet(unittest.TestCase):
     def test_merge_variant_results(self, mock_read_parquet):
         mock_read_parquet.return_value = self.mock_variant_classified_results
         self.assertTrue(
-            self.phenopacket_truth_set.merge_variant_results(
-                self.mock_variant_ranked_results, "output_file"
-            )
+            self.phenopacket_truth_set.merge_variant_results(self.mock_variant_ranked_results, "output_file")
             .sort("chrom")
             .equals(
                 pl.DataFrame(

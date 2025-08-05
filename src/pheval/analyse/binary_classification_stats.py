@@ -103,10 +103,7 @@ class BinaryClassificationStats:
     )
 
     F1_SCORE = (
-        pl.when(
-            2 * (pl.col("true_positives") + pl.col("false_positives") + pl.col("false_negatives"))
-            != 0
-        )
+        pl.when(2 * (pl.col("true_positives") + pl.col("false_positives") + pl.col("false_negatives")) != 0)
         .then(
             2
             * pl.col("true_positives")

@@ -44,7 +44,7 @@ class TestSemsimUtils(unittest.TestCase):
             "phenodigm_score",
         ]
 
-        with open(output_file, "r", encoding="utf-8") as f:
+        with open(output_file, encoding="utf-8") as f:
             lines = f.readlines()
             input_file = pd.read_csv(semsim_file, sep="\t")
             self.assertEqual(len(lines), len(input_file) + 1)

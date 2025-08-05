@@ -1,5 +1,6 @@
 from enum import Enum
 from pathlib import Path
+from typing import ClassVar
 
 import duckdb
 import matplotlib
@@ -32,7 +33,7 @@ class PlotTypes(Enum):
 class PlotGenerator:
     """Class to generate plots."""
 
-    palette_hex_codes = [
+    palette_hex_codes: ClassVar[list[str]] = [
         "#f4ae3d",
         "#ee5825",
         "#2b7288",
@@ -91,9 +92,7 @@ class PlotGenerator:
             {"run_identifier": "Run", "mrr": "Percentage"}
         )
 
-    def _save_fig(
-        self, benchmark_output_type: BenchmarkOutputType, y_lower_limit: int, y_upper_limit: int
-    ) -> None:
+    def _save_fig(self, benchmark_output_type: BenchmarkOutputType, y_lower_limit: int, y_upper_limit: int) -> None:
         """
         Save the generated figure.
         Args:
@@ -140,9 +139,7 @@ class PlotGenerator:
             legend=False,
             edgecolor="white",
         )
-        plt.title(
-            f"{benchmark_output_type.prioritisation_type_string.capitalize()} results - mean reciprocal rank"
-        )
+        plt.title(f"{benchmark_output_type.prioritisation_type_string.capitalize()} results - mean reciprocal rank")
         self._save_fig(benchmark_output_type, 0, 1)
 
     @staticmethod
@@ -189,17 +186,13 @@ class PlotGenerator:
         plt.title(plot_customisation.rank_plot_title, loc="center", fontsize=15)
         self._save_fig(benchmark_output_type, 0, 1)
 
-    def _generate_non_cumulative_bar_plot_data(
-        self, benchmarking_results_df: pl.DataFrame
-    ) -> pl.DataFrame:
+    def _generate_non_cumulative_bar_plot_data(self, benchmarking_results_df: pl.DataFrame) -> pl.DataFrame:
         """
         Generate data in the correct format for dataframe creation for a non-cumulative bar plot,
         appending to the self.stats attribute of the class.
         """
         return self._generate_stacked_data(benchmarking_results_df).hstack(
-            self._extract_mrr_data(benchmarking_results_df).select(
-                pl.col("Percentage").alias("MRR")
-            )
+            self._extract_mrr_data(benchmarking_results_df).select(pl.col("Percentage").alias("MRR"))
         )
 
     def generate_cumulative_bar(
@@ -309,9 +302,7 @@ def generate_plots(
     This method generates summary statistics bar plots based on the provided benchmarking results and plot type.
     """
     plot_generator = PlotGenerator(benchmark_name)
-    plot_customisation_type = getattr(
-        plot_customisation, f"{benchmark_output_type.prioritisation_type_string}_plots"
-    )
+    plot_customisation_type = getattr(plot_customisation, f"{benchmark_output_type.prioritisation_type_string}_plots")
     logger.info("Generating ROC curve visualisations.")
     plot_generator.generate_roc_curve(curves, benchmark_output_type, plot_customisation_type)
     logger.info("Generating Precision-Recall curves visualisations.")
@@ -355,8 +346,7 @@ def generate_plots_from_db(db_path: Path, config: Path) -> None:
     }
     for benchmark_output_type in BenchmarkOutputTypeEnum:
         summary_table = (
-            f"{benchmark_config_file.benchmark_name}_"
-            f"{benchmark_output_type.value.prioritisation_type_string}_summary"
+            f"{benchmark_config_file.benchmark_name}_{benchmark_output_type.value.prioritisation_type_string}_summary"
         )
         curve_table = (
             f"{benchmark_config_file.benchmark_name}_"

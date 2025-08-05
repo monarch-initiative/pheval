@@ -1,7 +1,6 @@
 import random
 import time
 from pathlib import Path
-from typing import List, Union
 
 from oaklib.implementations.pronto.pronto_implementation import ProntoImplementation
 from oaklib.resource import OntologyResource
@@ -19,7 +18,7 @@ from pheval.utils.phenopacket_utils import (
 logger = get_logger()
 
 
-def load_ontology(local_cached_ontology: Path = None) -> ProntoImplementation:
+def load_ontology(local_cached_ontology: Path | None = None) -> ProntoImplementation:
     """
     Load the Human Phenotype Ontology (HPO).
     Args:
@@ -78,14 +77,14 @@ class HpoRandomiser:
             PhenotypicFeature: The PhenotypicFeature object representing the retrieved HPO term.
         """
         rels = self.hpo_ontology.entity_alias_map(hpo_id)
-        hpo_term = "".join(rels[(list(rels.keys())[0])])
+        hpo_term = "".join(rels[next(iter(rels))])
         return PhenotypicFeature(type=OntologyClass(id=hpo_id, label=hpo_term))
 
     @staticmethod
     def retain_real_patient_terms(
-        phenotypic_features: List[PhenotypicFeature],
+        phenotypic_features: list[PhenotypicFeature],
         number_of_scrambled_terms: int,
-    ) -> List[PhenotypicFeature]:
+    ) -> list[PhenotypicFeature]:
         """
         Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.
 
@@ -104,10 +103,10 @@ class HpoRandomiser:
 
     def convert_patient_terms_to_parent(
         self,
-        phenotypic_features: List[PhenotypicFeature],
-        retained_phenotypic_features: List[PhenotypicFeature],
+        phenotypic_features: list[PhenotypicFeature],
+        retained_phenotypic_features: list[PhenotypicFeature],
         number_of_scrambled_terms: int,
-    ) -> List[PhenotypicFeature]:
+    ) -> list[PhenotypicFeature]:
         """
         Convert a subset of patient HPO terms to their respective parent terms.
 
@@ -133,7 +132,7 @@ class HpoRandomiser:
         for term in hpo_terms_to_be_changed:
             if self.hpo_ontology.label(term.type.id).startswith("obsolete"):
                 obsolete_term = self.hpo_ontology.entity_metadata_map(term.type.id)
-                updated_term = list(obsolete_term.values())[0][0]
+                updated_term = next(iter(obsolete_term.values()))[0]
                 parents = self.hpo_ontology.hierarchical_parents(updated_term)
             else:
                 parents = self.hpo_ontology.hierarchical_parents(term.type.id)
@@ -143,7 +142,7 @@ class HpoRandomiser:
                 parent_terms.append(self.retrieve_hpo_term(random.choice(parents)))
         return parent_terms
 
-    def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> List[PhenotypicFeature]:
+    def create_random_hpo_terms(self, number_of_scrambled_terms: int) -> list[PhenotypicFeature]:
         """
         Generate a list of random HPO terms.
 
@@ -153,15 +152,13 @@ class HpoRandomiser:
         Returns:
             List[PhenotypicFeature]: A list of randomly selected HPO terms.
         """
-        random_ids = list(
-            random.sample(sorted(self.phenotypic_abnormalities), number_of_scrambled_terms)
-        )
+        random_ids = list(random.sample(sorted(self.phenotypic_abnormalities), number_of_scrambled_terms))
         return [self.retrieve_hpo_term(random_id) for random_id in random_ids]
 
     def randomise_hpo_terms(
         self,
-        phenotypic_features: List[PhenotypicFeature],
-    ) -> List[PhenotypicFeature]:
+        phenotypic_features: list[PhenotypicFeature],
+    ) -> list[PhenotypicFeature]:
         """
         Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.
 
@@ -181,9 +178,7 @@ class HpoRandomiser:
             of randomised HPO terms to be used in the phenotypic features.
         """
         number_of_scrambled_terms = self.scramble_factor_proportions(phenotypic_features)
-        retained_patient_terms = self.retain_real_patient_terms(
-            phenotypic_features, number_of_scrambled_terms
-        )
+        retained_patient_terms = self.retain_real_patient_terms(phenotypic_features, number_of_scrambled_terms)
         return (
             retained_patient_terms
             + self.convert_patient_terms_to_parent(
@@ -194,8 +189,8 @@ class HpoRandomiser:
 
     def add_noise_to_phenotypic_profile(
         self,
-        phenopacket: Union[Phenopacket, Family],
-    ) -> Union[Phenopacket, Family]:
+        phenopacket: Phenopacket | Family,
+    ) -> Phenopacket | Family:
         """
         Randomise the phenotypic profile of a Phenopacket or Family.
 
@@ -207,9 +202,7 @@ class HpoRandomiser:
         """
         phenotypic_features = PhenopacketUtil(phenopacket).observed_phenotypic_features()
         random_phenotypes = self.randomise_hpo_terms(phenotypic_features)
-        randomised_phenopacket = PhenopacketRebuilder(phenopacket).add_randomised_hpo(
-            random_phenotypes
-        )
+        randomised_phenopacket = PhenopacketRebuilder(phenopacket).add_randomised_hpo(random_phenotypes)
         return randomised_phenopacket
 
     def create_scrambled_phenopacket(
@@ -283,13 +276,9 @@ def scramble_phenopackets(
     ontology = load_ontology(local_cached_ontology)
     if phenopacket_path is not None:
         logger.info(f"Scrambling {phenopacket_path}.")
-        HpoRandomiser(ontology, scramble_factor).create_scrambled_phenopacket(
-            output_dir, phenopacket_path
-        )
+        HpoRandomiser(ontology, scramble_factor).create_scrambled_phenopacket(output_dir, phenopacket_path)
     elif phenopacket_dir is not None:
-        logger.info(
-            f"Scrambling {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
-        )
+        logger.info(f"Scrambling {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}.")
         HpoRandomiser(ontology, scramble_factor).create_scrambled_phenopackets(
             output_dir,
             phenopacket_dir,

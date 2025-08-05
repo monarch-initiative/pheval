@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import List
 
 import polars as pl
 
@@ -56,7 +55,7 @@ class PhenopacketTruthSet:
         phenopacket = phenopacket_reader(phenopacket_path)
         return PhenopacketUtil(phenopacket)
 
-    def _get_causative_genes(self, phenopacket_name: str) -> List[ProbandCausativeGene]:
+    def _get_causative_genes(self, phenopacket_name: str) -> list[ProbandCausativeGene]:
         """
         Get the causative genes for a given phenopacket.
         Args:
@@ -67,7 +66,7 @@ class PhenopacketTruthSet:
         phenopacket_util = self._get_phenopacket_util(phenopacket_name)
         return phenopacket_util.diagnosed_genes()
 
-    def _get_causative_variants(self, phenopacket_name: str) -> List[GenomicVariant]:
+    def _get_causative_variants(self, phenopacket_name: str) -> list[GenomicVariant]:
         """
         Get the causative variants for a given phenopacket.
         Args:
@@ -78,7 +77,7 @@ class PhenopacketTruthSet:
         phenopacket_util = self._get_phenopacket_util(phenopacket_name)
         return phenopacket_util.diagnosed_variants()
 
-    def _get_causative_diseases(self, phenopacket_name: str) -> List[ProbandDisease]:
+    def _get_causative_diseases(self, phenopacket_name: str) -> list[ProbandDisease]:
         """
         Get the diseases for a given phenopacket.
         Args:
@@ -133,11 +132,7 @@ class PhenopacketTruthSet:
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
             .select(classified_results.columns)
-            .vstack(
-                classified_results.filter(
-                    ~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"])
-                )
-            )
+            .vstack(classified_results.filter(~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"])))
         )
 
     def classified_variant(self, result_name: str) -> pl.DataFrame:
@@ -181,11 +176,7 @@ class PhenopacketTruthSet:
             ranked_results.with_columns(
                 [
                     pl.struct(["chrom", "start", "end", "ref", "alt"])
-                    .is_in(
-                        classified_results.select(
-                            pl.struct(["chrom", "start", "end", "ref", "alt"])
-                        ).to_series()
-                    )
+                    .is_in(classified_results.select(pl.struct(["chrom", "start", "end", "ref", "alt"])).to_series())
                     .alias("true_positive")
                 ]
             )
@@ -194,17 +185,13 @@ class PhenopacketTruthSet:
             .vstack(
                 classified_results.filter(
                     ~pl.struct(["chrom", "start", "end", "ref", "alt"]).is_in(
-                        ranked_results.select(
-                            pl.struct(["chrom", "start", "end", "ref", "alt"])
-                        ).to_series()
+                        ranked_results.select(pl.struct(["chrom", "start", "end", "ref", "alt"])).to_series()
                     )
                 )
             )
         )
 
-    def classified_disease(
-        self, result_name: str, mondo_mapping_table: pl.DataFrame
-    ) -> pl.DataFrame:
+    def classified_disease(self, result_name: str, mondo_mapping_table: pl.DataFrame) -> pl.DataFrame:
         """
         Classify disease results for a given phenopacket.
         Args:
@@ -225,9 +212,7 @@ class PhenopacketTruthSet:
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
                 pl.col("disease_identifier")
-                .map_elements(
-                    lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.Utf8
-                )
+                .map_elements(lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.Utf8)
                 .alias("mondo_identifier"),
             ]
         )
@@ -260,15 +245,11 @@ class PhenopacketTruthSet:
         )
         return (
             ranked_results.with_columns(
-                (
-                    pl.col("disease_identifier").is_in(classified_results["disease_identifier"])
-                ).alias("true_positive")
+                (pl.col("disease_identifier").is_in(classified_results["disease_identifier"])).alias("true_positive")
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
             .select(classified_results.columns)
             .vstack(
-                classified_results.filter(
-                    ~pl.col("disease_identifier").is_in(ranked_results["disease_identifier"])
-                )
+                classified_results.filter(~pl.col("disease_identifier").is_in(ranked_results["disease_identifier"]))
             )
         )

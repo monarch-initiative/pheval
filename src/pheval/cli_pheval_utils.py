@@ -1,7 +1,6 @@
 """PhEval utils Command Line Interface"""
 
 from pathlib import Path
-from typing import List
 
 import click
 
@@ -39,9 +38,7 @@ from pheval.utils.utils import semsim_scramble
     "-c",
     required=True,
     multiple=True,
-    type=click.Choice(
-        ["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False
-    ),
+    type=click.Choice(["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False),
     help="Score column that will be scrambled",
 )
 @click.option(
@@ -54,9 +51,7 @@ from pheval.utils.utils import semsim_scramble
     help="""Scramble Magnitude (noise)
     that will be applied to semantic similarity score column (e.g. jaccard similarity).""",
 )
-def semsim_scramble_command(
-    input: Path, output: Path, score_column: List[str], scramble_factor: float
-):
+def semsim_scramble_command(input: Path, output: Path, score_column: list[str], scramble_factor: float):
     """Scrambles semsim profile multiplying score value by scramble factor
     Args:
         input (Path): Path file that points out to the semsim profile
@@ -125,9 +120,7 @@ def scramble_phenopackets_command(
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
     else:
-        scramble_phenopackets(
-            output_dir, phenopacket_path, phenopacket_dir, scramble_factor, local_ontology_cache
-        )
+        scramble_phenopackets(output_dir, phenopacket_path, phenopacket_dir, scramble_factor, local_ontology_cache)
 
 
 @click.command("semsim-comparison")
@@ -149,9 +142,7 @@ def scramble_phenopackets_command(
     "--score-column",
     "-c",
     required=True,
-    type=click.Choice(
-        ["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False
-    ),
+    type=click.Choice(["jaccard_similarity", "dice_similarity", "phenodigm_score"], case_sensitive=False),
     help="Score column that will be used in comparison",
 )
 @click.option(
@@ -232,9 +223,7 @@ def semsim_comparison(
     help="Gene identifier to add to phenopacket",
     type=click.Choice(["ensembl_id", "entrez_id", "hgnc_id"]),
 )
-def update_phenopackets_command(
-    phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path, gene_identifier: str
-):
+def update_phenopackets_command(phenopacket_path: Path, phenopacket_dir: Path, output_dir: Path, gene_identifier: str):
     """Update gene symbols and identifiers for phenopackets."""
     if phenopacket_path is None and phenopacket_dir is None:
         raise InputError("Either a phenopacket or phenopacket directory must be specified")
@@ -313,10 +302,10 @@ def create_spiked_vcfs_command(
     phenopacket_path: Path,
     phenopacket_dir: Path,
     output_dir: Path,
-    hg19_template_vcf: Path = None,
-    hg38_template_vcf: Path = None,
-    hg19_vcf_dir: Path = None,
-    hg38_vcf_dir: Path = None,
+    hg19_template_vcf: Path | None = None,
+    hg38_template_vcf: Path | None = None,
+    hg19_vcf_dir: Path | None = None,
+    hg38_vcf_dir: Path | None = None,
 ):
     """
     Create spiked VCF from either a Phenopacket or a Phenopacket directory.
@@ -394,9 +383,7 @@ def benchmark(
     This is the path where the phenotypic database folder will be written out.""",
     type=Path,
 )
-def semsim_to_exomiserdb_command(
-    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
-):
+def semsim_to_exomiserdb_command(input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path):
     """ingests semsim file into exomiser phenotypic database
 
     Args:

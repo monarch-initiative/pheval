@@ -1,6 +1,6 @@
+from collections.abc import Callable
 from enum import Enum
 from pathlib import Path
-from typing import Callable, Tuple
 
 import polars as pl
 
@@ -57,7 +57,7 @@ def _rank_results(results: pl.DataFrame, sort_order: SortOrder) -> pl.DataFrame:
         results = (
             results.sort("score", descending=sort_descending)
             .with_columns(
-                pl.struct(["score"] + group_by)
+                pl.struct(["score"] + group_by)  # noqa
                 .rank(method="dense", descending=sort_descending)
                 .cast(pl.Int32)
                 .alias("min_rank")
@@ -89,9 +89,7 @@ def _write_gene_result(ranked_results: pl.DataFrame, output_file: Path) -> None:
         ranked_results ([PhEvalResult]): List of ranked PhEval gene results.
         output_file (Path): Path to the output file.
     """
-    gene_output = ranked_results.select(
-        ["rank", "score", "gene_symbol", "gene_identifier", "true_positive"]
-    )
+    gene_output = ranked_results.select(["rank", "score", "gene_symbol", "gene_identifier", "true_positive"])
     _write_results_file(output_file, gene_output)
 
 
@@ -127,15 +125,11 @@ def _write_disease_result(ranked_results: pl.DataFrame, output_file: Path) -> No
         ranked_results ([PhEvalResult]): List of ranked PhEval disease results.
         output_file (Path): Path to the output file.
     """
-    disease_output = ranked_results.select(
-        ["rank", "score", "disease_identifier", "mondo_identifier", "true_positive"]
-    )
+    disease_output = ranked_results.select(["rank", "score", "disease_identifier", "mondo_identifier", "true_positive"])
     _write_results_file(output_file, disease_output)
 
 
-def _get_result_type(
-    result_type: ResultType, phenopacket_truth_set: PhenopacketTruthSet
-) -> Tuple[Callable, Callable]:
+def _get_result_type(result_type: ResultType, phenopacket_truth_set: PhenopacketTruthSet) -> tuple[Callable, Callable]:
     """
     Get the methods for extracting the entity and writing the result for a given result type.
     Args:
@@ -156,9 +150,7 @@ def _get_result_type(
             )
 
 
-def create_empty_pheval_result(
-    phenopacket_dir: Path, output_dir: Path, result_type: ResultType
-) -> None:
+def create_empty_pheval_result(phenopacket_dir: Path, output_dir: Path, result_type: ResultType) -> None:
     """
     Create an empty PhEval result for a given result type (gene, variant, or disease).
 
@@ -176,10 +168,7 @@ def create_empty_pheval_result(
     """
     if result_type in executed_results:
         return
-    logger.info(
-        f"Writing classified results for {len(all_files(phenopacket_dir))} "
-        f"phenopackets to {output_dir}"
-    )
+    logger.info(f"Writing classified results for {len(all_files(phenopacket_dir))} phenopackets to {output_dir}")
     executed_results.add(result_type)
     phenopacket_truth_set = PhenopacketTruthSet(phenopacket_dir)
     classify_method, write_method = _get_result_type(result_type, phenopacket_truth_set)
@@ -209,13 +198,9 @@ def generate_gene_result(
         phenopacket_dir (Path): Path to the Phenopacket directory
     """
     output_file = output_dir.joinpath(f"pheval_gene_results/{result_path.stem}-gene_result.parquet")
-    create_empty_pheval_result(
-        phenopacket_dir, output_dir.joinpath("pheval_gene_results"), ResultType.GENE
-    )
+    create_empty_pheval_result(phenopacket_dir, output_dir.joinpath("pheval_gene_results"), ResultType.GENE)
     ranked_results = _rank_results(results, sort_order)
-    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_gene_results(
-        ranked_results, output_file
-    )
+    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_gene_results(ranked_results, output_file)
     _write_gene_result(classified_results, output_file)
 
 
@@ -236,9 +221,7 @@ def generate_variant_result(
         result_path (Path): Path to the tool-specific result file.
         phenopacket_dir (Path): Path to the Phenopacket directory
     """
-    output_file = output_dir.joinpath(
-        f"pheval_variant_results/{result_path.stem}-variant_result.parquet"
-    )
+    output_file = output_dir.joinpath(f"pheval_variant_results/{result_path.stem}-variant_result.parquet")
     create_empty_pheval_result(
         phenopacket_dir,
         output_dir.joinpath("pheval_variant_results"),
@@ -247,9 +230,7 @@ def generate_variant_result(
     ranked_results = _rank_results(results, sort_order).with_columns(
         pl.concat_str(["chrom", "start", "ref", "alt"], separator="-").alias("variant_id")
     )
-    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_variant_results(
-        ranked_results, output_file
-    )
+    classified_results = PhenopacketTruthSet(phenopacket_dir).merge_variant_results(ranked_results, output_file)
     _write_variant_result(classified_results, output_file)
 
 
@@ -270,9 +251,7 @@ def generate_disease_result(
         result_path (Path): Path to the tool-specific result file.
         phenopacket_dir (Path): Path to the Phenopacket directory
     """
-    output_file = output_dir.joinpath(
-        f"pheval_disease_results/{result_path.stem}-disease_result.parquet"
-    )
+    output_file = output_dir.joinpath(f"pheval_disease_results/{result_path.stem}-disease_result.parquet")
     create_empty_pheval_result(
         phenopacket_dir,
         output_dir.joinpath("pheval_disease_results"),

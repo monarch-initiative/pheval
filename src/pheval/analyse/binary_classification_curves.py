@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import numpy as np
 import polars as pl
 from sklearn.metrics import precision_recall_curve, roc_curve
@@ -11,7 +9,7 @@ class BinaryClassificationCurves:
     """Class for computing and storing ROC & Precision-Recall curves in Polars."""
 
     @staticmethod
-    def _compute_finite_bounds(result_scan: pl.LazyFrame) -> Tuple[float, float]:
+    def _compute_finite_bounds(result_scan: pl.LazyFrame) -> tuple[float, float]:
         """
         Compute min and max finite values in the 'score' column to handle NaN and Inf values.
         Args:
@@ -32,9 +30,7 @@ class BinaryClassificationCurves:
         )
 
     @staticmethod
-    def _clean_and_extract_data(
-        result_scan: pl.LazyFrame, max_finite: float, min_finite: float
-    ) -> pl.LazyFrame:
+    def _clean_and_extract_data(result_scan: pl.LazyFrame, max_finite: float, min_finite: float) -> pl.LazyFrame:
         """
         Normalise the 'score' column (handling NaNs and Inf values) and extract 'true_positive' labels.
 
@@ -64,9 +60,7 @@ class BinaryClassificationCurves:
         )
 
     @staticmethod
-    def _compute_roc_pr_curves(
-        run_identifier: str, labels: np.ndarray, scores: np.ndarray
-    ) -> pl.LazyFrame:
+    def _compute_roc_pr_curves(run_identifier: str, labels: np.ndarray, scores: np.ndarray) -> pl.LazyFrame:
         """
         Compute ROC and Precision-Recall curves.
 

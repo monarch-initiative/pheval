@@ -79,9 +79,7 @@ interpretations = [
                                 ref="G",
                                 alt="A",
                             ),
-                            allelic_state=OntologyClass(
-                                id="GENO:0000402", label="compound heterozygous"
-                            ),
+                            allelic_state=OntologyClass(id="GENO:0000402", label="compound heterozygous"),
                         ),
                     ),
                 ),
@@ -186,9 +184,7 @@ updated_interpretations = [
                                 ref="G",
                                 alt="A",
                             ),
-                            allelic_state=OntologyClass(
-                                id="GENO:0000402", label="compound heterozygous"
-                            ),
+                            allelic_state=OntologyClass(id="GENO:0000402", label="compound heterozygous"),
                         ),
                     ),
                 ),
@@ -243,24 +239,16 @@ phenotypic_features_with_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage")),
     PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
-    PhenotypicFeature(
-        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
-    ),
+    PhenotypicFeature(type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True),
 ]
 
 phenotypic_features_all_excluded = [
     PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly"), excluded=True),
     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy"), excluded=True),
-    PhenotypicFeature(
-        type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True
-    ),
-    PhenotypicFeature(
-        type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True
-    ),
+    PhenotypicFeature(type=OntologyClass(id="HP:0100309", label="Subdural hemorrhage"), excluded=True),
+    PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria"), excluded=True),
     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia"), excluded=True),
-    PhenotypicFeature(
-        type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True
-    ),
+    PhenotypicFeature(type=OntologyClass(id="HP:0008494", label="Inferior lens subluxation"), excluded=True),
 ]
 diseases = [Disease(term=OntologyClass(id="OMIM:219700", label="Cystic Fibrosis"))]
 
@@ -426,9 +414,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(self.family.sample_id(), "test-subject-1")
 
     def test_phenotypic_features_phenopacket(self):
-        self.assertEqual(
-            list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded
-        )
+        self.assertEqual(list(self.phenopacket.phenotypic_features()), phenotypic_features_with_excluded)
         self.assertEqual(
             list(self.phenopacket_excluded_pf.phenotypic_features()),
             phenotypic_features_all_excluded,
@@ -439,9 +425,7 @@ class TestPhenopacketUtil(unittest.TestCase):
 
     def test_observed_phenotypic_features(self):
         self.assertEqual(list(self.phenopacket_excluded_pf.observed_phenotypic_features()), [])
-        self.assertEqual(
-            list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded
-        )
+        self.assertEqual(list(self.phenopacket.observed_phenotypic_features()), phenotypic_features_none_excluded)
 
     def test_negated_phenotypic_features_all_excluded(self):
         self.assertEqual(
@@ -545,9 +529,7 @@ class TestPhenopacketUtil(unittest.TestCase):
         self.assertEqual(list(self.family.files()), phenopacket_files)
 
     def test_vcf_file_data(self):
-        vcf_file_data = self.phenopacket.vcf_file_data(
-            Path("test-phenopacket-1.json"), Path("input_dir")
-        )
+        vcf_file_data = self.phenopacket.vcf_file_data(Path("test-phenopacket-1.json"), Path("input_dir"))
         self.assertEqual(
             vcf_file_data,
             File(
@@ -556,13 +538,9 @@ class TestPhenopacketUtil(unittest.TestCase):
             ),
         )
         with self.assertRaises(IncompatibleGenomeAssemblyError):
-            self.family_incorrect_files.vcf_file_data(
-                Path("test-phenopacket-1.json"), Path("input_dir")
-            )
+            self.family_incorrect_files.vcf_file_data(Path("test-phenopacket-1.json"), Path("input_dir"))
         with self.assertRaises(IncorrectFileFormatError):
-            self.family_incorrect_file_format.vcf_file_data(
-                Path("test-phenopacket-1.json"), Path("input_dir")
-            )
+            self.family_incorrect_file_format.vcf_file_data(Path("test-phenopacket-1.json"), Path("input_dir"))
 
     def test_diagnosed_genes(self):
         self.assertEqual(
@@ -630,33 +608,23 @@ class TestPhenopacketRebuilder(unittest.TestCase):
         ]
 
     def test_update_interpretations_phenopacket(self):
-        phenopacket_updated_interpretations = self.phenopacket_rebuilder.update_interpretations(
-            updated_interpretations
-        )
+        phenopacket_updated_interpretations = self.phenopacket_rebuilder.update_interpretations(updated_interpretations)
         self.assertNotEqual(
             list(updated_interpretations),
             list(self.phenopacket_rebuilder.phenopacket.interpretations),
         )
-        self.assertEqual(
-            list(phenopacket_updated_interpretations.interpretations), updated_interpretations
-        )
+        self.assertEqual(list(phenopacket_updated_interpretations.interpretations), updated_interpretations)
 
     def test_update_interpretations_family(self):
-        family_updated_interpretations = self.family_rebuilder.update_interpretations(
-            updated_interpretations
-        )
+        family_updated_interpretations = self.family_rebuilder.update_interpretations(updated_interpretations)
         self.assertNotEqual(
             list(updated_interpretations),
             list(self.family_rebuilder.phenopacket.proband.interpretations),
         )
-        self.assertEqual(
-            list(family_updated_interpretations.proband.interpretations), updated_interpretations
-        )
+        self.assertEqual(list(family_updated_interpretations.proband.interpretations), updated_interpretations)
 
     def test_add_randomised_hpo_phenopacket(self):
-        random_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(
-            self.randomised_phenotype
-        )
+        random_phenopacket = self.phenopacket_rebuilder.add_randomised_hpo(self.randomised_phenotype)
         self.assertNotEqual(
             random_phenopacket.phenotypic_features,
             self.phenopacket_rebuilder.phenopacket.phenotypic_features,
@@ -678,11 +646,7 @@ class TestPhenopacketRebuilder(unittest.TestCase):
                 file_attributes={"fileFormat": "vcf", "genomeAssembly": "GRCh37"},
             )
         )
-        vcf_file = [
-            file
-            for file in updated_phenopacket.files
-            if file.file_attributes["fileFormat"] == "vcf"
-        ][0]
+        vcf_file = next(file for file in updated_phenopacket.files if file.file_attributes["fileFormat"] == "vcf")
         self.assertEqual(vcf_file.uri, str(Path("input_dir/test_vcf_dir/test_1.vcf").absolute()))
 
 
@@ -697,15 +661,11 @@ class TestGeneIdentifierUpdater(unittest.TestCase):
         cls.gene_identifier_updater_entrez = GeneIdentifierUpdater(
             gene_identifier="entrez_id", identifier_map=identifier_map
         )
-        cls.find_symbol = GeneIdentifierUpdater(
-            gene_identifier="hgnc_id", identifier_map=identifier_map
-        )
+        cls.find_symbol = GeneIdentifierUpdater(gene_identifier="hgnc_id", identifier_map=identifier_map)
 
     def test_find_identifier(self):
         self.assertEqual(self.gene_identifier_updater_ens.find_identifier("A2M"), "ENSG00000175899")
-        self.assertEqual(
-            self.gene_identifier_updater_ens.find_identifier("GBA1"), "ENSG00000177628"
-        )
+        self.assertEqual(self.gene_identifier_updater_ens.find_identifier("GBA1"), "ENSG00000177628")
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("A2M"), "2")
         self.assertEqual(self.gene_identifier_updater_entrez.find_identifier("GBA1"), "2629")
 

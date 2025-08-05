@@ -34,24 +34,22 @@ class TestBinaryClassificationStats(unittest.TestCase):
             ]
         )
         self.assertTrue(
-            (
-                result.equals(
-                    pl.DataFrame(
-                        [
-                            {
-                                "sensitivity": 0.75,
-                                "specificity": 0.6666666666666666,
-                                "precision": 0.6,
-                                "negative_predictive_value": 0.8,
-                                "false_positive_rate": 0.3333333333333333,
-                                "false_discovery_rate": 0.4,
-                                "false_negative_rate": 0.25,
-                                "accuracy": 0.7,
-                                "f1_score": 0.6666666666666666,
-                                "matthews_correlation_coefficient": 0.408248290463863,
-                            }
-                        ]
-                    )
+            result.equals(
+                pl.DataFrame(
+                    [
+                        {
+                            "sensitivity": 0.75,
+                            "specificity": 0.6666666666666666,
+                            "precision": 0.6,
+                            "negative_predictive_value": 0.8,
+                            "false_positive_rate": 0.3333333333333333,
+                            "false_discovery_rate": 0.4,
+                            "false_negative_rate": 0.25,
+                            "accuracy": 0.7,
+                            "f1_score": 0.6666666666666666,
+                            "matthews_correlation_coefficient": 0.408248290463863,
+                        }
+                    ]
                 )
             )
         )

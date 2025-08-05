@@ -52,7 +52,7 @@ class TestRanks(unittest.TestCase):
                 Ranks.NUMBER_OF_SAMPLES,
             ]
         ).collect()
-        self.assertTrue((result.equals(self.result)))
+        self.assertTrue(result.equals(self.result))
 
     def test_mrr(self):
         """Test Mean Reciprocal Rank (MRR) calculation."""
@@ -139,11 +139,7 @@ class TestRanks(unittest.TestCase):
             Ranks._average_precision_at_k(self.test_df, 1)
             .collect()
             .sort("file_path")
-            .equals(
-                pl.DataFrame(
-                    [{"file_path": "file1", "ap@1": 1.0}, {"file_path": "file3", "ap@1": 1.0}]
-                )
-            )
+            .equals(pl.DataFrame([{"file_path": "file1", "ap@1": 1.0}, {"file_path": "file3", "ap@1": 1.0}]))
         )
         self.assertTrue(
             Ranks._average_precision_at_k(self.test_df, 3)
@@ -203,6 +199,4 @@ class TestRanks(unittest.TestCase):
         self.assertAlmostEqual(Ranks._calculate_ndcg_at_k([1, 2, 4], 5), 0.858, places=3)
 
     def test_mean_normalised_discounted_cumulative_gain(self):
-        self.assertAlmostEqual(
-            Ranks.mean_normalised_discounted_cumulative_gain(self.test_df, 3), 0.301, places=3
-        )
+        self.assertAlmostEqual(Ranks.mean_normalised_discounted_cumulative_gain(self.test_df, 3), 0.301, places=3)

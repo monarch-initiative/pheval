@@ -29,7 +29,7 @@ def main(ctx, verbose=1, quiet=False):
     """Main CLI method for PhEval."""
     initialise_context(ctx)
 
-    if verbose >= 2:
+    if verbose >= 2:  # noqa
         logger.setLevel(logging.DEBUG)
     elif verbose == 1:
         logger.setLevel(logging.INFO)

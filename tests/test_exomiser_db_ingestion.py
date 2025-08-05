@@ -53,15 +53,15 @@ class TestExomiserDBIngestion(unittest.TestCase):
             "ancestor_id": "ancestor1,ancestor2",
             "ancestor_label": "ancestor_label1",
         }
-        expected_output = "(1, 'subject1', 'label1', 'object1', 'label2', 0.5, 0.6, 0.7, 'ancestor1', 'ancestor_label1')"  # noqa
+        expected_output = (
+            "(1, 'subject1', 'label1', 'object1', 'label2', 0.5, 0.6, 0.7, 'ancestor1', 'ancestor_label1')"
+        )
         self.assertEqual(_format_row(mapping_id, data), expected_output)
 
 
 def _set_bkp_db():
     """copy an empty database to be populated in each test"""
-    shutil.copyfile(
-        f"{PHENO_FOLDER}/2302_phenotype_test.mv.db.bkp", f"{PHENO_FOLDER}/2302_phenotype_test.mv.db"
-    )
+    shutil.copyfile(f"{PHENO_FOLDER}/2302_phenotype_test.mv.db.bkp", f"{PHENO_FOLDER}/2302_phenotype_test.mv.db")
     shutil.copyfile(
         f"{PHENO_FOLDER}/2302_phenotype_test.trace.db.bkp",
         f"{PHENO_FOLDER}/2302_phenotype_test.trace.db",
