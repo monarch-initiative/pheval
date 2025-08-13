@@ -249,7 +249,5 @@ class PhenopacketTruthSet:
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
             .select(classified_results.columns)
-            .vstack(
-                classified_results.filter(~pl.col("mondo_identifier").is_in(ranked_results["mondo_identifier"]))
-            )
+            .vstack(classified_results.filter(~pl.col("mondo_identifier").is_in(ranked_results["mondo_identifier"])))
         )
