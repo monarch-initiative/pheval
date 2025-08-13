@@ -245,11 +245,11 @@ class PhenopacketTruthSet:
         )
         return (
             ranked_results.with_columns(
-                (pl.col("disease_identifier").is_in(classified_results["disease_identifier"])).alias("true_positive")
+                (pl.col("mondo_identifier").is_in(classified_results["mondo_identifier"])).alias("true_positive")
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
             .select(classified_results.columns)
             .vstack(
-                classified_results.filter(~pl.col("disease_identifier").is_in(ranked_results["disease_identifier"]))
+                classified_results.filter(~pl.col("mondo_identifier").is_in(ranked_results["mondo_identifier"]))
             )
         )
