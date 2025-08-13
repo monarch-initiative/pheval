@@ -95,9 +95,7 @@ class TestPlotGenerator(unittest.TestCase):
 
     def test__generate_cumulative_bar_plot_data(self):
         self.assertTrue(
-            self.plot_generator._generate_cumulative_bar_plot_data(
-                self.benchmarking_results_df
-            ).equals(
+            self.plot_generator._generate_cumulative_bar_plot_data(self.benchmarking_results_df).equals(
                 pl.DataFrame(
                     [
                         {
@@ -125,9 +123,7 @@ class TestPlotGenerator(unittest.TestCase):
 
     def test__generate_non_cumulative_bar_plot_data(self):
         self.assertTrue(
-            self.plot_generator._generate_non_cumulative_bar_plot_data(
-                self.benchmarking_results_df
-            ).equals(
+            self.plot_generator._generate_non_cumulative_bar_plot_data(self.benchmarking_results_df).equals(
                 pl.DataFrame(
                     [
                         {
@@ -158,9 +154,7 @@ class TestPlotGenerator(unittest.TestCase):
     def test__extract_mrr_data(self):
         self.assertTrue(
             self.plot_generator._extract_mrr_data(self.benchmarking_results_df).equals(
-                pl.DataFrame(
-                    [{"Run": "Run1", "Percentage": 0.8}, {"Run": "Run2", "Percentage": 0.85}]
-                )
+                pl.DataFrame([{"Run": "Run1", "Percentage": 0.8}, {"Run": "Run2", "Percentage": 0.85}])
             )
         )
 

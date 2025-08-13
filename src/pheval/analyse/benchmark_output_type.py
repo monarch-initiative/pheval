@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, NamedTuple
+from typing import NamedTuple
 
 
 class BenchmarkOutputType(NamedTuple):
@@ -15,7 +15,7 @@ class BenchmarkOutputType(NamedTuple):
 
     prioritisation_type_string: str
     y_label: str
-    columns: List[str]
+    columns: list[str]
     result_directory: str
 
 
@@ -35,9 +35,7 @@ class BenchmarkOutputTypeEnum(Enum):
         ["gene_identifier", "gene_symbol"],
         "pheval_gene_results",
     )
-    VARIANT = BenchmarkOutputType(
-        "variant", "Disease-causing variants (%)", ["variant_id"], "pheval_variant_results"
-    )
+    VARIANT = BenchmarkOutputType("variant", "Disease-causing variants (%)", ["variant_id"], "pheval_variant_results")
     DISEASE = BenchmarkOutputType(
         "disease",
         "Known diseases (%)",

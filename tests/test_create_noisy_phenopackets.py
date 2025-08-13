@@ -8,9 +8,7 @@ from pheval.prepare.create_noisy_phenopackets import HpoRandomiser, load_ontolog
 
 test_phenopacket = os.path.abspath("tests/input_dir/test_phenopacket_1.json")
 
-phenotypic_features_single_term = [
-    PhenotypicFeature(type=OntologyClass(id="HP:0000965", label="Cutis marmorata"))
-]
+phenotypic_features_single_term = [PhenotypicFeature(type=OntologyClass(id="HP:0000965", label="Cutis marmorata"))]
 phenotypic_features = [
     PhenotypicFeature(type=OntologyClass(id="HP:0000256", label="Macrocephaly")),
     PhenotypicFeature(type=OntologyClass(id="HP:0002059", label="Cerebral atrophy")),
@@ -25,9 +23,7 @@ many_phenotypic_features = [
     PhenotypicFeature(type=OntologyClass(id="HP:0003150", label="Glutaric aciduria")),
     PhenotypicFeature(type=OntologyClass(id="HP:0001332", label="Dystonia")),
     PhenotypicFeature(type=OntologyClass(id="HP:0000965", label="Cutis marmorata")),
-    PhenotypicFeature(
-        type=OntologyClass(id="HP:0007843", label="Attenuation of retinal blood vessels")
-    ),
+    PhenotypicFeature(type=OntologyClass(id="HP:0007843", label="Attenuation of retinal blood vessels")),
     PhenotypicFeature(type=OntologyClass(id="HP:0001513", label="Obesity")),
     PhenotypicFeature(type=OntologyClass(id="HP:0000608", label="Macular degeneration")),
     PhenotypicFeature(type=OntologyClass(id="HP:0000486", label="Strabismus")),
@@ -51,39 +47,21 @@ class TestHpoRandomiser(unittest.TestCase):
 
     def test_scramble_factor_proportions_default(self):
         self.assertEqual(
-            self.hpo_randomiser_default.scramble_factor_proportions(
-                phenotypic_features_single_term
-            ),
+            self.hpo_randomiser_default.scramble_factor_proportions(phenotypic_features_single_term),
             1,
         )
-        self.assertEqual(
-            self.hpo_randomiser_default.scramble_factor_proportions(phenotypic_features), 2
-        )
-        self.assertEqual(
-            self.hpo_randomiser_default.scramble_factor_proportions(many_phenotypic_features), 5
-        )
+        self.assertEqual(self.hpo_randomiser_default.scramble_factor_proportions(phenotypic_features), 2)
+        self.assertEqual(self.hpo_randomiser_default.scramble_factor_proportions(many_phenotypic_features), 5)
 
     def test_scramble_factor_0_25(self):
-        self.assertEqual(
-            self.hpo_randomiser_0_25.scramble_factor_proportions(phenotypic_features_single_term), 1
-        )
-        self.assertEqual(
-            self.hpo_randomiser_0_25.scramble_factor_proportions(phenotypic_features), 1
-        )
-        self.assertEqual(
-            self.hpo_randomiser_0_25.scramble_factor_proportions(many_phenotypic_features), 2
-        )
+        self.assertEqual(self.hpo_randomiser_0_25.scramble_factor_proportions(phenotypic_features_single_term), 1)
+        self.assertEqual(self.hpo_randomiser_0_25.scramble_factor_proportions(phenotypic_features), 1)
+        self.assertEqual(self.hpo_randomiser_0_25.scramble_factor_proportions(many_phenotypic_features), 2)
 
     def test_scramble_factor_0_75(self):
-        self.assertEqual(
-            self.hpo_randomiser_0_75.scramble_factor_proportions(phenotypic_features_single_term), 1
-        )
-        self.assertEqual(
-            self.hpo_randomiser_0_75.scramble_factor_proportions(phenotypic_features), 4
-        )
-        self.assertEqual(
-            self.hpo_randomiser_0_75.scramble_factor_proportions(many_phenotypic_features), 8
-        )
+        self.assertEqual(self.hpo_randomiser_0_75.scramble_factor_proportions(phenotypic_features_single_term), 1)
+        self.assertEqual(self.hpo_randomiser_0_75.scramble_factor_proportions(phenotypic_features), 4)
+        self.assertEqual(self.hpo_randomiser_0_75.scramble_factor_proportions(many_phenotypic_features), 8)
 
     def test_retrieve_hpo_term(self):
         self.assertEqual(
@@ -97,11 +75,7 @@ class TestHpoRandomiser(unittest.TestCase):
             3,
         )
         self.assertEqual(
-            len(
-                self.hpo_randomiser_default.retain_real_patient_terms(
-                    phenotypic_features_single_term, 2
-                )
-            ),
+            len(self.hpo_randomiser_default.retain_real_patient_terms(phenotypic_features_single_term, 2)),
             1,
         )
 
@@ -121,9 +95,7 @@ class TestHpoRandomiser(unittest.TestCase):
             len(
                 self.hpo_randomiser_default.convert_patient_terms_to_parent(
                     phenotypic_features_single_term,
-                    self.hpo_randomiser_default.retain_real_patient_terms(
-                        phenotypic_features_single_term, 1
-                    ),
+                    self.hpo_randomiser_default.retain_real_patient_terms(phenotypic_features_single_term, 1),
                     1,
                 )
             ),

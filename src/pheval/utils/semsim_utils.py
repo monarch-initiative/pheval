@@ -8,7 +8,7 @@ import numpy
 import pandas as pd
 import plotly.express as px
 
-import pheval.utils.file_utils as file_utils
+from pheval.utils import file_utils
 
 
 def filter_non_0_score(data: pd.DataFrame, col: str) -> pd.DataFrame:
@@ -58,9 +58,7 @@ def diff_semsim(
     if absolute_diff:
         df["diff"] = df[f"{score_column}_x"] - df[f"{score_column}_y"]
         return df[["subject_id", "object_id", "diff"]]
-    df["diff"] = df.apply(
-        lambda row: get_percentage_diff(row[f"{score_column}_x"], row[f"{score_column}_y"]), axis=1
-    )
+    df["diff"] = df.apply(lambda row: get_percentage_diff(row[f"{score_column}_x"], row[f"{score_column}_y"]), axis=1)
     return df[["subject_id", "object_id", f"{score_column}_x", f"{score_column}_y", "diff"]]
 
 
@@ -91,9 +89,7 @@ def semsim_heatmap_plot(semsim_left: Path, semsim_right: Path, score_column: str
     fig.show()
 
 
-def semsim_analysis(
-    semsim_left: Path, semsim_right: Path, score_column: str, absolute_diff=True
-) -> pd.DataFrame:
+def semsim_analysis(semsim_left: Path, semsim_right: Path, score_column: str, absolute_diff=True) -> pd.DataFrame:
     """semsim_analysis
 
     Args:
@@ -147,11 +143,11 @@ def get_percentage_diff(current_number: float, previous_number: float) -> float:
     """
     try:
         if current_number == previous_number:
-            return "{:.2%}".format(0)
+            return f"{0:.2%}"
         if current_number > previous_number:
-            number = (1 - ((current_number / previous_number))) * 100
+            number = (1 - (current_number / previous_number)) * 100
         else:
             number = (100 - ((previous_number / current_number) * 100)) * -1
-        return "{:.2%}".format(number / 100)
+        return f"{number / 100:.2%}"
     except ZeroDivisionError:
         return None

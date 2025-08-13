@@ -6,7 +6,6 @@ import urllib.parse
 from copy import copy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Union
 
 from phenopackets import Family, File, Phenopacket
 
@@ -90,7 +89,7 @@ class VcfHeader:
     chr_status: bool
 
 
-def read_vcf(vcf_file: Path) -> List[str]:
+def read_vcf(vcf_file: Path) -> list[str]:
     """
     Read the contents of a VCF file into memory, handling both uncompressed and gzipped files.
 
@@ -102,9 +101,7 @@ def read_vcf(vcf_file: Path) -> List[str]:
     """
     open_fn = gzip.open if is_gzipped(vcf_file) else open
     vcf = open_fn(vcf_file)
-    vcf_contents = (
-        [line.decode() for line in vcf.readlines()] if is_gzipped(vcf_file) else vcf.readlines()
-    )
+    vcf_contents = [line.decode() for line in vcf.readlines()] if is_gzipped(vcf_file) else vcf.readlines()
     vcf.close()
     return vcf_contents
 
@@ -133,20 +130,14 @@ class VcfHeaderParser:
         for line in self.vcf_contents:
             if line.startswith("##contig=<ID"):
                 tokens = line.split(",")
-                chromosome = re.sub(
-                    r"^.*?ID=", "", [token for token in tokens if "ID=" in token][0]
-                )
+                chromosome = re.sub(r"^.*?ID=", "", next(token for token in tokens if "ID=" in token))
                 if "chr" in chromosome:
                     chr_status = True
                     chromosome = chromosome.replace("chr", "")
-                contig_length = re.sub(
-                    "[^0-9]+",
-                    "",
-                    [token for token in tokens if "length=" in token][0],
-                )
+                contig_length = re.sub("[^0-9]+", "", next(token for token in tokens if "length=" in token))
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
-        assembly = [k for k, v in genome_assemblies.items() if v == vcf_assembly][0]
+        assembly = next(k for k, v in genome_assemblies.items() if v == vcf_assembly)
         return assembly, chr_status
 
     def parse_sample_id(self) -> str:
@@ -184,7 +175,7 @@ class VcfFile:
     """
 
     vcf_file_name: str = None
-    vcf_contents: List[str] = None
+    vcf_contents: list[str] = None
     vcf_header: VcfHeader = None
 
     @staticmethod
@@ -205,7 +196,7 @@ class VcfFile:
 
 def select_vcf_template(
     phenopacket_path: Path,
-    proband_causative_variants: List[ProbandCausativeVariant],
+    proband_causative_variants: list[ProbandCausativeVariant],
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
@@ -241,9 +232,7 @@ def select_vcf_template(
         else:
             raise InputError("Must specify hg38 template VCF!")
     else:
-        raise IncompatibleGenomeAssemblyError(
-            proband_causative_variants[0].assembly, phenopacket_path
-        )
+        raise IncompatibleGenomeAssemblyError(proband_causative_variants[0].assembly, phenopacket_path)
 
 
 def check_variant_assembly(
@@ -269,16 +258,10 @@ def check_variant_assembly(
         raise ValueError("Too many genome assemblies!")
     if phenopacket_assembly[0] not in compatible_genome_assembly:
         raise IncompatibleGenomeAssemblyError(phenopacket_assembly, phenopacket_path)
-    if (
-        phenopacket_assembly[0] in {"hg19", "GRCh37"}
-        and vcf_header.assembly not in {"hg19", "GRCh37"}
-    ) or (
-        phenopacket_assembly[0] in {"hg38", "GRCh38"}
-        and vcf_header.assembly not in {"hg38", "GRCh38"}
+    if (phenopacket_assembly[0] in {"hg19", "GRCh37"} and vcf_header.assembly not in {"hg19", "GRCh37"}) or (
+        phenopacket_assembly[0] in {"hg38", "GRCh38"} and vcf_header.assembly not in {"hg38", "GRCh38"}
     ):
-        raise IncompatibleGenomeAssemblyError(
-            assembly=phenopacket_assembly, phenopacket=phenopacket_path
-        )
+        raise IncompatibleGenomeAssemblyError(assembly=phenopacket_assembly, phenopacket=phenopacket_path)
 
 
 class VcfSpiker:
@@ -302,7 +285,7 @@ class VcfSpiker:
         self.proband_causative_variants = proband_causative_variants
         self.vcf_header = vcf_header
 
-    def construct_variant_entry(self, proband_variant_data: ProbandCausativeVariant) -> List[str]:
+    def construct_variant_entry(self, proband_variant_data: ProbandCausativeVariant) -> list[str]:
         """
         Construct variant entries.
 
@@ -337,7 +320,7 @@ class VcfSpiker:
             genotype_codes[proband_variant_data.genotype.lower()] + "\n",
         ]
 
-    def construct_vcf_records(self, template_vcf_name: str) -> List[str]:
+    def construct_vcf_records(self, template_vcf_name: str) -> list[str]:
         """
         Construct updated VCF records by inserting spiked variants into the correct positions within the VCF.
 
@@ -353,8 +336,7 @@ class VcfSpiker:
             matching_indices = [
                 i
                 for i, val in enumerate(updated_vcf_records)
-                if val.split("\t")[0] == variant_entry[0]
-                and int(val.split("\t")[1]) < int(variant_entry[1])
+                if val.split("\t")[0] == variant_entry[0] and int(val.split("\t")[1]) < int(variant_entry[1])
             ]
             if matching_indices:
                 logger.info(
@@ -372,7 +354,7 @@ class VcfSpiker:
             updated_vcf_records.insert(variant_entry_position, "\t".join(variant_entry))
         return updated_vcf_records
 
-    def construct_header(self, updated_vcf_records: List[str]) -> List[str]:
+    def construct_header(self, updated_vcf_records: list[str]) -> list[str]:
         """
         Construct the header of the VCF.
 
@@ -394,7 +376,7 @@ class VcfSpiker:
             updated_vcf_file.append(text)
         return updated_vcf_file
 
-    def construct_vcf(self, template_vcf_name: str) -> List[str]:
+    def construct_vcf(self, template_vcf_name: str) -> list[str]:
         """
         Construct the entire spiked VCF file by incorporating the spiked variants into the VCF.
 
@@ -412,7 +394,7 @@ class VcfWriter:
 
     def __init__(
         self,
-        vcf_contents: List[str],
+        vcf_contents: list[str],
         spiked_vcf_file_path: Path,
     ):
         """
@@ -454,13 +436,13 @@ class VcfWriter:
 
 
 def spike_vcf_contents(
-    phenopacket: Union[Phenopacket, Family],
+    phenopacket: Phenopacket | Family,
     phenopacket_path: Path,
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
     hg19_vcf_dir: Path,
     hg38_vcf_dir: Path,
-) -> tuple[str, List[str]]:
+) -> tuple[str, list[str]]:
     """
     Spike VCF records with variants obtained from a Phenopacket or Family.
 
@@ -486,9 +468,7 @@ def spike_vcf_contents(
         hg19_vcf_dir,
         hg38_vcf_dir,
     )
-    check_variant_assembly(
-        phenopacket_causative_variants, chosen_template_vcf.vcf_header, phenopacket_path
-    )
+    check_variant_assembly(phenopacket_causative_variants, chosen_template_vcf.vcf_header, phenopacket_path)
     return (
         chosen_template_vcf.vcf_header.assembly,
         VcfSpiker(
@@ -501,7 +481,7 @@ def spike_vcf_contents(
 
 def generate_spiked_vcf_file(
     output_dir: Path,
-    phenopacket: Union[Phenopacket, Family],
+    phenopacket: Phenopacket | Family,
     phenopacket_path: Path,
     hg19_vcf_info: VcfFile,
     hg38_vcf_info: VcfFile,
@@ -566,9 +546,7 @@ def spike_and_update_phenopacket(
         hg19_vcf_dir,
         hg38_vcf_dir,
     )
-    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(
-        spiked_vcf_file_message
-    )
+    updated_phenopacket = PhenopacketRebuilder(phenopacket).add_spiked_vcf_path(spiked_vcf_file_message)
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
@@ -598,9 +576,7 @@ def create_spiked_vcf(
         raise InputError("Either a hg19 template vcf or hg38 template vcf must be specified")
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
-    spike_and_update_phenopacket(
-        hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path
-    )
+    spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path)
 
 
 def create_spiked_vcfs(
@@ -625,12 +601,7 @@ def create_spiked_vcfs(
     Raises:
         InputError: If both hg19_template_vcf and hg38_template_vcf are None.
     """
-    if (
-        hg19_template_vcf is None
-        and hg38_template_vcf is None
-        and hg19_vcf_dir is None
-        and hg38_vcf_dir is None
-    ):
+    if hg19_template_vcf is None and hg38_template_vcf is None and hg19_vcf_dir is None and hg38_vcf_dir is None:
         raise InputError("Need to specify a VCF!")
     hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
     hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
@@ -677,9 +648,7 @@ def spike_vcfs(
             hg38_vcf_dir,
         )
     elif phenopacket_dir is not None:
-        logger.info(
-            f"Spiking variants from {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}."
-        )
+        logger.info(f"Spiking variants from {len(all_files(phenopacket_dir))} phenopackets in {phenopacket_dir}.")
         create_spiked_vcfs(
             output_dir,
             phenopacket_dir,

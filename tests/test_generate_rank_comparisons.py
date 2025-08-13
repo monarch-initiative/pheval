@@ -9,7 +9,6 @@ from pheval.analyse.generate_rank_comparisons import calculate_rank_changes
 
 
 class TestCalculateRankChanges(unittest.TestCase):
-
     def setUp(self):
         self.mock_conn = MagicMock(spec=DuckDBPyConnection)
 

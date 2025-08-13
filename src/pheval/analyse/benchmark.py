@@ -1,7 +1,6 @@
 import sys
 import time
 from pathlib import Path
-from typing import List, Tuple
 
 import duckdb
 import polars as pl
@@ -54,8 +53,8 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
 
 
 def process_stats(
-    runs: List[RunConfig], benchmark_type: BenchmarkOutputType
-) -> Tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+    runs: list[RunConfig], benchmark_type: BenchmarkOutputType
+) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     """
     Processes stats outputs for specified runs to compare.
     Args:
@@ -75,9 +74,7 @@ def process_stats(
         curve_results.append(compute_curves(run.run_identifier, result_scan))
         true_positive_cases.append(
             result_scan.filter(pl.col("true_positive"))
-            .select(
-                ["result_file", *benchmark_type.columns, pl.col("rank").alias(run.run_identifier)]
-            )
+            .select(["result_file", *benchmark_type.columns, pl.col("rank").alias(run.run_identifier)])
             .sort(["result_file", *benchmark_type.columns])
         )
     return (
@@ -87,11 +84,7 @@ def process_stats(
             [true_positive_cases[0]]
             + [
                 df.select(
-                    [
-                        col
-                        for col in df.collect_schema().keys()
-                        if col not in ["result_file", *benchmark_type.columns]
-                    ]
+                    [col for col in df.collect_schema().keys() if col not in ["result_file", *benchmark_type.columns]]
                 )
                 for df in true_positive_cases[1:]
             ],
@@ -109,20 +102,14 @@ def benchmark(config: Config, benchmark_type: BenchmarkOutputType) -> None:
     """
     conn = duckdb.connect(f"{config.benchmark_name}.duckdb")
     stats, curve_results, true_positive_cases = process_stats(config.runs, benchmark_type)
-    write_table(
-        conn, stats, f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_summary"
-    )
+    write_table(conn, stats, f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_summary")
     write_table(
         conn,
         curve_results,
         f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
     )
-    calculate_rank_changes(
-        conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type
-    )
-    generate_plots(
-        config.benchmark_name, stats, curve_results, benchmark_type, config.plot_customisation
-    )
+    calculate_rank_changes(conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type)
+    generate_plots(config.benchmark_name, stats, curve_results, benchmark_type, config.plot_customisation)
     conn.close()
 
 
@@ -175,6 +162,4 @@ def benchmark_runs(benchmark_config_file: Path) -> None:
             BenchmarkOutputTypeEnum.DISEASE.value,
         )
         logger.info("Finished benchmarking for disease results.")
-    logger.info(
-        f"Finished benchmarking! Total time: {time.perf_counter() - start_time:.2f} seconds."
-    )
+    logger.info(f"Finished benchmarking! Total time: {time.perf_counter() - start_time:.2f} seconds.")

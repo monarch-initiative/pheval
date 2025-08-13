@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import List, Optional
 
 import yaml
 from pydantic import BaseModel, field_validator
@@ -28,8 +27,8 @@ class RunConfig(BaseModel):
     gene_analysis: bool
     variant_analysis: bool
     disease_analysis: bool
-    threshold: Optional[float]
-    score_order: Optional[str]
+    threshold: float | None
+    score_order: str | None
 
     @field_validator("threshold", mode="before")
     @classmethod
@@ -45,9 +44,7 @@ class RunConfig(BaseModel):
     @classmethod
     def check_results_dir_exists(cls, results_dir: Path):
         if not results_dir.exists():
-            raise FileNotFoundError(
-                f"The specified results directory does not exist: {results_dir}"
-            )
+            raise FileNotFoundError(f"The specified results directory does not exist: {results_dir}")
         return results_dir
 
 
@@ -62,10 +59,10 @@ class SinglePlotCustomisation(BaseModel):
         precision_recall_title (str): The title for the precision-recall plot.
     """
 
-    plot_type: Optional[str] = "bar_cumulative"
-    rank_plot_title: Optional[str]
-    roc_curve_title: Optional[str]
-    precision_recall_title: Optional[str]
+    plot_type: str | None = "bar_cumulative"
+    rank_plot_title: str | None
+    roc_curve_title: str | None
+    precision_recall_title: str | None
 
     @field_validator("plot_type", mode="before")
     @classmethod
@@ -95,7 +92,7 @@ class Config(BaseModel):
     """
 
     benchmark_name: str
-    runs: List[RunConfig]
+    runs: list[RunConfig]
     plot_customisation: PlotCustomisation
 
 
@@ -109,7 +106,7 @@ def parse_run_config(run_config: Path) -> Config:
     """
     logger = get_logger()
     logger.info(f"Loading benchmark configuration from {run_config}")
-    with open(run_config, "r") as f:
+    with open(run_config) as f:
         config_data = yaml.safe_load(f)
     f.close()
     config = Config(**config_data)
