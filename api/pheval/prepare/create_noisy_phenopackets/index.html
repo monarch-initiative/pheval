@@ -1434,7 +1434,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 40</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 39</span>
+<span class="normal"> 40</span>
 <span class="normal"> 41</span>
 <span class="normal"> 42</span>
 <span class="normal"> 43</span>
@@ -1645,14 +1646,7 @@
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">HpoRandomiser</span><span class="p">:</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">HpoRandomiser</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for randomising phenopacket phenotypic features using Human Phenotype Ontology (HPO).&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
@@ -1693,14 +1687,14 @@
 <span class="sd">            PhenotypicFeature: The PhenotypicFeature object representing the retrieved HPO term.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">entity_alias_map</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)</span>
-        <span class="n">hpo_term</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rels</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="n">rels</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">])])</span>
+        <span class="n">hpo_term</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rels</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">rels</span><span class="p">))])</span>
         <span class="k">return</span> <span class="n">PhenotypicFeature</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">OntologyClass</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hpo_id</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">hpo_term</span><span class="p">))</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">retain_real_patient_terms</span><span class="p">(</span>
-        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
         <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.</span>
 
@@ -1719,10 +1713,10 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">convert_patient_terms_to_parent</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
-        <span class="n">retained_phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+        <span class="n">retained_phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
         <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convert a subset of patient HPO terms to their respective parent terms.</span>
 
@@ -1748,7 +1742,7 @@
         <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">hpo_terms_to_be_changed</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;obsolete&quot;</span><span class="p">):</span>
                 <span class="n">obsolete_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">entity_metadata_map</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-                <span class="n">updated_term</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">obsolete_term</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">updated_term</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">obsolete_term</span><span class="o">.</span><span class="n">values</span><span class="p">()))[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">hierarchical_parents</span><span class="p">(</span><span class="n">updated_term</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">hierarchical_parents</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -1758,7 +1752,7 @@
                 <span class="n">parent_terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">parents</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">parent_terms</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a list of random HPO terms.</span>
 
@@ -1768,15 +1762,13 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[PhenotypicFeature]: A list of randomly selected HPO terms.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">random_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span><span class="p">),</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="n">random_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span><span class="p">),</span> <span class="n">number_of_scrambled_terms</span><span class="p">))</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">random_id</span> <span class="ow">in</span> <span class="n">random_ids</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">randomise_hpo_terms</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+        <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.</span>
 
@@ -1796,9 +1788,7 @@
 <span class="sd">            of randomised HPO terms to be used in the phenotypic features.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">number_of_scrambled_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scramble_factor_proportions</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
-        <span class="n">retained_patient_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retain_real_patient_terms</span><span class="p">(</span>
-            <span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span>
-        <span class="p">)</span>
+        <span class="n">retained_patient_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retain_real_patient_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">retained_patient_terms</span>
             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_patient_terms_to_parent</span><span class="p">(</span>
@@ -1809,8 +1799,8 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+        <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Randomise the phenotypic profile of a Phenopacket or Family.</span>
 
@@ -1822,9 +1812,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">phenotypic_features</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">()</span>
         <span class="n">random_phenotypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
-        <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span>
-            <span class="n">random_phenotypes</span>
-        <span class="p">)</span>
+        <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span><span class="n">random_phenotypes</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">randomised_phenopacket</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
@@ -1949,7 +1937,8 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
+<span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -1958,8 +1947,7 @@
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_ontology</span><span class="p">:</span> <span class="n">ProntoImplementation</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialise the HpoRandomiser.</span>
 
@@ -2006,7 +1994,7 @@
                 <code>phenopacket</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2032,7 +2020,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="phenopackets.Phenopacket">Phenopacket</span> | <span title="phenopackets.Family">Family</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2046,7 +2034,12 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
@@ -2057,17 +2050,10 @@
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
+<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_noise_to_phenotypic_profile</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+    <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Randomise the phenotypic profile of a Phenopacket or Family.</span>
 
@@ -2079,9 +2065,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">phenotypic_features</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">()</span>
     <span class="n">random_phenotypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomise_hpo_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
-    <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span>
-        <span class="n">random_phenotypes</span>
-    <span class="p">)</span>
+    <span class="n">randomised_phenopacket</span> <span class="o">=</span> <span class="n">PhenopacketRebuilder</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span><span class="o">.</span><span class="n">add_randomised_hpo</span><span class="p">(</span><span class="n">random_phenotypes</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">randomised_phenopacket</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2119,7 +2103,7 @@
                 <code>phenotypic_features</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2135,7 +2119,7 @@
                 <code>retained_phenotypic_features</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2177,7 +2161,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2199,7 +2183,8 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
+<span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -2237,13 +2222,12 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">convert_patient_terms_to_parent</span><span class="p">(</span>
+<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">convert_patient_terms_to_parent</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
-    <span class="n">retained_phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+    <span class="n">retained_phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
     <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a subset of patient HPO terms to their respective parent terms.</span>
 
@@ -2269,7 +2253,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
     <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">hpo_terms_to_be_changed</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;obsolete&quot;</span><span class="p">):</span>
             <span class="n">obsolete_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">entity_metadata_map</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-            <span class="n">updated_term</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">obsolete_term</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">updated_term</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">obsolete_term</span><span class="o">.</span><span class="n">values</span><span class="p">()))[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">hierarchical_parents</span><span class="p">(</span><span class="n">updated_term</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">hierarchical_parents</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -2340,7 +2324,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2354,7 +2338,8 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+<span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
@@ -2364,10 +2349,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="normal">156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_random_hpo_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a list of random HPO terms.</span>
 
@@ -2377,9 +2359,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="sd">    Returns:</span>
 <span class="sd">        List[PhenotypicFeature]: A list of randomly selected HPO terms.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">random_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span><span class="p">),</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">random_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotypic_abnormalities</span><span class="p">),</span> <span class="n">number_of_scrambled_terms</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_hpo_term</span><span class="p">(</span><span class="n">random_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">random_id</span> <span class="ow">in</span> <span class="n">random_ids</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2450,7 +2430,14 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
@@ -2462,14 +2449,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
+<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_scrambled_phenopacket</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -2558,7 +2538,14 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
@@ -2573,14 +2560,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_scrambled_phenopackets</span><span class="p">(</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_scrambled_phenopackets</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -2639,7 +2619,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
                 <code>phenotypic_features</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2665,7 +2645,7 @@ If no remaining HPO terms are available for conversion, no parent terms are retu
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2689,7 +2669,10 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
@@ -2716,15 +2699,10 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">randomise_hpo_terms</span><span class="p">(</span>
+<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">randomise_hpo_terms</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Randomise the provided phenotypic features by combining retained, parent-converted, and random HPO terms.</span>
 
@@ -2744,9 +2722,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="sd">        of randomised HPO terms to be used in the phenotypic features.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">number_of_scrambled_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scramble_factor_proportions</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">)</span>
-    <span class="n">retained_patient_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retain_real_patient_terms</span><span class="p">(</span>
-        <span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span>
-    <span class="p">)</span>
+    <span class="n">retained_patient_terms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retain_real_patient_terms</span><span class="p">(</span><span class="n">phenotypic_features</span><span class="p">,</span> <span class="n">number_of_scrambled_terms</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">retained_patient_terms</span>
         <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_patient_terms_to_parent</span><span class="p">(</span>
@@ -2794,7 +2770,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
                 <code>phenotypic_features</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2836,7 +2812,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2850,7 +2826,8 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 83</span>
+<span class="normal"> 84</span>
 <span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
@@ -2868,12 +2845,11 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">retain_real_patient_terms</span><span class="p">(</span>
-    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
+    <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">],</span>
     <span class="n">number_of_scrambled_terms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of real patient HPO terms, retaining a specific number of non-scrambled terms.</span>
 
@@ -2965,7 +2941,8 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
+<span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
@@ -2976,8 +2953,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">retrieve_hpo_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypicFeature</span><span class="p">:</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">retrieve_hpo_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hpo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypicFeature</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve an HPO term based on the provided HPO ID.</span>
 
@@ -2988,7 +2964,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="sd">        PhenotypicFeature: The PhenotypicFeature object representing the retrieved HPO term.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">rels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hpo_ontology</span><span class="o">.</span><span class="n">entity_alias_map</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)</span>
-    <span class="n">hpo_term</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rels</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="n">rels</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">])])</span>
+    <span class="n">hpo_term</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rels</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">rels</span><span class="p">))])</span>
     <span class="k">return</span> <span class="n">PhenotypicFeature</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">OntologyClass</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hpo_id</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">hpo_term</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3066,7 +3042,8 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
+<span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
@@ -3078,8 +3055,7 @@ of randomised HPO terms to be used in the phenotypic features.</p>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scramble_factor_proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scramble_factor_proportions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotypic_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the proportion of scrambled HPO terms based on the scramble factor.</span>
 
@@ -3128,7 +3104,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -3142,8 +3119,7 @@ Returns:
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProntoImplementation</span><span class="p">:</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProntoImplementation</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load the Human Phenotype Ontology (HPO).</span>
 <span class="sd">    Args:</span>
@@ -3276,7 +3252,14 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/prepare/create_noisy_phenopackets.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">261</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
@@ -3301,18 +3284,7 @@ Returns:
 <span class="normal">283</span>
 <span class="normal">284</span>
 <span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scramble_phenopackets</span><span class="p">(</span>
+<span class="normal">286</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scramble_phenopackets</span><span class="p">(</span>
     <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -3337,13 +3309,9 @@ Returns:
     <span class="n">ontology</span> <span class="o">=</span> <span class="n">load_ontology</span><span class="p">(</span><span class="n">local_cached_ontology</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">phenopacket_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scrambling </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-        <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span><span class="o">.</span><span class="n">create_scrambled_phenopacket</span><span class="p">(</span>
-            <span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span>
-        <span class="p">)</span>
+        <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span><span class="o">.</span><span class="n">create_scrambled_phenopacket</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">phenopacket_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Scrambling </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> phenopackets in </span><span class="si">{</span><span class="n">phenopacket_dir</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scrambling </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">))</span><span class="si">}</span><span class="s2"> phenopackets in </span><span class="si">{</span><span class="n">phenopacket_dir</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="n">HpoRandomiser</span><span class="p">(</span><span class="n">ontology</span><span class="p">,</span> <span class="n">scramble_factor</span><span class="p">)</span><span class="o">.</span><span class="n">create_scrambled_phenopackets</span><span class="p">(</span>
             <span class="n">output_dir</span><span class="p">,</span>
             <span class="n">phenopacket_dir</span><span class="p">,</span>

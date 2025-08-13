@@ -1298,7 +1298,7 @@
           <tr class="doc-section-item">
             <td><code><span title="src.pheval.analyse.benchmark_output_type.BenchmarkOutputType.columns">columns</span></code></td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+                  <code><span title="List">List</span>[<span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1355,7 +1355,7 @@
 
     <span class="n">prioritisation_type_string</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">y_label</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">result_directory</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -1475,9 +1475,7 @@
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BenchmarkOutputTypeEnum</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BenchmarkOutputTypeEnum</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enumeration of benchmark output types, representing different entities.</span>
 
@@ -1493,9 +1491,7 @@
         <span class="p">[</span><span class="s2">&quot;gene_identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;gene_symbol&quot;</span><span class="p">],</span>
         <span class="s2">&quot;pheval_gene_results&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">VARIANT</span> <span class="o">=</span> <span class="n">BenchmarkOutputType</span><span class="p">(</span>
-        <span class="s2">&quot;variant&quot;</span><span class="p">,</span> <span class="s2">&quot;Disease-causing variants (%)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;variant_id&quot;</span><span class="p">],</span> <span class="s2">&quot;pheval_variant_results&quot;</span>
-    <span class="p">)</span>
+    <span class="n">VARIANT</span> <span class="o">=</span> <span class="n">BenchmarkOutputType</span><span class="p">(</span><span class="s2">&quot;variant&quot;</span><span class="p">,</span> <span class="s2">&quot;Disease-causing variants (%)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;variant_id&quot;</span><span class="p">],</span> <span class="s2">&quot;pheval_variant_results&quot;</span><span class="p">)</span>
     <span class="n">DISEASE</span> <span class="o">=</span> <span class="n">BenchmarkOutputType</span><span class="p">(</span>
         <span class="s2">&quot;disease&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Known diseases (%)&quot;</span><span class="p">,</span>

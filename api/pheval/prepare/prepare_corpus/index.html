@@ -1516,18 +1516,7 @@ gene identifiers.</p>
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">prepare_corpus</span><span class="p">(</span>
+<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">prepare_corpus</span><span class="p">(</span>
     <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">variant_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">gene_analysis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -1568,15 +1557,11 @@ gene identifiers.</p>
     <span class="k">for</span> <span class="n">phenopacket_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">):</span>
         <span class="n">phenopacket_util</span> <span class="o">=</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">))</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">observed_phenotypic_features</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to no observed phenotypic features.&quot;</span>
-            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to no observed phenotypic features.&quot;</span><span class="p">)</span>
             <span class="k">continue</span>
         <span class="k">if</span> <span class="n">variant_analysis</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_incomplete_variant_record</span><span class="p">():</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing variant fields.&quot;</span>
-                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing variant fields.&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
             <span class="k">elif</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_variant_alleles</span><span class="p">():</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
@@ -1585,15 +1570,11 @@ gene identifiers.</p>
                 <span class="p">)</span>
         <span class="k">if</span> <span class="n">gene_analysis</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_incomplete_gene_record</span><span class="p">():</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing gene fields.&quot;</span>
-                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing gene fields.&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
         <span class="k">if</span> <span class="n">disease_analysis</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">check_incomplete_disease_record</span><span class="p">():</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing disease fields.&quot;</span>
-                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the corpus due to missing disease fields.&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> OK!&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">hg19_template_vcf</span> <span class="ow">or</span> <span class="n">hg38_template_vcf</span><span class="p">:</span>
@@ -1619,15 +1600,12 @@ gene identifiers.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># if not updating phenopacket gene identifiers then copy phenopacket as is to output directory</span>
             <span class="p">(</span>
-                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
-                    <span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phenopackets/</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="p">)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phenopackets/</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
                 <span class="k">if</span> <span class="n">phenopacket_path</span> <span class="o">!=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phenopackets/</span><span class="si">{</span><span class="n">phenopacket_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">else</span> <span class="kc">None</span>
             <span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Finished preparing corpus for </span><span class="si">{</span><span class="n">phenopacket_dir</span><span class="si">}</span><span class="s2">. &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;Total time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Finished preparing corpus for </span><span class="si">{</span><span class="n">phenopacket_dir</span><span class="si">}</span><span class="s2">. Total time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>

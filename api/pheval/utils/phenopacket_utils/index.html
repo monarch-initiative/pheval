@@ -1834,7 +1834,28 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">640</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
 <span class="normal">641</span>
 <span class="normal">642</span>
 <span class="normal">643</span>
@@ -1919,39 +1940,7 @@
 <span class="normal">722</span>
 <span class="normal">723</span>
 <span class="normal">724</span>
-<span class="normal">725</span>
-<span class="normal">726</span>
-<span class="normal">727</span>
-<span class="normal">728</span>
-<span class="normal">729</span>
-<span class="normal">730</span>
-<span class="normal">731</span>
-<span class="normal">732</span>
-<span class="normal">733</span>
-<span class="normal">734</span>
-<span class="normal">735</span>
-<span class="normal">736</span>
-<span class="normal">737</span>
-<span class="normal">738</span>
-<span class="normal">739</span>
-<span class="normal">740</span>
-<span class="normal">741</span>
-<span class="normal">742</span>
-<span class="normal">743</span>
-<span class="normal">744</span>
-<span class="normal">745</span>
-<span class="normal">746</span>
-<span class="normal">747</span>
-<span class="normal">748</span>
-<span class="normal">749</span>
-<span class="normal">750</span>
-<span class="normal">751</span>
-<span class="normal">752</span>
-<span class="normal">753</span>
-<span class="normal">754</span>
-<span class="normal">755</span>
-<span class="normal">756</span>
-<span class="normal">757</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GeneIdentifierUpdater</span><span class="p">:</span>
+<span class="normal">725</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GeneIdentifierUpdater</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for updating gene identifiers within genomic interpretations.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -1981,15 +1970,13 @@
 <span class="sd">            str: The identified gene identifier.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">)</span>
-            <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">matches</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">prev_symbol_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
-            <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">prev_symbol_matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">prev_symbol_matches</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -2006,11 +1993,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: The gene symbol corresponding to the identifier.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">query_gene_identifier</span><span class="p">)[</span>
-            <span class="s2">&quot;gene_symbol&quot;</span>
-        <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">query_gene_identifier</span><span class="p">)[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_find_alternate_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_alternate_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Find the alternate IDs for a gene symbol.</span>
 
@@ -2020,24 +2005,21 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[str]: List of alternate IDs for the gene symbol.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">))</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;identifier&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matches</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span>
                 <span class="sa">f</span><span class="s2">&quot;symbol:</span><span class="si">{</span><span class="n">gene_symbol</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">]</span>
-        <span class="n">prev_symbol_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
-        <span class="p">)</span>
+        <span class="n">prev_symbol_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">prev_symbol_matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;identifier&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">prev_symbol_matches</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;symbol:</span><span class="si">{</span><span class="n">gene_symbol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;identifier&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">prev_symbol_matches</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;symbol:</span><span class="si">{</span><span class="n">gene_symbol</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">]</span>
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_genomic_interpretations_gene_identifier</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the genomic interpretations of a Phenopacket.</span>
 
@@ -2059,14 +2041,10 @@
                     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="sa">f</span><span class="s2">&quot; to </span><span class="si">{</span><span class="n">updated_gene_identifier</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
-                <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="n">updated_gene_identifier</span>
-                <span class="p">)</span>
+                <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span> <span class="o">=</span> <span class="n">updated_gene_identifier</span>
                 <span class="k">del</span> <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">alternate_ids</span><span class="p">[:]</span>
                 <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">alternate_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_find_alternate_ids</span><span class="p">(</span>
-                        <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">symbol</span>
-                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_find_alternate_ids</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="n">updated_interpretations</span>
 </code></pre></div></td></tr></table></div>
@@ -2147,21 +2125,21 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">643</span>
-<span class="normal">644</span>
-<span class="normal">645</span>
-<span class="normal">646</span>
-<span class="normal">647</span>
-<span class="normal">648</span>
-<span class="normal">649</span>
-<span class="normal">650</span>
-<span class="normal">651</span>
-<span class="normal">652</span>
-<span class="normal">653</span>
-<span class="normal">654</span>
-<span class="normal">655</span>
-<span class="normal">656</span>
-<span class="normal">657</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">identifier_map</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2252,31 +2230,29 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">659</span>
-<span class="normal">660</span>
-<span class="normal">661</span>
-<span class="normal">662</span>
-<span class="normal">663</span>
-<span class="normal">664</span>
-<span class="normal">665</span>
-<span class="normal">666</span>
-<span class="normal">667</span>
-<span class="normal">668</span>
-<span class="normal">669</span>
-<span class="normal">670</span>
-<span class="normal">671</span>
-<span class="normal">672</span>
-<span class="normal">673</span>
-<span class="normal">674</span>
-<span class="normal">675</span>
-<span class="normal">676</span>
-<span class="normal">677</span>
-<span class="normal">678</span>
-<span class="normal">679</span>
-<span class="normal">680</span>
-<span class="normal">681</span>
-<span class="normal">682</span>
-<span class="normal">683</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span>
+<span class="normal">656</span>
+<span class="normal">657</span>
+<span class="normal">658</span>
+<span class="normal">659</span>
+<span class="normal">660</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the specified gene identifier for a gene symbol.</span>
 
@@ -2287,15 +2263,13 @@
 <span class="sd">        str: The identified gene identifier.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">)</span>
-        <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">gene_symbol</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">matches</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">prev_symbol_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span>
-        <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">gene_identifier</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;prev_symbols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gene_symbol</span><span class="p">))</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="n">prev_symbol_matches</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">prev_symbol_matches</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -2377,19 +2351,17 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">685</span>
-<span class="normal">686</span>
-<span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span>
-<span class="normal">691</span>
-<span class="normal">692</span>
-<span class="normal">693</span>
-<span class="normal">694</span>
-<span class="normal">695</span>
-<span class="normal">696</span>
-<span class="normal">697</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">obtain_gene_symbol_from_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">obtain_gene_symbol_from_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_gene_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtain gene symbol from a gene identifier.</span>
 
@@ -2399,9 +2371,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        str: The gene symbol corresponding to the identifier.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">query_gene_identifier</span><span class="p">)[</span>
-        <span class="s2">&quot;gene_symbol&quot;</span>
-    <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier_map</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">query_gene_identifier</span><span class="p">)[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2438,7 +2408,7 @@
                 <code>interpretations</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2480,7 +2450,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2494,42 +2464,38 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">724</span>
-<span class="normal">725</span>
-<span class="normal">726</span>
-<span class="normal">727</span>
-<span class="normal">728</span>
-<span class="normal">729</span>
-<span class="normal">730</span>
-<span class="normal">731</span>
-<span class="normal">732</span>
-<span class="normal">733</span>
-<span class="normal">734</span>
-<span class="normal">735</span>
-<span class="normal">736</span>
-<span class="normal">737</span>
-<span class="normal">738</span>
-<span class="normal">739</span>
-<span class="normal">740</span>
-<span class="normal">741</span>
-<span class="normal">742</span>
-<span class="normal">743</span>
-<span class="normal">744</span>
-<span class="normal">745</span>
-<span class="normal">746</span>
-<span class="normal">747</span>
-<span class="normal">748</span>
-<span class="normal">749</span>
-<span class="normal">750</span>
-<span class="normal">751</span>
-<span class="normal">752</span>
-<span class="normal">753</span>
-<span class="normal">754</span>
-<span class="normal">755</span>
-<span class="normal">756</span>
-<span class="normal">757</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_genomic_interpretations_gene_identifier</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">696</span>
+<span class="normal">697</span>
+<span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
+<span class="normal">705</span>
+<span class="normal">706</span>
+<span class="normal">707</span>
+<span class="normal">708</span>
+<span class="normal">709</span>
+<span class="normal">710</span>
+<span class="normal">711</span>
+<span class="normal">712</span>
+<span class="normal">713</span>
+<span class="normal">714</span>
+<span class="normal">715</span>
+<span class="normal">716</span>
+<span class="normal">717</span>
+<span class="normal">718</span>
+<span class="normal">719</span>
+<span class="normal">720</span>
+<span class="normal">721</span>
+<span class="normal">722</span>
+<span class="normal">723</span>
+<span class="normal">724</span>
+<span class="normal">725</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_genomic_interpretations_gene_identifier</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update the genomic interpretations of a Phenopacket.</span>
 
@@ -2551,14 +2517,10 @@
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot; to </span><span class="si">{</span><span class="n">updated_gene_identifier</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">updated_gene_identifier</span>
-            <span class="p">)</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">value_id</span> <span class="o">=</span> <span class="n">updated_gene_identifier</span>
             <span class="k">del</span> <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">alternate_ids</span><span class="p">[:]</span>
             <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">alternate_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_find_alternate_ids</span><span class="p">(</span>
-                    <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">symbol</span>
-                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_find_alternate_ids</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">gene_context</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">updated_interpretations</span>
 </code></pre></div></td></tr></table></div>
@@ -2682,7 +2644,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">47</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
@@ -2698,8 +2661,7 @@
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenomicVariant</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a genomic variant.</span>
@@ -2766,7 +2728,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -2783,8 +2746,7 @@
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IncompatibleGenomeAssemblyError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IncompatibleGenomeAssemblyError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised for incompatible genome assembly.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Incompatible Genome Assembly&quot;</span><span class="p">):</span>
@@ -2881,7 +2843,8 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
+<span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
@@ -2892,8 +2855,7 @@
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Incompatible Genome Assembly&quot;</span><span class="p">):</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Incompatible Genome Assembly&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialise IncompatibleGenomeAssemblyError.</span>
 
@@ -2944,7 +2906,24 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">537</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
 <span class="normal">538</span>
 <span class="normal">539</span>
 <span class="normal">540</span>
@@ -2992,31 +2971,10 @@
 <span class="normal">582</span>
 <span class="normal">583</span>
 <span class="normal">584</span>
-<span class="normal">585</span>
-<span class="normal">586</span>
-<span class="normal">587</span>
-<span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
-<span class="normal">603</span>
-<span class="normal">604</span>
-<span class="normal">605</span>
-<span class="normal">606</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketRebuilder</span><span class="p">:</span>
+<span class="normal">585</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketRebuilder</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for rebuilding a Phenopacket&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise PhenopacketUtil</span>
 
 <span class="sd">        Attributes:</span>
@@ -3024,9 +2982,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">update_interpretations</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="p">[</span><span class="n">Interpretation</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="p">[</span><span class="n">Interpretation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add the updated interpretations to a Phenopacket or Family.</span>
 
@@ -3045,7 +3001,7 @@
             <span class="n">phenopacket</span><span class="o">.</span><span class="n">interpretations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">interpretations</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenopacket</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_randomised_hpo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">randomised_hpo</span><span class="p">:</span> <span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_randomised_hpo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">randomised_hpo</span><span class="p">:</span> <span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add randomised phenotypic profiles to a Phenopacket or Family.</span>
 
@@ -3064,7 +3020,7 @@
             <span class="n">phenopacket</span><span class="o">.</span><span class="n">phenotypic_features</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">randomised_hpo</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenopacket</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_spiked_vcf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spiked_vcf_file_data</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_spiked_vcf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spiked_vcf_file_data</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a spiked VCF path to a Phenopacket or Family.</span>
 
@@ -3076,9 +3032,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adding spiked VCF path </span><span class="si">{</span><span class="n">spiked_vcf_file_data</span><span class="o">.</span><span class="n">uri</span><span class="si">}</span><span class="s2"> to phenopacket.&quot;</span><span class="p">)</span>
         <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket</span><span class="p">)</span>
-        <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;vcf&quot;</span>
-        <span class="p">]</span>
+        <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;vcf&quot;</span><span class="p">]</span>
         <span class="n">phenopacket_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spiked_vcf_file_data</span><span class="p">)</span>
         <span class="k">del</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="p">[:]</span>
         <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">phenopacket_files</span><span class="p">)</span>
@@ -3125,7 +3079,7 @@
           <tr class="doc-section-item">
             <td><code><span title="src.pheval.utils.phenopacket_utils.PhenopacketRebuilder.__init__.phenopacket">phenopacket</span></code></td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3139,13 +3093,13 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">540</span>
-<span class="normal">541</span>
-<span class="normal">542</span>
-<span class="normal">543</span>
-<span class="normal">544</span>
-<span class="normal">545</span>
-<span class="normal">546</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialise PhenopacketUtil</span>
 
 <span class="sd">    Attributes:</span>
@@ -3214,7 +3168,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="phenopackets.Phenopacket">Phenopacket</span> | <span title="phenopackets.Family">Family</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3228,24 +3182,24 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">569</span>
-<span class="normal">570</span>
-<span class="normal">571</span>
-<span class="normal">572</span>
-<span class="normal">573</span>
-<span class="normal">574</span>
-<span class="normal">575</span>
-<span class="normal">576</span>
-<span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span>
-<span class="normal">583</span>
-<span class="normal">584</span>
-<span class="normal">585</span>
-<span class="normal">586</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_randomised_hpo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">randomised_hpo</span><span class="p">:</span> <span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_randomised_hpo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">randomised_hpo</span><span class="p">:</span> <span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add randomised phenotypic profiles to a Phenopacket or Family.</span>
 
@@ -3289,25 +3243,23 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
-<span class="normal">603</span>
-<span class="normal">604</span>
-<span class="normal">605</span>
-<span class="normal">606</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_spiked_vcf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spiked_vcf_file_data</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_spiked_vcf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spiked_vcf_file_data</span><span class="p">:</span> <span class="n">File</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add a spiked VCF path to a Phenopacket or Family.</span>
 
@@ -3319,9 +3271,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adding spiked VCF path </span><span class="si">{</span><span class="n">spiked_vcf_file_data</span><span class="o">.</span><span class="n">uri</span><span class="si">}</span><span class="s2"> to phenopacket.&quot;</span><span class="p">)</span>
     <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenopacket</span><span class="p">)</span>
-    <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;vcf&quot;</span>
-    <span class="p">]</span>
+    <span class="n">phenopacket_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;vcf&quot;</span><span class="p">]</span>
     <span class="n">phenopacket_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spiked_vcf_file_data</span><span class="p">)</span>
     <span class="k">del</span> <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="p">[:]</span>
     <span class="n">phenopacket</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">phenopacket_files</span><span class="p">)</span>
@@ -3362,7 +3312,7 @@
                 <code>interpretations</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+                  <code><span title="List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3388,7 +3338,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="phenopackets.Phenopacket">Phenopacket</span> | <span title="phenopackets.Family">Family</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3402,28 +3352,24 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">548</span>
-<span class="normal">549</span>
-<span class="normal">550</span>
-<span class="normal">551</span>
-<span class="normal">552</span>
-<span class="normal">553</span>
-<span class="normal">554</span>
-<span class="normal">555</span>
-<span class="normal">556</span>
-<span class="normal">557</span>
-<span class="normal">558</span>
-<span class="normal">559</span>
-<span class="normal">560</span>
-<span class="normal">561</span>
-<span class="normal">562</span>
-<span class="normal">563</span>
-<span class="normal">564</span>
-<span class="normal">565</span>
-<span class="normal">566</span>
-<span class="normal">567</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_interpretations</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="p">[</span><span class="n">Interpretation</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interpretations</span><span class="p">:</span> <span class="p">[</span><span class="n">Interpretation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add the updated interpretations to a Phenopacket or Family.</span>
 
@@ -3479,7 +3425,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
+<span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
@@ -3790,27 +3737,10 @@
 <span class="normal">514</span>
 <span class="normal">515</span>
 <span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span>
-<span class="normal">521</span>
-<span class="normal">522</span>
-<span class="normal">523</span>
-<span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketUtil</span><span class="p">:</span>
+<span class="normal">517</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketUtil</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for retrieving data from a Phenopacket or Family object&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise PhenopacketUtil</span>
 
 <span class="sd">        Args:</span>
@@ -3830,7 +3760,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">id</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all HPO terms</span>
 
@@ -3842,7 +3772,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all observed HPO terms</span>
 
@@ -3857,7 +3787,7 @@
             <span class="n">phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all negated HPO terms</span>
 
@@ -3871,7 +3801,7 @@
                 <span class="n">negated_phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">negated_phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of Diseases associated with the proband</span>
 
@@ -3883,7 +3813,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">diseases</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of disease diagnoses associated with the proband from the interpretations object</span>
 
@@ -3905,7 +3835,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">diagnoses</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of disease diagnoses associated with the proband from the diseases object</span>
 
@@ -3914,12 +3844,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">diagnoses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">disease</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">diseases</span><span class="p">():</span>
-            <span class="n">diagnoses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">ProbandDisease</span><span class="p">(</span><span class="n">disease_name</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">disease_identifier</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">diagnoses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ProbandDisease</span><span class="p">(</span><span class="n">disease_name</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">disease_identifier</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">diagnoses</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a unique list of disease diagnoses associated with the proband from a Phenopacket</span>
 
@@ -3928,7 +3856,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_interpretations</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_disease</span><span class="p">()))</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of interpretations from a Phenopacket</span>
 
@@ -3940,7 +3868,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">interpretations</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of causative variants listed in a Phenopacket</span>
 
@@ -3968,7 +3896,7 @@
                 <span class="n">all_variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variant_data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">all_variants</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of files associated with a phenopacket</span>
 
@@ -3998,15 +3926,11 @@
 <span class="sd">            URI of the VCF file to the specified directory and returns the modified file object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">compatible_genome_assembly</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRCh37&quot;</span><span class="p">,</span> <span class="s2">&quot;hg19&quot;</span><span class="p">,</span> <span class="s2">&quot;GRCh38&quot;</span><span class="p">,</span> <span class="s2">&quot;hg38&quot;</span><span class="p">]</span>
-        <span class="n">vcf_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span>
-            <span class="s2">&quot;.vcf.gz&quot;</span>
-        <span class="p">):</span>
+        <span class="n">vcf_data</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">IncorrectFileFormatError</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">),</span> <span class="s2">&quot;.vcf or .vcf.gz file&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">compatible_genome_assembly</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span>
-                <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">)</span>
         <span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vcf_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">vcf_data</span>
 
@@ -4034,7 +3958,7 @@
                 <span class="n">gene_identifier</span><span class="o">=</span><span class="n">genomic_interpretation</span><span class="o">.</span><span class="n">gene</span><span class="o">.</span><span class="n">value_id</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve the disease causing genes from a phenopacket.</span>
 <span class="sd">        Returns:</span>
@@ -4048,7 +3972,7 @@
                 <span class="n">genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">:</span> <span class="n">gene</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span><span class="p">}</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">genes</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all known causative variants from a phenopacket.</span>
 <span class="sd">        Returns:</span>
@@ -4059,11 +3983,7 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pheno_interpretation</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">diagnosis</span><span class="o">.</span><span class="n">genomic_interpretations</span><span class="p">:</span>
                 <span class="n">variant</span> <span class="o">=</span> <span class="n">GenomicVariant</span><span class="p">(</span>
-                    <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span>
-                        <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                            <span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
-                        <span class="p">)</span>
-                    <span class="p">),</span>
+                    <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
                     <span class="n">pos</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">pos</span><span class="p">),</span>
                     <span class="n">ref</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
                     <span class="n">alt</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
@@ -4084,13 +4004,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -4181,7 +4095,7 @@
                 <code>phenopacket_contents</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4198,13 +4112,13 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
+<span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
 <span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
+<span class="normal">214</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialise PhenopacketUtil</span>
 
 <span class="sd">    Args:</span>
@@ -4242,7 +4156,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="ProbandCausativeVariant
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="ProbandCausativeVariant
 
 
   
@@ -4261,7 +4175,10 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">339</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
@@ -4284,10 +4201,7 @@
 <span class="normal">359</span>
 <span class="normal">360</span>
 <span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
+<span class="normal">362</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of causative variants listed in a Phenopacket</span>
 
@@ -4361,19 +4275,19 @@ have missing or incomplete information such as empty disease name, or disease id
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">522</span>
-<span class="normal">523</span>
-<span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_disease_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_disease_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if any disease record in the phenopacket has incomplete information.</span>
 
@@ -4433,21 +4347,21 @@ have missing or incomplete information such as gene name, or gene identifier.</p
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
-<span class="normal">510</span>
-<span class="normal">511</span>
-<span class="normal">512</span>
-<span class="normal">513</span>
-<span class="normal">514</span>
-<span class="normal">515</span>
-<span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_gene_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_gene_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if any gene record in the phenopacket has incomplete information.</span>
 
@@ -4510,28 +4424,22 @@ or alternate allele.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">470</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
 <span class="normal">471</span>
 <span class="normal">472</span>
 <span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
-<span class="normal">477</span>
-<span class="normal">478</span>
-<span class="normal">479</span>
-<span class="normal">480</span>
-<span class="normal">481</span>
-<span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span>
-<span class="normal">485</span>
-<span class="normal">486</span>
-<span class="normal">487</span>
-<span class="normal">488</span>
-<span class="normal">489</span>
-<span class="normal">490</span>
-<span class="normal">491</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_variant_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_incomplete_variant_record</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if any variant record in the phenopacket has incomplete information.</span>
 
@@ -4544,13 +4452,7 @@ or alternate allele.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-            <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span>
-            <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-            <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-            <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-        <span class="p">):</span>
+        <span class="k">if</span> <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
@@ -4598,18 +4500,18 @@ or alternate allele.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">493</span>
-<span class="normal">494</span>
-<span class="normal">495</span>
-<span class="normal">496</span>
-<span class="normal">497</span>
-<span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span>
-<span class="normal">501</span>
-<span class="normal">502</span>
-<span class="normal">503</span>
-<span class="normal">504</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_variant_alleles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_variant_alleles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if any variant record in the phenopacket has identical reference and alternate alleles.</span>
 
@@ -4645,19 +4547,19 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">433</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
 <span class="normal">434</span>
 <span class="normal">435</span>
 <span class="normal">436</span>
 <span class="normal">437</span>
-<span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
-<span class="normal">441</span>
-<span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
+<span class="normal">438</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the disease causing genes from a phenopacket.</span>
 <span class="sd">    Returns:</span>
@@ -4694,7 +4596,14 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">447</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
 <span class="normal">448</span>
 <span class="normal">449</span>
 <span class="normal">450</span>
@@ -4704,18 +4613,7 @@ Returns:
 <span class="normal">454</span>
 <span class="normal">455</span>
 <span class="normal">456</span>
-<span class="normal">457</span>
-<span class="normal">458</span>
-<span class="normal">459</span>
-<span class="normal">460</span>
-<span class="normal">461</span>
-<span class="normal">462</span>
-<span class="normal">463</span>
-<span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span>
-<span class="normal">468</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
+<span class="normal">457</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of all known causative variants from a phenopacket.</span>
 <span class="sd">    Returns:</span>
@@ -4726,11 +4624,7 @@ Returns:
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pheno_interpretation</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">diagnosis</span><span class="o">.</span><span class="n">genomic_interpretations</span><span class="p">:</span>
             <span class="n">variant</span> <span class="o">=</span> <span class="n">GenomicVariant</span><span class="p">(</span>
-                <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span>
-                    <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                        <span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
-                    <span class="p">)</span>
-                <span class="p">),</span>
+                <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
                 <span class="n">pos</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">pos</span><span class="p">),</span>
                 <span class="n">ref</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
                 <span class="n">alt</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
@@ -4768,7 +4662,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="ProbandDisease
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="ProbandDisease
 
 
   
@@ -4787,14 +4681,14 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+<span class="normal">322</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a unique list of disease diagnoses associated with the proband from a Phenopacket</span>
 
@@ -4833,7 +4727,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.Disease">Disease</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.Disease">Disease</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4847,7 +4741,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">269</span>
+<span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
@@ -4856,8 +4751,7 @@ Returns:
 <span class="normal">276</span>
 <span class="normal">277</span>
 <span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
+<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of Diseases associated with the proband</span>
 
@@ -4899,7 +4793,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.File">File</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.File">File</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4913,14 +4807,14 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">367</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
 <span class="normal">368</span>
 <span class="normal">369</span>
 <span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
+<span class="normal">371</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of files associated with a phenopacket</span>
 
@@ -4959,7 +4853,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.Interpretation">Interpretation</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4973,17 +4867,17 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">327</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
 <span class="normal">328</span>
 <span class="normal">329</span>
 <span class="normal">330</span>
 <span class="normal">331</span>
 <span class="normal">332</span>
 <span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
+<span class="normal">334</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of interpretations from a Phenopacket</span>
 
@@ -5025,7 +4919,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5039,7 +4933,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
+<span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
@@ -5050,8 +4945,7 @@ Returns:
 <span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="normal">267</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of all negated HPO terms</span>
 
@@ -5095,7 +4989,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5109,7 +5003,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">240</span>
+<span class="normal">241</span>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
@@ -5121,8 +5016,7 @@ Returns:
 <span class="normal">250</span>
 <span class="normal">251</span>
 <span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of all observed HPO terms</span>
 
@@ -5167,7 +5061,7 @@ Returns:
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.List">List</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
+                  <code><span title="list">list</span>[<span title="phenopackets.PhenotypicFeature">PhenotypicFeature</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5181,7 +5075,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
+<span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
@@ -5190,8 +5085,7 @@ Returns:
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of all HPO terms</span>
 
@@ -5247,7 +5141,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
+<span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
@@ -5256,8 +5151,7 @@ Returns:
 <span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sample_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sample_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the sample ID from a Phenopacket or proband of a Family</span>
 
@@ -5400,7 +5294,10 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">376</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
 <span class="normal">377</span>
 <span class="normal">378</span>
 <span class="normal">379</span>
@@ -5424,14 +5321,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 <span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">vcf_file_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">vcf_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">File</span><span class="p">:</span>
+<span class="normal">400</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">vcf_file_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">vcf_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">File</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the genome assembly and VCF file name from a phenopacket.</span>
 
@@ -5452,15 +5342,11 @@ URI of the VCF file to the specified directory and returns the modified file obj
 <span class="sd">        URI of the VCF file to the specified directory and returns the modified file object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">compatible_genome_assembly</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRCh37&quot;</span><span class="p">,</span> <span class="s2">&quot;hg19&quot;</span><span class="p">,</span> <span class="s2">&quot;GRCh38&quot;</span><span class="p">,</span> <span class="s2">&quot;hg38&quot;</span><span class="p">]</span>
-    <span class="n">vcf_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span>
-        <span class="s2">&quot;.vcf.gz&quot;</span>
-    <span class="p">):</span>
+    <span class="n">vcf_data</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">IncorrectFileFormatError</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">),</span> <span class="s2">&quot;.vcf or .vcf.gz file&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">compatible_genome_assembly</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span>
-            <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span>
-        <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">)</span>
     <span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vcf_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">vcf_data</span>
 </code></pre></div></td></tr></table></div>
@@ -5556,7 +5442,8 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 86</span>
+<span class="normal"> 87</span>
 <span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
@@ -5570,8 +5457,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProbandCausativeGene</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a causative gene associated with a proband</span>
@@ -5738,7 +5624,8 @@ URI of the VCF file to the specified directory and returns the modified file obj
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
+<span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
@@ -5754,8 +5641,7 @@ URI of the VCF file to the specified directory and returns the modified file obj
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProbandCausativeVariant</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a causative variant associated with a proband</span>
@@ -5878,7 +5764,8 @@ for result matching purposes in the analysis.</p>
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
+<span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -5893,8 +5780,7 @@ for result matching purposes in the analysis.</p>
 <span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProbandDisease</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents a disease associated with a proband</span>
@@ -5974,7 +5860,8 @@ for result matching purposes in the analysis.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">156</span>
+<span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
@@ -5999,8 +5886,7 @@ for result matching purposes in the analysis.</p>
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_gene_identifier_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_gene_identifier_map</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a mapping of gene identifiers to gene symbols using HGNC data.</span>
 
@@ -6053,17 +5939,17 @@ for result matching purposes in the analysis.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">609</span>
-<span class="normal">610</span>
-<span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_json_message</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_json_message</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a JSON message for writing to a file.</span>
 
@@ -6119,7 +6005,8 @@ for result matching purposes in the analysis.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">123</span>
+<span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
@@ -6148,8 +6035,7 @@ for result matching purposes in the analysis.</p>
 <span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_hgnc_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_hgnc_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Read HGNC data from a file and return it as a Polars DataFrame.</span>
 
@@ -6242,7 +6128,7 @@ for result matching purposes in the analysis.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="phenopackets.Phenopacket">Phenopacket</span>, <span title="phenopackets.Family">Family</span>]</code>
+                  <code><span title="phenopackets.Phenopacket">Phenopacket</span> | <span title="phenopackets.Family">Family</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -6256,7 +6142,8 @@ for result matching purposes in the analysis.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
+<span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
@@ -6272,8 +6159,7 @@ for result matching purposes in the analysis.</p>
 <span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phenopacket_reader</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]:</span>
+<span class="normal">202</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phenopacket_reader</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Read a Phenopacket file and returns its contents as a Phenopacket or Family object</span>
 
@@ -6284,7 +6170,7 @@ for result matching purposes in the analysis.</p>
 <span class="sd">        Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parsing Phenopacket: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">if</span> <span class="s2">&quot;proband&quot;</span> <span class="ow">in</span> <span class="n">phenopacket</span><span class="p">:</span>
@@ -6383,22 +6269,22 @@ for result matching purposes in the analysis.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">622</span>
-<span class="normal">623</span>
-<span class="normal">624</span>
-<span class="normal">625</span>
-<span class="normal">626</span>
-<span class="normal">627</span>
-<span class="normal">628</span>
-<span class="normal">629</span>
-<span class="normal">630</span>
-<span class="normal">631</span>
-<span class="normal">632</span>
-<span class="normal">633</span>
-<span class="normal">634</span>
-<span class="normal">635</span>
-<span class="normal">636</span>
-<span class="normal">637</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_phenopacket</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">],</span> <span class="n">output_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_phenopacket</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">,</span> <span class="n">output_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Write a Phenopacket or Family object to a file in JSON format.</span>
 

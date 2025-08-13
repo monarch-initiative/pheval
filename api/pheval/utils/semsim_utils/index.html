@@ -1469,9 +1469,7 @@
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diff_semsim</span><span class="p">(</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">diff_semsim</span><span class="p">(</span>
     <span class="n">semsim_left</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">absolute_diff</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates score difference between two semantic similarity profiles</span>
@@ -1490,9 +1488,7 @@
     <span class="k">if</span> <span class="n">absolute_diff</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_x&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_y&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;subject_id&quot;</span><span class="p">,</span> <span class="s2">&quot;object_id&quot;</span><span class="p">,</span> <span class="s2">&quot;diff&quot;</span><span class="p">]]</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">get_percentage_diff</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_x&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_y&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
-    <span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">get_percentage_diff</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_x&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_y&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;subject_id&quot;</span><span class="p">,</span> <span class="s2">&quot;object_id&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_x&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score_column</span><span class="si">}</span><span class="s2">_y&quot;</span><span class="p">,</span> <span class="s2">&quot;diff&quot;</span><span class="p">]]</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1699,7 +1695,11 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/semsim_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
@@ -1714,11 +1714,7 @@
 <span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_percentage_diff</span><span class="p">(</span><span class="n">current_number</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">previous_number</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_percentage_diff</span><span class="p">(</span><span class="n">current_number</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">previous_number</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the percentage difference between two numbers</span>
 
 <span class="sd">    Args:</span>
@@ -1730,12 +1726,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">current_number</span> <span class="o">==</span> <span class="n">previous_number</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">0</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">if</span> <span class="n">current_number</span> <span class="o">&gt;</span> <span class="n">previous_number</span><span class="p">:</span>
-            <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">((</span><span class="n">current_number</span> <span class="o">/</span> <span class="n">previous_number</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">current_number</span> <span class="o">/</span> <span class="n">previous_number</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="p">((</span><span class="n">previous_number</span> <span class="o">/</span> <span class="n">current_number</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
@@ -1956,7 +1952,9 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/semsim_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
@@ -1964,9 +1962,7 @@
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">percentage_diff</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">percentage_diff</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compares two semantic similarity profiles</span>
 
 <span class="sd">    Args:</span>
@@ -2101,7 +2097,9 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/semsim_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
@@ -2124,13 +2122,7 @@
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_analysis</span><span class="p">(</span>
-    <span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">absolute_diff</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_analysis</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">absolute_diff</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;semsim_analysis</span>
 
 <span class="sd">    Args:</span>
@@ -2241,7 +2233,9 @@
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/semsim_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
@@ -2250,9 +2244,7 @@
 <span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_heatmap_plot</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">semsim_heatmap_plot</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">score_column</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots semantic similarity profiles heatmap</span>
 
 <span class="sd">    Args:</span>
@@ -2291,18 +2283,18 @@ Raises:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/utils/semsim_utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_semsim_file_comparison</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_semsim_file_comparison</span><span class="p">(</span><span class="n">semsim_left</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">semsim_right</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if files exist and whether they&#39;re different</span>
 <span class="sd">    Args:</span>
 <span class="sd">        semsim_left (Path): File path of the first semantic similarity profile</span>

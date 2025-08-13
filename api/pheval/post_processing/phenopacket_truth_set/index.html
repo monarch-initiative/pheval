@@ -1364,7 +1364,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 28</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 27</span>
+<span class="normal"> 28</span>
 <span class="normal"> 29</span>
 <span class="normal"> 30</span>
 <span class="normal"> 31</span>
@@ -1591,26 +1592,7 @@
 <span class="normal">252</span>
 <span class="normal">253</span>
 <span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketTruthSet</span><span class="p">:</span>
+<span class="normal">255</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketTruthSet</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for finding the causative gene/disease/variant from a phenopacket&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
@@ -1641,7 +1623,7 @@
         <span class="n">phenopacket</span> <span class="o">=</span> <span class="n">phenopacket_reader</span><span class="p">(</span><span class="n">phenopacket_path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">PhenopacketUtil</span><span class="p">(</span><span class="n">phenopacket</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the causative genes for a given phenopacket.</span>
 <span class="sd">        Args:</span>
@@ -1652,7 +1634,7 @@
         <span class="n">phenopacket_util</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_phenopacket_util</span><span class="p">(</span><span class="n">phenopacket_name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">diagnosed_genes</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the causative variants for a given phenopacket.</span>
 <span class="sd">        Args:</span>
@@ -1663,7 +1645,7 @@
         <span class="n">phenopacket_util</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_phenopacket_util</span><span class="p">(</span><span class="n">phenopacket_name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenopacket_util</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_causative_diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the diseases for a given phenopacket.</span>
 <span class="sd">        Args:</span>
@@ -1718,11 +1700,7 @@
             <span class="p">)</span>
             <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">))</span>
             <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
-                <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-                    <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">])</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
+            <span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">])))</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">classified_variant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -1766,11 +1744,7 @@
             <span class="n">ranked_results</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
                 <span class="p">[</span>
                     <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                    <span class="o">.</span><span class="n">is_in</span><span class="p">(</span>
-                        <span class="n">classified_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-                            <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                        <span class="p">)</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
-                    <span class="p">)</span>
+                    <span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_series</span><span class="p">())</span>
                     <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
                 <span class="p">]</span>
             <span class="p">)</span>
@@ -1779,17 +1753,13 @@
             <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
                 <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
                     <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span>
-                        <span class="n">ranked_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-                            <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                        <span class="p">)</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
+                        <span class="n">ranked_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
                     <span class="p">)</span>
                 <span class="p">)</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">classified_disease</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">classified_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Classify disease results for a given phenopacket.</span>
 <span class="sd">        Args:</span>
@@ -1810,9 +1780,7 @@
                 <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">),</span>
                 <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">),</span>
                 <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
-                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">map_disease_id</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span>
-                <span class="p">)</span>
+                <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">map_disease_id</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">)</span>
                 <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;mondo_identifier&quot;</span><span class="p">),</span>
             <span class="p">]</span>
         <span class="p">)</span>
@@ -1845,16 +1813,12 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">ranked_results</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-                <span class="p">(</span>
-                    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">])</span>
-                <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">))</span>
             <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
             <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
-                <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-                    <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">])</span>
-                <span class="p">)</span>
+                <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">]))</span>
             <span class="p">)</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1893,7 +1857,18 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
@@ -1906,24 +1881,7 @@ Returns:
 <span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_disease</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Classify disease results for a given phenopacket.</span>
 <span class="sd">    Args:</span>
@@ -1944,9 +1902,7 @@ Returns:
             <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">),</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">),</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
-                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">map_disease_id</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span>
-            <span class="p">)</span>
+            <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">map_disease_id</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mondo_mapping_table</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">Utf8</span><span class="p">)</span>
             <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;mondo_identifier&quot;</span><span class="p">),</span>
         <span class="p">]</span>
     <span class="p">)</span>
@@ -1976,7 +1932,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
+<span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
@@ -1997,8 +1954,7 @@ Returns:
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_gene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_gene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Classify gene results for a given phenopacket.</span>
 <span class="sd">    Args:</span>
@@ -2047,7 +2003,12 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
 <span class="normal">146</span>
@@ -2066,12 +2027,7 @@ Returns:
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_variant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classified_variant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Classified variant results for a given phenopacket.</span>
 <span class="sd">    Args:</span>
@@ -2128,7 +2084,22 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">235</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
@@ -2148,26 +2119,7 @@ Returns:
 <span class="normal">252</span>
 <span class="normal">253</span>
 <span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">255</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">merge_disease_results</span><span class="p">(</span>
     <span class="n">ranked_results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">output_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -2195,16 +2147,12 @@ Returns:
     <span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">ranked_results</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-            <span class="p">(</span>
-                <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">])</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">))</span>
         <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
         <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
-            <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-                <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">])</span>
-            <span class="p">)</span>
+            <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;disease_identifier&quot;</span><span class="p">]))</span>
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2238,7 +2186,8 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+<span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span>
@@ -2258,12 +2207,7 @@ Returns:
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">merge_gene_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">output_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merge ranked gene results with the classified genes.</span>
@@ -2283,11 +2227,7 @@ Returns:
         <span class="p">)</span>
         <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Int64</span><span class="p">))</span>
         <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
-            <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-                <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">])</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">])))</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2320,7 +2260,12 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -2343,18 +2288,7 @@ Returns:
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">192</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">merge_variant_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">output_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merge ranked variant results with the classified variants.</span>
@@ -2369,11 +2303,7 @@ Returns:
         <span class="n">ranked_results</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                <span class="o">.</span><span class="n">is_in</span><span class="p">(</span>
-                    <span class="n">classified_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-                        <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                    <span class="p">)</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
-                <span class="p">)</span>
+                <span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classified_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_series</span><span class="p">())</span>
                 <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span>
@@ -2382,9 +2312,7 @@ Returns:
         <span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
             <span class="n">classified_results</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
                 <span class="o">~</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span>
-                    <span class="n">ranked_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-                        <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">])</span>
-                    <span class="p">)</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
+                    <span class="n">ranked_results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
                 <span class="p">)</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -2446,7 +2374,8 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/phenopacket_truth_set.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+<span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
@@ -2454,8 +2383,7 @@ Args:
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_end_pos</span><span class="p">(</span><span class="n">variant_start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variant_ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the end position for a variant</span>
 <span class="sd">    Args:</span>
 <span class="sd">        variant_start (int): The start position of the variant</span>

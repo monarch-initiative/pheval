@@ -1943,7 +1943,8 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 
               <details class="quote">
                 <summary>Source code in <code>src/pheval/utils/phenopacket_utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
+<span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
@@ -2254,27 +2255,10 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 <span class="normal">514</span>
 <span class="normal">515</span>
 <span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span>
-<span class="normal">521</span>
-<span class="normal">522</span>
-<span class="normal">523</span>
-<span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketUtil</span><span class="p">:</span>
+<span class="normal">517</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PhenopacketUtil</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class for retrieving data from a Phenopacket or Family object&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">,</span> <span class="n">Family</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenopacket_contents</span><span class="p">:</span> <span class="n">Phenopacket</span> <span class="o">|</span> <span class="n">Family</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise PhenopacketUtil</span>
 
 <span class="sd">        Args:</span>
@@ -2294,7 +2278,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">id</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all HPO terms</span>
 
@@ -2306,7 +2290,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">observed_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all observed HPO terms</span>
 
@@ -2321,7 +2305,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
             <span class="n">phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">negated_phenotypic_features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PhenotypicFeature</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all negated HPO terms</span>
 
@@ -2335,7 +2319,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
                 <span class="n">negated_phenotypic_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">negated_phenotypic_features</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of Diseases associated with the proband</span>
 
@@ -2347,7 +2331,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">diseases</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of disease diagnoses associated with the proband from the interpretations object</span>
 
@@ -2369,7 +2353,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">diagnoses</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_diagnosis_from_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of disease diagnoses associated with the proband from the diseases object</span>
 
@@ -2378,12 +2362,10 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">diagnoses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">disease</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">diseases</span><span class="p">():</span>
-            <span class="n">diagnoses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">ProbandDisease</span><span class="p">(</span><span class="n">disease_name</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">disease_identifier</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">diagnoses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ProbandDisease</span><span class="p">(</span><span class="n">disease_name</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">disease_identifier</span><span class="o">=</span><span class="n">disease</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">diagnoses</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnoses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandDisease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a unique list of disease diagnoses associated with the proband from a Phenopacket</span>
 
@@ -2392,7 +2374,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_interpretations</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis_from_disease</span><span class="p">()))</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interpretations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Interpretation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of interpretations from a Phenopacket</span>
 
@@ -2404,7 +2386,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenopacket_contents</span><span class="o">.</span><span class="n">interpretations</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">causative_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeVariant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of causative variants listed in a Phenopacket</span>
 
@@ -2432,7 +2414,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
                 <span class="n">all_variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variant_data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">all_variants</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">File</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of files associated with a phenopacket</span>
 
@@ -2462,15 +2444,11 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 <span class="sd">            URI of the VCF file to the specified directory and returns the modified file object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">compatible_genome_assembly</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRCh37&quot;</span><span class="p">,</span> <span class="s2">&quot;hg19&quot;</span><span class="p">,</span> <span class="s2">&quot;GRCh38&quot;</span><span class="p">,</span> <span class="s2">&quot;hg38&quot;</span><span class="p">]</span>
-        <span class="n">vcf_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span>
-            <span class="s2">&quot;.vcf.gz&quot;</span>
-        <span class="p">):</span>
+        <span class="n">vcf_data</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">()</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;vcf&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.vcf.gz&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">IncorrectFileFormatError</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">),</span> <span class="s2">&quot;.vcf or .vcf.gz file&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">compatible_genome_assembly</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span>
-                <span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">IncompatibleGenomeAssemblyError</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">file_attributes</span><span class="p">[</span><span class="s2">&quot;genomeAssembly&quot;</span><span class="p">],</span> <span class="n">phenopacket_path</span><span class="p">)</span>
         <span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vcf_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vcf_data</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">vcf_data</span>
 
@@ -2498,7 +2476,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
                 <span class="n">gene_identifier</span><span class="o">=</span><span class="n">genomic_interpretation</span><span class="o">.</span><span class="n">gene</span><span class="o">.</span><span class="n">value_id</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_genes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProbandCausativeGene</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve the disease causing genes from a phenopacket.</span>
 <span class="sd">        Returns:</span>
@@ -2512,7 +2490,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
                 <span class="n">genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">gene</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">:</span> <span class="n">gene</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span><span class="p">}</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">genes</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diagnosed_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">GenomicVariant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieve a list of all known causative variants from a phenopacket.</span>
 <span class="sd">        Returns:</span>
@@ -2523,11 +2501,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pheno_interpretation</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">diagnosis</span><span class="o">.</span><span class="n">genomic_interpretations</span><span class="p">:</span>
                 <span class="n">variant</span> <span class="o">=</span> <span class="n">GenomicVariant</span><span class="p">(</span>
-                    <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span>
-                        <span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                            <span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
-                        <span class="p">)</span>
-                    <span class="p">),</span>
+                    <span class="n">chrom</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">chrom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;chr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
                     <span class="n">pos</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">pos</span><span class="p">),</span>
                     <span class="n">ref</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
                     <span class="n">alt</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">variant_interpretation</span><span class="o">.</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
@@ -2548,13 +2522,7 @@ This allows PhEval extensibility to be standardised in terms of documentation an
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosed_variants</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-                <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="n">variant</span><span class="o">.</span><span class="n">chrom</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">pos</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">ref</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">variant</span><span class="o">.</span><span class="n">alt</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -2784,9 +2752,7 @@ Attributes:
 <span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ResultSchema</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enum for different result schema formats.</span>
 <span class="sd">    Attributes:</span>
@@ -2844,9 +2810,7 @@ Attributes:
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required column: </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_type</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#39; has type </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="si">}</span><span class="s2">, expected </span><span class="si">{</span><span class="n">expected_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
@@ -2971,7 +2935,18 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
@@ -2981,22 +2956,7 @@ Args:
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">GENE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_gene_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3014,13 +2974,9 @@ Args:
 <span class="sd">        phenopacket_dir (Path): Path to the Phenopacket directory</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pheval_gene_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-gene_result.parquet&quot;</span><span class="p">)</span>
-    <span class="n">create_empty_pheval_result</span><span class="p">(</span>
-        <span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_gene_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">GENE</span>
-    <span class="p">)</span>
+    <span class="n">create_empty_pheval_result</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_gene_results&quot;</span><span class="p">),</span> <span class="n">ResultType</span><span class="o">.</span><span class="n">GENE</span><span class="p">)</span>
     <span class="n">ranked_results</span> <span class="o">=</span> <span class="n">_rank_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">sort_order</span><span class="p">)</span>
-    <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_gene_results</span><span class="p">(</span>
-        <span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span>
-    <span class="p">)</span>
+    <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_gene_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
     <span class="n">_write_gene_result</span><span class="p">(</span><span class="n">classified_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3047,7 +3003,22 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">222</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
 <span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
@@ -3059,26 +3030,7 @@ Args:
 <span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">VARIANT_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_variant_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3095,9 +3047,7 @@ Args:
 <span class="sd">        result_path (Path): Path to the tool-specific result file.</span>
 <span class="sd">        phenopacket_dir (Path): Path to the Phenopacket directory</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;pheval_variant_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-variant_result.parquet&quot;</span>
-    <span class="p">)</span>
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pheval_variant_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-variant_result.parquet&quot;</span><span class="p">)</span>
     <span class="n">create_empty_pheval_result</span><span class="p">(</span>
         <span class="n">phenopacket_dir</span><span class="p">,</span>
         <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_variant_results&quot;</span><span class="p">),</span>
@@ -3106,9 +3056,7 @@ Args:
     <span class="n">ranked_results</span> <span class="o">=</span> <span class="n">_rank_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">sort_order</span><span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">concat_str</span><span class="p">([</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">],</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;variant_id&quot;</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_variant_results</span><span class="p">(</span>
-        <span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span>
-    <span class="p">)</span>
+    <span class="n">classified_results</span> <span class="o">=</span> <span class="n">PhenopacketTruthSet</span><span class="p">(</span><span class="n">phenopacket_dir</span><span class="p">)</span><span class="o">.</span><span class="n">merge_variant_results</span><span class="p">(</span><span class="n">ranked_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
     <span class="n">_write_variant_result</span><span class="p">(</span><span class="n">classified_results</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3135,7 +3083,26 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/post_processing/post_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
@@ -3144,28 +3111,7 @@ Args:
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
+<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_dataframe</span><span class="p">(</span><span class="n">ResultSchema</span><span class="o">.</span><span class="n">DISEASE_RESULT_SCHEMA</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_disease_result</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">sort_order</span><span class="p">:</span> <span class="n">SortOrder</span><span class="p">,</span>
@@ -3182,9 +3128,7 @@ Args:
 <span class="sd">        result_path (Path): Path to the tool-specific result file.</span>
 <span class="sd">        phenopacket_dir (Path): Path to the Phenopacket directory</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;pheval_disease_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-disease_result.parquet&quot;</span>
-    <span class="p">)</span>
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pheval_disease_results/</span><span class="si">{</span><span class="n">result_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-disease_result.parquet&quot;</span><span class="p">)</span>
     <span class="n">create_empty_pheval_result</span><span class="p">(</span>
         <span class="n">phenopacket_dir</span><span class="p">,</span>
         <span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;pheval_disease_results&quot;</span><span class="p">),</span>
