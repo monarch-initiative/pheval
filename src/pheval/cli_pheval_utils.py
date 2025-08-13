@@ -394,8 +394,15 @@ def benchmark(
     This is the path where the phenotypic database folder will be written out.""",
     type=Path,
 )
+@click.option(
+    "--h2-jar",
+    required=True,
+    metavar="h2-jar",
+    help="""H2 JAR file. JAR required to run H2 Database. e.g h2.jar""",
+    type=Path,
+)
 def semsim_to_exomiserdb_command(
-    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path
+    input_file: Path, object_prefix: str, subject_prefix: str, db_path: Path, h2_jar: Path
 ):
     """ingests semsim file into exomiser phenotypic database
 
@@ -404,8 +411,9 @@ def semsim_to_exomiserdb_command(
         object_prefix (str): object prefix. e.g. MP
         subject_prefix (str): subject prefix e.g HP
         db_path (Path): Exomiser Phenotypic Database Folder Path. (e.g. /exomiser_folder/2209_phenotype/2209_phenotype/)
+        h2_jar (Path): H2 JAR file. JAR required to run H2 Database. e.g h2.jar
     """
-    semsim_to_exomiserdb(input_file, object_prefix, subject_prefix, db_path)
+    semsim_to_exomiserdb(input_file, object_prefix, subject_prefix, db_path, h2_jar)
 
 
 @click.command()
