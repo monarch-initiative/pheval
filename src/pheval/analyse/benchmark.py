@@ -6,7 +6,7 @@ import duckdb
 import polars as pl
 
 from pheval.analyse.benchmark_db_manager import write_table
-from pheval.analyse.benchmark_output_type import BenchmarkOutputType, BenchmarkOutputTypeEnum
+from pheval.analyse.benchmark_output_type import BenchmarkOutputType, BenchmarkOutputTypeEnum, _get_unique_subset
 from pheval.analyse.binary_classification_curves import compute_curves
 from pheval.analyse.binary_classification_stats import compute_confusion_matrix
 from pheval.analyse.generate_plots import generate_plots
@@ -48,7 +48,7 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
             else True
         )
         .sort("rank")
-        .unique(subset=["file_path", *benchmark_type.columns], keep="first")
+        .unique(subset=_get_unique_subset(benchmark_type), keep="first")
     )
 
 
