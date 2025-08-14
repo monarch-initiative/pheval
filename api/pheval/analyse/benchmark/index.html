@@ -1646,7 +1646,7 @@ Returns:
             <span class="k">else</span> <span class="kc">True</span>
         <span class="p">)</span>
         <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">_get_unique_subset</span><span class="p">(</span><span class="n">benchmark_type</span><span class="p">),</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
