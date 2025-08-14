@@ -42,3 +42,12 @@ class BenchmarkOutputTypeEnum(Enum):
         ["disease_identifier", "mondo_identifier"],
         "pheval_disease_results",
     )
+
+
+def _get_unique_subset(benchmark_type: BenchmarkOutputType) -> list[str]:
+    """
+    Determine which columns to use for uniqueness in benchmarking results.
+    """
+    if benchmark_type.prioritisation_type_string == "disease":
+        return ["file_path", "mondo_identifier"]
+    return ["file_path", *benchmark_type.columns]
