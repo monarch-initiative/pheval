@@ -1,0 +1,117 @@
+{
+  "id": "cinca_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000988",
+        "label": "Skin rash"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001974",
+        "label": "Leukocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000520",
+        "label": "Proptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001369",
+        "label": "Arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000988",
+        "label": "Skin rash"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607115",
+        "label": "Cinca syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:24:47.461887Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

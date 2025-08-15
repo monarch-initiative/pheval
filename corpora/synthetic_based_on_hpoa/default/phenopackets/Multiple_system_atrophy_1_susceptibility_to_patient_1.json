@@ -1,0 +1,81 @@
+{
+  "id": "multiple_system_atrophy_1,_susceptibility_to",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001347",
+        "label": "Hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000966",
+        "label": "Hypohidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002172",
+        "label": "Postural instability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002542",
+        "label": "Olivopontocerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007911",
+        "label": "Congenital bilateral ptosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:146500",
+        "label": "Multiple system atrophy 1, susceptibility to"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:16:43.536813Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

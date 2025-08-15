@@ -1,0 +1,111 @@
+{
+  "id": "leukoencephalopathy,_progressive,_with_ovarian_failure",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002352",
+        "label": "Leukoencephalopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002376",
+        "label": "Developmental regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003487",
+        "label": "Babinski sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002371",
+        "label": "Loss of speech"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001257",
+        "label": "Spasticity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001324",
+        "label": "Muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001272",
+        "label": "Cerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010993",
+        "label": "Abnormal cerebral subcortex morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003800",
+        "label": "Muscle abnormality related to mitochondrial dysfunction"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615889",
+        "label": "Leukoencephalopathy, progressive, with ovarian failure"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:06:00.060460Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "id": "osteopetrosis,_autosomal_recessive_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001873",
+        "label": "Thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002756",
+        "label": "Pathologic fracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000618",
+        "label": "Blindness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025435",
+        "label": "Increased circulating lactate dehydrogenase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002812",
+        "label": "Coxa vara"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002901",
+        "label": "Hypocalcemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000670",
+        "label": "Carious teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011316",
+        "label": "Left unicoronal synostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010682",
+        "label": "Elevated placental alkaline phosphatase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005477",
+        "label": "Progressive sclerosis of skull base"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040069",
+        "label": "Abnormal lower limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000597",
+        "label": "Ophthalmoparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001334",
+        "label": "Communicating hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005450",
+        "label": "Calvarial osteosclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011001",
+        "label": "Increased bone mineral density"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005490",
+        "label": "Postnatal macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004618",
+        "label": "Sandwich appearance of vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000944",
+        "label": "Abnormal metaphysis morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:259700",
+        "label": "Osteopetrosis, autosomal recessive 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:34:29.655356Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

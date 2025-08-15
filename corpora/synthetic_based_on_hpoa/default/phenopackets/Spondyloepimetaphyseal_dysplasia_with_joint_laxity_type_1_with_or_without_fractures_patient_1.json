@@ -1,0 +1,140 @@
+{
+  "id": "spondyloepimetaphyseal_dysplasia_with_joint_laxity,_type_1,_with_or_without_fractures",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000904",
+        "label": "Flaring of rib cage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008828",
+        "label": "Delayed proximal femoral epiphyseal ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000887",
+        "label": "Cupped ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001822",
+        "label": "Hallux valgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001840",
+        "label": "Metatarsus adductus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006487",
+        "label": "Bowing of the long bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000300",
+        "label": "Oval face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000878",
+        "label": "11 pairs of ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002869",
+        "label": "Flared iliac wing"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:271640",
+        "label": "Spondyloepimetaphyseal dysplasia with joint laxity, type 1, with or without fractures"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:56:41.012084Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

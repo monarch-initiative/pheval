@@ -1,0 +1,81 @@
+{
+  "id": "neuropathy,_hereditary_sensory,_type_id",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002936",
+        "label": "Distal sensory impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003409",
+        "label": "Distal sensory impairment of all modalities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008404",
+        "label": "Nail dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001347",
+        "label": "Hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001761",
+        "label": "Pes cavus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009830",
+        "label": "Peripheral neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003477",
+        "label": "Peripheral axonal neuropathy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613708",
+        "label": "Neuropathy, hereditary sensory, type ID"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:08:28.871307Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

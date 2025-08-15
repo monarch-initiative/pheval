@@ -1,0 +1,123 @@
+{
+  "id": "pseudoxanthoma_elasticum,_forme_fruste",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002239",
+        "label": "Gastrointestinal hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000592",
+        "label": "Blue sclerae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005462",
+        "label": "Calcification of falx cerebri"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001342",
+        "label": "Cerebral hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000766",
+        "label": "Abnormal sternum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002634",
+        "label": "Arteriosclerosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008458",
+        "label": "Progressive congenital scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012457",
+        "label": "Medial calcification of medium-sized arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008453",
+        "label": "Congenital kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004966",
+        "label": "Medial calcification of large arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025581",
+        "label": "Foveal hemorrhage"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:177850",
+        "label": "Pseudoxanthoma elasticum, forme fruste"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:44:23.024360Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

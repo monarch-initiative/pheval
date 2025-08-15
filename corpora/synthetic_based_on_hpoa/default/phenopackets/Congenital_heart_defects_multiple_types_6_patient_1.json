@@ -1,0 +1,69 @@
+{
+  "id": "congenital_heart_defects,_multiple_types,_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001674",
+        "label": "Complete atrioventricular canal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001680",
+        "label": "Coarctation of aorta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005160",
+        "label": "Total anomalous pulmonary venous return"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011654",
+        "label": "Double outlet right ventricle with non-committed ventricular septal defect without pulmonary stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030872",
+        "label": "Abnormal cardiac ventricular function"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613854",
+        "label": "Congenital heart defects, multiple types, 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:08:54.642466Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

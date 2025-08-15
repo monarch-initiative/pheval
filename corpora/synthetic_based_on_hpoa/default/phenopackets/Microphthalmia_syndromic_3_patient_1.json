@@ -1,0 +1,159 @@
+{
+  "id": "microphthalmia,_syndromic_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000528",
+        "label": "Anophthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012521",
+        "label": "Optic nerve aplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008619",
+        "label": "Bilateral sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001328",
+        "label": "Specific learning disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003316",
+        "label": "Butterfly vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000609",
+        "label": "Optic nerve hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008417",
+        "label": "Vertebral hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002948",
+        "label": "Vertebral fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001274",
+        "label": "Agenesis of corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000589",
+        "label": "Coloboma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002079",
+        "label": "Hypoplasia of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000902",
+        "label": "Rib fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000047",
+        "label": "Hypospadias"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000878",
+        "label": "11 pairs of ribs"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:206900",
+        "label": "Microphthalmia, syndromic 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:07:29.697688Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "id": "immunodeficiency_49",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0200006",
+        "label": "Slanting of the palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012443",
+        "label": "Abnormal brain morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009889",
+        "label": "Localized hirsutism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410378",
+        "label": "Decreased proportion of naive CD4 T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006887",
+        "label": "Intellectual disability, progressive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040088",
+        "label": "Abnormal lymphocyte count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010866",
+        "label": "Abdominal wall defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031545",
+        "label": "Abnormally low T cell receptor excision circle level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003347",
+        "label": "Impaired lymphocyte transformation with phytohemagglutinin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001338",
+        "label": "Partial agenesis of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100021",
+        "label": "Cerebral palsy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004969",
+        "label": "Peripheral pulmonary artery stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003397",
+        "label": "Generalized hypotonia due to defect at the neuromuscular junction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011123",
+        "label": "Inflammatory abnormality of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000695",
+        "label": "Natal tooth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000322",
+        "label": "Short philtrum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617237",
+        "label": "Immunodeficiency 49"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:41:11.801353Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

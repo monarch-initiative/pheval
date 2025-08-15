@@ -1,0 +1,105 @@
+{
+  "id": "peroxisomal_fatty_acyl-coa_reductase_1_disorder",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002188",
+        "label": "Delayed CNS myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002376",
+        "label": "Developmental regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002059",
+        "label": "Cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001257",
+        "label": "Spasticity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001285",
+        "label": "Spastic tetraparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616154",
+        "label": "Peroxisomal fatty acyl-CoA reductase 1 disorder"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:26:36.603660Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

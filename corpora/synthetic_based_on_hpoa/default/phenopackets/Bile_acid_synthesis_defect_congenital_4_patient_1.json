@@ -1,0 +1,87 @@
+{
+  "id": "bile_acid_synthesis_defect,_congenital,_4",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0200084",
+        "label": "Giant cell hepatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003645",
+        "label": "Prolonged partial thromboplastin time"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002904",
+        "label": "Hyperbilirubinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031956",
+        "label": "Elevated circulating aspartate aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030985",
+        "label": "Decreased serum bile acid concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008151",
+        "label": "Prolonged prothrombin time"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006564",
+        "label": "Fluctuating hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012053",
+        "label": "Decreased circulating calcifediol concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:214950",
+        "label": "Bile acid synthesis defect, congenital, 4"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:09:08.863117Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

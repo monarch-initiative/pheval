@@ -1,0 +1,87 @@
+{
+  "id": "leukodystrophy,_hypomyelinating,_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002059",
+        "label": "Cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031828",
+        "label": "Abnormal superficial reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002131",
+        "label": "Episodic ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012799",
+        "label": "Unilateral facial palsy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031960",
+        "label": "Arm dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009830",
+        "label": "Peripheral neuropathy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608804",
+        "label": "Leukodystrophy, hypomyelinating, 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:10:21.352017Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

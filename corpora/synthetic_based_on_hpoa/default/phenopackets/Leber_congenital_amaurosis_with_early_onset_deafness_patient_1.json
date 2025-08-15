@@ -1,0 +1,74 @@
+{
+  "id": "leber_congenital_amaurosis_with_early-onset_deafness",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P11Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500087",
+        "label": "Peripapillary atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030691",
+        "label": "Divergence nystagmus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617879",
+        "label": "Leber congenital amaurosis with early-onset deafness"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:19:43.519596Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

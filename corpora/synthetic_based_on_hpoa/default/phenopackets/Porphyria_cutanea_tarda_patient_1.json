@@ -1,0 +1,81 @@
+{
+  "id": "porphyria_cutanea_tarda",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000992",
+        "label": "Cutaneous photosensitivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001394",
+        "label": "Cirrhosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010473",
+        "label": "Porphyrinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001030",
+        "label": "Fragile skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034715",
+        "label": "Reduced uroporphyrinogen decarboxylase activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001402",
+        "label": "Hepatocellular carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005586",
+        "label": "Hyperpigmentation in sun-exposed areas"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:176100",
+        "label": "Porphyria cutanea tarda"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:38:17.616147Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

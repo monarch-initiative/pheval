@@ -1,0 +1,218 @@
+{
+  "id": "pierson_syndrome",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P0Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008056",
+        "label": "Aplasia/Hypoplasia affecting the eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007774",
+        "label": "Hypoplasia of the ciliary body"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008360",
+        "label": "Neonatal hypoproteinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008677",
+        "label": "Congenital nephrotic syndrome"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007980",
+        "label": "Absent retinal pigment epithelium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012381",
+        "label": "Delayed self-feeding during toddler years"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002181",
+        "label": "Cerebral edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008345",
+        "label": "Hypoplasia of the iris dilator muscle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032988",
+        "label": "Persistent head lag"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003774",
+        "label": "Stage 5 chronic kidney disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000253",
+        "label": "Progressive microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001104",
+        "label": "Macular hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000615",
+        "label": "Abnormal pupil morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008677",
+        "label": "Congenital nephrotic syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001142",
+        "label": "Lenticonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100547",
+        "label": "Abnormal forebrain morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000095",
+        "label": "Abnormal renal glomerulus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033130",
+        "label": "Abnormal renal echogenicity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004329",
+        "label": "Abnormal posterior eye segment morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008046",
+        "label": "Abnormal retinal vascular morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:609049",
+        "label": "Pierson syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:31:39.644005Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

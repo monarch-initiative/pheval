@@ -1,0 +1,141 @@
+{
+  "id": "long-olsen-distelmaier_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001943",
+        "label": "Hypoglycemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012666",
+        "label": "Severely reduced left ventricular ejection fraction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031964",
+        "label": "Elevated circulating alanine aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004482",
+        "label": "Relative macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200006",
+        "label": "Slanting of the palpebral fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000357",
+        "label": "Abnormal location of ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012372",
+        "label": "Abnormal eye morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031956",
+        "label": "Elevated circulating aspartate aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002536",
+        "label": "Abnormal cortical gyration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0034197",
+          "label": "Third trimester onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008866",
+        "label": "Failure to thrive secondary to recurrent infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620609",
+        "label": "Long-Olsen-Distelmaier syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:36:24.695603Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

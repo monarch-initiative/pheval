@@ -1,0 +1,117 @@
+{
+  "id": "mohr_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000915",
+        "label": "Pectus excavatum of inferior sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002705",
+        "label": "High, narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006136",
+        "label": "Bilateral postaxial polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000272",
+        "label": "Malar flattening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010181",
+        "label": "Duplication of phalanx of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008929",
+        "label": "Asymmetric short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011046",
+        "label": "Agenesis of primary maxillary central incisor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004279",
+        "label": "Short palm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002132",
+        "label": "Porencephalic cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005042",
+        "label": "Irregular, rachitic-like metaphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000506",
+        "label": "Telecanthus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001233",
+        "label": "2-3 finger syndactyly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:252100",
+        "label": "Mohr syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:08:02.448004Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

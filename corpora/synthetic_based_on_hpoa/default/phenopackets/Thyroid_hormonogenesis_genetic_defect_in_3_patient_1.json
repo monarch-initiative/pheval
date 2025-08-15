@@ -1,0 +1,51 @@
+{
+  "id": "thyroid_hormonogenesis,_genetic_defect_in,_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012559",
+        "label": "Increased T3/T4 ratio"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:274700",
+        "label": "Thyroid hormonogenesis, genetic defect in, 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:29:28.457170Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

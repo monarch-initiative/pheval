@@ -1,0 +1,147 @@
+{
+  "id": "developmental_and_epileptic_encephalopathy_47",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0040195",
+        "label": "Decreased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002505",
+        "label": "Loss of ambulation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100275",
+        "label": "Diffuse cerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000713",
+        "label": "Agitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002521",
+        "label": "Hypsarrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003808",
+        "label": "Abnormal muscle tone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012450",
+        "label": "Chronic constipation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002070",
+        "label": "Limb ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032662",
+        "label": "Focal-onset seizure evolving into bilateral convulsive status epilepticus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020219",
+        "label": "Motor seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002187",
+        "label": "Intellectual disability, profound"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033044",
+        "label": "Motor regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500087",
+        "label": "Peripapillary atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011191",
+        "label": "Unilateral multifocal epileptiform discharges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008046",
+        "label": "Abnormal retinal vascular morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617166",
+        "label": "Developmental and epileptic encephalopathy 47"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:45:39.886358Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

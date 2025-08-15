@@ -1,0 +1,165 @@
+{
+  "id": "chilton-okur-chung_neurodevelopmental_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000010",
+        "label": "Recurrent urinary tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009381",
+        "label": "Short finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002572",
+        "label": "Episodic vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032592",
+        "label": "Aplasia of the right hemidiaphragm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004768",
+        "label": "Sparse anterior scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012741",
+        "label": "Unilateral cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004689",
+        "label": "Short fourth metatarsal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011327",
+        "label": "Posterior plagiocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001989",
+        "label": "Fetal akinesia sequence"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011461",
+          "label": "Fetal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001182",
+        "label": "Tapered finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005930",
+        "label": "Abnormal epiphysis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007068",
+        "label": "Inferior cerebellar vermis hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001595",
+        "label": "Abnormal hair morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000041",
+        "label": "Chordee"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619841",
+        "label": "Chilton-Okur-Chung neurodevelopmental syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:07:02.467128Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

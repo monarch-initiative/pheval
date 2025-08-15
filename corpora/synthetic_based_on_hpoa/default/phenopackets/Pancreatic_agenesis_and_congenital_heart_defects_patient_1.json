@@ -1,0 +1,129 @@
+{
+  "id": "pancreatic_agenesis_and_congenital_heart_defects",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001660",
+        "label": "Truncus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004415",
+        "label": "Pulmonary artery stenosis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001655",
+        "label": "Patent foramen ovale"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001643",
+        "label": "Patent ductus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001643",
+        "label": "Patent ductus arteriosus"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000819",
+        "label": "Diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003076",
+        "label": "Glycosuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000891",
+        "label": "Cervical ribs"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001507",
+        "label": "Growth abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:600001",
+        "label": "Pancreatic agenesis and congenital heart defects"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:21:58.125814Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

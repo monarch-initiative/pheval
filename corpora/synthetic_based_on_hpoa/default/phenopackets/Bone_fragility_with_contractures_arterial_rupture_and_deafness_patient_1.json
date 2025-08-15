@@ -1,0 +1,81 @@
+{
+  "id": "bone_fragility_with_contractures,_arterial_rupture,_and_deafness",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002987",
+        "label": "Elbow flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009110",
+        "label": "Diaphragmatic eventration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002132",
+        "label": "Porencephalic cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006184",
+        "label": "Decreased palmar creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001999",
+        "label": "Abnormal facial shape"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000272",
+        "label": "Malar flattening"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612394",
+        "label": "Bone fragility with contractures, arterial rupture, and deafness"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:16:53.573790Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

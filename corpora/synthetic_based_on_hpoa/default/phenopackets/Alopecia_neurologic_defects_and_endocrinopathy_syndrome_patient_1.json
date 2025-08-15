@@ -1,0 +1,81 @@
+{
+  "id": "alopecia,_neurologic_defects,_and_endocrinopathy_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003758",
+        "label": "Reduced subcutaneous adipose tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000044",
+        "label": "Hypogonadotropic hypogonadism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007299",
+        "label": "Dysfunction of lateral corticospinal tracts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001507",
+        "label": "Growth abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410279",
+        "label": "Atrophic pituitary gland"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000846",
+        "label": "Adrenal insufficiency"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612079",
+        "label": "Alopecia, neurologic defects, and endocrinopathy syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:36:42.408620Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "id": "mitochondrial_dna_depletion_syndrome_1_(mngie_type)",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0034277",
+        "label": "Elevated circulating deoxyuridine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012718",
+        "label": "Abnormal gastrointestinal tract morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002024",
+        "label": "Malabsorption"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002253",
+        "label": "Colonic diverticula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031371",
+        "label": "Rectal perforation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007141",
+        "label": "Sensorimotor neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034276",
+        "label": "Elevated circulating thymidine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033842",
+        "label": "Early satiety"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000597",
+        "label": "Ophthalmoparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001533",
+        "label": "Slender build"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008963",
+        "label": "Tibialis muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006844",
+        "label": "Absent patellar reflexes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001941",
+        "label": "Acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003688",
+        "label": "Cytochrome C oxidase-negative muscle fibers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:603041",
+        "label": "Mitochondrial DNA depletion syndrome 1 (MNGIE type)"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:50:17.940998Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

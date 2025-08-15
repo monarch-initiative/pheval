@@ -1,0 +1,111 @@
+{
+  "id": "microcephaly,_postnatal_progressive,_with_seizures_and_brain_atrophy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002188",
+        "label": "Delayed CNS myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002506",
+        "label": "Diffuse cerebral atrophy"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011448",
+        "label": "Ankle clonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002396",
+        "label": "Cogwheel rigidity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007024",
+        "label": "Pseudobulbar paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002365",
+        "label": "Hypoplasia of the brainstem"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000253",
+        "label": "Progressive microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001525",
+        "label": "Severe failure to thrive"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613668",
+        "label": "Microcephaly, postnatal progressive, with seizures and brain atrophy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:57:05.108274Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

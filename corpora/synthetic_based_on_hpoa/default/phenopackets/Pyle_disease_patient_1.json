@@ -1,0 +1,99 @@
+{
+  "id": "pyle_disease",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001377",
+        "label": "Limited elbow extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000670",
+        "label": "Carious teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002753",
+        "label": "Thin bony cortex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004349",
+        "label": "Reduced bone mineral density"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002967",
+        "label": "Cubitus valgus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002857",
+        "label": "Genu valgum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000303",
+        "label": "Mandibular prognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:265900",
+        "label": "Pyle disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:03:07.839155Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

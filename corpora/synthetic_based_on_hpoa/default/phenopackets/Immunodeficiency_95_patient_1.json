@@ -1,0 +1,57 @@
+{
+  "id": "immunodeficiency_95",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0033166",
+        "label": "Recurrent viral upper respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032297",
+        "label": "Increased circulating IgG3 level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032324",
+        "label": "Non-periodic recurrent fever"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619773",
+        "label": "Immunodeficiency 95"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:23:28.934030Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

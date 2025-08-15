@@ -1,0 +1,129 @@
+{
+  "id": "autoinflammatory_syndrome,_familial,_x-linked,_behcet-like_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0040218",
+        "label": "Reduced natural killer cell count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030374",
+        "label": "Decreased proportion of memory B cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030783",
+        "label": "Increased circulating interleukin 6 concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001369",
+        "label": "Arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002205",
+        "label": "Recurrent respiratory infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002027",
+        "label": "Abdominal pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033700",
+        "label": "Papulovesicular eruption"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032324",
+        "label": "Non-periodic recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005231",
+        "label": "Chronic gastritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001891",
+        "label": "Iron deficiency anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410152",
+        "label": "Eosinophilic microabscess formation in the esophagus"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:301074",
+        "label": "Autoinflammatory syndrome, familial, X-linked, Behcet-like 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:06:41.641822Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "myopathy,_distal,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003805",
+        "label": "Rimmed vacuoles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002938",
+        "label": "Lumbar hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008331",
+        "label": "Elevated creatine kinase after exercise"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031295",
+        "label": "Left atrial enlargement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001324",
+        "label": "Muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011916",
+        "label": "Toe extensor amyotrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008180",
+        "label": "Mildly elevated creatine kinase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003690",
+        "label": "Limb muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009031",
+        "label": "Amyotrophy of ankle musculature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009077",
+        "label": "Weakness of long finger extensor muscles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007188",
+        "label": "Congenital facial diplegia"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011805",
+        "label": "Abnormal skeletal muscle morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:160500",
+        "label": "Myopathy, distal, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:26:58.728512Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

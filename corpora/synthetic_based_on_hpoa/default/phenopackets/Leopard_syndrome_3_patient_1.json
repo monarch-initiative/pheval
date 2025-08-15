@@ -1,0 +1,110 @@
+{
+  "id": "leopard_syndrome_3",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P14Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031093",
+        "label": "Abnormal breast morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030939",
+        "label": "Palpebral thickening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002162",
+        "label": "Low posterior hairline"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001054",
+        "label": "Numerous nevi"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001003",
+        "label": "Multiple lentigines"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000341",
+        "label": "Narrow forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000357",
+        "label": "Abnormal location of ears"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613707",
+        "label": "Leopard syndrome 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:16:08.775128Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "id": "microcephaly_with_or_without_chorioretinopathy,_lymphedema,_or_mental_retardation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007018",
+        "label": "Attention deficit hyperactivity disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000540",
+        "label": "Hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032794",
+        "label": "Myoclonic seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007858",
+        "label": "Chorioretinal lacunae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000179",
+        "label": "Thick lower lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001256",
+        "label": "Intellectual disability, mild"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000482",
+        "label": "Microcornea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000340",
+        "label": "Sloping forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000483",
+        "label": "Astigmatism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009879",
+        "label": "Simplified gyral pattern"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002002",
+        "label": "Deep philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001004",
+        "label": "Lymphedema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500041",
+        "label": "Myopic astigmatism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000541",
+        "label": "Retinal detachment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008052",
+        "label": "Retinal fold"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002360",
+        "label": "Sleep abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007731",
+        "label": "Chorioretinal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:152950",
+        "label": "Microcephaly with or without chorioretinopathy, lymphedema, or mental retardation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:18:13.530949Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

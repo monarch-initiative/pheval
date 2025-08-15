@@ -1,0 +1,87 @@
+{
+  "id": "watson_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000358",
+        "label": "Posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007565",
+        "label": "Multiple cafe-au-lait spots"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000357",
+        "label": "Abnormal location of ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001480",
+        "label": "Freckling"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007576",
+        "label": "Palmar neurofibroma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004482",
+        "label": "Relative macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:193520",
+        "label": "Watson syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:38:36.085741Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

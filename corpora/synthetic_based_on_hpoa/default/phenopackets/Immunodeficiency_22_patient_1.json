@@ -1,0 +1,99 @@
+{
+  "id": "immunodeficiency_22",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009098",
+        "label": "Chronic oral candidiasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002254",
+        "label": "Intermittent diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410241",
+        "label": "Abnormal circulating IgE level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032134",
+        "label": "Chronic decreased circulating total IgG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030005",
+        "label": "Capillary leak"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034104",
+        "label": "Anti-neutrophil elastase antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011875",
+        "label": "Abnormal platelet morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615758",
+        "label": "Immunodeficiency 22"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:03:10.724472Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

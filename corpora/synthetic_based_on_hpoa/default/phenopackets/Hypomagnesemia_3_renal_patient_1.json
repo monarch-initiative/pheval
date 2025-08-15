@@ -1,0 +1,153 @@
+{
+  "id": "hypomagnesemia_3,_renal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100586",
+        "label": "Sterile pyuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004921",
+        "label": "Abnormal magnesium concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100531",
+        "label": "Wind-swept deformity of the knees"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010041",
+        "label": "Short 3rd metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002574",
+        "label": "Episodic abdominal pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002157",
+        "label": "Azotemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000705",
+        "label": "Amelogenesis imperfecta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006282",
+        "label": "Generalized hypoplasia of dental enamel"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025089",
+        "label": "Feculent vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000103",
+        "label": "Polyuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033354",
+        "label": "Abnormal urine metabolite level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012052",
+        "label": "Low serum calcitriol"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012637",
+        "label": "Renal calcium wasting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012608",
+        "label": "Hypermagnesiuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100530",
+        "label": "Abnormal circulating calcium-phosphate regulating hormone concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:248250",
+        "label": "Hypomagnesemia 3, renal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:18:06.229596Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
