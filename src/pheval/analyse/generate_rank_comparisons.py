@@ -1,7 +1,7 @@
 from itertools import combinations
 
 import polars as pl
-from duckdb.duckdb import DuckDBPyConnection
+from duckdb import DuckDBPyConnection
 
 from pheval.analyse.benchmark_db_manager import write_table
 from pheval.analyse.benchmark_output_type import BenchmarkOutputType
