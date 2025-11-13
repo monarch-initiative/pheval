@@ -55,6 +55,8 @@ uv sync
 source .venv/bin/activate
 ```
 
+> **_CAUTION:_**  Versions prior to 0.7.0 used Poetry for dependency management. From 0.7.0 onward, the project uses uv to create virtual environments, install dependencies, and build the package.
+
 #### Run tox to see if the setup works
 
 ```
