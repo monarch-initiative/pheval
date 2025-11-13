@@ -23,7 +23,8 @@ class PhevalClassResolver(ClassResolver):
     @staticmethod
     def _from_entrypoint_custom(group: str) -> set[X]:
         elements: set[X] = set()
-        for entry in entry_points(group=group):
+        eps = entry_points()
+        for entry in eps.select(group=group):
             try:
                 element = entry.load()
                 logger.info(f"Loaded {entry.name} correctly")
