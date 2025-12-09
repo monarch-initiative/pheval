@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 import polars as pl
-from duckdb.duckdb import DuckDBPyConnection
+from duckdb import DuckDBPyConnection
 
 from pheval.analyse.benchmark_output_type import BenchmarkOutputTypeEnum
 from pheval.analyse.generate_rank_comparisons import calculate_rank_changes

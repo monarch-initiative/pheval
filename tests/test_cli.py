@@ -42,9 +42,7 @@ class TestCommandLineInterface(unittest.TestCase):
                 "1.0.0",
             ],
         )
-        err = result.stderr
         self.assertEqual(None, result.exception)
-        logging.info("ERR=%s", err)
         exit_code = result.exit_code
         self.assertEqual(0, exit_code)
         self.assertTrue(Path(self.test_dir).joinpath("pheval_gene_results").exists())
@@ -70,9 +68,7 @@ class TestCommandLineInterface(unittest.TestCase):
                 "heatmap",
             ],
         )
-        err = result.stderr
         self.assertEqual(None, result.exception)
-        logging.info("ERR=%s", err)
         self.assertEqual(0, result.exit_code)
 
     def test_semsim_heatmap_invalid_col(self):
@@ -92,7 +88,7 @@ class TestCommandLineInterface(unittest.TestCase):
                 "heatmap",
             ],
         )
-        self.assertIn("Invalid value for '--score-column'", str(result.stderr))
+        self.assertIn("Invalid value for '--score-column'", str(result.output))
         logging.info("ERR=%s", result.exception)
         self.assertEqual(2, result.exit_code)
 
