@@ -4,6 +4,7 @@ from typing import ClassVar
 
 import duckdb
 import matplotlib
+import matplotlib.colors as mcolors
 import polars as pl
 import seaborn as sns
 from matplotlib import pyplot as plt
@@ -56,6 +57,21 @@ class PlotGenerator:
         self.benchmark_name = benchmark_name
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
+
+    def get_palette(self, n_colors: int) -> list[str]:
+        """
+        Generates a palette of colour hex codes with the specified number of colors.
+
+        Args:
+            n_colors (int): The number of colour hex codes to generate.
+
+        Returns:
+            list[str]: A list containing the generated colour hex codes.
+        """
+        if n_colors <= len(self.palette_hex_codes):
+            return self.palette_hex_codes
+        cmap = mcolors.LinearSegmentedColormap.from_list("pheval", self.palette_hex_codes, N=n_colors)
+        return [mcolors.rgb2hex(cmap(i)) for i in range(n_colors)]
 
     @staticmethod
     def _generate_stacked_data(benchmarking_stats_df: pl.DataFrame) -> pl.DataFrame:
@@ -134,7 +150,7 @@ class PlotGenerator:
         mrr_df = self._extract_mrr_data(benchmarking_results_df)
         mrr_df.to_pandas().set_index("Run").plot(
             kind="bar",
-            color=self.palette_hex_codes,
+            color=self.get_palette(len(mrr_df)),
             ylabel=f"{benchmark_output_type.prioritisation_type_string.capitalize()} mean reciprocal rank",
             legend=False,
             edgecolor="white",
@@ -178,7 +194,7 @@ class PlotGenerator:
             x="Rank",
             y="Percentage",
             hue="Run",
-            palette=self.palette_hex_codes,
+            palette=self.get_palette(stats_df["Run"].nunique()),
             edgecolor="white",
             legend=False,
         ).set(xlabel="Rank", ylabel=benchmark_output_type.y_label)
@@ -233,6 +249,7 @@ class PlotGenerator:
         Args:
         """
         plt.clf()
+        palette = self.get_palette(len(curves))
         for i, row in enumerate(curves.iter_rows(named=True)):
             run_identifier = row["run_identifier"]
             fpr = row["fpr"]
@@ -242,7 +259,7 @@ class PlotGenerator:
                 fpr,
                 tpr,
                 label=f"{run_identifier} ROC Curve (AUC = {roc_auc:.2f})",
-                color=self.palette_hex_codes[i],
+                color=palette[i],
             )
         plt.plot([0, 1], [0, 1], linestyle="--", color="gray")
         plt.xlabel("False Positive Rate")
@@ -266,6 +283,7 @@ class PlotGenerator:
         """
         plt.clf()
         plt.figure()
+        palette = self.get_palette(len(curves))
         for i, row in enumerate(curves.iter_rows(named=True)):
             run_identifier = row["run_identifier"]
             precision = row["precision"]
@@ -275,7 +293,7 @@ class PlotGenerator:
                 recall,
                 precision,
                 label=f"{run_identifier} Precision-Recall Curve (AUC = {pr_auc:.2f})",
-                color=self.palette_hex_codes[i],
+                color=palette[i],
             )
         plt.plot([0, 1], [0, 1], linestyle="--", color="gray")
         plt.xlabel("Recall")
