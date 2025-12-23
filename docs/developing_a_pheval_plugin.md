@@ -54,8 +54,10 @@ uv sync
 
 source .venv/bin/activate
 ```
-
-> **_CAUTION:_**  Versions prior to 0.7.0 used Poetry for dependency management. From 0.7.0 onward, the project uses uv to create virtual environments, install dependencies, and build the package.
+> [!NOTE]
+> The PhEval runner template uses `uv` by default, but this is **not required**.  
+> Any Python packaging or dependency manager (e.g. Poetry) may be used.  
+> This only affects how the plugin is installed — PhEval only requires a valid `pheval.plugins` entry point.
 
 #### Run tox to see if the setup works
 
