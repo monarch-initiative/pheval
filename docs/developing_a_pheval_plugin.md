@@ -18,7 +18,7 @@ The plugin goal is to be flexible through custom runner implementations. This pl
 
 ## Step-by-Step Plugin Development Process
 
-The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [cookiecutter](https://github.com/monarch-initiative/pheval-runner-template), and it uses [MkDocs](https://mkdocstrings.github.io), [tox](https://tox.wiki/en/latest/) and [poetry](https://python-poetry.org) as core dependencies.
+The plugin structure is derived from a [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template, [cookiecutter](https://github.com/monarch-initiative/pheval-runner-template), and it uses [MkDocs](https://mkdocstrings.github.io), [tox](https://tox.wiki/en/latest/) and [uv](https://docs.astral.sh/uv/) as core dependencies.
 This allows PhEval extensibility to be standardised in terms of documentation and dependency management.
 
 ### 1. Cookiecutter scaffold
@@ -41,22 +41,28 @@ cruft create https://github.com/monarch-initiative/pheval-runner-template
 
 ### 2. Further setup
 
-#### Install poetry if you haven't already.
+#### Install uv if you haven't already.
 
 ```
-pip install poetry
+pip install uv
 ```
 
 #### Install dependencies
 
 ```
-poetry install
+uv sync
+
+source .venv/bin/activate
 ```
+> [!NOTE]
+> The PhEval runner template uses `uv` by default, but this is **not required**.  
+> Any Python packaging or dependency manager (e.g. Poetry) may be used.  
+> This only affects how the plugin is installed — PhEval only requires a valid `pheval.plugins` entry point.
 
 #### Run tox to see if the setup works
 
 ```
-poetry run tox
+uv run tox
 ```
 
 ### 3. Implement PhEval Custom Runner
@@ -100,7 +106,8 @@ class CustomRunner(PhEvalRunner):
 The Cookiecutter will automatically populate the plugins section in the `pyproject.toml` file. If you decide to modify the path of `runner.py` or rename its class, be sure to update the corresponding entries in this section accordingly:
 
 ```toml
-[tool.poetry.plugins."pheval.plugins"]
+
+[project.entry-points."pheval.plugins"]
 customrunner = "pheval_plugin_example.runner:CustomRunner"
 ```
 
@@ -354,7 +361,7 @@ class CustomPhevalRunner(PhEvalRunner):
 To update your custom pheval runner implementation, you must first install the package
 
 ```
-poetry install
+uv sync
 ```
 
 Now you have to be able to run PhEval passing your custom runner as parameter. e.g.,
