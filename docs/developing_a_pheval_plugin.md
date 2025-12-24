@@ -54,7 +54,8 @@ uv sync
 
 source .venv/bin/activate
 ```
-> [!NOTE]
+> **Note:**
+> 
 > The PhEval runner template uses `uv` by default, but this is **not required**.  
 > Any Python packaging or dependency manager (e.g. Poetry) may be used.  
 > This only affects how the plugin is installed — PhEval only requires a valid `pheval.plugins` entry point.
