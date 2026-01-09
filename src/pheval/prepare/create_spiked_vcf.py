@@ -505,7 +505,7 @@ def generate_spiked_vcf_file(
     vcf_assembly, spiked_vcf = spike_vcf_contents(
         phenopacket, phenopacket_path, hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir
     )
-    spiked_vcf_path = output_dir.joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
+    spiked_vcf_path = output_dir.absolute().joinpath(phenopacket_path.name.replace(".json", ".vcf.gz"))
     VcfWriter(spiked_vcf, spiked_vcf_path).write_vcf_file()
     return File(
         uri=urllib.parse.unquote(spiked_vcf_path.as_uri()),
