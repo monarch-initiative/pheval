@@ -47,12 +47,11 @@ def _enforce_bool_fields(cfg: dict) -> None:
             dictionary or if the value of a boolean field is not a boolean.
     """
     for key in _BOOL_FIELDS:
-        if key not in cfg:
-            raise ValueError(f"Missing required field '{key}' in config.yaml.")
-        if type(cfg[key]) is not bool: #noqa: E721
+        val = cfg[key]
+        if not isinstance(val, bool):
             raise ValueError(
-                f"Invalid value for '{key}': {cfg[key]!r}. "
-                f"Use YAML booleans 'true' or 'false' (lowercase)."
+                f"Invalid value for '{key}': {val!r}. "
+                f"Expected a boolean true/false (do not quote)."
             )
 
 def parse_input_dir_config(input_dir: Path) -> InputDirConfig:
