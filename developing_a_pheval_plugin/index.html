@@ -2622,7 +2622,7 @@ This only affects how the plugin is installed — PhEval only requires a valid <
 <span class="nt">tool_specific_configuration_options</span><span class="p">:</span>
 </code></pre></div>
 <p>The <code>tool_specific_configuration_options</code> is an optional field that can be populated with any variables specific to your runner implementation that is required for the running of your tool.</p>
-<p>All other fields are required to be filled in. The <code>variant_analysis</code>, <code>gene_analysis</code>, and <code>disease_analysis</code> are set as booleans and are for specifying what type of analysis/prioritisation the tool outputs.</p>
+<p>All other fields are required to be filled in. The <code>variant_analysis</code>, <code>gene_analysis</code>, and <code>disease_analysis</code> are set as booleans (<code>false</code> or <code>true</code> and are for specifying what type of analysis/prioritisation the tool outputs.</p>
 <p>To populate the <code>tool_specific_configurations_options</code> with customised data, we suggest using the <code>pydantic</code> package as it can easily parse the data from the yaml structure.</p>
 <p>e.g.,</p>
 <p><em>Define a <code>BaseModel</code> class with the fields that will populate the <code>tool_specific_configuration_options</code></em></p>
