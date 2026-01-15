@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel, field_validator, StrictBool
+from pydantic import BaseModel, StrictBool, field_validator
 
 from pheval.utils.logger import get_logger
 
