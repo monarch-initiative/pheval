@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pheval.prepare.create_spiked_vcf import create_spiked_vcf
 from pheval.prepare.update_phenopacket import create_updated_phenopacket
-from pheval.utils.file_utils import all_files
+from pheval.utils.file_utils import files_with_suffix
 from pheval.utils.logger import get_logger
 from pheval.utils.phenopacket_utils import (
     PhenopacketUtil,
@@ -53,7 +53,7 @@ def prepare_corpus(
     output_dir.joinpath("phenopackets").mkdir(exist_ok=True, parents=True)
     logger.info(f" Created output directory: {output_dir.joinpath('phenopackets')}")
     identifier_map = create_gene_identifier_map()
-    for phenopacket_path in all_files(phenopacket_dir):
+    for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         phenopacket_util = PhenopacketUtil(phenopacket_reader(phenopacket_path))
         if not phenopacket_util.observed_phenotypic_features():
             logger.warning(f"Removed {phenopacket_path.name} from the corpus due to no observed phenotypic features.")
