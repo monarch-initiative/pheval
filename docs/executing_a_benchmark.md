@@ -40,17 +40,17 @@ runs:
   - run_identifier: run_identifier_1
     results_dir: /path/to/results_dir_1
     phenopacket_dir: /path/to/phenopacket_dir
-    gene_analysis: True
-    variant_analysis: False
-    disease_analysis: True
+    gene_analysis: true
+    variant_analysis: false
+    disease_analysis: true
     threshold:
     score_order: descending
   - run_identifier: run_identifier_2
     results_dir: /path/to/results_dir_2
     phenopacket_dir: /path/to/phenopacket_dir
-    gene_analysis: True
-    variant_analysis: True
-    disease_analysis: True
+    gene_analysis: true
+    variant_analysis: true
+    disease_analysis: true
     threshold:
     score_order: descending
 plot_customisation:

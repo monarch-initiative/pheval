@@ -166,7 +166,7 @@ tool_specific_configuration_options:
 
 The `tool_specific_configuration_options` is an optional field that can be populated with any variables specific to your runner implementation that is required for the running of your tool.
 
-All other fields are required to be filled in. The `variant_analysis`, `gene_analysis`, and `disease_analysis` are set as booleans and are for specifying what type of analysis/prioritisation the tool outputs.
+All other fields are required to be filled in. The `variant_analysis`, `gene_analysis`, and `disease_analysis` are set as booleans (`false` or `true` and are for specifying what type of analysis/prioritisation the tool outputs.
 
 To populate the `tool_specific_configurations_options` with customised data, we suggest using the `pydantic` package as it can easily parse the data from the yaml structure.
 

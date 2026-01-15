@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, StrictBool, field_validator
 
 from pheval.utils.logger import get_logger
 
@@ -24,9 +24,9 @@ class RunConfig(BaseModel):
     run_identifier: str
     phenopacket_dir: Path
     results_dir: Path
-    gene_analysis: bool
-    variant_analysis: bool
-    disease_analysis: bool
+    gene_analysis: StrictBool
+    variant_analysis: StrictBool
+    disease_analysis: StrictBool
     threshold: float | None
     score_order: str | None
 
