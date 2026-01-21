@@ -102,14 +102,15 @@ def process_stats(
     )
 
 
-def benchmark(config: Config, benchmark_type: BenchmarkOutputType) -> None:
+def benchmark(config: Config, benchmark_type: BenchmarkOutputType, output_dir: Path) -> None:
     """
     Benchmark results for specified runs for a specified prioritisation type for comparison.
     Args:
         config (Config): Configuration for benchmarking.
         benchmark_type (BenchmarkOutputType): Benchmark output type.
+        output_dir (Path): Output directory for benchmarking results.
     """
-    conn = duckdb.connect(f"{config.benchmark_name}.duckdb")
+    conn = duckdb.connect(output_dir.joinpath(f"{config.benchmark_name}.duckdb"))
     stats, curve_results, true_positive_cases = process_stats(config.runs, benchmark_type)
     write_table(conn, stats, f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_summary")
     write_table(
@@ -118,21 +119,23 @@ def benchmark(config: Config, benchmark_type: BenchmarkOutputType) -> None:
         f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
     )
     calculate_rank_changes(conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type)
-    generate_plots(config.benchmark_name, stats, curve_results, benchmark_type, config.plot_customisation)
+    generate_plots(config.benchmark_name, stats, curve_results, benchmark_type, config.plot_customisation, output_dir)
     conn.close()
 
 
-def benchmark_runs(benchmark_config_file: Path) -> None:
+def benchmark_runs(benchmark_config_file: Path, output_dir: Path) -> None:
     """
     Benchmark results for specified runs for comparison.
     Args:
         benchmark_config_file (Path): Path to benchmark config file.
+        output_dir (Path): Output directory for benchmarking results.
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
     logger = get_logger()
     start_time = time.perf_counter()
     logger.info("Initiated benchmarking process.")
     config = parse_run_config(benchmark_config_file)
-    if Path(f"{config.benchmark_name}.duckdb").exists():
+    if Path(output_dir).joinpath(f"{config.benchmark_name}.duckdb").exists():
         logger.error(f"{config.benchmark_name}.duckdb already exists! Exiting.")
         sys.exit(1)
     gene_analysis_runs = [run for run in config.runs if run.gene_analysis]
@@ -147,6 +150,7 @@ def benchmark_runs(benchmark_config_file: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.GENE.value,
+            output_dir
         )
         logger.info("Finished benchmarking for gene results.")
     if variant_analysis_runs:
@@ -158,6 +162,7 @@ def benchmark_runs(benchmark_config_file: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.VARIANT.value,
+            output_dir
         )
         logger.info("Finished benchmarking for variant results.")
     if disease_analysis_runs:
@@ -169,6 +174,7 @@ def benchmark_runs(benchmark_config_file: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.DISEASE.value,
+            output_dir
         )
         logger.info("Finished benchmarking for disease results.")
     logger.info(f"Finished benchmarking! Total time: {time.perf_counter() - start_time:.2f} seconds.")
