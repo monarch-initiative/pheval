@@ -27,27 +27,36 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
     """
     logger = get_logger()
     logger.info(f"Analysing results in {run.results_dir.joinpath(benchmark_type.result_directory)}")
+
+    lf = pl.scan_parquet(
+        run.results_dir.joinpath(benchmark_type.result_directory),
+        include_file_paths="file_path",
+    ).with_columns(
+        pl.col("rank").cast(pl.Int64),
+        pl.col("file_path").str.extract(r"([^/\\]+)$").alias("result_file"),
+        pl.col("true_positive").fill_null(False),
+    )
+
+    if run.threshold is None:
+        passes_threshold = pl.lit(True)
+    else:
+        passes_threshold = (
+            pl.col("score") >= pl.lit(run.threshold)
+            if run.score_order.lower() == "descending"
+            else pl.col("score") <= pl.lit(run.threshold)
+        )
+
+    lf = lf.filter(pl.col("true_positive") | passes_threshold)
+
+    lf = lf.with_columns(
+        pl.when(pl.col("true_positive") & ~passes_threshold)
+        .then(pl.lit(0))
+        .otherwise(pl.col("rank"))
+        .alias("rank")
+    )
+
     return (
-        (
-            pl.scan_parquet(
-                run.results_dir.joinpath(benchmark_type.result_directory),
-                include_file_paths="file_path",
-            ).with_columns(
-                pl.col("rank").cast(pl.Int64),
-                pl.col("file_path").str.extract(r"([^/\\]+)$").alias("result_file"),
-                pl.col("true_positive").fill_null(False),
-            )
-        )
-        .filter(
-            (
-                pl.col("score") >= run.threshold
-                if run.score_order.lower() == "descending"
-                else pl.col("score") <= run.threshold
-            )
-            if run.threshold is not None
-            else True
-        )
-        .sort("rank")
+        lf.sort("rank")
         .unique(subset=_get_unique_subset(benchmark_type), keep="first")
     )
 
