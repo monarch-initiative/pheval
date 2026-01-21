@@ -1665,7 +1665,11 @@
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
-<span class="normal">307</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlotGenerator</span><span class="p">:</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlotGenerator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to generate plots.&quot;&quot;&quot;</span>
 
     <span class="n">palette_hex_codes</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
@@ -1681,7 +1685,7 @@
         <span class="s2">&quot;#1b9e77&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialise the PlotGenerator class.</span>
 <span class="sd">        Note:</span>
@@ -1689,6 +1693,7 @@
 <span class="sd">            for generated plots.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span> <span class="o">=</span> <span class="n">benchmark_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">=</span> <span class="n">output_dir</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.top&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -1752,16 +1757,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_lower_limit</span><span class="p">,</span> <span class="n">y_upper_limit</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_output_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_rank_stats.svg&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_output_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_rank_stats.svg&quot;</span><span class="p">),</span>
             <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">,</span>
             <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_stacked_bar_plot</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.</span>
@@ -1811,10 +1817,10 @@
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_plot_bar_plot</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">stats_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">stats_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">stats_df</span> <span class="o">=</span> <span class="n">stats_df</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
             <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Run&quot;</span><span class="p">],</span>
@@ -1846,10 +1852,10 @@
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_cumulative_bar</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a cumulative bar plot.</span>
@@ -1859,10 +1865,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_plot_bar_plot</span><span class="p">(</span><span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_non_cumulative_bar</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a non-cumulative bar plot.</span>
@@ -1872,10 +1878,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_plot_bar_plot</span><span class="p">(</span><span class="n">benchmark_generator</span><span class="p">,</span> <span class="n">stats_df</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_roc_curve</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.</span>
@@ -1901,16 +1907,17 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_customisation</span><span class="o">.</span><span class="n">roc_curve_title</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_roc_curve.svg&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_roc_curve.svg&quot;</span><span class="p">),</span>
             <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">,</span>
             <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_precision_recall</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+            <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate and plot Precision-Recall curves for binary classification benchmark results.</span>
@@ -1935,7 +1942,8 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_customisation</span><span class="o">.</span><span class="n">precision_recall_title</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_pr_curve.svg&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_pr_curve.svg&quot;</span><span class="p">),</span>
             <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">,</span>
             <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
         <span class="p">)</span>
@@ -1958,7 +1966,7 @@
 
 
 <h3 id="src.pheval.analyse.generate_plots.PlotGenerator.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1982,7 +1990,8 @@ Note:
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">59</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialise the PlotGenerator class.</span>
 <span class="sd">    Note:</span>
@@ -1990,6 +1999,7 @@ Note:
 <span class="sd">        for generated plots.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span> <span class="o">=</span> <span class="n">benchmark_name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">=</span> <span class="n">output_dir</span>
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.spines.top&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
@@ -2014,9 +2024,7 @@ Note:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
@@ -2025,11 +2033,13 @@ Note:
 <span class="normal">222</span>
 <span class="normal">223</span>
 <span class="normal">224</span>
-<span class="normal">225</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_cumulative_bar</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_cumulative_bar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a cumulative bar plot.</span>
@@ -2059,9 +2069,7 @@ Note:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
@@ -2070,11 +2078,13 @@ Note:
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
-<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_non_cumulative_bar</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_non_cumulative_bar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a non-cumulative bar plot.</span>
@@ -2104,10 +2114,7 @@ Note:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
@@ -2136,11 +2143,15 @@ Note:
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
-<span class="normal">307</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_precision_recall</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_precision_recall</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate and plot Precision-Recall curves for binary classification benchmark results.</span>
@@ -2165,7 +2176,8 @@ Note:
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_customisation</span><span class="o">.</span><span class="n">precision_recall_title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_pr_curve.svg&quot;</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_pr_curve.svg&quot;</span><span class="p">),</span>
         <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">,</span>
         <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
     <span class="p">)</span>
@@ -2192,9 +2204,7 @@ Note:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
 <span class="normal">245</span>
@@ -2225,11 +2235,14 @@ Note:
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
-<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_roc_curve</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_roc_curve</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_generator</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.</span>
@@ -2255,7 +2268,8 @@ Note:
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_customisation</span><span class="o">.</span><span class="n">roc_curve_title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_roc_curve.svg&quot;</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_generator</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_roc_curve.svg&quot;</span><span class="p">),</span>
         <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">,</span>
         <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
     <span class="p">)</span>
@@ -2285,9 +2299,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
@@ -2318,11 +2330,13 @@ Args:
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
-<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_stacked_bar_plot</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_stacked_bar_plot</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">SinglePlotCustomisation</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.</span>
@@ -2428,8 +2442,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
-<span class="normal">62</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
@@ -2441,7 +2454,8 @@ Args:
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_palette</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_palette</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_colors</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates a palette of colour hex codes with the specified number of colors.</span>
 
@@ -2474,7 +2488,7 @@ Args:
 
 
 <h2 id="src.pheval.analyse.generate_plots.generate_plots" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -2487,11 +2501,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
@@ -2521,19 +2531,25 @@ Args:
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
-<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots</span><span class="p">(</span>
-    <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
-    <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">PlotCustomisation</span><span class="p">,</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots</span><span class="p">(</span>
+        <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">PlotCustomisation</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate summary statistics bar plots for prioritisation.</span>
 
 <span class="sd">    This method generates summary statistics bar plots based on the provided benchmarking results and plot type.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">plot_generator</span> <span class="o">=</span> <span class="n">PlotGenerator</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">)</span>
+    <span class="n">plot_generator</span> <span class="o">=</span> <span class="n">PlotGenerator</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
     <span class="n">plot_customisation_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">plot_customisation</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_output_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_plots&quot;</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating ROC curve visualisations.&quot;</span><span class="p">)</span>
     <span class="n">plot_generator</span><span class="o">.</span><span class="n">generate_roc_curve</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span><span class="p">)</span>
@@ -2566,7 +2582,7 @@ Args:
 
 
 <h2 id="src.pheval.analyse.generate_plots.generate_plots_from_db" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
 
 </h2>
 
@@ -2576,17 +2592,13 @@ Args:
         <p>Generate plots from database file.
 Args:
     db_path (Path): Path to the database file.
-    config (Path): Path to the benchmarking config file.</p>
+    config (Path): Path to the benchmarking config file.
+    output_dir (Path): Path to the output directory.</p>
 
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">352</span>
 <span class="normal">353</span>
 <span class="normal">354</span>
 <span class="normal">355</span>
@@ -2621,13 +2633,23 @@ Args:
 <span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
-<span class="normal">387</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate plots from database file.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        db_path (Path): Path to the database file.</span>
 <span class="sd">        config (Path): Path to the benchmarking config file.</span>
+<span class="sd">        output_dir (Path): Path to the output directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating plots from </span><span class="si">{</span><span class="n">db_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parsing configurations from </span><span class="si">{</span><span class="n">config</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2659,6 +2681,7 @@ Args:
                 <span class="n">curves</span><span class="o">=</span><span class="n">curves_df</span><span class="p">,</span>
                 <span class="n">benchmark_output_type</span><span class="o">=</span><span class="n">benchmark_output_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                 <span class="n">plot_customisation</span><span class="o">=</span><span class="n">benchmark_config_file</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
+                <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
             <span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished generating plots.&quot;</span><span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
