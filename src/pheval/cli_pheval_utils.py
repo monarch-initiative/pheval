@@ -341,12 +341,23 @@ def create_spiked_vcfs_command(
     help="Path to yaml configuration file for benchmarking.",
     type=Path,
 )
+@click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=False,
+    help="Path to output benchmarking reports.",
+    default=".",
+    type=Path,
+)
 def benchmark(
     run_yaml: Path,
+    output_dir: Path,
 ):
     """Benchmark the gene/variant/disease prioritisation performance for runs."""
     benchmark_runs(
         run_yaml,
+        output_dir
     )
 
 
@@ -412,12 +423,22 @@ def semsim_to_exomiserdb_command(input_file: Path, object_prefix: str, subject_p
     help="Path to yaml configuration file for benchmarking.",
     type=Path,
 )
+@click.option(
+    "--output-dir",
+    "-o",
+    metavar="PATH",
+    required=False,
+    help="Path to output generated plots.",
+    default=".",
+    type=Path,
+)
 def generate_plots(
     benchmark_db: Path,
     run_data: Path,
+    output_dir: Path,
 ):
     """Generate bar plot from benchmark db."""
-    generate_plots_from_db(benchmark_db, run_data)
+    generate_plots_from_db(benchmark_db, run_data, output_dir)
 
 
 @click.command("prepare-corpus")
