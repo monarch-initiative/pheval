@@ -47,7 +47,7 @@ class PlotGenerator:
         "#1b9e77",
     ]
 
-    def __init__(self, benchmark_name: str):
+    def __init__(self, benchmark_name: str, output_dir: Path):
         """
         Initialise the PlotGenerator class.
         Note:
@@ -55,6 +55,7 @@ class PlotGenerator:
             for generated plots.
         """
         self.benchmark_name = benchmark_name
+        self.output_dir = output_dir
         matplotlib.rcParams["axes.spines.right"] = False
         matplotlib.rcParams["axes.spines.top"] = False
 
@@ -118,16 +119,17 @@ class PlotGenerator:
         """
         plt.ylim(y_lower_limit, y_upper_limit)
         plt.savefig(
-            f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg",
+            self.output_dir.joinpath(
+                f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg"),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_stacked_bar_plot(
-        self,
-        benchmarking_results_df: pl.DataFrame,
-        benchmark_output_type: BenchmarkOutputType,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            benchmarking_results_df: pl.DataFrame,
+            benchmark_output_type: BenchmarkOutputType,
+            plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
@@ -177,10 +179,10 @@ class PlotGenerator:
         )
 
     def _plot_bar_plot(
-        self,
-        benchmark_output_type: BenchmarkOutputType,
-        stats_df: pl.DataFrame,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            benchmark_output_type: BenchmarkOutputType,
+            stats_df: pl.DataFrame,
+            plot_customisation: SinglePlotCustomisation,
     ) -> None:
         stats_df = stats_df.to_pandas().melt(
             id_vars=["Run"],
@@ -212,10 +214,10 @@ class PlotGenerator:
         )
 
     def generate_cumulative_bar(
-        self,
-        benchmarking_results_df: pl.DataFrame,
-        benchmark_generator: BenchmarkOutputType,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            benchmarking_results_df: pl.DataFrame,
+            benchmark_generator: BenchmarkOutputType,
+            plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a cumulative bar plot.
@@ -225,10 +227,10 @@ class PlotGenerator:
         self._plot_bar_plot(benchmark_generator, stats_df, plot_customisation)
 
     def generate_non_cumulative_bar(
-        self,
-        benchmarking_results_df: pl.DataFrame,
-        benchmark_generator: BenchmarkOutputType,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            benchmarking_results_df: pl.DataFrame,
+            benchmark_generator: BenchmarkOutputType,
+            plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a non-cumulative bar plot.
@@ -238,10 +240,10 @@ class PlotGenerator:
         self._plot_bar_plot(benchmark_generator, stats_df, plot_customisation)
 
     def generate_roc_curve(
-        self,
-        curves: pl.DataFrame,
-        benchmark_generator: BenchmarkOutputType,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            curves: pl.DataFrame,
+            benchmark_generator: BenchmarkOutputType,
+            plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.
@@ -267,16 +269,17 @@ class PlotGenerator:
         plt.title(plot_customisation.roc_curve_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg",
+            self.output_dir.joinpath(
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg"),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_precision_recall(
-        self,
-        curves: pl.DataFrame,
-        benchmark_generator: BenchmarkOutputType,
-        plot_customisation: SinglePlotCustomisation,
+            self,
+            curves: pl.DataFrame,
+            benchmark_generator: BenchmarkOutputType,
+            plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Precision-Recall curves for binary classification benchmark results.
@@ -301,25 +304,27 @@ class PlotGenerator:
         plt.title(plot_customisation.precision_recall_title)
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
-            f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg",
+            self.output_dir.joinpath(
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg"),
             format="svg",
             bbox_inches="tight",
         )
 
 
 def generate_plots(
-    benchmark_name: str,
-    benchmarking_results_df: pl.DataFrame,
-    curves: pl.DataFrame,
-    benchmark_output_type: BenchmarkOutputType,
-    plot_customisation: PlotCustomisation,
+        benchmark_name: str,
+        benchmarking_results_df: pl.DataFrame,
+        curves: pl.DataFrame,
+        benchmark_output_type: BenchmarkOutputType,
+        plot_customisation: PlotCustomisation,
+        output_dir: Path
 ) -> None:
     """
     Generate summary statistics bar plots for prioritisation.
 
     This method generates summary statistics bar plots based on the provided benchmarking results and plot type.
     """
-    plot_generator = PlotGenerator(benchmark_name)
+    plot_generator = PlotGenerator(benchmark_name, output_dir)
     plot_customisation_type = getattr(plot_customisation, f"{benchmark_output_type.prioritisation_type_string}_plots")
     logger.info("Generating ROC curve visualisations.")
     plot_generator.generate_roc_curve(curves, benchmark_output_type, plot_customisation_type)
@@ -344,13 +349,15 @@ def generate_plots(
             )
 
 
-def generate_plots_from_db(db_path: Path, config: Path) -> None:
+def generate_plots_from_db(db_path: Path, config: Path, output_dir: Path) -> None:
     """
     Generate plots from database file.
     Args:
         db_path (Path): Path to the database file.
         config (Path): Path to the benchmarking config file.
+        output_dir (Path): Path to the output directory.
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
     logger.info(f"Generating plots from {db_path}")
     conn = duckdb.connect(db_path)
     logger.info(f"Parsing configurations from {config}")
@@ -382,6 +389,7 @@ def generate_plots_from_db(db_path: Path, config: Path) -> None:
                 curves=curves_df,
                 benchmark_output_type=benchmark_output_type.value,
                 plot_customisation=benchmark_config_file.plot_customisation,
+                output_dir=output_dir,
             )
     logger.info("Finished generating plots.")
     conn.close()
