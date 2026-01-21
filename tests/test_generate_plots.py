@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import matplotlib.pyplot as plt
@@ -11,7 +12,7 @@ from pheval.analyse.run_data_parser import PlotCustomisation, SinglePlotCustomis
 
 class TestPlotGenerator(unittest.TestCase):
     def setUp(self):
-        self.plot_generator = PlotGenerator("test_benchmark")
+        self.plot_generator = PlotGenerator("test_benchmark", Path("out"))
 
         self.benchmarking_results_df = pl.DataFrame(
             {
@@ -192,6 +193,7 @@ class TestPlotGenerator(unittest.TestCase):
             self.curves_df,
             BenchmarkOutputTypeEnum.GENE.value,
             self.multi_plot_customisation,
+            Path("out"),
         )
 
         mock_roc_curve.assert_called_once()
