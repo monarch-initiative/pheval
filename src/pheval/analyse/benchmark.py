@@ -48,15 +48,19 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
 
     lf = lf.filter(pl.col("true_positive") | passes_threshold)
 
-    lf = lf.with_columns(
-        pl.when(pl.col("true_positive") & ~passes_threshold)
-        .then(pl.lit(0))
-        .otherwise(pl.col("rank"))
-        .alias("rank")
-    )
-
     return (
-        lf.sort("rank")
+        lf
+        .filter(pl.col("true_positive") | passes_threshold)
+        .with_columns(
+            pl.when(pl.col("true_positive") & ~passes_threshold)
+            .then(pl.lit(0))
+            .otherwise(pl.col("rank"))
+            .alias("rank")
+        )
+        .sort(
+            by="score",
+            descending=(run.score_order.lower() == "descending")
+        )
         .unique(subset=_get_unique_subset(benchmark_type), keep="first")
     )
 
