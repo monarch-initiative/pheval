@@ -1,0 +1,153 @@
+{
+  "id": "goodpasture_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012615",
+        "label": "Cylindruria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033559",
+        "label": "Anti-myeloperoxidase antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012587",
+        "label": "Macroscopic hematuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012614",
+        "label": "Abnormal urine cytology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034033",
+        "label": "Peripheral cyanosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002105",
+        "label": "Hemoptysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032979",
+        "label": "Hemosiderin-laden macrophages in bronchoalveolar fluid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045050",
+        "label": "Increased DLCO"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002875",
+        "label": "Exertional dyspnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025399",
+        "label": "Nodular-centrilobular with tree-in-bud pattern on pulmonary HRCT"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025390",
+        "label": "Reticular pattern on pulmonary HRCT"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025142",
+        "label": "Constitutional symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002960",
+        "label": "Autoimmunity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032177",
+        "label": "Parenchymal consolidation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:233450",
+        "label": "Goodpasture syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:56:50.978686Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

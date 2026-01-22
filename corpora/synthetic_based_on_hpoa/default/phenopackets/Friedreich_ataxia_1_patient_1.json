@@ -1,0 +1,111 @@
+{
+  "id": "friedreich_ataxia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003209",
+        "label": "Decreased pyruvate carboxylase activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003390",
+        "label": "Sensory axonal neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001722",
+        "label": "High-output congestive heart failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007286",
+        "label": "Horizontal jerk nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002403",
+        "label": "Positive Romberg sign"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007958",
+        "label": "Optic atrophy from cranial nerve compression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006844",
+        "label": "Absent patellar reflexes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031992",
+        "label": "Apical hypertrophic cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003232",
+        "label": "Mitochondrial malic enzyme reduced"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:229300",
+        "label": "Friedreich ataxia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:25:17.049354Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

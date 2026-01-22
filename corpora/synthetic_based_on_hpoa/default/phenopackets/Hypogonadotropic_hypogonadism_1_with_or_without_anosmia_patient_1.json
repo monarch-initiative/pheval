@@ -1,0 +1,129 @@
+{
+  "id": "hypogonadotropic_hypogonadism_1_with_or_without_anosmia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012874",
+        "label": "Abnormal male reproductive system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000771",
+        "label": "Gynecomastia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002929",
+        "label": "Leydig cell insensitivity to gonadotropin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034980",
+        "label": "Synkinesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040171",
+        "label": "Decreased serum testosterone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001341",
+        "label": "Olfactory lobe agenesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010635",
+        "label": "Partial hyposmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030344",
+        "label": "Decreased circulating luteinizing hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000458",
+        "label": "Anosmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000046",
+        "label": "Small scrotum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003117",
+        "label": "Abnormal circulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002073",
+        "label": "Progressive cerebellar ataxia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:308700",
+        "label": "Hypogonadotropic hypogonadism 1 with or without anosmia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:28:01.444523Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

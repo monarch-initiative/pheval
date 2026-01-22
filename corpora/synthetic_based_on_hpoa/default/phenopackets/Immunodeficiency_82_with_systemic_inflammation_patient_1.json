@@ -1,0 +1,111 @@
+{
+  "id": "immunodeficiency_82_with_systemic_inflammation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012387",
+        "label": "Bronchitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011110",
+        "label": "Recurrent tonsillitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012649",
+        "label": "Increased inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100280",
+        "label": "Crohn's disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410377",
+        "label": "Decreased proportion of naive CD8 T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033025",
+        "label": "Chronic absent circulating total IgG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000155",
+        "label": "Oral ulcer"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001386",
+        "label": "Joint swelling"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002041",
+        "label": "Intractable diarrhea"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619381",
+        "label": "Immunodeficiency 82 with systemic inflammation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:30:32.477561Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

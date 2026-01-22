@@ -1,0 +1,117 @@
+{
+  "id": "diarrhea_10,_protein-losing_enteropathy_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002202",
+        "label": "Pleural effusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002902",
+        "label": "Hyponatremia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012050",
+        "label": "Anasarca"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002243",
+        "label": "Protein-losing enteropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001942",
+        "label": "Metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001698",
+        "label": "Pericardial effusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000028",
+        "label": "Cryptorchidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002573",
+        "label": "Hematochezia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001739",
+        "label": "Abnormal nasopharynx morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025673",
+        "label": "Loculated ascites"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618183",
+        "label": "Diarrhea 10, protein-losing enteropathy type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:14:50.296913Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

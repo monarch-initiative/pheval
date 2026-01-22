@@ -1,0 +1,153 @@
+{
+  "id": "odontoonychodermal_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001807",
+        "label": "Ridged nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000972",
+        "label": "Palmoplantar hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011065",
+        "label": "Conical incisor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001816",
+        "label": "Thin nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032152",
+        "label": "Keratosis pilaris"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008386",
+        "label": "Aplasia/Hypoplasia of the nails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007550",
+        "label": "Hypohidrosis or hyperhidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000958",
+        "label": "Dry skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033975",
+        "label": "Absent second fingernail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002231",
+        "label": "Sparse body hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040162",
+        "label": "Orthokeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011359",
+        "label": "Dry hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004768",
+        "label": "Sparse anterior scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002213",
+        "label": "Fine hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006483",
+        "label": "Abnormal number of teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008391",
+        "label": "Dystrophic fingernails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001072",
+        "label": "Thickened skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:257980",
+        "label": "Odontoonychodermal dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:35:40.768609Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
