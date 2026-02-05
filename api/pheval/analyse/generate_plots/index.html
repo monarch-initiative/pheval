@@ -2488,7 +2488,7 @@ Args:
 
 
 <h2 id="src.pheval.analyse.generate_plots.generate_plots" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">generate_plots</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">benchmarking_results_df</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">)</span></code>
 
 </h2>
 
@@ -2536,13 +2536,18 @@ Args:
 <span class="normal">346</span>
 <span class="normal">347</span>
 <span class="normal">348</span>
-<span class="normal">349</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots</span><span class="p">(</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots</span><span class="p">(</span>
         <span class="n">benchmark_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">benchmarking_results_df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
         <span class="n">curves</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
         <span class="n">benchmark_output_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span>
         <span class="n">plot_customisation</span><span class="p">:</span> <span class="n">PlotCustomisation</span><span class="p">,</span>
-        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span>
+        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate summary statistics bar plots for prioritisation.</span>
@@ -2551,10 +2556,13 @@ Args:
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">plot_generator</span> <span class="o">=</span> <span class="n">PlotGenerator</span><span class="p">(</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
     <span class="n">plot_customisation_type</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">plot_customisation</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">benchmark_output_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_plots&quot;</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating ROC curve visualisations.&quot;</span><span class="p">)</span>
-    <span class="n">plot_generator</span><span class="o">.</span><span class="n">generate_roc_curve</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Precision-Recall curves visualisations.&quot;</span><span class="p">)</span>
-    <span class="n">plot_generator</span><span class="o">.</span><span class="n">generate_precision_recall</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">no_curves</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating ROC curve visualisations.&quot;</span><span class="p">)</span>
+        <span class="n">plot_generator</span><span class="o">.</span><span class="n">generate_roc_curve</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Precision-Recall curves visualisations.&quot;</span><span class="p">)</span>
+        <span class="n">plot_generator</span><span class="o">.</span><span class="n">generate_precision_recall</span><span class="p">(</span><span class="n">curves</span><span class="p">,</span> <span class="n">benchmark_output_type</span><span class="p">,</span> <span class="n">plot_customisation_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">no_curves</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No ROC curve visualisations generated.&quot;</span><span class="p">)</span>
     <span class="n">plot_type</span> <span class="o">=</span> <span class="n">PlotTypes</span><span class="p">(</span><span class="n">plot_customisation_type</span><span class="o">.</span><span class="n">plot_type</span><span class="p">)</span>
     <span class="k">match</span> <span class="n">plot_type</span><span class="p">:</span>
         <span class="k">case</span> <span class="n">PlotTypes</span><span class="o">.</span><span class="n">BAR_STACKED</span><span class="p">:</span>
@@ -2598,11 +2606,7 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/generate_plots.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">356</span>
 <span class="normal">357</span>
 <span class="normal">358</span>
 <span class="normal">359</span>
@@ -2641,7 +2645,11 @@ Args:
 <span class="normal">392</span>
 <span class="normal">393</span>
 <span class="normal">394</span>
-<span class="normal">395</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_plots_from_db</span><span class="p">(</span><span class="n">db_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate plots from database file.</span>
 <span class="sd">    Args:</span>

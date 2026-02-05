@@ -1277,7 +1277,7 @@
 
 
 <h2 id="src.pheval.analyse.benchmark.benchmark" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1288,14 +1288,13 @@
 Args:
     config (Config): Configuration for benchmarking.
     benchmark_type (BenchmarkOutputType): Benchmark output type.
-    output_dir (Path): Output directory for benchmarking results.</p>
+    output_dir (Path): Output directory for benchmarking results.
+    no_curves (bool): Whether to skip generating binary classification curves.</p>
 
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/benchmark.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -1311,24 +1310,44 @@ Args:
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Benchmark results for specified runs for a specified prioritisation type for comparison.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        config (Config): Configuration for benchmarking.</span>
 <span class="sd">        benchmark_type (BenchmarkOutputType): Benchmark output type.</span>
 <span class="sd">        output_dir (Path): Output directory for benchmarking results.</span>
+<span class="sd">        no_curves (bool): Whether to skip generating binary classification curves.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">.duckdb&quot;</span><span class="p">))</span>
-    <span class="n">stats</span><span class="p">,</span> <span class="n">curve_results</span><span class="p">,</span> <span class="n">true_positive_cases</span> <span class="o">=</span> <span class="n">process_stats</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">runs</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span>
+    <span class="n">stats</span><span class="p">,</span> <span class="n">curve_results</span><span class="p">,</span> <span class="n">true_positive_cases</span> <span class="o">=</span> <span class="n">process_stats</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">runs</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">)</span>
     <span class="n">write_table</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_summary&quot;</span><span class="p">)</span>
-    <span class="n">write_table</span><span class="p">(</span>
-        <span class="n">conn</span><span class="p">,</span>
-        <span class="n">curve_results</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_binary_classification_curves&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">no_curves</span><span class="p">:</span>
+        <span class="n">write_table</span><span class="p">(</span>
+            <span class="n">conn</span><span class="p">,</span>
+            <span class="n">curve_results</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_binary_classification_curves&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
     <span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="p">[</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span> <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">runs</span><span class="p">],</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span>
-    <span class="n">generate_plots</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">curve_results</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">generate_plots</span><span class="p">(</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="p">,</span>
+        <span class="n">stats</span><span class="p">,</span> <span class="n">curve_results</span><span class="p">,</span>
+        <span class="n">benchmark_type</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="p">,</span>
+        <span class="n">no_curves</span>
+    <span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1340,7 +1359,7 @@ Args:
 
 
 <h2 id="src.pheval.analyse.benchmark.benchmark_runs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1350,23 +1369,13 @@ Args:
         <p>Benchmark results for specified runs for comparison.
 Args:
     benchmark_config_file (Path): Path to benchmark config file.
-    output_dir (Path): Output directory for benchmarking results.</p>
+    output_dir (Path): Output directory for benchmarking results.
+    no_curves (bool): Whether to skip generating binary classification curves.</p>
 
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/benchmark.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -1409,12 +1418,28 @@ Args:
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Benchmark results for specified runs for comparison.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        benchmark_config_file (Path): Path to benchmark config file.</span>
 <span class="sd">        output_dir (Path): Output directory for benchmarking results.</span>
+<span class="sd">        no_curves (bool): Whether to skip generating binary classification curves.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
@@ -1436,7 +1461,8 @@ Args:
                 <span class="n">plot_customisation</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">BenchmarkOutputTypeEnum</span><span class="o">.</span><span class="n">GENE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-            <span class="n">output_dir</span>
+            <span class="n">output_dir</span><span class="p">,</span>
+            <span class="n">no_curves</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished benchmarking for gene results.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">variant_analysis_runs</span><span class="p">:</span>
@@ -1448,7 +1474,8 @@ Args:
                 <span class="n">plot_customisation</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">BenchmarkOutputTypeEnum</span><span class="o">.</span><span class="n">VARIANT</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-            <span class="n">output_dir</span>
+            <span class="n">output_dir</span><span class="p">,</span>
+            <span class="n">no_curves</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished benchmarking for variant results.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">disease_analysis_runs</span><span class="p">:</span>
@@ -1460,7 +1487,8 @@ Args:
                 <span class="n">plot_customisation</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">BenchmarkOutputTypeEnum</span><span class="o">.</span><span class="n">DISEASE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-            <span class="n">output_dir</span>
+            <span class="n">output_dir</span><span class="p">,</span>
+            <span class="n">no_curves</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished benchmarking for disease results.&quot;</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished benchmarking! Total time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
@@ -1474,7 +1502,7 @@ Args:
 
 
 <h2 id="src.pheval.analyse.benchmark.process_stats" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">process_stats</span><span class="p">(</span><span class="n">runs</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">process_stats</span><span class="p">(</span><span class="n">runs</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1485,6 +1513,7 @@ Args:
 Args:
     runs (List[RunConfig]): List of runs to benchmark.
     benchmark_type (BenchmarkOutputTypeEnum): Benchmark output type.
+    no_curves (bool): Whether to skip generating binary classification curves.
 Returns:
     Tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]: The stats for all runs.</p>
 
@@ -1529,14 +1558,17 @@ Returns:
 <span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
-<span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_stats</span><span class="p">(</span>
-    <span class="n">runs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RunConfig</span><span class="p">],</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_stats</span><span class="p">(</span>
+    <span class="n">runs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RunConfig</span><span class="p">],</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes stats outputs for specified runs to compare.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        runs (List[RunConfig]): List of runs to benchmark.</span>
 <span class="sd">        benchmark_type (BenchmarkOutputTypeEnum): Benchmark output type.</span>
+<span class="sd">        no_curves (bool): Whether to skip generating binary classification curves.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]: The stats for all runs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1548,7 +1580,8 @@ Returns:
                 <span class="n">compute_confusion_matrix</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">),</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;run_identifier&quot;</span>
             <span class="p">)</span>
         <span class="p">)</span>
-        <span class="n">curve_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_curves</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">no_curves</span><span class="p">:</span>
+            <span class="n">curve_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_curves</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span><span class="p">,</span> <span class="n">result_scan</span><span class="p">))</span>
         <span class="n">true_positive_cases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">result_scan</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">))</span>
             <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;result_file&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span><span class="p">)])</span>
@@ -1556,7 +1589,7 @@ Returns:
         <span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(),</span>
-        <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">curve_results</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">curve_results</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">no_curves</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
             <span class="p">[</span><span class="n">true_positive_cases</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="o">+</span> <span class="p">[</span>
