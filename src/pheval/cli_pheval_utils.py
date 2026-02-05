@@ -350,14 +350,22 @@ def create_spiked_vcfs_command(
     default=".",
     type=Path,
 )
+@click.option(
+    "--no-curves",
+    is_flag=True,
+    default=False,
+    help="Disable generation of ROC and Precision-Recall curves (bar plots are still generated).",
+)
 def benchmark(
     run_yaml: Path,
     output_dir: Path,
+    no_curves: bool,
 ):
     """Benchmark the gene/variant/disease prioritisation performance for runs."""
     benchmark_runs(
         run_yaml,
-        output_dir
+        output_dir,
+        no_curves,
     )
 
 

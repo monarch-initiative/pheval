@@ -194,6 +194,7 @@ class TestPlotGenerator(unittest.TestCase):
             BenchmarkOutputTypeEnum.GENE.value,
             self.multi_plot_customisation,
             Path("out"),
+            False
         )
 
         mock_roc_curve.assert_called_once()
