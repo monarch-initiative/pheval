@@ -1,0 +1,87 @@
+{
+  "id": "autoinflammatory_syndrome,_familial,_behcet-like",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000155",
+        "label": "Oral ulcer"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000988",
+        "label": "Skin rash"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025343",
+        "label": "Lupus anticoagulant"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001878",
+        "label": "Hemolytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012122",
+        "label": "Anterior uveitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034085",
+        "label": "Anti-PM-Scl100 antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005764",
+        "label": "Polyarticular arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012243",
+        "label": "Abnormal reproductive system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616744",
+        "label": "Autoinflammatory syndrome, familial, Behcet-like"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:14:04.447894Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

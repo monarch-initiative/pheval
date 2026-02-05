@@ -1,0 +1,93 @@
+{
+  "id": "solitary_median_maxillary_central_incisor",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009914",
+        "label": "Cyclopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011064",
+        "label": "Abnormal number of incisors"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100789",
+        "label": "Torus palatinus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033579",
+        "label": "Decreased growth hormone responses to growth hormone-releasing hormone challenge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010643",
+        "label": "Midnasal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002708",
+        "label": "Prominent median palatal raphe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005484",
+        "label": "Secondary microcephaly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:147250",
+        "label": "Solitary median maxillary central incisor"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:44:07.300535Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

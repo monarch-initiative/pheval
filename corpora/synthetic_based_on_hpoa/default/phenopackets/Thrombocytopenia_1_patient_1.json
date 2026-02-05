@@ -1,0 +1,75 @@
+{
+  "id": "thrombocytopenia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003011",
+        "label": "Abnormality of the musculature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005537",
+        "label": "Decreased mean platelet volume"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005261",
+        "label": "Joint hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012647",
+        "label": "Abnormal inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011875",
+        "label": "Abnormal platelet morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011875",
+        "label": "Abnormal platelet morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:313900",
+        "label": "Thrombocytopenia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:00:25.456564Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

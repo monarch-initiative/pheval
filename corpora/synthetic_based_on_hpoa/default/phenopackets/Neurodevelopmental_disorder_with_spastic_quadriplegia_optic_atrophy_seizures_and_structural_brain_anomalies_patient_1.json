@@ -1,0 +1,110 @@
+{
+  "id": "neurodevelopmental_disorder_with_spastic_quadriplegia,_optic_atrophy,_seizures,_and_structural_brain_anomalies",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007024",
+        "label": "Pseudobulbar paralysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002835",
+        "label": "Aspiration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000023",
+        "label": "Inguinal hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007840",
+        "label": "Long upper eyelashes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008866",
+        "label": "Failure to thrive secondary to recurrent infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001776",
+        "label": "Bilateral talipes equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012443",
+        "label": "Abnormal brain morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618651",
+        "label": "Neurodevelopmental disorder with spastic quadriplegia, optic atrophy, seizures, and structural brain anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:51:47.871527Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

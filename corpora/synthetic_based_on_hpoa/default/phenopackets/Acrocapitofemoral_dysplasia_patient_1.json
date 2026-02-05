@@ -1,0 +1,248 @@
+{
+  "id": "acrocapitofemoral_dysplasia",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P4Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003097",
+        "label": "Short femur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006059",
+        "label": "Cone-shaped metacarpal epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010575",
+        "label": "Dysplasia of the femoral head"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002869",
+        "label": "Flared iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001799",
+        "label": "Short nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002866",
+        "label": "Hypoplastic iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100864",
+        "label": "Short femoral neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006216",
+        "label": "Single interphalangeal crease of fifth finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002970",
+        "label": "Genu varum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001821",
+        "label": "Broad nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003022",
+        "label": "Hypoplasia of the ulna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003099",
+        "label": "Fibular overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002984",
+        "label": "Hypoplasia of the radius"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004279",
+        "label": "Short palm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006438",
+        "label": "Enlargement of the distal femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008890",
+        "label": "Severe short-limb dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008789",
+        "label": "Cone-shaped capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006668",
+        "label": "Twelfth rib hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200083",
+        "label": "Severe limb shortening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040069",
+        "label": "Abnormal lower limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009821",
+        "label": "Forearm undergrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009263",
+        "label": "Cone-shaped epiphysis of the proximal phalanx of the 4th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009638",
+        "label": "Short proximal phalanx of thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008921",
+        "label": "Neonatal short-limb short stature"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0011463",
+          "label": "Childhood onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030033",
+        "label": "Small finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008789",
+        "label": "Cone-shaped capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005924",
+        "label": "Abnormal hand epiphysis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040194",
+        "label": "Increased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003309",
+        "label": "Ovoid thoracolumbar vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009439",
+        "label": "Short middle phalanx of the 3rd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003502",
+        "label": "Mild short stature"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607778",
+        "label": "Acrocapitofemoral dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:53:23.634726Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

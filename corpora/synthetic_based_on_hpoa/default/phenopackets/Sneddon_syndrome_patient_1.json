@@ -1,0 +1,63 @@
+{
+  "id": "sneddon_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001888",
+        "label": "Lymphopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001075",
+        "label": "Atrophic scars"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033505",
+        "label": "Livedo reticularis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011276",
+        "label": "Vascular skin abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:182410",
+        "label": "Sneddon syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:13:49.857569Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

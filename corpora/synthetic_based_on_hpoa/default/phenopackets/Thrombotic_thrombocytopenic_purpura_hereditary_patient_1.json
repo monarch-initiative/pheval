@@ -1,0 +1,99 @@
+{
+  "id": "thrombotic_thrombocytopenic_purpura,_hereditary",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011997",
+        "label": "Postprandial hyperlactemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001973",
+        "label": "Autoimmune thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005575",
+        "label": "Hemolytic-uremic syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020129",
+        "label": "Abnormal urine protein level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025387",
+        "label": "Pill-rolling tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031258",
+        "label": "Delirium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006579",
+        "label": "Prolonged neonatal jaundice"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001937",
+        "label": "Microangiopathic hemolytic anemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:274150",
+        "label": "Thrombotic thrombocytopenic purpura, hereditary"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:44:30.877226Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

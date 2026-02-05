@@ -1,0 +1,69 @@
+{
+  "id": "tangier_disease",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005129",
+        "label": "Congenital hypertrophy of left ventricle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031799",
+        "label": "Decreased circulating apolipoprotein A-I concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000531",
+        "label": "Corneal crystals"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:205400",
+        "label": "Tangier disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:55:41.137319Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

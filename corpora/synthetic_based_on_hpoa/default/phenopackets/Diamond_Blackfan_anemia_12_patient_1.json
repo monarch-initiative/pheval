@@ -1,0 +1,57 @@
+{
+  "id": "diamond-blackfan_anemia_12",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001199",
+        "label": "Triphalangeal thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004861",
+        "label": "Refractory macrocytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030270",
+        "label": "Elevated red cell adenosine deaminase activity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615550",
+        "label": "Diamond-Blackfan anemia 12"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:31:34.483109Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "succinyl_coa:3-oxoacid_coa_transferase_deficiency",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:6000361",
+        "label": "Reduced succinyl-CoA:3-oxoacid-CoA transferase activity in cultured fibroblasts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005974",
+        "label": "Episodic ketoacidosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:245050",
+        "label": "Succinyl CoA:3-oxoacid CoA transferase deficiency"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:00:05.800651Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

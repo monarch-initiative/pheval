@@ -1,0 +1,153 @@
+{
+  "id": "ruijs-aalfs_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000954",
+        "label": "Single transverse palmar crease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007819",
+        "label": "Presenile cataracts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009049",
+        "label": "Peroneal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002996",
+        "label": "Limited elbow movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009124",
+        "label": "Abnormal adipose tissue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002750",
+        "label": "Delayed skeletal maturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000523",
+        "label": "Subcapsular cataract"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012832",
+          "label": "Bilateral"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0005824",
+        "label": "Clinodactyly of the 2nd toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000308",
+        "label": "Microretrognathia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005659",
+        "label": "Thoracic kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000325",
+        "label": "Triangular face"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004771",
+        "label": "Premature graying of body hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001402",
+        "label": "Hepatocellular carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004326",
+        "label": "Cachexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200021",
+        "label": "Down-sloping shoulders"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616200",
+        "label": "Ruijs-Aalfs syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:19:19.383939Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

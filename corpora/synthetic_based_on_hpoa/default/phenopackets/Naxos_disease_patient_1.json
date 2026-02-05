@@ -1,0 +1,153 @@
+{
+  "id": "naxos_disease",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001030",
+        "label": "Fragile skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100792",
+        "label": "Acantholysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002224",
+        "label": "Woolly hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008066",
+        "label": "Abnormal blistering of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002224",
+        "label": "Woolly hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011663",
+        "label": "Right ventricular cardiomyopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025092",
+        "label": "Epidermal acanthosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008392",
+        "label": "Subungual hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031193",
+        "label": "Abnormal morphology of right ventricular trabeculae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001279",
+        "label": "Syncope"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006682",
+        "label": "Premature ventricular contraction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008404",
+        "label": "Nail dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007447",
+        "label": "Diffuse palmoplantar hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010765",
+        "label": "Palmar hyperkeratosis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045059",
+        "label": "Hyperkeratotic papule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006677",
+        "label": "Prolonged QRS complex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003115",
+        "label": "Abnormal EKG"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601214",
+        "label": "Naxos disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:28:49.950994Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "bartter_syndrome,_type_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001960",
+        "label": "Hypokalemic metabolic alkalosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003127",
+        "label": "Hypocalciuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002900",
+        "label": "Hypokalemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000610",
+        "label": "Abnormal choroid morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003324",
+        "label": "Generalized muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008046",
+        "label": "Abnormal retinal vascular morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005579",
+        "label": "Impaired renal tubular reabsorption of chloride"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607364",
+        "label": "Bartter syndrome, type 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T00:13:52.700386Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

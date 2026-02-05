@@ -1,0 +1,93 @@
+{
+  "id": "blau_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007432",
+        "label": "Intermittent generalized erythematous papular rash"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011505",
+        "label": "Cystoid macular edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000554",
+        "label": "Uveitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000598",
+        "label": "Abnormality of the ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100769",
+        "label": "Synovitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025452",
+        "label": "Pyoderma gangrenosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000642",
+        "label": "Sunflower cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001220",
+        "label": "Interphalangeal joint contracture of finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000969",
+        "label": "Edema"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:186580",
+        "label": "Blau syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:46:33.612759Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "clubfoot,_congenital,_with_or_without_deficiency_of_long_bones_and/or_mirror-image_polydactyly",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005656",
+        "label": "Positional foot deformity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5201015",
+        "label": "Craniofacial cleft"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008890",
+        "label": "Severe short-limb dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001776",
+        "label": "Bilateral talipes equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033725",
+        "label": "Thin corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:119800",
+        "label": "Clubfoot, congenital, with or without deficiency of long bones and/or mirror-image polydactyly"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:42:17.119025Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

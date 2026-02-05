@@ -1,0 +1,123 @@
+{
+  "id": "dihydropyrimidinuria",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001942",
+        "label": "Metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000331",
+        "label": "Elevated urinary thymine level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:6000211",
+        "label": "Elevated CSF dihydrouracil concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003654",
+        "label": "Reduced dihydropyrimidine dehydrogenase level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001357",
+        "label": "Plagiocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003236",
+        "label": "Elevated circulating creatine kinase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000752",
+        "label": "Hyperactivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001262",
+        "label": "Excessive daytime somnolence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011968",
+        "label": "Feeding difficulties"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:4000095",
+        "label": "Elevated circulating thymine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002062",
+        "label": "Abnormal pyramidal tract morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0430135",
+        "label": "Abnormal circulating hepatic transaminase concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:222748",
+        "label": "Dihydropyrimidinuria"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:25:06.259050Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "multiple_mitochondrial_dysfunctions_syndrome_2_with_hyperglycinemia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003128",
+        "label": "Lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000975",
+        "label": "Hyperhidrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500230",
+        "label": "Increased CSF glycine concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010894",
+        "label": "Abnormal circulating serine family amino acid concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011922",
+        "label": "Abnormal activity of mitochondrial respiratory chain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011400",
+        "label": "Abnormal CNS myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002928",
+        "label": "Decreased activity of the pyruvate dehydrogenase complex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032754",
+        "label": "Focal aware sensory seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200068",
+        "label": "Nonprogressive visual loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030863",
+        "label": "Nasal flaring"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200134",
+        "label": "Epileptic encephalopathy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614299",
+        "label": "Multiple mitochondrial dysfunctions syndrome 2 with hyperglycinemia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:40:03.420275Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

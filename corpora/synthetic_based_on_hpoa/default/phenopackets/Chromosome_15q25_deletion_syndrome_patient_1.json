@@ -1,0 +1,165 @@
+{
+  "id": "chromosome_15q25_deletion_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004299",
+        "label": "Hernia of the abdominal wall"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000159",
+        "label": "Abnormal lip morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000368",
+        "label": "Low-set, posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005469",
+        "label": "Flat occiput"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004307",
+        "label": "Abnormal anatomic location of the heart"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025516",
+        "label": "Coronary-pulmonary artery fistula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025193",
+        "label": "Posterolateral diaphragmatic hernia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000465",
+        "label": "Webbed neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011683",
+        "label": "Restrictive ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006849",
+        "label": "Hypodysplasia of the corpus callosum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000839",
+        "label": "Pituitary dwarfism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000915",
+        "label": "Pectus excavatum of inferior sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000470",
+        "label": "Short neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011130",
+        "label": "Abnormal renal calyx morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000664",
+        "label": "Synophrys"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000035",
+        "label": "Abnormal testis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614294",
+        "label": "Chromosome 15q25 deletion syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:22:15.477802Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

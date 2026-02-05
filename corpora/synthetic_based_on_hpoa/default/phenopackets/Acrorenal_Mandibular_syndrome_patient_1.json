@@ -1,0 +1,201 @@
+{
+  "id": "acrorenal-mandibular_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000883",
+        "label": "Thin ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006426",
+        "label": "Rudimentary to absent tibiae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031909",
+        "label": "Unicornuate uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001839",
+        "label": "Split foot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002937",
+        "label": "Hemivertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002751",
+        "label": "Kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002561",
+        "label": "Absent nipple"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000813",
+        "label": "Bicornuate uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003762",
+        "label": "Uterus didelphys"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000113",
+        "label": "Polycystic kidney dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000069",
+        "label": "Abnormality of the ureter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000286",
+        "label": "Epicanthus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000358",
+        "label": "Posteriorly rotated ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000347",
+        "label": "Micrognathia"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001171",
+        "label": "Split hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000189",
+        "label": "Narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001161",
+        "label": "Hand polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000921",
+        "label": "Missing ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001829",
+        "label": "Foot polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002987",
+        "label": "Elbow flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008780",
+        "label": "Congenital bilateral hip dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000929",
+        "label": "Abnormal skull morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000782",
+        "label": "Abnormal scapula morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:200980",
+        "label": "Acrorenal-Mandibular syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:21:59.200644Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

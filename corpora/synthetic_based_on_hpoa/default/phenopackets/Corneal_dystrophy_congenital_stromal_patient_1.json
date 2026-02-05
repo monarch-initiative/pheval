@@ -1,0 +1,69 @@
+{
+  "id": "corneal_dystrophy,_congenital_stromal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001131",
+        "label": "Corneal dystrophy"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011487",
+        "label": "Increased corneal thickness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008041",
+        "label": "Late onset congenital glaucoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007924",
+        "label": "Slow decrease in visual acuity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610048",
+        "label": "Corneal dystrophy, congenital stromal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:45:43.072938Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "spondyloepiphyseal_dysplasia_with_congenital_joint_dislocations",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002750",
+        "label": "Delayed skeletal maturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100864",
+        "label": "Short femoral neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001718",
+        "label": "Mitral stenosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0001787",
+        "label": "Abnormal delivery"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001593",
+        "label": "Maxillary lateral incisor microdontia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011805",
+        "label": "Abnormal skeletal muscle morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007598",
+        "label": "Bilateral single transverse palmar creases"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031610",
+        "label": "Recurrent shoulder dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003423",
+        "label": "Thoracolumbar kyphoscoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005070",
+        "label": "Proximal radial head dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002655",
+        "label": "Spondyloepiphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003301",
+        "label": "Irregular vertebral endplates"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008873",
+        "label": "Disproportionate short-limb short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100625",
+        "label": "Enlarged thorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011025",
+        "label": "Abnormal cardiovascular system physiology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000692",
+        "label": "Tooth malposition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006471",
+        "label": "Fixed elbow flexion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025142",
+        "label": "Constitutional symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003093",
+        "label": "Limited hip extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003895",
+        "label": "Flattened humeral epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009471",
+        "label": "Contracture of the proximal interphalangeal joint of the 3rd finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009815",
+        "label": "Aplasia/hypoplasia of the extremities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003042",
+        "label": "Elbow dislocation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:143095",
+        "label": "Spondyloepiphyseal dysplasia with congenital joint dislocations"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:32:55.267540Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

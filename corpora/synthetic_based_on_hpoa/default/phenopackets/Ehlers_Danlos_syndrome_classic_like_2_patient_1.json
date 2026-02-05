@@ -1,0 +1,129 @@
+{
+  "id": "ehlers-danlos_syndrome,_classic-like,_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004602",
+        "label": "Cervical C2/C3 vertebral fusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100658",
+        "label": "Cellulitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045074",
+        "label": "Thin eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000508",
+        "label": "Ptosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001075",
+        "label": "Atrophic scars"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001582",
+        "label": "Redundant skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025232",
+        "label": "Bursitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002943",
+        "label": "Thoracic scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001634",
+        "label": "Mitral valve prolapse"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002162",
+        "label": "Low posterior hairline"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007495",
+        "label": "Prematurely aged appearance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001373",
+        "label": "Joint dislocation"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618000",
+        "label": "Ehlers-Danlos syndrome, classic-like, 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:45:00.098709Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

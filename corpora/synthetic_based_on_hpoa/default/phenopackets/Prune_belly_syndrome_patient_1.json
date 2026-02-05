@@ -1,0 +1,93 @@
+{
+  "id": "prune_belly_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004392",
+        "label": "Prune belly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000767",
+        "label": "Pectus excavatum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030211",
+        "label": "Slow pupillary light response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000217",
+        "label": "Xerostomia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001883",
+        "label": "Talipes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000126",
+        "label": "Hydronephrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034915",
+        "label": "Abnormal anus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000796",
+        "label": "Urethral obstruction"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:100100",
+        "label": "Prune belly syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:36:02.917973Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

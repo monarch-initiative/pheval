@@ -1,0 +1,141 @@
+{
+  "id": "complement_hyperactivation,_angiopathic_thrombosis,_and_protein-losing_enteropathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001894",
+        "label": "Thrombocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001891",
+        "label": "Iron deficiency anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002783",
+        "label": "Recurrent lower respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002014",
+        "label": "Diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030243",
+        "label": "Hepatic vein thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025089",
+        "label": "Feculent vomiting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025015",
+        "label": "Abnormal vascular morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033400",
+        "label": "Acute abdomen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010447",
+        "label": "Anal fistula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032180",
+        "label": "Abnormal circulating metabolite concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000969",
+        "label": "Edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005250",
+        "label": "High intestinal obstruction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010701",
+        "label": "Abnormal immunoglobulin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011110",
+        "label": "Recurrent tonsillitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002024",
+        "label": "Malabsorption"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:226300",
+        "label": "Complement hyperactivation, angiopathic thrombosis, and protein-losing enteropathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:16:39.088284Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

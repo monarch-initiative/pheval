@@ -1,0 +1,135 @@
+{
+  "id": "fraser_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000183",
+        "label": "Difficulty in tongue movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000689",
+        "label": "Dental malocclusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008750",
+        "label": "Laryngeal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001607",
+        "label": "Subglottic stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000378",
+        "label": "Cupped ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008665",
+        "label": "Clitoral hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004112",
+        "label": "Midline nasal groove"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000813",
+        "label": "Bicornuate uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007633",
+        "label": "Bilateral microphthalmos"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012584",
+        "label": "Bilateral renal hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000035",
+        "label": "Abnormal testis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000445",
+        "label": "Wide nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005950",
+        "label": "Laryngeal web"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011937",
+        "label": "Hypoplastic fifth toenail"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:219000",
+        "label": "Fraser syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:54:25.450041Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "id": "hydrolethalus_syndrome_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009752",
+        "label": "Cleft in skull base"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000047",
+        "label": "Hypospadias"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000126",
+        "label": "Hydronephrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010066",
+        "label": "Duplication of phalanx of hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010866",
+        "label": "Abdominal wall defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025423",
+        "label": "Abnormal larynx morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001760",
+        "label": "Abnormal foot morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004894",
+        "label": "Laryngotracheal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000163",
+        "label": "Abnormal oral cavity morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033183",
+        "label": "Bilobed right lung"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032456",
+        "label": "Unlayered lissencephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001747",
+        "label": "Accessory spleen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001305",
+        "label": "Dandy-Walker malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025668",
+        "label": "Abnormal neck morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006379",
+        "label": "Proximal tibial hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000008",
+        "label": "Abnormal morphology of female internal genitalia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002060",
+        "label": "Abnormal cerebral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006434",
+        "label": "Hypoplasia of proximal radius"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007628",
+        "label": "Mandibular condyle hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011743",
+        "label": "Adrenal gland agenesis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:236680",
+        "label": "Hydrolethalus syndrome 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:17:09.742973Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

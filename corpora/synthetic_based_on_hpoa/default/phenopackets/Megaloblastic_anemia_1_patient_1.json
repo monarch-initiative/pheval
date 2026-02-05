@@ -1,0 +1,63 @@
+{
+  "id": "megaloblastic_anemia_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003401",
+        "label": "Paresthesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000093",
+        "label": "Proteinuria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004860",
+        "label": "Thiamine-responsive megaloblastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006858",
+        "label": "Impaired distal proprioception"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:261100",
+        "label": "Megaloblastic anemia 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:00:14.996972Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

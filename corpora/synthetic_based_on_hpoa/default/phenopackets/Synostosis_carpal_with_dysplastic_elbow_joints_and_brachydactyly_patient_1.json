@@ -1,0 +1,63 @@
+{
+  "id": "synostosis,_carpal,_with_dysplastic_elbow_joints_and_brachydactyly",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001191",
+        "label": "Abnormal carpal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001233",
+        "label": "2-3 finger syndactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006190",
+        "label": "Radially deviated wrists"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:186550",
+        "label": "Synostosis, carpal, with dysplastic elbow joints and brachydactyly"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:48:45.431537Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "metatropic_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003015",
+        "label": "Flared metaphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000904",
+        "label": "Flaring of rib cage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000887",
+        "label": "Cupped ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006375",
+        "label": "Dumbbell-shaped femur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001384",
+        "label": "Abnormal hip joint morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005257",
+        "label": "Thoracic hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008453",
+        "label": "Congenital kyphoscoliosis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002644",
+        "label": "Abnormal pelvic girdle bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:156530",
+        "label": "Metatropic dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:39:03.899729Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

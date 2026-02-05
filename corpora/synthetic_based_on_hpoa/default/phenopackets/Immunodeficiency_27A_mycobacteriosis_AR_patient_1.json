@@ -1,0 +1,123 @@
+{
+  "id": "immunodeficiency_27a,_mycobacteriosis,_ar",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001824",
+        "label": "Weight loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002716",
+        "label": "Lymphadenopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025043",
+        "label": "Enlarged mesenteric lymph node"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001894",
+        "label": "Thrombocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025427",
+        "label": "Abnormal bronchus physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032296",
+        "label": "Increased circulating IgG subclass"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002960",
+        "label": "Autoimmunity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001955",
+        "label": "Unexplained fevers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002207",
+        "label": "Diffuse reticular or finely nodular infiltrations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032332",
+        "label": "Oligoclonal elevation of circulating IgM"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005510",
+        "label": "Transient erythroblastopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:209950",
+        "label": "Immunodeficiency 27A, mycobacteriosis, AR"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:50:11.391425Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

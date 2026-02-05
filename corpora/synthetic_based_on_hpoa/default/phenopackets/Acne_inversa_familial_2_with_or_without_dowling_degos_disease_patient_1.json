@@ -1,0 +1,57 @@
+{
+  "id": "acne_inversa,_familial,_2,_with_or_without_dowling-degos_disease",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0040154",
+        "label": "Acne inversa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100838",
+        "label": "Recurrent cutaneous abscess formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002860",
+        "label": "Squamous cell carcinoma"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613736",
+        "label": "Acne inversa, familial, 2, with or without dowling-degos disease"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:46:46.695669Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

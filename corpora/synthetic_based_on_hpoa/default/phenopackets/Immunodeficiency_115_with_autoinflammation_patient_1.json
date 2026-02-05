@@ -1,0 +1,153 @@
+{
+  "id": "immunodeficiency_115_with_autoinflammation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0020180",
+        "label": "Elevated haptoglobin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001954",
+        "label": "Recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002254",
+        "label": "Intermittent diarrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000964",
+        "label": "Eczematoid dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002593",
+        "label": "Intestinal lymphangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005396",
+        "label": "Susceptibility to coronavirus 229e"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001888",
+        "label": "Lymphopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005363",
+        "label": "Humoral immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012548",
+        "label": "Fatty replacement of skeletal muscle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025540",
+        "label": "Abnormal T cell subset distribution"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011017",
+        "label": "Abnormal cellular physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100759",
+        "label": "Clubbing of fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031404",
+        "label": "Impaired antigen-specific response"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620632",
+        "label": "Immunodeficiency 115 with autoinflammation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:32:22.056958Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

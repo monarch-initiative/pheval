@@ -1,0 +1,45 @@
+{
+  "id": "cerebellar_vermis_aplasia_with_associated_features_suggesting_smith-lemli-opitzsyndrome_and_meckel_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001405",
+        "label": "Periportal fibrosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:213010",
+        "label": "Cerebellar vermis aplasia with associated features suggesting smith-lemli-opitzsyndrome and meckel syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:23:04.812658Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

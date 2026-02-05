@@ -1,0 +1,171 @@
+{
+  "id": "lathosterolosis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000252",
+        "label": "Microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000033",
+        "label": "Ambiguous genitalia, male"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009085",
+        "label": "Alveolar ridge overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001830",
+        "label": "Postaxial foot polydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000939",
+        "label": "Osteoporosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031964",
+        "label": "Elevated circulating alanine aminotransferase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000343",
+        "label": "Long philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012373",
+        "label": "Abnormal eye physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008162",
+        "label": "Asymptomatic hyperammonemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:4000195",
+        "label": "Abnormal enzyme activity in cultured fibroblasts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034684",
+        "label": "Abnormal enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034444",
+        "label": "Abnormal gamma-glutamyltransferase level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000463",
+        "label": "Anteverted nares"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003316",
+        "label": "Butterfly vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000163",
+        "label": "Abnormal oral cavity morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034936",
+        "label": "Elevated circulating lathosterol concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009118",
+        "label": "Aplasia/Hypoplasia of the mandible"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025611",
+        "label": "Epicanthus superciliaris"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000341",
+        "label": "Narrow forehead"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607330",
+        "label": "Lathosterolosis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:36:35.336644Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

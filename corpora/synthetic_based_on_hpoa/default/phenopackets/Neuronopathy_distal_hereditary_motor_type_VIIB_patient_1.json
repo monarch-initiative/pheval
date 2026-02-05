@@ -1,0 +1,69 @@
+{
+  "id": "neuronopathy,_distal_hereditary_motor,_type_viib",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008954",
+        "label": "Intrinsic hand muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012821",
+        "label": "Unilateral vocal cord paresis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0430025",
+        "label": "Bilateral facial palsy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031177",
+        "label": "Finger flexor weakness"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607641",
+        "label": "Neuronopathy, distal hereditary motor, type VIIB"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:13:12.347985Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

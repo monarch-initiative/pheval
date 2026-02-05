@@ -1,0 +1,51 @@
+{
+  "id": "thrombophilia_due_to_deficiency_of_activated_protein_c_cofactor",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0100724",
+        "label": "Hypercoagulability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012175",
+        "label": "Resistance to activated protein C"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:188055",
+        "label": "Thrombophilia due to deficiency of activated protein C cofactor"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:03:54.744197Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "id": "vasculitis,_autoinflammation,_immunodeficiency,_and_hematologic_defects_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011108",
+        "label": "Recurrent sinusitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003565",
+        "label": "Elevated erythrocyte sedimentation rate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001297",
+        "label": "Stroke"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000602",
+        "label": "Ophthalmoplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001369",
+        "label": "Arthritis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011227",
+        "label": "Elevated circulating C-reactive protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002381",
+        "label": "Aphasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000713",
+        "label": "Agitation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004313",
+        "label": "Decreased circulating antibody level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030053",
+        "label": "Stiff skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009124",
+        "label": "Abnormal adipose tissue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030880",
+        "label": "Raynaud phenomenon"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012647",
+        "label": "Abnormal inflammatory response"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032324",
+        "label": "Non-periodic recurrent fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002960",
+        "label": "Autoimmunity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012228",
+        "label": "Tension-type headache"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030245",
+        "label": "Intrapartum fever"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0031796",
+          "label": "Recurrent"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002721",
+        "label": "Immunodeficiency"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032251",
+        "label": "Abnormal immune system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410042",
+        "label": "Abnormal liver morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030351",
+        "label": "Urticarial plaque"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002960",
+        "label": "Autoimmunity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031446",
+        "label": "Erosion of oral mucosa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011276",
+        "label": "Vascular skin abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004374",
+        "label": "Hemiplegia/hemiparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034684",
+        "label": "Abnormal enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034684",
+        "label": "Abnormal enzyme concentration or activity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615688",
+        "label": "Vasculitis, autoinflammation, immunodeficiency, and hematologic defects syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:24:39.557064Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

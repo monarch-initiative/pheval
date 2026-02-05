@@ -1,0 +1,135 @@
+{
+  "id": "ehlers-danlos_syndrome,_type_i",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000993",
+        "label": "Molluscoid pseudotumors"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001058",
+        "label": "Poor wound healing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001073",
+        "label": "Cigarette-paper scars"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001763",
+        "label": "Pes planus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008947",
+        "label": "Infantile muscular hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025014",
+        "label": "Subcutaneous spheroids"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010500",
+        "label": "Hyperextensibility of the knee"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006094",
+        "label": "Finger joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010485",
+        "label": "Hyperextensibility at elbow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006316",
+        "label": "Irregularly spaced teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007585",
+        "label": "Skin fragility with non-scarring blistering"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004764",
+        "label": "Myxomatous mitral valve degeneration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001374",
+        "label": "Congenital hip dislocation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001382",
+        "label": "Joint hypermobility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001537",
+        "label": "Umbilical hernia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:130000",
+        "label": "Ehlers-danlos syndrome, type I"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:37:46.557295Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

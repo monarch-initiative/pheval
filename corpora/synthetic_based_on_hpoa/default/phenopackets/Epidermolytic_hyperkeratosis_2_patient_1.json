@@ -1,0 +1,69 @@
+{
+  "id": "epidermolytic_hyperkeratosis_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000982",
+        "label": "Palmoplantar keratoderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001019",
+        "label": "Erythroderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005595",
+        "label": "Generalized hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007479",
+        "label": "Congenital nonbullous ichthyosiform erythroderma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031288",
+        "label": "Cobblestone-like hyperkeratosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620150",
+        "label": "Epidermolytic hyperkeratosis 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:10:22.271745Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

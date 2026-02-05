@@ -1,0 +1,93 @@
+{
+  "id": "birt-hogg-dube_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008069",
+        "label": "Neoplasm of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012718",
+        "label": "Abnormal gastrointestinal tract morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002103",
+        "label": "Abnormal pleura morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006772",
+        "label": "Renal angiomyolipoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006732",
+        "label": "Papillary renal cell carcinoma type 2"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032226",
+        "label": "Abnormal sebaceous gland morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:135150",
+        "label": "Birt-Hogg-Dube syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:37:57.254830Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

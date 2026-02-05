@@ -1,0 +1,57 @@
+{
+  "id": "bleeding_disorder,_platelet-type,_24,_autosomal_dominant",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008320",
+        "label": "Impaired collagen-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004866",
+        "label": "Impaired ADP-induced platelet aggregation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011869",
+        "label": "Abnormal platelet function"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619271",
+        "label": "Bleeding disorder, platelet-type, 24, autosomal dominant"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:03:56.193363Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

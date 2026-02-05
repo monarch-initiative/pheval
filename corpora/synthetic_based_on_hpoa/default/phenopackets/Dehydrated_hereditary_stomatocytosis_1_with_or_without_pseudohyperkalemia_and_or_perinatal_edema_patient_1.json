@@ -1,0 +1,57 @@
+{
+  "id": "dehydrated_hereditary_stomatocytosis_1_with_or_without_pseudohyperkalemia_and/or_perinatal_edema",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0004312",
+        "label": "Abnormal reticulocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001017",
+        "label": "Anemic pallor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008269",
+        "label": "Increased red cell hemolysis by shear stress"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:194380",
+        "label": "Dehydrated hereditary stomatocytosis 1 with or without pseudohyperkalemia and/or perinatal edema"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:53:52.682047Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

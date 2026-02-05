@@ -1,0 +1,159 @@
+{
+  "id": "anemia,_dyserythropoietic_congenital,_type_iv",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001789",
+        "label": "Hydrops fetalis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020181",
+        "label": "Reduced haptoglobin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011273",
+        "label": "Anisocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012132",
+        "label": "Erythroid hyperplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001433",
+        "label": "Hepatosplenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004447",
+        "label": "Poikilocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001878",
+        "label": "Hemolytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020062",
+        "label": "Decreased hemoglobin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001744",
+        "label": "Splenomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025435",
+        "label": "Increased circulating lactate dehydrogenase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031851",
+        "label": "Reduced hematocrit"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002904",
+        "label": "Hyperbilirubinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003244",
+        "label": "Penile hypospadias"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031965",
+        "label": "Increased RBC distribution width"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001923",
+        "label": "Reticulocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000851",
+        "label": "Congenital hypothyroidism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010995",
+        "label": "Abnormal circulating dicarboxylic acid concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002007",
+        "label": "Frontal bossing"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613673",
+        "label": "Anemia, dyserythropoietic congenital, type IV"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:08:37.348059Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

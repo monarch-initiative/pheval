@@ -1,0 +1,177 @@
+{
+  "id": "mitochondrial_complex_iv_deficiency,_nuclear_type_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003198",
+        "label": "Myopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002151",
+        "label": "Increased circulating lactate concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200147",
+        "label": "Neuronal loss in basal ganglia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032653",
+        "label": "Elevated lactate:pyruvate ratio"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003542",
+        "label": "Increased serum pyruvate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006999",
+        "label": "Basal ganglia gliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002059",
+        "label": "Cerebral atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002119",
+        "label": "Ventriculomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000577",
+        "label": "Exotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011922",
+        "label": "Abnormal activity of mitochondrial respiratory chain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007367",
+        "label": "Atrophy/Degeneration affecting the central nervous system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004901",
+        "label": "Exercise-induced lactic acidemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007263",
+        "label": "Spinocerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000708",
+        "label": "Atypical behavior"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031318",
+        "label": "Myofiber disarray"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100705",
+        "label": "Abnormal glial cell morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003557",
+        "label": "Increased variability in muscle fiber diameter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001670",
+        "label": "Asymmetric septal hypertrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002921",
+        "label": "Abnormal cerebrospinal fluid morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:604377",
+        "label": "Mitochondrial complex IV deficiency, nuclear type 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:40:59.942255Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

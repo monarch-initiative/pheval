@@ -1,0 +1,69 @@
+{
+  "id": "calcification_of_joints_and_arteries",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031303",
+        "label": "Femoral arterial calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005645",
+        "label": "Intervertebral disk calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011988",
+        "label": "Ectopic ossification in tendon tissue"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031304",
+        "label": "Iliac arterial calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025323",
+        "label": "Abnormal arterial physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:211800",
+        "label": "Calcification of joints and arteries"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:07:14.661082Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

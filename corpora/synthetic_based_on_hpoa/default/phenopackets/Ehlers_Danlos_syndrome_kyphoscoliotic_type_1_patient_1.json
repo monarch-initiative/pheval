@@ -1,0 +1,111 @@
+{
+  "id": "ehlers-danlos_syndrome,_kyphoscoliotic_type,_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:6000330",
+        "label": "Increased ratio of deoxypyridinoline to pyridinoline cross-links in urine"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000015",
+        "label": "Bladder diverticulum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000678",
+        "label": "Dental crowding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007502",
+        "label": "Follicular hyperkeratosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008458",
+        "label": "Progressive congenital scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000286",
+        "label": "Epicanthus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006852",
+        "label": "Episodic generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000482",
+        "label": "Microcornea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033214",
+        "label": "Recurrent viral pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005656",
+        "label": "Positional foot deformity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000545",
+        "label": "Myopia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:225400",
+        "label": "Ehlers-Danlos syndrome, kyphoscoliotic type, 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:36:24.290308Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

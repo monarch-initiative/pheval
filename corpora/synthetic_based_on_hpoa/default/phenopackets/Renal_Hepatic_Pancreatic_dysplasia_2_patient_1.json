@@ -1,0 +1,105 @@
+{
+  "id": "renal-hepatic-pancreatic_dysplasia_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001562",
+        "label": "Oligohydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002280",
+        "label": "Enlarged cisterna magna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001407",
+        "label": "Hepatic cysts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006563",
+        "label": "Malformation of the hepatic ductal plate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000800",
+        "label": "Cystic renal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001746",
+        "label": "Asplenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002088",
+        "label": "Abnormal lung morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040069",
+        "label": "Abnormal lower limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011609",
+        "label": "Type III truncus arteriosus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410042",
+        "label": "Abnormal liver morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615415",
+        "label": "Renal-Hepatic-Pancreatic dysplasia 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:39:16.335716Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

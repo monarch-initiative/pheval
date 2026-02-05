@@ -1,0 +1,134 @@
+{
+  "id": "mitochondrial_complex_iv_deficiency,_nuclear_type_7",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P13Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003688",
+        "label": "Cytochrome C oxidase-negative muscle fibers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000572",
+        "label": "Visual loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033369",
+        "label": "Cavitating leukodystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005976",
+        "label": "Hyperkalemic metabolic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001946",
+        "label": "Ketosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031653",
+        "label": "Abnormal heart valve physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001507",
+        "label": "Growth abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008162",
+        "label": "Asymptomatic hyperammonemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033423",
+        "label": "Pulmonary arterial hypertension with positive acute response to NO challenge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004897",
+        "label": "Stress/infection-induced lactic acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001713",
+        "label": "Abnormal cardiac ventricle morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619051",
+        "label": "Mitochondrial complex IV deficiency, nuclear type 7"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:56:19.152909Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

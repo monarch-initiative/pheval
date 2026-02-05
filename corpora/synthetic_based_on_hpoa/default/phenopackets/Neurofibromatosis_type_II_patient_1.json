@@ -1,0 +1,158 @@
+{
+  "id": "neurofibromatosis,_type_ii",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P13Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009590",
+        "label": "Unilateral vestibular schwannoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007787",
+        "label": "Posterior subcapsular cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009589",
+        "label": "Bilateral vestibular schwannoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007935",
+        "label": "Juvenile posterior subcapsular lenticular opacities"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000957",
+        "label": "Cafe-au-lait spot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009588",
+        "label": "Vestibular schwannoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012833",
+          "label": "Unilateral"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0002858",
+        "label": "Meningioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000360",
+        "label": "Tinnitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500089",
+        "label": "Optic nerve sheath meningioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001067",
+        "label": "Neurofibroma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000572",
+        "label": "Visual loss"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009594",
+        "label": "Retinal hamartoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007948",
+        "label": "Dense posterior cortical cataract"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002664",
+        "label": "Neoplasm"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:101000",
+        "label": "Neurofibromatosis, type II"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:54:33.313070Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

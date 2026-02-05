@@ -1,0 +1,93 @@
+{
+  "id": "anemia,_hypochromic_microcytic,_with_iron_overload_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000027",
+        "label": "Azoospermia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001924",
+        "label": "Sideroblastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012463",
+        "label": "Elevated transferrin saturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004447",
+        "label": "Poikilocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025066",
+        "label": "Decreased mean corpuscular volume"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032231",
+        "label": "Hypochromia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0033331",
+        "label": "Acute phase response"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615234",
+        "label": "Anemia, hypochromic microcytic, with iron overload 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:43:17.447927Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

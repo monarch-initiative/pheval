@@ -1,0 +1,99 @@
+{
+  "id": "46xy_sex_reversal_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011969",
+        "label": "Elevated circulating luteinizing hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008723",
+        "label": "Gonadal dysgenesis with female appearance, male"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008232",
+        "label": "Elevated circulating follicle stimulating hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008187",
+        "label": "Absence of secondary sex characteristics"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000786",
+        "label": "Primary amenorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000815",
+        "label": "Hypergonadotropic hypogonadism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000098",
+        "label": "Tall stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000150",
+        "label": "Gonadoblastoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000133",
+        "label": "Gonadal dysgenesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012243",
+        "label": "Abnormal reproductive system morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:400044",
+        "label": "46XY sex reversal 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T17:55:06.540926Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

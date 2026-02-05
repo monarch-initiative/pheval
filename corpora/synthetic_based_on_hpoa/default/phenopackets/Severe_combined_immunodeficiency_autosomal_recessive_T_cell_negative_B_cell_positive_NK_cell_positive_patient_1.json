@@ -1,0 +1,63 @@
+{
+  "id": "severe_combined_immunodeficiency,_autosomal_recessive,_t_cell-negative,_b_cell-positive,_nk_cell-positive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005390",
+        "label": "Recurrent opportunistic infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000403",
+        "label": "Recurrent otitis media"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008165",
+        "label": "Decreased helper T cell proportion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012204",
+        "label": "Recurrent vulvovaginal candidiasis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608971",
+        "label": "Severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-positive, NK cell-positive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:20:56.032840Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

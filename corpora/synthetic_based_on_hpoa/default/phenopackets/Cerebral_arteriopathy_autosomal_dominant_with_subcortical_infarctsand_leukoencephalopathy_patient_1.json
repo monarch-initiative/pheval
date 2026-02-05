@@ -1,0 +1,123 @@
+{
+  "id": "cerebral_arteriopathy,_autosomal_dominant,_with_subcortical_infarctsand_leukoencephalopathy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000726",
+        "label": "Dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002354",
+        "label": "Memory impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100659",
+        "label": "Abnormal cerebral vascular morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000726",
+        "label": "Dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010549",
+        "label": "Weakness due to upper motor neuron dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200275",
+        "label": "Abnormal motivation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000709",
+        "label": "Psychosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006943",
+        "label": "Diffuse spongiform leukoencephalopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031466",
+        "label": "Impairment in personality functioning"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002077",
+        "label": "Migraine with aura"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007236",
+        "label": "Recurrent subcortical infarcts"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006949",
+        "label": "Episodic peripheral neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012443",
+        "label": "Abnormal brain morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200269",
+        "label": "Abnormal thought pattern"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:125310",
+        "label": "Cerebral arteriopathy, autosomal dominant, with subcortical infarctsand leukoencephalopathy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:32:39.363294Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

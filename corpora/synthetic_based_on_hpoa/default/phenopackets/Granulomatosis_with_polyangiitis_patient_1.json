@@ -1,0 +1,165 @@
+{
+  "id": "granulomatosis_with_polyangiitis",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001607",
+        "label": "Subglottic stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032979",
+        "label": "Hemosiderin-laden macrophages in bronchoalveolar fluid"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000491",
+        "label": "Keratitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032230",
+        "label": "Cytoplasmic antineutrophil antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000155",
+        "label": "Oral ulcer"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100758",
+        "label": "Gangrene"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000389",
+        "label": "Chronic otitis media"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000246",
+        "label": "Sinusitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032990",
+        "label": "Localized pulmonary hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032018",
+        "label": "Multiple mononeuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011120",
+        "label": "Concave nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031417",
+        "label": "Rhinorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002955",
+        "label": "Granulomatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200042",
+        "label": "Skin ulcer"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025406",
+        "label": "Asthenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002088",
+        "label": "Abnormal lung morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011885",
+        "label": "Hemorrhage of the eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012124",
+        "label": "Intermediate uveitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033559",
+        "label": "Anti-myeloperoxidase antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025420",
+        "label": "Diffuse alveolar hemorrhage"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608710",
+        "label": "Granulomatosis with polyangiitis"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:00:14.710391Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "id": "heterotaxy,_visceral,_1,_x-linked",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003305",
+        "label": "Block vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001719",
+        "label": "Double outlet right ventricle"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005160",
+        "label": "Total anomalous pulmonary venous return"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002240",
+        "label": "Hepatomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000961",
+        "label": "Cyanosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001680",
+        "label": "Coarctation of aorta"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000104",
+        "label": "Renal agenesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001746",
+        "label": "Asplenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004383",
+        "label": "Hypoplastic left heart"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011536",
+        "label": "Right atrial isomerism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002098",
+        "label": "Respiratory distress"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001800",
+        "label": "Hypoplastic toenails"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001629",
+        "label": "Ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001651",
+        "label": "Dextrocardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001508",
+        "label": "Failure to thrive"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001669",
+        "label": "Transposition of the great arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006695",
+        "label": "Atrioventricular canal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012304",
+        "label": "Hypoplastic aortic arch"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031348",
+        "label": "Dextrotransposition of the great arteries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033379",
+        "label": "Bilateral superior vena cava"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001642",
+        "label": "Pulmonic stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002410",
+        "label": "Aqueductal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:306955",
+        "label": "Heterotaxy, visceral, 1, X-linked"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:49:24.046400Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

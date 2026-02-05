@@ -1,0 +1,135 @@
+{
+  "id": "combined_oxidative_phosphorylation_deficiency_57",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001695",
+        "label": "Cardiac arrest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001263",
+        "label": "Global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000873",
+        "label": "Diabetes insipidus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009806",
+        "label": "Nephrogenic diabetes insipidus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007110",
+        "label": "Central hypoventilation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001336",
+        "label": "Myoclonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012759",
+        "label": "Neurodevelopmental abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001637",
+        "label": "Abnormal myocardium morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001790",
+        "label": "Nonimmune hydrops fetalis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011504",
+        "label": "Bull's eye maculopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032287",
+        "label": "Ultra-low vision with no light perception"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200134",
+        "label": "Epileptic encephalopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030190",
+        "label": "Oral motor hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008347",
+        "label": "Decreased activity of mitochondrial complex IV"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:620167",
+        "label": "Combined oxidative phosphorylation deficiency 57"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:05:41.763626Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

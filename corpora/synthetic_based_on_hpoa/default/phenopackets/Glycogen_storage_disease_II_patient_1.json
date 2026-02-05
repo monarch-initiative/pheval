@@ -1,0 +1,195 @@
+{
+  "id": "glycogen_storage_disease_ii",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031056",
+        "label": "Fusiform cerebral aneurysm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002138",
+        "label": "Subarachnoid hemorrhage"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005425",
+        "label": "Recurrent sinopulmonary infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030973",
+        "label": "Postexertional symptom exacerbation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030235",
+        "label": "Extremely elevated creatine kinase"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040182",
+        "label": "Inappropriate sinus tachycardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002103",
+        "label": "Abnormal pleura morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003690",
+        "label": "Limb muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004889",
+        "label": "Intermittent episodes of respiratory insufficiency due to muscle weakness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031004",
+        "label": "Hemiareflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031185",
+        "label": "Increased circulating NT-proBNP concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010876",
+        "label": "Abnormal circulating protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033567",
+        "label": "Right axis deviation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002878",
+        "label": "Respiratory failure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002793",
+        "label": "Abnormal pattern of respiration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031826",
+        "label": "Abnormal reflex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034684",
+        "label": "Abnormal enzyme concentration or activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012269",
+        "label": "Abnormal muscle glycogen content"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001640",
+        "label": "Cardiomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031064",
+        "label": "Impaired continence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002355",
+        "label": "Difficulty walking"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:232300",
+        "label": "Glycogen storage disease II"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:55:21.611029Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

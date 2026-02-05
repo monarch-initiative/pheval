@@ -1,0 +1,111 @@
+{
+  "id": "metachromatic_leukodystrophy",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000020",
+        "label": "Urinary incontinence"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005609",
+        "label": "Gallbladder dysfunction"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200072",
+        "label": "Episodic quadriplegia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034295",
+        "label": "Reduced cerebral white matter volume"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001098",
+        "label": "Abnormal fundus morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001082",
+        "label": "Cholecystitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025456",
+        "label": "Abnormal CSF protein concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034687",
+        "label": "Impaired cerebroside sulfate hydrolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009878",
+        "label": "Cerebellar ataxia associated with quadrupedal gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003444",
+        "label": "EMG: chronic denervation signs"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:250100",
+        "label": "Metachromatic leukodystrophy"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:31:46.909017Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

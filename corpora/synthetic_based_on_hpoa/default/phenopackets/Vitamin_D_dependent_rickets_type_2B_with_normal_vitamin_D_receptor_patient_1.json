@@ -1,0 +1,93 @@
+{
+  "id": "vitamin_d-dependent_rickets_type_2b_with_normal_vitamin_d_receptor",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003155",
+        "label": "Elevated circulating alkaline phosphatase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002748",
+        "label": "Rickets"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030839",
+        "label": "Knee pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002980",
+        "label": "Femoral bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002752",
+        "label": "Sparse bone trabeculae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002663",
+        "label": "Delayed epiphyseal ossification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003103",
+        "label": "Abnormal cortical bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011314",
+        "label": "Abnormal long bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006414",
+        "label": "Distal tibial bowing"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:600785",
+        "label": "Vitamin D-dependent rickets type 2B with normal vitamin D receptor"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:18:53.931653Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

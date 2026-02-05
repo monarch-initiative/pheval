@@ -1,0 +1,182 @@
+{
+  "id": "optic_atrophy_11",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P1Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001438",
+        "label": "Abnormal abdomen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002487",
+        "label": "Hyperkinetic movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500042",
+        "label": "Latent hypermetropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011997",
+        "label": "Postprandial hyperlactemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020036",
+        "label": "Upper limb dysmetria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011345",
+        "label": "Moderate expressive language delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500076",
+        "label": "Alternating hypertropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000587",
+        "label": "Abnormal optic nerve morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011400",
+        "label": "Abnormal CNS myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007018",
+        "label": "Attention deficit hyperactivity disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007663",
+        "label": "Reduced visual acuity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100842",
+        "label": "Septo-optic dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012758",
+        "label": "Neurodevelopmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040195",
+        "label": "Decreased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005101",
+        "label": "High-frequency hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010952",
+        "label": "Mild fetal ventriculomegaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003557",
+        "label": "Increased variability in muscle fiber diameter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003510",
+        "label": "Severe short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000505",
+        "label": "Visual impairment"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617302",
+        "label": "Optic atrophy 11"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:16:03.122341Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

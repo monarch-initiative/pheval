@@ -1,0 +1,111 @@
+{
+  "id": "frontometaphyseal_dysplasia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009004",
+        "label": "Hypoplasia of the musculature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009004",
+        "label": "Hypoplasia of the musculature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006466",
+        "label": "Ankle flexion contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000126",
+        "label": "Hydronephrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000407",
+        "label": "Sensorineural hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000331",
+        "label": "Short chin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000940",
+        "label": "Abnormal diaphysis morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100261",
+        "label": "Abnormal tendon morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009120",
+        "label": "Aplasia/Hypoplasia involving the sinuses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000336",
+        "label": "Prominent supraorbital ridges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000336",
+        "label": "Prominent supraorbital ridges"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000245",
+        "label": "Abnormal paranasal sinus morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:305620",
+        "label": "Frontometaphyseal dysplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:21:47.941368Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

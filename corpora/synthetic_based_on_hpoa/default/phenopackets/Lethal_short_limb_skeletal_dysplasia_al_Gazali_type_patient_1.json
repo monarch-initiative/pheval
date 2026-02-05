@@ -1,0 +1,75 @@
+{
+  "id": "lethal_short-limb_skeletal_dysplasia,_al_gazali_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007856",
+        "label": "Punctate opacification of the cornea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005011",
+        "label": "Mesomelic arm shortening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040102",
+        "label": "Osseous atresia of the external auditory canal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002645",
+        "label": "Wormian bones"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005720",
+        "label": "Shortening of all metacarpals"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011910",
+        "label": "Shortening of all phalanges of fingers"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601356",
+        "label": "Lethal short-limb skeletal dysplasia, al Gazali type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:33:30.751003Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

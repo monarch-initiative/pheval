@@ -1,0 +1,159 @@
+{
+  "id": "dyskeratosis_congenita,_autosomal_dominant_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001882",
+        "label": "Leukopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001915",
+        "label": "Aplastic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002745",
+        "label": "Oral leukoplakia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001876",
+        "label": "Pancytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006530",
+        "label": "Abnormal pulmonary interstitial morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008404",
+        "label": "Nail dystrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005528",
+        "label": "Bone marrow hypocellularity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007427",
+        "label": "Reticulated skin pigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000750",
+        "label": "Delayed speech and language development"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001903",
+        "label": "Anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011991",
+        "label": "Abnormal neutrophil count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000118",
+        "label": "Phenotypic abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001877",
+        "label": "Abnormal erythrocyte morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004771",
+        "label": "Premature graying of body hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001809",
+        "label": "Split nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002213",
+        "label": "Fine hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002043",
+        "label": "Esophageal stricture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011873",
+        "label": "Abnormal platelet count"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000796",
+        "label": "Urethral obstruction"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613990",
+        "label": "Dyskeratosis congenita, autosomal dominant 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:04:06.851862Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

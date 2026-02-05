@@ -1,0 +1,129 @@
+{
+  "id": "congenital_disorder_of_glycosylation,_type_iq",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011121",
+        "label": "Abnormal skin morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0430135",
+        "label": "Abnormal circulating hepatic transaminase concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025335",
+        "label": "Delayed ability to stand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012547",
+        "label": "Abnormal involuntary eye movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011127",
+        "label": "Perioral eczema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004856",
+        "label": "Normochromic microcytic anemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000958",
+        "label": "Dry skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000568",
+        "label": "Microphthalmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011342",
+        "label": "Mild global developmental delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002342",
+        "label": "Intellectual disability, moderate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007924",
+        "label": "Slow decrease in visual acuity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030190",
+        "label": "Oral motor hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001976",
+        "label": "Reduced antithrombin III activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000612",
+        "label": "Iris coloboma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612379",
+        "label": "Congenital disorder of glycosylation, type IQ"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-12T01:06:37.946528Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

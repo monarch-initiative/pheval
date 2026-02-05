@@ -1,0 +1,63 @@
+{
+  "id": "naegeli-franceschetti-jadassohn_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000670",
+        "label": "Carious teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011368",
+        "label": "Epidermal thickening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007588",
+        "label": "Reticular hyperpigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007550",
+        "label": "Hypohidrosis or hyperhidrosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:161000",
+        "label": "Naegeli-Franceschetti-Jadassohn syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:24:38.977062Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

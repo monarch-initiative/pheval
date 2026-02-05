@@ -1,0 +1,195 @@
+{
+  "id": "mucopolysaccharidosis-plus_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001252",
+        "label": "Hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011220",
+        "label": "Prominent forehead"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002514",
+        "label": "Cerebral calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003073",
+        "label": "Hypoalbuminemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000339",
+        "label": "Pugilistic facies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030809",
+        "label": "Abnormal tongue morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010701",
+        "label": "Abnormal immunoglobulin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001627",
+        "label": "Abnormal heart morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011648",
+        "label": "Patent ductus arteriosus after birth at term"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001905",
+        "label": "Congenital thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011451",
+        "label": "Primary microcephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032988",
+        "label": "Persistent head lag"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033214",
+        "label": "Recurrent viral pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000917",
+        "label": "Superior pectus carinatum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000943",
+        "label": "Dysostosis multiplex"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030864",
+        "label": "Intercostal retractions"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000766",
+        "label": "Abnormal sternum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040030",
+        "label": "Chorioretinal hypopigmentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001403",
+        "label": "Macrovesicular hepatic steatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025611",
+        "label": "Epicanthus superciliaris"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012597",
+        "label": "Heavy proteinuria"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:617303",
+        "label": "Mucopolysaccharidosis-Plus syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:40:14.098520Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

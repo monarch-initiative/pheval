@@ -1,0 +1,105 @@
+{
+  "id": "46,xx_sex_reversal_2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000046",
+        "label": "Small scrotum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011969",
+        "label": "Elevated circulating luteinizing hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012861",
+        "label": "Ovotestis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000789",
+        "label": "Infertility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040171",
+        "label": "Decreased serum testosterone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011961",
+        "label": "Non-obstructive azoospermia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000027",
+        "label": "Azoospermia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008232",
+        "label": "Elevated circulating follicle stimulating hormone level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000054",
+        "label": "Micropenis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012245",
+        "label": "Sex reversal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000048",
+        "label": "Bifid scrotum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:278850",
+        "label": "46,XX sex reversal 2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:55:08.925226Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

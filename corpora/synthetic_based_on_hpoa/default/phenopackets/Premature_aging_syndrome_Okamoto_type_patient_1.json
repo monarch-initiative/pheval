@@ -1,0 +1,87 @@
+{
+  "id": "premature_aging_syndrome,_okamoto_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000369",
+        "label": "Low-set ears"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011846",
+        "label": "Osteoblastoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000523",
+        "label": "Subcapsular cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040195",
+        "label": "Decreased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000857",
+        "label": "Neonatal insulin-dependent diabetes mellitus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002669",
+        "label": "Osteosarcoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025521",
+        "label": "Increased body fat percentage"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601811",
+        "label": "Premature aging syndrome, Okamoto type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:54:23.536385Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

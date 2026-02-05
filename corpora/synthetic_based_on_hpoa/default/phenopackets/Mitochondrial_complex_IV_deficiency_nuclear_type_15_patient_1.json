@@ -1,0 +1,92 @@
+{
+  "id": "mitochondrial_complex_iv_deficiency,_nuclear_type_15",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P9Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000490",
+        "label": "Deeply set eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007364",
+        "label": "Aplasia/Hypoplasia of the cerebrum"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100951",
+        "label": "Enlarged fossa interpeduncularis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004354",
+        "label": "Abnormal circulating carboxylic acid concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033424",
+        "label": "Pulmonary arterial hypertension with lack of acute response to NO challenge"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003593",
+          "label": "Infantile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025454",
+        "label": "Abnormal CSF metabolite concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619059",
+        "label": "Mitochondrial complex IV deficiency, nuclear type 15"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:22:50.253819Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

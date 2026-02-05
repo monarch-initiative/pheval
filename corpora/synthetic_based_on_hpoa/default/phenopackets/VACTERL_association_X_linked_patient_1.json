@@ -1,0 +1,129 @@
+{
+  "id": "vacterl_association,_x-linked",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002089",
+        "label": "Pulmonary hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001561",
+        "label": "Polyhydramnios"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001651",
+        "label": "Dextrocardia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005301",
+        "label": "Persistent left superior vena cava"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002032",
+        "label": "Esophageal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010963",
+        "label": "Absence of stomach bubble on fetal sonography"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0034197",
+          "label": "Third trimester onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002575",
+        "label": "Tracheoesophageal fistula"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002023",
+        "label": "Anal atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000238",
+        "label": "Hydrocephalus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009623",
+        "label": "Proximal placement of thumb"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025423",
+        "label": "Abnormal larynx morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012210",
+        "label": "Abnormal renal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010767",
+        "label": "Sacrococcygeal pilonidal abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:314390",
+        "label": "VACTERL association, X-linked"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:14:20.387775Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
