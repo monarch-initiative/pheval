@@ -317,7 +317,8 @@ def generate_plots(
         curves: pl.DataFrame,
         benchmark_output_type: BenchmarkOutputType,
         plot_customisation: PlotCustomisation,
-        output_dir: Path
+        output_dir: Path,
+        no_curves: bool,
 ) -> None:
     """
     Generate summary statistics bar plots for prioritisation.
@@ -326,10 +327,13 @@ def generate_plots(
     """
     plot_generator = PlotGenerator(benchmark_name, output_dir)
     plot_customisation_type = getattr(plot_customisation, f"{benchmark_output_type.prioritisation_type_string}_plots")
-    logger.info("Generating ROC curve visualisations.")
-    plot_generator.generate_roc_curve(curves, benchmark_output_type, plot_customisation_type)
-    logger.info("Generating Precision-Recall curves visualisations.")
-    plot_generator.generate_precision_recall(curves, benchmark_output_type, plot_customisation_type)
+    if not no_curves:
+        logger.info("Generating ROC curve visualisations.")
+        plot_generator.generate_roc_curve(curves, benchmark_output_type, plot_customisation_type)
+        logger.info("Generating Precision-Recall curves visualisations.")
+        plot_generator.generate_precision_recall(curves, benchmark_output_type, plot_customisation_type)
+    if no_curves:
+        logger.info("No ROC curve visualisations generated.")
     plot_type = PlotTypes(plot_customisation_type.plot_type)
     match plot_type:
         case PlotTypes.BAR_STACKED:

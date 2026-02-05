@@ -66,13 +66,14 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
 
 
 def process_stats(
-    runs: list[RunConfig], benchmark_type: BenchmarkOutputType
+    runs: list[RunConfig], benchmark_type: BenchmarkOutputType, no_curves: bool
 ) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     """
     Processes stats outputs for specified runs to compare.
     Args:
         runs (List[RunConfig]): List of runs to benchmark.
         benchmark_type (BenchmarkOutputTypeEnum): Benchmark output type.
+        no_curves (bool): Whether to skip generating binary classification curves.
     Returns:
         Tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]: The stats for all runs.
     """
@@ -84,7 +85,8 @@ def process_stats(
                 compute_confusion_matrix(run.run_identifier, result_scan), on="run_identifier"
             )
         )
-        curve_results.append(compute_curves(run.run_identifier, result_scan))
+        if not no_curves:
+            curve_results.append(compute_curves(run.run_identifier, result_scan))
         true_positive_cases.append(
             result_scan.filter(pl.col("true_positive"))
             .select(["result_file", *benchmark_type.columns, pl.col("rank").alias(run.run_identifier)])
@@ -92,7 +94,7 @@ def process_stats(
         )
     return (
         pl.concat(stats, how="vertical").collect(),
-        pl.concat(curve_results, how="vertical").collect(),
+        pl.concat(curve_results, how="vertical").collect() if not no_curves else None,
         pl.concat(
             [true_positive_cases[0]]
             + [
@@ -106,33 +108,43 @@ def process_stats(
     )
 
 
-def benchmark(config: Config, benchmark_type: BenchmarkOutputType, output_dir: Path) -> None:
+def benchmark(config: Config, benchmark_type: BenchmarkOutputType, output_dir: Path, no_curves: bool) -> None:
     """
     Benchmark results for specified runs for a specified prioritisation type for comparison.
     Args:
         config (Config): Configuration for benchmarking.
         benchmark_type (BenchmarkOutputType): Benchmark output type.
         output_dir (Path): Output directory for benchmarking results.
+        no_curves (bool): Whether to skip generating binary classification curves.
     """
     conn = duckdb.connect(output_dir.joinpath(f"{config.benchmark_name}.duckdb"))
-    stats, curve_results, true_positive_cases = process_stats(config.runs, benchmark_type)
+    stats, curve_results, true_positive_cases = process_stats(config.runs, benchmark_type, no_curves)
     write_table(conn, stats, f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_summary")
-    write_table(
-        conn,
-        curve_results,
-        f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
-    )
+    if not no_curves:
+        write_table(
+            conn,
+            curve_results,
+            f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
+        )
     calculate_rank_changes(conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type)
-    generate_plots(config.benchmark_name, stats, curve_results, benchmark_type, config.plot_customisation, output_dir)
+    generate_plots(
+        config.benchmark_name,
+        stats, curve_results,
+        benchmark_type,
+        config.plot_customisation,
+        output_dir,
+        no_curves
+    )
     conn.close()
 
 
-def benchmark_runs(benchmark_config_file: Path, output_dir: Path) -> None:
+def benchmark_runs(benchmark_config_file: Path, output_dir: Path, no_curves: bool) -> None:
     """
     Benchmark results for specified runs for comparison.
     Args:
         benchmark_config_file (Path): Path to benchmark config file.
         output_dir (Path): Output directory for benchmarking results.
+        no_curves (bool): Whether to skip generating binary classification curves.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     logger = get_logger()
@@ -154,7 +166,8 @@ def benchmark_runs(benchmark_config_file: Path, output_dir: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.GENE.value,
-            output_dir
+            output_dir,
+            no_curves,
         )
         logger.info("Finished benchmarking for gene results.")
     if variant_analysis_runs:
@@ -166,7 +179,8 @@ def benchmark_runs(benchmark_config_file: Path, output_dir: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.VARIANT.value,
-            output_dir
+            output_dir,
+            no_curves,
         )
         logger.info("Finished benchmarking for variant results.")
     if disease_analysis_runs:
@@ -178,7 +192,8 @@ def benchmark_runs(benchmark_config_file: Path, output_dir: Path) -> None:
                 plot_customisation=config.plot_customisation,
             ),
             BenchmarkOutputTypeEnum.DISEASE.value,
-            output_dir
+            output_dir,
+            no_curves,
         )
         logger.info("Finished benchmarking for disease results.")
     logger.info(f"Finished benchmarking! Total time: {time.perf_counter() - start_time:.2f} seconds.")
