@@ -1,6 +1,11 @@
 site_name: PhEval
 theme:
+  logo: images/pheval-logo-2025-01-30_icon white.svg
   name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
   palette:
     - scheme: default
       primary: indigo
@@ -20,15 +25,10 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.highlight
   - mkdocs-click
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 
-extra_css:
-  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.css
-  - mermaid.css
 extra_javascript:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
 
@@ -43,18 +43,29 @@ watch:
   - src
 
 nav:
-  - "index.md"
-  - About: "about.md"
-  - Contact Us: "contact.md"
-  - API Documentation: api/pheval/
-  - Resources for contributors:
-      - "developing_a_pheval_plugin.md"
-      - "contributing.md"
-      - "styleguide.md"
-      - "CODE_OF_CONDUCT.md"
-  - Plugins: "plugins.md"
-  - Executing a Benchmark: "executing_a_benchmark.md"
-  - "roadmap.md"
+  - Home: "index.md"
+  - Getting Started:
+    - Overview: "getting_started/getting_started.md"
+    - Installation: "getting_started/installation.md"
+  - Using PhEval:
+    - Plugins and runners: using_pheval/plugins_and_runners.md
+  - Utilities:
+    - Overview: utilities/index.md
+    - Data preparation: utilities/data_preparation.md
+    - Phenotype scrambling: utilities/phenotype_scrambling.md
+    - Variant utilities: utilities/variant_utilities.md
+    - Resource updates: utilities/resource_updates.md
+  - Benchmarking:
+      - Overview: benchmarking/index.md
+      - Executing a benchmark: benchmarking/executing_a_benchmark.md
+  - Plugins:
+      - Overview: plugins/index.md
+  - Developer docs:
+      - Developing a PhEval plugin: resources_for_contributors/developing_a_pheval_plugin.md
+      - Contributing: resources_for_contributors/contributions.md
+      - API reference:
+          - Overview: resources_for_contributors/api_reference/index.md
+          - API documentation: resources_for_contributors/api_reference/api/pheval
 
 
 site_url: https://monarch-initiative.github.io/pheval/
