@@ -37,7 +37,7 @@ def list_valid_files():
         folder = "/".join(folder_parts[:-1])
         basename = os.path.basename(file).split(".")[0]
 
-        docs_path = f"./docs/api/{folder.replace('src/', '')}/{basename}.md"
+        docs_path = f"./docs/resources_for_contributors/api_reference/api/{folder.replace('src/', '')}/{basename}.md"
         if basename in ignored_files:
             continue
 
@@ -85,7 +85,7 @@ def print_cli_doc(file_item):
 
 def gen_docs():
     """The main method for generating documentation"""
-    api_folder = f"{os.path.abspath(os.curdir)}/docs/api"
+    api_folder = f"{os.path.abspath(os.curdir)}/docs/resources_for_contributors/api_reference/api/pheval"
     print(api_folder)
     shutil.rmtree(api_folder, ignore_errors=True)
     valid_files = list_valid_files()
