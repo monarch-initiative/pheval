@@ -126,13 +126,24 @@ class PhenopacketTruthSet:
         return (
             ranked_results.with_columns(
                 (
-                    pl.col("gene_symbol").is_in(classified_results["gene_symbol"])
-                    | pl.col("gene_identifier").is_in(classified_results["gene_identifier"])
+                        (
+                                pl.col("gene_symbol").is_in(classified_results["gene_symbol"])
+                                & (pl.col("gene_symbol") != "")
+                        )
+                        |
+                        (
+                                pl.col("gene_identifier").is_in(classified_results["gene_identifier"])
+                                & (pl.col("gene_identifier") != "")
+                        )
                 ).alias("true_positive")
             )
             .with_columns(pl.col("rank").cast(pl.Int64))
             .select(classified_results.columns)
-            .vstack(classified_results.filter(~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"])))
+            .vstack(
+                classified_results.filter(
+                    ~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"])
+                )
+            )
         )
 
     def classified_variant(self, result_name: str) -> pl.DataFrame:
@@ -219,9 +230,9 @@ class PhenopacketTruthSet:
 
     @staticmethod
     def merge_disease_results(
-        ranked_results: pl.DataFrame,
-        output_file: Path,
-        mondo_mapping_table: pl.DataFrame,
+            ranked_results: pl.DataFrame,
+            output_file: Path,
+            mondo_mapping_table: pl.DataFrame,
     ) -> pl.DataFrame:
         """
         Merge ranked disease results with the classified diseases.
