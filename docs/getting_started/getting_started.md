@@ -8,19 +8,6 @@ If you prefer a guided walkthrough, start here:
 
 - [**Introduction to PhEval and running a simple benchmark**](https://www.youtube.com/watch?v=nIPzVN99UWc)
 
-## What is PhEval?
-
-PhEval (Phenotypic Inference Evaluation Framework) supports the **systematic evaluation of phenotype-driven prioritisation methods**.
-
-Phenotype-driven tools are sensitive to changes in:
-
-- Ontologies and their versions
-- Phenotype, gene, and disease mappings
-- Semantic similarity methods
-- Underlying knowledge resources and cohorts
-
-PhEval addresses this by providing a framework for **reproducible and controlled evaluation**, with standardised outputs that can be compared across tools, versions, and experimental conditions.
-
 ## High-level workflow
 
 At a high level, PhEval workflows involve:
