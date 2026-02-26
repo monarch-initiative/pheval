@@ -127,14 +127,6 @@ Documentation-only pull requests are welcome.
 
 ---
 
-## Code of conduct
-
-Contributors are expected to follow a respectful and inclusive code of conduct.
-
-Harassment, abusive behaviour, or discrimination will not be tolerated.
-
----
-
 ## Getting help
 
 If you are unsure where to start:
