@@ -4,6 +4,10 @@ This page describes how to execute a benchmark, configure benchmarking parameter
 
 It assumes that one or more PhEval runs have already been completed using plugin-provided runners.
 
+If you prefer a guided walkthrough, start here:
+
+- [**Introduction to PhEval and running a simple benchmark**](https://www.youtube.com/watch?v=nIPzVN99UWc)
+
 ---
 
 ## After runner execution
