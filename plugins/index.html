@@ -15,7 +15,7 @@
     
     
       
-        <title>Plugins - PhEval</title>
+        <title>Overview - PhEval</title>
       
     
     
@@ -40,10 +40,6 @@
     
     
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../mermaid.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -73,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#plugins" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,12 +82,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="PhEval" class="md-header__button md-logo" aria-label="PhEval" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../images/pheval-logo-2025-01-30_icon white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -102,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Plugins
+              Overview
             
           </span>
         </div>
@@ -183,13 +185,132 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting_started/getting_started/" class="md-tabs__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../using_pheval/plugins_and_runners/" class="md-tabs__link">
+        Using PhEval
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../utilities/" class="md-tabs__link">
+        Utilities
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../benchmarking/" class="md-tabs__link">
+        Benchmarking
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Plugins
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources_for_contributors/developing_a_pheval_plugin/" class="md-tabs__link">
+        Developer docs
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -202,13 +323,14 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="PhEval" class="md-nav__button md-logo" aria-label="PhEval" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="../images/pheval-logo-2025-01-30_icon white.svg" alt="logo">
 
     </a>
     PhEval
@@ -250,10 +372,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
-        About
+      <a href="../getting_started/getting_started/" class="md-nav__link">
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -265,10 +434,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Using PhEval
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using PhEval" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using PhEval
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
-        Contact Us
+      <a href="../using_pheval/plugins_and_runners/" class="md-nav__link">
+        Plugins and runners
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -290,14 +492,14 @@
       
       
         <label class="md-nav__link" for="__nav_4">
-          API Documentation
+          Utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="API Documentation" data-md-level="1">
+      <nav class="md-nav" aria-label="Utilities" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          API Documentation
+          Utilities
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -307,8 +509,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/pheval/cli/" class="md-nav__link">
-        Cli
+      <a href="../utilities/" class="md-nav__link">
+        Overview
       </a>
     </li>
   
@@ -321,8 +523,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/pheval/config_parser/" class="md-nav__link">
-        Config parser
+      <a href="../utilities/data_preparation/" class="md-nav__link">
+        Data preparation
       </a>
     </li>
   
@@ -335,48 +537,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/pheval/run_metadata/" class="md-nav__link">
-        Run metadata
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_4">
-          analyse
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="analyse" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
-          <span class="md-nav__icon md-icon"></span>
-          analyse
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/benchmark/" class="md-nav__link">
-        Benchmark
+      <a href="../utilities/phenotype_scrambling/" class="md-nav__link">
+        Phenotype scrambling
       </a>
     </li>
   
@@ -389,8 +551,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/pheval/analyse/benchmark_db_manager/" class="md-nav__link">
-        Benchmark db manager
+      <a href="../utilities/variant_utilities/" class="md-nav__link">
+        Variant utilities
       </a>
     </li>
   
@@ -403,550 +565,9 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/pheval/analyse/benchmark_output_type/" class="md-nav__link">
-        Benchmark output type
+      <a href="../utilities/resource_updates/" class="md-nav__link">
+        Resource updates
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/binary_classification_curves/" class="md-nav__link">
-        Binary classification curves
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/binary_classification_stats/" class="md-nav__link">
-        Binary classification stats
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/generate_plots/" class="md-nav__link">
-        Generate plots
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/generate_rank_comparisons/" class="md-nav__link">
-        Generate rank comparisons
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/rank_stats/" class="md-nav__link">
-        Rank stats
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/analyse/run_data_parser/" class="md-nav__link">
-        Run data parser
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_5">
-          implementations
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="implementations" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          implementations
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/implementations/pheval_class_resolver/" class="md-nav__link">
-        Pheval class resolver
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_6">
-          infra
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="infra" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_6">
-          <span class="md-nav__icon md-icon"></span>
-          infra
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/infra/exomiserdb/" class="md-nav__link">
-        Exomiserdb
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_7">
-          post_processing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="post_processing" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_7">
-          <span class="md-nav__icon md-icon"></span>
-          post_processing
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/post_processing/mondo_mapping/" class="md-nav__link">
-        Mondo mapping
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/post_processing/phenopacket_truth_set/" class="md-nav__link">
-        Phenopacket truth set
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/post_processing/post_processing/" class="md-nav__link">
-        Post processing
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/post_processing/validate_result_format/" class="md-nav__link">
-        Validate result format
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8">
-          prepare
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="prepare" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_8">
-          <span class="md-nav__icon md-icon"></span>
-          prepare
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/prepare/create_noisy_phenopackets/" class="md-nav__link">
-        Create noisy phenopackets
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/prepare/create_spiked_vcf/" class="md-nav__link">
-        Create spiked vcf
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/prepare/custom_exceptions/" class="md-nav__link">
-        Custom exceptions
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/prepare/prepare_corpus/" class="md-nav__link">
-        Prepare corpus
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/prepare/update_phenopacket/" class="md-nav__link">
-        Update phenopacket
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" type="checkbox" id="__nav_4_9" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_9">
-          runners
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="runners" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_9">
-          <span class="md-nav__icon md-icon"></span>
-          runners
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/runners/runner/" class="md-nav__link">
-        Runner
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_10">
-          utils
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="utils" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_10">
-          <span class="md-nav__icon md-icon"></span>
-          utils
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/exomiser/" class="md-nav__link">
-        Exomiser
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/file_utils/" class="md-nav__link">
-        File utils
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/logger/" class="md-nav__link">
-        Logger
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/phenopacket_utils/" class="md-nav__link">
-        Phenopacket utils
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/semsim_utils/" class="md-nav__link">
-        Semsim utils
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/pheval/utils/utils/" class="md-nav__link">
-        Utils
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -975,14 +596,14 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Resources for contributors
+          Benchmarking
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Resources for contributors" data-md-level="1">
+      <nav class="md-nav" aria-label="Benchmarking" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Resources for contributors
+          Benchmarking
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -992,8 +613,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../developing_a_pheval_plugin/" class="md-nav__link">
-        Developing a PhEval Plugin
+      <a href="../benchmarking/" class="md-nav__link">
+        Overview
       </a>
     </li>
   
@@ -1006,36 +627,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
-        Contributions
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../styleguide/" class="md-nav__link">
-        Monarch Style Guide for PhEval
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../CODE_OF_CONDUCT/" class="md-nav__link">
-        Contributor Covenant Code of Conduct
+      <a href="../benchmarking/executing_a_benchmark/" class="md-nav__link">
+        Executing a benchmark
       </a>
     </li>
   
@@ -1057,16 +650,91 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Plugins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Plugins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Plugins
+        Overview
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#available-plugins" class="md-nav__link">
+    Available plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1078,25 +746,788 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Developer docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developer docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../executing_a_benchmark/" class="md-nav__link">
-        Executing a Benchmark
+      <a href="../resources_for_contributors/developing_a_pheval_plugin/" class="md-nav__link">
+        Developing a PhEval plugin
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
-        Roadmap
+      <a href="../resources_for_contributors/contributions/" class="md-nav__link">
+        Contributing
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          API reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          API reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2" type="checkbox" id="__nav_7_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2">
+          API documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API documentation" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          API documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/cli/" class="md-nav__link">
+        Cli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/config_parser/" class="md-nav__link">
+        Config parser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/run_metadata/" class="md-nav__link">
+        Run metadata
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_4" type="checkbox" id="__nav_7_3_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_4">
+          analyse
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="analyse" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          analyse
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/benchmark/" class="md-nav__link">
+        Benchmark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/benchmark_db_manager/" class="md-nav__link">
+        Benchmark db manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/benchmark_output_type/" class="md-nav__link">
+        Benchmark output type
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/binary_classification_curves/" class="md-nav__link">
+        Binary classification curves
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/binary_classification_stats/" class="md-nav__link">
+        Binary classification stats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/generate_plots/" class="md-nav__link">
+        Generate plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/generate_rank_comparisons/" class="md-nav__link">
+        Generate rank comparisons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/rank_stats/" class="md-nav__link">
+        Rank stats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/analyse/run_data_parser/" class="md-nav__link">
+        Run data parser
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_5" type="checkbox" id="__nav_7_3_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_5">
+          implementations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="implementations" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          implementations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/implementations/pheval_class_resolver/" class="md-nav__link">
+        Pheval class resolver
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_6" type="checkbox" id="__nav_7_3_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_6">
+          infra
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="infra" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          infra
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/infra/exomiserdb/" class="md-nav__link">
+        Exomiserdb
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_7" type="checkbox" id="__nav_7_3_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_7">
+          post_processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="post_processing" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          post_processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/post_processing/mondo_mapping/" class="md-nav__link">
+        Mondo mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/post_processing/phenopacket_truth_set/" class="md-nav__link">
+        Phenopacket truth set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/post_processing/post_processing/" class="md-nav__link">
+        Post processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/post_processing/validate_result_format/" class="md-nav__link">
+        Validate result format
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_8" type="checkbox" id="__nav_7_3_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_8">
+          prepare
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="prepare" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          prepare
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/prepare/create_noisy_phenopackets/" class="md-nav__link">
+        Create noisy phenopackets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/prepare/create_spiked_vcf/" class="md-nav__link">
+        Create spiked vcf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/prepare/custom_exceptions/" class="md-nav__link">
+        Custom exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/prepare/prepare_corpus/" class="md-nav__link">
+        Prepare corpus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/prepare/update_phenopacket/" class="md-nav__link">
+        Update phenopacket
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_9" type="checkbox" id="__nav_7_3_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_9">
+          runners
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="runners" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          runners
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/runners/runner/" class="md-nav__link">
+        Runner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_2_10" type="checkbox" id="__nav_7_3_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_2_10">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_3_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/exomiser/" class="md-nav__link">
+        Exomiser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/file_utils/" class="md-nav__link">
+        File utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/logger/" class="md-nav__link">
+        Logger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/phenopacket_utils/" class="md-nav__link">
+        Phenopacket utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/semsim_utils/" class="md-nav__link">
+        Semsim utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources_for_contributors/api_reference/api/pheval/utils/utils/" class="md-nav__link">
+        Utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1118,6 +1549,30 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#available-plugins" class="md-nav__link">
+    Available plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1131,86 +1586,115 @@
                 
                   
 
-  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/plugins.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/monarch-initiative/pheval/edit/docs/docs/plugins/index.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Plugins</h1>
-
-<p>A full list of implemented PhEval runners are listed below along with links to the original tool:</p>
+<h1 id="plugins">Plugins</h1>
+<p>This page lists <strong>available PhEval plugins</strong> and the phenotype-driven tools they integrate.</p>
+<p>Plugins are separate Python packages that extend PhEval with tool-specific logic. Each plugin exposes one or more <strong>runners</strong> that can be invoked via the PhEval CLI.</p>
+<p>For details on how plugins and runners fit into the execution model, see:</p>
+<ul>
+<li><a href="../using_pheval/plugins_and_runners/">Using PhEval → Plugins and runners</a></li>
+</ul>
+<p>For tool-specific usage, configuration options, and examples, always refer to the <strong>plugin README</strong>.</p>
+<hr />
+<h2 id="available-plugins">Available plugins</h2>
+<p>The table below lists currently implemented PhEval plugins, with links to both the PhEval runner and the original tool where applicable.</p>
 <table>
 <thead>
 <tr>
 <th>Tool</th>
 <th>PhEval plugin</th>
-<th>Comment</th>
+<th>Original tool</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Example</td>
+<td><a href="https://github.com/monarch-initiative/pheval.example">pheval.example</a></td>
+<td></td>
+<td>Example Runner</td>
+</tr>
+<tr>
 <td>Exomiser</td>
-<td><a href="https://github.com/monarch-initiative/pheval.exomiser">Exomiser runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/exomiser/Exomiser">here</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.exomiser">pheval.exomiser</a></td>
+<td><a href="https://github.com/exomiser/Exomiser">Exomiser</a></td>
+<td></td>
 </tr>
 <tr>
 <td>Phen2Gene</td>
-<td><a href="https://github.com/monarch-initiative/pheval.phen2gene">Phen2Gene runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/WGLab/Phen2Gene">here</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.phen2gene">pheval.phen2gene</a></td>
+<td><a href="https://github.com/WGLab/Phen2Gene">Phen2Gene</a></td>
+<td></td>
 </tr>
 <tr>
 <td>LIRICAL</td>
-<td><a href="https://github.com/monarch-initiative/pheval.lirical">LIRICAL runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/TheJacksonLaboratory/LIRICAL">here</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.lirical">pheval.lirical</a></td>
+<td><a href="https://github.com/TheJacksonLaboratory/LIRICAL">LIRICAL</a></td>
+<td></td>
 </tr>
 <tr>
 <td>SvAnna</td>
-<td><a href="https://github.com/monarch-initiative/pheval.svanna">SvAnna runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/TheJacksonLaboratory/SvAnna">here</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.svanna">pheval.svanna</a></td>
+<td><a href="https://github.com/TheJacksonLaboratory/SvAnna">SvAnna</a></td>
+<td></td>
 </tr>
 <tr>
 <td>GADO</td>
-<td><a href="https://github.com/monarch-initiative/pheval.gado">GADO runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/molgenis/systemsgenetics/wiki/GADO-Command-line">here</a></td>
-</tr>
-<tr>
-<td>Template</td>
-<td><a href="https://github.com/monarch-initiative/pheval.template">Template runner</a></td>
-<td></td>
-</tr>
-<tr>
-<td>OntoGPT</td>
-<td><a href="https://github.com/monarch-initiative/pheval.ontogpt">OntoGPT runner</a></td>
-<td></td>
-</tr>
-<tr>
-<td>ELDER</td>
-<td><a href="https://github.com/iQuxLE/ELDER">ELDER runner</a></td>
-<td></td>
-</tr>
-<tr>
-<td>MALCO</td>
-<td><a href="https://github.com/monarch-initiative/pheval.llm.git">MALCO runner</a></td>
-<td></td>
-</tr>
-<tr>
-<td>AI MARRVEL</td>
-<td><a href="https://github.com/monarch-initiative/pheval.ai_marrvel.git">AI MARRVEL runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/LiuzLab/AI_MARRVEL.git">here</a></td>
-</tr>
-<tr>
-<td>OAK</td>
-<td><a href="https://github.com/monarch-initiative/pheval.oak.git">OAK runner</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.gado">pheval.gado</a></td>
+<td><a href="https://github.com/molgenis/systemsgenetics/wiki/GADO-Command-line">GADO</a></td>
 <td></td>
 </tr>
 <tr>
 <td>PhenoGenius</td>
-<td><a href="https://github.com/monarch-initiative/pheval.phenogenius">PhenoGenius runner</a></td>
-<td>The link to the original tool can be found <a href="https://github.com/kyauy/PhenoGeniusCli">here</a></td>
+<td><a href="https://github.com/monarch-initiative/pheval.phenogenius">pheval.phenogenius</a></td>
+<td><a href="https://github.com/kyauy/PhenoGeniusCli">PhenoGenius</a></td>
+<td></td>
+</tr>
+<tr>
+<td>AI MARRVEL</td>
+<td><a href="https://github.com/monarch-initiative/pheval.ai_marrvel.git">pheval.ai_marrvel</a></td>
+<td><a href="https://github.com/LiuzLab/AI_MARRVEL.git">AI-MARRVEL</a></td>
+<td></td>
+</tr>
+<tr>
+<td>OAK</td>
+<td><a href="https://github.com/monarch-initiative/pheval.oak.git">pheval.oak</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>OntoGPT</td>
+<td><a href="https://github.com/monarch-initiative/pheval.ontogpt">pheval.ontogpt</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MALCO</td>
+<td><a href="https://github.com/monarch-initiative/pheval.llm.git">pheval.llm</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ELDER</td>
+<td><a href="https://github.com/monarch-initiative/ELDER">ELDER</a></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Plugins may expose <strong>multiple runners</strong>, depending on supported modes or input types.</li>
+<li>Plugin availability does not imply identical functionality across tools.</li>
+<li>Experimental or research plugins may change more frequently than core plugins.</li>
+</ul>
+<p>Users should always consult the plugin repository for the most up-to-date information.</p>
 
 
 
@@ -1223,6 +1707,11 @@
           
         </div>
         
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         <footer class="md-footer">
@@ -1231,7 +1720,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../CODE_OF_CONDUCT/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Contributor Covenant Code of Conduct" rel="prev">
+        <a href="../benchmarking/executing_a_benchmark/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Executing a benchmark" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1240,20 +1729,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Contributor Covenant Code of Conduct
+              Executing a benchmark
             </div>
           </div>
         </a>
       
       
         
-        <a href="../executing_a_benchmark/" class="md-footer__link md-footer__link--next" aria-label="Next: Executing a Benchmark" rel="next">
+        <a href="../resources_for_contributors/developing_a_pheval_plugin/" class="md-footer__link md-footer__link--next" aria-label="Next: Developing a PhEval plugin" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Executing a Benchmark
+              Developing a PhEval plugin
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1284,7 +1773,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
