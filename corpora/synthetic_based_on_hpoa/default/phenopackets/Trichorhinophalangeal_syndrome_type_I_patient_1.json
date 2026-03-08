@@ -1,0 +1,206 @@
+{
+  "id": "trichorhinophalangeal_syndrome,_type_i",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P88Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0005743",
+        "label": "Avascular necrosis of the capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006253",
+        "label": "Swelling of proximal interphalangeal joints"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001156",
+        "label": "Brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002805",
+        "label": "Accelerated bone age after puberty"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003279",
+        "label": "Coxa magna"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003307",
+        "label": "Hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011823",
+        "label": "Chin with horizontal crease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001290",
+        "label": "Generalized hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002829",
+        "label": "Arthralgia"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003584",
+          "label": "Late onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001816",
+        "label": "Thin nail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010252",
+        "label": "Ivory epiphyses of the distal phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008947",
+        "label": "Infantile muscular hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000189",
+        "label": "Narrow palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002209",
+        "label": "Sparse scalp hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001510",
+        "label": "Growth delay"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0004349",
+        "label": "Reduced bone mineral density"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003584",
+          "label": "Late onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030669",
+        "label": "Abnormal ocular adnexa morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003940",
+        "label": "Osteoarthritis of the elbow"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003584",
+          "label": "Late onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002002",
+        "label": "Deep philtrum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001820",
+        "label": "Leukonychia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000377",
+        "label": "Abnormal pinna morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000219",
+        "label": "Thin upper lip vermilion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000917",
+        "label": "Superior pectus carinatum"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:190350",
+        "label": "Trichorhinophalangeal syndrome, type I"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:18:43.947003Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

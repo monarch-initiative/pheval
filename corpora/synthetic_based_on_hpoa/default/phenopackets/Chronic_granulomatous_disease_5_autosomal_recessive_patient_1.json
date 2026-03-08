@@ -1,0 +1,123 @@
+{
+  "id": "chronic_granulomatous_disease_5,_autosomal_recessive",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0025615",
+        "label": "Abscess"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003203",
+        "label": "Impaired oxidative burst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003502",
+        "label": "Mild short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002960",
+        "label": "Autoimmunity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012390",
+        "label": "Anal fissure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032251",
+        "label": "Abnormal immune system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011921",
+        "label": "Exudative pleural effusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030251",
+        "label": "Absence of memory B cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011110",
+        "label": "Recurrent tonsillitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025408",
+        "label": "Abnormal spleen morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005535",
+        "label": "Exercise-induced hemolysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032101",
+        "label": "Unusual infection"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618935",
+        "label": "Chronic granulomatous disease 5, autosomal recessive"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:30:42.883224Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

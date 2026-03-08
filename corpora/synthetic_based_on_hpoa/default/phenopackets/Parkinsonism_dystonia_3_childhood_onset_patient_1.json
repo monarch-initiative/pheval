@@ -1,0 +1,117 @@
+{
+  "id": "parkinsonism-dystonia_3,_childhood-onset",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002107",
+        "label": "Pneumothorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001272",
+        "label": "Cerebellar atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002487",
+        "label": "Hyperkinetic movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002283",
+        "label": "Global brain atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006863",
+        "label": "Severe expressive language delay"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002530",
+        "label": "Axial dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100851",
+        "label": "Abnormal emotion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003808",
+        "label": "Abnormal muscle tone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002548",
+        "label": "Parkinsonism with favorable response to dopaminergic medication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034332",
+        "label": "Cognitive regression"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005267",
+        "label": "Premature delivery because of cervical insufficiency or membrane fragility"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100660",
+        "label": "Dyskinesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012477",
+        "label": "Vocal tremor"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619738",
+        "label": "Parkinsonism-dystonia 3, childhood-onset"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:42:17.409071Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "myotonia,_potassium-aggravated",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002486",
+        "label": "Myotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010548",
+        "label": "Percussion myotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005949",
+        "label": "Apneic episodes in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003326",
+        "label": "Myalgia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025425",
+        "label": "Laryngospasm"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608390",
+        "label": "Myotonia, potassium-aggravated"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:14:50.323119Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

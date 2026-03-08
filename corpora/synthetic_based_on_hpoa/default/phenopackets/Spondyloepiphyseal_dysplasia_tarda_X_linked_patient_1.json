@@ -1,0 +1,152 @@
+{
+  "id": "spondyloepiphyseal_dysplasia_tarda,_x-linked",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P11Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002655",
+        "label": "Spondyloepiphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004594",
+        "label": "Hump-shaped mound of bone in central and posterior portions of vertebral endplate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010582",
+        "label": "Irregular epiphyses"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0003418",
+        "label": "Back pain"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100864",
+        "label": "Short femoral neck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002808",
+        "label": "Kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008897",
+        "label": "Postnatal growth retardation"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001552",
+        "label": "Barrel-shaped chest"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002866",
+        "label": "Hypoplastic iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003090",
+        "label": "Hypoplasia of the capital femoral epiphysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007759",
+        "label": "Opacification of the corneal stroma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008843",
+        "label": "Hip osteoarthritis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:313400",
+        "label": "Spondyloepiphyseal dysplasia tarda, X-linked"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:15:23.180696Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

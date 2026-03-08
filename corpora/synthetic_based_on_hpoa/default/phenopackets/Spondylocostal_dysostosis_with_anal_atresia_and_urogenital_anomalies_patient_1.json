@@ -1,0 +1,87 @@
+{
+  "id": "spondylocostal_dysostosis_with_anal_atresia_and_urogenital_anomalies",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003305",
+        "label": "Block vertebrae"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002089",
+        "label": "Pulmonary hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000042",
+        "label": "Absent external genitalia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000068",
+        "label": "Urethral atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030799",
+        "label": "Scaphocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012674",
+        "label": "Aplasia of the lower vagina"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030680",
+        "label": "Abnormal cardiovascular system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:271520",
+        "label": "Spondylocostal dysostosis with anal atresia and urogenital anomalies"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:13:06.459768Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

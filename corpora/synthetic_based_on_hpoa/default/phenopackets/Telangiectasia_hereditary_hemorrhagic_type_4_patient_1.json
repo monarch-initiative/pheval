@@ -1,0 +1,86 @@
+{
+  "id": "telangiectasia,_hereditary_hemorrhagic,_type_4",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P10Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002408",
+        "label": "Cerebral arteriovenous malformation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000434",
+        "label": "Nasal mucosa telangiectasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000961",
+        "label": "Cyanosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004406",
+        "label": "Spontaneous, recurrent epistaxis"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003621",
+          "label": "Juvenile onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002626",
+        "label": "Venous varicosities of celiac and mesenteric vessels"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002011",
+        "label": "Morphological central nervous system abnormality"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610655",
+        "label": "Telangiectasia, hereditary hemorrhagic, type 4"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:29:51.052830Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

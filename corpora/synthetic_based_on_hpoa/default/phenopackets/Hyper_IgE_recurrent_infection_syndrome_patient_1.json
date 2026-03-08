@@ -1,0 +1,159 @@
+{
+  "id": "hyper-ige_recurrent_infection_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002027",
+        "label": "Abdominal pain"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000988",
+        "label": "Skin rash"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003623",
+          "label": "Neonatal onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002788",
+        "label": "Recurrent upper respiratory tract infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000218",
+        "label": "High palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006532",
+        "label": "Recurrent pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002726",
+        "label": "Recurrent Staphylococcus aureus infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010783",
+        "label": "Erythema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000445",
+        "label": "Wide nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032445",
+        "label": "Pulmonary cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000280",
+        "label": "Coarse facial features"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0410151",
+        "label": "Eosinophilic infiltration of the esophagus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002728",
+        "label": "Chronic mucocutaneous candidiasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006335",
+        "label": "Persistence of primary teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100838",
+        "label": "Recurrent cutaneous abscess formation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032282",
+        "label": "Contact dermatitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010701",
+        "label": "Abnormal immunoglobulin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004349",
+        "label": "Reduced bone mineral density"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002043",
+        "label": "Esophageal stricture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032061",
+        "label": "Hypereosinophilia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:147060",
+        "label": "Hyper-IgE recurrent infection syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:55:42.148197Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

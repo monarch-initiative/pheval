@@ -1,0 +1,63 @@
+{
+  "id": "thrombophilia,_hereditary,_due_to_protein_s_deficiency,_autosomal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001892",
+        "label": "Abnormal bleeding"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001977",
+        "label": "Abnormal thrombosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004855",
+        "label": "Reduced protein S activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032008",
+        "label": "Pulmonary fat embolism"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:612336",
+        "label": "Thrombophilia, hereditary, due to protein S deficiency, autosomal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:16:58.297425Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

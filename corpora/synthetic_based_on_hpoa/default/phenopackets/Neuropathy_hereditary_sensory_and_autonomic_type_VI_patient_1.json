@@ -1,0 +1,165 @@
+{
+  "id": "neuropathy,_hereditary_sensory_and_autonomic,_type_vi",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000763",
+        "label": "Sensory neuropathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001623",
+        "label": "Breech presentation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002033",
+        "label": "Poor suck"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000559",
+        "label": "Corneal scarring"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010783",
+        "label": "Erythema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003093",
+        "label": "Limited hip extension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001762",
+        "label": "Talipes equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002104",
+        "label": "Apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001945",
+        "label": "Fever"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007610",
+        "label": "Blotching pigmentation of the skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200096",
+        "label": "Triangular-shaped open mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034392",
+        "label": "Joint contracture"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025270",
+        "label": "Abnormal esophagus physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030884",
+        "label": "Gastrojejunal tube feeding in infancy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011408",
+        "label": "Moderate intrauterine growth retardation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011804",
+        "label": "Abnormal muscle physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001671",
+        "label": "Abnormal cardiac septum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011675",
+        "label": "Arrhythmia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031611",
+        "label": "Sub-inner limiting membrane hemorrhage"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614653",
+        "label": "Neuropathy, hereditary sensory and autonomic, type VI"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:29:53.166861Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

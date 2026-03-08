@@ -1,0 +1,69 @@
+{
+  "id": "xeroderma_pigmentosum,_complementation_group_a",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0011354",
+        "label": "Generalized abnormality of skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006937",
+        "label": "Impaired distal tactile sensation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011355",
+        "label": "Localized skin lesion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002439",
+        "label": "Frontolimbic dementia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030350",
+        "label": "Erythematous papule"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:278700",
+        "label": "Xeroderma pigmentosum, complementation group A"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:26:14.685682Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
