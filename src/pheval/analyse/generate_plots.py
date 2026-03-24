@@ -1,4 +1,6 @@
+# ruff: noqa: PLR2004
 from enum import Enum
+from itertools import combinations
 from pathlib import Path
 from typing import ClassVar
 
@@ -7,6 +9,7 @@ import matplotlib
 import matplotlib.colors as mcolors
 import polars as pl
 import seaborn as sns
+from duckdb import DuckDBPyConnection
 from matplotlib import pyplot as plt
 from sklearn.metrics import auc
 
@@ -45,6 +48,23 @@ class PlotGenerator:
         "#725ac1",
         "#e7ba52",
         "#1b9e77",
+    ]
+
+    rank_bins: ClassVar[list[str]] = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11-20",
+        "21-50",
+        "51-100",
+        "101-200",
     ]
 
     def __init__(self, benchmark_name: str, output_dir: Path):
@@ -120,16 +140,17 @@ class PlotGenerator:
         plt.ylim(y_lower_limit, y_upper_limit)
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg"),
+                f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_stacked_bar_plot(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_output_type: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_output_type: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
@@ -179,10 +200,10 @@ class PlotGenerator:
         )
 
     def _plot_bar_plot(
-            self,
-            benchmark_output_type: BenchmarkOutputType,
-            stats_df: pl.DataFrame,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmark_output_type: BenchmarkOutputType,
+        stats_df: pl.DataFrame,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         stats_df = stats_df.to_pandas().melt(
             id_vars=["Run"],
@@ -214,10 +235,10 @@ class PlotGenerator:
         )
 
     def generate_cumulative_bar(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a cumulative bar plot.
@@ -227,10 +248,10 @@ class PlotGenerator:
         self._plot_bar_plot(benchmark_generator, stats_df, plot_customisation)
 
     def generate_non_cumulative_bar(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a non-cumulative bar plot.
@@ -239,11 +260,187 @@ class PlotGenerator:
         stats_df = self._generate_non_cumulative_bar_plot_data(benchmarking_results_df)
         self._plot_bar_plot(benchmark_generator, stats_df, plot_customisation)
 
+    @staticmethod
+    def _classify_rank_changes(rank_changes_df: pl.DataFrame, run1: str, run2: str) -> pl.DataFrame:
+        """
+        Classify each case as Improved, Unchanged, or Dropped and assign a reference rank.
+
+        GAINED (rank 0 → ranked): Improved, reference rank taken from run2.
+        LOST (ranked → rank 0): Dropped, reference rank taken from run1.
+        Numeric delta > 0: Improved (run2 rank is better).
+        Numeric delta == 0: Unchanged.
+        Numeric delta < 0: Dropped.
+
+        Args:
+            rank_changes_df: DataFrame with run1/run2 rank columns and a rank_change column.
+            run1: Baseline run identifier.
+            run2: Comparison run identifier.
+
+        Returns:
+            pl.DataFrame: Input rows with added reference_rank and outcome columns.
+        """
+        rank_change_val = pl.col("rank_change").cast(pl.Int64, strict=False)
+        return rank_changes_df.with_columns(
+            [
+                pl.when(pl.col("rank_change") == "GAINED")
+                .then(pl.col(run2))
+                .otherwise(pl.col(run1))
+                .alias("reference_rank"),
+                pl.when(pl.col("rank_change") == "GAINED")
+                .then(pl.lit("Improved"))
+                .when(pl.col("rank_change") == "LOST")
+                .then(pl.lit("Dropped"))
+                .when(rank_change_val > 0)
+                .then(pl.lit("Improved"))
+                .when(rank_change_val == 0)
+                .then(pl.lit("Unchanged"))
+                .otherwise(pl.lit("Dropped"))
+                .alias("outcome"),
+            ]
+        )
+
+    def _compute_rank_change_plot_data(self, classified_rank_changes_df: pl.DataFrame) -> pl.DataFrame:
+        """
+        Bin cases by reference rank and compute per-bin outcome proportions.
+
+        Ranks 1-10 are kept individually; higher ranks are grouped into
+        11-20, 21-50, 51-100, and 101-200. Cases outside 1-200 are excluded.
+
+        Args:
+            classified_rank_changes_df: DataFrame with reference_rank and outcome columns.
+
+        Returns:
+            pl.DataFrame: Pivoted DataFrame with one row per rank bin containing
+                outcome proportions and total case counts (n), ordered by rank.
+        """
+        ref = pl.col("reference_rank")
+        bin_expr = (
+            pl.when(ref == 1)
+            .then(pl.lit("1"))
+            .when(ref == 2)
+            .then(pl.lit("2"))
+            .when(ref == 3)
+            .then(pl.lit("3"))
+            .when(ref == 4)
+            .then(pl.lit("4"))
+            .when(ref == 5)
+            .then(pl.lit("5"))
+            .when(ref == 6)
+            .then(pl.lit("6"))
+            .when(ref == 7)
+            .then(pl.lit("7"))
+            .when(ref == 8)
+            .then(pl.lit("8"))
+            .when(ref == 9)
+            .then(pl.lit("9"))
+            .when(ref == 10)
+            .then(pl.lit("10"))
+            .when((ref >= 11) & (ref <= 20))
+            .then(pl.lit("11-20"))
+            .when((ref >= 21) & (ref <= 50))
+            .then(pl.lit("21-50"))
+            .when((ref >= 51) & (ref <= 100))
+            .then(pl.lit("51-100"))
+            .when((ref >= 101) & (ref <= 200))
+            .then(pl.lit("101-200"))
+            .otherwise(None)
+        )
+        df = classified_rank_changes_df.with_columns(bin_expr.alias("rank_bin")).filter(
+            pl.col("rank_bin").is_not_null()
+        )
+        totals = df.group_by("rank_bin").len().rename({"len": "n"})
+        props = (
+            df.group_by(["rank_bin", "outcome"])
+            .len()
+            .join(totals, on="rank_bin")
+            .with_columns((pl.col("len") / pl.col("n")).alias("proportion"))
+        )
+        pivot_df = (
+            props.pivot(index="rank_bin", on="outcome", values="proportion", aggregate_function="sum")
+            .fill_null(0)
+            .join(totals, on="rank_bin")
+        )
+        ordered_bins = [b for b in self.rank_bins if b in pivot_df["rank_bin"].to_list()]
+        return pivot_df.with_columns(pl.col("rank_bin").cast(pl.Enum(ordered_bins))).sort("rank_bin")
+
+    def _plot_rank_change_bar(
+        self,
+        plot_data: pl.DataFrame,
+        run1: str,
+        run2: str,
+        benchmark_output_type: BenchmarkOutputType,
+    ) -> None:
+        """
+        Draw and save the horizontal stacked bar chart for rank changes.
+
+        Args:
+            plot_data: Pivoted DataFrame from _compute_rank_change_plot_data.
+            run1: Baseline run identifier (used in title and filename).
+            run2: Comparison run identifier (used in title and filename).
+            benchmark_output_type: Determines the prioritisation type label and filename.
+        """
+        pdf = plot_data.to_pandas().set_index("rank_bin")
+        outcomes = ["Improved", "Unchanged", "Dropped"]
+        colors = {"Improved": "#174857", "Unchanged": "#c6dbe6", "Dropped": "#2b7288"}
+
+        fig, ax = plt.subplots(figsize=(8, max(4, len(pdf) * 0.55)))
+        lefts = [0.0] * len(pdf)
+        for outcome in outcomes:
+            if outcome not in pdf.columns:
+                continue
+            values = pdf[outcome].values
+            ax.barh(range(len(pdf)), values, left=lefts, color=colors[outcome], label=outcome, edgecolor="white")
+            lefts = [left + val for left, val in zip(lefts, values, strict=True)]
+
+        ax.set_yticks(range(len(pdf)))
+        ax.set_yticklabels(pdf.index.tolist())
+        ax.invert_yaxis()
+        for i, rank_bin in enumerate(pdf.index):
+            ax.text(1.02, i, f"n={pdf.loc[rank_bin, 'n']}", va="center", fontsize=8)
+
+        ax.set_xlabel("Proportion")
+        ax.set_ylabel("Rank")
+        ax.set_xlim(0, 1)
+        ax.set_title(f"Rank changes: {run1} \u2192 {run2}\n" f"({benchmark_output_type.prioritisation_type_string})")
+        plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.30), ncol=3)
+        fig.savefig(
+            self.output_dir.joinpath(
+                f"{self.benchmark_name}_{run1}_vs_{run2}"
+                f"_{benchmark_output_type.prioritisation_type_string}_rank_changes.svg"
+            ),
+            format="svg",
+            bbox_inches="tight",
+        )
+        plt.close(fig)
+
+    def generate_rank_change_plot(
+        self,
+        rank_changes_df: pl.DataFrame,
+        run1: str,
+        run2: str,
+        benchmark_output_type: BenchmarkOutputType,
+    ) -> None:
+        """
+        Generate a horizontal stacked bar plot showing how ranks changed between two runs.
+
+        Args:
+            rank_changes_df: DataFrame with run1/run2 rank columns and a rank_change column.
+            run1: Baseline run identifier.
+            run2: Comparison run identifier.
+            benchmark_output_type: Type of benchmark output.
+        """
+        classified_rank_changes = self._classify_rank_changes(rank_changes_df, run1, run2)
+        plot_data = self._compute_rank_change_plot_data(classified_rank_changes)
+        if plot_data.is_empty():
+            logger.warning(f"No rank data to plot for {run1} vs {run2}.")
+            return
+        self._plot_rank_change_bar(plot_data, run1, run2, benchmark_output_type)
+
     def generate_roc_curve(
-            self,
-            curves: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        curves: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.
@@ -270,16 +467,17 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg"),
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_precision_recall(
-            self,
-            curves: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        curves: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Precision-Recall curves for binary classification benchmark results.
@@ -305,25 +503,29 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg"),
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
 
 def generate_plots(
-        benchmark_name: str,
-        benchmarking_results_df: pl.DataFrame,
-        curves: pl.DataFrame,
-        benchmark_output_type: BenchmarkOutputType,
-        plot_customisation: PlotCustomisation,
-        output_dir: Path,
-        no_curves: bool,
+    benchmark_name: str,
+    benchmarking_results_df: pl.DataFrame,
+    curves: pl.DataFrame,
+    benchmark_output_type: BenchmarkOutputType,
+    plot_customisation: PlotCustomisation,
+    output_dir: Path,
+    no_curves: bool,
+    conn: DuckDBPyConnection,
+    run_identifiers: list[str],
 ) -> None:
     """
-    Generate summary statistics bar plots for prioritisation.
+    Generate all plots for a benchmarking run.
 
-    This method generates summary statistics bar plots based on the provided benchmarking results and plot type.
+    Generates rank summary bar plots, and optionally ROC/PR curves and pairwise
+    rank change plots when a database connection and run identifiers are supplied.
     """
     plot_generator = PlotGenerator(benchmark_name, output_dir)
     plot_customisation_type = getattr(plot_customisation, f"{benchmark_output_type.prioritisation_type_string}_plots")
@@ -351,6 +553,12 @@ def generate_plots(
             plot_generator.generate_non_cumulative_bar(
                 benchmarking_results_df, benchmark_output_type, plot_customisation_type
             )
+    if len(run_identifiers) >= 2:
+        for run1, run2 in combinations(run_identifiers, 2):
+            table_name = f"{run1}_vs_{run2}_{benchmark_output_type.prioritisation_type_string}_rank_changes"
+            logger.info(f"Generating rank change plot for {run1} vs {run2}.")
+            rank_changes_df = load_table_lazy(table_name, conn).collect()
+            plot_generator.generate_rank_change_plot(rank_changes_df, run1, run2, benchmark_output_type)
 
 
 def generate_plots_from_db(db_path: Path, config: Path, output_dir: Path) -> None:
@@ -394,6 +602,8 @@ def generate_plots_from_db(db_path: Path, config: Path, output_dir: Path) -> Non
                 benchmark_output_type=benchmark_output_type.value,
                 plot_customisation=benchmark_config_file.plot_customisation,
                 output_dir=output_dir,
+                conn=conn,
+                run_identifiers=[run.run_identifier for run in benchmark_config_file.runs],
             )
     logger.info("Finished generating plots.")
     conn.close()

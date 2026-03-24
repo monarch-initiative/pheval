@@ -12,6 +12,7 @@ logger = get_logger()
 
 _BOOL_FIELDS = ("variant_analysis", "gene_analysis", "disease_analysis")
 
+
 @serde
 @dataclass
 class InputDirConfig:
@@ -35,6 +36,7 @@ class InputDirConfig:
     disease_analysis: bool
     tool_specific_configuration_options: Any
 
+
 def _enforce_bool_fields(cfg: dict) -> None:
     """
     Validates that specified boolean fields in the configuration dictionary are present and have
@@ -49,10 +51,8 @@ def _enforce_bool_fields(cfg: dict) -> None:
     for key in _BOOL_FIELDS:
         val = cfg[key]
         if not isinstance(val, bool):
-            raise ValueError(
-                f"Invalid value for '{key}': {val!r}. "
-                f"Expected a boolean true/false (do not quote)."
-            )
+            raise ValueError(f"Invalid value for '{key}': {val!r}. " f"Expected a boolean true/false (do not quote).")
+
 
 def parse_input_dir_config(input_dir: Path) -> InputDirConfig:
     """Reads the config file."""

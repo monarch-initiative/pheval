@@ -49,18 +49,11 @@ def scan_directory(run: RunConfig, benchmark_type: BenchmarkOutputType) -> pl.La
     lf = lf.filter(pl.col("true_positive") | passes_threshold)
 
     return (
-        lf
-        .filter(pl.col("true_positive") | passes_threshold)
+        lf.filter(pl.col("true_positive") | passes_threshold)
         .with_columns(
-            pl.when(pl.col("true_positive") & ~passes_threshold)
-            .then(pl.lit(0))
-            .otherwise(pl.col("rank"))
-            .alias("rank")
+            pl.when(pl.col("true_positive") & ~passes_threshold).then(pl.lit(0)).otherwise(pl.col("rank")).alias("rank")
         )
-        .sort(
-            by="score",
-            descending=(run.score_order.lower() == "descending")
-        )
+        .sort(by="score", descending=(run.score_order.lower() == "descending"))
         .unique(subset=_get_unique_subset(benchmark_type), keep="first")
     )
 
@@ -126,14 +119,18 @@ def benchmark(config: Config, benchmark_type: BenchmarkOutputType, output_dir: P
             curve_results,
             f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
         )
-    calculate_rank_changes(conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type)
+    run_identifiers = [run.run_identifier for run in config.runs]
+    calculate_rank_changes(conn, run_identifiers, true_positive_cases, benchmark_type)
     generate_plots(
-        config.benchmark_name,
-        stats, curve_results,
-        benchmark_type,
-        config.plot_customisation,
-        output_dir,
-        no_curves
+        benchmark_name=config.benchmark_name,
+        benchmarking_results_df=stats,
+        curves=curve_results,
+        benchmark_output_type=benchmark_type,
+        plot_customisation=config.plot_customisation,
+        output_dir=output_dir,
+        no_curves=no_curves,
+        conn=conn,
+        run_identifiers=run_identifiers,
     )
     conn.close()
 
