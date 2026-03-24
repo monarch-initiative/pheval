@@ -1682,7 +1682,14 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/benchmark.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -1706,10 +1713,7 @@ Args:
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Config</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Benchmark results for specified runs for a specified prioritisation type for comparison.</span>
 <span class="sd">    Args:</span>
@@ -1727,14 +1731,18 @@ Args:
             <span class="n">curve_results</span><span class="p">,</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">benchmark_type</span><span class="o">.</span><span class="n">prioritisation_type_string</span><span class="si">}</span><span class="s2">_binary_classification_curves&quot;</span><span class="p">,</span>
         <span class="p">)</span>
-    <span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="p">[</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span> <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">runs</span><span class="p">],</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span>
+    <span class="n">run_identifiers</span> <span class="o">=</span> <span class="p">[</span><span class="n">run</span><span class="o">.</span><span class="n">run_identifier</span> <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">runs</span><span class="p">]</span>
+    <span class="n">calculate_rank_changes</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">run_identifiers</span><span class="p">,</span> <span class="n">true_positive_cases</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">)</span>
     <span class="n">generate_plots</span><span class="p">(</span>
-        <span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="p">,</span>
-        <span class="n">stats</span><span class="p">,</span> <span class="n">curve_results</span><span class="p">,</span>
-        <span class="n">benchmark_type</span><span class="p">,</span>
-        <span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
-        <span class="n">output_dir</span><span class="p">,</span>
-        <span class="n">no_curves</span>
+        <span class="n">benchmark_name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">benchmark_name</span><span class="p">,</span>
+        <span class="n">benchmarking_results_df</span><span class="o">=</span><span class="n">stats</span><span class="p">,</span>
+        <span class="n">curves</span><span class="o">=</span><span class="n">curve_results</span><span class="p">,</span>
+        <span class="n">benchmark_output_type</span><span class="o">=</span><span class="n">benchmark_type</span><span class="p">,</span>
+        <span class="n">plot_customisation</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">plot_customisation</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+        <span class="n">no_curves</span><span class="o">=</span><span class="n">no_curves</span><span class="p">,</span>
+        <span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span>
+        <span class="n">run_identifiers</span><span class="o">=</span><span class="n">run_identifiers</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1763,7 +1771,10 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/benchmark.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -1818,10 +1829,7 @@ Args:
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">196</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_runs</span><span class="p">(</span><span class="n">benchmark_config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Benchmark results for specified runs for comparison.</span>
 <span class="sd">    Args:</span>
@@ -1908,7 +1916,14 @@ Returns:
 
             <details class="quote">
               <summary>Source code in <code>src/pheval/analyse/benchmark.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 68</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
 <span class="normal"> 69</span>
 <span class="normal"> 70</span>
 <span class="normal"> 71</span>
@@ -1941,14 +1956,7 @@ Returns:
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_stats</span><span class="p">(</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_stats</span><span class="p">(</span>
     <span class="n">runs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RunConfig</span><span class="p">],</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">,</span> <span class="n">no_curves</span><span class="p">:</span> <span class="nb">bool</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2055,14 +2063,7 @@ Returns:
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scan_directory</span><span class="p">(</span><span class="n">run</span><span class="p">:</span> <span class="n">RunConfig</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scan_directory</span><span class="p">(</span><span class="n">run</span><span class="p">:</span> <span class="n">RunConfig</span><span class="p">,</span> <span class="n">benchmark_type</span><span class="p">:</span> <span class="n">BenchmarkOutputType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Scan a results directory containing pheval parquet standardised results and return a LazyFrame object.</span>
 <span class="sd">    Args:</span>
@@ -2095,18 +2096,11 @@ Returns:
     <span class="n">lf</span> <span class="o">=</span> <span class="n">lf</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">passes_threshold</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">(</span>
-        <span class="n">lf</span>
-        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">passes_threshold</span><span class="p">)</span>
+        <span class="n">lf</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">passes_threshold</span><span class="p">)</span>
         <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
-            <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">passes_threshold</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-            <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">))</span>
-            <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span>
+            <span class="n">pl</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;true_positive&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">passes_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">)</span>
         <span class="p">)</span>
-        <span class="o">.</span><span class="n">sort</span><span class="p">(</span>
-            <span class="n">by</span><span class="o">=</span><span class="s2">&quot;score&quot;</span><span class="p">,</span>
-            <span class="n">descending</span><span class="o">=</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">score_order</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;descending&quot;</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">score_order</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;descending&quot;</span><span class="p">))</span>
         <span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">_get_unique_subset</span><span class="p">(</span><span class="n">benchmark_type</span><span class="p">),</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
