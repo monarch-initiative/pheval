@@ -409,7 +409,7 @@ class PlotGenerator:
         ax.set_ylabel("Rank")
         ax.set_xlim(0, 1)
         ax.set_title(f"Rank changes: {run1} \u2192 {run2}\n" f"({benchmark_output_type.prioritisation_type_string})")
-        plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.30), ncol=3)
+        plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.20), ncol=3)
         fig.savefig(
             self.output_dir.joinpath(
                 f"{self.benchmark_name}_{run1}_vs_{run2}"
