@@ -126,14 +126,18 @@ def benchmark(config: Config, benchmark_type: BenchmarkOutputType, output_dir: P
             curve_results,
             f"{config.benchmark_name}_{benchmark_type.prioritisation_type_string}_binary_classification_curves",
         )
-    calculate_rank_changes(conn, [run.run_identifier for run in config.runs], true_positive_cases, benchmark_type)
+    run_identifiers = [run.run_identifier for run in config.runs]
+    calculate_rank_changes(conn, run_identifiers, true_positive_cases, benchmark_type)
     generate_plots(
-        config.benchmark_name,
-        stats, curve_results,
-        benchmark_type,
-        config.plot_customisation,
-        output_dir,
-        no_curves
+        benchmark_name=config.benchmark_name,
+        benchmarking_results_df=stats,
+        curves=curve_results,
+        benchmark_output_type=benchmark_type,
+        plot_customisation=config.plot_customisation,
+        output_dir=output_dir,
+        no_curves=no_curves,
+        conn=conn,
+        run_identifiers=run_identifiers,
     )
     conn.close()
 
