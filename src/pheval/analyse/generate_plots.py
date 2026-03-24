@@ -381,7 +381,7 @@ class PlotGenerator:
         """
         pdf = plot_data.to_pandas().set_index("rank_bin")
         outcomes = ["Improved", "Unchanged", "Dropped"]
-        colors = {"Improved": "#174857", "Unchanged": "#c6dbe6", "Dropped": "#2b7288"}
+        colors = {"Improved": "#174857", "Unchanged": "#a6c4d4", "Dropped": "#2b7288"}
 
         fig, ax = plt.subplots(figsize=(8, max(4, len(pdf) * 0.55)))
         lefts = [0.0] * len(pdf)
@@ -390,6 +390,13 @@ class PlotGenerator:
                 continue
             values = pdf[outcome].values
             ax.barh(range(len(pdf)), values, left=lefts, color=colors[outcome], label=outcome, edgecolor="white")
+            for i, (left, proportion) in enumerate(zip(lefts, values, strict=True)):
+                count = round(proportion * pdf["n"].iloc[i])
+                if proportion >= 0.05 and count > 0:
+                    ax.text(
+                        left + proportion / 2, i, str(count),
+                        ha="center", va="center", fontsize=8, color="white"
+                    )
             lefts = [left + val for left, val in zip(lefts, values, strict=True)]
 
         ax.set_yticks(range(len(pdf)))
