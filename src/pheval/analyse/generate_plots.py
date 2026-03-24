@@ -1,3 +1,4 @@
+# ruff: noqa: PLR2004
 from enum import Enum
 from itertools import combinations
 from pathlib import Path
@@ -50,8 +51,20 @@ class PlotGenerator:
     ]
 
     rank_bins: ClassVar[list[str]] = [
-        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-        "11-20", "21-50", "51-100", "101-200",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11-20",
+        "21-50",
+        "51-100",
+        "101-200",
     ]
 
     def __init__(self, benchmark_name: str, output_dir: Path):
@@ -127,16 +140,17 @@ class PlotGenerator:
         plt.ylim(y_lower_limit, y_upper_limit)
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg"),
+                f"{self.benchmark_name}_{benchmark_output_type.prioritisation_type_string}_rank_stats.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_stacked_bar_plot(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_output_type: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_output_type: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a stacked bar plot and Mean Reciprocal Rank (MRR) bar plot.
@@ -186,10 +200,10 @@ class PlotGenerator:
         )
 
     def _plot_bar_plot(
-            self,
-            benchmark_output_type: BenchmarkOutputType,
-            stats_df: pl.DataFrame,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmark_output_type: BenchmarkOutputType,
+        stats_df: pl.DataFrame,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         stats_df = stats_df.to_pandas().melt(
             id_vars=["Run"],
@@ -221,10 +235,10 @@ class PlotGenerator:
         )
 
     def generate_cumulative_bar(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a cumulative bar plot.
@@ -234,10 +248,10 @@ class PlotGenerator:
         self._plot_bar_plot(benchmark_generator, stats_df, plot_customisation)
 
     def generate_non_cumulative_bar(
-            self,
-            benchmarking_results_df: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        benchmarking_results_df: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ) -> None:
         """
         Generate a non-cumulative bar plot.
@@ -301,23 +315,39 @@ class PlotGenerator:
         """
         ref = pl.col("reference_rank")
         bin_expr = (
-            pl.when(ref == 1).then(pl.lit("1"))
-            .when(ref == 2).then(pl.lit("2"))
-            .when(ref == 3).then(pl.lit("3"))
-            .when(ref == 4).then(pl.lit("4"))
-            .when(ref == 5).then(pl.lit("5"))
-            .when(ref == 6).then(pl.lit("6"))
-            .when(ref == 7).then(pl.lit("7"))
-            .when(ref == 8).then(pl.lit("8"))
-            .when(ref == 9).then(pl.lit("9"))
-            .when(ref == 10).then(pl.lit("10"))
-            .when((ref >= 11) & (ref <= 20)).then(pl.lit("11-20"))
-            .when((ref >= 21) & (ref <= 50)).then(pl.lit("21-50"))
-            .when((ref >= 51) & (ref <= 100)).then(pl.lit("51-100"))
-            .when((ref >= 101) & (ref <= 200)).then(pl.lit("101-200"))
+            pl.when(ref == 1)
+            .then(pl.lit("1"))
+            .when(ref == 2)
+            .then(pl.lit("2"))
+            .when(ref == 3)
+            .then(pl.lit("3"))
+            .when(ref == 4)
+            .then(pl.lit("4"))
+            .when(ref == 5)
+            .then(pl.lit("5"))
+            .when(ref == 6)
+            .then(pl.lit("6"))
+            .when(ref == 7)
+            .then(pl.lit("7"))
+            .when(ref == 8)
+            .then(pl.lit("8"))
+            .when(ref == 9)
+            .then(pl.lit("9"))
+            .when(ref == 10)
+            .then(pl.lit("10"))
+            .when((ref >= 11) & (ref <= 20))
+            .then(pl.lit("11-20"))
+            .when((ref >= 21) & (ref <= 50))
+            .then(pl.lit("21-50"))
+            .when((ref >= 51) & (ref <= 100))
+            .then(pl.lit("51-100"))
+            .when((ref >= 101) & (ref <= 200))
+            .then(pl.lit("101-200"))
             .otherwise(None)
         )
-        df = classified_rank_changes_df.with_columns(bin_expr.alias("rank_bin")).filter(pl.col("rank_bin").is_not_null())
+        df = classified_rank_changes_df.with_columns(bin_expr.alias("rank_bin")).filter(
+            pl.col("rank_bin").is_not_null()
+        )
         totals = df.group_by("rank_bin").len().rename({"len": "n"})
         props = (
             df.group_by(["rank_bin", "outcome"])
@@ -360,7 +390,7 @@ class PlotGenerator:
                 continue
             values = pdf[outcome].values
             ax.barh(range(len(pdf)), values, left=lefts, color=colors[outcome], label=outcome, edgecolor="white")
-            lefts = [left + val for left, val in zip(lefts, values)]
+            lefts = [left + val for left, val in zip(lefts, values, strict=True)]
 
         ax.set_yticks(range(len(pdf)))
         ax.set_yticklabels(pdf.index.tolist())
@@ -371,10 +401,7 @@ class PlotGenerator:
         ax.set_xlabel("Proportion")
         ax.set_ylabel("Rank")
         ax.set_xlim(0, 1)
-        ax.set_title(
-            f"Rank changes: {run1} \u2192 {run2}\n"
-            f"({benchmark_output_type.prioritisation_type_string})"
-        )
+        ax.set_title(f"Rank changes: {run1} \u2192 {run2}\n" f"({benchmark_output_type.prioritisation_type_string})")
         plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.30), ncol=3)
         fig.savefig(
             self.output_dir.joinpath(
@@ -410,10 +437,10 @@ class PlotGenerator:
         self._plot_rank_change_bar(plot_data, run1, run2, benchmark_output_type)
 
     def generate_roc_curve(
-            self,
-            curves: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        curves: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Receiver Operating Characteristic (ROC) curves for binary classification benchmark results.
@@ -440,16 +467,17 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg"),
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_roc_curve.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
     def generate_precision_recall(
-            self,
-            curves: pl.DataFrame,
-            benchmark_generator: BenchmarkOutputType,
-            plot_customisation: SinglePlotCustomisation,
+        self,
+        curves: pl.DataFrame,
+        benchmark_generator: BenchmarkOutputType,
+        plot_customisation: SinglePlotCustomisation,
     ):
         """
         Generate and plot Precision-Recall curves for binary classification benchmark results.
@@ -475,22 +503,23 @@ class PlotGenerator:
         plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15))
         plt.savefig(
             self.output_dir.joinpath(
-                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg"),
+                f"{self.benchmark_name}_{benchmark_generator.prioritisation_type_string}_pr_curve.svg"
+            ),
             format="svg",
             bbox_inches="tight",
         )
 
 
 def generate_plots(
-        benchmark_name: str,
-        benchmarking_results_df: pl.DataFrame,
-        curves: pl.DataFrame,
-        benchmark_output_type: BenchmarkOutputType,
-        plot_customisation: PlotCustomisation,
-        output_dir: Path,
-        no_curves: bool,
-        conn: DuckDBPyConnection,
-        run_identifiers: list[str],
+    benchmark_name: str,
+    benchmarking_results_df: pl.DataFrame,
+    curves: pl.DataFrame,
+    benchmark_output_type: BenchmarkOutputType,
+    plot_customisation: PlotCustomisation,
+    output_dir: Path,
+    no_curves: bool,
+    conn: DuckDBPyConnection,
+    run_identifiers: list[str],
 ) -> None:
     """
     Generate all plots for a benchmarking run.

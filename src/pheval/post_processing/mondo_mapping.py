@@ -9,15 +9,13 @@ def parse_mondo_mapping_table() -> pl.DataFrame:
     Returns:
         pl.DataFrame: Mondo SSSOM table.
     """
-    df =  pl.read_csv(
+    df = pl.read_csv(
         Path(__file__).parent.parent / "resources" / "mondo.sssom.tsv",
         separator="\t",
         comment_prefix="#",
     )
     orphanet_rows = df.filter(pl.col("object_id").str.starts_with("Orphanet:"))
-    orpha_rows = orphanet_rows.with_columns(
-        pl.col("object_id").str.replace("^Orphanet:", "ORPHA:").alias("object_id")
-    )
+    orpha_rows = orphanet_rows.with_columns(pl.col("object_id").str.replace("^Orphanet:", "ORPHA:").alias("object_id"))
 
     return pl.concat([df, orpha_rows], how="vertical")
 
