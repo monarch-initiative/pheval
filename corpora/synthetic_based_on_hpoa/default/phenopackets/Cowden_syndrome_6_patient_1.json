@@ -1,0 +1,153 @@
+{
+  "id": "cowden_syndrome_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000138",
+        "label": "Ovarian cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001626",
+        "label": "Abnormality of the cardiovascular system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100646",
+        "label": "Thyroiditis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000160",
+        "label": "Narrow mouth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002808",
+        "label": "Kyphosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010609",
+        "label": "Skin tags"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003002",
+        "label": "Breast carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000771",
+        "label": "Gynecomastia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010619",
+        "label": "Fibroadenoma of the breast"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007596",
+        "label": "Painful subcutaneous lipomas"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006740",
+        "label": "Transitional cell carcinoma of the bladder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001102",
+        "label": "Angioid streaks of the fundus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005987",
+        "label": "Multinodular goiter"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004305",
+        "label": "Involuntary movements"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040194",
+        "label": "Increased head circumference"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011842",
+        "label": "Abnormal skeletal morphology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615109",
+        "label": "Cowden syndrome 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:29:12.836338Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

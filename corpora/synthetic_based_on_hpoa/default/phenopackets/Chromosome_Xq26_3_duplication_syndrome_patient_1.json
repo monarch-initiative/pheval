@@ -1,0 +1,117 @@
+{
+  "id": "chromosome_xq26.3_duplication_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002893",
+        "label": "Pituitary adenoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025267",
+        "label": "Snoring"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0500001",
+        "label": "Body odor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010535",
+        "label": "Sleep apnea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033794",
+        "label": "Acral overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040075",
+        "label": "Hypopituitarism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001548",
+        "label": "Overgrowth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000098",
+        "label": "Tall stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030269",
+        "label": "Increased circulating insulin-like growth factor 1 concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012377",
+        "label": "Hemianopia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010674",
+        "label": "Abnormal curvature of the vertebral column"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003117",
+        "label": "Abnormal circulating hormone concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:300942",
+        "label": "Chromosome Xq26.3 duplication syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:13:23.401593Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

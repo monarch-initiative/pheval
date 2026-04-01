@@ -1,0 +1,81 @@
+{
+  "id": "adams-oliver_syndrome_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009373",
+        "label": "Type C brachydactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001057",
+        "label": "Aplasia cutis congenita"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001409",
+        "label": "Portal hypertension"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000965",
+        "label": "Cutis marmorata"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0200054",
+        "label": "Foot monodactyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011937",
+        "label": "Hypoplastic fifth toenail"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001362",
+        "label": "Calvarial skull defect"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:616589",
+        "label": "Adams-Oliver syndrome 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:07:11.721103Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

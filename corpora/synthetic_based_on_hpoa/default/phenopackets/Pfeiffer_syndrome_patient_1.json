@@ -1,0 +1,99 @@
+{
+  "id": "pfeiffer_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001249",
+        "label": "Intellectual disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003795",
+        "label": "Short middle phalanx of toe"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005347",
+        "label": "Tracheal cartilaginous sleeve"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003070",
+        "label": "Elbow ankylosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006110",
+        "label": "Shortening of all middle phalanges of the fingers"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000327",
+        "label": "Hypoplasia of the maxilla"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001363",
+        "label": "Craniosynostosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000174",
+        "label": "Abnormal palate morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003041",
+        "label": "Humeroradial synostosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:101600",
+        "label": "Pfeiffer syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:55:39.922907Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

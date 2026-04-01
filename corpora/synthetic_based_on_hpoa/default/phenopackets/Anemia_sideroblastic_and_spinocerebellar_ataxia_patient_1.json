@@ -1,0 +1,183 @@
+{
+  "id": "anemia,_sideroblastic,_and_spinocerebellar_ataxia",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002172",
+        "label": "Postural instability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012082",
+        "label": "Cerebellar Purkinje layer atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012462",
+        "label": "Chin myoclonus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033683",
+        "label": "Jaw hyperreflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034434",
+        "label": "Abnormal communication"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034280",
+        "label": "Target cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002977",
+        "label": "Aplasia/Hypoplasia involving the central nervous system"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012049",
+        "label": "Laryngeal dystonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012187",
+        "label": "Increased erythrocyte protoporphyrin concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004446",
+        "label": "Stomatocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011182",
+        "label": "Interictal epileptiform activity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001288",
+        "label": "Gait disturbance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002134",
+        "label": "Abnormal basal ganglia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008336",
+        "label": "Complex organic aciduria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001265",
+        "label": "Hyporeflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032550",
+        "label": "Howell-Jolly bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000549",
+        "label": "Abnormal conjugate eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100543",
+        "label": "Cognitive impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000597",
+        "label": "Ophthalmoparesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012639",
+        "label": "Abnormal nervous system morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031020",
+        "label": "Bone marrow hypercellularity"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:301310",
+        "label": "Anemia, sideroblastic, and spinocerebellar ataxia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:48:35.081900Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

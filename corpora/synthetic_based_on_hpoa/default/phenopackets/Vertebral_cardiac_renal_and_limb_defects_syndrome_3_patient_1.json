@@ -1,0 +1,81 @@
+{
+  "id": "vertebral,_cardiac,_renal,_and_limb_defects_syndrome_3",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0003026",
+        "label": "Short long bone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010306",
+        "label": "Short thorax"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004383",
+        "label": "Hypoplastic left heart"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031122",
+        "label": "Two-raphe bicuspid aortic valve"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005107",
+        "label": "Abnormal sacrum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004696",
+        "label": "Talipes cavus equinovarus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010958",
+        "label": "Bilateral renal agenesis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618845",
+        "label": "Vertebral, cardiac, renal, and limb defects syndrome 3"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:43:32.542435Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

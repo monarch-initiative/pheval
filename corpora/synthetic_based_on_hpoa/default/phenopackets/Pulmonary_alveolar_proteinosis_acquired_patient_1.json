@@ -1,0 +1,99 @@
+{
+  "id": "pulmonary_alveolar_proteinosis,_acquired",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002091",
+        "label": "Restrictive ventilatory defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000961",
+        "label": "Cyanosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020050",
+        "label": "Anti-granulocyte-macrophage colony stimulating factor antibody positivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002105",
+        "label": "Hemoptysis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002205",
+        "label": "Recurrent respiratory infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031996",
+        "label": "Inspiratory crackles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012735",
+        "label": "Cough"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006517",
+        "label": "Intraalveolar phospholipid accumulation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033214",
+        "label": "Recurrent viral pneumonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002795",
+        "label": "Abnormal respiratory system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:610910",
+        "label": "Pulmonary alveolar proteinosis, acquired"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:17:24.015643Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

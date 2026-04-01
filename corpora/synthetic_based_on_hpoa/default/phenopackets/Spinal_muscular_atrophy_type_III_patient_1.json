@@ -1,0 +1,99 @@
+{
+  "id": "spinal_muscular_atrophy,_type_iii",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002378",
+        "label": "Hand tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007269",
+        "label": "Spinal muscular atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008956",
+        "label": "Proximal lower limb amyotrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002398",
+        "label": "Degeneration of anterior horn cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001308",
+        "label": "Tongue fasciculations"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008946",
+        "label": "Pelvic girdle amyotrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002522",
+        "label": "Areflexia of lower limbs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006844",
+        "label": "Absent patellar reflexes"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003797",
+        "label": "Limb-girdle muscle atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003547",
+        "label": "Shoulder girdle muscle weakness"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:253400",
+        "label": "Spinal muscular atrophy, type III"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:07:00.862561Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

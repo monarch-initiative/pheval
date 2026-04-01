@@ -1,0 +1,159 @@
+{
+  "id": "tuberous_sclerosis-2",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002888",
+        "label": "Ependymoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000365",
+        "label": "Hearing impairment"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001328",
+        "label": "Specific learning disability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007018",
+        "label": "Attention deficit hyperactivity disorder"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009720",
+        "label": "Adenoma sebaceum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010615",
+        "label": "Angiofibromas"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009734",
+        "label": "Optic nerve glioma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005584",
+        "label": "Renal cell carcinoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009592",
+        "label": "Astrocytoma"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009719",
+        "label": "Hypomelanotic macule"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007206",
+        "label": "Hemimegalencephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012469",
+        "label": "Infantile spasms"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012798",
+        "label": "Pulmonary lymphangiomyomatosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009727",
+        "label": "Achromatic retinal patches"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009716",
+        "label": "Subependymal nodules"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000957",
+        "label": "Cafe-au-lait spot"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100622",
+        "label": "Maternal seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001716",
+        "label": "Wolff-Parkinson-White syndrome"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032844",
+        "label": "Focal impaired awareness epileptic spasm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0041050",
+        "label": "Renal tubular cyst"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:613254",
+        "label": "Tuberous sclerosis-2"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:00:36.809440Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

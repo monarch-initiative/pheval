@@ -1,0 +1,105 @@
+{
+  "id": "episodic_ataxia,_type_9",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001250",
+        "label": "Seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007193",
+        "label": "Bilateral tonic-clonic seizure on awakening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001317",
+        "label": "Abnormal cerebellum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001751",
+        "label": "Abnormal vestibular function"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011389",
+        "label": "Functional abnormality of the inner ear"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001251",
+        "label": "Ataxia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012759",
+        "label": "Neurodevelopmental abnormality"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006976",
+        "label": "Necrotizing encephalopathy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020219",
+        "label": "Motor seizure"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034783",
+        "label": "Posttussive emesis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001332",
+        "label": "Dystonia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:618924",
+        "label": "Episodic ataxia, type 9"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:53:56.104441Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

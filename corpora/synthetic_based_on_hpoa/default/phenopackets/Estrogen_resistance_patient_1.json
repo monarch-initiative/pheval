@@ -1,0 +1,93 @@
+{
+  "id": "estrogen_resistance",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001061",
+        "label": "Acne"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025134",
+        "label": "Increased serum estradiol"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001952",
+        "label": "Glucose intolerance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000938",
+        "label": "Osteopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000013",
+        "label": "Hypoplasia of the uterus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000147",
+        "label": "Polycystic ovaries"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031428",
+        "label": "Increased circulating osteocalcin level"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010639",
+        "label": "Elevated alkaline phosphatase of bone origin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000823",
+        "label": "Delayed puberty"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:615363",
+        "label": "Estrogen resistance"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T23:20:30.027193Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

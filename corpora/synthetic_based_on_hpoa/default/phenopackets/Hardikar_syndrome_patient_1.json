@@ -1,0 +1,141 @@
+{
+  "id": "hardikar_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000126",
+        "label": "Hydronephrosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100336",
+        "label": "Bilateral cleft lip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100334",
+        "label": "Unilateral cleft palate"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006579",
+        "label": "Prolonged neonatal jaundice"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010445",
+        "label": "Primum atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004859",
+        "label": "Amegakaryocytic thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030898",
+        "label": "Pruritis on abdomen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033149",
+        "label": "Intrahepatic bile duct dilatation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031073",
+        "label": "Abnormal response to endocrine stimulation test"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002242",
+        "label": "Abnormal intestine morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025634",
+        "label": "Abnormal ureter physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004325",
+        "label": "Decreased body weight"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002836",
+        "label": "Bladder exstrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011354",
+        "label": "Generalized abnormality of skin"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000010",
+        "label": "Recurrent urinary tract infections"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:301068",
+        "label": "Hardikar syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:42:11.665458Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

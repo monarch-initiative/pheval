@@ -1,0 +1,63 @@
+{
+  "id": "renal_tubular_acidosis,_proximal,_with_ocular_abnormalities_and_mentalretardation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007957",
+        "label": "Corneal opacity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003508",
+        "label": "Proportionate short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002049",
+        "label": "Proximal renal tubular acidosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031087",
+        "label": "Absent pubertal growth spurt"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:604278",
+        "label": "Renal tubular acidosis, proximal, with ocular abnormalities and mentalretardation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:51:40.215370Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

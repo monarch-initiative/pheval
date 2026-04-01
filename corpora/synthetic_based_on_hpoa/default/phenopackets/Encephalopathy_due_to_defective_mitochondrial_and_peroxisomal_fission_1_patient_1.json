@@ -1,0 +1,105 @@
+{
+  "id": "encephalopathy_due_to_defective_mitochondrial_and_peroxisomal_fission_1",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000490",
+        "label": "Deeply set eye"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002188",
+        "label": "Delayed CNS myelination"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007021",
+        "label": "Pain insensitivity"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008936",
+        "label": "Axial hypotonia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000711",
+        "label": "Restlessness"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012169",
+        "label": "Self-biting"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031004",
+        "label": "Hemiareflexia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007811",
+        "label": "Horizontal pendular nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011458",
+        "label": "Abdominal symptom"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011844",
+        "label": "Abnormal appendicular skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002120",
+        "label": "Cerebral cortical atrophy"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:614388",
+        "label": "Encephalopathy due to defective mitochondrial and peroxisomal fission 1"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:28:20.231729Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "mucoepithelial_dysplasia,_hereditary",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002208",
+        "label": "Coarse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011496",
+        "label": "Corneal neovascularization"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008396",
+        "label": "Chronic monilial nail infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001096",
+        "label": "Keratoconjunctivitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001648",
+        "label": "Cor pulmonale"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0034418",
+        "label": "Erythematous oral mucosa"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006552",
+        "label": "Fibrocystic lung disease"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031417",
+        "label": "Rhinorrhea"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000639",
+        "label": "Nystagmus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000518",
+        "label": "Cataract"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031816",
+        "label": "Abnormal oral morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012204",
+        "label": "Recurrent vulvovaginal candidiasis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:158310",
+        "label": "Mucoepithelial dysplasia, hereditary"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T21:30:14.137272Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

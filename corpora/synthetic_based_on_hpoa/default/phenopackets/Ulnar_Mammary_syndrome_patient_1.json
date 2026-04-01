@@ -1,0 +1,129 @@
+{
+  "id": "ulnar-mammary_syndrome",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0009237",
+        "label": "Short 5th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006709",
+        "label": "Aplasia/Hypoplasia of the nipples"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040072",
+        "label": "Abnormal forearm bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005916",
+        "label": "Abnormal metacarpal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100840",
+        "label": "Aplasia/Hypoplasia of the eyebrow"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006710",
+        "label": "Aplasia/Hypoplasia of the clavicles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006496",
+        "label": "Aplasia/hypoplasia involving bones of the upper limbs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000032",
+        "label": "Abnormal male external genitalia morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009246",
+        "label": "Aplasia of the distal phalanx of the 5th finger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012814",
+        "label": "Bilateral breast hypoplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000046",
+        "label": "Small scrotum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0030011",
+        "label": "Imperforate hymen"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040070",
+        "label": "Abnormal upper limb bone morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001167",
+        "label": "Abnormal finger morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001607",
+        "label": "Subglottic stenosis"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:181450",
+        "label": "Ulnar-Mammary syndrome"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T19:48:36.294702Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
