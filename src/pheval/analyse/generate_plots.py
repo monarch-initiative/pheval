@@ -383,8 +383,19 @@ class PlotGenerator:
         outcomes = ["Improved", "Unchanged", "Dropped"]
         colors = {"Improved": "#174857", "Unchanged": "#a6c4d4", "Dropped": "#2b7288"}
 
-        fig, ax = plt.subplots(figsize=(8, max(4, len(pdf) * 0.55)))
+        total_n = int(pdf["n"].sum())
+        total_counts = {
+            outcome: int(round((pdf[outcome] * pdf["n"]).sum()))
+            for outcome in outcomes
+            if outcome in pdf.columns
+        }
+        total_row = {outcome: count / total_n for outcome, count in total_counts.items()}
+
+        # Total bar sits one row below the rank bins with a gap
+        total_y = len(pdf) + 0.5
+        fig, ax = plt.subplots(figsize=(8, max(4, (total_y + 1) * 0.55)))
         lefts = [0.0] * len(pdf)
+        total_left = 0.0
         for outcome in outcomes:
             if outcome not in pdf.columns:
                 continue
@@ -399,17 +410,31 @@ class PlotGenerator:
                     )
             lefts = [left + val for left, val in zip(lefts, values, strict=True)]
 
-        ax.set_yticks(range(len(pdf)))
-        ax.set_yticklabels(pdf.index.tolist())
+            proportion = total_row.get(outcome, 0.0)
+            count = total_counts.get(outcome, 0)
+            ax.barh(total_y, proportion, left=total_left, color=colors[outcome], edgecolor="white")
+            if proportion >= 0.05 and count > 0:
+                ax.text(
+                    total_left + proportion / 2, total_y, str(count),
+                    ha="center", va="center", fontsize=8, color="white"
+                )
+            total_left += proportion
+
+        ax.axhline(y=total_y - 0.5, color="grey", linewidth=0.8, linestyle="--")
+        all_yticks = list(range(len(pdf))) + [total_y]
+        all_labels = pdf.index.tolist() + ["Total"]
+        ax.set_yticks(all_yticks)
+        ax.set_yticklabels(all_labels)
         ax.invert_yaxis()
         for i, rank_bin in enumerate(pdf.index):
             ax.text(1.02, i, f"n={pdf.loc[rank_bin, 'n']}", va="center", fontsize=8)
+        ax.text(1.02, total_y, f"n={total_n}", va="center", fontsize=8)
 
         ax.set_xlabel("Proportion")
         ax.set_ylabel("Rank")
         ax.set_xlim(0, 1)
         ax.set_title(f"Rank changes: {run1} \u2192 {run2}\n" f"({benchmark_output_type.prioritisation_type_string})")
-        plt.legend(loc="lower center", bbox_to_anchor=(0.5, -0.20), ncol=3)
+        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=3)
         fig.savefig(
             self.output_dir.joinpath(
                 f"{self.benchmark_name}_{run1}_vs_{run2}"
