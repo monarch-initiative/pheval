@@ -421,8 +421,8 @@ class PlotGenerator:
             total_left += proportion
 
         ax.axhline(y=total_y - 0.5, color="grey", linewidth=0.8, linestyle="--")
-        all_yticks = list(range(len(pdf))) + [total_y]
-        all_labels = pdf.index.tolist() + ["Total"]
+        all_yticks = [*range(len(pdf)), total_y]
+        all_labels = [*pdf.index.tolist(), "Total"]
         ax.set_yticks(all_yticks)
         ax.set_yticklabels(all_labels)
         ax.invert_yaxis()
