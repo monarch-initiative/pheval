@@ -528,7 +528,6 @@ class PlotGenerator:
                 label=f"{run_identifier} Precision-Recall Curve (AUC = {pr_auc:.2f})",
                 color=palette[i],
             )
-        plt.plot([0, 1], [0, 1], linestyle="--", color="gray")
         plt.xlabel("Recall")
         plt.ylabel("Precision")
         plt.title(plot_customisation.precision_recall_title)
