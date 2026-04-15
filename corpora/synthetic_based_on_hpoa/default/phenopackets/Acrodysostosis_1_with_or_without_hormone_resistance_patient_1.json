@@ -1,0 +1,267 @@
+{
+  "id": "acrodysostosis_1,_with_or_without_hormone_resistance",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000689",
+        "label": "Dental malocclusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000648",
+        "label": "Optic atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000028",
+        "label": "Cryptorchidism"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012833",
+          "label": "Unilateral"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0010743",
+        "label": "Short metatarsal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011800",
+        "label": "Midface retrusion"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005616",
+        "label": "Accelerated skeletal maturation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000455",
+        "label": "Broad nasal tip"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001847",
+        "label": "Long hallux"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000635",
+        "label": "Blue irides"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001518",
+        "label": "Small for gestational age"
+      },
+      "onset": {
+        "ontologyClass": {
+          "id": "HP:0003577",
+          "label": "Congenital onset"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000684",
+        "label": "Delayed eruption of teeth"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009121",
+        "label": "Abnormal axial skeleton morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005105",
+        "label": "Abnormal nasal morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003416",
+        "label": "Spinal canal stenosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100530",
+        "label": "Abnormal circulating calcium-phosphate regulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005280",
+        "label": "Depressed nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004322",
+        "label": "Short stature"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012825",
+          "label": "Mild"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0008486",
+        "label": "Lumbar interpedicular narrowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010047",
+        "label": "Short 5th metacarpal"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009767",
+        "label": "Aplasia/Hypoplasia of the phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010766",
+        "label": "Ectopic calcification"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011405",
+        "label": "Childhood onset short-limb short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000026",
+        "label": "Male hypogonadism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000316",
+        "label": "Hypertelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005920",
+        "label": "Abnormal epiphysis morphology of the phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100530",
+        "label": "Abnormal circulating calcium-phosphate regulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003117",
+        "label": "Abnormal circulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0040075",
+        "label": "Hypopituitarism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002813",
+        "label": "Abnormal limb bone morphology"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0012828;HP:0012828",
+          "label": "Severe"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0000549",
+        "label": "Abnormal conjugate eye movement"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004279",
+        "label": "Short palm"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002905",
+        "label": "Hyperphosphatemia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:101800",
+        "label": "Acrodysostosis 1, with or without hormone resistance"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:45:37.181294Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "id": "premature_aging_syndrome,_penttinen_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0007495",
+        "label": "Prematurely aged appearance"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000256",
+        "label": "Macrocephaly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002982",
+        "label": "Tibial bowing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006951",
+        "label": "Retrocerebellar cyst"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010500",
+        "label": "Hyperextensibility of the knee"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100578",
+        "label": "Lipoatrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010941",
+        "label": "Aplasia of the nasal bone"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000891",
+        "label": "Cervical ribs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004334",
+        "label": "Dermal atrophy"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0009839",
+        "label": "Osteolytic defects of the distal phalanges of the hand"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008070",
+        "label": "Sparse hair"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012040",
+        "label": "Corneal stromal edema"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003196",
+        "label": "Short nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002925",
+        "label": "Elevated circulating thyroid-stimulating hormone concentration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000444",
+        "label": "Convex nasal ridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000426",
+        "label": "Prominent nasal bridge"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000460",
+        "label": "Narrow nose"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002650",
+        "label": "Scoliosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000233",
+        "label": "Thin vermilion border"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000601",
+        "label": "Hypotelorism"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012487",
+        "label": "Cerebellopontine angle arachnoid cyst"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:601812",
+        "label": "Premature aging syndrome, Penttinen type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T20:32:18.473219Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

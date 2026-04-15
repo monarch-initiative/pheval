@@ -1,0 +1,87 @@
+{
+  "id": "heterotaxy,_visceral,_12,_autosomal",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0031565",
+        "label": "Abdominal situs ambiguus"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001674",
+        "label": "Complete atrioventricular canal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001631",
+        "label": "Atrial septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001696",
+        "label": "Situs inversus totalis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004935",
+        "label": "Pulmonary artery atresia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011624",
+        "label": "Apical muscular ventricular septal defect"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011565",
+        "label": "Common atrium"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011646",
+        "label": "Juxtaductal coarctation of the aorta"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:619702",
+        "label": "Heterotaxy, visceral, 12, autosomal"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:33:11.131686Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

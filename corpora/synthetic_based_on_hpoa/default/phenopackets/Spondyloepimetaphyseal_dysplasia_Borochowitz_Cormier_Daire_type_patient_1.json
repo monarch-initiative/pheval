@@ -1,0 +1,141 @@
+{
+  "id": "spondyloepimetaphyseal_dysplasia,_borochowitz-cormier-daire_type",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0008873",
+        "label": "Disproportionate short-limb short stature"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0010585",
+        "label": "Small epiphyses"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002938",
+        "label": "Lumbar hyperlordosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000922",
+        "label": "Posterior rib cupping"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002983",
+        "label": "Micromelia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002979",
+        "label": "Bowing of the legs"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003300",
+        "label": "Ovoid vertebral bodies"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003375",
+        "label": "Narrow greater sciatic notch"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000926",
+        "label": "Platyspondyly"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003180",
+        "label": "Flat acetabular roof"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003016",
+        "label": "Metaphyseal widening"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002651",
+        "label": "Spondyloepimetaphyseal dysplasia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008794",
+        "label": "Dysplastic iliac wing"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002515",
+        "label": "Waddling gait"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003097",
+        "label": "Short femur"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000915",
+        "label": "Pectus excavatum of inferior sternum"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0006456",
+        "label": "Irregular proximal tibial epiphyses"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:608728",
+        "label": "Spondyloepimetaphyseal dysplasia, Borochowitz-Cormier-Daire type"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:05:35.651173Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

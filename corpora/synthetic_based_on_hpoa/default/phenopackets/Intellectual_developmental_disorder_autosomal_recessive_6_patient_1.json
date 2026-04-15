@@ -1,0 +1,63 @@
+{
+  "id": "intellectual_developmental_disorder,_autosomal_recessive_6",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0030186",
+        "label": "Kinetic tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007351",
+        "label": "Upper limb postural tremor"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000728",
+        "label": "Impaired ability to form peer relationships"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0012638",
+        "label": "Abnormal nervous system physiology"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:611092",
+        "label": "Intellectual developmental disorder, autosomal recessive 6"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:10:45.780007Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

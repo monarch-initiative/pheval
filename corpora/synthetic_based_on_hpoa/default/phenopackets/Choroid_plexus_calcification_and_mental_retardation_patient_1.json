@@ -1,0 +1,63 @@
+{
+  "id": "choroid_plexus_calcification_and_mental_retardation",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001939",
+        "label": "Abnormality of metabolism/homeostasis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001608",
+        "label": "Abnormality of the voice"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031726",
+        "label": "Incyclotropia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0025456",
+        "label": "Abnormal CSF protein concentration"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:215480",
+        "label": "Choroid plexus calcification and mental retardation"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:22:34.094872Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

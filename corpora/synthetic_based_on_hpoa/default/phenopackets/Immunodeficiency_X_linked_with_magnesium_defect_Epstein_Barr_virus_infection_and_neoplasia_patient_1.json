@@ -1,0 +1,140 @@
+{
+  "id": "immunodeficiency,_x-linked,_with_magnesium_defect,_epstein-barr_virus_infection_and_neoplasia",
+  "subject": {
+    "id": "patient1",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P37Y"
+      }
+    }
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0002837",
+        "label": "Recurrent bronchitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002205",
+        "label": "Recurrent respiratory infections"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032218",
+        "label": "Decreased proportion of CD4-positive T cells"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0005523",
+        "label": "Lymphoproliferative disorder"
+      },
+      "modifiers": [
+        {
+          "id": "HP:0033185",
+          "label": "Triggered by EBV infection"
+        }
+      ]
+    },
+    {
+      "type": {
+        "id": "HP:0031268",
+        "label": "Decreased CD69 upregulation upon TCR activation"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033222",
+        "label": "Decreased CD4:CD8 ratio"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032204",
+        "label": "Chronic active Epstein-Barr virus infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032247",
+        "label": "Persistent CMV viremia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032170",
+        "label": "Severe varicella zoster infection"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000403",
+        "label": "Recurrent otitis media"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0045026",
+        "label": "Abnormal mediastinum morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001973",
+        "label": "Autoimmune thrombocytopenia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002733",
+        "label": "Abnormal lymph node morphology"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0011108",
+        "label": "Recurrent sinusitis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0020072",
+        "label": "Persistent EBV viremia"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:300853",
+        "label": "Immunodeficiency, X-linked, with magnesium defect, Epstein-Barr virus infection and neoplasia"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T22:19:28.198594Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}

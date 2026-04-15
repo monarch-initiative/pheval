@@ -1,0 +1,81 @@
+{
+  "id": "hypoprebetalipoproteinemia,_acanthocytosis,_retinitis_pigmentosa,and_pallidal_degeneration",
+  "subject": {
+    "id": "patient1"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0001927",
+        "label": "Acanthocytosis"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002491",
+        "label": "Spasticity of facial muscles"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0008181",
+        "label": "Abetalipoproteinemia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0007132",
+        "label": "Pallidal degeneration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0032505",
+        "label": "Hydrophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0100660",
+        "label": "Dyskinesia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:607236",
+        "label": "Hypoprebetalipoproteinemia, acanthocytosis, retinitis pigmentosa,and pallidal degeneration"
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2024-06-11T18:24:35.168391Z",
+    "createdBy": "phenotype2phenopacket",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "hp/releases/2024-04-24",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "omim",
+        "name": "Online Mendelian Inheritance in Man",
+        "url": "https://www.omim.org",
+        "version": "hp/releases/2023-04-18",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://omim.org/entry/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0"
+  }
+}
