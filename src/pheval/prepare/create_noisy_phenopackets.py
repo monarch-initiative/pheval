@@ -77,7 +77,7 @@ class HpoRandomiser:
             PhenotypicFeature: The PhenotypicFeature object representing the retrieved HPO term.
         """
         rels = self.hpo_ontology.entity_alias_map(hpo_id)
-        hpo_term = "".join(rels[next(iter(rels))])
+        hpo_term = rels.get("rdfs:label")[0]
         return PhenotypicFeature(type=OntologyClass(id=hpo_id, label=hpo_term))
 
     @staticmethod
@@ -132,7 +132,7 @@ class HpoRandomiser:
         for term in hpo_terms_to_be_changed:
             if self.hpo_ontology.label(term.type.id).startswith("obsolete"):
                 obsolete_term = self.hpo_ontology.entity_metadata_map(term.type.id)
-                updated_term = next(iter(obsolete_term.values()))[0]
+                updated_term = list(set(obsolete_term.get("IAO:0100001")))[0]
                 parents = self.hpo_ontology.hierarchical_parents(updated_term)
             else:
                 parents = self.hpo_ontology.hierarchical_parents(term.type.id)
