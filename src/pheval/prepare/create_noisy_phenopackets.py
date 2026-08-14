@@ -77,7 +77,8 @@ class HpoRandomiser:
             PhenotypicFeature: The PhenotypicFeature object representing the retrieved HPO term.
         """
         rels = self.hpo_ontology.entity_alias_map(hpo_id)
-        hpo_term = rels.get("rdfs:label")[0]
+        labels = rels.get("rdfs:label") or rels.get("oio:hasExactSynonym") or []
+        hpo_term = labels[0] if labels else self.hpo_ontology.label(hpo_id)
         return PhenotypicFeature(type=OntologyClass(id=hpo_id, label=hpo_term))
 
     @staticmethod
@@ -100,6 +101,24 @@ class HpoRandomiser:
         else:
             number_of_real_id = 1
         return random.sample(phenotypic_features, number_of_real_id)
+
+    def _hierarchical_parents_for_term(self, term: PhenotypicFeature) -> list[str]:
+        """
+        Resolve the HPO parents of a term, following an obsolete term's replacement first if needed.
+
+        Args:
+            term (PhenotypicFeature): The phenotypic feature to resolve parents for.
+
+        Returns:
+            List[str]: HPO IDs of the term's hierarchical parents, or an empty list if none can be resolved.
+        """
+        term_id = term.type.id
+        if not self.hpo_ontology.label(term_id).startswith("obsolete"):
+            return self.hpo_ontology.hierarchical_parents(term_id)
+        replaced_by = self.hpo_ontology.entity_metadata_map(term_id).get("IAO:0100001") or []
+        if not replaced_by:
+            return []
+        return self.hpo_ontology.hierarchical_parents(replaced_by[0])
 
     def convert_patient_terms_to_parent(
         self,
@@ -130,12 +149,7 @@ class HpoRandomiser:
         hpo_terms_to_be_changed = list(random.sample(remaining_hpo, number_of_scrambled_terms))
         parent_terms = []
         for term in hpo_terms_to_be_changed:
-            if self.hpo_ontology.label(term.type.id).startswith("obsolete"):
-                obsolete_term = self.hpo_ontology.entity_metadata_map(term.type.id)
-                updated_term = list(set(obsolete_term.get("IAO:0100001")))[0]
-                parents = self.hpo_ontology.hierarchical_parents(updated_term)
-            else:
-                parents = self.hpo_ontology.hierarchical_parents(term.type.id)
+            parents = self._hierarchical_parents_for_term(term)
             if not parents:
                 parent_terms.append(term)
             else:
@@ -241,14 +255,7 @@ class HpoRandomiser:
         phenopacket_files = files_with_suffix(phenopacket_dir, ".json")
         for phenopacket_path in phenopacket_files:
             logger.info(f"Scrambling {phenopacket_path.name}.")
-            phenopacket = phenopacket_reader(phenopacket_path)
-            created_noisy_phenopacket = self.add_noise_to_phenotypic_profile(phenopacket)
-            write_phenopacket(
-                created_noisy_phenopacket,
-                output_dir.joinpath(
-                    phenopacket_path.name,
-                ),
-            )
+            self.create_scrambled_phenopacket(output_dir, phenopacket_path)
 
 
 def scramble_phenopackets(
@@ -256,7 +263,7 @@ def scramble_phenopackets(
     phenopacket_path: Path,
     phenopacket_dir: Path,
     scramble_factor: float,
-    local_cached_ontology: Path,
+    local_cached_ontology: Path | None,
 ) -> None:
     """
     Create scrambled phenopackets from either a single phenopacket or a directory of phenopackets.
