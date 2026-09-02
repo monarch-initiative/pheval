@@ -9,7 +9,7 @@ from pathlib import Path
 
 from phenopackets import Family, File, Phenopacket
 
-from pheval.prepare.custom_exceptions import InputError
+from pheval.prepare.custom_exceptions import IncorrectFileFormatError, InputError
 from pheval.utils.file_utils import all_files, files_with_suffix, is_gzipped
 from pheval.utils.logger import get_logger
 from pheval.utils.phenopacket_utils import (
@@ -109,14 +109,16 @@ def read_vcf(vcf_file: Path) -> list[str]:
 class VcfHeaderParser:
     """Class for parsing the header of a VCF file."""
 
-    def __init__(self, vcf_contents: list[str]):
+    def __init__(self, vcf_contents: list[str], vcf_file_name: str | None = None):
         """
         Initialise the VcfHeaderParser.
 
         Args:
             vcf_contents (list[str]): The contents of the VCF file as a list of strings.
+            vcf_file_name (str): The name of the VCF file, used in error messages (optional).
         """
         self.vcf_contents = vcf_contents
+        self.vcf_file_name = vcf_file_name
 
     def parse_assembly(self) -> tuple[str, bool]:
         """
@@ -124,6 +126,10 @@ class VcfHeaderParser:
 
         Returns:
             Tuple[str, bool]: A tuple containing the assembly and chromosome status (True/False).
+
+        Raises:
+            IncorrectFileFormatError: If the contig lengths in the VCF header do not match a known
+                GRCh37/GRCh38 assembly.
         """
         vcf_assembly = {}
         chr_status = False
@@ -137,7 +143,12 @@ class VcfHeaderParser:
                 contig_length = re.sub("[^0-9]+", "", next(token for token in tokens if "length=" in token))
                 vcf_assembly[chromosome] = int(contig_length)
                 vcf_assembly = {i: vcf_assembly[i] for i in vcf_assembly if i.isdigit()}
-        assembly = next(k for k, v in genome_assemblies.items() if v == vcf_assembly)
+        assembly = next((k for k, v in genome_assemblies.items() if v == vcf_assembly), None)
+        if assembly is None:
+            raise IncorrectFileFormatError(
+                self.vcf_file_name or "VCF",
+                "contig lengths matching a known GRCh37 or GRCh38 assembly",
+            )
         return assembly, chr_status
 
     def parse_sample_id(self) -> str:
@@ -191,7 +202,7 @@ class VcfFile:
 
         """
         contents = read_vcf(template_vcf)
-        return VcfFile(template_vcf.name, contents, VcfHeaderParser(contents).parse_vcf_header())
+        return VcfFile(template_vcf.name, contents, VcfHeaderParser(contents, template_vcf.name).parse_vcf_header())
 
 
 def select_vcf_template(
@@ -217,22 +228,18 @@ def select_vcf_template(
         VcfFile: The selected VCF template file based on the assembly information of the proband causative variants.
 
     """
-    if proband_causative_variants[0].assembly in ["hg19", "GRCh37"]:
-        if hg19_vcf_info:
-            return hg19_vcf_info
-        elif hg19_vcf_dir:
-            return VcfFile.populate_fields(random.choice(all_files(hg19_vcf_dir)))
-        else:
-            raise InputError("Must specify hg19 template VCF!")
-    elif proband_causative_variants[0].assembly in ["hg38", "GRCh38"]:
-        if hg38_vcf_info:
-            return hg38_vcf_info
-        elif hg38_vcf_dir:
-            return VcfFile.populate_fields(random.choice(all_files(hg38_vcf_dir)))
-        else:
-            raise InputError("Must specify hg38 template VCF!")
+    variant_assembly = proband_causative_variants[0].assembly
+    if variant_assembly in ["hg19", "GRCh37"]:
+        assembly_name, vcf_info, vcf_dir = "hg19", hg19_vcf_info, hg19_vcf_dir
+    elif variant_assembly in ["hg38", "GRCh38"]:
+        assembly_name, vcf_info, vcf_dir = "hg38", hg38_vcf_info, hg38_vcf_dir
     else:
-        raise IncompatibleGenomeAssemblyError(proband_causative_variants[0].assembly, phenopacket_path)
+        raise IncompatibleGenomeAssemblyError(variant_assembly, phenopacket_path)
+    if vcf_info:
+        return vcf_info
+    if vcf_dir:
+        return VcfFile.populate_fields(random.choice(all_files(vcf_dir)))
+    raise InputError(f"Must specify {assembly_name} template VCF!")
 
 
 def check_variant_assembly(
@@ -415,7 +422,6 @@ class VcfWriter:
         with gzip.open(self.spiked_vcf_file_path, "wb") as f:
             for line in encoded_contents:
                 f.write(line)
-        f.close()
 
     def write_uncompressed(self) -> None:
         """
@@ -423,7 +429,6 @@ class VcfWriter:
         """
         with open(self.spiked_vcf_file_path, "w") as file:
             file.writelines(self.vcf_contents)
-        file.close()
 
     def write_vcf_file(self) -> None:
         """
@@ -550,6 +555,35 @@ def spike_and_update_phenopacket(
     write_phenopacket(updated_phenopacket, phenopacket_path)
 
 
+def load_template_vcfs(
+    hg19_template_vcf: Path,
+    hg38_template_vcf: Path,
+    hg19_vcf_dir: Path,
+    hg38_vcf_dir: Path,
+) -> tuple[VcfFile, VcfFile]:
+    """
+    Validate that a VCF source was supplied and parse any directly specified template VCFs.
+
+    Args:
+        hg19_template_vcf (Path): Path to the hg19 template VCF file (optional).
+        hg38_template_vcf (Path): Path to the hg38 template VCF file (optional).
+        hg19_vcf_dir (Path): The directory containing the hg19 VCF files (optional).
+        hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
+
+    Returns:
+        Tuple[VcfFile, VcfFile]: VCF file info for the hg19 and hg38 template VCFs, each None if not specified.
+
+    Raises:
+        InputError: If none of the template VCF files or VCF directories are specified.
+    """
+    if all(source is None for source in (hg19_template_vcf, hg38_template_vcf, hg19_vcf_dir, hg38_vcf_dir)):
+        raise InputError("Need to specify a VCF!")
+    return (
+        VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None,
+        VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None,
+    )
+
+
 def create_spiked_vcf(
     output_dir: Path,
     phenopacket_path: Path,
@@ -570,12 +604,9 @@ def create_spiked_vcf(
         hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
 
     Raises:
-        InputError: If both hg19_template_vcf and hg38_template_vcf are None.
+        InputError: If none of the template VCF files or VCF directories are specified.
     """
-    if hg19_template_vcf is None and hg38_template_vcf is None:
-        raise InputError("Either a hg19 template vcf or hg38 template vcf must be specified")
-    hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
-    hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
+    hg19_vcf_info, hg38_vcf_info = load_template_vcfs(hg19_template_vcf, hg38_template_vcf, hg19_vcf_dir, hg38_vcf_dir)
     spike_and_update_phenopacket(hg19_vcf_info, hg38_vcf_info, hg19_vcf_dir, hg38_vcf_dir, output_dir, phenopacket_path)
 
 
@@ -599,12 +630,9 @@ def create_spiked_vcfs(
         hg38_vcf_dir (Path): The directory containing the hg38 VCF files (optional).
 
     Raises:
-        InputError: If both hg19_template_vcf and hg38_template_vcf are None.
+        InputError: If none of the template VCF files or VCF directories are specified.
     """
-    if hg19_template_vcf is None and hg38_template_vcf is None and hg19_vcf_dir is None and hg38_vcf_dir is None:
-        raise InputError("Need to specify a VCF!")
-    hg19_vcf_info = VcfFile.populate_fields(hg19_template_vcf) if hg19_template_vcf else None
-    hg38_vcf_info = VcfFile.populate_fields(hg38_template_vcf) if hg38_template_vcf else None
+    hg19_vcf_info, hg38_vcf_info = load_template_vcfs(hg19_template_vcf, hg38_template_vcf, hg19_vcf_dir, hg38_vcf_dir)
     for phenopacket_path in files_with_suffix(phenopacket_dir, ".json"):
         logger.info(f"Creating spiked VCF for: {phenopacket_path.name}")
         spike_and_update_phenopacket(
