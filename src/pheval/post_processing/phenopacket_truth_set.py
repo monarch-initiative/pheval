@@ -11,6 +11,8 @@ from pheval.utils.phenopacket_utils import (
     phenopacket_reader,
 )
 
+VARIANT_KEY_COLUMNS = ["chrom", "start", "end", "ref", "alt"]
+
 
 def calculate_end_pos(variant_start: int, variant_ref: str) -> int:
     """Calculate the end position for a variant
@@ -88,6 +90,30 @@ class PhenopacketTruthSet:
         phenopacket_util = self._get_phenopacket_util(phenopacket_name)
         return phenopacket_util.diagnoses()
 
+    @staticmethod
+    def _merge_results(
+        ranked_results: pl.DataFrame,
+        classified_results: pl.DataFrame,
+        true_positive: pl.Expr,
+        absent_from_ranked: pl.Expr,
+    ) -> pl.DataFrame:
+        """
+        Merge ranked results with the classified results.
+        Args:
+            ranked_results (pl.DataFrame): Ranked results.
+            classified_results (pl.DataFrame): Classified results read from the output file.
+            true_positive (pl.Expr): Predicate marking a ranked result as a true positive.
+            absent_from_ranked (pl.Expr): Predicate selecting classified results missing from the ranked results.
+        Returns:
+            pl.DataFrame: Ranked results labelled with true positives, with any missing classified results appended.
+        """
+        return (
+            ranked_results.with_columns(true_positive.alias("true_positive"))
+            .with_columns(pl.col("rank").cast(pl.Int64))
+            .select(classified_results.columns)
+            .vstack(classified_results.filter(absent_from_ranked))
+        )
+
     def classified_gene(self, result_name: str) -> pl.DataFrame:
         """
         Classify gene results for a given phenopacket.
@@ -101,12 +127,12 @@ class PhenopacketTruthSet:
         gene_identifiers = [causative_gene.gene_identifier for causative_gene in causative_genes]
         return pl.DataFrame(
             {
-                "gene_symbol": [g for g in gene_symbols],
-                "gene_identifier": [g for g in gene_identifiers],
+                "gene_symbol": gene_symbols,
+                "gene_identifier": gene_identifiers,
             }
         ).with_columns(
             [
-                pl.lit(0).cast(pl.Float64).alias("score"),
+                pl.lit(0.0).cast(pl.Float64).alias("score"),
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
             ]
@@ -123,20 +149,14 @@ class PhenopacketTruthSet:
             pl.DataFrame: Merged ranked gene results.
         """
         classified_results = pl.read_parquet(output_file)
-        return (
-            ranked_results.with_columns(
-                (
-                    (pl.col("gene_symbol").is_in(classified_results["gene_symbol"]) & (pl.col("gene_symbol") != ""))
-                    | (
-                        pl.col("gene_identifier").is_in(classified_results["gene_identifier"])
-                        & (pl.col("gene_identifier") != "")
-                    )
-                ).alias("true_positive")
-            )
-            .with_columns(pl.col("rank").cast(pl.Int64))
-            .select(classified_results.columns)
-            .vstack(classified_results.filter(~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"])))
+        true_positive = (
+            pl.col("gene_symbol").is_in(classified_results["gene_symbol"].implode()) & (pl.col("gene_symbol") != "")
+        ) | (
+            pl.col("gene_identifier").is_in(classified_results["gene_identifier"].implode())
+            & (pl.col("gene_identifier") != "")
         )
+        absent_from_ranked = ~pl.col("gene_symbol").is_in(ranked_results["gene_symbol"].implode())
+        return PhenopacketTruthSet._merge_results(ranked_results, classified_results, true_positive, absent_from_ranked)
 
     def classified_variant(self, result_name: str) -> pl.DataFrame:
         """
@@ -175,24 +195,10 @@ class PhenopacketTruthSet:
             pl.DataFrame: Merged ranked variant results.
         """
         classified_results = pl.read_parquet(output_file)
-        return (
-            ranked_results.with_columns(
-                [
-                    pl.struct(["chrom", "start", "end", "ref", "alt"])
-                    .is_in(classified_results.select(pl.struct(["chrom", "start", "end", "ref", "alt"])).to_series())
-                    .alias("true_positive")
-                ]
-            )
-            .with_columns(pl.col("rank").cast(pl.Int64))
-            .select(classified_results.columns)
-            .vstack(
-                classified_results.filter(
-                    ~pl.struct(["chrom", "start", "end", "ref", "alt"]).is_in(
-                        ranked_results.select(pl.struct(["chrom", "start", "end", "ref", "alt"])).to_series()
-                    )
-                )
-            )
-        )
+        variant_key = pl.struct(VARIANT_KEY_COLUMNS)
+        true_positive = variant_key.is_in(classified_results.select(variant_key).to_series().implode())
+        absent_from_ranked = ~variant_key.is_in(ranked_results.select(variant_key).to_series().implode())
+        return PhenopacketTruthSet._merge_results(ranked_results, classified_results, true_positive, absent_from_ranked)
 
     def classified_disease(self, result_name: str, mondo_mapping_table: pl.DataFrame) -> pl.DataFrame:
         """
@@ -204,18 +210,14 @@ class PhenopacketTruthSet:
             pl.DataFrame: Classified ranked disease results.
         """
         diseases = self._get_causative_diseases(result_name)
-        disease_identifiers = list(set(disease.disease_identifier for disease in diseases))
-        return pl.DataFrame(
-            {
-                "disease_identifier": [d for d in disease_identifiers],
-            }
-        ).with_columns(
+        disease_identifiers = list({disease.disease_identifier for disease in diseases})
+        return pl.DataFrame({"disease_identifier": disease_identifiers}).with_columns(
             [
-                pl.lit(0).cast(pl.Float64).alias("score"),
+                pl.lit(0.0).cast(pl.Float64).alias("score"),
                 pl.lit(0).cast(pl.Int64).alias("rank"),
                 pl.lit(True).alias("true_positive"),
                 pl.col("disease_identifier")
-                .map_elements(lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.Utf8)
+                .map_elements(lambda x: map_disease_id(x, mondo_mapping_table), return_dtype=pl.String)
                 .alias("mondo_identifier"),
             ]
         )
@@ -246,11 +248,6 @@ class PhenopacketTruthSet:
                 .alias("mondo_identifier")
             ]
         )
-        return (
-            ranked_results.with_columns(
-                (pl.col("mondo_identifier").is_in(classified_results["mondo_identifier"])).alias("true_positive")
-            )
-            .with_columns(pl.col("rank").cast(pl.Int64))
-            .select(classified_results.columns)
-            .vstack(classified_results.filter(~pl.col("mondo_identifier").is_in(ranked_results["mondo_identifier"])))
-        )
+        true_positive = pl.col("mondo_identifier").is_in(classified_results["mondo_identifier"].implode())
+        absent_from_ranked = ~pl.col("mondo_identifier").is_in(ranked_results["mondo_identifier"].implode())
+        return PhenopacketTruthSet._merge_results(ranked_results, classified_results, true_positive, absent_from_ranked)
