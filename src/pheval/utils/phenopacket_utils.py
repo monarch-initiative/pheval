@@ -16,7 +16,7 @@ from phenopackets import (
     PhenotypicFeature,
 )
 
-from pheval.prepare.custom_exceptions import IncorrectFileFormatError
+from pheval.prepare.custom_exceptions import IncorrectFileFormatError, InputError
 from pheval.utils.logger import get_logger
 
 logger = get_logger()
@@ -132,7 +132,7 @@ def parse_hgnc_data() -> pl.DataFrame:
             os.path.dirname(__file__).replace("utils", "resources/hgnc_complete_set.txt"),
             separator="\t",
             infer_schema=10000000000,
-            dtypes={"omim_id": pl.Utf8},
+            schema_overrides={"omim_id": pl.Utf8},
         )
         .select(
             [
@@ -160,16 +160,16 @@ def create_gene_identifier_map() -> pl.DataFrame:
     Returns:
         pl.DataFrame: A mapping of gene identifiers to gene symbols.
     """
-    logger.info("Creating gene identifier map.")
+    # logger.info("Creating gene identifier map.")
     hgnc_df = parse_hgnc_data()
-    return hgnc_df.melt(
-        id_vars=["gene_symbol", "prev_symbols"],
-        value_vars=["ensembl_id", "hgnc_id", "entrez_id", "refseq_accession"],
+    return hgnc_df.unpivot(
+        index=["gene_symbol", "prev_symbols"],
+        on=["ensembl_id", "hgnc_id", "entrez_id", "refseq_accession"],
         variable_name="identifier_type",
         value_name="identifier",
     ).with_columns(
         pl.col("identifier_type")
-        .replace(
+        .replace_strict(
             {
                 "ensembl_id": "ensembl:",
                 "hgnc_id": "",
@@ -193,9 +193,8 @@ def phenopacket_reader(file: Path) -> Phenopacket | Family:
         Union[Phenopacket, Family]: Contents of the Phenopacket file as a Phenopacket or Family object
     """
     logger.info(f"Parsing Phenopacket: {file.name}")
-    file = open(file)
-    phenopacket = json.load(file)
-    file.close()
+    with open(file) as phenopacket_file:
+        phenopacket = json.load(phenopacket_file)
     if "proband" in phenopacket:
         return Parse(json.dumps(phenopacket), Family())
     else:
@@ -288,16 +287,13 @@ class PhenopacketUtil:
         diagnoses = []
         interpretation = self.interpretations()
         for i in interpretation:
-            (
+            if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != "":
                 diagnoses.append(
                     ProbandDisease(
                         disease_name=i.diagnosis.disease.label,
                         disease_identifier=i.diagnosis.disease.id,
                     )
                 )
-                if i.diagnosis.disease.label != "" and i.diagnosis.disease.id != ""
-                else None
-            )
         return diagnoses
 
     def _diagnosis_from_disease(self) -> list[ProbandDisease]:
@@ -347,7 +343,7 @@ class PhenopacketUtil:
                 vcf_record = g.variant_interpretation.variation_descriptor.vcf_record
                 genotype = g.variant_interpretation.variation_descriptor.allelic_state
                 variant_data = ProbandCausativeVariant(
-                    self.phenopacket_contents.subject.id,
+                    self.sample_id(),
                     vcf_record.genome_assembly,
                     GenomicVariant(
                         vcf_record.chrom,
@@ -382,7 +378,8 @@ class PhenopacketUtil:
             File: The VCF file with updated URI pointing to the specified directory.
 
         Raises:
-            IncorrectFileFormatError: If the provided file is not in .vcf or .vcf.gz format.
+            InputError: If the phenopacket does not contain a VCF file.
+            IncorrectFileFormatError: If the VCF file is not in .vcf or .vcf.gz format.
             IncompatibleGenomeAssemblyError: If the genome assembly of the VCF file is not compatible.
 
         Note:
@@ -391,7 +388,9 @@ class PhenopacketUtil:
             URI of the VCF file to the specified directory and returns the modified file object.
         """
         compatible_genome_assembly = ["GRCh37", "hg19", "GRCh38", "hg38"]
-        vcf_data = next(file for file in self.files() if file.file_attributes["fileFormat"] == "vcf")
+        vcf_data = next((file for file in self.files() if file.file_attributes["fileFormat"] == "vcf"), None)
+        if vcf_data is None:
+            raise InputError(phenopacket_path, "No VCF file found in phenopacket")
         if not Path(vcf_data.uri).name.endswith(".vcf") and not Path(vcf_data.uri).name.endswith(".vcf.gz"):
             raise IncorrectFileFormatError(Path(vcf_data.uri), ".vcf or .vcf.gz file")
         if vcf_data.file_attributes["genomeAssembly"] not in compatible_genome_assembly:
@@ -434,8 +433,7 @@ class PhenopacketUtil:
         for i in pheno_interpretation:
             for g in i.diagnosis.genomic_interpretations:
                 genes.append(self._extract_diagnosed_gene(g))
-                genes = list({gene.gene_symbol: gene for gene in genes}.values())
-        return genes
+        return list({gene.gene_symbol: gene for gene in genes}.values())
 
     def diagnosed_variants(self) -> list[GenomicVariant]:
         """
@@ -613,7 +611,6 @@ def write_phenopacket(phenopacket: Phenopacket | Family, output_file: Path) -> N
     phenopacket_json = create_json_message(phenopacket)
     with open(output_file, "w") as outfile:
         outfile.write(phenopacket_json)
-    outfile.close()
 
 
 class GeneIdentifierUpdater:
@@ -656,7 +653,7 @@ class GeneIdentifierUpdater:
         )
         if prev_symbol_matches.height > 0:
             return prev_symbol_matches["identifier"][0]
-        logger.warn(f"Could not find {self.gene_identifier} for {gene_symbol}.")
+        logger.warning(f"Could not find {self.gene_identifier} for {gene_symbol}.")
         return None
 
     def obtain_gene_symbol_from_identifier(self, query_gene_identifier: str) -> str:
